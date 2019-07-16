@@ -1,0 +1,125 @@
+---
+title: "Multilevel and Longitudinal Modeling"
+description: |
+  An Interdisciplinary Doctoral Statistics Course
+author:
+  - name: Andy Grogan-Kaylor 
+    url: https://agrogan1.github.io/
+    affiliation: University of Michigan
+    affiliation_url: https://umich.edu/
+date: "`r Sys.Date()`"
+output: distill::distill_article
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = FALSE)
+
+```
+
+```{r}
+
+library(haven)
+
+library(ggplot2)
+
+library(plotly)
+
+```
+
+> <mark>Currently this course is numbered SW 832, although we are working to get the course number, and formal course title, changed.</mark>
+
+> <mark>Formal course title:  Research Methods for Social Policy Analysis/ Research Methods for Evaluating Social Programs and Human Service Organizations  (Focus on Multilevel and Longitudinal Statistical Modeling)</mark>
+
+```{r get_data}
+
+hsb_small <- read_dta("hsb_small.dta")
+
+# mydata$id <- as.factor(mydata$id)
+
+hsb_small$schoolid <- factor(hsb_small$id, labels = c("A", "B", "C", "D", "E", "F"))
+
+```
+
+```{r, layout="l-screen", fig.height= 3.0, fig.cap="A Subsample of The High School and Beyond Data Set"}
+
+p0 <- ggplot(hsb_small, 
+             aes(x=schoolid, 
+                 y = ses,
+                 color = schoolid)) +
+  geom_jitter() +
+  labs(title = "An Illustration of the High School and Beyond Data",
+       caption = "Each dot represents a student") + 
+  xlab("School") + 
+  ylab("socio-economic \nstatus") +
+  scale_color_viridis_d(name = "School \nID") +
+  theme(axis.title.y = element_text(size = 8),
+        axis.title.x = element_text(size = 14),
+        axis.text.x = element_text(size = 14),
+        legend.position = "bottom")
+
+# geom_dotplot(dotsize = .25, stackdir = "center")
+
+ggplotly(p0)
+
+ggsave("p0.png", width = 6, height = 2.0)
+
+```
+
+Multilevel models have become a standard statistical tool for quantitative research on neighborhoods, communities and schools.  The cross-sectional multilevel model is appropriate for situations in which respondents are clustered inside larger social or geographic units e.g. people in geographic areas, residents in neighborhoods, or children in classrooms and/or schools.
+
+> <mark>This course requires a solid understanding of ordinary least squares regression (OLS) as a starting point.</mark>
+
+The first part of the course is all about the idea of “nesting”:  e.g. students nested in classrooms, residents nested in neighborhoods, study participants nested in cities. The second part of the course extends these ideas to longitudinal data, thinking about situations where we have repeated measures on an outcome of interest, like anxiety, depression or substance abuse.  Course assignments focus on individually focused student data driven projects, so for students considering the course, it is useful to have an available data set has both some kind of “nesting” as well as repeated measures of some outcome of interest.
+
+```{r, layout="l-screen", fig.cap="School Specific Regression Lines"}
+
+p1 <- ggplot(hsb_small, aes(x=ses, 
+                         y=mathach, 
+                         color=schoolid)) + 
+  geom_point() + 
+  geom_smooth(method=lm, 
+              size=2) + 
+  scale_color_viridis_d(name = "School \nID") +
+  facet_wrap(~schoolid, 
+             nrow = 2) +
+  labs(title = "High School and Beyond Data", 
+       caption = "Every school has its own regression line",
+       x = "Student SES", 
+       y = "math achievement score") + 
+  theme(axis.title.y = element_text(size = 8),
+        axis.title.x = element_text(size = 14),
+        axis.text.x = element_text(size = 14),
+        legend.position = "bottom")
+
+ggplotly(p1) 
+
+ggsave("schools.png", p1)
+
+```
+
+Perhaps surprisingly, the multilevel model for cross-sectional data can easily accommodate longitudinal data where study participants are observed repeatedly over time.
+
+Further, while this is sometimes not recognized, multilevel models for longitudinal data are closely related to other important longitudinal data models, such as fixed effects regression, an important technique for controlling for unobserved variables.  Multilevel models are also closely related to statistical models for meta-analysis of multiple studies.
+
+This course focuses on the use of multilevel and longitudinal data analysis for social work and social science research.  The course is conceptualized as covering the following topics:
+
+1. The multilevel model for cross-sectional data.
+2. The extension of multilevel modeling to longitudinal research (i.e. growth trajectory models).
+3. Other panel data models such as fixed effects and random effects models.
+4. Possible additional topics based on student interest (models for dichotomous outcomes; power analysis for single level and multilevel models, multiple imputation for missing data in multilevel models; meta-analysis)
+
+The models discussed in this course are primarily intended, and best developed, for continuous outcomes, so are most appropriate for students with research questions that can in some way be conceptualized as continuous outcomes.
+
+The first half of the semester will be devoted to a discussion of cross-sectional and clustered data.  The second half of the semester will focus on data with repeated measures on at least the dependent variable. Thus, it is very beneficial for students taking the course to locate suitable data for each half of the course prior to the beginning of the semester.
+
+The course is intended for students who have some familiarity with ordinary least squares regression, since the OLS model will be used as a starting point for discussion.
+
+The treatment of these topics involves discussion of the underlying statistical theory, but is also focused on the application of these models with real data.  <mark>STATA is intended to be the primary statistical software used in this course.</mark>
+
+Depending upon student interest, some reference may be made to the analysis of these models in other statistical packages such as R, or SAS. Instruction is a mixture of in class lecture and discussion, and time spent in a lab session, working on your own laptop, working through actual data problems with statistical software.  Typically, students write two data driven papers for the course, one due about the middle of the semester, and one due at the end of the semester.  It is my intent that the papers should be based upon data from your own discipline(s) and interests.  Frequently papers from the course go on to serve as the foundation for dissertation chapters or articles submitted for publication.
+
+<mark>Participation in this class requires that you have a personal laptop computer that is powerful enough to run standard statistical software (e.g. Stata) at a reasonable speed.  The School of Social Work is not able to provide laptop computers.</mark>
+
+
+
