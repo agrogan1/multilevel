@@ -27,7 +27,7 @@ library(plotly)
 
 ```
 
-> <mark>Currently this course is numbered SW 832, although we are working to get the course number, and formal course title, changed.</mark>
+> <mark>Previously this course was numbered SW 832. The new number for the course is SW 864.</mark>
 
 > <mark>Formal course title:  Research Methods for Social Policy Analysis/ Research Methods for Evaluating Social Programs and Human Service Organizations  (Focus on Multilevel and Longitudinal Statistical Modeling)</mark>
 
