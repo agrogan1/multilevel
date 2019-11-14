@@ -29,7 +29,7 @@ library(plotly)
 
 > <mark>Previously this course was numbered SW 832. The new number for the course is SW 864.</mark>
 
-> <mark>Formal course title:  Research Methods for Social Policy Analysis/ Research Methods for Evaluating Social Programs and Human Service Organizations  (Focus on Multilevel and Longitudinal Statistical Modeling)</mark>
+> <mark>Stata will be the statistical software employed in this course, and students will need access to Stata to participate.</mark>
 
 ```{r get_data}
 
@@ -37,7 +37,9 @@ hsb_small <- read_dta("hsb_small.dta")
 
 # mydata$id <- as.factor(mydata$id)
 
-hsb_small$schoolid <- factor(hsb_small$id, labels = c("A", "B", "C", "D", "E", "F"))
+hsb_small$schoolid <- factor(hsb_small$id, 
+                             labels = c("A", "B", "C", 
+                                        "D", "E", "F"))
 
 ```
 
