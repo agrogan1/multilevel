@@ -1,5 +1,5 @@
 ---
-title: "Multilevel and Longitudinal Modeling"
+title: "Multilevel and Longitudinal Modeling (SW 864)"
 description: |
   An Interdisciplinary Doctoral Statistics Course
 author:
@@ -27,9 +27,11 @@ library(plotly)
 
 ```
 
-> <mark>Previously this course was numbered SW 832. The new number for the course is SW 864.</mark>
-
 > <mark>Stata will be the statistical software employed in this course, and students will need access to Stata to participate.</mark>
+
+> <mark>Participation in this class requires that you have a personal laptop computer that is powerful enough to run standard statistical software (e.g. Stata) at a reasonable speed.  The School of Social Work is not able to provide laptop computers.</mark>
+
+<aside><mark>Previously this course was numbered SW 832. The new number for the course is SW 864.</mark></aside>
 
 ```{r get_data}
 
@@ -73,6 +75,8 @@ Multilevel models have become a standard statistical tool for quantitative resea
 > <mark>This course requires a solid understanding of ordinary least squares regression (OLS) as a starting point.</mark>
 
 The first part of the course is all about the idea of “nesting”:  e.g. students nested in classrooms, residents nested in neighborhoods, study participants nested in cities. The second part of the course extends these ideas to longitudinal data, thinking about situations where we have repeated measures on an outcome of interest, like anxiety, depression or substance abuse.  Course assignments focus on individually focused student data driven projects, so for students considering the course, it is useful to have an available data set has both some kind of “nesting” as well as repeated measures of some outcome of interest.
+
+> <mark>NB that the major assignments in this class are two short empirical papers where students apply the concepts of multilevel modeling. This means that students who are interested in this class should start thinking about appropriate data sets to use in the course. Data for the first of two papers should be suitable for a *cross-sectional multilevel* analysis. This data for the first paper should contain some indicator of where study participants live or study, whether that is a Census tract, neighborhood, state, country, classroom or school, etc.. Data for the second of two papers should be suitable for a *multilevel longitudinal analysis*. This data for the second paper should contain repeated measures of some outcome on the same individuals over at least 2 time points.</mark>
 
 ```{r, layout="l-screen", fig.cap="School Specific Regression Lines"}
 
@@ -121,7 +125,9 @@ The treatment of these topics involves discussion of the underlying statistical 
 
 Depending upon student interest, some reference may be made to the analysis of these models in other statistical packages such as R, or SAS. Instruction is a mixture of in class lecture and discussion, and time spent in a lab session, working on your own laptop, working through actual data problems with statistical software.  Typically, students write two data driven papers for the course, one due about the middle of the semester, and one due at the end of the semester.  It is my intent that the papers should be based upon data from your own discipline(s) and interests.  Frequently papers from the course go on to serve as the foundation for dissertation chapters or articles submitted for publication.
 
-<mark>Participation in this class requires that you have a personal laptop computer that is powerful enough to run standard statistical software (e.g. Stata) at a reasonable speed.  The School of Social Work is not able to provide laptop computers.</mark>
+
+
+
 
 
 
