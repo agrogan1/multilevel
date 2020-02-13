@@ -3,7 +3,7 @@
 #' author: "Andy Grogan-Kaylor"
 #' date: "`r format(Sys.Date())`"
 #' output:  
-#'   pdf_document:
+#'   html_document:
 #'     highlight: haddock
 #'     fig_height: 3
 #' ---
