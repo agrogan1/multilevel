@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style>
+/* CSS for Markstat 2.0 using Pandoc 2.0 */
+body{padding:14px 28px;}
+body, table {font-family: Helvetica, Arial, Sans-serif; font-size: 14px;}
+h1, h2, h3, h4 {font-weight: normal; color: #3366cc}
+h1 {font-size: 200%;}
+h2 {font-size: 150%;}
+h3 {font-size: 120%;}
+h4 {font-size: 100%; font-weight:bold}
+img.center {display:block; margin-left:auto; margin-right:auto}
+.small{font-size:8pt;}
+a {color: black;}
+a:visited {color: #808080;}
+a.plain {text-decoration:none;}
+a.plain:hover {text-decoration:underline;}
+.em {font-weight:bold;}
+pre, code {font-family: "lucida console", monospace;}
+pre.stata {font-size:13px; line-height:13px;}
+pre {padding:8px; border:1px solid #c0c0c0; border-radius:8px; background-color:#fdfdfd;}
+code {color:#3366cc; background-color:#fafafa;}
+pre code { color:black; background-color:white}
+/* Added for Pandoc */
+figure > img, div.figure > img {display:block; margin:auto}
+figcaption, p.caption {text-align:center; font-weight:bold; color:#3366cc;}
+h1.title {text-align:center; margin-bottom:0}
+p.author, h2.author {font-style:italic; text-align:center;margin-top:4px;margin-bottom:0}
+p.date, h3.date {text-align:center;margin-top:4px; margin-bottom:0}
+/* Tables*/
+table { margin:auto; border-collapse:collapse; }
+table caption { margin-bottom:1ex;}
+th, td { padding:4px 6px;}
+thead tr:first-child th {border-top:1px solid black; padding-top:6px}
+thead tr:last-child  th {padding-bottom:6px}
+tbody tr:first-child td {border-top:1px solid black; padding-top:6px}
+tbody tr:last-child  td {padding-bottom:6px;}
+table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
+</style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Andy Grogan-Kaylor" />
+  <title>Spaghetti Plot Demo</title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Spaghetti Plot Demo</h1>
+<h2 class="author">Andy Grogan-Kaylor</h2>
+<h3 class="date">13 Feb 2020</h3>
+</div>
+<h1 id="get-data">Get Data</h1>
+<ul>
+<li>using data from https://stats.idre.ucla.edu/stata/examples/mlm-imm/introduction-to-multilevel-modeling-by-kreft-and-de-leeuwchapter-4-analyses/</li>
+</ul>
+<pre class='stata'>. use https://stats.idre.ucla.edu/stat/examples/imm/imm23, clear
+</pre>
+<h1 id="basic-spaghetti-plot">Basic Spaghetti Plot</h1>
+<pre class='stata'>. spagplot math ses, id(schid) 
+</pre>
+<pre class='stata'>. graph export graph1.png, width(500) replace
+(file graph1.png written in PNG format)
+</pre>
+<div class="figure">
+<img src="graph1.png" alt="" />
+
+</div>
+<h1 id="add-better-scheme">Add Better Scheme</h1>
+<pre class='stata'>. spagplot math ses, id(schid) scheme(lean2)
+</pre>
+<pre class='stata'>. graph export graph2.png, width(500) replace
+(file graph2.png written in PNG format)
+</pre>
+<div class="figure">
+<img src="graph2.png" alt="" />
+
+</div>
+<h1 id="now-try-twoway-syntax">Now Try <code>twoway</code> Syntax</h1>
+<pre class='stata'>. twoway lfit math ses, scheme(lean2) lcolor(red)
+</pre>
+<pre class='stata'>. graph export graph3.png, width(500) replace
+(file graph3.png written in PNG format)
+</pre>
+<div class="figure">
+<img src="graph3.png" alt="" />
+
+</div>
+<h1 id="separate-panels-for-schools">Separate Panels For Schools</h1>
+<p>This ONLY works well with a limited number of schools.</p>
+<pre class='stata'>. twoway lfit math ses, scheme(lean2) lcolor(red) by(schid)
+</pre>
+<pre class='stata'>. graph export graph4.png, width(500) replace
+(file graph4.png written in PNG format)
+</pre>
+<div class="figure">
+<img src="graph4.png" alt="" />
+
+</div>
+</body>
+</html>

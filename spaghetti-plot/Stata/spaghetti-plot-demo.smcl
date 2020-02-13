@@ -1,0 +1,51 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\multilevel\spaghetti-plot\Stata\spaghetti-plot-demo.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}13 Feb 2020, 16:01:27
+{txt}
+{com}. //_1
+. display c(current_date)
+{res}13 Feb 2020
+{txt}
+{com}. //_2
+. use https://stats.idre.ucla.edu/stat/examples/imm/imm23, clear
+{txt}
+{com}. //_3
+. spagplot math ses, id(schid) 
+{res}{txt}
+{com}. //_4
+. graph export graph1.png, width(500) replace
+{txt}(file graph1.png written in PNG format)
+
+{com}. //_5
+. spagplot math ses, id(schid) scheme(lean2)
+{res}{txt}
+{com}. //_6
+. graph export graph2.png, width(500) replace
+{txt}(file graph2.png written in PNG format)
+
+{com}. //_7
+. twoway lfit math ses, scheme(lean2) lcolor(red)
+{res}{txt}
+{com}. //_8
+. graph export graph3.png, width(500) replace
+{txt}(file graph3.png written in PNG format)
+
+{com}. //_9
+. twoway lfit math ses, scheme(lean2) lcolor(red) by(schid)
+{res}{txt}
+{com}. //_10
+. graph export graph4.png, width(500) replace
+{txt}(file graph4.png written in PNG format)
+
+{com}. //_^
+. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\multilevel\spaghetti-plot\Stata\spaghetti-plot-demo.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}13 Feb 2020, 16:01:38
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
