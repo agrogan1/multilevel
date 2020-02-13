@@ -1,9 +1,9 @@
 {smcl}
-{com}{sf}{ul off}{txt}{.-}
+{txt}{sf}{ul off}{.-}
       name:  {res}<unnamed>
        {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\multilevel\spaghetti-plot\Stata\spaghetti-plot-demo.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}13 Feb 2020, 16:01:27
+ {txt}opened on:  {res}13 Feb 2020, 16:03:04
 {txt}
 {com}. //_1
 . display c(current_date)
@@ -45,7 +45,7 @@
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\multilevel\spaghetti-plot\Stata\spaghetti-plot-demo.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}13 Feb 2020, 16:01:38
+ {txt}closed on:  {res}13 Feb 2020, 16:03:15
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}
