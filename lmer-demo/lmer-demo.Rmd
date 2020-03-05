@@ -1,0 +1,154 @@
+---
+title: "lmer Demo"
+author: "Andy Grogan-Kaylor"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    highlight: haddock
+    number_sections: yes
+    code_folding: hide
+    code_download: true
+    toc: yes
+    toc_float:
+      collapsed: no
+      smooth_scroll: yes
+  pdf_document: 
+    fig_height: 4
+    highlight: tango
+    latex_engine: xelatex
+    number_sections: yes
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
+```{r, fig.cap="Norway Spruce and Larch Forest in Austrian Alps, https://ec.europa.eu/jrc/en/research-topic/forestry/qr-tree-project/norway-spruce", echo=FALSE}
+
+knitr::include_graphics("fotolia-small.jpg")
+
+```
+
+# Get Data
+
+Data are from *von Guttenberg's Norway spruce (Picea abies [L.] Karst) tree measurement data*, from: Andrew Robinson and Jeff Hamann (2016). FAwR: Functions and Datasets for "Forest Analytics with R", R package version 1.1.1., https://CRAN.R-project.org/package=FAwR
+
+> "The data are measures from 107 trees. The trees were selected as being of average size from healthy and well stocked stands in the Alps."
+
+
+```{r}
+
+library(FAwR) # Forest Analytics with R
+
+data("gutten") # Von Guttenberg Tree Data
+
+```
+
+```{r, eval=FALSE, echo=FALSE}
+
+library(haven) # read Stata
+
+imm23 <- read_dta("https://stats.idre.ucla.edu/stat/examples/imm/imm23.dta")
+
+```
+
+# Data Wrangling (Centering)
+
+```{r}
+
+gutten$height.C <- gutten$height - mean(gutten$height)
+
+gutten$age.base.C <- gutten$age.base - mean(gutten$age.base) 
+
+```
+
+# Graph
+
+```{r}
+
+library(ggplot2)
+
+library(patchwork)
+
+p_uncentered <- ggplot(gutten,
+                       aes(x = age.base,
+                           y = height,
+                           color = tree.ID)) +
+  geom_line() +
+  labs(title = "Tree Height By Tree Age",
+       subtitle = "Uncentered Data") +
+  theme(legend.position = "none")
+
+# p_uncentered
+
+p_centered <- ggplot(gutten,
+                     aes(x = age.base.C,
+                         y = height.C,
+                         color = tree.ID)) +
+  geom_line() +
+  labs(title = "Tree Height By Tree Age",
+       subtitle = "Centered Data") +
+  theme(legend.position = "none")
+
+# p_centered
+
+p_uncentered + p_centered 
+
+```
+
+# `lmer`
+
+```{r}
+
+library(lme4)
+
+```
+
+## Unconditional Model
+
+```{r}
+
+fit0 <- lmer(height ~ (1 | tree.ID), 
+             data = gutten)
+
+summary(fit0)
+
+```
+
+## One Independent Variable; Random Intercept Only
+
+```{r}
+
+fit1 <- lmer(height ~ age.base + (1 | tree.ID), 
+             data = gutten)
+
+summary(fit1)
+
+```
+
+## One Independent Variable; Random Intercept and Random Slope (Correlated)
+
+```{r}
+
+fit2 <- lmer(height ~ age.base + (1 + age.base | tree.ID), 
+             data = gutten)
+
+summary(fit2)
+
+```
+
+## One Independent Variable; Random Intercept and Random Slope (Uncorrelated)
+
+> Converges only with *grand mean centered* independent variable.
+
+```{r}
+
+fit3 <- lmer(height ~ age.base.C + (1 + age.base.C || tree.ID), 
+             data = gutten)
+
+summary(fit3)
+
+```
