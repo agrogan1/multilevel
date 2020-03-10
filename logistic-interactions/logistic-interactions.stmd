@@ -1,0 +1,65 @@
+% Interactions in Logistic Regression
+% Andy Grogan-Kaylor
+% `s c(current_date)` `s c(current_time)`
+
+# Simulate Some Data
+
+    clear all // empty data
+
+    set obs 10000 // set observations
+
+    generate x1 = rnormal(0, 2) // normally distributed
+
+    generate x2 = rbinomial(1, .5) // categorical variable
+
+    summarize // descriptive statistics
+
+# Story A: Main Effects Only
+
+    generate zA = x1 + x2 // first z
+
+    generate pA = exp(z) / (1 + exp(z)) // probabilities
+
+    summarize pA // descriptive statistics
+
+    generate yA = rbinomial(1, pA) // generate y with probability p
+
+    tab yA // descriptive statistics
+
+    logit yA x1 x2 // does it recover the parameters?
+
+    predict yhatA // predicted probabilities
+
+# Story B: Main Effects + Interactions
+
+    generate zB = x1 + x2 + (.75 * x1 * x2) // second z
+
+    generate pB = exp(zB) / (1 + exp(zB)) // probabilities
+
+    summarize pB // descriptive statistics
+
+    generate yB = rbinomial(1, pB) // generate y with probability p
+
+    tab yB // descriptive statistics
+
+    logit yB c.x1##i.x2 // does it recover the parameters?
+
+    predict yhatB // predicted probabilities
+
+# Inspect The Situation With A Graph
+
+    twoway ///
+    (scatter yB x1 if x2 == 0, msize(tiny)) /// points
+    (scatter yB x1 if x2 == 1, msize(tiny)) /// points
+    (scatter yhatB x1 if x2 == 0, msize(tiny)) ///
+    (scatter yhatB x1 if x2 == 1, msize(tiny)), ///
+    title("Logit Curves for 2 Groups") ///
+    scheme(michigan)
+
+    quietly graph export mygraph.png, width(500) replace
+
+![Logistic Regression With Interactions](mygraph.png)
+
+
+
+

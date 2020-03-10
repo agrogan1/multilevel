@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style>
+/* CSS for Markstat 2.0 using Pandoc 2.0 */
+body{padding:14px 28px;}
+body, table {font-family: Helvetica, Arial, Sans-serif; font-size: 14px;}
+h1, h2, h3, h4 {font-weight: normal; color: #3366cc}
+h1 {font-size: 200%;}
+h2 {font-size: 150%;}
+h3 {font-size: 120%;}
+h4 {font-size: 100%; font-weight:bold}
+img.center {display:block; margin-left:auto; margin-right:auto}
+.small{font-size:8pt;}
+a {color: black;}
+a:visited {color: #808080;}
+a.plain {text-decoration:none;}
+a.plain:hover {text-decoration:underline;}
+.em {font-weight:bold;}
+pre, code {font-family: "lucida console", monospace;}
+pre.stata {font-size:13px; line-height:13px;}
+pre {padding:8px; border:1px solid #c0c0c0; border-radius:8px; background-color:#fdfdfd;}
+code {color:#3366cc; background-color:#fafafa;}
+pre code { color:black; background-color:white}
+/* Added for Pandoc */
+figure > img, div.figure > img {display:block; margin:auto}
+figcaption, p.caption {text-align:center; font-weight:bold; color:#3366cc;}
+h1.title {text-align:center; margin-bottom:0}
+p.author, h2.author {font-style:italic; text-align:center;margin-top:4px;margin-bottom:0}
+p.date, h3.date {text-align:center;margin-top:4px; margin-bottom:0}
+/* Tables*/
+table { margin:auto; border-collapse:collapse; }
+table caption { margin-bottom:1ex;}
+th, td { padding:4px 6px;}
+thead tr:first-child th {border-top:1px solid black; padding-top:6px}
+thead tr:last-child  th {padding-bottom:6px}
+tbody tr:first-child td {border-top:1px solid black; padding-top:6px}
+tbody tr:last-child  td {padding-bottom:6px;}
+table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
+</style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Andy Grogan-Kaylor" />
+  <title>Interactions in Logistic Regression</title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Interactions in Logistic Regression</h1>
+<h2 class="author">Andy Grogan-Kaylor</h2>
+<h3 class="date">10 Mar 2020 09:55:33</h3>
+</div>
+<h1 id="simulate-some-data">Simulate Some Data</h1>
+<pre class='stata'>. clear all // empty data
+</pre>
+<pre class='stata'>. set obs 10000 // set observations
+number of observations (_N) was 0, now 10,000
+</pre>
+<pre class='stata'>. generate x1 = rnormal(0, 2) // normally distributed
+</pre>
+<pre class='stata'>. generate x2 = rbinomial(1, .5) // categorical variable
+</pre>
+<pre class='stata'>. summarize // descriptive statistics
+
+    Variable │        Obs        Mean    Std. Dev.       Min        Max
+─────────────┼─────────────────────────────────────────────────────────
+          x1 │     10,000    .0040604    2.013373  -7.748628   8.243984
+          x2 │     10,000       .5012    .5000236          0          1
+</pre>
+<h1 id="story-a-main-effects-only">Story A: Main Effects Only</h1>
+<pre class='stata'>. generate zA = x1 + x2 // first z
+</pre>
+<pre class='stata'>. generate pA = exp(z) / (1 + exp(z)) // probabilities
+</pre>
+<pre class='stata'>. summarize pA // descriptive statistics
+
+    Variable │        Obs        Mean    Std. Dev.       Min        Max
+─────────────┼─────────────────────────────────────────────────────────
+          pA │     10,000    .5739276    .3161557   .0004311   .9997474
+</pre>
+<pre class='stata'>. generate yA = rbinomial(1, pA) // generate y with probability p
+</pre>
+<pre class='stata'>. tab yA // descriptive statistics
+
+         yA │      Freq.     Percent        Cum.
+────────────┼───────────────────────────────────
+          0 │      4,237       42.37       42.37
+          1 │      5,763       57.63      100.00
+────────────┼───────────────────────────────────
+      Total │     10,000      100.00
+</pre>
+<pre class='stata'>. logit yA x1 x2 // does it recover the parameters?
+
+Iteration 0:   log likelihood = -6814.5818  
+Iteration 1:   log likelihood = -4569.2723  
+Iteration 2:   log likelihood = -4514.3614  
+Iteration 3:   log likelihood = -4514.2606  
+Iteration 4:   log likelihood = -4514.2606  
+
+Logistic regression                             Number of obs     =     10,000
+                                                LR chi2(2)        =    4600.64
+                                                Prob > chi2       =     0.0000
+Log likelihood = -4514.2606                     Pseudo R2         =     0.3376
+
+─────────────┬────────────────────────────────────────────────────────────────
+          yA │      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+─────────────┼────────────────────────────────────────────────────────────────
+          x1 │   .9652925   .0199773    48.32   0.000     .9261378    1.004447
+          x2 │   1.002191    .053381    18.77   0.000     .8975659    1.106815
+       _cons │   .0050784   .0360711     0.14   0.888    -.0656196    .0757764
+─────────────┴────────────────────────────────────────────────────────────────
+</pre>
+<pre class='stata'>. predict yhatA // predicted probabilities
+(option pr assumed; Pr(yA))
+</pre>
+<h1 id="story-b-main-effects-interactions">Story B: Main Effects + Interactions</h1>
+<pre class='stata'>. generate zB = x1 + x2 + (.75 * x1 * x2) // second z
+</pre>
+<pre class='stata'>. generate pB = exp(zB) / (1 + exp(zB)) // probabilities
+</pre>
+<pre class='stata'>. summarize pB // descriptive statistics
+
+    Variable │        Obs        Mean    Std. Dev.       Min        Max
+─────────────┼─────────────────────────────────────────────────────────
+          pB │     10,000    .5514346    .3519668   .0000263   .9999989
+</pre>
+<pre class='stata'>. generate yB = rbinomial(1, pB) // generate y with probability p
+</pre>
+<pre class='stata'>. tab yB // descriptive statistics
+
+         yB │      Freq.     Percent        Cum.
+────────────┼───────────────────────────────────
+          0 │      4,480       44.80       44.80
+          1 │      5,520       55.20      100.00
+────────────┼───────────────────────────────────
+      Total │     10,000      100.00
+</pre>
+<pre class='stata'>. logit yB c.x1##i.x2 // does it recover the parameters?
+
+Iteration 0:   log likelihood = -6877.2939  
+Iteration 1:   log likelihood = -3835.1787  
+Iteration 2:   log likelihood = -3741.7583  
+Iteration 3:   log likelihood = -3736.7605  
+Iteration 4:   log likelihood = -3736.7452  
+Iteration 5:   log likelihood = -3736.7452  
+
+Logistic regression                             Number of obs     =     10,000
+                                                LR chi2(3)        =    6281.10
+                                                Prob > chi2       =     0.0000
+Log likelihood = -3736.7452                     Pseudo R2         =     0.4567
+
+─────────────┬────────────────────────────────────────────────────────────────
+          yB │      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+─────────────┼────────────────────────────────────────────────────────────────
+          x1 │   1.024576    .029367    34.89   0.000     .9670173    1.082134
+        1.x2 │    .951849   .0637919    14.92   0.000     .8268193    1.076879
+             │
+     x2#c.x1 │
+          1  │   .8381924   .0620317    13.51   0.000     .7166126    .9597722
+             │
+       _cons │   .0427622    .036738     1.16   0.244    -.0292429    .1147673
+─────────────┴────────────────────────────────────────────────────────────────
+</pre>
+<pre class='stata'>. predict yhatB // predicted probabilities
+(option pr assumed; Pr(yB))
+</pre>
+<h1 id="inspect-the-situation-with-a-graph">Inspect The Situation With A Graph</h1>
+<pre class='stata'>. twoway ///
+> (scatter yB x1 if x2 == 0, msize(tiny)) /// points
+> (scatter yB x1 if x2 == 1, msize(tiny)) /// points
+> (scatter yhatB x1 if x2 == 0, msize(tiny)) ///
+> (scatter yhatB x1 if x2 == 1, msize(tiny)), ///
+> title("Logit Curves for 2 Groups") ///
+> scheme(michigan)
+</pre>
+<pre class='stata'>. quietly graph export mygraph.png, width(500) replace
+</pre>
+<div class="figure">
+<img src="mygraph.png" alt="Logistic Regression With Interactions" />
+<p class="caption">Logistic Regression With Interactions</p>
+</div>
+</body>
+</html>
