@@ -2,6 +2,31 @@
 % Andy Grogan-Kaylor
 % `s c(current_date)` `s c(current_time)`
 
+# The Math
+
+$ln(\frac{p(y)}{1-p(y)}) = \beta_0 + \beta_1 x1 + \beta_2 x2 + ...$
+
+Set $\beta_0 + \beta_1 x1 + \beta_2 x2 + ...$ to $z$.
+
+Then
+
+$ln(\frac{p(y)}{1-p(y)}) = z$
+
+$\frac{p(y)}{1-p(y)} = e^z$
+
+$p(y) = e^z(1-p(y))$
+
+$p(y) = e^z-e^z(p(y))$
+
+$e^z p(y) + p(y) = e^z$
+
+$(1 + e^z) p(y) = e^z$
+
+$p(y) = \frac{e^z}{1 + e^z}$
+
+$p(y) = \frac{e^{\beta_0 + \beta_1 x1 + \beta_2 x2 + ...}}{1 + e^{\beta_0 + \beta_1 x1 + \beta_2 x2 + ...}}$
+
+
 # Simulate Some Data
 
     clear all // empty data
@@ -18,7 +43,7 @@
 
     generate zA = x1 + x2 // first z
 
-    generate pA = exp(z) / (1 + exp(z)) // probabilities
+    generate pA = exp(zA) / (1 + exp(zA)) // probabilities
 
     summarize pA // descriptive statistics
 
