@@ -34,12 +34,26 @@ $p(y) = \frac{e^{\beta_0 + \beta_1 x1 + \beta_2 x2 + ...}}{1 + e^{\beta_0 + \bet
     set obs 10000 // set observations
 
     generate x1 = rnormal(0, 2) // normally distributed
+	
+	histogram x1, scheme(michigan)
+	
+	graph export myx1graph.png, width(200) replace
+	
+![Histogram of x1](myx1graph.png)
 
     generate x2 = rbinomial(1, .5) // categorical variable
+	
+	graph bar, over(x2) scheme(michigan)
+	
+	graph export myx2graph.png, width(200) replace
+	
+![Bar Graph of x2](myx2graph.png)
 
     summarize // descriptive statistics
 
 # Story A: Main Effects Only
+
+## Set Up The Data
 
     generate zA = x1 + x2 // first z
 
@@ -48,14 +62,22 @@ $p(y) = \frac{e^{\beta_0 + \beta_1 x1 + \beta_2 x2 + ...}}{1 + e^{\beta_0 + \bet
     summarize pA // descriptive statistics
 
     generate yA = rbinomial(1, pA) // generate y with probability p
+	
+i.e. 
+
+$$ln(\frac{p(y)}{1-p(y)}) = \beta_0 + \beta_1 x_1 + \beta_2 x_2$$
 
     tab yA // descriptive statistics
+
+## Logistic Regression
 
     logit yA x1 x2 // does it recover the parameters?
 
     predict yhatA // predicted probabilities
 
 # Story B: Main Effects + Interactions
+
+## Set Up The Data
 
     generate zB = x1 + x2 + (.75 * x1 * x2) // second z
 
@@ -64,8 +86,14 @@ $p(y) = \frac{e^{\beta_0 + \beta_1 x1 + \beta_2 x2 + ...}}{1 + e^{\beta_0 + \bet
     summarize pB // descriptive statistics
 
     generate yB = rbinomial(1, pB) // generate y with probability p
+	
+i.e. 
+
+$$ln(\frac{p(y)}{1-p(y)}) = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x1*x2$$	
 
     tab yB // descriptive statistics
+	
+## Logistic Regression
 
     logit yB c.x1##i.x2 // does it recover the parameters?
 
@@ -81,7 +109,7 @@ $p(y) = \frac{e^{\beta_0 + \beta_1 x1 + \beta_2 x2 + ...}}{1 + e^{\beta_0 + \bet
     title("Logit Curves for 2 Groups") ///
     scheme(michigan)
 
-    quietly graph export mygraph.png, width(500) replace
+    graph export mygraph.png, width(500) replace
 
 ![Logistic Regression With Interactions](mygraph.png)
 

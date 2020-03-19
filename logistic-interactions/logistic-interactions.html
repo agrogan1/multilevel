@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 <style>
 /* CSS for Markstat 2.0 using Pandoc 2.0 */
@@ -38,20 +38,28 @@ tbody tr:first-child td {border-top:1px solid black; padding-top:6px}
 tbody tr:last-child  td {padding-bottom:6px;}
 table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 </style>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Andy Grogan-Kaylor" />
   <title>Interactions in Logistic Regression</title>
-  <style type="text/css">code{white-space: pre;}</style>
-  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
 </head>
 <body>
-<div id="header">
+<header id="title-block-header">
 <h1 class="title">Interactions in Logistic Regression</h1>
-<h2 class="author">Andy Grogan-Kaylor</h2>
-<h3 class="date">10 Mar 2020 13:53:45</h3>
-</div>
+<p class="author">Andy Grogan-Kaylor</p>
+<p class="date">19 Mar 2020 18:05:28</p>
+</header>
 <h1 id="the-math">The Math</h1>
 <p><span class="math inline">\(ln(\frac{p(y)}{1-p(y)}) = \beta_0 + \beta_1 x1 + \beta_2 x2 + ...\)</span></p>
 <p>Set <span class="math inline">\(\beta_0 + \beta_1 x1 + \beta_2 x2 + ...\)</span> to <span class="math inline">\(z\)</span>.</p>
@@ -72,16 +80,34 @@ number of observations (_N) was 0, now 10,000
 </pre>
 <pre class='stata'>. generate x1 = rnormal(0, 2) // normally distributed
 </pre>
+<pre class='stata'>. histogram x1, scheme(michigan)
+(bin=40, start=-8.3670902, width=.41768236)
+</pre>
+<pre class='stata'>. graph export myx1graph.png, width(200) replace
+(file myx1graph.png written in PNG format)
+</pre>
+<figure>
+<img src="myx1graph.png" alt="Histogram of x1" /><figcaption>Histogram of x1</figcaption>
+</figure>
 <pre class='stata'>. generate x2 = rbinomial(1, .5) // categorical variable
 </pre>
+<pre class='stata'>. graph bar, over(x2) scheme(michigan)
+</pre>
+<pre class='stata'>. graph export myx2graph.png, width(200) replace
+(file myx2graph.png written in PNG format)
+</pre>
+<figure>
+<img src="myx2graph.png" alt="Bar Graph of x2" /><figcaption>Bar Graph of x2</figcaption>
+</figure>
 <pre class='stata'>. summarize // descriptive statistics
 
     Variable │        Obs        Mean    Std. Dev.       Min        Max
 ─────────────┼─────────────────────────────────────────────────────────
-          x1 │     10,000   -.0147188    1.984978  -9.027139   8.149453
-          x2 │     10,000       .4981    .5000214          0          1
+          x1 │     10,000   -.0064506    1.986698   -8.36709   8.340204
+          x2 │     10,000       .4965    .5000128          0          1
 </pre>
 <h1 id="story-a-main-effects-only">Story A: Main Effects Only</h1>
+<h2 id="set-up-the-data">Set Up The Data</h2>
 <pre class='stata'>. generate zA = x1 + x2 // first z
 </pre>
 <pre class='stata'>. generate pA = exp(zA) / (1 + exp(zA)) // probabilities
@@ -90,44 +116,48 @@ number of observations (_N) was 0, now 10,000
 
     Variable │        Obs        Mean    Std. Dev.       Min        Max
 ─────────────┼─────────────────────────────────────────────────────────
-          pA │     10,000    .5738759    .3134713   .0001201   .9998937
+          pA │     10,000    .5736906    .3144407   .0002323   .9999122
 </pre>
 <pre class='stata'>. generate yA = rbinomial(1, pA) // generate y with probability p
 </pre>
+<p>i.e.</p>
+<p><span class="math display">\[ln(\frac{p(y)}{1-p(y)}) = \beta_0 + \beta_1 x_1 + \beta_2 x_2\]</span></p>
 <pre class='stata'>. tab yA // descriptive statistics
 
          yA │      Freq.     Percent        Cum.
 ────────────┼───────────────────────────────────
-          0 │      4,277       42.77       42.77
-          1 │      5,723       57.23      100.00
+          0 │      4,201       42.01       42.01
+          1 │      5,799       57.99      100.00
 ────────────┼───────────────────────────────────
       Total │     10,000      100.00
 </pre>
+<h2 id="logistic-regression">Logistic Regression</h2>
 <pre class='stata'>. logit yA x1 x2 // does it recover the parameters?
 
-Iteration 0:   log likelihood = -6826.5586  
-Iteration 1:   log likelihood = -4627.0466  
-Iteration 2:   log likelihood =  -4582.194  
-Iteration 3:   log likelihood = -4582.1534  
-Iteration 4:   log likelihood = -4582.1534  
+Iteration 0:   log likelihood = -6803.2426  
+Iteration 1:   log likelihood = -4549.8513  
+Iteration 2:   log likelihood = -4493.7423  
+Iteration 3:   log likelihood = -4493.6333  
+Iteration 4:   log likelihood = -4493.6333  
 
 Logistic regression                             Number of obs     =     10,000
-                                                LR chi2(2)        =    4488.81
+                                                LR chi2(2)        =    4619.22
                                                 Prob > chi2       =     0.0000
-Log likelihood = -4582.1534                     Pseudo R2         =     0.3288
+Log likelihood = -4493.6333                     Pseudo R2         =     0.3395
 
 ─────────────┬────────────────────────────────────────────────────────────────
           yA │      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
 ─────────────┼────────────────────────────────────────────────────────────────
-          x1 │   .9646467   .0199707    48.30   0.000     .9255049    1.003788
-          x2 │   .9267962   .0528754    17.53   0.000     .8231623     1.03043
-       _cons │   .0152885   .0359784     0.42   0.671    -.0552279    .0858048
+          x1 │   .9872906    .020391    48.42   0.000      .947325    1.027256
+          x2 │   .9461222   .0534605    17.70   0.000     .8413416    1.050903
+       _cons │   .0646131   .0361813     1.79   0.074    -.0063009    .1355272
 ─────────────┴────────────────────────────────────────────────────────────────
 </pre>
 <pre class='stata'>. predict yhatA // predicted probabilities
 (option pr assumed; Pr(yA))
 </pre>
 <h1 id="story-b-main-effects-interactions">Story B: Main Effects + Interactions</h1>
+<h2 id="set-up-the-data-1">Set Up The Data</h2>
 <pre class='stata'>. generate zB = x1 + x2 + (.75 * x1 * x2) // second z
 </pre>
 <pre class='stata'>. generate pB = exp(zB) / (1 + exp(zB)) // probabilities
@@ -136,43 +166,46 @@ Log likelihood = -4582.1534                     Pseudo R2         =     0.3288
 
     Variable │        Obs        Mean    Std. Dev.       Min        Max
 ─────────────┼─────────────────────────────────────────────────────────
-          pB │     10,000    .5509044    .3490754   .0000804   .9999998
+          pB │     10,000    .5510207    .3491368   3.72e-06   .9999998
 </pre>
 <pre class='stata'>. generate yB = rbinomial(1, pB) // generate y with probability p
 </pre>
+<p>i.e.</p>
+<p><span class="math display">\[ln(\frac{p(y)}{1-p(y)}) = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x1*x2\]</span></p>
 <pre class='stata'>. tab yB // descriptive statistics
 
          yB │      Freq.     Percent        Cum.
 ────────────┼───────────────────────────────────
-          0 │      4,438       44.38       44.38
-          1 │      5,562       55.62      100.00
+          0 │      4,473       44.73       44.73
+          1 │      5,527       55.27      100.00
 ────────────┼───────────────────────────────────
       Total │     10,000      100.00
 </pre>
+<h2 id="logistic-regression-1">Logistic Regression</h2>
 <pre class='stata'>. logit yB c.x1##i.x2 // does it recover the parameters?
 
-Iteration 0:   log likelihood = -6868.1693  
-Iteration 1:   log likelihood = -3984.1708  
-Iteration 2:   log likelihood = -3914.7939  
-Iteration 3:   log likelihood = -3911.7641  
-Iteration 4:   log likelihood =  -3911.753  
-Iteration 5:   log likelihood =  -3911.753  
+Iteration 0:   log likelihood = -6875.8227  
+Iteration 1:   log likelihood = -3989.0918  
+Iteration 2:   log likelihood =  -3898.881  
+Iteration 3:   log likelihood = -3893.1824  
+Iteration 4:   log likelihood = -3893.1631  
+Iteration 5:   log likelihood = -3893.1631  
 
 Logistic regression                             Number of obs     =     10,000
-                                                LR chi2(3)        =    5912.83
+                                                LR chi2(3)        =    5965.32
                                                 Prob > chi2       =     0.0000
-Log likelihood =  -3911.753                     Pseudo R2         =     0.4305
+Log likelihood = -3893.1631                     Pseudo R2         =     0.4338
 
 ─────────────┬────────────────────────────────────────────────────────────────
           yB │      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
 ─────────────┼────────────────────────────────────────────────────────────────
-          x1 │   1.008038   .0287392    35.08   0.000     .9517105    1.064366
-        1.x2 │   .9029883   .0614474    14.70   0.000     .7825537    1.023423
+          x1 │   .9639203   .0276195    34.90   0.000     .9097871    1.018054
+        1.x2 │   1.052187   .0629959    16.70   0.000     .9287172    1.175657
              │
      x2#c.x1 │
-          1  │   .6999957   .0573718    12.20   0.000      .587549    .8124424
+          1  │   .8433855   .0604772    13.95   0.000     .7248523    .9619187
              │
-       _cons │   .0735326   .0364831     2.02   0.044      .002027    .1450382
+       _cons │   .0030754   .0359074     0.09   0.932    -.0673018    .0734526
 ─────────────┴────────────────────────────────────────────────────────────────
 </pre>
 <pre class='stata'>. predict yhatB // predicted probabilities
@@ -187,11 +220,11 @@ Log likelihood =  -3911.753                     Pseudo R2         =     0.4305
 > title("Logit Curves for 2 Groups") ///
 > scheme(michigan)
 </pre>
-<pre class='stata'>. quietly graph export mygraph.png, width(500) replace
+<pre class='stata'>. graph export mygraph.png, width(500) replace
+(file mygraph.png written in PNG format)
 </pre>
-<div class="figure">
-<img src="mygraph.png" alt="Logistic Regression With Interactions" />
-<p class="caption">Logistic Regression With Interactions</p>
-</div>
+<figure>
+<img src="mygraph.png" alt="Logistic Regression With Interactions" /><figcaption>Logistic Regression With Interactions</figcaption>
+</figure>
 </body>
 </html>
