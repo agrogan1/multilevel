@@ -3,15 +3,15 @@
       name:  {res}<unnamed>
        {txt}log:  {res}/Users/agrogan/Box Sync/GitHub/multilevel/logistic-interactions/logistic-interactions.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}19 Mar 2020, 18:06:00
+ {txt}opened on:  {res}20 Mar 2020, 08:22:43
 {txt}
 {com}. //_1
 . display c(current_date)
-{res}19 Mar 2020
+{res}20 Mar 2020
 {txt}
 {com}. //_2
 . display c(current_time)
-{res}18:06:00
+{res}08:22:43
 {txt}
 {com}. //_3
 . clear all // empty data
@@ -28,7 +28,7 @@ now 10,000
 {txt}
 {com}. //_6
 . histogram x1, scheme(michigan)
-{txt}(bin={res}40{txt}, start={res}-7.9101424{txt}, width={res}.40848519{txt})
+{txt}(bin={res}40{txt}, start={res}-8.316865{txt}, width={res}.39425235{txt})
 {res}{txt}
 {com}. //_7
 . graph export myx1graph.png, width(200) replace
@@ -49,8 +49,8 @@ now 10,000
 
 {txt}    Variable {c |}        Obs        Mean    Std. Dev.       Min        Max
 {hline 13}{c +}{hline 57}
-{space 10}x1 {c |}{res}     10,000   -.0037079    2.006749  -7.910142   8.429265
-{txt}{space 10}x2 {c |}{res}     10,000       .4984    .5000224          0          1
+{space 10}x1 {c |}{res}     10,000    .0126806     1.99713  -8.316865   7.453229
+{txt}{space 10}x2 {c |}{res}     10,000       .4914     .499951          0          1
 {txt}
 {com}. //_12
 . generate zA = x1 + x2 // first z
@@ -63,7 +63,7 @@ now 10,000
 
 {txt}    Variable {c |}        Obs        Mean    Std. Dev.       Min        Max
 {hline 13}{c +}{hline 57}
-{space 10}pA {c |}{res}     10,000    .5726373     .314671   .0003669   .9999197
+{space 10}pA {c |}{res}     10,000    .5742931     .312551   .0002443   .9997869
 {txt}
 {com}. //_15
 . generate yA = rbinomial(1, pA) // generate y with probability p
@@ -73,31 +73,31 @@ now 10,000
 
          {txt}yA {c |}      Freq.     Percent        Cum.
 {hline 12}{c +}{hline 35}
-          0 {c |}{res}      4,240       42.40       42.40
-{txt}          1 {c |}{res}      5,760       57.60      100.00
+          0 {c |}{res}      4,288       42.88       42.88
+{txt}          1 {c |}{res}      5,712       57.12      100.00
 {txt}{hline 12}{c +}{hline 35}
       Total {c |}{res}     10,000      100.00
 {txt}
 {com}. //_17
 . logit yA x1 x2 // does it recover the parameters?
 
-{res}{txt}Iteration 0:{space 3}log likelihood = {res:-6815.5028}  
-Iteration 1:{space 3}log likelihood = {res:-4530.3951}  
-Iteration 2:{space 3}log likelihood = {res:-4472.0379}  
-Iteration 3:{space 3}log likelihood = {res:-4471.0229}  
-Iteration 4:{space 3}log likelihood = {res:-4471.0225}  
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-6829.7375}  
+Iteration 1:{space 3}log likelihood = {res:-4519.9834}  
+Iteration 2:{space 3}log likelihood = {res:-4468.6743}  
+Iteration 3:{space 3}log likelihood = {res:-4467.9269}  
+Iteration 4:{space 3}log likelihood = {res:-4467.9267}  
 {res}
 {txt}Logistic regression{col 49}Number of obs{col 67}= {res}    10,000
-{txt}{col 49}LR chi2({res}2{txt}){col 67}= {res}   4688.96
+{txt}{col 49}LR chi2({res}2{txt}){col 67}= {res}   4723.62
 {txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
-{txt}Log likelihood = {res}-4471.0225{txt}{col 49}Pseudo R2{col 67}= {res}    0.3440
+{txt}Log likelihood = {res}-4467.9267{txt}{col 49}Pseudo R2{col 67}= {res}    0.3458
 
 {txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 {col 1}          yA{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
 {hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
-{space 10}x1 {c |}{col 14}{res}{space 2} .9982975{col 26}{space 2} .0205714{col 37}{space 1}   48.53{col 46}{space 3}0.000{col 54}{space 4} .9579782{col 67}{space 3} 1.038617
-{txt}{space 10}x2 {c |}{col 14}{res}{space 2} .9493676{col 26}{space 2} .0537483{col 37}{space 1}   17.66{col 46}{space 3}0.000{col 54}{space 4} .8440228{col 67}{space 3} 1.054712
-{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .0466175{col 26}{space 2} .0361457{col 37}{space 1}    1.29{col 46}{space 3}0.197{col 54}{space 4}-.0242268{col 67}{space 3} .1174618
+{space 10}x1 {c |}{col 14}{res}{space 2} 1.011516{col 26}{space 2} .0208294{col 37}{space 1}   48.56{col 46}{space 3}0.000{col 54}{space 4} .9706917{col 67}{space 3} 1.052341
+{txt}{space 10}x2 {c |}{col 14}{res}{space 2} 1.055538{col 26}{space 2} .0542218{col 37}{space 1}   19.47{col 46}{space 3}0.000{col 54}{space 4} .9492649{col 67}{space 3} 1.161811
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-.0442423{col 26}{space 2} .0360868{col 37}{space 1}   -1.23{col 46}{space 3}0.220{col 54}{space 4}-.1149711{col 67}{space 3} .0264865
 {txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 
 {com}. //_18
@@ -115,7 +115,7 @@ Iteration 4:{space 3}log likelihood = {res:-4471.0225}
 
 {txt}    Variable {c |}        Obs        Mean    Std. Dev.       Min        Max
 {hline 13}{c +}{hline 57}
-{space 10}pB {c |}{res}     10,000    .5492112    .3504014   6.87e-06   .9999999
+{space 10}pB {c |}{res}     10,000    .5505714    .3483016   3.34e-06   .9999992
 {txt}
 {com}. //_22
 . generate yB = rbinomial(1, pB) // generate y with probability p
@@ -125,36 +125,36 @@ Iteration 4:{space 3}log likelihood = {res:-4471.0225}
 
          {txt}yB {c |}      Freq.     Percent        Cum.
 {hline 12}{c +}{hline 35}
-          0 {c |}{res}      4,501       45.01       45.01
-{txt}          1 {c |}{res}      5,499       54.99      100.00
+          0 {c |}{res}      4,459       44.59       44.59
+{txt}          1 {c |}{res}      5,541       55.41      100.00
 {txt}{hline 12}{c +}{hline 35}
       Total {c |}{res}     10,000      100.00
 {txt}
 {com}. //_24
 . logit yB c.x1##i.x2 // does it recover the parameters?
 
-{res}{txt}Iteration 0:{space 3}log likelihood = {res:-6881.5886}  
-Iteration 1:{space 3}log likelihood = {res:-3889.0951}  
-Iteration 2:{space 3}log likelihood = {res:-3807.6537}  
-Iteration 3:{space 3}log likelihood = {res:-3803.8245}  
-Iteration 4:{space 3}log likelihood = {res:-3803.8112}  
-Iteration 5:{space 3}log likelihood = {res:-3803.8112}  
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-6872.8209}  
+Iteration 1:{space 3}log likelihood = {res:-3954.8434}  
+Iteration 2:{space 3}log likelihood = {res:-3867.5072}  
+Iteration 3:{space 3}log likelihood = {res:  -3863.05}  
+Iteration 4:{space 3}log likelihood = {res:-3863.0356}  
+Iteration 5:{space 3}log likelihood = {res:-3863.0356}  
 {res}
 {txt}Logistic regression{col 49}Number of obs{col 67}= {res}    10,000
-{txt}{col 49}LR chi2({res}3{txt}){col 67}= {res}   6155.55
+{txt}{col 49}LR chi2({res}3{txt}){col 67}= {res}   6019.57
 {txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
-{txt}Log likelihood = {res}-3803.8112{txt}{col 49}Pseudo R2{col 67}= {res}    0.4472
+{txt}Log likelihood = {res}-3863.0356{txt}{col 49}Pseudo R2{col 67}= {res}    0.4379
 
 {txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 {col 1}          yB{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
 {hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
-{space 10}x1 {c |}{col 14}{res}{space 2} 1.033507{col 26}{space 2} .0296165{col 37}{space 1}   34.90{col 46}{space 3}0.000{col 54}{space 4} .9754593{col 67}{space 3} 1.091554
-{txt}{space 8}1.x2 {c |}{col 14}{res}{space 2} .9603924{col 26}{space 2} .0633321{col 37}{space 1}   15.16{col 46}{space 3}0.000{col 54}{space 4} .8362638{col 67}{space 3} 1.084521
+{space 10}x1 {c |}{col 14}{res}{space 2}  1.01595{col 26}{space 2} .0289157{col 37}{space 1}   35.13{col 46}{space 3}0.000{col 54}{space 4} .9592759{col 67}{space 3} 1.072623
+{txt}{space 8}1.x2 {c |}{col 14}{res}{space 2}  1.00315{col 26}{space 2}  .063427{col 37}{space 1}   15.82{col 46}{space 3}0.000{col 54}{space 4} .8788351{col 67}{space 3} 1.127464
 {txt}{space 12} {c |}
 {space 5}x2#c.x1 {c |}
-{space 10}1  {c |}{col 14}{res}{space 2} .7527661{col 26}{space 2} .0602815{col 37}{space 1}   12.49{col 46}{space 3}0.000{col 54}{space 4} .6346166{col 67}{space 3} .8709155
+{space 10}1  {c |}{col 14}{res}{space 2} .7652222{col 26}{space 2} .0600379{col 37}{space 1}   12.75{col 46}{space 3}0.000{col 54}{space 4} .6475501{col 67}{space 3} .8828943
 {txt}{space 12} {c |}
-{space 7}_cons {c |}{col 14}{res}{space 2} .0276064{col 26}{space 2} .0365199{col 37}{space 1}    0.76{col 46}{space 3}0.450{col 54}{space 4}-.0439713{col 67}{space 3} .0991841
+{space 7}_cons {c |}{col 14}{res}{space 2} .0325715{col 26}{space 2} .0361302{col 37}{space 1}    0.90{col 46}{space 3}0.367{col 54}{space 4}-.0382424{col 67}{space 3} .1033853
 {txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 
 {com}. //_25
@@ -179,7 +179,7 @@ Iteration 5:{space 3}log likelihood = {res:-3803.8112}
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}/Users/agrogan/Box Sync/GitHub/multilevel/logistic-interactions/logistic-interactions.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}19 Mar 2020, 18:06:06
+ {txt}closed on:  {res}20 Mar 2020, 08:22:49
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

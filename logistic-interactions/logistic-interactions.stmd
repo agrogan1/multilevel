@@ -4,13 +4,13 @@
 
 # The Math
 
-$ln(\frac{p(y)}{1-p(y)}) = \beta_0 + \beta_1 x1 + \beta_2 x2 + ...$
+$\ln(\frac{p(y)}{1-p(y)}) = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ...$
 
-Set $\beta_0 + \beta_1 x1 + \beta_2 x2 + ...$ to $z$.
+Set $\beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... =$ to $z$.
 
 Then
 
-$ln(\frac{p(y)}{1-p(y)}) = z$
+$\ln(\frac{p(y)}{1-p(y)}) = z$
 
 $\frac{p(y)}{1-p(y)} = e^z$
 
@@ -65,7 +65,7 @@ $p(y) = \frac{e^{\beta_0 + \beta_1 x1 + \beta_2 x2 + ...}}{1 + e^{\beta_0 + \bet
 	
 i.e. 
 
-$$ln(\frac{p(y)}{1-p(y)}) = \beta_0 + \beta_1 x_1 + \beta_2 x_2$$
+$$\ln\Bigg{(}\frac{p(y)}{1-p(y)}\Bigg{)} = \beta_0 + \beta_1 x_1 + \beta_2 x_2$$
 
     tab yA // descriptive statistics
 
@@ -89,7 +89,7 @@ $$ln(\frac{p(y)}{1-p(y)}) = \beta_0 + \beta_1 x_1 + \beta_2 x_2$$
 	
 i.e. 
 
-$$ln(\frac{p(y)}{1-p(y)}) = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x1*x2$$	
+$$\ln\Bigg{(}\frac{p(y)}{1-p(y)}\Bigg{)} = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \beta_3 x_1 * x_2$$	
 
     tab yB // descriptive statistics
 	
