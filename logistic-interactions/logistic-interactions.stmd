@@ -101,12 +101,24 @@ $$\ln\Bigg{(}\frac{p(y)}{1-p(y)}\Bigg{)} = \beta_0 + \beta_1 x_1 + \beta_2 x_2 +
 
 # Inspect The Situation With A Graph
 
+Think for a moment about what an interaction term $\beta x_1 * x_2$ is *supposed* to capture: the *difference* between slopes.
+
+Notice that at different values of $x$ the *difference* between the two slopes is *different*
+
+At $x = 0$, the <font color="orange">**orange**</font> line is steeper than the <font color="green">**green**</font> line.
+
+At $x = 2$, the <font color="green">**green**</font> line is steeper than the <font color="orange">**orange**</font> line.
+
+No single static parameter can capture this changing difference between two slopes.
+
     twoway ///
     (scatter yB x1 if x2 == 0, msize(tiny)) /// points
     (scatter yB x1 if x2 == 1, msize(tiny)) /// points
     (scatter yhatB x1 if x2 == 0, msize(tiny)) ///
     (scatter yhatB x1 if x2 == 1, msize(tiny)), ///
+	xline(0 2) ///
     title("Logit Curves for 2 Groups") ///
+	sub("Model With Interaction") ///
     scheme(michigan)
 
     graph export mygraph.png, width(500) replace

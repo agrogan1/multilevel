@@ -58,7 +58,7 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 <header id="title-block-header">
 <h1 class="title">Interactions in Logistic Regression</h1>
 <p class="author">Andy Grogan-Kaylor</p>
-<p class="date">20 Mar 2020 08:22:43</p>
+<p class="date">25 Mar 2020 16:27:12</p>
 </header>
 <h1 id="the-math">The Math</h1>
 <p><span class="math inline">\(\ln(\frac{p(y)}{1-p(y)}) = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ...\)</span></p>
@@ -81,7 +81,7 @@ number of observations (_N) was 0, now 10,000
 <pre class='stata'>. generate x1 = rnormal(0, 2) // normally distributed
 </pre>
 <pre class='stata'>. histogram x1, scheme(michigan)
-(bin=40, start=-8.316865, width=.39425235)
+(bin=40, start=-7.6521349, width=.41272972)
 </pre>
 <pre class='stata'>. graph export myx1graph.png, width(200) replace
 (file myx1graph.png written in PNG format)
@@ -103,8 +103,8 @@ number of observations (_N) was 0, now 10,000
 
     Variable │        Obs        Mean    Std. Dev.       Min        Max
 ─────────────┼─────────────────────────────────────────────────────────
-          x1 │     10,000    .0126806     1.99713  -8.316865   7.453229
-          x2 │     10,000       .4914     .499951          0          1
+          x1 │     10,000   -.0290809    1.982619  -7.652135   8.857054
+          x2 │     10,000       .5011    .5000238          0          1
 </pre>
 <h1 id="story-a-main-effects-only">Story A: Main Effects Only</h1>
 <h2 id="set-up-the-data">Set Up The Data</h2>
@@ -116,7 +116,7 @@ number of observations (_N) was 0, now 10,000
 
     Variable │        Obs        Mean    Std. Dev.       Min        Max
 ─────────────┼─────────────────────────────────────────────────────────
-          pA │     10,000    .5742931     .312551   .0002443   .9997869
+          pA │     10,000     .570506     .313263   .0004748   .9999476
 </pre>
 <pre class='stata'>. generate yA = rbinomial(1, pA) // generate y with probability p
 </pre>
@@ -126,31 +126,31 @@ number of observations (_N) was 0, now 10,000
 
          yA │      Freq.     Percent        Cum.
 ────────────┼───────────────────────────────────
-          0 │      4,288       42.88       42.88
-          1 │      5,712       57.12      100.00
+          0 │      4,327       43.27       43.27
+          1 │      5,673       56.73      100.00
 ────────────┼───────────────────────────────────
       Total │     10,000      100.00
 </pre>
 <h2 id="logistic-regression">Logistic Regression</h2>
 <pre class='stata'>. logit yA x1 x2 // does it recover the parameters?
 
-Iteration 0:   log likelihood = -6829.7375  
-Iteration 1:   log likelihood = -4519.9834  
-Iteration 2:   log likelihood = -4468.6743  
-Iteration 3:   log likelihood = -4467.9269  
-Iteration 4:   log likelihood = -4467.9267  
+Iteration 0:   log likelihood = -6840.6105  
+Iteration 1:   log likelihood = -4543.7709  
+Iteration 2:   log likelihood = -4495.6702  
+Iteration 3:   log likelihood = -4494.8694  
+Iteration 4:   log likelihood = -4494.8692  
 
 Logistic regression                             Number of obs     =     10,000
-                                                LR chi2(2)        =    4723.62
+                                                LR chi2(2)        =    4691.48
                                                 Prob > chi2       =     0.0000
-Log likelihood = -4467.9267                     Pseudo R2         =     0.3458
+Log likelihood = -4494.8692                     Pseudo R2         =     0.3429
 
 ─────────────┬────────────────────────────────────────────────────────────────
           yA │      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
 ─────────────┼────────────────────────────────────────────────────────────────
-          x1 │   1.011516   .0208294    48.56   0.000     .9706917    1.052341
-          x2 │   1.055538   .0542218    19.47   0.000     .9492649    1.161811
-       _cons │  -.0442423   .0360868    -1.23   0.220    -.1149711    .0264865
+          x1 │   1.006231   .0206865    48.64   0.000     .9656864    1.046776
+          x2 │    .978571   .0537042    18.22   0.000     .8733126    1.083829
+       _cons │  -.0096955   .0363177    -0.27   0.789    -.0808769    .0614859
 ─────────────┴────────────────────────────────────────────────────────────────
 </pre>
 <pre class='stata'>. predict yhatA // predicted probabilities
@@ -166,7 +166,7 @@ Log likelihood = -4467.9267                     Pseudo R2         =     0.3458
 
     Variable │        Obs        Mean    Std. Dev.       Min        Max
 ─────────────┼─────────────────────────────────────────────────────────
-          pB │     10,000    .5505714    .3483016   3.34e-06   .9999992
+          pB │     10,000    .5464316    .3496357   7.88e-06   .9999999
 </pre>
 <pre class='stata'>. generate yB = rbinomial(1, pB) // generate y with probability p
 </pre>
@@ -176,48 +176,55 @@ Log likelihood = -4467.9267                     Pseudo R2         =     0.3458
 
          yB │      Freq.     Percent        Cum.
 ────────────┼───────────────────────────────────
-          0 │      4,459       44.59       44.59
-          1 │      5,541       55.41      100.00
+          0 │      4,568       45.68       45.68
+          1 │      5,432       54.32      100.00
 ────────────┼───────────────────────────────────
       Total │     10,000      100.00
 </pre>
 <h2 id="logistic-regression-1">Logistic Regression</h2>
 <pre class='stata'>. logit yB c.x1##i.x2 // does it recover the parameters?
 
-Iteration 0:   log likelihood = -6872.8209  
-Iteration 1:   log likelihood = -3954.8434  
-Iteration 2:   log likelihood = -3867.5072  
-Iteration 3:   log likelihood =   -3863.05  
-Iteration 4:   log likelihood = -3863.0356  
-Iteration 5:   log likelihood = -3863.0356  
+Iteration 0:   log likelihood = -6894.1004  
+Iteration 1:   log likelihood = -3982.6146  
+Iteration 2:   log likelihood = -3912.0868  
+Iteration 3:   log likelihood =  -3908.866  
+Iteration 4:   log likelihood = -3908.8595  
+Iteration 5:   log likelihood = -3908.8595  
 
 Logistic regression                             Number of obs     =     10,000
-                                                LR chi2(3)        =    6019.57
+                                                LR chi2(3)        =    5970.48
                                                 Prob > chi2       =     0.0000
-Log likelihood = -3863.0356                     Pseudo R2         =     0.4379
+Log likelihood = -3908.8595                     Pseudo R2         =     0.4330
 
 ─────────────┬────────────────────────────────────────────────────────────────
           yB │      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
 ─────────────┼────────────────────────────────────────────────────────────────
-          x1 │    1.01595   .0289157    35.13   0.000     .9592759    1.072623
-        1.x2 │    1.00315    .063427    15.82   0.000     .8788351    1.127464
+          x1 │   .9960435   .0287374    34.66   0.000     .9397193    1.052368
+        1.x2 │   .9928199    .061885    16.04   0.000     .8715275    1.114112
              │
      x2#c.x1 │
-          1  │   .7652222   .0600379    12.75   0.000     .6475501    .8828943
+          1  │   .7398848   .0579223    12.77   0.000     .6263593    .8534103
              │
-       _cons │   .0325715   .0361302     0.90   0.367    -.0382424    .1033853
+       _cons │   -.025353   .0362111    -0.70   0.484    -.0963254    .0456194
 ─────────────┴────────────────────────────────────────────────────────────────
 </pre>
 <pre class='stata'>. predict yhatB // predicted probabilities
 (option pr assumed; Pr(yB))
 </pre>
 <h1 id="inspect-the-situation-with-a-graph">Inspect The Situation With A Graph</h1>
+<p>Think for a moment about what an interaction term <span class="math inline">\(\beta x_1 * x_2\)</span> is <em>supposed</em> to capture: the <em>difference</em> between slopes.</p>
+<p>Notice that at different values of <span class="math inline">\(x\)</span> the <em>difference</em> between the two slopes is <em>different</em></p>
+<p>At <span class="math inline">\(x = 0\)</span>, the <font color="orange"><strong>orange</strong></font> line is steeper than the <font color="green"><strong>green</strong></font> line.</p>
+<p>At <span class="math inline">\(x = 2\)</span>, the <font color="green"><strong>green</strong></font> line is steeper than the <font color="orange"><strong>orange</strong></font> line.</p>
+<p>No single static parameter can capture this changing difference between two slopes.</p>
 <pre class='stata'>. twoway ///
 > (scatter yB x1 if x2 == 0, msize(tiny)) /// points
 > (scatter yB x1 if x2 == 1, msize(tiny)) /// points
 > (scatter yhatB x1 if x2 == 0, msize(tiny)) ///
 > (scatter yhatB x1 if x2 == 1, msize(tiny)), ///
+> xline(0 2) ///
 > title("Logit Curves for 2 Groups") ///
+> sub("Model With Interaction") ///
 > scheme(michigan)
 </pre>
 <pre class='stata'>. graph export mygraph.png, width(500) replace
