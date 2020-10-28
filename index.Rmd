@@ -25,6 +25,8 @@ library(ggplot2)
 
 library(plotly)
 
+library(rayshader)
+
 ```
 
 > <mark>Stata will be the statistical software employed in this course, and students will need access to Stata to participate.</mark>
