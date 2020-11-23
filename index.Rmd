@@ -25,7 +25,7 @@ library(ggplot2)
 
 library(plotly)
 
-library(rayshader)
+# library(rayshader)
 
 ```
 
@@ -74,7 +74,7 @@ ggsave("p0.png", width = 6, height = 2.0)
 
 Multilevel models have become a standard statistical tool for quantitative research on neighborhoods, communities and schools.  The cross-sectional multilevel model is appropriate for situations in which respondents are clustered inside larger social or geographic units e.g. people in geographic areas, residents in neighborhoods, or children in classrooms and/or schools.
 
-> <mark>This course requires a solid understanding of ordinary least squares regression (OLS) as a starting point.</mark>
+> <mark>This course requires a solid understanding of ordinary least squares regression (OLS) as a starting point. Generally this means that one has taken the introductory graduate level 2 semester sequence in statistics in a discipline like Psychology or Sociology.</mark>
 
 The first part of the course is all about the idea of “nesting”:  e.g. students nested in classrooms, residents nested in neighborhoods, study participants nested in cities. The second part of the course extends these ideas to longitudinal data, thinking about situations where we have repeated measures on an outcome of interest, like anxiety, depression or substance abuse.  Course assignments focus on individually focused student data driven projects, so for students considering the course, it is useful to have an available data set has both some kind of “nesting” as well as repeated measures of some outcome of interest.
 
