@@ -8,7 +8,10 @@ author:
     affiliation: University of Michigan
     affiliation_url: https://umich.edu/
 date: "`r Sys.Date()`"
-output: distill::distill_article
+output:
+  distill::distill_article:
+    highlight: haddock
+    toc: yes
 ---
 
 ```{r setup, include=FALSE}
@@ -29,7 +32,7 @@ library(plotly)
 
 ```
 
-> <mark>Stata will be the statistical software employed in this course, and students will need access to Stata to participate.</mark>
+> <span style="background-color: #00FFFF">Stata will be the statistical software employed in this course, and students will need access to Stata to participate.</span>
 
 > <mark>Participation in this class requires that you have a personal laptop computer that is powerful enough to run standard statistical software (e.g. Stata) at a reasonable speed.  The School of Social Work is not able to provide laptop computers.</mark>
 
@@ -47,24 +50,23 @@ hsb_small$schoolid <- factor(hsb_small$id,
 
 ```
 
-```{r, layout="l-screen", fig.height= 3.0, fig.cap="A Subsample of The High School and Beyond Data Set"}
+```{r, layout="l-page", fig.height= 3.0, fig.cap="A Subsample of The High School and Beyond Data Set"}
 
 p0 <- ggplot(hsb_small, 
              aes(x=schoolid, 
-                 y = ses,
+                 y = mathach,
                  color = schoolid)) +
+  geom_boxplot() +
   geom_jitter() +
   labs(title = "An Illustration of the High School and Beyond Data",
        caption = "Each dot represents a student") + 
   xlab("School") + 
-  ylab("socio-economic \nstatus") +
+  ylab("Math Achievement") +
   scale_color_viridis_d(name = "School \nID") +
   theme(axis.title.y = element_text(size = 8),
         axis.title.x = element_text(size = 14),
         axis.text.x = element_text(size = 14),
         legend.position = "bottom")
-
-# geom_dotplot(dotsize = .25, stackdir = "center")
 
 ggplotly(p0)
 
@@ -80,14 +82,14 @@ The first part of the course is all about the idea of “nesting”:  e.g. stude
 
 > <mark>NB that the major assignments in this class are two short empirical papers where students apply the concepts of multilevel modeling. This means that students who are interested in this class should start thinking about appropriate data sets to use in the course. Data for the first of two papers should be suitable for a *cross-sectional multilevel* analysis. This data for the first paper should contain some indicator of where study participants live or study, whether that is a Census tract, neighborhood, state, country, classroom or school, etc.. Data for the second of two papers should be suitable for a *multilevel longitudinal analysis*. This data for the second paper should contain repeated measures of some outcome on the same individuals over at least 2 time points.</mark>
 
-```{r, layout="l-screen", fig.cap="School Specific Regression Lines"}
+```{r, layout="l-page", fig.cap="School Specific Regression Lines"}
 
-p1 <- ggplot(hsb_small, aes(x=ses, 
-                         y=mathach, 
-                         color=schoolid)) + 
+p1 <- ggplot(hsb_small, aes(x = ses, 
+                         y = mathach, 
+                         color = schoolid)) + 
   geom_point() + 
-  geom_smooth(method=lm, 
-              size=2) + 
+  geom_smooth(method = lm, 
+              size = 2) + 
   scale_color_viridis_d(name = "School \nID") +
   facet_wrap(~schoolid, 
              nrow = 2) +
