@@ -28,7 +28,7 @@ library(ggplot2)
 
 library(plotly)
 
-# library(rayshader)
+library(rayshader)
 
 ```
 
@@ -75,7 +75,9 @@ p0 <- ggplot(hsb_small,
 
 ggplotly(p0, tooltip="text") 
 
-ggsave("p0.png", width = 6, height = 2.0)
+ggsave("p0.png", 
+       width = 6, 
+       height = 2.0)
 
 ```
 
