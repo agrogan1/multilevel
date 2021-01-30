@@ -28,7 +28,7 @@ library(ggplot2)
 
 library(plotly)
 
-library(rayshader)
+# library(rayshader)
 
 ```
 
