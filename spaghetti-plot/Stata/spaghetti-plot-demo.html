@@ -49,13 +49,16 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 <div id="header">
 <h1 class="title">Spaghetti Plot Demo</h1>
 <h2 class="author">Andy Grogan-Kaylor</h2>
-<h3 class="date">13 Feb 2020</h3>
+<h3 class="date">16 Feb 2021</h3>
 </div>
+<style>h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
 <h1 id="get-data">Get Data</h1>
 <ul>
 <li>using data from https://stats.idre.ucla.edu/stata/examples/mlm-imm/introduction-to-multilevel-modeling-by-kreft-and-de-leeuwchapter-4-analyses/</li>
 </ul>
 <pre class='stata'>. use https://stats.idre.ucla.edu/stat/examples/imm/imm23, clear
+</pre>
+<pre class='stata'>. label variable ses "Socioeconomic Status" // correct spelling of variable label
 </pre>
 <h1 id="basic-spaghetti-plot">Basic Spaghetti Plot</h1>
 <pre class='stata'>. spagplot math ses, id(schid) 
@@ -68,7 +71,7 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 
 </div>
 <h1 id="add-better-scheme">Add Better Scheme</h1>
-<pre class='stata'>. spagplot math ses, id(schid) scheme(lean2)
+<pre class='stata'>. spagplot math ses, id(schid) scheme(michigan)
 </pre>
 <pre class='stata'>. graph export graph2.png, width(500) replace
 (file graph2.png written in PNG format)
@@ -78,7 +81,7 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 
 </div>
 <h1 id="now-try-twoway-syntax">Now Try <code>twoway</code> Syntax</h1>
-<pre class='stata'>. twoway lfit math ses, scheme(lean2) lcolor(red)
+<pre class='stata'>. twoway lfit math ses, scheme(michigan) lcolor(red)
 </pre>
 <pre class='stata'>. graph export graph3.png, width(500) replace
 (file graph3.png written in PNG format)
@@ -89,7 +92,7 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 </div>
 <h1 id="separate-panels-for-schools">Separate Panels For Schools</h1>
 <p>This ONLY works well with a limited number of schools.</p>
-<pre class='stata'>. twoway lfit math ses, scheme(lean2) lcolor(red) by(schid)
+<pre class='stata'>. twoway lfit math ses, scheme(michigan) lcolor(red) by(schid)
 </pre>
 <pre class='stata'>. graph export graph4.png, width(500) replace
 (file graph4.png written in PNG format)

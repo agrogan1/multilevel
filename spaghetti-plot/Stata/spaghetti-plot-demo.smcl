@@ -3,40 +3,43 @@
       name:  {res}<unnamed>
        {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\multilevel\spaghetti-plot\Stata\spaghetti-plot-demo.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}13 Feb 2020, 16:03:04
+ {txt}opened on:  {res}16 Feb 2021, 13:12:03
 {txt}
 {com}. //_1
 . display c(current_date)
-{res}13 Feb 2020
+{res}16 Feb 2021
 {txt}
 {com}. //_2
 . use https://stats.idre.ucla.edu/stat/examples/imm/imm23, clear
 {txt}
 {com}. //_3
+. label variable ses "Socioeconomic Status" // correct spelling of variable label
+{txt}
+{com}. //_4
 . spagplot math ses, id(schid) 
 {res}{txt}
-{com}. //_4
+{com}. //_5
 . graph export graph1.png, width(500) replace
 {txt}(file graph1.png written in PNG format)
 
-{com}. //_5
-. spagplot math ses, id(schid) scheme(lean2)
-{res}{txt}
 {com}. //_6
+. spagplot math ses, id(schid) scheme(michigan)
+{res}{txt}
+{com}. //_7
 . graph export graph2.png, width(500) replace
 {txt}(file graph2.png written in PNG format)
 
-{com}. //_7
-. twoway lfit math ses, scheme(lean2) lcolor(red)
-{res}{txt}
 {com}. //_8
+. twoway lfit math ses, scheme(michigan) lcolor(red)
+{res}{txt}
+{com}. //_9
 . graph export graph3.png, width(500) replace
 {txt}(file graph3.png written in PNG format)
 
-{com}. //_9
-. twoway lfit math ses, scheme(lean2) lcolor(red) by(schid)
-{res}{txt}
 {com}. //_10
+. twoway lfit math ses, scheme(michigan) lcolor(red) by(schid)
+{res}{txt}
+{com}. //_11
 . graph export graph4.png, width(500) replace
 {txt}(file graph4.png written in PNG format)
 
@@ -45,7 +48,7 @@
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\multilevel\spaghetti-plot\Stata\spaghetti-plot-demo.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}13 Feb 2020, 16:03:15
+ {txt}closed on:  {res}16 Feb 2021, 13:12:15
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

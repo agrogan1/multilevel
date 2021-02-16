@@ -2,11 +2,19 @@
 % Andy Grogan-Kaylor
 % `s c(current_date)`
 
+---
+geometry: margin=1 in
+---
+
+<style>h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
+
 # Get Data
  
 * using data from https://stats.idre.ucla.edu/stata/examples/mlm-imm/introduction-to-multilevel-modeling-by-kreft-and-de-leeuwchapter-4-analyses/
 
     use https://stats.idre.ucla.edu/stat/examples/imm/imm23, clear
+	
+	label variable ses "Socioeconomic Status" // correct spelling of variable label
 
 # Basic Spaghetti Plot
 
@@ -18,7 +26,7 @@
 
 # Add Better Scheme
 
-    spagplot math ses, id(schid) scheme(lean2)
+    spagplot math ses, id(schid) scheme(michigan)
 	
     graph export graph2.png, width(500) replace
 
@@ -26,7 +34,7 @@
 
 # Now Try `twoway` Syntax
 
-    twoway lfit math ses, scheme(lean2) lcolor(red)
+    twoway lfit math ses, scheme(michigan) lcolor(red)
 	
     graph export graph3.png, width(500) replace
 
@@ -36,7 +44,7 @@
 
 This ONLY works well with a limited number of schools.
 
-    twoway lfit math ses, scheme(lean2) lcolor(red) by(schid)
+    twoway lfit math ses, scheme(michigan) lcolor(red) by(schid)
 	
     graph export graph4.png, width(500) replace
 
