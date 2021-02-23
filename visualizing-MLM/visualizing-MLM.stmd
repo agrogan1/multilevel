@@ -1,0 +1,43 @@
+% Visualizing Multilevel Models
+% Andy Grogan-Kaylor
+% `s c(current_date)` `s c(current_time)`
+
+---
+geometry: margin=1 in
+---
+
+<style>h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
+
+# Introduction
+
+# Spaghetti Plots
+
+    spagplot mathach ses, id(schoolid)
+	
+	spagplot mathach ses, id(schoolid) scheme(michigan)
+
+	* `spagplot`
+* `xtline`
+* coding by hand
+
+# Small Multiples
+
+# Multivariate (Predicted) Relationships
+
+# Visualizing Uncertainty
+
+
+* shaded regions
+* normal curves
+* gradient
+* spaghetti plot
+
+# Spaghetti Plots
+
+
+# Correlation of $\beta_0$ and $\beta_t$
+
+# Curvilinear and Linear Fits
+
+(esp. w/ longitudinal data)
+
