@@ -5,7 +5,7 @@
 #' output:  
 #'   html_document:
 #'     highlight: haddock
-#'     fig_height: 3
+#'     fig_height: 5
 #' ---
 #' 
 
@@ -26,7 +26,12 @@ ggplot(imm23, # data I am using
        aes(x = ses, # x is ses
            y = math, # y is math achievement
            color = factor(schid))) + # color is school id
-  geom_smooth(method = "lm", se = FALSE)
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(title = "Spaghetti Plot",
+       x = "socioeconomic status",
+       y = "math score") +
+  scale_color_discrete(name = "school") +
+  theme_minimal()
 
 
 
