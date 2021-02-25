@@ -1,13 +1,13 @@
 {smcl}
-{txt}{sf}{ul off}{.-}
+{com}{sf}{ul off}{txt}{.-}
       name:  {res}<unnamed>
        {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\multilevel\spaghetti-plot\Stata\spaghetti-plot-demo.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}16 Feb 2021, 13:12:03
+ {txt}opened on:  {res}25 Feb 2021, 17:17:51
 {txt}
 {com}. //_1
 . display c(current_date)
-{res}16 Feb 2021
+{res}25 Feb 2021
 {txt}
 {com}. //_2
 . use https://stats.idre.ucla.edu/stat/examples/imm/imm23, clear
@@ -48,7 +48,7 @@
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\multilevel\spaghetti-plot\Stata\spaghetti-plot-demo.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}16 Feb 2021, 13:12:15
+ {txt}closed on:  {res}25 Feb 2021, 17:18:03
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

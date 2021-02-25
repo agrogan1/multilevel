@@ -26,6 +26,8 @@ geometry: margin=1 in
 
 # Add Better Scheme
 
+> Schemes are very helpful in making better looking Stata graphs. A useful Stata schemes is `s1color`. Useful user written schemes are `lean2`, `plottig` (type `findit lean2` or `findit plottig` to install these), and my own [Michigan Stata graph scheme](https://agrogan1.github.io/Stata/michigan-graph-scheme/).
+
     spagplot math ses, id(schid) scheme(michigan)
 	
     graph export graph2.png, width(500) replace
