@@ -215,7 +215,7 @@ color: #d14;
   div.column{display: inline-block; vertical-align: top; width: 50%;}
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   ul.task-list{list-style: none;}
-      </style>
+    </style>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -261,6 +261,7 @@ h6 {
   text-align: left;
 }
 </style>
+
 
 
 
@@ -374,8 +375,21 @@ summary {
 </div>
 
 
-<div id="multilevel-and-longitudinal-modeling" class="section level2">
-<h2>Multilevel and Longitudinal Modeling</h2>
+<div id="multilevel-and-longitudinal-modeling" class="section level1">
+<h1>Multilevel and Longitudinal Modeling</h1>
+<div id="spaghetti-plots" class="section level2">
+<h2>Spaghetti Plots</h2>
+<ul>
+<li><a href="https://agrogan1.github.io/multilevel/spaghetti-plot/Stata/spaghetti-plot-demo.html">Stata</a></li>
+<li><a href="https://agrogan1.github.io/multilevel/spaghetti-plot/R/spaghetti-plot-demo.html">R</a></li>
+</ul>
+</div>
+<div id="lmer-demo" class="section level2">
+<h2><code>lmer</code> Demo</h2>
+<ul>
+<li><a href="https://agrogan1.github.io/multilevel/lmer-demo/lmer-demo.html"><code>lmer</code> Demo</a></li>
+</ul>
+</div>
 </div>
 
 
@@ -387,7 +401,7 @@ summary {
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
