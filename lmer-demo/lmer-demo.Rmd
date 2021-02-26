@@ -3,6 +3,12 @@ title: "lmer Demo"
 author: "Andy Grogan-Kaylor"
 date: "`r Sys.Date()`"
 output:
+  pdf_document: 
+    fig_height: 4
+    highlight: tango
+    latex_engine: xelatex
+    number_sections: yes
+    toc: yes
   html_document: 
     code_download: yes
     code_folding: hide
@@ -13,11 +19,9 @@ output:
     toc_float:
       collapsed: no
       smooth_scroll: yes
-  pdf_document: 
-    fig_height: 4
-    highlight: tango
-    latex_engine: xelatex
-    number_sections: yes
+  distill::distill_article:
+    code_folding: hide
+    highlight: haddock
     toc: yes
 ---
 
@@ -81,6 +85,7 @@ p_uncentered <- ggplot(gutten,
   geom_line() +
   labs(title = "Tree Height By Tree Age",
        subtitle = "Uncentered Data") +
+  theme_minimal() +
   theme(legend.position = "none")
 
 # p_uncentered
@@ -92,6 +97,7 @@ p_centered <- ggplot(gutten,
   geom_line() +
   labs(title = "Tree Height By Tree Age",
        subtitle = "Centered Data") +
+  theme_minimal() +
   theme(legend.position = "none")
 
 # p_centered
