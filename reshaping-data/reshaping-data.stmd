@@ -66,7 +66,7 @@ The data are currently in *wide* form, where *every individual has a single row 
 1. Only `keep` the relevant variables, as we did just above.
 2. `rename` each independent or dependent variable from each time point so that it has the `stub-time` format.
 
-> Notice how the variables in this data set are already in the `stub-time` format. If the variables had a different format, e.g. height_five_years, height_zero_years, we would have to rename them e.g. `rename height_five_years height5`, and `rename height_zero_years height0`.
+> Notice how the variables in this data set are already in the `stub-time` format. If the variables had a different format, e.g. `height_five_years`, `height_zero_years`, we would have to rename them e.g. `rename height_five_years height5`, and `rename height_zero_years height0`.
 
 3. Look at the data using `browse` or `list` to make sure that the `reshape` command worked properly.
 
