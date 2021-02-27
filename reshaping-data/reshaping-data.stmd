@@ -1,0 +1,85 @@
+% Reshaping Data Using Black Spruce Data
+% Andy Grogan-Kaylor
+% `s c(current_date)` `s c(current_time)`
+
+# Background 🌲
+
+<style>h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
+
+Chihara and Hesterberg (2018) provide a data set concerning the growth of Black Spruce Trees. According to these authors: 
+
+> "Black spruce (Picea mariana) is a species of a slow-growing coniferous tree found across the northern part of North America. It is commonly found on wet organic soils. In a study conducted in the 1990s, a biologist interested in factors affecting the growth of the black spruce planted its seedlings on sites located in boreal peatlands in northern Manitoba, Canada (Camil et al. (2010)). The data set Spruce contains a part of the data from the study (Table 1.8). Seventy-two black spruce seedlings were planted in four plots under varying conditions (fertilizer–no fertilizer, competition–no competition), and their heights and diameters were measured over the course of 5 years. The researcher wanted to see whether the addition of fertilizer or the removal of competition from other plants (by weeding) affected the growth of these seedlings."
+
+# Get The Data 🌲
+
+```s
+    clear all
+	
+    use Spruce.dta, clear
+```
+
+```s/
+    label variable Tree "Tree number"
+    
+	label variable Competition "C (competition), CR (competition removed)"
+    
+	label variable Fertilizer "F (fertilized), NF (not fertilized)"
+    
+	label variable Height0 "Height (cm) of seedling at planting"
+    
+	label variable Height5 "Height (cm) of seedling at year 5"
+    
+	label variable Diameter0 "Diameter (cm) of seedling at planting"
+        
+	label variable Diameter5 "Diameter (cm) of seedling at year 5"
+    
+	label variable Ht_change "Change (cm) in height"
+    
+	label variable Di_change "Change (cm) in diameter"	
+```
+	
+```s
+    describe	
+```
+
+# Keep Only Relevant Variables 🌲
+
+It is often *very useful* when working with longitudinal data to `keep` only the relevant variables to have a *manageable data set* to work with.
+
+```s
+    keep Tree Competition Fertilizer Height0 Height5 Diameter0 Diameter5
+```
+
+# List Out A Sample Of The Data 🌲
+
+
+```s
+    list in 1/10 
+```
+
+# Reshaping The Data 🌲
+
+The data are currently in *wide* form, where *every individual has a single row of data*. We are going to `reshape` the data to *long* form, where *every individual has multiple rows of data*.
+
+## Use `reshape`
+
+In the reshape command below, notice that we only include the variables that we consider to be *time varying*. Variables that are not included are considered to be *time invariant*. `Tree` is an id variable that is already in the data. `year` is a time variable that we are creating.
+
+```s
+    reshape long Height Diameter, i(Tree) j(year)
+```
+
+## List Out A Sample Of The Data
+
+```s
+    list in 1/20
+```
+# References 🌲 
+
+Camill, P., Chihara, L., Adams, B., Andreassi, C., Barry, A. N. N., Kalim, S., … Rafert, G. (2010). Early life history transitions and recruitment of Picea mariana in thawed boreal permafrost peatlands. *Ecology*. https://doi.org/10.1890/08-1839.1
+
+Chihara, L. M., & Hesterberg, T. C. (2018). *Mathematical Statistics with Resampling and R*. https://doi.org/10.1002/9781119505969
+
+
+
+

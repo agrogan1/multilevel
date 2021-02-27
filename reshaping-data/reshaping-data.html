@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<style>
+/* CSS for Markstat 2.0 using Pandoc 2.0 */
+body{padding:14px 28px;}
+body, table {font-family: Helvetica, Arial, Sans-serif; font-size: 14px;}
+h1, h2, h3, h4 {font-weight: normal; color: #3366cc}
+h1 {font-size: 200%;}
+h2 {font-size: 150%;}
+h3 {font-size: 120%;}
+h4 {font-size: 100%; font-weight:bold}
+img.center {display:block; margin-left:auto; margin-right:auto}
+.small{font-size:8pt;}
+a {color: black;}
+a:visited {color: #808080;}
+a.plain {text-decoration:none;}
+a.plain:hover {text-decoration:underline;}
+.em {font-weight:bold;}
+pre, code {font-family: "lucida console", monospace;}
+pre.stata {font-size:13px; line-height:13px;}
+pre {padding:8px; border:1px solid #c0c0c0; border-radius:8px; background-color:#fdfdfd;}
+code {color:#3366cc; background-color:#fafafa;}
+pre code { color:black; background-color:white}
+/* Added for Pandoc */
+figure > img, div.figure > img {display:block; margin:auto}
+figcaption, p.caption {text-align:center; font-weight:bold; color:#3366cc;}
+h1.title {text-align:center; margin-bottom:0}
+p.author, h2.author {font-style:italic; text-align:center;margin-top:4px;margin-bottom:0}
+p.date, h3.date {text-align:center;margin-top:4px; margin-bottom:0}
+/* Tables*/
+table { margin:auto; border-collapse:collapse; }
+table caption { margin-bottom:1ex;}
+th, td { padding:4px 6px;}
+thead tr:first-child th {border-top:1px solid black; padding-top:6px}
+thead tr:last-child  th {padding-bottom:6px}
+tbody tr:first-child td {border-top:1px solid black; padding-top:6px}
+tbody tr:last-child  td {padding-bottom:6px;}
+table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
+</style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Andy Grogan-Kaylor" />
+  <title>Reshaping Data Using Black Spruce Data</title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Reshaping Data Using Black Spruce Data</h1>
+<h2 class="author">Andy Grogan-Kaylor</h2>
+<h3 class="date">27 Feb 2021 13:56:23</h3>
+</div>
+<h1 id="background">Background 🌲</h1>
+<style>h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
+<p>Chihara and Hesterberg (2018) provide a data set concerning the growth of Black Spruce Trees. According to these authors:</p>
+<blockquote>
+<p>&quot;Black spruce (Picea mariana) is a species of a slow-growing coniferous tree found across the northern part of North America. It is commonly found on wet organic soils. In a study conducted in the 1990s, a biologist interested in factors affecting the growth of the black spruce planted its seedlings on sites located in boreal peatlands in northern Manitoba, Canada (Camil et al. (2010)). The data set Spruce contains a part of the data from the study (Table 1.8). Seventy-two black spruce seedlings were planted in four plots under varying conditions (fertilizer–no fertilizer, competition–no competition), and their heights and diameters were measured over the course of 5 years. The researcher wanted to see whether the addition of fertilizer or the removal of competition from other plants (by weeding) affected the growth of these seedlings.&quot;</p>
+</blockquote>
+<h1 id="get-the-data">Get The Data 🌲</h1>
+<pre class='stata'>. clear all
+
+.     
+. use Spruce.dta, clear
+</pre>
+
+<pre class='stata'>. describe    
+
+Contains data from Spruce.dta
+  obs:            72                          
+ vars:             9                          26 Apr 2020 12:18
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+              storage   display    value
+variable name   type    format     label      variable label
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Tree            long    %12.0g                Tree number
+Competition     long    %12.0g     Competition
+                                              C (competition), CR (competition removed)
+Fertilizer      long    %12.0g     Fertilizer
+                                              F (fertilized), NF (not fertilized)
+Height0         double  %10.0g                Height (cm) of seedling at planting
+Height5         double  %10.0g                Height (cm) of seedling at year 5
+Diameter0       double  %10.0g                Diameter (cm) of seedling at planting
+Diameter5       double  %10.0g                Diameter (cm) of seedling at year 5
+Ht_change       double  %10.0g                Change (cm) in height
+Di_change       double  %10.0g                Change (cm) in diameter
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Sorted by: 
+</pre>
+<h1 id="keep-only-relevant-variables">Keep Only Relevant Variables 🌲</h1>
+<p>It is often <em>very useful</em> when working with longitudinal data to <code>keep</code> only the relevant variables to have a <em>manageable data set</em> to work with.</p>
+<pre class='stata'>. keep Tree Competition Fertilizer Height0 Height5 Diameter0 Diameter5
+</pre>
+<h1 id="list-out-a-sample-of-the-data">List Out A Sample Of The Data 🌲</h1>
+<pre class='stata'>. list in 1/10 
+
+     ┌───────────────────────────────────────────────────────────────────────┐
+     │ Tree   Compet~n   Fertil~r   Height0   Height5   Diameter0   Diamet~5 │
+     ├───────────────────────────────────────────────────────────────────────┤
+  1. │    1         NC          F        15        60    1.984375        7.4 │
+  2. │    2         NC          F         9      45.2    1.190625        5.2 │
+  3. │    3         NC          F        12        42   1.7859375        5.7 │
+  4. │    4         NC          F      13.7      49.5      1.5875        6.4 │
+  5. │    5         NC          F        12      47.3      1.5875        6.2 │
+     ├───────────────────────────────────────────────────────────────────────┤
+  6. │    6         NC          F        12      56.4      1.5875        7.4 │
+  7. │    7         NC         NF      16.8      43.5    1.984375        4.9 │
+  8. │    8         NC         NF      14.6      49.2    1.984375        5.4 │
+  9. │    9         NC         NF        16        54    1.984375        7.1 │
+ 10. │   10         NC         NF      15.4        45    1.984375        5.1 │
+     └───────────────────────────────────────────────────────────────────────┘
+</pre>
+<h1 id="reshaping-the-data">Reshaping The Data 🌲</h1>
+<p>The data are currently in <em>wide</em> form, where <em>every individual has a single row of data</em>. We are going to <code>reshape</code> the data to <em>long</em> form, where <em>every individual has multiple rows of data</em>.</p>
+<h2 id="use-reshape">Use <code>reshape</code></h2>
+<p>In the reshape command below, notice that we only include the variables that we consider to be <em>time varying</em>. Variables that are not included are considered to be <em>time invariant</em>. <code>Tree</code> is an id variable that is already in the data. <code>year</code> is a time variable that we are creating.</p>
+<pre class='stata'>. reshape long Height Diameter, i(Tree) j(year)
+(note: j = 0 5)
+
+Data                               wide   ->   long
+─────────────────────────────────────────────────────────────────────────────
+Number of obs.                       72   ->     144
+Number of variables                   7   ->       6
+j variable (2 values)                     ->   year
+xij variables:
+                        Height0 Height5   ->   Height
+                    Diameter0 Diameter5   ->   Diameter
+─────────────────────────────────────────────────────────────────────────────
+</pre>
+<h2 id="list-out-a-sample-of-the-data-1">List Out A Sample Of The Data</h2>
+<pre class='stata'>. list in 1/20
+
+     ┌────────────────────────────────────────────────────────┐
+     │ Tree   year   Compet~n   Fertil~r   Height    Diameter │
+     ├────────────────────────────────────────────────────────┤
+  1. │    1      0         NC          F       15    1.984375 │
+  2. │    1      5         NC          F       60         7.4 │
+  3. │    2      0         NC          F        9    1.190625 │
+  4. │    2      5         NC          F     45.2         5.2 │
+  5. │    3      0         NC          F       12   1.7859375 │
+     ├────────────────────────────────────────────────────────┤
+  6. │    3      5         NC          F       42         5.7 │
+  7. │    4      0         NC          F     13.7      1.5875 │
+  8. │    4      5         NC          F     49.5         6.4 │
+  9. │    5      0         NC          F       12      1.5875 │
+ 10. │    5      5         NC          F     47.3         6.2 │
+     ├────────────────────────────────────────────────────────┤
+ 11. │    6      0         NC          F       12      1.5875 │
+ 12. │    6      5         NC          F     56.4         7.4 │
+ 13. │    7      0         NC         NF     16.8    1.984375 │
+ 14. │    7      5         NC         NF     43.5         4.9 │
+ 15. │    8      0         NC         NF     14.6    1.984375 │
+     ├────────────────────────────────────────────────────────┤
+ 16. │    8      5         NC         NF     49.2         5.4 │
+ 17. │    9      0         NC         NF       16    1.984375 │
+ 18. │    9      5         NC         NF       54         7.1 │
+ 19. │   10      0         NC         NF     15.4    1.984375 │
+ 20. │   10      5         NC         NF       45         5.1 │
+     └────────────────────────────────────────────────────────┘
+</pre>
+<h1 id="references">References 🌲</h1>
+<p>Camill, P., Chihara, L., Adams, B., Andreassi, C., Barry, A. N. N., Kalim, S., … Rafert, G. (2010). Early life history transitions and recruitment of Picea mariana in thawed boreal permafrost peatlands. <em>Ecology</em>. https://doi.org/10.1890/08-1839.1</p>
+<p>Chihara, L. M., &amp; Hesterberg, T. C. (2018). <em>Mathematical Statistics with Resampling and R</em>. https://doi.org/10.1002/9781119505969</p>
+</body>
+</html>

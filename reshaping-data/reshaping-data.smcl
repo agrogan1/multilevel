@@ -1,0 +1,148 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\multilevel\reshaping-data\reshaping-data.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}27 Feb 2021, 13:56:33
+{txt}
+{com}. //_1
+. display c(current_date)
+{res}27 Feb 2021
+{txt}
+{com}. //_2
+. display c(current_time)
+{res}13:56:33
+{txt}
+{com}. //_3
+. clear all
+{res}{txt}
+{com}.     
+. use Spruce.dta, clear
+{txt}
+{com}. //_4q
+. label variable Tree "Tree number"
+{txt}
+{com}.     
+. label variable Competition "C (competition), CR (competition removed)"
+{txt}
+{com}.     
+. label variable Fertilizer "F (fertilized), NF (not fertilized)"
+{txt}
+{com}.     
+. label variable Height0 "Height (cm) of seedling at planting"
+{txt}
+{com}.     
+. label variable Height5 "Height (cm) of seedling at year 5"
+{txt}
+{com}.     
+. label variable Diameter0 "Diameter (cm) of seedling at planting"
+{txt}
+{com}.         
+. label variable Diameter5 "Diameter (cm) of seedling at year 5"
+{txt}
+{com}.     
+. label variable Ht_change "Change (cm) in height"
+{txt}
+{com}.     
+. label variable Di_change "Change (cm) in diameter"    
+{txt}
+{com}. //_5
+. describe    
+
+{txt}Contains data from {res}Spruce.dta
+{txt}  obs:{res}            72                          
+{txt} vars:{res}             9                          26 Apr 2020 12:18
+{txt}{hline}
+              storage   display    value
+variable name   type    format     label      variable label
+{hline}
+{p 0 48}{res}{bind:Tree           }{txt}{bind: long    }{bind:{txt}%12.0g    }{space 1}{bind:         }{bind:  }{res}{res}Tree number{p_end}
+{p 0 48}{bind:Competition    }{txt}{bind: long    }{bind:{txt}%12.0g    }{space 1}{txt}Competition{p_end}
+{p 0 48}{space 44}{bind:  }{res}{res}C (competition), CR (competition removed){p_end}
+{p 0 48}{bind:Fertilizer     }{txt}{bind: long    }{bind:{txt}%12.0g    }{space 1}{txt}Fertilizer{p_end}
+{p 0 48}{space 44}{bind:  }{res}{res}F (fertilized), NF (not fertilized){p_end}
+{p 0 48}{bind:Height0        }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Height (cm) of seedling at planting{p_end}
+{p 0 48}{bind:Height5        }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Height (cm) of seedling at year 5{p_end}
+{p 0 48}{bind:Diameter0      }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Diameter (cm) of seedling at planting{p_end}
+{p 0 48}{bind:Diameter5      }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Diameter (cm) of seedling at year 5{p_end}
+{p 0 48}{bind:Ht_change      }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Change (cm) in height{p_end}
+{p 0 48}{bind:Di_change      }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Change (cm) in diameter{p_end}
+{txt}{hline}
+Sorted by: 
+
+{com}. //_6
+. keep Tree Competition Fertilizer Height0 Height5 Diameter0 Diameter5
+{txt}
+{com}. //_7
+. list in 1/10 
+{txt}
+     {c TLC}{hline 6}{c -}{hline 10}{c -}{hline 10}{c -}{hline 9}{c -}{hline 9}{c -}{hline 11}{c -}{hline 10}{c TRC}
+     {c |} {res}Tree   Compet~n   Fertil~r   Height0   Height5   Diameter0   Diamet~5 {txt}{c |}
+     {c LT}{hline 6}{c -}{hline 10}{c -}{hline 10}{c -}{hline 9}{c -}{hline 9}{c -}{hline 11}{c -}{hline 10}{c RT}
+  1. {c |} {res}   1         NC          F        15        60    1.984375        7.4 {txt}{c |}
+  2. {c |} {res}   2         NC          F         9      45.2    1.190625        5.2 {txt}{c |}
+  3. {c |} {res}   3         NC          F        12        42   1.7859375        5.7 {txt}{c |}
+  4. {c |} {res}   4         NC          F      13.7      49.5      1.5875        6.4 {txt}{c |}
+  5. {c |} {res}   5         NC          F        12      47.3      1.5875        6.2 {txt}{c |}
+     {c LT}{hline 6}{c -}{hline 10}{c -}{hline 10}{c -}{hline 9}{c -}{hline 9}{c -}{hline 11}{c -}{hline 10}{c RT}
+  6. {c |} {res}   6         NC          F        12      56.4      1.5875        7.4 {txt}{c |}
+  7. {c |} {res}   7         NC         NF      16.8      43.5    1.984375        4.9 {txt}{c |}
+  8. {c |} {res}   8         NC         NF      14.6      49.2    1.984375        5.4 {txt}{c |}
+  9. {c |} {res}   9         NC         NF        16        54    1.984375        7.1 {txt}{c |}
+ 10. {c |} {res}  10         NC         NF      15.4        45    1.984375        5.1 {txt}{c |}
+     {c BLC}{hline 6}{c -}{hline 10}{c -}{hline 10}{c -}{hline 9}{c -}{hline 9}{c -}{hline 11}{c -}{hline 10}{c BRC}
+
+{com}. //_8
+. reshape long Height Diameter, i(Tree) j(year)
+{txt}(note: j = 0 5)
+
+Data{col 36}wide{col 43}->{col 48}long
+{hline 77}
+Number of obs.                 {res}      72   {txt}->{res}     144
+{txt}Number of variables            {res}       7   {txt}->{res}       6
+{txt}j variable (2 values)                     ->   {res}year
+{txt}xij variables:
+                        {res}Height0 Height5   {txt}->   {res}Height
+                    Diameter0 Diameter5   {txt}->   {res}Diameter
+{txt}{hline 77}
+
+{com}. //_9
+. list in 1/20
+{txt}
+     {c TLC}{hline 6}{c -}{hline 6}{c -}{hline 10}{c -}{hline 10}{c -}{hline 8}{c -}{hline 11}{c TRC}
+     {c |} {res}Tree   year   Compet~n   Fertil~r   Height    Diameter {txt}{c |}
+     {c LT}{hline 6}{c -}{hline 6}{c -}{hline 10}{c -}{hline 10}{c -}{hline 8}{c -}{hline 11}{c RT}
+  1. {c |} {res}   1      0         NC          F       15    1.984375 {txt}{c |}
+  2. {c |} {res}   1      5         NC          F       60         7.4 {txt}{c |}
+  3. {c |} {res}   2      0         NC          F        9    1.190625 {txt}{c |}
+  4. {c |} {res}   2      5         NC          F     45.2         5.2 {txt}{c |}
+  5. {c |} {res}   3      0         NC          F       12   1.7859375 {txt}{c |}
+     {c LT}{hline 6}{c -}{hline 6}{c -}{hline 10}{c -}{hline 10}{c -}{hline 8}{c -}{hline 11}{c RT}
+  6. {c |} {res}   3      5         NC          F       42         5.7 {txt}{c |}
+  7. {c |} {res}   4      0         NC          F     13.7      1.5875 {txt}{c |}
+  8. {c |} {res}   4      5         NC          F     49.5         6.4 {txt}{c |}
+  9. {c |} {res}   5      0         NC          F       12      1.5875 {txt}{c |}
+ 10. {c |} {res}   5      5         NC          F     47.3         6.2 {txt}{c |}
+     {c LT}{hline 6}{c -}{hline 6}{c -}{hline 10}{c -}{hline 10}{c -}{hline 8}{c -}{hline 11}{c RT}
+ 11. {c |} {res}   6      0         NC          F       12      1.5875 {txt}{c |}
+ 12. {c |} {res}   6      5         NC          F     56.4         7.4 {txt}{c |}
+ 13. {c |} {res}   7      0         NC         NF     16.8    1.984375 {txt}{c |}
+ 14. {c |} {res}   7      5         NC         NF     43.5         4.9 {txt}{c |}
+ 15. {c |} {res}   8      0         NC         NF     14.6    1.984375 {txt}{c |}
+     {c LT}{hline 6}{c -}{hline 6}{c -}{hline 10}{c -}{hline 10}{c -}{hline 8}{c -}{hline 11}{c RT}
+ 16. {c |} {res}   8      5         NC         NF     49.2         5.4 {txt}{c |}
+ 17. {c |} {res}   9      0         NC         NF       16    1.984375 {txt}{c |}
+ 18. {c |} {res}   9      5         NC         NF       54         7.1 {txt}{c |}
+ 19. {c |} {res}  10      0         NC         NF     15.4    1.984375 {txt}{c |}
+ 20. {c |} {res}  10      5         NC         NF       45         5.1 {txt}{c |}
+     {c BLC}{hline 6}{c -}{hline 6}{c -}{hline 10}{c -}{hline 10}{c -}{hline 8}{c -}{hline 11}{c BRC}
+
+{com}. //_^
+. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\multilevel\reshaping-data\reshaping-data.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}27 Feb 2021, 13:56:33
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
