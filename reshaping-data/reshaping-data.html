@@ -49,7 +49,7 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 <div id="header">
 <h1 class="title">Reshaping Data Using Black Spruce Data</h1>
 <h2 class="author">Andy Grogan-Kaylor</h2>
-<h3 class="date">27 Feb 2021 13:56:23</h3>
+<h3 class="date">27 Feb 2021 16:44:04</h3>
 </div>
 <h1 id="background">Background 🌲</h1>
 <style>h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
@@ -112,6 +112,17 @@ Sorted by:
 </pre>
 <h1 id="reshaping-the-data">Reshaping The Data 🌲</h1>
 <p>The data are currently in <em>wide</em> form, where <em>every individual has a single row of data</em>. We are going to <code>reshape</code> the data to <em>long</em> form, where <em>every individual has multiple rows of data</em>.</p>
+<h2 id="steps-in-reshaping-data">Steps In Reshaping Data</h2>
+<ol style="list-style-type: decimal">
+<li>Only <code>keep</code> the relevant variables, as we did just above.</li>
+<li><code>rename</code> each independent or dependent variable from each time point so that it has the <code>stub-time</code> format.</li>
+</ol>
+<blockquote>
+<p>Notice how the variables in this data set are already in the <code>stub-time</code> format. If the variables had a different format, e.g. height_five_years, height_zero_years, we would have to rename them e.g. <code>rename height_five_years height5</code>, and <code>rename height_zero_years height0</code>.</p>
+</blockquote>
+<ol start="3" style="list-style-type: decimal">
+<li>Look at the data using <code>browse</code> or <code>list</code> to make sure that the <code>reshape</code> command worked properly.</li>
+</ol>
 <h2 id="use-reshape">Use <code>reshape</code></h2>
 <p>In the reshape command below, notice that we only include the variables that we consider to be <em>time varying</em>. Variables that are not included are considered to be <em>time invariant</em>. <code>Tree</code> is an id variable that is already in the data. <code>year</code> is a time variable that we are creating.</p>
 <pre class='stata'>. reshape long Height Diameter, i(Tree) j(year)
@@ -127,7 +138,7 @@ xij variables:
                     Diameter0 Diameter5   ->   Diameter
 ─────────────────────────────────────────────────────────────────────────────
 </pre>
-<h2 id="list-out-a-sample-of-the-data-1">List Out A Sample Of The Data</h2>
+<h2 id="use-list-to-look-at-a-sample-of-the-data">Use <code>list</code> To Look At A Sample Of The Data</h2>
 <pre class='stata'>. list in 1/20
 
      ┌────────────────────────────────────────────────────────┐
