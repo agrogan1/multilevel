@@ -3,21 +3,21 @@
       name:  {res}<unnamed>
        {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\multilevel\reshaping-data\reshaping-data.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}27 Feb 2021, 17:59:29
+ {txt}opened on:  {res} 2 Mar 2021, 19:38:53
 {txt}
 {com}. //_1
 . display c(current_date)
-{res}27 Feb 2021
+{res} 2 Mar 2021
 {txt}
 {com}. //_2
 . display c(current_time)
-{res}17:59:29
+{res}19:38:53
 {txt}
 {com}. //_3
 . clear all
 {res}{txt}
 {com}.     
-. use Spruce.dta, clear
+. use "https://github.com/agrogan1/multilevel/raw/master/reshaping-data/Spruce.dta", clear
 {txt}
 {com}. //_4q
 . label variable Tree "Tree number"
@@ -49,7 +49,7 @@
 {com}. //_5
 . describe    
 
-{txt}Contains data from {res}Spruce.dta
+{txt}Contains data from {res}https://github.com/agrogan1/multilevel/raw/master/reshaping-data/Spruce.dta
 {txt}  obs:{res}            72                          
 {txt} vars:{res}             9                          26 Apr 2020 12:18
 {txt}{hline}
@@ -142,7 +142,7 @@ Number of obs.                 {res}      72   {txt}->{res}     144
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\multilevel\reshaping-data\reshaping-data.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}27 Feb 2021, 17:59:30
+ {txt}closed on:  {res} 2 Mar 2021, 19:38:54
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

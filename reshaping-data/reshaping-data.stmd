@@ -15,7 +15,7 @@ Chihara and Hesterberg (2018) provide a data set concerning the growth of Black 
 ```s
     clear all
 	
-    use Spruce.dta, clear
+    use "https://github.com/agrogan1/multilevel/raw/master/reshaping-data/Spruce.dta", clear
 ```
 
 ```s/
@@ -37,6 +37,8 @@ Chihara and Hesterberg (2018) provide a data set concerning the growth of Black 
     
 	label variable Di_change "Change (cm) in diameter"	
 ```
+
+# Describe The Data 🌲
 	
 ```s
     describe	
