@@ -1,0 +1,51 @@
+---
+title: "Writing Up Multilevel Results"
+author: "Andy Grogan-Kaylor"
+date: "`r Sys.Date()`"
+output:
+  distill::distill_article:
+    highlight: haddock
+    toc: yes
+  pdf_document:
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
+# Background
+
+I'm sometimes asked about how to format a table of results from a multilevel model. As with many statistical matters, while I certainly think that there are *correct* and *incorrect* conclusions that we can draw from statistical evidence, I'm often less interested in identifying approaches as 100% right, or 100% wrong. I'm more interested in: "What is a principled approach?"
+
+So it is with creating tables. What is a *principled* approach? What basic table format offers the essential statistical information in a *principled* way? Hence the table template below.
+
+I think the template is always a very good starting place for submitting your work. Of course, particular journals, or particular conferences may ask you to present your results in a different format, but the below always seems to me to be a good place to start.
+
+# A Table Template
+
+------------------------------------------------------------------
+Variable[^1]      $\beta$    t        p      Confidence Interval
+-------           -------  ------   ------  ---------------------
+AAA               1.23     1.11     .15     [-.01, 1.45]
+
+BBB               -3.21    2.01     .04     [-4.56, -1.23]
+
+CCC               2.34     3.21     .01     [1.23, 4.56]
+
+Random            variance
+Effects
+
+var(intercept)    .012                       [.011, .051]
+
+var(error)        .456                       [.123, .456]
+------------------------------------------------------------------
+
+[^1]: Of course these are just pretend variable labels, and you would include real illustrative variable labels instead.
+
+
+
+
+
