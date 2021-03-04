@@ -3,10 +3,10 @@ title: "Writing Up Multilevel Results"
 author: "Andy Grogan-Kaylor"
 date: "`r Sys.Date()`"
 output:
+  pdf_document:
+    toc: yes
   distill::distill_article:
     highlight: haddock
-    toc: yes
-  pdf_document:
     toc: yes
 ---
 
@@ -22,7 +22,7 @@ I'm sometimes asked about how to format a table of results from a multilevel mod
 
 So it is with creating tables. What is a *principled* approach? What basic table format offers the essential statistical information in a *principled* way? Hence the table template below.
 
-I think the template is always a very good starting place for submitting your work. Of course, particular journals, or particular conferences may ask you to present your results in a different format, but the below always seems to me to be a good place to start.
+I think the template is always a very good starting place for submitting your work. Of course, particular journals, or particular conferences, may ask you to present your results in a different format, but the below always seems to me to be a good place to start.
 
 # A Table Template
 
