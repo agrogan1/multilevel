@@ -49,13 +49,13 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 <div id="header">
 <h1 class="title">Spaghetti Plot Demo</h1>
 <h2 class="author">Andy Grogan-Kaylor</h2>
-<h3 class="date">25 Feb 2021</h3>
+<h3 class="date">10 Mar 2021</h3>
 </div>
 <style>h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
 <h1 id="get-data">Get Data</h1>
-<ul>
-<li>using data from https://stats.idre.ucla.edu/stata/examples/mlm-imm/introduction-to-multilevel-modeling-by-kreft-and-de-leeuwchapter-4-analyses/</li>
-</ul>
+<blockquote>
+<p>using data from https://stats.idre.ucla.edu/stata/examples/mlm-imm/introduction-to-multilevel-modeling-by-kreft-and-de-leeuwchapter-4-analyses/</p>
+</blockquote>
 <pre class='stata'>. use https://stats.idre.ucla.edu/stat/examples/imm/imm23, clear
 </pre>
 <pre class='stata'>. label variable ses "Socioeconomic Status" // correct spelling of variable label
@@ -97,11 +97,23 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 <p>This ONLY works well with a limited number of schools.</p>
 <pre class='stata'>. twoway lfit math ses, scheme(michigan) lcolor(red) by(schid)
 </pre>
-<pre class='stata'>. graph export graph4.png, width(500) replace
+<pre class='stata'>. graph export graph4.png, width(1000) replace
 (file graph4.png written in PNG format)
 </pre>
 <div class="figure">
 <img src="graph4.png" alt="" />
+
+</div>
+<h1 id="separate-panels-for-schools-with-scatterplots">Separate Panels For Schools With Scatterplots</h1>
+<pre class='stata'>. twoway (lfit math ses, lcolor(red)) ///
+> (scatter math ses, mcolor(gs7%30)), /// color gs7 @ 30% transparency
+> scheme(michigan) by(schid)
+</pre>
+<pre class='stata'>. graph export graph5.png, width(1000) replace
+(file graph5.png written in PNG format)
+</pre>
+<div class="figure">
+<img src="graph5.png" alt="" />
 
 </div>
 </body>

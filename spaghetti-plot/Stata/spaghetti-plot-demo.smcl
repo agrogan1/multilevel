@@ -3,11 +3,11 @@
       name:  {res}<unnamed>
        {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\multilevel\spaghetti-plot\Stata\spaghetti-plot-demo.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}25 Feb 2021, 17:17:51
+ {txt}opened on:  {res}10 Mar 2021, 19:43:56
 {txt}
 {com}. //_1
 . display c(current_date)
-{res}25 Feb 2021
+{res}10 Mar 2021
 {txt}
 {com}. //_2
 . use https://stats.idre.ucla.edu/stat/examples/imm/imm23, clear
@@ -40,15 +40,24 @@
 . twoway lfit math ses, scheme(michigan) lcolor(red) by(schid)
 {res}{txt}
 {com}. //_11
-. graph export graph4.png, width(500) replace
+. graph export graph4.png, width(1000) replace
 {txt}(file graph4.png written in PNG format)
+
+{com}. //_12
+. twoway (lfit math ses, lcolor(red)) ///
+> (scatter math ses, mcolor(gs7%30)), /// color gs7 @ 30% transparency
+> scheme(michigan) by(schid)
+{res}{txt}
+{com}. //_13
+. graph export graph5.png, width(1000) replace
+{txt}(file graph5.png written in PNG format)
 
 {com}. //_^
 . log close
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\multilevel\spaghetti-plot\Stata\spaghetti-plot-demo.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}25 Feb 2021, 17:18:03
+ {txt}closed on:  {res}10 Mar 2021, 19:44:15
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

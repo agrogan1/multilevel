@@ -10,7 +10,7 @@ geometry: margin=1 in
 
 # Get Data
  
-* using data from https://stats.idre.ucla.edu/stata/examples/mlm-imm/introduction-to-multilevel-modeling-by-kreft-and-de-leeuwchapter-4-analyses/
+> using data from https://stats.idre.ucla.edu/stata/examples/mlm-imm/introduction-to-multilevel-modeling-by-kreft-and-de-leeuwchapter-4-analyses/
 
     use https://stats.idre.ucla.edu/stat/examples/imm/imm23, clear
 	
@@ -48,7 +48,23 @@ This ONLY works well with a limited number of schools.
 
     twoway lfit math ses, scheme(michigan) lcolor(red) by(schid)
 	
-    graph export graph4.png, width(500) replace
+    graph export graph4.png, width(1000) replace
 
 ![](graph4.png)	
 
+# Separate Panels For Schools With Scatterplots
+
+    twoway (lfit math ses, lcolor(red)) ///
+	(scatter math ses, mcolor(gs7%30)), /// color gs7 @ 30% transparency
+	scheme(michigan) by(schid)
+
+    graph export graph5.png, width(1000) replace
+
+![](graph5.png)		
+
+	
+	
+	
+	
+	
+	

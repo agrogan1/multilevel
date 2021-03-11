@@ -24,9 +24,14 @@ library(ggplot2)
 
 ggplot(imm23, # data I am using
        aes(x = ses, # x is ses
-           y = math, # y is math achievement
-           color = factor(schid))) + # color is school id
-  geom_smooth(method = "lm", se = FALSE) +
+           y = math)) + # y is math achievement
+  geom_smooth(method = "lm", # linear model smoother for whole sample
+              size = 2,
+              color = "black",
+              se = FALSE) + 
+  geom_smooth(aes(color = factor(schid)), # school specific linear smoother
+              method = "lm", 
+              se = FALSE) +
   labs(title = "Spaghetti Plot",
        x = "socioeconomic status",
        y = "math score") +
