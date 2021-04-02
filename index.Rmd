@@ -68,6 +68,7 @@ p0 <- ggplot(hsb_small,
   xlab("School") + 
   ylab("Math Achievement") +
   scale_color_viridis_d(name = "School \nID") +
+  theme_minimal() +
   theme(axis.title.y = element_text(size = 8),
         axis.title.x = element_text(size = 14),
         axis.text.x = element_text(size = 14),
@@ -104,6 +105,7 @@ p1 <- ggplot(hsb_small, aes(x = ses,
        caption = "Every school has its own regression line",
        x = "Student SES", 
        y = "math achievement score") + 
+  theme_minimal() +
   theme(axis.title.y = element_text(size = 8),
         axis.title.x = element_text(size = 14),
         axis.text.x = element_text(size = 14),
