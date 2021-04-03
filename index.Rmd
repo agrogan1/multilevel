@@ -61,7 +61,7 @@ p0 <- ggplot(hsb_small,
                               "<br>",
                               "Math Achievement: ",
                               mathach))) +
-  geom_boxplot() +
+  geom_boxplot(show.legend = FALSE) +
   geom_jitter() +
   labs(title = "An Illustration of the High School and Beyond Data",
        caption = "Each dot represents a student") + 
