@@ -1,0 +1,67 @@
+---
+title: "Fixed Effects Regression"
+description: |
+  Comparing and Contrasting With Multilevel Modeling.
+author:
+  - name: Andy Grogan-Kaylor
+    url: https://www.umich.edu/~agrogan
+    affiliation: University of Michigan
+    affiliation_url: https://www.umich.edu
+date: "`r Sys.Date()`"
+output: 
+  distill::distill_article:
+    highlight: haddock
+    toc: yes
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = FALSE)
+
+```
+
+# Acknowledgement
+
+This presentation of these ideas draws heavily upon the Stata documentation, although I have changed the notation slightly, and drawn out a few steps.
+
+# Derivation
+
+We start with our regression equation.
+
+$$y_{it} = \beta_0 + \beta_1 x_{it} + u_{0i} + e_{it}$$
+
+## Intermediate Step 1
+
+We can sum both sides over the $t$ time points.
+
+$$\sum_{t} y_{it} = \sum_{t} \beta_0 + \sum_{t} \beta_1 x_{it} + \sum_{t} u_{0i} + \sum_{t} e_{it}$$
+
+## Intermediate Step 2
+
+We can then divide by the number of time points ($T_i$).
+
+$$\sum_{t} y_{it} / T_i = \sum_{t} \beta_0 / T_i + \sum_{t} \beta_1 x_{it} / T_i + \sum_{t} u_{0i} / T_i + \sum_{t} e_{it} / T_i$$
+
+# Then
+
+This reduces to:
+
+$$\bar y_i = \beta_0 + \beta_1 \bar x_i + u_{0i} + \bar e_i$$
+
+# Finally
+
+We can subtract this most recent equation from the first equation.
+
+$$y_{it} - \bar y_i = \beta (x_{it} - \bar x_i) + (e_{it} - \bar e_i)$$
+
+This is the fixed effects estimator.
+
+
+
+
+
+
+
+
+
