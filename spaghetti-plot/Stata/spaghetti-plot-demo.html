@@ -49,7 +49,7 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 <div id="header">
 <h1 class="title">Spaghetti Plot Demo</h1>
 <h2 class="author">Andy Grogan-Kaylor</h2>
-<h3 class="date">10 Mar 2021</h3>
+<h3 class="date">3 Apr 2021</h3>
 </div>
 <style>h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
 <h1 id="get-data">Get Data</h1>
@@ -72,9 +72,9 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 </div>
 <h1 id="add-better-scheme">Add Better Scheme</h1>
 <blockquote>
-<p>Schemes are very helpful in making better looking Stata graphs. A useful Stata schemes is <code>s1color</code>. Useful user written schemes are <code>lean2</code>, <code>plottig</code> (type <code>findit lean2</code> or <code>findit plottig</code> to install these), and my own <a href="https://agrogan1.github.io/Stata/michigan-graph-scheme/">Michigan Stata graph scheme</a>.</p>
+<p>Schemes are very helpful in making better looking Stata graphs. A useful Stata scheme is <code>s1color</code>. Useful user written schemes are <code>lean2</code>, <code>plottig</code> (type <code>findit lean2</code> or <code>findit plottig</code> to install these), and my own <a href="https://agrogan1.github.io/Stata/michigan-graph-scheme/">Michigan Stata graph scheme</a>.</p>
 </blockquote>
-<pre class='stata'>. spagplot math ses, id(schid) scheme(michigan)
+<pre class='stata'>. spagplot math ses, id(schid) scheme(s1color) title("Spaghetti Plot of Math Score By SES")
 </pre>
 <pre class='stata'>. graph export graph2.png, width(500) replace
 (file graph2.png written in PNG format)
@@ -84,7 +84,7 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 
 </div>
 <h1 id="now-try-twoway-syntax">Now Try <code>twoway</code> Syntax</h1>
-<pre class='stata'>. twoway lfit math ses, scheme(michigan) lcolor(red)
+<pre class='stata'>. twoway lfit math ses, scheme(s1color) title("Math Score By SES")
 </pre>
 <pre class='stata'>. graph export graph3.png, width(500) replace
 (file graph3.png written in PNG format)
@@ -95,7 +95,7 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 </div>
 <h1 id="separate-panels-for-schools">Separate Panels For Schools</h1>
 <p>This ONLY works well with a limited number of schools.</p>
-<pre class='stata'>. twoway lfit math ses, scheme(michigan) lcolor(red) by(schid)
+<pre class='stata'>. twoway lfit math ses, scheme(s1color) by(schid, title("Math Score By SES")) 
 </pre>
 <pre class='stata'>. graph export graph4.png, width(1000) replace
 (file graph4.png written in PNG format)
@@ -105,9 +105,9 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 
 </div>
 <h1 id="separate-panels-for-schools-with-scatterplots">Separate Panels For Schools With Scatterplots</h1>
-<pre class='stata'>. twoway (lfit math ses, lcolor(red)) ///
+<pre class='stata'>. twoway (lfit math ses) ///
 > (scatter math ses, mcolor(gs7%30)), /// color gs7 @ 30% transparency
-> scheme(michigan) by(schid)
+> scheme(s1color) by(schid, title("Math Score By SES"))
 </pre>
 <pre class='stata'>. graph export graph5.png, width(1000) replace
 (file graph5.png written in PNG format)

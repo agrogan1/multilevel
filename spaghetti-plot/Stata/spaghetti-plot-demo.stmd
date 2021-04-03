@@ -26,9 +26,9 @@ geometry: margin=1 in
 
 # Add Better Scheme
 
-> Schemes are very helpful in making better looking Stata graphs. A useful Stata schemes is `s1color`. Useful user written schemes are `lean2`, `plottig` (type `findit lean2` or `findit plottig` to install these), and my own [Michigan Stata graph scheme](https://agrogan1.github.io/Stata/michigan-graph-scheme/).
+> Schemes are very helpful in making better looking Stata graphs. A useful Stata scheme is `s1color`. Useful user written schemes are `lean2`, `plottig` (type `findit lean2` or `findit plottig` to install these), and my own [Michigan Stata graph scheme](https://agrogan1.github.io/Stata/michigan-graph-scheme/).
 
-    spagplot math ses, id(schid) scheme(michigan)
+    spagplot math ses, id(schid) scheme(s1color) title("Spaghetti Plot of Math Score By SES")
 	
     graph export graph2.png, width(500) replace
 
@@ -36,7 +36,7 @@ geometry: margin=1 in
 
 # Now Try `twoway` Syntax
 
-    twoway lfit math ses, scheme(michigan) lcolor(red)
+    twoway lfit math ses, scheme(s1color) title("Math Score By SES")
 	
     graph export graph3.png, width(500) replace
 
@@ -46,7 +46,7 @@ geometry: margin=1 in
 
 This ONLY works well with a limited number of schools.
 
-    twoway lfit math ses, scheme(michigan) lcolor(red) by(schid)
+    twoway lfit math ses, scheme(s1color) by(schid, title("Math Score By SES")) 
 	
     graph export graph4.png, width(1000) replace
 
@@ -54,9 +54,9 @@ This ONLY works well with a limited number of schools.
 
 # Separate Panels For Schools With Scatterplots
 
-    twoway (lfit math ses, lcolor(red)) ///
+    twoway (lfit math ses) ///
 	(scatter math ses, mcolor(gs7%30)), /// color gs7 @ 30% transparency
-	scheme(michigan) by(schid)
+	scheme(s1color) by(schid, title("Math Score By SES"))
 
     graph export graph5.png, width(1000) replace
 

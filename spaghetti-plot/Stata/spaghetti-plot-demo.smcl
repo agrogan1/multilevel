@@ -3,11 +3,11 @@
       name:  {res}<unnamed>
        {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\multilevel\spaghetti-plot\Stata\spaghetti-plot-demo.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}10 Mar 2021, 19:43:56
+ {txt}opened on:  {res} 3 Apr 2021, 12:10:56
 {txt}
 {com}. //_1
 . display c(current_date)
-{res}10 Mar 2021
+{res} 3 Apr 2021
 {txt}
 {com}. //_2
 . use https://stats.idre.ucla.edu/stat/examples/imm/imm23, clear
@@ -23,30 +23,30 @@
 {txt}(file graph1.png written in PNG format)
 
 {com}. //_6
-. spagplot math ses, id(schid) scheme(michigan)
+. spagplot math ses, id(schid) scheme(s1color) title("Spaghetti Plot of Math Score By SES")
 {res}{txt}
 {com}. //_7
 . graph export graph2.png, width(500) replace
 {txt}(file graph2.png written in PNG format)
 
 {com}. //_8
-. twoway lfit math ses, scheme(michigan) lcolor(red)
+. twoway lfit math ses, scheme(s1color) title("Math Score By SES")
 {res}{txt}
 {com}. //_9
 . graph export graph3.png, width(500) replace
 {txt}(file graph3.png written in PNG format)
 
 {com}. //_10
-. twoway lfit math ses, scheme(michigan) lcolor(red) by(schid)
+. twoway lfit math ses, scheme(s1color) by(schid, title("Math Score By SES")) 
 {res}{txt}
 {com}. //_11
 . graph export graph4.png, width(1000) replace
 {txt}(file graph4.png written in PNG format)
 
 {com}. //_12
-. twoway (lfit math ses, lcolor(red)) ///
+. twoway (lfit math ses) ///
 > (scatter math ses, mcolor(gs7%30)), /// color gs7 @ 30% transparency
-> scheme(michigan) by(schid)
+> scheme(s1color) by(schid, title("Math Score By SES"))
 {res}{txt}
 {com}. //_13
 . graph export graph5.png, width(1000) replace
@@ -57,7 +57,7 @@
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\multilevel\spaghetti-plot\Stata\spaghetti-plot-demo.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}10 Mar 2021, 19:44:15
+ {txt}closed on:  {res} 3 Apr 2021, 12:11:17
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}
