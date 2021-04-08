@@ -1,0 +1,57 @@
+% Comparing Multilevel Models and Fixed Effects Regression
+% Andy Grogan-Kaylor
+% `s c(current_date)` `s c(current_time)`
+
+---
+geometry: margin=1 in
+---
+
+# Background 
+
+<style>h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
+
+> This example draws from the Stata documentation for the `xtreg` command.
+
+Multilevel models for longitudinal data, and fixed effects regression provide two alternative methods for analyzing longitudinal data.
+
+> Briefly…
+>
+> * Multilevel models use both within person and between person variation, and provide statistical control for observed variables that are included in the model.
+>
+> * Fixed effect regressions use only within person variation. As a consequence, fixed effects regression is unable to provide parameter estimates for time invariant variables, even when they are included in the statistical model. Fixed effects regressions provide statistical controls for all time invariant variables, whether observed or unobserved.
+
+# Get The Data (`use`)
+
+    clear all
+
+    use https://www.stata-press.com/data/r16/nlswork, clear
+
+# Describe the Key Variables (`describe`)
+
+    describe ln_w grade age race union south
+
+# Multilevel Model (`mixed y x || id:`)
+
+> The model uses within and between person variation. Estimates are provided for all variables. The model only controls for variables that are included in the model.
+
+    mixed ln_w grade age i.race union south || idcode: 
+	
+	est store MLM
+
+# Fixed Effects Regression (`xtreg y x, i(id) fe`)
+
+> The model uses only within person variation. Estimates are only provided for within person change over time. The model controls for all time invariant variables whether observed or unobserved.
+
+    xtreg ln_w grade age i.race union south, i(idcode) fe
+	
+	est store FE
+	
+# Compare The Two Sets of Estimates (`estimates table`)
+
+    est table MLM FE, star equations(1)
+
+
+
+
+
+
