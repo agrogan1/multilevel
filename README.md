@@ -9,6 +9,11 @@
 
 * [Reshaping Data](https://agrogan1.github.io/multilevel/reshaping-data/reshaping-data.html)
 
+## Fixed Effects Regression
+
+* [Derivation](https://agrogan1.github.io/multilevel/fixed-effects/fixed-effects.html)
+* [Empirical Example](https://agrogan1.github.io/multilevel/fixed-effects-example/fixed-effects-example.html)
+
 ## `lmer` Demo
 
 * [`lmer` Demo](https://agrogan1.github.io/multilevel/lmer-demo/lmer-demo.html)
