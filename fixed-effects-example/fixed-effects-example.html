@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <style>
 /* CSS for Markstat 2.0 using Pandoc 2.0 */
@@ -38,27 +38,19 @@ tbody tr:first-child td {border-top:1px solid black; padding-top:6px}
 tbody tr:last-child  td {padding-bottom:6px;}
 table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 </style>
-  <meta charset="utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Andy Grogan-Kaylor" />
   <title>Comparing Multilevel Models and Fixed Effects Regression</title>
-  <style>
-      code{white-space: pre-wrap;}
-      span.smallcaps{font-variant: small-caps;}
-      span.underline{text-decoration: underline;}
-      div.column{display: inline-block; vertical-align: top; width: 50%;}
-  </style>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
+  <style type="text/css">code{white-space: pre;}</style>
 </head>
 <body>
-<header id="title-block-header">
+<div id="header">
 <h1 class="title">Comparing Multilevel Models and Fixed Effects Regression</h1>
-<p class="author">Andy Grogan-Kaylor</p>
-<p class="date">8 Apr 2021 14:20:54</p>
-</header>
+<h2 class="author">Andy Grogan-Kaylor</h2>
+<h3 class="date">8 Apr 2021 15:32:16</h3>
+</div>
 <h1 id="background">Background</h1>
 <style>h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
 <blockquote>
@@ -83,7 +75,7 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 
               storage   display    value
 variable name   type    format     label      variable label
-────────────────────────────────────────────────────────────────────────────────────
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ln_wage         float   %9.0g                 ln(wage/GNP deflator)
 grade           byte    %8.0g                 current grade completed
 age             byte    %8.0g                 age in current year
@@ -187,6 +179,15 @@ F test that all u_i=0: F(4147, 15073) = 9.60                 Prob > F = 0.0000
 <pre class='stata'>. est store FE
 </pre>
 <h1 id="compare-the-two-sets-of-estimates-estimates-table">Compare The Two Sets of Estimates (<code>estimates table</code>)</h1>
+<blockquote>
+<ol style="list-style-type: decimal">
+<li><p>The multilevel model controls for variables that are included in the model.</p></li>
+<li><p>The fixed effects model controls for variables that are included in the model, as well as all time invariant characteristics of participants.</p></li>
+<li><p>The multilevel model uses both within and between person variation; the fixed effects model uses only within person variation.</p></li>
+<li><p>The fixed effects model is unable to provide information on time invariant characteristics of individuals even if they are included in the model.</p></li>
+<li><p>Coefficients in the fixed effects model are generally smaller than coefficients in the multilevel model. (Often, though not in this example, coefficients that were significant in the multilevel model are not significant in the fixed effects model).</p></li>
+</ol>
+</blockquote>
 <pre class='stata'>. est table MLM FE, star equations(1)
 
 ─────────────┬────────────────────────────────

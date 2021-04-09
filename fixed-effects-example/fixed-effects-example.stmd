@@ -48,6 +48,16 @@ Multilevel models for longitudinal data, and fixed effects regression provide tw
 	
 # Compare The Two Sets of Estimates (`estimates table`)
 
+> 1. The multilevel model controls for variables that are included in the model.
+>
+> 2. The fixed effects model controls for variables that are included in the model, as well as all time invariant characteristics of participants.
+>
+> 3. The multilevel model uses both within and between person variation; the fixed effects model uses only within person variation.
+>
+> 4. The fixed effects model is unable to provide information on time invariant characteristics of individuals even if they are included in the model.
+>
+> 5. Coefficients in the fixed effects model are generally smaller than coefficients in the multilevel model. (Often, though not in this example, coefficients that were significant in the multilevel model are not significant in the fixed effects model).
+
     est table MLM FE, star equations(1)
 
 
