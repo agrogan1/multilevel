@@ -22,17 +22,20 @@ geometry: margin=1 in
 	
     graph export graph1.png, width(500) replace
 
-![](graph1.png)
+![Basic Spaghetti Plot](graph1.png)
 
 # Add Better Scheme
 
 > Schemes are very helpful in making better looking Stata graphs. A useful Stata scheme is `s1color`. Useful user written schemes are `lean2`, `plottig` (type `findit lean2` or `findit plottig` to install these), and my own [Michigan Stata graph scheme](https://agrogan1.github.io/Stata/michigan-graph-scheme/).
 
-    spagplot math ses, id(schid) scheme(s1color) title("Spaghetti Plot of Math Score By SES")
+    spagplot math ses, id(schid) ///
+	scheme(s1color) ///
+	title("Spaghetti Plot of Math Score By SES") ///
+	note(" ") // blank "note" since title explains this graph
 	
     graph export graph2.png, width(500) replace
 
-![](graph2.png)	
+![Spaghetti Plot With Better Options](graph2.png)	
 
 # Now Try `twoway` Syntax
 
@@ -40,7 +43,7 @@ geometry: margin=1 in
 	
     graph export graph3.png, width(500) replace
 
-![](graph3.png)
+![Initial `twoway` Graph](graph3.png)
 
 # Separate Panels For Schools
 
@@ -50,7 +53,7 @@ This ONLY works well with a limited number of schools.
 	
     graph export graph4.png, width(1000) replace
 
-![](graph4.png)	
+![Separate Panels For Schools](graph4.png)	
 
 # Separate Panels For Schools With Scatterplots
 
@@ -60,11 +63,71 @@ This ONLY works well with a limited number of schools.
 
     graph export graph5.png, width(1000) replace
 
-![](graph5.png)		
+![Separate Panels For Schools With Scatterplots](graph5.png)		
 
+# "Model Based" Spaghetti Plot	
+
+A sometimes unacknowledged point is that spaghetti plots--unless we take steps to correct this--reflect *unadjusted*, or *bivariate* associations.
+
+We may sometimes wish to develop a spaghetti plot that reflects the *adjusted* estimates from our models.
+
+To do this we first estimate a multilevel model.
+
+    mixed math ses meanses || schid: // multilevel model; random intercept; no random effects
+
+> NB that this is a model with only a random intercept, $u_0$ and no random slopes e.g. $u_1$, etc.... 
+
+The spaghetti plots so far give an indication of different slopes per school. Below we outline a procedure for (a) developing a spaghetti plot of adjusted estimates; and (b) ensuring that the plot reflects the structure of the model e.g. random intercept only, or random intercept + random slope(s). 
+
+To carry out this procedure we employ the `_b` notation in Stata. For example, `_b[_cons]` indicates the intercept of the model while `_b[ses]` indicates the slope attached to *ses*.
+
+We need to carry out a few preliminary calculations.
+
+1. Estimate (`predict`) the random effect(s).
+2. Estimate the mean values of variables that we are going to hold constant.
+3. Estimate predicted values ($\hat y$) using the `_b` notation.
+4. Graph the spaghetti plot.
+
+## Estimate The Random Effects
+
+    predict u0, reffects
 	
+## Estimate the Mean Values of Relevant Variables
+
+    summarize meanses
+
+The mean of `meanses` is `s %9.5f r(mean)`.
 	
+## Estimate Predicted Values
+
+We are using $\beta_0$, the random intercept $u_0$, $\beta_{ses}$ multiplied by the actual value of `ses`, and $\beta_{meanses}$ multiplied by the mean of `meanses`.
+
+    generate yhat = _b[_cons] + u0 + _b[ses] * ses + _b[ses] * -.0012717 
 	
+## Graph The Spaghetti Plot	
+
+    twoway scatter yhat ses, scheme(s1color)
 	
+	graph export graph6.png, width(500) replace
+
+![Initial "Model Based" Spaghetti Plot](graph6.png)		
+
+We still have a small amount of work to do to make this look more "spaghetti plot like".
+
+We are going to use `twoway connect` to create connected line plots. We employ option `c(L)` to ensure that only ascending values are connected: i.e. each Level 2 unit has their own regression line. For `c(L)` to work properly we are going to need to sort the data by *school* and *ses*. Lastly, we're going to change the `msymbol` so that we do not see dots, but only lines.
+
+    sort schid ses // sort on Level 2 units and x values
 	
+    twoway connect yhat ses, ///
+	title("Model Based Spaghetti Plot") /// title
+	xtitle("Socioeconomic Status") /// title for x axis
+	ytitle("Model Predicted Values") /// title for y axis
+	c(L) /// connect only ascending values
+	msymbol(none) /// no marker symbol; only lines
+	scheme(s1color) // s1color scheme
 	
+	graph export graph7.png, width(500) replace
+
+![Finalized "Model Based" Spaghetti Plot](graph7.png)		
+
+
