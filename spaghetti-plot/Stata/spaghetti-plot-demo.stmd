@@ -84,9 +84,9 @@ To carry out this procedure we employ the `_b` notation in Stata. For example, `
 We need to carry out a few preliminary calculations.
 
 1. Estimate (`predict`) the random effect(s).
-2. Estimate the mean values of variables that we are going to hold constant.
-3. Estimate predicted values ($\hat y$) using the `_b` notation.
-4. Graph the spaghetti plot.
+2. Estimate the mean values (`summarize`) of variables that we are going to hold constant.
+3. Generate predicted values ($\hat y$) using the `_b` notation (`generate yhat = ...`).
+4. Graph the spaghetti plot (`twoway connect`).
 
 ## Estimate The Random Effects
 

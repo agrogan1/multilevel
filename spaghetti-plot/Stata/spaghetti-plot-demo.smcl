@@ -1,13 +1,13 @@
 {smcl}
 {com}{sf}{ul off}{txt}{.-}
       name:  {res}<unnamed>
-       {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\multilevel\spaghetti-plot\Stata\spaghetti-plot-demo.smcl
+       {txt}log:  {res}/Users/agrogan/Box Sync/GitHub/multilevel/spaghetti-plot/Stata/spaghetti-plot-demo.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}15 Apr 2021, 17:30:04
+ {txt}opened on:  {res}16 Apr 2021, 12:12:58
 {txt}
 {com}. //_1
 . display c(current_date)
-{res}15 Apr 2021
+{res}16 Apr 2021
 {txt}
 {com}. //_2
 . use https://stats.idre.ucla.edu/stat/examples/imm/imm23, clear
@@ -20,7 +20,7 @@
 {res}{txt}
 {com}. //_5
 . graph export graph1.png, width(500) replace
-{txt}(file graph1.png written in PNG format)
+{txt}(file /Users/agrogan/Box Sync/GitHub/multilevel/spaghetti-plot/Stata/graph1.png written in PNG format)
 
 {com}. //_6
 . spagplot math ses, id(schid) ///
@@ -30,21 +30,21 @@
 {res}{txt}
 {com}. //_7
 . graph export graph2.png, width(500) replace
-{txt}(file graph2.png written in PNG format)
+{txt}(file /Users/agrogan/Box Sync/GitHub/multilevel/spaghetti-plot/Stata/graph2.png written in PNG format)
 
 {com}. //_8
 . twoway lfit math ses, scheme(s1color) title("Math Score By SES")
 {res}{txt}
 {com}. //_9
 . graph export graph3.png, width(500) replace
-{txt}(file graph3.png written in PNG format)
+{txt}(file /Users/agrogan/Box Sync/GitHub/multilevel/spaghetti-plot/Stata/graph3.png written in PNG format)
 
 {com}. //_10
 . twoway lfit math ses, scheme(s1color) by(schid, title("Math Score By SES")) 
 {res}{txt}
 {com}. //_11
 . graph export graph4.png, width(1000) replace
-{txt}(file graph4.png written in PNG format)
+{txt}(file /Users/agrogan/Box Sync/GitHub/multilevel/spaghetti-plot/Stata/graph4.png written in PNG format)
 
 {com}. //_12
 . twoway (lfit math ses) ///
@@ -53,7 +53,7 @@
 {res}{txt}
 {com}. //_13
 . graph export graph5.png, width(1000) replace
-{txt}(file graph5.png written in PNG format)
+{txt}(file /Users/agrogan/Box Sync/GitHub/multilevel/spaghetti-plot/Stata/graph5.png written in PNG format)
 
 {com}. //_14
 . mixed math ses meanses || schid: // multilevel model; random intercept; no random effects
@@ -118,7 +118,7 @@ LR test vs. linear model:{col 27}{help j_chibar##|_new:chibar2(01) =} {res}25.58
 {res}{txt}
 {com}. //_20
 . graph export graph6.png, width(500) replace
-{txt}(file graph6.png written in PNG format)
+{txt}(file /Users/agrogan/Box Sync/GitHub/multilevel/spaghetti-plot/Stata/graph6.png written in PNG format)
 
 {com}. //_21
 . sort schid ses // sort on Level 2 units and x values
@@ -134,14 +134,14 @@ LR test vs. linear model:{col 27}{help j_chibar##|_new:chibar2(01) =} {res}25.58
 {res}{txt}
 {com}. //_23
 . graph export graph7.png, width(500) replace
-{txt}(file graph7.png written in PNG format)
+{txt}(file /Users/agrogan/Box Sync/GitHub/multilevel/spaghetti-plot/Stata/graph7.png written in PNG format)
 
 {com}. //_^
 . log close
       {txt}name:  {res}<unnamed>
-       {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\multilevel\spaghetti-plot\Stata\spaghetti-plot-demo.smcl
+       {txt}log:  {res}/Users/agrogan/Box Sync/GitHub/multilevel/spaghetti-plot/Stata/spaghetti-plot-demo.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}15 Apr 2021, 17:30:25
+ {txt}closed on:  {res}16 Apr 2021, 12:13:40
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}
