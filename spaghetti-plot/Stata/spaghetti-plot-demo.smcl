@@ -1,13 +1,13 @@
 {smcl}
 {com}{sf}{ul off}{txt}{.-}
       name:  {res}<unnamed>
-       {txt}log:  {res}/Users/agrogan/Box Sync/GitHub/multilevel/spaghetti-plot/Stata/spaghetti-plot-demo.smcl
+       {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\multilevel\spaghetti-plot\Stata\spaghetti-plot-demo.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}16 Apr 2021, 12:12:58
+ {txt}opened on:  {res}18 Apr 2021, 10:45:14
 {txt}
 {com}. //_1
 . display c(current_date)
-{res}16 Apr 2021
+{res}18 Apr 2021
 {txt}
 {com}. //_2
 . use https://stats.idre.ucla.edu/stat/examples/imm/imm23, clear
@@ -20,7 +20,7 @@
 {res}{txt}
 {com}. //_5
 . graph export graph1.png, width(500) replace
-{txt}(file /Users/agrogan/Box Sync/GitHub/multilevel/spaghetti-plot/Stata/graph1.png written in PNG format)
+{txt}(file graph1.png written in PNG format)
 
 {com}. //_6
 . spagplot math ses, id(schid) ///
@@ -30,21 +30,21 @@
 {res}{txt}
 {com}. //_7
 . graph export graph2.png, width(500) replace
-{txt}(file /Users/agrogan/Box Sync/GitHub/multilevel/spaghetti-plot/Stata/graph2.png written in PNG format)
+{txt}(file graph2.png written in PNG format)
 
 {com}. //_8
 . twoway lfit math ses, scheme(s1color) title("Math Score By SES")
 {res}{txt}
 {com}. //_9
 . graph export graph3.png, width(500) replace
-{txt}(file /Users/agrogan/Box Sync/GitHub/multilevel/spaghetti-plot/Stata/graph3.png written in PNG format)
+{txt}(file graph3.png written in PNG format)
 
 {com}. //_10
 . twoway lfit math ses, scheme(s1color) by(schid, title("Math Score By SES")) 
 {res}{txt}
 {com}. //_11
 . graph export graph4.png, width(1000) replace
-{txt}(file /Users/agrogan/Box Sync/GitHub/multilevel/spaghetti-plot/Stata/graph4.png written in PNG format)
+{txt}(file graph4.png written in PNG format)
 
 {com}. //_12
 . twoway (lfit math ses) ///
@@ -53,7 +53,7 @@
 {res}{txt}
 {com}. //_13
 . graph export graph5.png, width(1000) replace
-{txt}(file /Users/agrogan/Box Sync/GitHub/multilevel/spaghetti-plot/Stata/graph5.png written in PNG format)
+{txt}(file graph5.png written in PNG format)
 
 {com}. //_14
 . mixed math ses meanses || schid: // multilevel model; random intercept; no random effects
@@ -97,34 +97,87 @@
 LR test vs. linear model:{col 27}{help j_chibar##|_new:chibar2(01) =} {res}25.58{col 55}{txt}Prob >= chibar2 = {col 73}{res}0.0000
 {txt}
 {com}. //_15
+. predict yhat
+{txt}(option {bf:xb} assumed)
+
+{com}. //_16
+. spagplot yhat ses, id(schid) scheme(s1color)
+{res}{txt}
+{com}. //_17
+. graph export graph6A.png, width(500) replace
+{txt}(file graph6A.png written in PNG format)
+
+{com}. //_18
+. mixed math ses meanses || schid: // multilevel model; random intercept; no random effects
+{res}
+{txt}Performing EM optimization: 
+{res}
+{txt}Performing gradient-based optimization: 
+{res}
+{txt}Iteration 0:{space 3}log likelihood = {res:-1871.9169}  
+{res}{txt}Iteration 1:{space 3}log likelihood = {res:-1871.9169}  
+{res}
+{txt}Computing standard errors:
+{res}
+{txt}Mixed-effects ML regression{col 49}Number of obs{col 67}={col 69}{res}       519
+{txt}Group variable: {res}schid{col 49}{txt}Number of groups{col 67}={col 69}{res}        23
+
+{txt}{col 49}Obs per group:
+{col 63}min{col 67}={col 69}{res}         5
+{txt}{col 63}avg{col 67}={col 69}{res}      22.6
+{txt}{col 63}max{col 67}={col 69}{res}        67
+
+{col 49}{txt}Wald chi2({res}2{txt}){col 67}={col 70}{res}    69.58
+{txt}Log likelihood = {res}-1871.9169{col 49}{txt}Prob > chi2{col 67}={col 73}{res}0.0000
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        math{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}ses {c |}{col 14}{res}{space 2}  3.88476{col 26}{space 2} .6096853{col 37}{space 1}    6.37{col 46}{space 3}0.000{col 54}{space 4} 2.689799{col 67}{space 3} 5.079722
+{txt}{space 5}meanses {c |}{col 14}{res}{space 2} 3.281962{col 26}{space 2} 1.464135{col 37}{space 1}    2.24{col 46}{space 3}0.025{col 54}{space 4} .4123106{col 67}{space 3} 6.151614
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 51.48904{col 26}{space 2} .7582764{col 37}{space 1}   67.90{col 46}{space 3}0.000{col 54}{space 4} 50.00284{col 67}{space 3} 52.97523
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{hline 29}{c TT}{hline 48}
+{col 3}Random-effects Parameters{col 30}{c |}{col 34}Estimate{col 45}Std. Err.{col 59}[95% Conf. Interval]
+{hline 29}{c +}{hline 48}
+{res}schid{txt}: Identity{col 30}{c |}
+{space 18}var(_cons) {c |}{res}{col 33} 8.931927{col 44} 3.813085{col 58} 3.868681{col 70} 20.62184
+{txt}{hline 29}{c +}{hline 48}
+{col 16}var(Residual){col 30}{c |}{res}{col 33} 75.21885{col 44} 4.778177{col 58} 66.41333{col 70} 85.19187
+{txt}{hline 29}{c BT}{hline 48}
+LR test vs. linear model:{col 27}{help j_chibar##|_new:chibar2(01) =} {res}25.58{col 55}{txt}Prob >= chibar2 = {col 73}{res}0.0000
+{txt}
+{com}. //_19
 . predict u0, reffects
 {txt}
-{com}. //_16
+{com}. //_20
 . summarize meanses
 
 {txt}    Variable {c |}        Obs        Mean    Std. Dev.       Min        Max
 {hline 13}{c +}{hline 57}
 {space 5}meanses {c |}{res}        519   -.0012717    .6206429    -1.0685    1.17625
 {txt}
-{com}. //_17
+{com}. //_21
 . display %9.5f r(mean)
 {res} -0.00127
 {txt}
-{com}. //_18
-. generate yhat = _b[_cons] + u0 + _b[ses] * ses + _b[ses] * -.0012717 
+{com}. //_22
+. generate yhat2 = _b[_cons] + u0 + _b[ses] * ses + _b[ses] * -.0012717 
 {txt}
-{com}. //_19
-. twoway scatter yhat ses, scheme(s1color)
+{com}. //_23
+. twoway scatter yhat2 ses, scheme(s1color)
 {res}{txt}
-{com}. //_20
-. graph export graph6.png, width(500) replace
-{txt}(file /Users/agrogan/Box Sync/GitHub/multilevel/spaghetti-plot/Stata/graph6.png written in PNG format)
+{com}. //_24
+. graph export graph6B.png, width(500) replace
+{txt}(note: file graph6B.png not found)
+(file graph6B.png written in PNG format)
 
-{com}. //_21
+{com}. //_25
 . sort schid ses // sort on Level 2 units and x values
 {txt}
-{com}. //_22
-. twoway connect yhat ses, ///
+{com}. //_26
+. twoway connect yhat2 ses, ///
 > title("Model Based Spaghetti Plot") /// title
 > xtitle("Socioeconomic Status") /// title for x axis
 > ytitle("Model Predicted Values") /// title for y axis
@@ -132,16 +185,16 @@ LR test vs. linear model:{col 27}{help j_chibar##|_new:chibar2(01) =} {res}25.58
 > msymbol(none) /// no marker symbol; only lines
 > scheme(s1color) // s1color scheme
 {res}{txt}
-{com}. //_23
+{com}. //_27
 . graph export graph7.png, width(500) replace
-{txt}(file /Users/agrogan/Box Sync/GitHub/multilevel/spaghetti-plot/Stata/graph7.png written in PNG format)
+{txt}(file graph7.png written in PNG format)
 
 {com}. //_^
 . log close
       {txt}name:  {res}<unnamed>
-       {txt}log:  {res}/Users/agrogan/Box Sync/GitHub/multilevel/spaghetti-plot/Stata/spaghetti-plot-demo.smcl
+       {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\multilevel\spaghetti-plot\Stata\spaghetti-plot-demo.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}16 Apr 2021, 12:13:40
+ {txt}closed on:  {res}18 Apr 2021, 10:45:38
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

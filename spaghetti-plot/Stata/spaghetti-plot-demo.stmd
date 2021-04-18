@@ -77,7 +77,19 @@ To do this we first estimate a multilevel model.
 
 > NB that this is a model with only a random intercept, $u_0$ and no random slopes e.g. $u_1$, etc.... 
 
-The spaghetti plots so far give an indication of different slopes per school. Below we outline a procedure for (a) developing a spaghetti plot of adjusted estimates; and (b) ensuring that the plot reflects the structure of the model e.g. random intercept only, or random intercept + random slope(s). 
+## "Simple" Predicted Values
+
+    predict yhat
+	
+	spagplot yhat ses, id(schid) scheme(s1color)
+	
+	graph export graph6A.png, width(500) replace
+
+![Spaghetti Plot With Predicted Values](graph6A.png)		
+
+## "Model Based" Predicted Values
+
+The spaghetti plots so far give an indication of different slopes per school. Below we outline a procedure for (a) developing a spaghetti plot of adjusted estimates; and (b) ensuring that the plot reflects the exact structure of the model e.g. random intercept only, or random intercept + random slope(s). 
 
 To carry out this procedure we employ the `_b` notation in Stata. For example, `_b[_cons]` indicates the intercept of the model while `_b[ses]` indicates the slope attached to *ses*.
 
@@ -88,29 +100,31 @@ We need to carry out a few preliminary calculations.
 3. Generate predicted values ($\hat y$) using the `_b` notation (`generate yhat = ...`).
 4. Graph the spaghetti plot (`twoway connect`).
 
-## Estimate The Random Effects
+### Estimate The Random Effects
+
+    mixed math ses meanses || schid: // multilevel model; random intercept; no random effects
 
     predict u0, reffects
 	
-## Estimate the Mean Values of Relevant Variables
+### Estimate the Mean Values of Relevant Variables
 
     summarize meanses
 
 The mean of `meanses` is `s %9.5f r(mean)`.
 	
-## Estimate Predicted Values
+### Estimate Predicted Values
 
 We are using $\beta_0$, the random intercept $u_0$, $\beta_{ses}$ multiplied by the actual value of `ses`, and $\beta_{meanses}$ multiplied by the mean of `meanses`.
 
-    generate yhat = _b[_cons] + u0 + _b[ses] * ses + _b[ses] * -.0012717 
+    generate yhat2 = _b[_cons] + u0 + _b[ses] * ses + _b[ses] * -.0012717 
 	
-## Graph The Spaghetti Plot	
+### Graph The Spaghetti Plot	
 
-    twoway scatter yhat ses, scheme(s1color)
+    twoway scatter yhat2 ses, scheme(s1color)
 	
-	graph export graph6.png, width(500) replace
+	graph export graph6B.png, width(500) replace
 
-![Initial "Model Based" Spaghetti Plot](graph6.png)		
+![Initial "Model Based" Spaghetti Plot](graph6B.png)		
 
 We still have a small amount of work to do to make this look more "spaghetti plot like".
 
@@ -118,7 +132,7 @@ We are going to use `twoway connect` to create connected line plots. We employ o
 
     sort schid ses // sort on Level 2 units and x values
 	
-    twoway connect yhat ses, ///
+    twoway connect yhat2 ses, ///
 	title("Model Based Spaghetti Plot") /// title
 	xtitle("Socioeconomic Status") /// title for x axis
 	ytitle("Model Predicted Values") /// title for y axis
