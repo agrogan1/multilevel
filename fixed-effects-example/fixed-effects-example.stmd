@@ -29,6 +29,16 @@ Multilevel models for longitudinal data, and fixed effects regression provide tw
 # Describe the Key Variables (`describe`)
 
     describe ln_w grade age race union south
+	
+# Equation
+
+Both models estimate the following equation.
+
+$$y_{it} = \beta_0 + \beta_1 x_{it} + u_{0i} + e_{it}$$
+
+Here $\beta_0$ is the intercept, $\beta_1$ is a slope, $u_{0i}$ is a person specific intercept, and $e_{it}$ is a measurement specific error term.
+
+> In the *multilevel model* discussed below, the $u_{0i}$ are considered to have a *distribution*, with a mean of 0 and a standard deviation $\sigma_{u0}$. In the *fixed effects regression model*, the $u_{0i}$ are considered to be *fixed*, and *directly estimable*, although in practice, estimates for each of the $u_{0i}$ are usually not provided.
 
 # Multilevel Model (`mixed y x || id:`)
 
