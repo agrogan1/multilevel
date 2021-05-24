@@ -1,0 +1,184 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\multilevel\centering-in-cross-sectional-data\centering-in-cross-sectional-data.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}24 May 2021, 17:59:11
+{txt}
+{com}. //_1
+. display c(current_date)
+{res}24 May 2021
+{txt}
+{com}. //_2
+. display c(current_time)
+{res}17:59:11
+{txt}
+{com}. //_3
+. clear all
+{res}{txt}
+{com}. //_4
+. set obs 100
+{txt}{p}
+Number of observations ({bf:_N}) was 0,
+now 100.
+{p_end}
+
+{com}. //_5
+. generate income = runiform(10000, 70000)
+{txt}
+{com}. //_6
+. generate physical_punishment = rbinomial(1,.3)
+{txt}
+{com}. //_7
+. generate country = int(_n/10) + 1
+{txt}
+{com}. //_8
+. generate e = rnormal(0,1) 
+{txt}
+{com}. //_9
+. generate behavior_problems = 110 + -.0001 * income + 10 * physical_punishment + e // plausible regression relationship
+{txt}
+{com}. //_10
+. list in 1/10, abb(20) // list out some data
+{txt}
+     {c TLC}{hline 10}{c -}{hline 21}{c -}{hline 9}{c -}{hline 11}{c -}{hline 19}{c TRC}
+     {c |} {res}  income   physical_punishment   country           e   behavior_problems {txt}{c |}
+     {c LT}{hline 10}{c -}{hline 21}{c -}{hline 9}{c -}{hline 11}{c -}{hline 19}{c RT}
+  1. {c |} {res}40915.21                     0         1    .2154569            106.1239 {txt}{c |}
+  2. {c |} {res}58346.25                     0         1   -.4418385            103.7235 {txt}{c |}
+  3. {c |} {res}66061.07                     0         1    1.762688            105.1566 {txt}{c |}
+  4. {c |} {res}52075.53                     0         1   -.4707811            104.3217 {txt}{c |}
+  5. {c |} {res}27207.43                     0         1    .2849969            107.5643 {txt}{c |}
+     {c LT}{hline 10}{c -}{hline 21}{c -}{hline 9}{c -}{hline 11}{c -}{hline 19}{c RT}
+  6. {c |} {res}38323.49                     1         1    .0082076            116.1759 {txt}{c |}
+  7. {c |} {res}25597.57                     0         1   -.1955867            107.2447 {txt}{c |}
+  8. {c |} {res}36809.94                     0         1   -.0347036            106.2843 {txt}{c |}
+  9. {c |} {res}22501.57                     0         1    .9727817            108.7226 {txt}{c |}
+ 10. {c |} {res}43147.42                     0         2    .2931708            105.9784 {txt}{c |}
+     {c BLC}{hline 10}{c -}{hline 21}{c -}{hline 9}{c -}{hline 11}{c -}{hline 19}{c BRC}
+
+{com}. //_11
+. twoway (scatter behavior_problems income if physical_punishment ==0) ///
+> (scatter behavior_problems income if physical_punishment == 1), ///
+> legend(order(1 "no physical punishment" 2 "physical punishment") pos(6)) ///
+> title("Behavior Problems by Income and Physical Punishment") ///
+> xtitle("Per Capita Income") ///
+> ytitle("Behavior Problems") ///
+> scheme(michigan)
+{res}{txt}
+{com}. //_12
+. graph export myscatter.png, width(1000) replace
+{txt}{p 0 4 2}
+file {bf}
+myscatter.png{rm}
+saved as
+PNG
+format
+{p_end}
+
+{com}. //_13
+. mixed behavior_problems income physical_punishment || country:
+{res}
+{txt}Performing EM optimization: 
+{res}
+{txt}Performing gradient-based optimization: 
+{res}
+{txt}Iteration 0:{space 3}log likelihood = {res:-132.47696}  
+{res}{txt}Iteration 1:{space 3}log likelihood = {res:-132.22777}  
+{res}{txt}Iteration 2:{space 3}log likelihood = {res: -132.2277}  
+{res}{txt}Iteration 3:{space 3}log likelihood = {res: -132.2277}  
+{res}
+{txt}Computing standard errors:
+{res}
+{txt}Mixed-effects ML regression{col 49}Number of obs{col 67}={col 69}{res}       100
+{txt}Group variable: {res}country{col 49}{txt}Number of groups{col 67}={col 69}{res}        11
+{txt}{col 49}Obs per group:
+{col 63}min{col 67}={col 69}{res}         1
+{txt}{col 63}avg{col 67}={col 69}{res}       9.1
+{txt}{col 63}max{col 67}={col 69}{res}        10
+{col 49}{txt}Wald chi2({res}2{txt}){col 67}={col 70}{res}  3030.41
+{txt}Log likelihood = {res} -132.2277{col 49}{txt}Prob > chi2{col 67}={col 73}{res}0.0000
+
+{txt}{hline 20}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}  behavior_problems{col 21}{c |} Coefficient{col 33}  Std. err.{col 45}      z{col 53}   P>|z|{col 61}     [95% con{col 74}f. interval]
+{hline 20}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 13}income {c |}{col 21}{res}{space 2}-.0001068{col 33}{space 2} 5.31e-06{col 44}{space 1}  -20.10{col 53}{space 3}0.000{col 61}{space 4}-.0001172{col 74}{space 3}-.0000964
+{txt}physical_punishment {c |}{col 21}{res}{space 2} 9.763856{col 33}{space 2} .1916716{col 44}{space 1}   50.94{col 53}{space 3}0.000{col 61}{space 4} 9.388186{col 74}{space 3} 10.13953
+{txt}{space 14}_cons {c |}{col 21}{res}{space 2} 110.3409{col 33}{space 2} .2426648{col 44}{space 1}  454.71{col 53}{space 3}0.000{col 61}{space 4} 109.8653{col 74}{space 3} 110.8165
+{txt}{hline 20}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{hline 29}{c TT}{hline 48}
+{col 3}Random-effects parameters{col 30}{c |}{col 34}Estimate{col 45}Std. err.{col 59}[95% conf. interval]
+{hline 29}{c +}{hline 48}
+{res}country{txt}: Identity{col 30}{c |}
+{space 18}var(_cons) {c |}{res}{col 33} 1.87e-17{col 44} 1.79e-13{col 58}        0{col 70}        .
+{txt}{hline 29}{c +}{hline 48}
+{col 16}var(Residual){col 30}{c |}{res}{col 33} .8242157{col 44} .1165617{col 58} .6246875{col 70} 1.087474
+{txt}{hline 29}{c BT}{hline 48}
+LR test vs. linear model:{col 27}{help j_chibar##|_new:chibar2(01) =} {res}8.5e-13{col 55}{txt}Prob >= chibar2 = {col 73}{res}1.0000
+{txt}
+{com}. //_14
+. display %5.3f 10000 * _b[income]
+{res}-1.068
+{txt}
+{com}. //_15
+. display %5.3f _b[physical_punishment]
+{res}9.764
+{txt}
+{com}. //_16
+. display %5.3f _b[_cons]
+{res}110.341
+{txt}
+{com}. //_17
+. egen m_income = mean(income) // grand mean of income
+{txt}
+{com}. //_18
+. generate c_income = income - m_income // grand mean centered income
+{txt}
+{com}. //_19
+. twoway (scatter behavior_problems c_income if physical_punishment ==0) ///
+> (scatter behavior_problems c_income if physical_punishment == 1), ///
+> legend(order(1 "no physical punishment" 2 "physical punishment") pos(6)) ///
+> title("Behavior Problems by Income and Physical Punishment") ///
+> caption("Income is Grand Mean Centered") ///
+> xtitle("Per Capita Income") ///
+> ytitle("Behavior Problems") ///
+> scheme(michigan)
+{res}{txt}
+{com}. //_20
+. graph export myscatter2.png, width(1000) replace
+{txt}{p 0 4 2}
+file {bf}
+myscatter2.png{rm}
+saved as
+PNG
+format
+{p_end}
+
+{com}. //_21
+. bysort country: egen m_g_income = mean(income) // GROUP mean of income
+{txt}
+{com}. //_22
+. generate c_g_income = income - m_g_income // GROUP mean centered income
+{txt}
+{com}. //_23
+. bysort country: egen m_g_physical_punishment = mean(physical_punishment) // GROUP mean of physical punishment
+{txt}
+{com}. //_24
+. generate c_g_physical_punishment = physical_punishment - m_g_physical_punishment // GROUP mean centered physical punishment
+{txt}
+{com}. //_25
+. quietly: mixed behavior_problems income m_g_income physical_punishment m_g_physical_punishment || country:
+{txt}
+{com}. //_26
+. quietly: mixed behavior_problems c_g_physical_punishment m_g_income c_g_physical_punishment m_g_physical_punishment || country:
+{txt}
+{com}. //_^
+. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\multilevel\centering-in-cross-sectional-data\centering-in-cross-sectional-data.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}24 May 2021, 17:59:16
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

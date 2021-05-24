@@ -1,0 +1,152 @@
+% Centering in Cross Sectional Data
+% Andy Grogan-Kaylor
+% `s c(current_date)` `s c(current_time)`
+
+---
+geometry: margin=1 in
+---
+
+# Background 
+
+<style>h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
+
+# Introduction
+
+These notes represent a brief discussion of centering with cross sectional data. Since so much of my current work focuses on cross national work on parenting and child development, I use these ideas as my substantive example.
+
+Consider a cross-national data set where we are attempting to understand predictors of *behavior problems* as a function of *per capita income* and *parental use of physical punishment*.
+
+# Simulate Some Data
+
+<button type="button" class="collapsible">Show / Hide Data Simulation Code</button>
+<div class="content">
+
+    clear all
+
+    set obs 100
+	
+    generate income = runiform(10000, 70000)
+	
+    generate physical_punishment = rbinomial(1,.3)
+	
+    generate country = int(_n/10) + 1
+	
+	generate e = rnormal(0,1) 
+	
+	generate behavior_problems = 110 + -.0001 * income + 10 * physical_punishment + e // plausible regression relationship
+
+</div>
+
+<style>
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+}
+</style>
+<script>	
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+coll[i].addEventListener("click", function() {
+this.classList.toggle("active");
+var content = this.nextElementSibling;
+if (content.style.display === "block") {
+content.style.display = "none";
+} else {
+content.style.display = "block";
+}
+});
+}
+</script>
+
+    list in 1/10, abb(20) // list out some data
+	
+# Uncentered Data
+
+## Equation
+
+$$\text{behavior problems} = \beta_0 + \beta_1 \text{income} + \beta_2 \text{physical punishment} + u_{\text{country}} + e_{ij}$$
+
+## Graph
+
+    twoway (scatter behavior_problems income if physical_punishment ==0) ///
+	(scatter behavior_problems income if physical_punishment == 1), ///
+	legend(order(1 "no physical punishment" 2 "physical punishment") pos(6)) ///
+	title("Behavior Problems by Income and Physical Punishment") ///
+	xtitle("Per Capita Income") ///
+	ytitle("Behavior Problems") ///
+	scheme(michigan)
+	
+    graph export myscatter.png, width(1000) replace
+
+![Scatterplot](myscatter.png)
+
+## Multilevel Model
+
+    mixed behavior_problems income physical_punishment || country:
+	
+We note that `s %5.3f 10000 * _b[income]` is the effect of every additional $10,000 of per capita income. `s %5.3f _b[physical_punishment]`. Notably, for this handout, `s %5.3f _b[_cons]` is the level of behavior problems for a child who did *not recieve physical punishment* living in a family with **$0** *income*.
+
+# Grand Mean Centering
+
+Grand mean centering helps us to have more meaningful intercepts of our continuous variables.
+
+Essentially, we are going to create $income_{\text{grand mean centered}} = income - \overline{income}$
+
+    egen m_income = mean(income) // grand mean of income
+	
+	generate c_income = income - m_income // grand mean centered income
+	
+	twoway (scatter behavior_problems c_income if physical_punishment ==0) ///
+	(scatter behavior_problems c_income if physical_punishment == 1), ///
+	legend(order(1 "no physical punishment" 2 "physical punishment") pos(6)) ///
+	title("Behavior Problems by Income and Physical Punishment") ///
+	caption("Income is Grand Mean Centered") ///
+	xtitle("Per Capita Income") ///
+	ytitle("Behavior Problems") ///
+	scheme(michigan)
+	
+    graph export myscatter2.png, width(1000) replace
+
+![Scatterplot With Grand Mean Centering](myscatter2.png)
+	
+In a graph, we see that *grand mean centering* has transformed the intercept so now the $\beta_0$ term is the level of behavior problems for the *average* child who did *not recieve physical punishment*.
+
+# Group Mean Centering
+
+In group mean centering, we are doing something slightly different. We are creating a mean for each *group*, which in this data is *country*: $income_{\text{group mean centered}} = income - \overline{income_j}$, where $j$ is the index for *group* or *country*.
+
+    bysort country: egen m_g_income = mean(income) // GROUP mean of income
+	
+	generate c_g_income = income - m_g_income // GROUP mean centered income
+	
+	bysort country: egen m_g_physical_punishment = mean(physical_punishment) // GROUP mean of physical punishment
+	
+	generate c_g_physical_punishment = physical_punishment - m_g_physical_punishment // GROUP mean centered physical punishment
+
+## Multilevel Model
+
+Interestingly, *group mean centering* has many implications. Here I focus on how employing different variables might provide *conceptually* or *theoretically* different results. For the sake of parismony, in the brief discussion below I focus on these *conceptual* or *theoretical* differences, and do not provide output. I use the `quietly` prefix to suppress output.
+
+### Covariate, and Group Mean
+
+One parameterization of the multilevel model is to enter the *covariate* and its *group level mean* i.e. $x_{ij}$ and $\overline{x_j}$.  
+
+> This first parameterization focuses on *individual scores on covariates* and their *country level means*.
+
+What is the effect of *income*, *country level mean income*, *physical punishment* and *country level mean of physical punishment* on *behavior problems*?
+
+    quietly: mixed behavior_problems income m_g_income physical_punishment m_g_physical_punishment || country:
+
+### Group Mean Centered Covariate, and Group Mean
+
+A second, equally valid, but conceptually different parameterization of the multilevel model is to enter the *covariate deviated from its group level mean* and the *group level mean* i.e. $x_{ij} - \overline{x_j}$ and $\overline{x_j}$.
+
+This second parameterization focuses on how *individuals differ from their country level means*, and *country level means*.
+
+> What is the effect of *income deviated from its country level mean*, *country level mean income*, *physical punishment deviated from its country level punishment*, and *country level mean of physical punishment*  on *behavior problems*?
+
+    quietly: mixed behavior_problems c_g_physical_punishment m_g_income c_g_physical_punishment m_g_physical_punishment || country:
+
