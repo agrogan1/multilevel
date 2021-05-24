@@ -50,7 +50,7 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 <div id="header">
 <h1 class="title">Centering in Cross Sectional Data</h1>
 <h2 class="author">Andy Grogan-Kaylor</h2>
-<h3 class="date">24 May 2021 17:59:06</h3>
+<h3 class="date">24 May 2021 18:09:06</h3>
 </div>
 <h1 id="background">Background</h1>
 <style>h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
@@ -73,9 +73,11 @@ Number of observations (_N) was 0, now 100.
 </pre>
 <pre class='stata'>. generate country = int(_n/10) + 1
 </pre>
-<pre class='stata'>. generate e = rnormal(0,1) 
+<pre class='stata'>. generate e = rnormal(0,1) // individual error
 </pre>
-<pre class='stata'>. generate behavior_problems = 110 + -.0001 * income + 10 * physical_punishment + e // plausible regression relationship
+<pre class='stata'>. generate u = country - 5 // random intercept
+</pre>
+<pre class='stata'>. generate behavior_problems = 110 + -.0001 * income + 10 * physical_punishment + u + e // plausible regression relationship
 </pre>
 </div>
 <style>
@@ -103,21 +105,21 @@ content.style.display = "block";
 </script>
 <pre class='stata'>. list in 1/10, abb(20) // list out some data
 
-     ┌──────────────────────────────────────────────────────────────────────────┐
-     │   income   physical_punishment   country           e   behavior_problems │
-     ├──────────────────────────────────────────────────────────────────────────┤
-  1. │  21183.1                     1         1   -.6634593            117.2182 │
-  2. │ 13816.54                     0         1   -.6456981            107.9726 │
-  3. │ 63705.22                     0         1   -.7973762            102.8321 │
-  4. │ 59598.07                     0         1    .0487425            104.0889 │
-  5. │ 38020.59                     0         1    .9671034             107.165 │
-     ├──────────────────────────────────────────────────────────────────────────┤
-  6. │  40924.5                     0         1    1.612329            107.5199 │
-  7. │ 25155.54                     0         1    .1915171             107.676 │
-  8. │ 59613.32                     0         1     .498747            104.5374 │
-  9. │  68866.3                     0         1    .8072937            103.9207 │
- 10. │ 17713.09                     0         2    .4397526            108.6684 │
-     └──────────────────────────────────────────────────────────────────────────┘
+     ┌───────────────────────────────────────────────────────────────────────────────┐
+     │   income   physical_punishment   country           e    u   behavior_problems │
+     ├───────────────────────────────────────────────────────────────────────────────┤
+  1. │  69522.2                     1         1    .8427689   -4            109.8905 │
+  2. │ 52162.38                     1         1    1.498702   -4            112.2825 │
+  3. │ 34019.46                     0         1   -.2832655   -4            102.3148 │
+  4. │ 10159.73                     1         1   -.1474013   -4            114.8366 │
+  5. │ 38926.97                     0         1   -2.300458   -4            99.80685 │
+     ├───────────────────────────────────────────────────────────────────────────────┤
+  6. │ 68141.12                     0         1    .7890605   -4            99.97495 │
+  7. │ 36086.01                     0         1   -.0901579   -4            102.3012 │
+  8. │ 48488.41                     0         1    1.337788   -4            102.4889 │
+  9. │ 42810.74                     0         1   -.6666995   -4            101.0522 │
+ 10. │ 69235.84                     1         2    .0974492   -3            110.1739 │
+     └───────────────────────────────────────────────────────────────────────────────┘
 </pre>
 <h1 id="uncentered-data">Uncentered Data</h1>
 <h2 id="equation">Equation</h2>
@@ -145,10 +147,8 @@ Performing EM optimization:
 
 Performing gradient-based optimization: 
 
-Iteration 0:   log likelihood = -145.88409  
-Iteration 1:   log likelihood = -145.73841  
-Iteration 2:   log likelihood = -145.73776  
-Iteration 3:   log likelihood = -145.73776  
+Iteration 0:   log likelihood = -167.55013  
+Iteration 1:   log likelihood = -167.55013  
 
 Computing standard errors:
 
@@ -158,28 +158,28 @@ Group variable: country                         Number of groups  =         11
                                                               min =          1
                                                               avg =        9.1
                                                               max =         10
-                                                Wald chi2(2)      =    2775.27
-Log likelihood = -145.73776                     Prob > chi2       =     0.0000
+                                                Wald chi2(2)      =    2182.62
+Log likelihood = -167.55013                     Prob > chi2       =     0.0000
 
 ────────────────────┬────────────────────────────────────────────────────────────────
   behavior_problems │ Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
 ────────────────────┼────────────────────────────────────────────────────────────────
-             income │  -.0000947   6.06e-06   -15.63   0.000    -.0001066   -.0000828
-physical_punishment │   10.39944   .2399978    43.33   0.000     9.929052    10.86983
-              _cons │   109.6132   .2933193   373.70   0.000     109.0383    110.1881
+             income │  -.0000978   6.48e-06   -15.08   0.000    -.0001105   -.0000851
+physical_punishment │   10.34499   .2307339    44.84   0.000     9.892763    10.79722
+              _cons │   110.6282   .9461317   116.93   0.000     108.7738    112.4825
 ────────────────────┴────────────────────────────────────────────────────────────────
 
 ─────────────────────────────┬────────────────────────────────────────────────
   Random-effects parameters  │   Estimate   Std. err.     [95% conf. interval]
 ─────────────────────────────┼────────────────────────────────────────────────
 country: Identity            │
-                  var(_cons) │   9.07e-18   1.32e-13             0           .
+                  var(_cons) │    8.70753   3.797228      3.704232    20.46877
 ─────────────────────────────┼────────────────────────────────────────────────
-               var(Residual) │   1.079911   .1527225      .8184829     1.42484
+               var(Residual) │   1.050102   .1574455      .7827221    1.408819
 ─────────────────────────────┴────────────────────────────────────────────────
-LR test vs. linear model: chibar2(01) = 2.3e-13       Prob >= chibar2 = 1.0000
+LR test vs. linear model: chibar2(01) = 171.82        Prob >= chibar2 = 0.0000
 </pre>
-<p>We note that -0.947 is the effect of every additional $10,000 of per capita income. 10.399. Notably, for this handout, 109.613 is the level of behavior problems for a child who did <em>not recieve physical punishment</em> living in a family with <strong>$0</strong> <em>income</em>.</p>
+<p>We note that -0.978 is the effect of every additional $10,000 of per capita income. 10.345 is the effect of physical punishment. Notably, for this handout, 110.628 is the level of behavior problems for a child who did <em>not recieve physical punishment</em> living in a family with <strong>$0</strong> <em>income</em>.</p>
 <h1 id="grand-mean-centering">Grand Mean Centering</h1>
 <p>Grand mean centering helps us to have more meaningful intercepts of our continuous variables.</p>
 <p>Essentially, we are going to create <span class="math inline">\(income_{\text{grand mean centered}} = income - \overline{income}\)</span></p>

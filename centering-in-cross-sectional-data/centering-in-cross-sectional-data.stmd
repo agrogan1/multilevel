@@ -31,9 +31,11 @@ Consider a cross-national data set where we are attempting to understand predict
 	
     generate country = int(_n/10) + 1
 	
-	generate e = rnormal(0,1) 
+	generate e = rnormal(0,1) // individual error
 	
-	generate behavior_problems = 110 + -.0001 * income + 10 * physical_punishment + e // plausible regression relationship
+	generate u = country - 5 // random intercept
+	
+	generate behavior_problems = 110 + -.0001 * income + 10 * physical_punishment + u + e // plausible regression relationship
 
 </div>
 
@@ -87,7 +89,7 @@ $$\text{behavior problems} = \beta_0 + \beta_1 \text{income} + \beta_2 \text{phy
 
     mixed behavior_problems income physical_punishment || country:
 	
-We note that `s %5.3f 10000 * _b[income]` is the effect of every additional $10,000 of per capita income. `s %5.3f _b[physical_punishment]`. Notably, for this handout, `s %5.3f _b[_cons]` is the level of behavior problems for a child who did *not recieve physical punishment* living in a family with **$0** *income*.
+We note that `s %5.3f 10000 * _b[income]` is the effect of every additional $10,000 of per capita income. `s %5.3f _b[physical_punishment]` is the effect of physical punishment. Notably, for this handout, `s %5.3f _b[_cons]` is the level of behavior problems for a child who did *not recieve physical punishment* living in a family with **$0** *income*.
 
 # Grand Mean Centering
 
