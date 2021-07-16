@@ -10,7 +10,7 @@ geometry: margin=1 in
 
 # Get Data
  
-> using data from https://stats.idre.ucla.edu/stata/examples/mlm-imm/introduction-to-multilevel-modeling-by-kreft-and-de-leeuwchapter-4-analyses/
+> This example uses data from [https://stats.idre.ucla.edu/stata/examples/mlm-imm/introduction-to-multilevel-modeling-by-kreft-and-de-leeuwchapter-4-analyses/](https://stats.idre.ucla.edu/stata/examples/mlm-imm/introduction-to-multilevel-modeling-by-kreft-and-de-leeuwchapter-4-analyses/)
 
     use https://stats.idre.ucla.edu/stat/examples/imm/imm23, clear
 	
@@ -29,7 +29,7 @@ geometry: margin=1 in
 > Schemes are very helpful in making better looking Stata graphs. A useful Stata scheme is `s1color`. Useful user written schemes are `lean2`, `plottig` (type `findit lean2` or `findit plottig` to install these), and my own [Michigan Stata graph scheme](https://agrogan1.github.io/Stata/michigan-graph-scheme/).
 
     spagplot math ses, id(schid) ///
-	scheme(s1color) ///
+	scheme(michigan) ///
 	title("Spaghetti Plot of Math Score By SES") ///
 	note(" ") // blank "note" since title explains this graph
 	
@@ -39,7 +39,7 @@ geometry: margin=1 in
 
 # Now Try `twoway` Syntax
 
-    twoway lfit math ses, scheme(s1color) title("Math Score By SES")
+    twoway lfit math ses, scheme(michigan) title("Math Score By SES")
 	
     graph export graph3.png, width(500) replace
 
@@ -49,7 +49,7 @@ geometry: margin=1 in
 
 This ONLY works well with a limited number of schools.
 
-    twoway lfit math ses, scheme(s1color) by(schid, title("Math Score By SES")) 
+    twoway lfit math ses, scheme(michigan) by(schid, title("Math Score By SES")) 
 	
     graph export graph4.png, width(1000) replace
 
@@ -59,7 +59,7 @@ This ONLY works well with a limited number of schools.
 
     twoway (lfit math ses) ///
 	(scatter math ses, mcolor(gs7%30)), /// color gs7 @ 30% transparency
-	scheme(s1color) by(schid, title("Math Score By SES"))
+	scheme(michigan) by(schid, title("Math Score By SES"))
 
     graph export graph5.png, width(1000) replace
 
@@ -81,7 +81,7 @@ To do this we first estimate a multilevel model.
 
     predict yhat
 	
-	spagplot yhat ses, id(schid) scheme(s1color)
+	spagplot yhat ses, id(schid) scheme(michigan)
 	
 	graph export graph6A.png, width(500) replace
 
@@ -89,7 +89,7 @@ To do this we first estimate a multilevel model.
 
 ## "Model Based" Predicted Values
 
-The spaghetti plots so far give an indication of different slopes per school. Below we outline a procedure for (a) developing a spaghetti plot of adjusted estimates; and (b) ensuring that the plot reflects the exact structure of the model e.g. random intercept only, or random intercept + random slope(s). 
+The spaghetti plots so far give an indication of different slopes per school. Below we outline a procedure for (a) developing a spaghetti plot of adjusted estimates; and (b) ensuring that the plot reflects the *exact* structure of the model e.g. random intercept only, or random intercept + random slope(s). 
 
 To carry out this procedure we employ the `_b` notation in Stata. For example, `_b[_cons]` indicates the intercept of the model while `_b[ses]` indicates the slope attached to *ses*.
 
@@ -120,7 +120,7 @@ We are using $\beta_0$, the random intercept $u_0$, $\beta_{ses}$ multiplied by 
 	
 ### Graph The Spaghetti Plot	
 
-    twoway scatter yhat2 ses, scheme(s1color)
+    twoway scatter yhat2 ses, scheme(michigan)
 	
 	graph export graph6B.png, width(500) replace
 
@@ -133,12 +133,13 @@ We are going to use `twoway connect` to create connected line plots. We employ o
     sort schid ses // sort on Level 2 units and x values
 	
     twoway connect yhat2 ses, ///
+	lcolor("0 39 76") /// Michigan blue for connecting lines
 	title("Model Based Spaghetti Plot") /// title
 	xtitle("Socioeconomic Status") /// title for x axis
 	ytitle("Model Predicted Values") /// title for y axis
 	c(L) /// connect only ascending values
 	msymbol(none) /// no marker symbol; only lines
-	scheme(s1color) // s1color scheme
+	scheme(michigan) // michigan scheme
 	
 	graph export graph7.png, width(500) replace
 

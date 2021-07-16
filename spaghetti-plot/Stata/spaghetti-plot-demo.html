@@ -50,12 +50,12 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 <div id="header">
 <h1 class="title">Spaghetti Plot Demo</h1>
 <h2 class="author">Andy Grogan-Kaylor</h2>
-<h3 class="date">18 Apr 2021</h3>
+<h3 class="date">16 Jul 2021</h3>
 </div>
 <style>h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
 <h1 id="get-data">Get Data</h1>
 <blockquote>
-<p>using data from https://stats.idre.ucla.edu/stata/examples/mlm-imm/introduction-to-multilevel-modeling-by-kreft-and-de-leeuwchapter-4-analyses/</p>
+<p>This example uses data from <a href="https://stats.idre.ucla.edu/stata/examples/mlm-imm/introduction-to-multilevel-modeling-by-kreft-and-de-leeuwchapter-4-analyses/" class="uri">https://stats.idre.ucla.edu/stata/examples/mlm-imm/introduction-to-multilevel-modeling-by-kreft-and-de-leeuwchapter-4-analyses/</a></p>
 </blockquote>
 <pre class='stata'>. use https://stats.idre.ucla.edu/stat/examples/imm/imm23, clear
 </pre>
@@ -65,7 +65,7 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 <pre class='stata'>. spagplot math ses, id(schid) 
 </pre>
 <pre class='stata'>. graph export graph1.png, width(500) replace
-(file graph1.png written in PNG format)
+file graph1.png saved as PNG format
 </pre>
 <div class="figure">
 <img src="graph1.png" alt="Basic Spaghetti Plot" />
@@ -76,22 +76,22 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 <p>Schemes are very helpful in making better looking Stata graphs. A useful Stata scheme is <code>s1color</code>. Useful user written schemes are <code>lean2</code>, <code>plottig</code> (type <code>findit lean2</code> or <code>findit plottig</code> to install these), and my own <a href="https://agrogan1.github.io/Stata/michigan-graph-scheme/">Michigan Stata graph scheme</a>.</p>
 </blockquote>
 <pre class='stata'>. spagplot math ses, id(schid) ///
-> scheme(s1color) ///
+> scheme(michigan) ///
 > title("Spaghetti Plot of Math Score By SES") ///
 > note(" ") // blank "note" since title explains this graph
 </pre>
 <pre class='stata'>. graph export graph2.png, width(500) replace
-(file graph2.png written in PNG format)
+file graph2.png saved as PNG format
 </pre>
 <div class="figure">
 <img src="graph2.png" alt="Spaghetti Plot With Better Options" />
 <p class="caption">Spaghetti Plot With Better Options</p>
 </div>
 <h1 id="now-try-twoway-syntax">Now Try <code>twoway</code> Syntax</h1>
-<pre class='stata'>. twoway lfit math ses, scheme(s1color) title("Math Score By SES")
+<pre class='stata'>. twoway lfit math ses, scheme(michigan) title("Math Score By SES")
 </pre>
 <pre class='stata'>. graph export graph3.png, width(500) replace
-(file graph3.png written in PNG format)
+file graph3.png saved as PNG format
 </pre>
 <div class="figure">
 <img src="graph3.png" alt="Initial twoway Graph" />
@@ -99,10 +99,10 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 </div>
 <h1 id="separate-panels-for-schools">Separate Panels For Schools</h1>
 <p>This ONLY works well with a limited number of schools.</p>
-<pre class='stata'>. twoway lfit math ses, scheme(s1color) by(schid, title("Math Score By SES")) 
+<pre class='stata'>. twoway lfit math ses, scheme(michigan) by(schid, title("Math Score By SES")) 
 </pre>
 <pre class='stata'>. graph export graph4.png, width(1000) replace
-(file graph4.png written in PNG format)
+file graph4.png saved as PNG format
 </pre>
 <div class="figure">
 <img src="graph4.png" alt="Separate Panels For Schools" />
@@ -111,10 +111,10 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 <h1 id="separate-panels-for-schools-with-scatterplots">Separate Panels For Schools With Scatterplots</h1>
 <pre class='stata'>. twoway (lfit math ses) ///
 > (scatter math ses, mcolor(gs7%30)), /// color gs7 @ 30% transparency
-> scheme(s1color) by(schid, title("Math Score By SES"))
+> scheme(michigan) by(schid, title("Math Score By SES"))
 </pre>
 <pre class='stata'>. graph export graph5.png, width(1000) replace
-(file graph5.png written in PNG format)
+file graph5.png saved as PNG format
 </pre>
 <div class="figure">
 <img src="graph5.png" alt="Separate Panels For Schools With Scatterplots" />
@@ -137,17 +137,15 @@ Computing standard errors:
 
 Mixed-effects ML regression                     Number of obs     =        519
 Group variable: schid                           Number of groups  =         23
-
                                                 Obs per group:
                                                               min =          5
                                                               avg =       22.6
                                                               max =         67
-
                                                 Wald chi2(2)      =      69.58
 Log likelihood = -1871.9169                     Prob > chi2       =     0.0000
 
 ─────────────┬────────────────────────────────────────────────────────────────
-        math │      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+        math │ Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
 ─────────────┼────────────────────────────────────────────────────────────────
          ses │    3.88476   .6096853     6.37   0.000     2.689799    5.079722
      meanses │   3.281962   1.464135     2.24   0.025     .4123106    6.151614
@@ -155,7 +153,7 @@ Log likelihood = -1871.9169                     Prob > chi2       =     0.0000
 ─────────────┴────────────────────────────────────────────────────────────────
 
 ─────────────────────────────┬────────────────────────────────────────────────
-  Random-effects Parameters  │   Estimate   Std. Err.     [95% Conf. Interval]
+  Random-effects parameters  │   Estimate   Std. err.     [95% conf. interval]
 ─────────────────────────────┼────────────────────────────────────────────────
 schid: Identity              │
                   var(_cons) │   8.931927   3.813085      3.868681    20.62184
@@ -171,17 +169,17 @@ LR test vs. linear model: chibar2(01) = 25.58         Prob >= chibar2 = 0.0000
 <pre class='stata'>. predict yhat
 (option xb assumed)
 </pre>
-<pre class='stata'>. spagplot yhat ses, id(schid) scheme(s1color)
+<pre class='stata'>. spagplot yhat ses, id(schid) scheme(michigan)
 </pre>
 <pre class='stata'>. graph export graph6A.png, width(500) replace
-(file graph6A.png written in PNG format)
+file graph6A.png saved as PNG format
 </pre>
 <div class="figure">
 <img src="graph6A.png" alt="Spaghetti Plot With Predicted Values" />
 <p class="caption">Spaghetti Plot With Predicted Values</p>
 </div>
 <h2 id="model-based-predicted-values">&quot;Model Based&quot; Predicted Values</h2>
-<p>The spaghetti plots so far give an indication of different slopes per school. Below we outline a procedure for (a) developing a spaghetti plot of adjusted estimates; and (b) ensuring that the plot reflects the exact structure of the model e.g. random intercept only, or random intercept + random slope(s).</p>
+<p>The spaghetti plots so far give an indication of different slopes per school. Below we outline a procedure for (a) developing a spaghetti plot of adjusted estimates; and (b) ensuring that the plot reflects the <em>exact</em> structure of the model e.g. random intercept only, or random intercept + random slope(s).</p>
 <p>To carry out this procedure we employ the <code>_b</code> notation in Stata. For example, <code>_b[_cons]</code> indicates the intercept of the model while <code>_b[ses]</code> indicates the slope attached to <em>ses</em>.</p>
 <p>We need to carry out a few preliminary calculations.</p>
 <ol style="list-style-type: decimal">
@@ -204,17 +202,15 @@ Computing standard errors:
 
 Mixed-effects ML regression                     Number of obs     =        519
 Group variable: schid                           Number of groups  =         23
-
                                                 Obs per group:
                                                               min =          5
                                                               avg =       22.6
                                                               max =         67
-
                                                 Wald chi2(2)      =      69.58
 Log likelihood = -1871.9169                     Prob > chi2       =     0.0000
 
 ─────────────┬────────────────────────────────────────────────────────────────
-        math │      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+        math │ Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
 ─────────────┼────────────────────────────────────────────────────────────────
          ses │    3.88476   .6096853     6.37   0.000     2.689799    5.079722
      meanses │   3.281962   1.464135     2.24   0.025     .4123106    6.151614
@@ -222,7 +218,7 @@ Log likelihood = -1871.9169                     Prob > chi2       =     0.0000
 ─────────────┴────────────────────────────────────────────────────────────────
 
 ─────────────────────────────┬────────────────────────────────────────────────
-  Random-effects Parameters  │   Estimate   Std. Err.     [95% Conf. Interval]
+  Random-effects parameters  │   Estimate   Std. err.     [95% conf. interval]
 ─────────────────────────────┼────────────────────────────────────────────────
 schid: Identity              │
                   var(_cons) │   8.931927   3.813085      3.868681    20.62184
@@ -236,7 +232,7 @@ LR test vs. linear model: chibar2(01) = 25.58         Prob >= chibar2 = 0.0000
 <h3 id="estimate-the-mean-values-of-relevant-variables">Estimate the Mean Values of Relevant Variables</h3>
 <pre class='stata'>. summarize meanses
 
-    Variable │        Obs        Mean    Std. Dev.       Min        Max
+    Variable │        Obs        Mean    Std. dev.       Min        Max
 ─────────────┼─────────────────────────────────────────────────────────
      meanses │        519   -.0012717    .6206429    -1.0685    1.17625
 </pre>
@@ -246,11 +242,10 @@ LR test vs. linear model: chibar2(01) = 25.58         Prob >= chibar2 = 0.0000
 <pre class='stata'>. generate yhat2 = _b[_cons] + u0 + _b[ses] * ses + _b[ses] * -.0012717 
 </pre>
 <h3 id="graph-the-spaghetti-plot">Graph The Spaghetti Plot</h3>
-<pre class='stata'>. twoway scatter yhat2 ses, scheme(s1color)
+<pre class='stata'>. twoway scatter yhat2 ses, scheme(michigan)
 </pre>
 <pre class='stata'>. graph export graph6B.png, width(500) replace
-(note: file graph6B.png not found)
-(file graph6B.png written in PNG format)
+file graph6B.png saved as PNG format
 </pre>
 <div class="figure">
 <img src="graph6B.png" alt="Initial &quot;Model Based&quot; Spaghetti Plot" />
@@ -261,15 +256,16 @@ LR test vs. linear model: chibar2(01) = 25.58         Prob >= chibar2 = 0.0000
 <pre class='stata'>. sort schid ses // sort on Level 2 units and x values
 </pre>
 <pre class='stata'>. twoway connect yhat2 ses, ///
+> lcolor("0 39 76") /// Michigan blue for connecting lines
 > title("Model Based Spaghetti Plot") /// title
 > xtitle("Socioeconomic Status") /// title for x axis
 > ytitle("Model Predicted Values") /// title for y axis
 > c(L) /// connect only ascending values
 > msymbol(none) /// no marker symbol; only lines
-> scheme(s1color) // s1color scheme
+> scheme(michigan) // michigan scheme
 </pre>
 <pre class='stata'>. graph export graph7.png, width(500) replace
-(file graph7.png written in PNG format)
+file graph7.png saved as PNG format
 </pre>
 <div class="figure">
 <img src="graph7.png" alt="Finalized &quot;Model Based&quot; Spaghetti Plot" />

@@ -1,13 +1,13 @@
 {smcl}
 {com}{sf}{ul off}{txt}{.-}
       name:  {res}<unnamed>
-       {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\multilevel\spaghetti-plot\Stata\spaghetti-plot-demo.smcl
+       {txt}log:  {res}C:\Users\agrogan\Desktop\GitHub\multilevel\spaghetti-plot\Stata\spaghetti-plot-demo.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}18 Apr 2021, 10:45:14
+ {txt}opened on:  {res}16 Jul 2021, 14:45:45
 {txt}
 {com}. //_1
 . display c(current_date)
-{res}18 Apr 2021
+{res}16 Jul 2021
 {txt}
 {com}. //_2
 . use https://stats.idre.ucla.edu/stat/examples/imm/imm23, clear
@@ -20,40 +20,70 @@
 {res}{txt}
 {com}. //_5
 . graph export graph1.png, width(500) replace
-{txt}(file graph1.png written in PNG format)
+{txt}{p 0 4 2}
+file {bf}
+graph1.png{rm}
+saved as
+PNG
+format
+{p_end}
 
 {com}. //_6
 . spagplot math ses, id(schid) ///
-> scheme(s1color) ///
+> scheme(michigan) ///
 > title("Spaghetti Plot of Math Score By SES") ///
 > note(" ") // blank "note" since title explains this graph
 {res}{txt}
 {com}. //_7
 . graph export graph2.png, width(500) replace
-{txt}(file graph2.png written in PNG format)
+{txt}{p 0 4 2}
+file {bf}
+graph2.png{rm}
+saved as
+PNG
+format
+{p_end}
 
 {com}. //_8
-. twoway lfit math ses, scheme(s1color) title("Math Score By SES")
+. twoway lfit math ses, scheme(michigan) title("Math Score By SES")
 {res}{txt}
 {com}. //_9
 . graph export graph3.png, width(500) replace
-{txt}(file graph3.png written in PNG format)
+{txt}{p 0 4 2}
+file {bf}
+graph3.png{rm}
+saved as
+PNG
+format
+{p_end}
 
 {com}. //_10
-. twoway lfit math ses, scheme(s1color) by(schid, title("Math Score By SES")) 
+. twoway lfit math ses, scheme(michigan) by(schid, title("Math Score By SES")) 
 {res}{txt}
 {com}. //_11
 . graph export graph4.png, width(1000) replace
-{txt}(file graph4.png written in PNG format)
+{txt}{p 0 4 2}
+file {bf}
+graph4.png{rm}
+saved as
+PNG
+format
+{p_end}
 
 {com}. //_12
 . twoway (lfit math ses) ///
 > (scatter math ses, mcolor(gs7%30)), /// color gs7 @ 30% transparency
-> scheme(s1color) by(schid, title("Math Score By SES"))
+> scheme(michigan) by(schid, title("Math Score By SES"))
 {res}{txt}
 {com}. //_13
 . graph export graph5.png, width(1000) replace
-{txt}(file graph5.png written in PNG format)
+{txt}{p 0 4 2}
+file {bf}
+graph5.png{rm}
+saved as
+PNG
+format
+{p_end}
 
 {com}. //_14
 . mixed math ses meanses || schid: // multilevel model; random intercept; no random effects
@@ -69,17 +99,15 @@
 {res}
 {txt}Mixed-effects ML regression{col 49}Number of obs{col 67}={col 69}{res}       519
 {txt}Group variable: {res}schid{col 49}{txt}Number of groups{col 67}={col 69}{res}        23
-
 {txt}{col 49}Obs per group:
 {col 63}min{col 67}={col 69}{res}         5
 {txt}{col 63}avg{col 67}={col 69}{res}      22.6
 {txt}{col 63}max{col 67}={col 69}{res}        67
-
 {col 49}{txt}Wald chi2({res}2{txt}){col 67}={col 70}{res}    69.58
 {txt}Log likelihood = {res}-1871.9169{col 49}{txt}Prob > chi2{col 67}={col 73}{res}0.0000
 
 {txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
-{col 1}        math{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{col 1}        math{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
 {hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 {space 9}ses {c |}{col 14}{res}{space 2}  3.88476{col 26}{space 2} .6096853{col 37}{space 1}    6.37{col 46}{space 3}0.000{col 54}{space 4} 2.689799{col 67}{space 3} 5.079722
 {txt}{space 5}meanses {c |}{col 14}{res}{space 2} 3.281962{col 26}{space 2} 1.464135{col 37}{space 1}    2.24{col 46}{space 3}0.025{col 54}{space 4} .4123106{col 67}{space 3} 6.151614
@@ -87,7 +115,7 @@
 {txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 
 {hline 29}{c TT}{hline 48}
-{col 3}Random-effects Parameters{col 30}{c |}{col 34}Estimate{col 45}Std. Err.{col 59}[95% Conf. Interval]
+{col 3}Random-effects parameters{col 30}{c |}{col 34}Estimate{col 45}Std. err.{col 59}[95% conf. interval]
 {hline 29}{c +}{hline 48}
 {res}schid{txt}: Identity{col 30}{c |}
 {space 18}var(_cons) {c |}{res}{col 33} 8.931927{col 44} 3.813085{col 58} 3.868681{col 70} 20.62184
@@ -101,11 +129,17 @@ LR test vs. linear model:{col 27}{help j_chibar##|_new:chibar2(01) =} {res}25.58
 {txt}(option {bf:xb} assumed)
 
 {com}. //_16
-. spagplot yhat ses, id(schid) scheme(s1color)
+. spagplot yhat ses, id(schid) scheme(michigan)
 {res}{txt}
 {com}. //_17
 . graph export graph6A.png, width(500) replace
-{txt}(file graph6A.png written in PNG format)
+{txt}{p 0 4 2}
+file {bf}
+graph6A.png{rm}
+saved as
+PNG
+format
+{p_end}
 
 {com}. //_18
 . mixed math ses meanses || schid: // multilevel model; random intercept; no random effects
@@ -121,17 +155,15 @@ LR test vs. linear model:{col 27}{help j_chibar##|_new:chibar2(01) =} {res}25.58
 {res}
 {txt}Mixed-effects ML regression{col 49}Number of obs{col 67}={col 69}{res}       519
 {txt}Group variable: {res}schid{col 49}{txt}Number of groups{col 67}={col 69}{res}        23
-
 {txt}{col 49}Obs per group:
 {col 63}min{col 67}={col 69}{res}         5
 {txt}{col 63}avg{col 67}={col 69}{res}      22.6
 {txt}{col 63}max{col 67}={col 69}{res}        67
-
 {col 49}{txt}Wald chi2({res}2{txt}){col 67}={col 70}{res}    69.58
 {txt}Log likelihood = {res}-1871.9169{col 49}{txt}Prob > chi2{col 67}={col 73}{res}0.0000
 
 {txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
-{col 1}        math{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{col 1}        math{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
 {hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 {space 9}ses {c |}{col 14}{res}{space 2}  3.88476{col 26}{space 2} .6096853{col 37}{space 1}    6.37{col 46}{space 3}0.000{col 54}{space 4} 2.689799{col 67}{space 3} 5.079722
 {txt}{space 5}meanses {c |}{col 14}{res}{space 2} 3.281962{col 26}{space 2} 1.464135{col 37}{space 1}    2.24{col 46}{space 3}0.025{col 54}{space 4} .4123106{col 67}{space 3} 6.151614
@@ -139,7 +171,7 @@ LR test vs. linear model:{col 27}{help j_chibar##|_new:chibar2(01) =} {res}25.58
 {txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 
 {hline 29}{c TT}{hline 48}
-{col 3}Random-effects Parameters{col 30}{c |}{col 34}Estimate{col 45}Std. Err.{col 59}[95% Conf. Interval]
+{col 3}Random-effects parameters{col 30}{c |}{col 34}Estimate{col 45}Std. err.{col 59}[95% conf. interval]
 {hline 29}{c +}{hline 48}
 {res}schid{txt}: Identity{col 30}{c |}
 {space 18}var(_cons) {c |}{res}{col 33} 8.931927{col 44} 3.813085{col 58} 3.868681{col 70} 20.62184
@@ -154,7 +186,7 @@ LR test vs. linear model:{col 27}{help j_chibar##|_new:chibar2(01) =} {res}25.58
 {com}. //_20
 . summarize meanses
 
-{txt}    Variable {c |}        Obs        Mean    Std. Dev.       Min        Max
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
 {hline 13}{c +}{hline 57}
 {space 5}meanses {c |}{res}        519   -.0012717    .6206429    -1.0685    1.17625
 {txt}
@@ -166,35 +198,47 @@ LR test vs. linear model:{col 27}{help j_chibar##|_new:chibar2(01) =} {res}25.58
 . generate yhat2 = _b[_cons] + u0 + _b[ses] * ses + _b[ses] * -.0012717 
 {txt}
 {com}. //_23
-. twoway scatter yhat2 ses, scheme(s1color)
+. twoway scatter yhat2 ses, scheme(michigan)
 {res}{txt}
 {com}. //_24
 . graph export graph6B.png, width(500) replace
-{txt}(note: file graph6B.png not found)
-(file graph6B.png written in PNG format)
+{txt}{p 0 4 2}
+file {bf}
+graph6B.png{rm}
+saved as
+PNG
+format
+{p_end}
 
 {com}. //_25
 . sort schid ses // sort on Level 2 units and x values
 {txt}
 {com}. //_26
 . twoway connect yhat2 ses, ///
+> lcolor("0 39 76") /// Michigan blue for connecting lines
 > title("Model Based Spaghetti Plot") /// title
 > xtitle("Socioeconomic Status") /// title for x axis
 > ytitle("Model Predicted Values") /// title for y axis
 > c(L) /// connect only ascending values
 > msymbol(none) /// no marker symbol; only lines
-> scheme(s1color) // s1color scheme
+> scheme(michigan) // michigan scheme
 {res}{txt}
 {com}. //_27
 . graph export graph7.png, width(500) replace
-{txt}(file graph7.png written in PNG format)
+{txt}{p 0 4 2}
+file {bf}
+graph7.png{rm}
+saved as
+PNG
+format
+{p_end}
 
 {com}. //_^
 . log close
       {txt}name:  {res}<unnamed>
-       {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\multilevel\spaghetti-plot\Stata\spaghetti-plot-demo.smcl
+       {txt}log:  {res}C:\Users\agrogan\Desktop\GitHub\multilevel\spaghetti-plot\Stata\spaghetti-plot-demo.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}18 Apr 2021, 10:45:38
+ {txt}closed on:  {res}16 Jul 2021, 14:46:06
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

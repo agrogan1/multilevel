@@ -1,6 +1,6 @@
 clear all
 
-cd "C:\Users\agrogan\Box Sync\Box Sync\GitHub\multilevel\spaghetti-plot\Stata"
+cd "C:\Users\agrogan\Desktop\GitHub\multilevel\spaghetti-plot\Stata"
 
 doedit "spaghetti-plot-demo.stmd"
 
