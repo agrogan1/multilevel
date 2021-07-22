@@ -38,7 +38,7 @@ library(plotly)
 
 <aside><mark>Previously this course was numbered SW 832. The new number for the course is SW 864.</mark></aside>
 
-```{r get_data}
+```{r get_data, eval=FALSE}
 
 hsb_small <- read_dta("hsb_small.dta")
 
@@ -50,7 +50,7 @@ hsb_small$schoolid <- factor(hsb_small$id,
 
 ```
 
-```{r, layout="l-page", fig.height= 3.0, fig.cap="A Subsample of The High School and Beyond Data Set"}
+```{r, layout="l-page", fig.height= 3.0, fig.cap="A Subsample of The High School and Beyond Data Set", eval=FALSE}
 
 p0 <- ggplot(hsb_small, 
              aes(x=schoolid, 
@@ -82,7 +82,14 @@ ggsave("p0.png",
 
 ```
 
-Multilevel models have become a standard statistical tool for quantitative research on neighborhoods, communities and schools.  The cross-sectional multilevel model is appropriate for situations in which respondents are clustered inside larger social or geographic units e.g. people in geographic areas, residents in neighborhoods, or children in classrooms and/or schools.
+```{r, fig.cap="Neighborhood, School and Country Effects"}
+
+knitr::include_graphics("cross-sectional.png")
+
+```
+
+
+Multilevel models have become a standard statistical tool for quantitative research on neighborhoods, communities and schools.  The cross-sectional multilevel model is appropriate for situations in which respondents are clustered inside larger social or geographic units e.g. people in geographic areas, residents in neighborhoods, or children in classrooms and/or schools. Cross-sectional multilevel models enable *multilevel thinking* thinking at multiple levels (units of analysis) and conceptualizing effects at the *country*, *community*, *family*, and *individual* levels.
 
 > <mark>This course requires a solid understanding of ordinary least squares regression (OLS) as a starting point. Generally this means that one has taken the introductory graduate level 2 semester sequence in statistics in a discipline like Psychology or Sociology.</mark>
 
@@ -90,7 +97,7 @@ The first part of the course is all about the idea of “nesting”:  e.g. stude
 
 > <mark>NB that the major assignments in this class are two short empirical papers where students apply the concepts of multilevel modeling. This means that students who are interested in this class should start thinking about appropriate data sets to use in the course. Data for the first of two papers should be suitable for a *cross-sectional multilevel* analysis. This data for the first paper should contain some indicator of where study participants live or study, whether that is a Census tract, neighborhood, state, country, classroom or school, etc.. Data for the second of two papers should be suitable for a *multilevel longitudinal analysis*. This data for the second paper should contain repeated measures of some outcome on the same individuals over at least 2 time points.</mark>
 
-```{r, layout="l-page", fig.cap="School Specific Regression Lines"}
+```{r, layout="l-page", fig.cap="School Specific Regression Lines", eval=FALSE}
 
 p1 <- ggplot(hsb_small, aes(x = ses, 
                          y = mathach, 
@@ -117,8 +124,14 @@ ggsave("schools.png", p1)
 
 ```
 
-Perhaps surprisingly, the multilevel model for cross-sectional data can easily accommodate longitudinal data where study participants are observed repeatedly over time.
+Perhaps surprisingly, the multilevel model for cross-sectional data can easily accommodate longitudinal data where study participants are observed repeatedly over time. Longitudinal multilevel models represent a different kind of *multilevel thinking* where we extend the algebra of the multilevel model to think about *events* or *occasions*, nested inside *individuals.*
 
+
+```{r, fig.cap="Studies of Growth and Change"}
+
+knitr::include_graphics("longitudinal.png")
+
+```
 Further, while this is sometimes not recognized, multilevel models for longitudinal data are closely related to other important longitudinal data models, such as fixed effects regression, an important technique for controlling for unobserved variables.  Multilevel models are also closely related to statistical models for meta-analysis of multiple studies.
 
 This course focuses on the use of multilevel and longitudinal data analysis for social work and social science research.  The course is conceptualized as covering the following topics:
