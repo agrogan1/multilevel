@@ -1,0 +1,101 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/agrogan/Desktop/newstuff/mlm-R2-gutten/mlm-R2-gutten.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}21 Jul 2020, 09:34:44
+{txt}
+{com}. //_1
+. display c(current_date)
+{res}21 Jul 2020
+{txt}
+{com}. //_2
+.     use gutten.dta, clear
+{txt}
+{com}. //_3
+. egen ageMEAN = mean(age_base)
+{txt}
+{com}. //_4
+. generate ageCENTERED = age_base - ageMEAN
+{txt}
+{com}. //_5
+. mixed height age_base site i.location || tree_ID:
+{res}
+{txt}Performing EM optimization: 
+{res}
+{txt}Performing gradient-based optimization: 
+{res}
+{txt}Iteration 0:{space 3}log likelihood = {res:-3050.2621}  
+{res}{txt}Iteration 1:{space 3}log likelihood = {res:-3050.2621}  
+{res}
+{txt}Computing standard errors:
+{res}
+{txt}Mixed-effects ML regression{col 49}Number of obs{col 67}={col 69}{res}     1,200
+{txt}Group variable: {res}tree_ID{col 49}{txt}Number of groups{col 67}={col 69}{res}       107
+
+{txt}{col 49}Obs per group:
+{col 63}min{col 67}={col 69}{res}         5
+{txt}{col 63}avg{col 67}={col 69}{res}      11.2
+{txt}{col 63}max{col 67}={col 69}{res}        15
+
+{col 49}{txt}Wald chi2({res}8{txt}){col 67}={col 70}{res}  8663.47
+{txt}Log likelihood = {res}-3050.2621{col 49}{txt}Prob > chi2{col 67}={col 73}{res}0.0000
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      height{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 4}age_base {c |}{col 14}{res}{space 2} .2143496{col 26}{space 2} .0023831{col 37}{space 1}   89.95{col 46}{space 3}0.000{col 54}{space 4} .2096789{col 67}{space 3} .2190203
+{txt}{space 8}site {c |}{col 14}{res}{space 2}-3.866312{col 26}{space 2} .1608021{col 37}{space 1}  -24.04{col 46}{space 3}0.000{col 54}{space 4}-4.181478{col 67}{space 3}-3.551145
+{txt}{space 12} {c |}
+{space 4}location {c |}
+{space 10}2  {c |}{col 14}{res}{space 2}-.5436647{col 26}{space 2} 1.247694{col 37}{space 1}   -0.44{col 46}{space 3}0.663{col 54}{space 4}-2.989099{col 67}{space 3}  1.90177
+{txt}{space 10}3  {c |}{col 14}{res}{space 2} .5090705{col 26}{space 2} .6487789{col 37}{space 1}    0.78{col 46}{space 3}0.433{col 54}{space 4}-.7625129{col 67}{space 3} 1.780654
+{txt}{space 10}4  {c |}{col 14}{res}{space 2} .0954239{col 26}{space 2} .7056685{col 37}{space 1}    0.14{col 46}{space 3}0.892{col 54}{space 4}-1.287661{col 67}{space 3} 1.478509
+{txt}{space 10}5  {c |}{col 14}{res}{space 2}-.0590126{col 26}{space 2} .5182994{col 37}{space 1}   -0.11{col 46}{space 3}0.909{col 54}{space 4}-1.074861{col 67}{space 3} .9568356
+{txt}{space 10}6  {c |}{col 14}{res}{space 2} .2078246{col 26}{space 2} .6884815{col 37}{space 1}    0.30{col 46}{space 3}0.763{col 54}{space 4}-1.141574{col 67}{space 3} 1.557224
+{txt}{space 10}7  {c |}{col 14}{res}{space 2}-1.210496{col 26}{space 2} .7524348{col 37}{space 1}   -1.61{col 46}{space 3}0.108{col 54}{space 4}-2.685241{col 67}{space 3} .2642491
+{txt}{space 12} {c |}
+{space 7}_cons {c |}{col 14}{res}{space 2} 12.27241{col 26}{space 2} .5513051{col 37}{space 1}   22.26{col 46}{space 3}0.000{col 54}{space 4} 11.19187{col 67}{space 3} 13.35294
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{hline 29}{c TT}{hline 48}
+{col 3}Random-effects Parameters{col 30}{c |}{col 34}Estimate{col 45}Std. Err.{col 59}[95% Conf. Interval]
+{hline 29}{c +}{hline 48}
+{res}tree_ID{txt}: Identity{col 30}{c |}
+{col 19}var(_cons){col 30}{c |}{res}{col 33} 2.106718{col 44} .3939037{col 58} 1.460337{col 70} 3.039204
+{txt}{hline 29}{c +}{hline 48}
+{col 16}var(Residual){col 30}{c |}{res}{col 33} 8.397623{col 44}     .359{col 58} 7.722667{col 70} 9.131569
+{txt}{hline 29}{c BT}{hline 48}
+LR test vs. linear model:{col 27}{help j_chibar##|_new:chibar2(01) =} {res}127.84{col 55}{txt}Prob >= chibar2 = {col 73}{res}0.0000
+{txt}
+{com}. //_6
+. predict yhat if e(sample) // calculate predicted values
+{txt}(option xb assumed)
+
+{com}. //_7
+. corr height yhat 
+{txt}(obs=1,200)
+
+             {c |}   height     yhat
+{hline 13}{c +}{hline 18}
+      height {c |}{res}   1.0000
+        {txt}yhat {c |}{res}   0.9364   1.0000
+
+{txt}
+{com}. //_8
+. display r(rho)
+{res}.93636423
+{txt}
+{com}. //_9
+. display r(rho)^2
+{res}.87677798
+{txt}
+{com}. //_^
+. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}/Users/agrogan/Desktop/newstuff/mlm-R2-gutten/mlm-R2-gutten.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}21 Jul 2020, 09:34:44
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

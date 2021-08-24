@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+<style>
+/* CSS for Markstat 2.0 using Pandoc 2.0 */
+body{padding:14px 28px;}
+body, table {font-family: Helvetica, Arial, Sans-serif; font-size: 14px;}
+h1, h2, h3, h4 {font-weight: normal; color: #3366cc}
+h1 {font-size: 200%;}
+h2 {font-size: 150%;}
+h3 {font-size: 120%;}
+h4 {font-size: 100%; font-weight:bold}
+img.center {display:block; margin-left:auto; margin-right:auto}
+.small{font-size:8pt;}
+a {color: black;}
+a:visited {color: #808080;}
+a.plain {text-decoration:none;}
+a.plain:hover {text-decoration:underline;}
+.em {font-weight:bold;}
+pre, code {font-family: "lucida console", monospace;}
+pre.stata {font-size:13px; line-height:13px;}
+pre {padding:8px; border:1px solid #c0c0c0; border-radius:8px; background-color:#fdfdfd;}
+code {color:#3366cc; background-color:#fafafa;}
+pre code { color:black; background-color:white}
+/* Added for Pandoc */
+figure > img, div.figure > img {display:block; margin:auto}
+figcaption, p.caption {text-align:center; font-weight:bold; color:#3366cc;}
+h1.title {text-align:center; margin-bottom:0}
+p.author, h2.author {font-style:italic; text-align:center;margin-top:4px;margin-bottom:0}
+p.date, h3.date {text-align:center;margin-top:4px; margin-bottom:0}
+/* Tables*/
+table { margin:auto; border-collapse:collapse; }
+table caption { margin-bottom:1ex;}
+th, td { padding:4px 6px;}
+thead tr:first-child th {border-top:1px solid black; padding-top:6px}
+thead tr:last-child  th {padding-bottom:6px}
+tbody tr:first-child td {border-top:1px solid black; padding-top:6px}
+tbody tr:last-child  td {padding-bottom:6px;}
+table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
+</style>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Andy Grogan-Kaylor" />
+  <title>Multilevel Models with the Von Guttenberg Tree Data</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Multilevel Models with the Von Guttenberg Tree Data</h1>
+<p class="author">Andy Grogan-Kaylor</p>
+<p class="date">11 Mar 2021 09:04:04</p>
+</header>
+<style>h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;}</style>
+<figure>
+<img src="fotolia-small.jpg" alt="" /><figcaption>Norway Spruce and Larch Forest in Austrian Alps, https://ec.europa.eu/jrc/en/research-topic/forestry/qr-tree-project/norway-spruce</figcaption>
+</figure>
+<h1 id="data-source">Data Source 🌲</h1>
+<p>The data used in this example are derived from the R package <em>Functions and Datasets for “Forest Analytics with R”</em>.</p>
+<p>According to the documentation, the source of these data are: “von Guttenberg’s Norway spruce (Picea abies [L.] Karst) tree measurement data.”</p>
+<figure>
+<img src="Old-Tjikko-Small.jpg" alt="" /><figcaption>Old Tjikko, a 9,550 Year Old Norway Spruce in Sweden</figcaption>
+</figure>
+<p>The documentation goes on to further note that:</p>
+<blockquote>
+<p>“The data are measures from 107 trees. The trees were selected as being of average size from healthy and well stocked stands in the Alps.”</p>
+</blockquote>
+<pre class='stata'>. use gutten.dta, clear
+</pre>
+<p><code>use "https://github.com/agrogan1/newstuff/raw/master/mlm-R2-gutten/gutten.dta", clear</code> should work to obtain the data over the web. Please let me know if it does not.</p>
+<h1 id="variables">Variables 🌲</h1>
+<p><code>site</code> Growth <em>quality</em> class of the tree’s habitat. 5 levels.</p>
+<p><code>location</code> Distinguishes tree <em>location</em>. 7 levels.</p>
+<p><code>tree</code> An identifier for the tree within location.</p>
+<p><code>age.base</code> The tree age taken at ground level.</p>
+<blockquote>
+<p>It might be best to use a centered age variable, centered at the grand mean of tree age:</p>
+</blockquote>
+<pre class='stata'>. egen ageMEAN = mean(age_base)
+</pre>
+<pre class='stata'>. generate ageCENTERED = age_base - ageMEAN
+</pre>
+<p><code>height</code> Tree height, m.</p>
+<p><code>dbh.cm</code> Tree diameter, cm.</p>
+<p><code>volume</code> Tree volume.</p>
+<p><code>age.bh</code> Tree age taken at 1.3 m.</p>
+<p><code>tree.ID</code> A factor uniquely identifying the tree.</p>
+<h1 id="your-quantitative-forestry-tasks-should-you-choose-to-accept-them">Your Quantitative Forestry Tasks (Should You Choose To Accept Them) 🌲</h1>
+<p>I clearly need to learn more about quantitative approaches to forestry, but I would like to model tree height as a function of tree age (measured at base), site, and location.</p>
+<h1 id="spaghetti-plot">Spaghetti Plot 🌲</h1>
+<p>Use <code>spagplot</code> to examine these relationships. Remember that the <code>spagplot</code> syntax is <code>spagplot y x, id(id)</code>. What is the most appropriate id variable here?</p>
+<pre class='stata'>. spagplot height ageCENTERED, id(tree_ID) scheme(michigan)
+</pre>
+<pre class='stata'>. graph export myspagplot.png, width(500) replace
+(file /Users/agrogan/Desktop/newstuff/mlm-gutten/myspagplot.png written in PNG
+>  format)
+</pre>
+<p><code>spagplot height ageCENTERED, id(tree_ID) scheme(s1rcolor)</code> also works well here.</p>
+<figure>
+<img src="myspagplot.png" alt="" /><figcaption>Spaghetti Plot of Predicted Height by Age</figcaption>
+</figure>
+<h1 id="multilevel-models">Multilevel Models 🌲</h1>
+<h2 id="unconditional-model">Unconditional Model</h2>
+<p>Run an unconditional model with <code>mixed</code>. What Stata syntax do you use? What is the corresponding equation? What question is this syntax and equation asking and answering? Calculate the ICC. What does this number tell you?</p>
+<h2 id="conditional-model">Conditional Model</h2>
+<p>Now run a model with <code>mixed</code> where you examine the relationship of tree age, site, and location with tree height. Do any of your variables need to be treated as indicator (<code>i.</code>) variables?</p>
+<p>What Stata syntax do you use? What is the corresponding equation? What question is this syntax and equation asking and answering? What do you find?</p>
+<p>What if you examine <span class="math inline">\(\text{age of tree}^2\)</span> as part of your model?</p>
+<blockquote>
+<p><code>generate ageMEAN2 = ageMEAN^2</code></p>
+</blockquote>
+<p>Does the ICC have any meaning after your <em>conditional</em> model?</p>
+</body>
+</html>
