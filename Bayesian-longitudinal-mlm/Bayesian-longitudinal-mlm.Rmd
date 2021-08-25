@@ -5,7 +5,7 @@ author:
   url: https://www.umich.edu/~agrogan
   affiliation: University of Michigan
   affiliation_url: https://www.umich.edu
-date: "`r Sys.Date()`"
+date: "8/29/2021"
 output:
   distill::distill_article:
     highlight: haddock
@@ -33,11 +33,11 @@ knitr::opts_chunk$set(echo = TRUE,
 
 # Gutten Tree Data 🌲
 
-![Norway Spruce and Larch Forest in Austrian Alps, https://ec.europa.eu/jrc/en/research-topic/forestry/qr-tree-project/norway-spruce](fotolia-small.jpg)
+![Norway Spruce and Larch Forest in Austrian Alps, <https://ec.europa.eu/jrc/en/research-topic/forestry/qr-tree-project/norway-spruce>](fotolia-small.jpg)
 
 The data used in this example are derived from the R package *Functions and Datasets for "Forest Analytics with R"*.
 
-According to the documentation, the source of these data are: "von Guttenberg’s Norway spruce (Picea abies [L.] Karst) tree measurement data."
+According to the documentation, the source of these data are: "von Guttenberg's Norway spruce (Picea abies [L.] Karst) tree measurement data."
 
 The documentation goes on to further note that:
 
@@ -54,9 +54,10 @@ gutten <- read_dta("gutten.dta")
 gutten 
 
 ```
+
 # Variables 🌲
 
-`site` Growth *quality* class of the tree’s habitat. 5 levels.
+`site` Growth *quality* class of the tree's habitat. 5 levels.
 
 `location` Distinguishes tree *location*. 7 levels.
 
@@ -76,7 +77,9 @@ gutten
 
 # A Basic Multilevel Model 🌲
 
-$$\text{height}_{it} = \beta_0 + \beta \text{age_base} + \beta \text{site} + u_{0\text{ tree.ID}} + e_{it}$$
+$$\text{height}_{it} = \beta_0 + \beta \text{age_base} + \beta \text{site} + u_{0\text{ tree.ID}} + e_{it}$$ Both `lmer` (frequentist MLM) and `brms` (Bayesian MLM) use the idea of translating the above equation into a *formula*:
+
+`height ~ age_base + site + (1 | tree_ID)`
 
 # Graph (Spaghetti Plot)
 
@@ -156,4 +159,3 @@ fit3 <- brm(height ~ age_base + site + (1 | tree_ID),
 summary(fit3)
 
 ```
-
