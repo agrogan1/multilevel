@@ -1,5 +1,10 @@
 # Multilevel and Longitudinal Modeling
 
+## Gutten Tree Data
+
+* [Multilevel Models With The Gutten Tree Data](https://agrogan1.github.io/multilevel/mlm-gutten/mlm-gutten.html)
+* [Calculating R<sup>2</sup> in Multilevel Models With The Gutten Tree Data](https://agrogan1.github.io/multilevel/mlm-R2-gutten/mlm-R2-gutten.html)
+
 ## Spaghetti Plots
 
 * [Stata](https://agrogan1.github.io/multilevel/spaghetti-plot/Stata/spaghetti-plot-demo.html)
@@ -21,3 +26,5 @@
 ## `lmer` Demo
 
 * [`lmer` Demo](https://agrogan1.github.io/multilevel/lmer-demo/lmer-demo.html)
+
+
