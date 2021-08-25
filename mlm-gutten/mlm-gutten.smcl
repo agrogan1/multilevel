@@ -1,17 +1,17 @@
 {smcl}
 {com}{sf}{ul off}{txt}{.-}
       name:  {res}<unnamed>
-       {txt}log:  {res}/Users/agrogan/Desktop/newstuff/mlm-gutten/mlm-gutten.smcl
+       {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel/mlm-gutten/mlm-gutten.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}11 Mar 2021, 09:04:51
+ {txt}opened on:  {res}25 Aug 2021, 10:06:11
 {txt}
 {com}. //_1
 . display c(current_date)
-{res}11 Mar 2021
+{res}25 Aug 2021
 {txt}
 {com}. //_2
 . display c(current_time)
-{res}09:04:51
+{res}10:06:11
 {txt}
 {com}. //_3
 . use gutten.dta, clear
@@ -27,14 +27,20 @@
 {res}{txt}
 {com}. //_7
 . graph export myspagplot.png, width(500) replace
-{txt}(file /Users/agrogan/Desktop/newstuff/mlm-gutten/myspagplot.png written in PNG format)
+{txt}{p 0 4 2}
+file {bf}
+/Users/agrogan/Desktop/GitHub/multilevel/mlm-gutten/myspagplot.png{rm}
+saved as
+PNG
+format
+{p_end}
 
 {com}. //_^
 . log close
       {txt}name:  {res}<unnamed>
-       {txt}log:  {res}/Users/agrogan/Desktop/newstuff/mlm-gutten/mlm-gutten.smcl
+       {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel/mlm-gutten/mlm-gutten.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}11 Mar 2021, 09:04:52
+ {txt}closed on:  {res}25 Aug 2021, 10:06:13
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}
