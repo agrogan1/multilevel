@@ -87,7 +87,7 @@ gutten
 
 # A Basic Multilevel Model 🌲
 
-$$\text{height}_{it} = \beta_0 + \beta \text{age_base} + \beta \text{site} + u_{0\text{ tree.ID}} + e_{it}$$ Both `lmer` (frequentist MLM) and `brms` (Bayesian MLM) use the idea of translating the above equation into a *formula*:
+$$\text{height}_{it} = \beta_0 + \beta \text{age_base} + \beta \text{site} + \beta \text{age_base * site} + u_{0\text{ tree.ID}} + e_{it}$$ Both `lmer` (frequentist MLM) and `brms` (Bayesian MLM) use the idea of translating the above equation into a *formula*:
 
 `height ~ age_base + site + (1 | tree_ID)`
 
@@ -114,11 +114,13 @@ ggplot(gutten,
 
 # Frequentist Model in `lmer` 🌲
 
+> NB: `*` provides with an interaction term and main effects.
+ 
 ```{r}
 
 library(lme4)
 
-fit1 <- lmer(height ~ age_base + site + (1 | tree_ID), 
+fit1 <- lmer(height ~ age_base * site + (1 | tree_ID), 
              data = gutten)
 
 summary(fit1)
@@ -133,7 +135,7 @@ summary(fit1)
 
 library(brms)
 
-fit2 <- brm(height ~ age_base + site + (1 | tree_ID), 
+fit2 <- brm(height ~ age_base * site + (1 | tree_ID), 
             data = gutten,
             family = gaussian(), 
             warmup = 2000, 
@@ -159,7 +161,7 @@ prior1 <- c(
 
 ```{r}
 
-fit3 <- brm(height ~ age_base + site + (1 | tree_ID), 
+fit3 <- brm(height ~ age_base * site + (1 | tree_ID), 
             data = gutten,
             family = gaussian(), 
             prior = prior1,
@@ -169,3 +171,12 @@ fit3 <- brm(height ~ age_base + site + (1 | tree_ID),
 summary(fit3)
 
 ```
+
+# Plot Posterior Distributions and Trace Plots
+
+```{r, fig.height=6}
+
+plot(fit3)
+
+```
+
