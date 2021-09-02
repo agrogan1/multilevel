@@ -31,7 +31,7 @@ knitr::opts_chunk$set(echo = TRUE,
 
 ```
 
-# Set Up
+# Set Up 🌲
 
 You will need to install the relevant packages: `lme4` for frequentist MLM, and `brms`, which also installs `STAN`, for Bayesian MLM.
 
