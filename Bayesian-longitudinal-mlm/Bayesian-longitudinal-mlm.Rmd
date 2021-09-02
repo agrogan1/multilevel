@@ -127,7 +127,7 @@ summary(fit1)
 
 ```
 
-# Bayesian Model With `brms` 🌲
+# Bayesian Model With `brms` (Less Informative Default Priors) 🌲
 
 > The models below take a non-trivial amount of time to run.
 
@@ -172,7 +172,7 @@ summary(fit3)
 
 ```
 
-# Plot Posterior Distributions and Trace Plots
+# Plot Posterior Distributions and Trace Plots 🌲
 
 ```{r, fig.height=6}
 
