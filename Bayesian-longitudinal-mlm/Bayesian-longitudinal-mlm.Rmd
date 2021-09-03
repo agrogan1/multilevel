@@ -174,9 +174,21 @@ summary(fit3)
 
 # Plot Posterior Distributions and Trace Plots 🌲
 
-```{r, fig.height=6}
+> `plot(fit3)` will give me a reasonable plot of *every* parameter, but the layout may not be optimal. I am using separate plot calls below, but to do so, I need to know the *names* of the parameters, which can be tricky in `brms`. One way to do this is to use `plot(fit3)` to see all the parameter names, and then divide the single `plot` call into multiple `plot` calls to improve the layout.
 
-plot(fit3)
+```{r}
+
+# plot(fit3)
+
+plot(fit3, variable = c("b_Intercept"))
+
+plot(fit3, 
+     variable = c("b_age_base", 
+                  "b_site",
+                  "b_age_base:site")) # regression slopes
+
+plot(fit3, variable = c("sd_tree_ID__Intercept",
+                        "sigma")) # variance parameters
 
 ```
 
