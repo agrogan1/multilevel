@@ -1,6 +1,6 @@
 * MLM w/ Gutten Tree Data
 
-cd "/Users/agrogan/Desktop/GitHub/multilevel/mlm-gutten"
+cd "/Users/agrogan/Desktop/GitHub/multilevel/mlm-gutten"  // Windows
 
 doedit "mlm-gutten.stmd"
 

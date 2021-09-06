@@ -24,7 +24,7 @@ The documentation goes on to further note that:
 
     use gutten.dta, clear
 		
-`use "https://github.com/agrogan1/newstuff/raw/master/mlm-R2-gutten/gutten.dta", clear` should work to obtain the data over the web. Please let me know if it does not.
+`use "https://github.com/agrogan1/multilevel/raw/master/mlm-R2-gutten/gutten.dta", clear` should work to obtain the data over the web. Please let me know if it does not.
 
 # Variables 🌲
 
