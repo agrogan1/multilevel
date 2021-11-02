@@ -4,6 +4,7 @@
 
 * [Multilevel Models With The Gutten Tree Data](https://agrogan1.github.io/multilevel/mlm-gutten/mlm-gutten.html)
 * [Calculating R<sup>2</sup> in Multilevel Models With The Gutten Tree Data](https://agrogan1.github.io/multilevel/mlm-R2-gutten/mlm-R2-gutten.html)
+* [Bayesian Longitudinal MLM With the Gutten Tree Data](https://agrogan1.github.io/multilevel/Bayesian-longitudinal-mlm/Bayesian-longitudinal-mlm.html)
 
 ## Spaghetti Plots
 
