@@ -107,7 +107,7 @@ ggplot(gutten,
               color = "red",
               size = 2) + # linear model 
   labs(title = "Tree Height As A Function Of Age") +
-  scale_color_viridis_d() +
+  scale_color_viridis_d() + # nice graph colors for trees
   theme_minimal() +
   theme(legend.position = "none")
 
