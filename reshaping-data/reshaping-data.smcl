@@ -1,17 +1,17 @@
 {smcl}
 {com}{sf}{ul off}{txt}{.-}
       name:  {res}<unnamed>
-       {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\multilevel\reshaping-data\reshaping-data.smcl
+       {txt}log:  {res}C:\Users\agrogan\Desktop\GitHub\multilevel\reshaping-data\reshaping-data.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res} 2 Mar 2021, 19:38:53
+ {txt}opened on:  {res}18 Nov 2021, 08:05:12
 {txt}
 {com}. //_1
 . display c(current_date)
-{res} 2 Mar 2021
+{res}18 Nov 2021
 {txt}
 {com}. //_2
 . display c(current_time)
-{res}19:38:53
+{res}08:05:12
 {txt}
 {com}. //_3
 . clear all
@@ -50,11 +50,11 @@
 . describe    
 
 {txt}Contains data from {res}https://github.com/agrogan1/multilevel/raw/master/reshaping-data/Spruce.dta
-{txt}  obs:{res}            72                          
-{txt} vars:{res}             9                          26 Apr 2020 12:18
+{txt} Observations:{res}            72                  
+{txt}    Variables:{res}             9                  26 Apr 2020 12:18
 {txt}{hline}
-              storage   display    value
-variable name   type    format     label      variable label
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
 {hline}
 {p 0 48}{res}{bind:Tree           }{txt}{bind: long    }{bind:{txt}%12.0g    }{space 1}{bind:         }{bind:  }{res}{res}Tree number{p_end}
 {p 0 48}{bind:Competition    }{txt}{bind: long    }{bind:{txt}%12.0g    }{space 1}{txt}Competition{p_end}
@@ -69,7 +69,8 @@ variable name   type    format     label      variable label
 {p 0 48}{bind:Di_change      }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Change (cm) in diameter{p_end}
 {txt}{hline}
 Sorted by: 
-
+{res}     Note: Dataset has changed since last saved.
+{txt}
 {com}. //_6
 . keep Tree Competition Fertilizer Height0 Height5 Diameter0 Diameter5
 {txt}
@@ -94,12 +95,12 @@ Sorted by:
 
 {com}. //_8
 . reshape long Height Diameter, i(Tree) j(year)
-{txt}(note: j = 0 5)
+{txt}(j = 0 5)
 
-Data{col 36}wide{col 43}->{col 48}long
+Data{col 36}Wide{col 43}->{col 48}Long
 {hline 77}
-Number of obs.                 {res}      72   {txt}->{res}     144
-{txt}Number of variables            {res}       7   {txt}->{res}       6
+Number of observations     {res}          72   {txt}->   {res}144         
+{txt}Number of variables        {res}           7   {txt}->   {res}6           
 {txt}j variable (2 values)                     ->   {res}year
 {txt}xij variables:
                         {res}Height0 Height5   {txt}->   {res}Height
@@ -140,9 +141,9 @@ Number of obs.                 {res}      72   {txt}->{res}     144
 {com}. //_^
 . log close
       {txt}name:  {res}<unnamed>
-       {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\multilevel\reshaping-data\reshaping-data.smcl
+       {txt}log:  {res}C:\Users\agrogan\Desktop\GitHub\multilevel\reshaping-data\reshaping-data.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res} 2 Mar 2021, 19:38:54
+ {txt}closed on:  {res}18 Nov 2021, 08:05:12
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

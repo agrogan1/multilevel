@@ -2,7 +2,7 @@
 
 clear all
 
-cd "C:\Users\agrogan\Box Sync\Box Sync\GitHub\multilevel\reshaping-data" // Windows
+cd "C:\Users\agrogan\Desktop\GitHub\multilevel\reshaping-data" // Windows
 
 doedit "reshaping-data.stmd"
 

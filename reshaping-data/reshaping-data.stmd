@@ -4,7 +4,7 @@
 
 # Background 🌲
 
-<style>h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
+<style>body {max-width: 90%;} h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
 
 Chihara and Hesterberg (2018) provide a data set concerning the growth of Black Spruce Trees. According to these authors: 
 
@@ -59,9 +59,15 @@ It is often *very useful* when working with longitudinal data to `keep` only the
     list in 1/10 
 ```
 
+# Wide Compared To Long Data 🌲
+
+The data are currently in *wide* format, where *every row is an individual*, and *every individual has a single row of data*. For a given measure, each time point is in a *different column of data*.
+
+In *long* format, *every row is an individual-observation*, and *every individual has multiple rows of data*. For a given measure, each time point is in the *same column of data*, and the different time points are distinguished by a *time* variable.
+
 # Reshaping The Data 🌲
 
-The data are currently in *wide* form, where *every individual has a single row of data*. We are going to `reshape` the data to *long* form, where *every individual has multiple rows of data*.
+We are going to `reshape` the data from *wide* format to *long* format.
 
 ## Steps In Reshaping Data
 
