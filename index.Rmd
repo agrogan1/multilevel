@@ -44,12 +44,12 @@ library(plotly)
 
 ```{r, fig.cap="Neighborhood, School and Country Effects"}
 
-knitr::include_graphics("cross-sectional.png")
+knitr::include_graphics("neighborhood.png")
 
 ```
 
 <aside>
-<span style="background-color: #00FFFF">Stata will be the statistical software employed in this course, and students will need access to Stata to participate.</span>
+<mark>Stata will be the statistical software employed in this course, and students will need access to Stata to participate.</mark>
 </aside>
 
 ```{r get_data, eval=FALSE}
@@ -144,7 +144,7 @@ Perhaps surprisingly, the multilevel model for cross-sectional data can easily a
 
 ```{r, fig.cap="Studies of Growth and Change"}
 
-knitr::include_graphics("longitudinal.png")
+knitr::include_graphics("plant.png")
 
 ```
 Further, while this is sometimes not recognized, multilevel models for longitudinal data are closely related to other important longitudinal data models, such as fixed effects regression, an important technique for controlling for unobserved variables.  Multilevel models are also closely related to statistical models for meta-analysis of multiple studies.
@@ -162,7 +162,7 @@ The first half of the semester will be devoted to a discussion of cross-sectiona
 
 The course is intended for students who have some familiarity with ordinary least squares regression, since the OLS model will be used as a starting point for discussion.
 
-The treatment of these topics involves discussion of the underlying statistical theory, but is also focused on the application of these models with real data.  <mark>STATA is intended to be the primary statistical software used in this course.</mark>
+The treatment of these topics involves discussion of the underlying statistical theory, but is also focused on the application of these models with real data.  <mark>Stata is intended to be the primary statistical software used in this course.</mark>
 
 Depending upon student interest, some reference may be made to the analysis of these models in other statistical packages such as R, or SAS. Instruction is a mixture of in class lecture and discussion, and time spent in a lab session, working on your own laptop, working through actual data problems with statistical software.  Typically, students write two data driven papers for the course, one due about the middle of the semester, and one due at the end of the semester.  It is my intent that the papers should be based upon data from your own discipline(s) and interests.  Frequently papers from the course go on to serve as the foundation for dissertation chapters or articles submitted for publication.
 
