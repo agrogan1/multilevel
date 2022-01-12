@@ -3,6 +3,10 @@ title: "Demonstration of Clustered Data"
 author: "Andy Grogan-Kaylor"
 date: '`r Sys.Date()`'
 output: 
+  distill::distill_article:
+    highlight: haddock
+    toc: yes
+    code_folding: true
   html_document: 
     highlight: haddock
     number_sections: yes
@@ -24,21 +28,23 @@ knitr::opts_chunk$set(echo = FALSE,
 
 # library(Rcmdr)
 
-library(foreign)
+library(foreign) # import data
 
 # library(googleVis)
 
-library(lme4)
+library(lme4) # MLM
 
-library(ggplot2)
+library(ggplot2) # beautiful graphs
 
-library(ggthemes)
+library(ggthemes) # nice themes
 
-library(plotly)
+library(plotly) # animated graphs
 
 library(broom)
 
-library(pander)
+library(pander) # nice tables
+
+library(sjPlot) # nice tables for MLM
 
 ```
 
@@ -122,7 +128,9 @@ ggplotly(p2)
 
 myOLS <- lm(y.new ~x.new, data = individual_dataset)
 
-summary(myOLS)
+# summary(myOLS)
+
+sjPlot::tab_model(myOLS)
 
 # pander(tidy(myOLS))
 
@@ -135,7 +143,9 @@ summary(myOLS)
 myMLM <- lmer(y.new ~x.new + (1 | groupnum), 
                               data = individual_dataset)
 
-summary(myMLM)
+# summary(myMLM)
+
+sjPlot::tab_model(myMLM)
 
 # pander(tidy(myMLM))
 
