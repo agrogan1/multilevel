@@ -40,7 +40,7 @@ library(ggthemes) # nice themes
 
 library(plotly) # animated graphs
 
-library(broom)
+# library(broom)
 
 library(pander) # nice tables
 
@@ -130,7 +130,10 @@ myOLS <- lm(y.new ~x.new, data = individual_dataset)
 
 # summary(myOLS)
 
-sjPlot::tab_model(myOLS)
+sjPlot::tab_model(myOLS,
+                  show.se = TRUE,
+                  show.ci = FALSE,
+                  show.stat = TRUE)
 
 # pander(tidy(myOLS))
 
@@ -145,8 +148,24 @@ myMLM <- lmer(y.new ~x.new + (1 | groupnum),
 
 # summary(myMLM)
 
-sjPlot::tab_model(myMLM)
+sjPlot::tab_model(myMLM,
+                  show.se = TRUE,
+                  show.ci = FALSE,
+                  show.stat = TRUE)
 
 # pander(tidy(myMLM))
 
 ```
+
+## Compare OLS and MLM
+
+```{r}
+
+tab_model(myOLS, myMLM,
+          dv.labels = c("OLS", "MLM"), 
+          show.se = TRUE,
+          show.ci = FALSE,
+          show.stat = TRUE)
+
+```
+
