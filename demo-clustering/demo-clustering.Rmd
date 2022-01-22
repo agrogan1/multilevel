@@ -26,17 +26,13 @@ knitr::opts_chunk$set(echo = FALSE,
 
 ```{r}
 
-# library(Rcmdr)
-
 library(foreign) # import data
-
-# library(googleVis)
 
 library(lme4) # MLM
 
 library(ggplot2) # beautiful graphs
 
-library(ggthemes) # nice themes
+library(gganimate) # animated ggplots
 
 library(plotly) # animated graphs
 
@@ -50,73 +46,78 @@ library(sjPlot) # nice tables for MLM
 
 ```{r}
 
-# get the data sets
+set.seed(3846) # random seed
 
-group_dataset <- 
-  read.dta("demo group.dta", 
-           convert.dates=TRUE, convert.factors=TRUE, missing.type=TRUE, 
-           convert.underscore=TRUE, warn.missing.labels=TRUE)
+g <- seq(1, 5) # number of groups
 
-individual_dataset <- 
-  read.dta("demo individual.dta", 
-           convert.dates=TRUE, convert.factors=TRUE, missing.type=TRUE, 
-           convert.underscore=TRUE, warn.missing.labels=TRUE)
+x <- rnorm(5, 100, 10) # group x
 
+y <- rnorm(5, 100, 10) # group y
+
+# 5 obs / group
+
+id <- seq(1,25) 
+
+group_num <- rep(g, 1, each=5)
+
+x_group <- rep(x, each = 5) # x for the group
+
+y_group <- rep(y, each = 5) # y for the group
+
+x_noise <- rnorm(25, 0, 1)
+
+y_noise <- rnorm(25, 0, 1)
+
+x_individual <- x_group + x_noise
+
+y_individual <- y_group + y_noise
+
+mydata <- data.frame(id, 
+                     group_num,
+                     x_group, 
+                     y_group, 
+                     x_individual, 
+                     y_individual)
 
 ```
 
 # Grouped and Individual Data
 
-> “The data were generated from random numbers, and there is no relation between X and Y at all.  Firstly, values of X and Y were generated for each ‘subject,’ then a further random number was added to make the individual observation.”
+> "The data were generated from random numbers, and there is no relation between X and Y at all.  Firstly, values of X and Y were generated for each ‘subject,’ then a further random number was added to make the individual observation."
 
 From Bland and Altman, *BMJ*, 1994, 308, 896.
 
 So... we follow their procedure.
 
+> The animation below illustrates the process of simulating the data. 
 
-## Grouped Data
+```{r, echo=TRUE, eval=TRUE}
 
-```{r, eval = TRUE, echo=FALSE}
-
-p1 <- ggplot(group_dataset,
-             aes(x = x, y = y, 
-                 color = factor(groupnum),
-                 label = groupnum)) +
-  geom_point(size = 10, show.legend = FALSE) + 
-  geom_text(color="white",
+ggplot(mydata,
+       aes(color = factor(group_num),
+           label = group_num)) +
+  geom_point(aes(x = x_group, 
+                 y = y_group),
+             size = 10,
+             show.legend = FALSE) + 
+  geom_text(aes(x = x_group,
+                y = y_group),
+            color = "white",
             show.legend = FALSE) +
-  ggtitle("Grouped Data") +
+  geom_point(aes(x = x_individual, 
+                y = y_individual),
+             show.legend = FALSE) + 
+  transition_layers(layer_length = 1,
+                    transition_length = 3) +
+  enter_fade() +
+  enter_grow() +
+  exit_fade() +
+  exit_shrink() +
+  labs(title = "Illustrating the Process of Simulating the Data",
+       x = "x",
+       y = "y") +
   theme_minimal() +
-  scale_color_viridis_d() +
-  # scale_color_brewer(palette = "Set1") +
-  xlim(0,100) +
-  ylim(-25, 125) +
-  theme(legend.position = "none")
-
-ggplotly(p1)
-
-```
-
-## Individual Data
-
-```{r, eval = TRUE, echo=FALSE}
-
-p2 <- ggplot(individual_dataset, 
-             aes(x = x.new, y = y.new,
-                 color = factor(groupnum),
-                 label = groupnum)) +
-  geom_point(size = 5, show.legend = FALSE) + 
-  geom_text(color="white", 
-            show.legend = FALSE) +
-  ggtitle("Individual Data") +
-  theme_minimal() +
-  scale_color_viridis_d() +
-  # scale_color_brewer(palette = "Set1") +
-  xlim(0,100) +
-  ylim(-25, 125) +
-  theme(legend.position = "none")
-
-ggplotly(p2)
+  scale_color_viridis_d(name = "group")
 
 ```
 
@@ -126,7 +127,7 @@ ggplotly(p2)
 
 ```{r}
 
-myOLS <- lm(y.new ~x.new, data = individual_dataset)
+myOLS <- lm(y_individual ~ x_individual, data = mydata)
 
 # summary(myOLS)
 
@@ -143,8 +144,8 @@ sjPlot::tab_model(myOLS,
 
 ```{r}
 
-myMLM <- lmer(y.new ~x.new + (1 | groupnum), 
-                              data = individual_dataset)
+myMLM <- lmer(y_individual ~ x_individual + (1 | group_num), 
+              data = mydata)
 
 # summary(myMLM)
 
