@@ -6,7 +6,7 @@
 geometry: margin=1 in
 ---
 
-<style>h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
+<style>body {max-width: 90%} h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
 
 # Introduction
 
@@ -61,7 +61,7 @@ content.style.display = "block";
 }
 </script>
 
-    list in 1/10, abb(20) // list out some data
+    list in 1/10, table // list out some data
 	
 # Uncentered Data
 
@@ -81,7 +81,7 @@ $$\text{behavior problems} = \beta_0 + \beta_1 \text{income} + \beta_2 \text{phy
 	
     graph export myscatter.png, width(1000) replace
 
-![Scatterplot](myscatter.png)
+![Scatterplot](myscatter.png){ width=50% } 
 
 ## Multilevel Model
 
@@ -116,7 +116,7 @@ $$\text{behavior problems} = \beta_0 + \beta_1 \text{income}_{\text{grand mean c
 	
     graph export myscatter2.png, width(1000) replace
 
-![Scatterplot With Grand Mean Centering](myscatter2.png)
+![Scatterplot With Grand Mean Centering](myscatter2.png){ width=50% } 
 	
 In a graph, we see that *grand mean centering* has transformed the intercept so now the $\beta_0$ term is the level of behavior problems for the *average* child who did *not recieve physical punishment*.
 

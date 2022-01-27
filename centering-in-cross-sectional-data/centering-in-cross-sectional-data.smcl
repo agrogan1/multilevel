@@ -1,17 +1,17 @@
 {smcl}
 {com}{sf}{ul off}{txt}{.-}
       name:  {res}<unnamed>
-       {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\multilevel\centering-in-cross-sectional-data\centering-in-cross-sectional-data.smcl
+       {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel/centering-in-cross-sectional-data/centering-in-cross-sectional-data.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}25 May 2021, 14:54:52
+ {txt}opened on:  {res}27 Jan 2022, 13:57:31
 {txt}
 {com}. //_1
 . display c(current_date)
-{res}25 May 2021
+{res}27 Jan 2022
 {txt}
 {com}. //_2
 . display c(current_time)
-{res}14:54:52
+{res}13:57:31
 {txt}
 {com}. //_3
 . clear all
@@ -42,23 +42,23 @@ now 100.
 . generate behavior_problems = 110 + -.0001 * income + 10 * physical_punishment + u + e // plausible regression relationship
 {txt}
 {com}. //_11
-. list in 1/10, abb(20) // list out some data
+. list in 1/10, table // list out some data
 {txt}
-     {c TLC}{hline 10}{c -}{hline 21}{c -}{hline 9}{c -}{hline 11}{c -}{hline 4}{c -}{hline 19}{c TRC}
-     {c |} {res}  income   physical_punishment   country           e    u   behavior_problems {txt}{c |}
-     {c LT}{hline 10}{c -}{hline 21}{c -}{hline 9}{c -}{hline 11}{c -}{hline 4}{c -}{hline 19}{c RT}
-  1. {c |} {res}19044.56                     0         1    .4024389   -4             104.498 {txt}{c |}
-  2. {c |} {res}11784.18                     0         1   -.7492127   -4            104.0724 {txt}{c |}
-  3. {c |} {res}54456.47                     0         1    1.950699   -4            102.5051 {txt}{c |}
-  4. {c |} {res}10323.12                     0         1   -.2365216   -4            104.7312 {txt}{c |}
-  5. {c |} {res}31238.75                     0         1    .5317396   -4            103.4079 {txt}{c |}
-     {c LT}{hline 10}{c -}{hline 21}{c -}{hline 9}{c -}{hline 11}{c -}{hline 4}{c -}{hline 19}{c RT}
-  6. {c |} {res}25779.69                     1         1    .3833449   -4            113.8054 {txt}{c |}
-  7. {c |} {res}46237.15                     1         1   -1.336349   -4            110.0399 {txt}{c |}
-  8. {c |} {res}22314.24                     1         1   -.1576294   -4            113.6109 {txt}{c |}
-  9. {c |} {res}24329.21                     1         1   -1.299845   -4            112.2672 {txt}{c |}
- 10. {c |} {res}35722.85                     0         2   -.0299588   -3            103.3978 {txt}{c |}
-     {c BLC}{hline 10}{c -}{hline 21}{c -}{hline 9}{c -}{hline 11}{c -}{hline 4}{c -}{hline 19}{c BRC}
+     {c TLC}{hline 10}{c -}{hline 10}{c -}{hline 9}{c -}{hline 11}{c -}{hline 4}{c -}{hline 10}{c TRC}
+     {c |} {res}  income   physic~t   country           e    u   behavi~s {txt}{c |}
+     {c LT}{hline 10}{c -}{hline 10}{c -}{hline 9}{c -}{hline 11}{c -}{hline 4}{c -}{hline 10}{c RT}
+  1. {c |} {res}38510.68          0         1    .5267254   -4   102.6757 {txt}{c |}
+  2. {c |} {res}21541.63          1         1    -.514424   -4   113.3314 {txt}{c |}
+  3. {c |} {res}15810.88          1         1    -.662863   -4   113.7561 {txt}{c |}
+  4. {c |} {res}30859.68          0         1   -1.792949   -4   101.1211 {txt}{c |}
+  5. {c |} {res}38156.11          0         1   -.0498053   -4   102.1346 {txt}{c |}
+     {c LT}{hline 10}{c -}{hline 10}{c -}{hline 9}{c -}{hline 11}{c -}{hline 4}{c -}{hline 10}{c RT}
+  6. {c |} {res}35222.72          0         1    .7477483   -4   103.2255 {txt}{c |}
+  7. {c |} {res}14933.72          0         1   -.6618822   -4   103.8447 {txt}{c |}
+  8. {c |} {res}62175.32          0         1    1.233642   -4   101.0161 {txt}{c |}
+  9. {c |} {res}44908.59          0         1   -.0998779   -4   101.4093 {txt}{c |}
+ 10. {c |} {res}41251.48          0         2   -.0472168   -3   102.8276 {txt}{c |}
+     {c BLC}{hline 10}{c -}{hline 10}{c -}{hline 9}{c -}{hline 11}{c -}{hline 4}{c -}{hline 10}{c BRC}
 
 {com}. //_12
 . twoway (scatter behavior_problems income if physical_punishment ==0) ///
@@ -73,7 +73,7 @@ now 100.
 . graph export myscatter.png, width(1000) replace
 {txt}{p 0 4 2}
 file {bf}
-myscatter.png{rm}
+/Users/agrogan/Desktop/GitHub/multilevel/centering-in-cross-sectional-data/myscatter.png{rm}
 saved as
 PNG
 format
@@ -86,8 +86,8 @@ format
 {res}
 {txt}Performing gradient-based optimization: 
 {res}
-{txt}Iteration 0:{space 3}log likelihood = {res:-165.77618}  
-{res}{txt}Iteration 1:{space 3}log likelihood = {res:-165.77618}  
+{txt}Iteration 0:{space 3}log likelihood = {res:-154.77318}  
+{res}{txt}Iteration 1:{space 3}log likelihood = {res:-154.77318}  
 {res}
 {txt}Computing standard errors:
 {res}
@@ -97,38 +97,38 @@ format
 {col 63}min{col 67}={col 69}{res}         1
 {txt}{col 63}avg{col 67}={col 69}{res}       9.1
 {txt}{col 63}max{col 67}={col 69}{res}        10
-{col 49}{txt}Wald chi2({res}2{txt}){col 67}={col 70}{res}  2395.48
-{txt}Log likelihood = {res}-165.77618{col 49}{txt}Prob > chi2{col 67}={col 73}{res}0.0000
+{col 49}{txt}Wald chi2({res}2{txt}){col 67}={col 70}{res}  2321.02
+{txt}Log likelihood = {res}-154.77318{col 49}{txt}Prob > chi2{col 67}={col 73}{res}0.0000
 
 {txt}{hline 20}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 {col 1}  behavior_problems{col 21}{c |} Coefficient{col 33}  Std. err.{col 45}      z{col 53}   P>|z|{col 61}     [95% con{col 74}f. interval]
 {hline 20}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
-{space 13}income {c |}{col 21}{res}{space 2}-.0000898{col 33}{space 2} 6.68e-06{col 44}{space 1}  -13.44{col 53}{space 3}0.000{col 61}{space 4}-.0001029{col 74}{space 3}-.0000767
-{txt}physical_punishment {c |}{col 21}{res}{space 2} 10.08122{col 33}{space 2}  .211381{col 44}{space 1}   47.69{col 53}{space 3}0.000{col 61}{space 4} 9.666924{col 74}{space 3} 10.49552
-{txt}{space 14}_cons {c |}{col 21}{res}{space 2}  110.447{col 33}{space 2} .9834314{col 44}{space 1}  112.31{col 53}{space 3}0.000{col 61}{space 4} 108.5195{col 74}{space 3} 112.3744
+{space 13}income {c |}{col 21}{res}{space 2}-.0000972{col 33}{space 2} 5.29e-06{col 44}{space 1}  -18.37{col 53}{space 3}0.000{col 61}{space 4}-.0001075{col 74}{space 3}-.0000868
+{txt}physical_punishment {c |}{col 21}{res}{space 2} 10.09371{col 33}{space 2}   .21943{col 44}{space 1}   46.00{col 53}{space 3}0.000{col 61}{space 4} 9.663634{col 74}{space 3} 10.52378
+{txt}{space 14}_cons {c |}{col 21}{res}{space 2} 110.9816{col 33}{space 2} .9910829{col 44}{space 1}  111.98{col 53}{space 3}0.000{col 61}{space 4} 109.0391{col 74}{space 3} 112.9241
 {txt}{hline 20}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 
 {hline 29}{c TT}{hline 48}
 {col 3}Random-effects parameters{col 30}{c |}{col 34}Estimate{col 45}Std. err.{col 59}[95% conf. interval]
 {hline 29}{c +}{hline 48}
 {res}country{txt}: Identity{col 30}{c |}
-{space 18}var(_cons) {c |}{res}{col 33} 9.711427{col 44} 4.253129{col 58}  4.11622{col 70} 22.91224
+{space 18}var(_cons) {c |}{res}{col 33} 10.21833{col 44} 4.480481{col 58} 4.326623{col 70} 24.13295
 {txt}{hline 29}{c +}{hline 48}
-{col 16}var(Residual){col 30}{c |}{res}{col 33} .9959301{col 44} .1494585{col 58} .7421465{col 70} 1.336497
+{col 16}var(Residual){col 30}{c |}{res}{col 33} .7733333{col 44} .1161378{col 58} .5761489{col 70} 1.038003
 {txt}{hline 29}{c BT}{hline 48}
-LR test vs. linear model:{col 27}{help j_chibar##|_new:chibar2(01) =} {res}173.94{col 55}{txt}Prob >= chibar2 = {col 73}{res}0.0000
+LR test vs. linear model:{col 27}{help j_chibar##|_new:chibar2(01) =} {res}181.47{col 55}{txt}Prob >= chibar2 = {col 73}{res}0.0000
 {txt}
 {com}. //_15
 . display %5.3f 10000 * _b[income]
-{res}-0.898
+{res}-0.972
 {txt}
 {com}. //_16
 . display %5.3f _b[physical_punishment]
-{res}10.081
+{res}10.094
 {txt}
 {com}. //_17
 . display %5.3f _b[_cons]
-{res}110.447
+{res}110.982
 {txt}
 {com}. //_18
 . egen m_income = mean(income) // grand mean of income
@@ -150,7 +150,7 @@ LR test vs. linear model:{col 27}{help j_chibar##|_new:chibar2(01) =} {res}173.9
 . graph export myscatter2.png, width(1000) replace
 {txt}{p 0 4 2}
 file {bf}
-myscatter2.png{rm}
+/Users/agrogan/Desktop/GitHub/multilevel/centering-in-cross-sectional-data/myscatter2.png{rm}
 saved as
 PNG
 format
@@ -163,8 +163,8 @@ format
 {res}
 {txt}Performing gradient-based optimization: 
 {res}
-{txt}Iteration 0:{space 3}log likelihood = {res:-165.77618}  
-{res}{txt}Iteration 1:{space 3}log likelihood = {res:-165.77618}  
+{txt}Iteration 0:{space 3}log likelihood = {res:-154.77318}  
+{res}{txt}Iteration 1:{space 3}log likelihood = {res:-154.77318}  
 {res}
 {txt}Computing standard errors:
 {res}
@@ -174,26 +174,26 @@ format
 {col 63}min{col 67}={col 69}{res}         1
 {txt}{col 63}avg{col 67}={col 69}{res}       9.1
 {txt}{col 63}max{col 67}={col 69}{res}        10
-{col 49}{txt}Wald chi2({res}2{txt}){col 67}={col 70}{res}  2395.48
-{txt}Log likelihood = {res}-165.77618{col 49}{txt}Prob > chi2{col 67}={col 73}{res}0.0000
+{col 49}{txt}Wald chi2({res}2{txt}){col 67}={col 70}{res}  2321.02
+{txt}Log likelihood = {res}-154.77318{col 49}{txt}Prob > chi2{col 67}={col 73}{res}0.0000
 
 {txt}{hline 20}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 {col 1}  behavior_problems{col 21}{c |} Coefficient{col 33}  Std. err.{col 45}      z{col 53}   P>|z|{col 61}     [95% con{col 74}f. interval]
 {hline 20}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
-{space 11}c_income {c |}{col 21}{res}{space 2}-.0000898{col 33}{space 2} 6.68e-06{col 44}{space 1}  -13.44{col 53}{space 3}0.000{col 61}{space 4}-.0001029{col 74}{space 3}-.0000767
-{txt}physical_punishment {c |}{col 21}{res}{space 2} 10.08122{col 33}{space 2}  .211381{col 44}{space 1}   47.69{col 53}{space 3}0.000{col 61}{space 4} 9.666924{col 74}{space 3} 10.49552
-{txt}{space 14}_cons {c |}{col 21}{res}{space 2} 107.0459{col 33}{space 2} .9511417{col 44}{space 1}  112.54{col 53}{space 3}0.000{col 61}{space 4} 105.1817{col 74}{space 3} 108.9101
+{space 11}c_income {c |}{col 21}{res}{space 2}-.0000972{col 33}{space 2} 5.29e-06{col 44}{space 1}  -18.37{col 53}{space 3}0.000{col 61}{space 4}-.0001075{col 74}{space 3}-.0000868
+{txt}physical_punishment {c |}{col 21}{res}{space 2} 10.09371{col 33}{space 2}   .21943{col 44}{space 1}   46.00{col 53}{space 3}0.000{col 61}{space 4} 9.663634{col 74}{space 3} 10.52378
+{txt}{space 14}_cons {c |}{col 21}{res}{space 2} 107.3387{col 33}{space 2} .9719362{col 44}{space 1}  110.44{col 53}{space 3}0.000{col 61}{space 4} 105.4337{col 74}{space 3} 109.2436
 {txt}{hline 20}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 
 {hline 29}{c TT}{hline 48}
 {col 3}Random-effects parameters{col 30}{c |}{col 34}Estimate{col 45}Std. err.{col 59}[95% conf. interval]
 {hline 29}{c +}{hline 48}
 {res}country{txt}: Identity{col 30}{c |}
-{space 18}var(_cons) {c |}{res}{col 33} 9.711427{col 44} 4.253128{col 58}  4.11622{col 70} 22.91224
+{space 18}var(_cons) {c |}{res}{col 33} 10.21833{col 44} 4.480481{col 58} 4.326623{col 70} 24.13295
 {txt}{hline 29}{c +}{hline 48}
-{col 16}var(Residual){col 30}{c |}{res}{col 33} .9959301{col 44} .1494585{col 58} .7421465{col 70} 1.336497
+{col 16}var(Residual){col 30}{c |}{res}{col 33} .7733333{col 44} .1161378{col 58} .5761489{col 70} 1.038003
 {txt}{hline 29}{c BT}{hline 48}
-LR test vs. linear model:{col 27}{help j_chibar##|_new:chibar2(01) =} {res}173.94{col 55}{txt}Prob >= chibar2 = {col 73}{res}0.0000
+LR test vs. linear model:{col 27}{help j_chibar##|_new:chibar2(01) =} {res}181.47{col 55}{txt}Prob >= chibar2 = {col 73}{res}0.0000
 {txt}
 {com}. //_23
 . bysort country: egen m_g_income = mean(income) // GROUP mean of income
@@ -216,9 +216,9 @@ LR test vs. linear model:{col 27}{help j_chibar##|_new:chibar2(01) =} {res}173.9
 {com}. //_^
 . log close
       {txt}name:  {res}<unnamed>
-       {txt}log:  {res}C:\Users\agrogan\Box Sync\Box Sync\GitHub\multilevel\centering-in-cross-sectional-data\centering-in-cross-sectional-data.smcl
+       {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel/centering-in-cross-sectional-data/centering-in-cross-sectional-data.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}25 May 2021, 14:54:57
+ {txt}closed on:  {res}27 Jan 2022, 13:57:41
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}
