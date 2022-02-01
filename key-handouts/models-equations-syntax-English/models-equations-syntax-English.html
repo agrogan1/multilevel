@@ -1487,7 +1487,7 @@ code span.wa { color: #008000; font-weight: bold; } /* Warning */
 
 </div>
 <div class="layout-chunk" data-layout="l-body">
-<table class=" lightable-paper lightable-hover" style="font-family: Roboto; margin-left: auto; margin-right: auto;">
+<table class=" lightable-paper lightable-hover" style="font-family: Roboto; margin-left: auto; margin-right: auto;border-bottom: 0;">
 <thead>
 <tr>
 <th style="text-align:left;color: white !important;background-color: #00274C !important;">
@@ -1603,11 +1603,30 @@ mixed y x z || /// <br>groupid: x z
 </td>
 </tr>
 </tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; " colspan="100%">
+<span style="font-style: italic;">Note: </span>
+</td>
+</tr>
+<tr>
+<td style="padding: 0; " colspan="100%">
+<sup></sup> <code>///</code> is a line wrapping character to allow Stata commands to span multiple lines.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; " colspan="100%">
+<sup></sup> For binary outcomes, use command <code>melogit</code> instead.
+</td>
+</tr>
+<tr>
+<td style="padding: 0; " colspan="100%">
+<sup></sup> <code>mixed</code> without a clustering variable will give very similar results to <code>regress</code>.
+</td>
+</tr>
+</tfoot>
 </table>
 </div>
-<p><code>///</code> is a line wrapping character to allow Stata commands to span multiple lines.</p>
-<p>For binary outcomes, use command <code>melogit</code> instead.</p>
-<p><code>mixed</code> without a clustering variable will give very similar results to <code>regress</code>.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

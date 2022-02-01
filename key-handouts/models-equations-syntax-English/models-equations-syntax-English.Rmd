@@ -90,12 +90,23 @@ if(opts_knit$get("rmarkdown.pandoc.to") == 'html5'){
     column_spec(3,
                 width_min = "15em",
                 monospace = TRUE) %>% # column 3 is monospaced
-    column_spec(4, width_min = "15em")
+    column_spec(4, width_min = "15em") %>%
+    footnote(general = c("`///` is a line wrapping character to allow Stata commands to span multiple lines.", 
+    "For binary outcomes, use command `melogit` instead.", "`mixed` without a clustering variable will give very similar results to `regress`."))
+    
   
 }
 
 if(opts_knit$get("rmarkdown.pandoc.to") == 'latex'){
+  
+  mydata$model <- gsub("<br>","\n", mydata$model) # <br> to \n for LaTeX
+  
+  mydata$equation <- gsub("<br>","\n", mydata$equation) # <br> to \n for LaTeX
+  
+  mydata$Stata <- gsub("<br>","\n", mydata$Stata) # <br> to \n for LaTeX
 
+  # mydata %>% kbl()
+  
   pander(mydata)
 
 }
@@ -108,10 +119,7 @@ if(opts_knit$get("rmarkdown.pandoc.to") == 'latex'){
 ```
 
 
-`///` is a line wrapping character to allow Stata commands to span multiple lines.
 
-For binary outcomes, use command `melogit` instead.
 
-`mixed` without a clustering variable will give very similar results to `regress`.
 
 
