@@ -1,0 +1,117 @@
+---
+title: "Multilevel Models, Equations, Syntax & English"
+author:
+- name: Andy Grogan-Kaylor
+  url: https://agrogan1.github.io/
+  affiliation: University of Michigan
+  affiliation_url: https://umich.edu/
+date: '`r Sys.Date()`'
+output:
+  distill::distill_article:
+    highlight: haddock
+    toc: yes
+    toc_float: no
+  word_document:
+    toc: yes
+  pdf_document:
+    highlight: haddock
+    latex_engine: xelatex
+citation_url: https://agrogan1.github.io
+classoption: landscape
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = FALSE)
+
+library(knitr)
+
+library(dplyr)
+
+library(gt)
+
+library(kableExtra)
+
+library(pander)
+
+
+```
+
+```{r}
+
+model <- c("Intercept Only",
+           "Intercept <br>Independent Variable(s)",
+           "Intercept <br>Random variation of the intercept",
+           "Unconditional intraclass correlation coefficient (ICC)",
+           "Intercept <br>Independent variable(s) <br>Random variation of the intercept", 
+           "Intercept <br>Independent variable <br>Random intercept <br>Random slope",
+           "We can estimate multilevel models with more than 1 random slope.")
+
+equation <- c("$y = \\beta_0 + e_{ij}$",
+              "$y = \\beta_0 + \\beta_1 x + e_{ij}$ <br>$y = \\beta_0 + \\beta_1 x + \\beta_2 z + e_{ij}$",
+              "$y = \\beta_0 + e_{ij} + u_{0j}$",
+              "$\\frac{var(u_{0j})}{var(u_{0j}) + var(e_{ij})}$",
+              "$y = \\beta_0 + \\beta_1x + e_{ij} + u_{0j}$ <br> $y = \\beta_0 + \\beta_1 x + \\beta_2 z + e_{ij} + u_{0j}$",
+              "$y = \\beta_0 + \\beta_1 x + e_{ij} + u_{0j} + u_{1j} x$",
+              "$y = \\beta_0 + \\beta_1 x + \\beta_2 z +$ <br>$e_{ij} + u_{0j} + u_{1j} x + u_{2j} z$")
+
+Stata <- c("mixed y",
+           "mixed y x <br> mixed y x z",
+           "mixed y || groupid:",
+           "mixed y || groupid: <br>estat icc",
+           "mixed y x || groupid: <br>mixed y x z || groupid:",
+           "mixed y x || groupid: x",
+           "mixed y x z || /// <br>groupid: x z")
+
+English <- c("We estimated the mean of [outcome]",
+             "We estimated the relationship of [independent variable(s)] with [outcome]",
+             "We estimated the mean of [outcome]. We allowed the intercept of the model to vary by [groupid].",
+             "XX% of the variation in [outcome] was explained by clustering of participants in [groupid]",
+             "We estimated the relationship of [independent variable(s)] with [outcome].  We allowed the intercept of the model to vary by group.",
+             "We estimated the relationship of [independent variable] with [outcome].  We allowed the intercept of the model to vary by group. We also allowed the relationship of [independent variable] with [outcome] to vary by group.",
+             "")
+
+mydata <- data.frame(model, equation, Stata, English)
+
+```
+
+```{r}
+
+if(opts_knit$get("rmarkdown.pandoc.to") == 'html5'){
+  
+  mydata %>%
+    kbl(escape = FALSE) %>%
+    kable_paper("hover",
+                full_width = TRUE,
+                html_font = "Roboto") %>%
+    row_spec(0,
+             color = "white",
+             background = "#00274C") %>% # header row
+    column_spec(3,
+                width_min = "15em",
+                monospace = TRUE) %>% # column 3 is monospaced
+    column_spec(4, width_min = "15em")
+  
+}
+
+if(opts_knit$get("rmarkdown.pandoc.to") == 'latex'){
+
+  pander(mydata)
+
+}
+
+
+
+
+
+
+```
+
+
+`///` is a line wrapping character to allow Stata commands to span multiple lines.
+
+For binary outcomes, use command `melogit` instead.
+
+`mixed` without a clustering variable will give very similar results to `regress`.
+
+
