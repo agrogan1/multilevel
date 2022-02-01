@@ -4,6 +4,11 @@
 
 * [Demonstration of different methods with clustered data](https://agrogan1.github.io/multilevel/demo-clustering/demo-clustering.html)
 
+
+## Key Handouts
+
+* [Multilevel Models, Equations, Syntax & English](https://agrogan1.github.io/multilevel/key-handouts/models-equations-syntax-English/models-equations-syntax-English.html) | [PDF](https://agrogan1.github.io/multilevel/key-handouts/models-equations-syntax-English/models-equations-syntax-English.pdf)
+
 ## Gutten Tree Data
 
 * [Multilevel Models With The Gutten Tree Data](https://agrogan1.github.io/multilevel/mlm-gutten/mlm-gutten.html)
