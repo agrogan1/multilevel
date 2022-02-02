@@ -1,0 +1,69 @@
+---
+title: "Centering Strategies"
+description: |
+  Some very general, and evolving notes on centering strategies in multilevel modeling.
+author:
+- name: Andy Grogan-Kaylor
+  url: https://agrogan1.github.io/
+  affiliation: University of Michigan
+  affiliation_url: https://umich.edu/
+date: '`r Sys.Date()`'
+output:
+  pdf_document:
+    highlight: haddock
+    latex_engine: xelatex
+  distill::distill_article:
+    highlight: haddock
+    toc: yes
+    toc_float: no
+citation_url: https://agrogan1.github.io
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = FALSE)
+
+```
+
+# Notation
+
+In these notes I use
+
+* $x$ to denote an independent variable
+* $\bar{x}_{..}$ to denote the grand mean
+* $\bar{x}_{.j}$ to denote a group mean
+
+Then
+
+* $x - \bar{x..}$ is a grand mean centered variable.
+* $x - \bar{x}_{.j}$ is a group mean centered variable.
+
+> All of the approaches listed below seem plausible to me. I think that they are simply different regression sentences, or substantive questions, that one could pose of the data.
+
+# Uncentered x
+
+$$y_{ij} = \beta_0 + \beta x + e_{ij} + u_{0i}$$
+
+# Grand Mean Centered x
+
+$$y_{ij} = \beta_0 + \beta (x - \bar{x..}) + e_{ij} + u_{0i}$$
+
+# Group Mean Centered x and Group Mean of x
+
+$$y_{ij} = \beta_0 + \beta (x - \bar{x}_{.j}) + \beta \bar{x}_{.j} + e_{ij} + u_{0i}$$
+
+# x and Group Mean of x
+
+$$y_{ij} = \beta_0 + \beta x + \beta \bar{x}_{.j} + e_{ij} + u_{0i}$$
+
+
+
+
+
+
+
+
+
+
+
+
