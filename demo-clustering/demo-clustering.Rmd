@@ -1,19 +1,16 @@
 ---
 title: "Demonstration of Clustered Data"
-author: "Andy Grogan-Kaylor"
+author:
+- name: Andy Grogan-Kaylor
+  url: https://agrogan1.github.io/
+  affiliation: University of Michigan
+  affiliation_url: https://umich.edu/
 date: '`r Sys.Date()`'
 output: 
   distill::distill_article:
     highlight: haddock
     toc: yes
     code_folding: true
-  html_document: 
-    highlight: haddock
-    number_sections: yes
-    toc: yes
-    toc_float:
-      collapsed: no
-      smooth_scroll: yes
 ---
 
 ```{r setup, include=FALSE}
