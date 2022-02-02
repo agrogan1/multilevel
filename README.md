@@ -32,6 +32,7 @@
 ## Centering
 
 * [Centering in Cross-Sectional Data](https://agrogan1.github.io/multilevel/centering-in-cross-sectional-data/centering-in-cross-sectional-data.html)
+* [Centering Strategies](https://agrogan1.github.io/multilevel/centering-strategies/centering-strategies.html)
 
 ## `lmer` Demo
 
