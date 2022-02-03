@@ -1,0 +1,10 @@
+d spagplot. Spaghetti Plots
+d Statistical Consulting Group
+d Institute for Digital Research and Education, UCLA
+d idrestat@ucla.edu
+d
+d STATA ado and hlp files in the package
+d distribution-date: 20150326
+f spagplot.ado
+f spagplot.hlp
+e

@@ -1,0 +1,82 @@
+{smcl}
+{...}
+{hline}
+help for {hi:spagplot}
+{hline}
+
+{title:Spaghetti Plot}
+
+{p 8 14 2}{cmd:spagplot yvar xvar [if exp] [in range], id(idvar) [nofit] [noover] {it:[graph options]}} 
+
+{p 4 4 2}
+where {it:yvar xvar} are the Y and X variables you wish to plot and {it:idvar} is the 
+variable that identifies a single observation.
+
+NOTE! Spagplot makes the assumption that the first X variable for subject i+1 
+is less than the last X variable for subject "i" and this is not always true. 
+When this is false, the lines for two subjects will get connected.
+
+{title:Description}
+
+{p 4 4 2}
+{cmd:spagplot} allows you to "spaghetti plot", i.e. a plot of an X variable
+and the predicted values for the Y variable forming a regression line
+of the predicted values of Y by X.  A separate regression line is plotted
+for each observation indicated by the {it:idvar} variable.
+
+If you specify the {it:nofit} option, the actual y values (not the fitted y values
+will be plotted.
+
+If you specify the {it:noover} option, the overall regression line between
+y and x will be suppressed.
+
+{title:Examples}
+
+{p 4 4 2}We will show a number of examples from a data file
+which contains alcohol use {it:alcuse} at 3 ages, age 14, 15, and 16 for
+a number of children (identified by the variable {it:id}.  The age
+variable has been centered around age 14 and is named {id:age_14}. We first show
+how to obtain the data file.
+
+{cmd:. use http://www.ats.ucla.edu/stat/stata/examples/alda/data/alcohol1_pp}
+
+{p 4 4 2}This example shows a basic spaghetti plot of alcohol use by
+age, broken down by id. 
+
+{cmd:. spagplot alcuse age_14 , id( id )}
+
+{p 4 4 2}This example just performs the plot for the first 30 observations.
+
+{cmd:. spagplot alcuse age_14 in 1/30, id( id )}
+
+{p 4 4 2}This example shows the plot just for the ids below 9.
+
+{cmd:. spagplot alcuse age_14 if id <= 9, id( id )}
+
+{p 4 4 2}This example adds a title as a graph option.
+
+{cmd:. spagplot alcuse age_14 , id( id ) ytitle("Predicted Alcohol Use")}
+
+{p 4 4 2}This example adds a title as a graph option, and changes the scheme to {it:sj}.
+
+{cmd:. spagplot alcuse age_14 , id( id ) ytitle("Predicted Alcohol Use") scheme(sj)}
+
+{p 4 4 2}This example also changes the note from the default note.
+
+{cmd:. spagplot alcuse age_14 , id( id ) ytitle("Predicted Alcohol Use") scheme(sj) note("My custom note")}
+
+{p 4 4 2}This example removes the note from the graph entirely.
+
+{cmd:. spagplot alcuse age_14 , id( id ) ytitle("Predicted Alcohol Use") scheme(sj) note("")}
+
+
+{p 4 4 2}UCLA IDRE Statistical Consulting
+{p 4 4 2}idrestat@ucla.edu
+
+{title:Also see}
+
+    Manual:  {hi:[R] graph}
+
+{p 4 13 2}
+Online:  help for {help graph}
+
