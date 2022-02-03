@@ -7,6 +7,9 @@ author:
   affiliation_url: https://umich.edu/
 date: '`r Sys.Date()`'
 output:
+  pdf_document:
+    highlight: haddock
+    latex_engine: xelatex
   distill::distill_article:
     highlight: haddock
     toc: yes
@@ -14,9 +17,6 @@ output:
   word_document: 
     toc: no
     reference_docx: "markstat.docx"
-  pdf_document:
-    highlight: haddock
-    latex_engine: xelatex
 citation_url: https://agrogan1.github.io
 classoption: landscape
 ---
@@ -107,6 +107,8 @@ if(opts_knit$get("rmarkdown.pandoc.to") == 'latex'){
   mydata$equation <- gsub("\\\\\\\\","\\\\", mydata$equation)
   
   mydata$Stata <- gsub("<br>","\n", mydata$Stata) # <br> to \n for LaTeX
+  
+  set.alignment('left')
 
   pander(mydata, split.cells = 10)
   
@@ -120,6 +122,8 @@ if(opts_knit$get("rmarkdown.pandoc.to") == 'latex'){
 
 if(opts_knit$get("rmarkdown.pandoc.to") == 'docx'){
   
+  set.alignment('left')
+
   pander(mydata, split.cells = 10)
   
 }
