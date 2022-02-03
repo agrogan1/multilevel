@@ -3,11 +3,11 @@
       name:  {res}<unnamed>
        {txt}log:  {res}C:\Users\agrogan\Desktop\GitHub\multilevel\spaghetti-plot\Stata\spaghetti-plot-demo.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}16 Jul 2021, 14:45:45
+ {txt}opened on:  {res} 3 Feb 2022, 15:54:48
 {txt}
 {com}. //_1
 . display c(current_date)
-{res}16 Jul 2021
+{res} 3 Feb 2022
 {txt}
 {com}. //_2
 . use https://stats.idre.ucla.edu/stat/examples/imm/imm23, clear
@@ -88,14 +88,13 @@ format
 {com}. //_14
 . mixed math ses meanses || schid: // multilevel model; random intercept; no random effects
 {res}
-{txt}Performing EM optimization: 
+{txt}Performing EM optimization ...
 {res}
-{txt}Performing gradient-based optimization: 
-{res}
+{txt}Performing gradient-based optimization: {res}
 {txt}Iteration 0:{space 3}log likelihood = {res:-1871.9169}  
-{res}{txt}Iteration 1:{space 3}log likelihood = {res:-1871.9169}  
+Iteration 1:{space 3}log likelihood = {res:-1871.9169}  
 {res}
-{txt}Computing standard errors:
+{txt}Computing standard errors ...
 {res}
 {txt}Mixed-effects ML regression{col 49}Number of obs{col 67}={col 69}{res}       519
 {txt}Group variable: {res}schid{col 49}{txt}Number of groups{col 67}={col 69}{res}        23
@@ -144,14 +143,13 @@ format
 {com}. //_18
 . mixed math ses meanses || schid: // multilevel model; random intercept; no random effects
 {res}
-{txt}Performing EM optimization: 
+{txt}Performing EM optimization ...
 {res}
-{txt}Performing gradient-based optimization: 
-{res}
+{txt}Performing gradient-based optimization: {res}
 {txt}Iteration 0:{space 3}log likelihood = {res:-1871.9169}  
-{res}{txt}Iteration 1:{space 3}log likelihood = {res:-1871.9169}  
+Iteration 1:{space 3}log likelihood = {res:-1871.9169}  
 {res}
-{txt}Computing standard errors:
+{txt}Computing standard errors ...
 {res}
 {txt}Mixed-effects ML regression{col 49}Number of obs{col 67}={col 69}{res}       519
 {txt}Group variable: {res}schid{col 49}{txt}Number of groups{col 67}={col 69}{res}        23
@@ -238,7 +236,7 @@ format
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}C:\Users\agrogan\Desktop\GitHub\multilevel\spaghetti-plot\Stata\spaghetti-plot-demo.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}16 Jul 2021, 14:46:06
+ {txt}closed on:  {res} 3 Feb 2022, 15:55:16
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}
