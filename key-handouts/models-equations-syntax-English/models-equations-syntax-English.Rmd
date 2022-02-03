@@ -103,18 +103,19 @@ if(opts_knit$get("rmarkdown.pandoc.to") == 'latex'){
   
   mydata$equation <- gsub("<br>","\n", mydata$equation) # <br> to \n for LaTeX
   
+  mydata$equation <- gsub("\\\\\\\\","\\\\", mydata$equation)
+  
   mydata$Stata <- gsub("<br>","\n", mydata$Stata) # <br> to \n for LaTeX
 
-  # mydata %>% kbl()
-  
   pander(mydata)
-
+  
+  # kable(mydata, "latex", 
+  #       escape = FALSE,
+  #       booktabs = TRUE,
+  #       longtable = TRUE) %>%
+  #   column_spec(1:4, width = "5cm")
+  
 }
-
-
-
-
-
 
 ```
 
