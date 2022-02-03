@@ -11,8 +11,9 @@ output:
     highlight: haddock
     toc: yes
     toc_float: no
-  word_document:
-    toc: yes
+  word_document: 
+    toc: no
+    reference_docx: "markstat.docx"
   pdf_document:
     highlight: haddock
     latex_engine: xelatex
@@ -107,7 +108,7 @@ if(opts_knit$get("rmarkdown.pandoc.to") == 'latex'){
   
   mydata$Stata <- gsub("<br>","\n", mydata$Stata) # <br> to \n for LaTeX
 
-  pander(mydata)
+  pander(mydata, split.cells = 10)
   
   # kable(mydata, "latex", 
   #       escape = FALSE,
@@ -117,7 +118,15 @@ if(opts_knit$get("rmarkdown.pandoc.to") == 'latex'){
   
 }
 
+if(opts_knit$get("rmarkdown.pandoc.to") == 'docx'){
+  
+  pander(mydata, split.cells = 10)
+  
+}
+
 ```
+
+
 
 
 
