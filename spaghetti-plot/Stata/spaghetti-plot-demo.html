@@ -1,16 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="Content-Style-Type" content="text/css" />
-  <meta name="generator" content="pandoc" />
-  <meta name="author" content="Andy Grogan-Kaylor" />
-  <title>Spaghetti Plot Demo</title>
-  <style type="text/css">code{white-space: pre;}</style>
-  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 <style>
 /* CSS for Markstat 2.0 using Pandoc 2.0 */
-body{padding:14px 28px; max-width:45em;}
+body{padding:14px 28px;}
 body, table {font-family: Helvetica, Arial, Sans-serif; font-size: 14px;}
 h1, h2, h3, h4 {font-weight: normal; color: #3366cc}
 h1 {font-size: 200%;}
@@ -38,26 +31,171 @@ p.date, h3.date {text-align:center;margin-top:4px; margin-bottom:0}
 /* Tables*/
 table { margin:auto; border-collapse:collapse; }
 table caption { margin-bottom:1ex;}
-td {padding:0 0 0 0} /* override */
-table:not([class]) th { padding:4px 6px } 
-table:not([class]) td { padding:4px 6px } 
-table:not([class]) thead tr:first-child th {border-top:1px solid black; padding-top:6px}
-table:not([class]) thead tr:last-child  th {padding-bottom:6px}
-table:not([class]) tbody tr:first-child td {border-top:1px solid black; padding-top:6px}
-table:not([class]) tbody tr:last-child  td {padding-bottom:6px;}
-table:not([class]) tbody:last-child tr:last-child td {border-bottom:1px solid black;}
+th, td { padding:4px 6px;}
+thead tr:first-child th {border-top:1px solid black; padding-top:6px}
+thead tr:last-child  th {padding-bottom:6px}
+tbody tr:first-child td {border-top:1px solid black; padding-top:6px}
+tbody tr:last-child  td {padding-bottom:6px;}
+table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 </style>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Andy Grogan-Kaylor" />
+  <title>Spaghetti Plot Demo</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
 </head>
 <body>
-<div id="header">
+<header id="title-block-header">
 <h1 class="title">Spaghetti Plot Demo</h1>
-<h2 class="author">Andy Grogan-Kaylor</h2>
-<h3 class="date">3 Feb 2022</h3>
-</div>
-<style>h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
+<p class="author">Andy Grogan-Kaylor</p>
+<p class="date">3 Feb 2022</p>
+</header>
+<style>body {max-width: 90%;} h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
 <h1 id="get-data">Get Data</h1>
 <blockquote>
-<p>This example uses data from <a href="https://stats.idre.ucla.edu/stata/examples/mlm-imm/introduction-to-multilevel-modeling-by-kreft-and-de-leeuwchapter-4-analyses/" class="uri">https://stats.idre.ucla.edu/stata/examples/mlm-imm/introduction-to-multilevel-modeling-by-kreft-and-de-leeuwchapter-4-analyses/</a></p>
+<p>This example uses data from <a href="https://stats.idre.ucla.edu/stata/examples/mlm-imm/introduction-to-multilevel-modeling-by-kreft-and-de-leeuwchapter-4-analyses/">https://stats.idre.ucla.edu/stata/examples/mlm-imm/introduction-to-multilevel-modeling-by-kreft-and-de-leeuwchapter-4-analyses/</a></p>
 </blockquote>
 <pre class='stata'>. use https://stats.idre.ucla.edu/stat/examples/imm/imm23, clear
 </pre>
@@ -67,12 +205,12 @@ table:not([class]) tbody:last-child tr:last-child td {border-bottom:1px solid bl
 <pre class='stata'>. spagplot math ses, id(schid) 
 </pre>
 <pre class='stata'>. graph export graph1.png, width(500) replace
-file graph1.png saved as PNG format
+file /Users/agrogan/Desktop/GitHub/multilevel/spaghetti-plot/Stata/graph1.png saved as PNG
+    format
 </pre>
-<div class="figure">
-<img src="graph1.png" alt="Basic Spaghetti Plot" />
-<p class="caption">Basic Spaghetti Plot</p>
-</div>
+<figure>
+<img src="graph1.png" alt="Basic Spaghetti Plot" /><figcaption aria-hidden="true">Basic Spaghetti Plot</figcaption>
+</figure>
 <h1 id="add-better-scheme">Add Better Scheme</h1>
 <blockquote>
 <p>Schemes are very helpful in making better looking Stata graphs. A useful Stata scheme is <code>s1color</code>. Useful user written schemes are <code>lean2</code>, <code>plottig</code> (type <code>findit lean2</code> or <code>findit plottig</code> to install these), and my own <a href="https://agrogan1.github.io/Stata/michigan-graph-scheme/">Michigan Stata graph scheme</a>.</p>
@@ -83,58 +221,59 @@ file graph1.png saved as PNG format
 > note(" ") // blank "note" since title explains this graph
 </pre>
 <pre class='stata'>. graph export graph2.png, width(500) replace
-file graph2.png saved as PNG format
+file /Users/agrogan/Desktop/GitHub/multilevel/spaghetti-plot/Stata/graph2.png saved as PNG
+    format
 </pre>
-<div class="figure">
-<img src="graph2.png" alt="Spaghetti Plot With Better Options" />
-<p class="caption">Spaghetti Plot With Better Options</p>
-</div>
+<figure>
+<img src="graph2.png" alt="Spaghetti Plot With Better Options" /><figcaption aria-hidden="true">Spaghetti Plot With Better Options</figcaption>
+</figure>
 <h1 id="now-try-twoway-syntax">Now Try <code>twoway</code> Syntax</h1>
 <pre class='stata'>. twoway lfit math ses, scheme(michigan) title("Math Score By SES")
 </pre>
 <pre class='stata'>. graph export graph3.png, width(500) replace
-file graph3.png saved as PNG format
+file /Users/agrogan/Desktop/GitHub/multilevel/spaghetti-plot/Stata/graph3.png saved as PNG
+    format
 </pre>
-<div class="figure">
-<img src="graph3.png" alt="Initial twoway Graph" />
-<p class="caption">Initial <code>twoway</code> Graph</p>
-</div>
+<figure>
+<img src="graph3.png" alt="Initial twoway Graph" /><figcaption aria-hidden="true">Initial <code>twoway</code> Graph</figcaption>
+</figure>
 <h1 id="separate-panels-for-schools">Separate Panels For Schools</h1>
 <p>This ONLY works well with a limited number of schools.</p>
 <pre class='stata'>. twoway lfit math ses, scheme(michigan) by(schid, title("Math Score By SES")) 
 </pre>
 <pre class='stata'>. graph export graph4.png, width(1000) replace
-file graph4.png saved as PNG format
+file /Users/agrogan/Desktop/GitHub/multilevel/spaghetti-plot/Stata/graph4.png saved as PNG
+    format
 </pre>
-<div class="figure">
-<img src="graph4.png" alt="Separate Panels For Schools" />
-<p class="caption">Separate Panels For Schools</p>
-</div>
+<figure>
+<img src="graph4.png" alt="Separate Panels For Schools" /><figcaption aria-hidden="true">Separate Panels For Schools</figcaption>
+</figure>
 <h1 id="separate-panels-for-schools-with-scatterplots">Separate Panels For Schools With Scatterplots</h1>
 <pre class='stata'>. twoway (lfit math ses) ///
 > (scatter math ses, mcolor(gs7%30)), /// color gs7 @ 30% transparency
 > scheme(michigan) by(schid, title("Math Score By SES"))
 </pre>
 <pre class='stata'>. graph export graph5.png, width(1000) replace
-file graph5.png saved as PNG format
+file /Users/agrogan/Desktop/GitHub/multilevel/spaghetti-plot/Stata/graph5.png saved as PNG
+    format
 </pre>
-<div class="figure">
-<img src="graph5.png" alt="Separate Panels For Schools With Scatterplots" />
-<p class="caption">Separate Panels For Schools With Scatterplots</p>
-</div>
-<h1 id="model-based-spaghetti-plot">&quot;Model Based&quot; Spaghetti Plot</h1>
-<p>A sometimes unacknowledged point is that spaghetti plots--unless we take steps to correct this--reflect <em>unadjusted</em>, or <em>bivariate</em> associations.</p>
+<figure>
+<img src="graph5.png" alt="Separate Panels For Schools With Scatterplots" /><figcaption aria-hidden="true">Separate Panels For Schools With Scatterplots</figcaption>
+</figure>
+<h1 id="model-based-spaghetti-plot">“Model Based” Spaghetti Plot</h1>
+<p>A sometimes unacknowledged point is that spaghetti plots–unless we take steps to correct this–reflect <em>unadjusted</em>, or <em>bivariate</em> associations.</p>
 <p>We may sometimes wish to develop a spaghetti plot that reflects the <em>adjusted</em> estimates from our models.</p>
 <p>To do this we first estimate a multilevel model.</p>
 <pre class='stata'>. mixed math ses meanses || schid: // multilevel model; random intercept; no random effects
 
-Performing EM optimization ...
+Performing EM optimization: 
 
 Performing gradient-based optimization: 
+
 Iteration 0:   log likelihood = -1871.9169  
 Iteration 1:   log likelihood = -1871.9169  
 
-Computing standard errors ...
+Computing standard errors:
 
 Mixed-effects ML regression                     Number of obs     =        519
 Group variable: schid                           Number of groups  =         23
@@ -164,26 +303,26 @@ schid: Identity              │
 LR test vs. linear model: chibar2(01) = 25.58         Prob >= chibar2 = 0.0000
 </pre>
 <blockquote>
-<p>NB that this is a model with only a random intercept, <span class="math inline">\(u_0\)</span> and no random slopes e.g. <span class="math inline">\(u_1\)</span>, etc....</p>
+<p>NB that this is a model with only a random intercept, <span class="math inline">\(u_0\)</span> and no random slopes e.g. <span class="math inline">\(u_1\)</span>, etc….</p>
 </blockquote>
-<h2 id="simple-predicted-values">&quot;Simple&quot; Predicted Values</h2>
+<h2 id="simple-predicted-values">“Simple” Predicted Values</h2>
 <pre class='stata'>. predict yhat
 (option xb assumed)
 </pre>
 <pre class='stata'>. spagplot yhat ses, id(schid) scheme(michigan)
 </pre>
 <pre class='stata'>. graph export graph6A.png, width(500) replace
-file graph6A.png saved as PNG format
+file /Users/agrogan/Desktop/GitHub/multilevel/spaghetti-plot/Stata/graph6A.png saved as PNG
+    format
 </pre>
-<div class="figure">
-<img src="graph6A.png" alt="Spaghetti Plot With Predicted Values" />
-<p class="caption">Spaghetti Plot With Predicted Values</p>
-</div>
-<h2 id="model-based-predicted-values">&quot;Model Based&quot; Predicted Values</h2>
-<p>The spaghetti plots so far give an indication of different slopes per school. Below we outline a procedure for (a) developing a spaghetti plot of adjusted estimates; and (b) ensuring that the plot reflects the <em>exact</em> structure of the model e.g. random intercept only, or random intercept + random slope(s).</p>
+<figure>
+<img src="graph6A.png" alt="Spaghetti Plot With Predicted Values" /><figcaption aria-hidden="true">Spaghetti Plot With Predicted Values</figcaption>
+</figure>
+<h2 id="model-based-predicted-values">“Model Based” Predicted Values</h2>
+<p>The spaghetti plots so far give an indication of different slopes per school. Below we outline a procedure for (a) developing a spaghetti plot of adjusted estimates; and (b) ensuring that the plot reflects the <em>exact</em> structure of the model e.g. random intercept only, or random intercept + random slope(s).</p>
 <p>To carry out this procedure we employ the <code>_b</code> notation in Stata. For example, <code>_b[_cons]</code> indicates the intercept of the model while <code>_b[ses]</code> indicates the slope attached to <em>ses</em>.</p>
 <p>We need to carry out a few preliminary calculations.</p>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>Estimate (<code>predict</code>) the random effect(s).</li>
 <li>Estimate the mean values (<code>summarize</code>) of variables that we are going to hold constant.</li>
 <li>Generate predicted values (<span class="math inline">\(\hat y\)</span>) using the <code>_b</code> notation (<code>generate yhat = ...</code>).</li>
@@ -192,13 +331,14 @@ file graph6A.png saved as PNG format
 <h3 id="estimate-the-random-effects">Estimate The Random Effects</h3>
 <pre class='stata'>. mixed math ses meanses || schid: // multilevel model; random intercept; no random effects
 
-Performing EM optimization ...
+Performing EM optimization: 
 
 Performing gradient-based optimization: 
+
 Iteration 0:   log likelihood = -1871.9169  
 Iteration 1:   log likelihood = -1871.9169  
 
-Computing standard errors ...
+Computing standard errors:
 
 Mixed-effects ML regression                     Number of obs     =        519
 Group variable: schid                           Number of groups  =         23
@@ -245,14 +385,14 @@ LR test vs. linear model: chibar2(01) = 25.58         Prob >= chibar2 = 0.0000
 <pre class='stata'>. twoway scatter yhat2 ses, scheme(michigan)
 </pre>
 <pre class='stata'>. graph export graph6B.png, width(500) replace
-file graph6B.png saved as PNG format
+file /Users/agrogan/Desktop/GitHub/multilevel/spaghetti-plot/Stata/graph6B.png saved as PNG
+    format
 </pre>
-<div class="figure">
-<img src="graph6B.png" alt="Initial &quot;Model Based&quot; Spaghetti Plot" />
-<p class="caption">Initial &quot;Model Based&quot; Spaghetti Plot</p>
-</div>
-<p>We still have a small amount of work to do to make this look more &quot;spaghetti plot like&quot;.</p>
-<p>We are going to use <code>twoway connect</code> to create connected line plots. We employ option <code>c(L)</code> to ensure that only ascending values are connected: i.e. each Level 2 unit has their own regression line. For <code>c(L)</code> to work properly we are going to need to sort the data by <em>school</em> and <em>ses</em>. Lastly, we're going to change the <code>msymbol</code> so that we do not see dots, but only lines.</p>
+<figure>
+<img src="graph6B.png" alt="Initial “Model Based” Spaghetti Plot" /><figcaption aria-hidden="true">Initial “Model Based” Spaghetti Plot</figcaption>
+</figure>
+<p>We still have a small amount of work to do to make this look more “spaghetti plot like”.</p>
+<p>We are going to use <code>twoway connect</code> to create connected line plots. We employ option <code>c(L)</code> to ensure that only ascending values are connected: i.e. each Level 2 unit has their own regression line. For <code>c(L)</code> to work properly we are going to need to sort the data by <em>school</em> and <em>ses</em>. Lastly, we’re going to change the <code>msymbol</code> so that we do not see dots, but only lines.</p>
 <pre class='stata'>. sort schid ses // sort on Level 2 units and x values
 </pre>
 <pre class='stata'>. twoway connect yhat2 ses, ///
@@ -265,11 +405,11 @@ file graph6B.png saved as PNG format
 > scheme(michigan) // michigan scheme
 </pre>
 <pre class='stata'>. graph export graph7.png, width(500) replace
-file graph7.png saved as PNG format
+file /Users/agrogan/Desktop/GitHub/multilevel/spaghetti-plot/Stata/graph7.png saved as PNG
+    format
 </pre>
-<div class="figure">
-<img src="graph7.png" alt="Finalized &quot;Model Based&quot; Spaghetti Plot" />
-<p class="caption">Finalized &quot;Model Based&quot; Spaghetti Plot</p>
-</div>
+<figure>
+<img src="graph7.png" alt="Finalized “Model Based” Spaghetti Plot" /><figcaption aria-hidden="true">Finalized “Model Based” Spaghetti Plot</figcaption>
+</figure>
 </body>
 </html>

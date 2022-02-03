@@ -1,9 +1,9 @@
 {smcl}
 {com}{sf}{ul off}{txt}{.-}
       name:  {res}<unnamed>
-       {txt}log:  {res}C:\Users\agrogan\Desktop\GitHub\multilevel\spaghetti-plot\Stata\spaghetti-plot-demo.smcl
+       {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel/spaghetti-plot/Stata/spaghetti-plot-demo.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res} 3 Feb 2022, 15:54:48
+ {txt}opened on:  {res} 3 Feb 2022, 17:04:17
 {txt}
 {com}. //_1
 . display c(current_date)
@@ -22,7 +22,7 @@
 . graph export graph1.png, width(500) replace
 {txt}{p 0 4 2}
 file {bf}
-graph1.png{rm}
+/Users/agrogan/Desktop/GitHub/multilevel/spaghetti-plot/Stata/graph1.png{rm}
 saved as
 PNG
 format
@@ -38,7 +38,7 @@ format
 . graph export graph2.png, width(500) replace
 {txt}{p 0 4 2}
 file {bf}
-graph2.png{rm}
+/Users/agrogan/Desktop/GitHub/multilevel/spaghetti-plot/Stata/graph2.png{rm}
 saved as
 PNG
 format
@@ -51,7 +51,7 @@ format
 . graph export graph3.png, width(500) replace
 {txt}{p 0 4 2}
 file {bf}
-graph3.png{rm}
+/Users/agrogan/Desktop/GitHub/multilevel/spaghetti-plot/Stata/graph3.png{rm}
 saved as
 PNG
 format
@@ -64,7 +64,7 @@ format
 . graph export graph4.png, width(1000) replace
 {txt}{p 0 4 2}
 file {bf}
-graph4.png{rm}
+/Users/agrogan/Desktop/GitHub/multilevel/spaghetti-plot/Stata/graph4.png{rm}
 saved as
 PNG
 format
@@ -79,7 +79,7 @@ format
 . graph export graph5.png, width(1000) replace
 {txt}{p 0 4 2}
 file {bf}
-graph5.png{rm}
+/Users/agrogan/Desktop/GitHub/multilevel/spaghetti-plot/Stata/graph5.png{rm}
 saved as
 PNG
 format
@@ -88,13 +88,14 @@ format
 {com}. //_14
 . mixed math ses meanses || schid: // multilevel model; random intercept; no random effects
 {res}
-{txt}Performing EM optimization ...
+{txt}Performing EM optimization: 
 {res}
-{txt}Performing gradient-based optimization: {res}
+{txt}Performing gradient-based optimization: 
+{res}
 {txt}Iteration 0:{space 3}log likelihood = {res:-1871.9169}  
-Iteration 1:{space 3}log likelihood = {res:-1871.9169}  
+{res}{txt}Iteration 1:{space 3}log likelihood = {res:-1871.9169}  
 {res}
-{txt}Computing standard errors ...
+{txt}Computing standard errors:
 {res}
 {txt}Mixed-effects ML regression{col 49}Number of obs{col 67}={col 69}{res}       519
 {txt}Group variable: {res}schid{col 49}{txt}Number of groups{col 67}={col 69}{res}        23
@@ -134,7 +135,7 @@ LR test vs. linear model:{col 27}{help j_chibar##|_new:chibar2(01) =} {res}25.58
 . graph export graph6A.png, width(500) replace
 {txt}{p 0 4 2}
 file {bf}
-graph6A.png{rm}
+/Users/agrogan/Desktop/GitHub/multilevel/spaghetti-plot/Stata/graph6A.png{rm}
 saved as
 PNG
 format
@@ -143,13 +144,14 @@ format
 {com}. //_18
 . mixed math ses meanses || schid: // multilevel model; random intercept; no random effects
 {res}
-{txt}Performing EM optimization ...
+{txt}Performing EM optimization: 
 {res}
-{txt}Performing gradient-based optimization: {res}
+{txt}Performing gradient-based optimization: 
+{res}
 {txt}Iteration 0:{space 3}log likelihood = {res:-1871.9169}  
-Iteration 1:{space 3}log likelihood = {res:-1871.9169}  
+{res}{txt}Iteration 1:{space 3}log likelihood = {res:-1871.9169}  
 {res}
-{txt}Computing standard errors ...
+{txt}Computing standard errors:
 {res}
 {txt}Mixed-effects ML regression{col 49}Number of obs{col 67}={col 69}{res}       519
 {txt}Group variable: {res}schid{col 49}{txt}Number of groups{col 67}={col 69}{res}        23
@@ -202,7 +204,7 @@ LR test vs. linear model:{col 27}{help j_chibar##|_new:chibar2(01) =} {res}25.58
 . graph export graph6B.png, width(500) replace
 {txt}{p 0 4 2}
 file {bf}
-graph6B.png{rm}
+/Users/agrogan/Desktop/GitHub/multilevel/spaghetti-plot/Stata/graph6B.png{rm}
 saved as
 PNG
 format
@@ -225,7 +227,7 @@ format
 . graph export graph7.png, width(500) replace
 {txt}{p 0 4 2}
 file {bf}
-graph7.png{rm}
+/Users/agrogan/Desktop/GitHub/multilevel/spaghetti-plot/Stata/graph7.png{rm}
 saved as
 PNG
 format
@@ -234,9 +236,9 @@ format
 {com}. //_^
 . log close
       {txt}name:  {res}<unnamed>
-       {txt}log:  {res}C:\Users\agrogan\Desktop\GitHub\multilevel\spaghetti-plot\Stata\spaghetti-plot-demo.smcl
+       {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel/spaghetti-plot/Stata/spaghetti-plot-demo.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res} 3 Feb 2022, 15:55:16
+ {txt}closed on:  {res} 3 Feb 2022, 17:05:04
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}
