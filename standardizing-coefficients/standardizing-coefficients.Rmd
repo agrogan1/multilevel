@@ -1,0 +1,37 @@
+---
+title: "Standardizing Coefficients"
+description: |
+  Standardizing Coefficients in Multilevel Models
+author:
+- name: Andy Grogan-Kaylor
+  url: https://agrogan1.github.io/
+  affiliation: University of Michigan
+  affiliation_url: https://umich.edu/
+date: '`r Sys.Date()`'
+output: 
+  pdf_document: 
+    fig_height: 3
+    highlight: haddock
+    latex_engine: xelatex
+    number_sections: yes
+    toc: yes
+  distill::distill_article:
+    highlight: haddock
+    toc: yes
+    code_folding: true
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = FALSE)
+
+```
+
+$$\beta_{\text{standardized}} = \beta * \frac{\sigma_x}{\sigma_y}$$
+
+
+
+
+
+
+
