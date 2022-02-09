@@ -20,3 +20,9 @@ mixed height age_base || tree_ID: // mixed model
 predict yhat, fitted // predicted (fitted) values
 
 twoway (line yhat age_base, connect(L) lwidth(vthin)) (lfit yhat age_base, lwidth(thick))
+
+
+
+
+
+
