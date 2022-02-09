@@ -18,6 +18,7 @@
 ## Spaghetti Plots
 
 * [Stata](https://agrogan1.github.io/multilevel/spaghetti-plot/Stata/spaghetti-plot-demo.html)
+* [A simple rubric for making Spaghetti plots in Stata](https://github.com/agrogan1/multilevel/blob/master/spaghetti-plot/Stata-simple/Stata-simple-spaghetti-plot.do)
 * [R](https://agrogan1.github.io/multilevel/spaghetti-plot/R/spaghetti-plot-demo.html)
 
 ## Reshaping Data
