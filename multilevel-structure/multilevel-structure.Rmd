@@ -91,7 +91,9 @@ mydata <- data.frame(x, y, group)
 
 # Graphs
 
-## A "Naive" Graph That Is Unaware of The Structure Of The Data
+## A "Naive" Graph 
+
+This "naive" graph is unaware of the grouped nature of the data.
 
 ```{r}
 
@@ -109,7 +111,9 @@ p0 # replay
 
 ```
 
-## A Graph That Is Aware of The Structure Of The Data
+## An "Aware" Graph 
+
+This "aware" graph is aware of the grouped nature of the data.
 
 ```{r}
 
