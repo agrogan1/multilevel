@@ -1,0 +1,153 @@
+---
+title: "Multilevel Structure"
+description: |
+  Structure of the data may be different at different levels.
+author:
+- name: Andy Grogan-Kaylor
+  url: https://agrogan1.github.io/
+  affiliation: University of Michigan
+  affiliation_url: https://umich.edu/
+date: '`r Sys.Date()`'
+output:
+  distill::distill_article:
+    highlight: haddock
+    toc: yes
+    toc_float: yes
+    code_folding: true
+  pdf_document: 
+    highlight: haddock
+    latex_engine: xelatex
+    toc: yes
+    fig_height: 3
+    number_sections: yes
+citation_url: https://agrogan1.github.io
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = TRUE,
+                      warning = FALSE,
+                      message = FALSE)
+
+```
+
+# Call The Libraries
+
+```{r}
+
+library(ggplot2) # beautiful graphs
+
+# library(gganimate) # animated ggplots
+
+library(lme4) # MLM
+
+# library(pander) # nice tables
+
+library(sjPlot) # nice tables for MLM
+
+```
+
+# Simulate Some Data
+
+```{r}
+
+e <- rnorm(10, 0, 1) # error
+
+# group 1
+
+group1 <- rep(1, 10)
+
+x1 <- seq(1,10)
+
+y1 <- 10 + -1 * x1 + e
+
+# group 2
+
+group2 <- rep(2, 10)
+
+x2 <- seq(11, 20)
+
+y2 <- 30 + -1 * x2 + e
+
+# group 3
+
+group3 <- rep(3, 10)
+
+x3 <- seq(21, 30)
+
+y3 <- 50 + -1 * x3 + e
+
+# combine into a dataframe
+
+x <- c(x1, x2, x3)
+
+y <- c(y1, y2, y3)
+
+group <- factor(c(group1, group2, group3))
+
+mydata <- data.frame(x, y, group) 
+
+```
+
+# Graphs
+
+## A "Naive" Graph That Is Unaware of The Structure Of The Data
+
+```{r}
+
+library(ggplot2)
+
+p0 <- ggplot(mydata, 
+             aes(x = x,
+                 y = y)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(title = "y as a function of x") +
+  theme_minimal()
+
+p0 # replay
+
+```
+
+## A Graph That Is Aware of The Structure Of The Data
+
+```{r}
+
+p0 + geom_smooth(aes(color = group), method = "lm") + scale_color_viridis_d()
+
+```
+
+# Regressions
+
+## OLS
+
+The multilevel model is not aware of the grouped structure of the data, and the coefficient for *x* reflects this.
+
+```{r}
+
+myOLS <- lm(y ~ x, data = mydata)
+
+sjPlot::tab_model(myOLS,
+                  show.se = TRUE,
+                  show.ci = FALSE,
+                  show.stat = TRUE)
+
+```
+
+## MLM
+
+The multilevel model is aware of the grouped structure of the data, and the coefficient for *x* reflects this.
+
+```{r}
+
+myMLM <- lmer(y ~ x + (1 | group), data = mydata)
+
+sjPlot::tab_model(myMLM,
+                  show.se = TRUE,
+                  show.ci = FALSE,
+                  show.stat = TRUE)
+
+```
+
+
+
