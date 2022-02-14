@@ -3,15 +3,15 @@
       name:  {res}<unnamed>
        {txt}log:  {res}C:\Users\agrogan\Desktop\GitHub\multilevel\mlm-gutten\mlm-gutten.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res} 6 Sep 2021, 10:45:18
+ {txt}opened on:  {res}14 Feb 2022, 14:56:15
 {txt}
 {com}. //_1
 . display c(current_date)
-{res} 6 Sep 2021
+{res}14 Feb 2022
 {txt}
 {com}. //_2
 . display c(current_time)
-{res}10:45:18
+{res}14:56:15
 {txt}
 {com}. //_3
 . use gutten.dta, clear
@@ -40,7 +40,7 @@ format
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}C:\Users\agrogan\Desktop\GitHub\multilevel\mlm-gutten\mlm-gutten.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res} 6 Sep 2021, 10:45:19
+ {txt}closed on:  {res}14 Feb 2022, 14:56:16
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

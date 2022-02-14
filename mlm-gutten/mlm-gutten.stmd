@@ -58,7 +58,9 @@ I clearly need to learn more about quantitative approaches to forestry, but I wo
 
 # Spaghetti Plot 🌲
 
-Use `spagplot` to examine these relationships. Remember that the `spagplot` syntax is `spagplot y x, id(id)`.  What is the most appropriate id variable here?
+Use `spagplot` to examine these relationships. Remember that the `spagplot` syntax is `spagplot y x, id(id)`.  What is the most appropriate id variable here? 
+
+> `spagplot` can now be difficult to find, but for the time being, you can find it by typing `net from https://agrogan1.github.io/multilevel/spagplot` in Stata.
 
     spagplot height ageCENTERED, id(tree_ID) scheme(michigan)
 	

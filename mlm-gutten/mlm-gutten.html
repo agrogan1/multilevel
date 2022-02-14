@@ -52,7 +52,7 @@ table:not([class]) tbody:last-child tr:last-child td {border-bottom:1px solid bl
 <div id="header">
 <h1 class="title">Multilevel Models with the Von Guttenberg Tree Data</h1>
 <h2 class="author">Andy Grogan-Kaylor</h2>
-<h3 class="date">6 Sep 2021 10:45:16</h3>
+<h3 class="date">14 Feb 2022 14:55:11</h3>
 </div>
 <style>body {max-width: 90%} h1 {color: black; font-weight: bold;} h2 {color: black;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;}</style>
 <div class="figure">
@@ -94,6 +94,9 @@ table:not([class]) tbody:last-child tr:last-child td {border-bottom:1px solid bl
 <p>I clearly need to learn more about quantitative approaches to forestry, but I would like to model tree height as a function of tree age (measured at base), site, and location.</p>
 <h1 id="spaghetti-plot">Spaghetti Plot 🌲</h1>
 <p>Use <code>spagplot</code> to examine these relationships. Remember that the <code>spagplot</code> syntax is <code>spagplot y x, id(id)</code>. What is the most appropriate id variable here?</p>
+<blockquote>
+<p><code>spagplot</code> can now be difficult to find, but for the time being, you can find it by typing <code>net from https://agrogan1.github.io/multilevel/spagplot</code> in Stata.</p>
+</blockquote>
 <pre class='stata'>. spagplot height ageCENTERED, id(tree_ID) scheme(michigan)
 </pre>
 <pre class='stata'>. graph export myspagplot.png, width(500) replace
