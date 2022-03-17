@@ -19,6 +19,8 @@ output:
 
 knitr::opts_chunk$set(echo = FALSE)
 
+xaringanExtra::use_panelset()
+
 ```
 
 # Acknowledgement
@@ -31,23 +33,38 @@ We start with our regression equation.
 
 $$y_{it} = \beta_0 + \beta_1 x_{it} + u_{0i} + e_{it}$$
 
-## Intermediate Step 1
+::::: {.panelset}
+
+::: {.panel}
+
+## The Basics {.panel-name}
+
+:::
+
+::: {.panel}
+
+## Intermediate Steps {.panel-name}
+
+### Intermediate Step 1
 
 We can sum both sides over the $t$ time points.
 
 $$\sum_{t} y_{it} = \sum_{t} \beta_0 + \sum_{t} \beta_1 x_{it} + \sum_{t} u_{0i} + \sum_{t} e_{it}$$
 
-## Intermediate Step 2
+### Intermediate Step 2
 
 We can then divide by the number of time points ($T_i$).
 
 $$\sum_{t} y_{it} / T_i = \sum_{t} \beta_0 / T_i + \sum_{t} \beta_1 x_{it} / T_i + \sum_{t} u_{0i} / T_i + \sum_{t} e_{it} / T_i$$
+:::
+
+:::::
 
 # Then
 
-This reduces to:
-
 $$\bar y_i = \beta_0 + \beta_1 \bar x_i + u_{0i} + \bar e_i$$
+
+This is sometimes called the between estimator.
 
 # Finally
 
