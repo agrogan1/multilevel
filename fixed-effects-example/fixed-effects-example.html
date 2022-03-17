@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 <style>
 /* CSS for Markstat 2.0 using Pandoc 2.0 */
@@ -38,22 +38,162 @@ tbody tr:first-child td {border-top:1px solid black; padding-top:6px}
 tbody tr:last-child  td {padding-bottom:6px;}
 table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 </style>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="Andy Grogan-Kaylor" />
   <title>Comparing Multilevel Models and Fixed Effects Regression</title>
-  <style type="text/css">code{white-space: pre;}</style>
-  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
 </head>
 <body>
-<div id="header">
+<header id="title-block-header">
 <h1 class="title">Comparing Multilevel Models and Fixed Effects Regression</h1>
-<h2 class="author">Andy Grogan-Kaylor</h2>
-<h3 class="date">10 May 2021 17:10:41</h3>
-</div>
+<p class="author">Andy Grogan-Kaylor</p>
+<p class="date">17 Mar 2022 12:17:43</p>
+</header>
 <h1 id="background">Background</h1>
-<style>h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
+<style>body {max-width: 90%;} h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
 <blockquote>
 <p>This example draws from the Stata documentation for the <code>xtreg</code> command.</p>
 </blockquote>
@@ -66,6 +206,9 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 </ul>
 </blockquote>
 <h1 id="get-the-data-use">Get The Data (<code>use</code>)</h1>
+<blockquote>
+<p>We are going to use the sample NLS data on work from <em>Stata Corporation</em>.</p>
+</blockquote>
 <pre class='stata'>. clear all
 </pre>
 <pre class='stata'>. use https://www.stata-press.com/data/r16/nlswork, clear
@@ -74,9 +217,9 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 <h1 id="describe-the-key-variables-describe">Describe the Key Variables (<code>describe</code>)</h1>
 <pre class='stata'>. describe ln_w grade age race union south
 
-              storage   display    value
-variable name   type    format     label      variable label
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+──────────────────────────────────────────────────────────────────────────────────────
 ln_wage         float   %9.0g                 ln(wage/GNP deflator)
 grade           byte    %8.0g                 current grade completed
 age             byte    %8.0g                 age in current year
@@ -108,17 +251,15 @@ Computing standard errors:
 
 Mixed-effects ML regression                     Number of obs     =     19,224
 Group variable: idcode                          Number of groups  =      4,148
-
                                                 Obs per group:
                                                               min =          1
                                                               avg =        4.6
                                                               max =         12
-
                                                 Wald chi2(6)      =    3471.83
 Log likelihood =  -5486.826                     Prob > chi2       =     0.0000
 
 ─────────────┬────────────────────────────────────────────────────────────────
-     ln_wage │      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+     ln_wage │ Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
 ─────────────┼────────────────────────────────────────────────────────────────
        grade │   .0781541   .0021992    35.54   0.000     .0738438    .0824644
          age │   .0137491   .0003907    35.19   0.000     .0129833    .0145149
@@ -133,7 +274,7 @@ Log likelihood =  -5486.826                     Prob > chi2       =     0.0000
 ─────────────┴────────────────────────────────────────────────────────────────
 
 ─────────────────────────────┬────────────────────────────────────────────────
-  Random-effects Parameters  │   Estimate   Std. Err.     [95% Conf. Interval]
+  Random-effects parameters  │   Estimate   Std. err.     [95% conf. interval]
 ─────────────────────────────┼────────────────────────────────────────────────
 idcode: Identity             │
                   var(_cons) │   .0998265   .0027427      .0945931    .1053494
@@ -149,23 +290,23 @@ LR test vs. linear model: chibar2(01) = 8473.10       Prob >= chibar2 = 0.0000
 <p>The model uses only within person variation. Estimates are only provided for within person change over time. The model controls for all time invariant variables whether observed or unobserved.</p>
 </blockquote>
 <pre class='stata'>. xtreg ln_w grade age i.race union south, i(idcode) fe
-note: grade omitted because of collinearity
-note: 2.race omitted because of collinearity
-note: 3.race omitted because of collinearity
+note: grade omitted because of collinearity.
+note: 2.race omitted because of collinearity.
+note: 3.race omitted because of collinearity.
 
 Fixed-effects (within) regression               Number of obs     =     19,224
 Group variable: idcode                          Number of groups  =      4,148
 
-R-sq:                                           Obs per group:
-     within  = 0.0983                                         min =          1
-     between = 0.0712                                         avg =        4.6
-     overall = 0.0847                                         max =         12
+R-squared:                                      Obs per group:
+     Within  = 0.0983                                         min =          1
+     Between = 0.0712                                         avg =        4.6
+     Overall = 0.0847                                         max =         12
 
                                                 F(3,15073)        =     547.57
-corr(u_i, Xb)  = 0.0599                         Prob > F          =     0.0000
+corr(u_i, Xb) = 0.0599                          Prob > F          =     0.0000
 
 ─────────────┬────────────────────────────────────────────────────────────────
-     ln_wage │      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+     ln_wage │ Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
 ─────────────┼────────────────────────────────────────────────────────────────
        grade │          0  (omitted)
          age │   .0153807   .0004154    37.03   0.000     .0145665    .0161949
@@ -188,7 +329,7 @@ F test that all u_i=0: F(4147, 15073) = 9.60                 Prob > F = 0.0000
 </pre>
 <h1 id="compare-the-two-sets-of-estimates-estimates-table">Compare The Two Sets of Estimates (<code>estimates table</code>)</h1>
 <blockquote>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li><p>The multilevel model controls for variables that are included in the model.</p></li>
 <li><p>The fixed effects model controls for variables that are included in the model, as well as all time invariant characteristics of participants.</p></li>
 <li><p>The multilevel model uses both within and between person variation; the fixed effects model uses only within person variation.</p></li>
@@ -219,7 +360,7 @@ lns1_1_1     │
 lnsig_e      │
        _cons │ -1.3358773***                  
 ─────────────┴────────────────────────────────
-      legend: * p&lt;0.05; ** p&lt;0.01; *** p&lt;0.001
+      Legend: * p&lt;0.05; ** p&lt;0.01; *** p&lt;0.001
 </pre>
 </body>
 </html>

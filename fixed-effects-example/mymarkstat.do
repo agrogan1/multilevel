@@ -2,9 +2,9 @@
 
 clear all
 
-cd "C:\Users\agrogan\Box Sync\Box Sync\GitHub\multilevel\fixed-effects-example" // Windows
+cd "C:\Users\agrogan\Desktop\GitHub\multilevel\fixed-effects-example" // Windows
 
-cd "/Users/agrogan/Box Sync/GitHub/multilevel/fixed-effects-example" // Mac
+cd "/Users/agrogan/Desktop/GitHub/multilevel/fixed-effects-example" // Mac
 
 doedit "fixed-effects-example.stmd"
 

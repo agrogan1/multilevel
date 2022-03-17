@@ -8,7 +8,7 @@ geometry: margin=1 in
 
 # Background 
 
-<style>h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
+<style>body {max-width: 90%;} h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
 
 > This example draws from the Stata documentation for the `xtreg` command.
 
@@ -21,6 +21,8 @@ Multilevel models for longitudinal data, and fixed effects regression provide tw
 > * Fixed effect regressions use only within person variation. As a consequence, fixed effects regression is unable to provide parameter estimates for time invariant variables, even when they are included in the statistical model. Fixed effects regressions provide statistical controls for all time invariant variables, whether observed or unobserved.
 
 # Get The Data (`use`)
+
+> We are going to use the sample NLS data on work from *Stata Corporation*.
 
     clear all
 
