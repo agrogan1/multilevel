@@ -29,6 +29,8 @@ knitr::opts_chunk$set(echo = TRUE,
                       message = FALSE,
                       warning = FALSE)
 
+library(sjPlot) # nice tables for MLM
+
 ```
 
 # Set Up 🌲
@@ -192,4 +194,22 @@ plot(fit3, variable = c("sd_tree_ID__Intercept",
                         "sigma")) # variance parameters
 
 ```
+
+# Compare All 3 Models
+
+```{r}
+
+tab_model(fit1, fit2, fit3,
+          dv.labels = c("lmer", "brms default priors", "brms informative priors"), 
+          show.se = TRUE,
+          show.ci = 0.95,
+          show.stat = TRUE)
+
+```
+
+
+
+
+
+
 
