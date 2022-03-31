@@ -125,7 +125,7 @@ p0 + geom_smooth(aes(color = group), method = "lm") + scale_color_viridis_d()
 
 ## OLS
 
-The multilevel model is not aware of the grouped structure of the data, and the coefficient for *x* reflects this.
+The OLS model with only *x* as a covariate is not aware of the grouped structure of the data, and the coefficient for *x* reflects this.
 
 ```{r}
 
