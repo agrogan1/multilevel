@@ -1,0 +1,225 @@
+<head>
+  <link rel="stylesheet" type="text/css" href="stmarkdown.css">
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+</script>
+</head>
+<h1><a href="#comparing-fixed-effects-and-multilevel-models-using-world-bank-data" id="comparing-fixed-effects-and-multilevel-models-using-world-bank-data">Comparing Fixed Effects and Multilevel Models Using World Bank Data</a></h1>
+<h1><a href="#background" id="background">Background</a></h1>
+<p>Multilevel models for longitudinal data, and fixed effects regression provide two alternative methods for analyzing longitudinal data.</p>
+<p>Briefly…</p>
+<blockquote>
+<p>Here, level 2 units are countries. Level 1 is a country-year. Level 2 is the country.</p>
+<ul>
+<li>
+<p>Multilevel models use both within level 2 unit and between level 2 unit variation, and provide statistical control for observed variables that are included in the model.</p>
+</li>
+<li>
+<p>Fixed effect regressions use only within level 2 unit variation. As a consequence, fixed effects regression is unable to provide parameter estimates for time invariant variables, even when they are included in the statistical model. Fixed effects regressions provide statistical controls for all time invariant variables, whether observed or unobserved.</p>
+</li>
+</ul>
+</blockquote>
+<h1><a href="#equation" id="equation">Equation</a></h1>
+<p>Both models estimate the following equation.</p>
+<p>$$y_{it} = \beta_0 + \beta_1 x_{it} + u_{0i} + e_{it}$$</p>
+<p>Here $\beta_0$ is the intercept, $\beta_1$ is a slope, $u_{0i}$ is a country specific intercept, and $e_{it}$ is a measurement specific error term.</p>
+<blockquote>
+<p>In the <em>multilevel model</em>, the $u_{0i}$ are considered to have a <em>distribution</em>, with a mean of 0 and a standard deviation $\sigma_{u0}$. In the <em>fixed effects regression model</em>, the $u_{0i}$ are considered to be <em>fixed</em>, and <em>directly estimable</em>, although in practice, estimates for each of the $u_{0i}$ are usually not provided.</p>
+</blockquote>
+<h1><a href="#get-the-data" id="get-the-data">Get The Data</a></h1>
+<p>We are going to data from the <a href="https://agrogan1.github.io/R/wbdemo/">World Bank World Development Indicators</a></p>
+<pre><code>. use &quot;WorldBankData.dta&quot;, clear
+
+. 
+. describe life_expectancy year Gini GDP undernourishment region
+
+Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+------------------------------------------------------------------------------------------------------------------------------------------------
+life_expectancy double  %10.0g                Life expectancy at birth, total (years)
+year            long    %12.0g                
+Gini            double  %10.0g                Gini index (World Bank estimate)
+GDP             double  %10.0g                GDP per capita (current US$)
+undernourishm~t double  %10.0g                Prevalence of undernourishment (% of population)
+region          str26   %-9s                  
+
+</code></pre>
+<h1><a href="#process-the-data" id="process-the-data">Process The Data</a></h1>
+<pre><code>. drop if region == &quot;Aggregates&quot; // drop rows of data representing Aggregates
+(1,927 observations deleted)
+
+. 
+. encode region, generate(regionNUMERIC) // numeric version of region
+
+</code></pre>
+<h1><a href="#graph" id="graph">Graph</a></h1>
+<pre><code>. histogram life_expectancy, scheme(michigan) title(&quot;Life Expectancy at Birth&quot;) fcolor(%50)
+(bin=39, start=26.172, width=1.5191044)
+
+</code></pre>
+<p><img src="histogram.svg" height="400" alt="scatter mpg weight" ></p>
+<h1><a href="#multilevel-model-mixed-y-x-id" id="multilevel-model-mixed-y-x-id">Multilevel Model (<code>mixed y x || id:</code>)</a></h1>
+<blockquote>
+<p>The model uses within and between level 2 unit variation. Estimates are provided for all variables. The model only controls for variables that are included in the model.</p>
+</blockquote>
+<pre><code>. mixed life_expectancy year Gini GDP undernourishment i.regionNUMERIC || country:
+
+Performing EM optimization ...
+
+Performing gradient-based optimization: 
+Iteration 0:   log likelihood = -1941.3024  
+Iteration 1:   log likelihood = -1941.3024  
+
+Computing standard errors ...
+
+Mixed-effects ML regression                     Number of obs     =      1,226
+Group variable: country                         Number of groups  =        140
+                                                Obs per group:
+                                                              min =          1
+                                                              avg =        8.8
+                                                              max =         19
+                                                Wald chi2(10)     =    3393.70
+Log likelihood = -1941.3024                     Prob &gt; chi2       =     0.0000
+
+---------------------------------------------------------------------------------------------
+            life_expectancy | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+----------------------------+----------------------------------------------------------------
+                       year |   .2681652   .0070473    38.05   0.000     .2543527    .2819777
+                       Gini |  -.0051665    .012107    -0.43   0.670    -.0288958    .0185627
+                        GDP |  -2.70e-06   6.03e-06    -0.45   0.655    -.0000145    9.13e-06
+           undernourishment |  -.0712303   .0099802    -7.14   0.000    -.0907911   -.0516696
+                            |
+              regionNUMERIC |
+     Europe &amp; Central Asia  |   5.023854   1.293808     3.88   0.000     2.488037    7.559671
+ Latin America &amp; Caribbean  |   2.760078    1.51168     1.83   0.068    -.2027596    5.722916
+Middle East &amp; North Africa  |   2.318189   1.695885     1.37   0.172    -1.005684    5.642062
+             North America  |   8.060808   3.494181     2.31   0.021      1.21234    14.90928
+                South Asia  |  -2.013143   2.365438    -0.85   0.395    -6.649317     2.62303
+        Sub-Saharan Africa  |  -12.27801   1.343098    -9.14   0.000    -14.91043   -9.645584
+                            |
+                      _cons |  -467.0279   14.36493   -32.51   0.000    -495.1826   -438.8731
+---------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+  Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
+-----------------------------+------------------------------------------------
+country: Identity            |
+                  var(_cons) |   21.89217   2.712469      17.17211    27.90961
+-----------------------------+------------------------------------------------
+               var(Residual) |   .7722833   .0332602        .70977    .8403025
+------------------------------------------------------------------------------
+LR test vs. linear model: chibar2(01) = 2403.93       Prob &gt;= chibar2 = 0.0000
+
+. 
+. est store MLM
+
+</code></pre>
+<h1><a href="#fixed-effects-model-xtreg-y-x-iid-fe" id="fixed-effects-model-xtreg-y-x-iid-fe">Fixed Effects Model (<code>xtreg y x, i(id) fe</code>)</a></h1>
+<blockquote>
+<p>The model uses only within level 2 unit variation. Estimates are only provided for within level 2 unit change over time. The model controls for all time invariant variables whether observed or unobserved.</p>
+</blockquote>
+<pre><code>. xtreg life_expectancy year Gini GDP undernourishment i.regionNUMERIC, i(country) fe
+note: 2.regionNUMERIC omitted because of collinearity.
+note: 3.regionNUMERIC omitted because of collinearity.
+note: 4.regionNUMERIC omitted because of collinearity.
+note: 5.regionNUMERIC omitted because of collinearity.
+note: 6.regionNUMERIC omitted because of collinearity.
+note: 7.regionNUMERIC omitted because of collinearity.
+
+Fixed-effects (within) regression               Number of obs     =      1,226
+Group variable: country                         Number of groups  =        140
+
+R-squared:                                      Obs per group:
+     Within  = 0.7362                                         min =          1
+     Between = 0.2773                                         avg =        8.8
+     Overall = 0.1152                                         max =         19
+
+                                                F(4,1082)         =     754.84
+corr(u_i, Xb) = 0.1247                          Prob &gt; F          =     0.0000
+
+---------------------------------------------------------------------------------------------
+            life_expectancy | Coefficient  Std. err.      t    P&gt;|t|     [95% conf. interval]
+----------------------------+----------------------------------------------------------------
+                       year |   .2765033   .0071426    38.71   0.000     .2624883    .2905183
+                       Gini |  -.0020466   .0122625    -0.17   0.867    -.0261077    .0220144
+                        GDP |  -.0000126   6.21e-06    -2.04   0.042    -.0000248   -4.63e-07
+           undernourishment |  -.0597049   .0102307    -5.84   0.000    -.0797792   -.0396306
+                            |
+              regionNUMERIC |
+     Europe &amp; Central Asia  |          0  (omitted)
+ Latin America &amp; Caribbean  |          0  (omitted)
+Middle East &amp; North Africa  |          0  (omitted)
+             North America  |          0  (omitted)
+                South Asia  |          0  (omitted)
+        Sub-Saharan Africa  |          0  (omitted)
+                            |
+                      _cons |  -480.9276   14.48041   -33.21   0.000    -509.3405   -452.5148
+----------------------------+----------------------------------------------------------------
+                    sigma_u |  8.6615053
+                    sigma_e |  .87884005
+                        rho |  .98980975   (fraction of variance due to u_i)
+---------------------------------------------------------------------------------------------
+F test that all u_i=0: F(139, 1082) = 196.61                 Prob &gt; F = 0.0000
+
+. 
+. est store FE
+
+</code></pre>
+<h1><a href="#compare-the-two-sets-of-estimates-estimates-table" id="compare-the-two-sets-of-estimates-estimates-table">Compare The Two Sets of Estimates (<code>estimates table</code>)</a></h1>
+<blockquote>
+<p>NB that the omitted category for region is &ldquo;East Asia &amp; Pacific&rdquo;.</p>
+<ol>
+<li>
+<p>The multilevel model controls for variables that are included in the model.</p>
+</li>
+<li>
+<p>The fixed effects model controls for variables that are included in the model, as well as all time invariant characteristics of countries.</p>
+</li>
+<li>
+<p>The multilevel model uses both within and between country variation; the fixed effects model uses only within country variation.</p>
+</li>
+<li>
+<p>The fixed effects model is unable to provide information on time invariant characteristics of countries even if they are included in the model.</p>
+</li>
+<li>
+<p>Coefficients in the fixed effects model are generally smaller than coefficients in the multilevel model. (Often, though not in this example, coefficients that were significant in the multilevel model are not significant in the fixed effects model).</p>
+</li>
+</ol>
+</blockquote>
+<pre><code>. est table MLM FE, star equations(1)  b(%9.3f) stats(N r2_a)
+
+--------------------------------------------
+    Variable |     MLM             FE       
+-------------+------------------------------
+#1           |
+        year |     0.268***       0.277***  
+        Gini |    -0.005         -0.002     
+         GDP |    -0.000         -0.000*    
+undernouri~t |    -0.071***      -0.060***  
+             |
+regionNUME~C |
+Europe &amp; ..  |     5.024***   (omitted)     
+Latin Ame..  |     2.760      (omitted)     
+Middle Ea..  |     2.318      (omitted)     
+North Ame..  |     8.061*     (omitted)     
+ South Asia  |    -2.013      (omitted)     
+Sub-Sahar..  |   -12.278***   (omitted)     
+             |
+       _cons |  -467.028***    -480.928***  
+-------------+------------------------------
+lns1_1_1     |
+       _cons |     1.543***                 
+-------------+------------------------------
+lnsig_e      |
+       _cons |    -0.129***                 
+-------------+------------------------------
+Statistics   |                              
+           N |      1226           1226     
+        r2_a |                    0.701     
+--------------------------------------------
+    Legend: * p&lt;0.05; ** p&lt;0.01; *** p&lt;0.001
+
+</code></pre>
