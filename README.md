@@ -29,6 +29,7 @@
 
 * [Derivation](https://agrogan1.github.io/multilevel/fixed-effects/fixed-effects.html)
 * [Empirical Example](https://agrogan1.github.io/multilevel/fixed-effects-example/fixed-effects-example.html)
+* [Empirical Example With World Bank Data](https://agrogan1.github.io/multilevel/fixed-effects-example-World-Bank-data/fixed-effects-example-World-Bank-data.html)
 
 ## Centering
 
