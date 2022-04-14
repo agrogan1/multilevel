@@ -81,7 +81,7 @@ We are going to `reshape` the data from *wide* format to *long* format.
 
 ## Use `reshape`
 
-In the reshape command below, notice that we only include the variables that we consider to be *time varying*. Variables that are not included are considered to be *time invariant*. `Tree` is an id variable that is already in the data. `year` is a time variable that we are creating.
+In the reshape command below, notice that we only include the variables that we consider to be *time varying*. Variables that are not included are considered to be *time invariant*. `Tree` is an *id* variable that is already in the data. `year` is a time variable that we are creating. We do not include `Competition` or `Fertilizer` in our reshape command because those are variables that do not change over time.
 
 ```s
     reshape long Height Diameter, i(Tree) j(year)

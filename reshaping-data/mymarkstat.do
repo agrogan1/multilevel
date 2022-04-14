@@ -2,7 +2,7 @@
 
 clear all
 
-cd "C:\Users\agrogan\Desktop\GitHub\multilevel\reshaping-data" // Windows
+cd "/Users/agrogan/Desktop/GitHub/multilevel/reshaping-data" // bilingual
 
 doedit "reshaping-data.stmd"
 

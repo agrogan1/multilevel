@@ -1,17 +1,17 @@
 {smcl}
 {com}{sf}{ul off}{txt}{.-}
       name:  {res}<unnamed>
-       {txt}log:  {res}C:\Users\agrogan\Desktop\GitHub\multilevel\reshaping-data\reshaping-data.smcl
+       {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel/reshaping-data/reshaping-data.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}18 Nov 2021, 08:05:12
+ {txt}opened on:  {res}14 Apr 2022, 09:28:01
 {txt}
 {com}. //_1
 . display c(current_date)
-{res}18 Nov 2021
+{res}14 Apr 2022
 {txt}
 {com}. //_2
 . display c(current_time)
-{res}08:05:12
+{res}09:28:01
 {txt}
 {com}. //_3
 . clear all
@@ -69,8 +69,7 @@ Variable      Storage   Display    Value
 {p 0 48}{bind:Di_change      }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Change (cm) in diameter{p_end}
 {txt}{hline}
 Sorted by: 
-{res}     Note: Dataset has changed since last saved.
-{txt}
+
 {com}. //_6
 . keep Tree Competition Fertilizer Height0 Height5 Diameter0 Diameter5
 {txt}
@@ -141,9 +140,9 @@ Number of observations     {res}          72   {txt}->   {res}144
 {com}. //_^
 . log close
       {txt}name:  {res}<unnamed>
-       {txt}log:  {res}C:\Users\agrogan\Desktop\GitHub\multilevel\reshaping-data\reshaping-data.smcl
+       {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel/reshaping-data/reshaping-data.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}18 Nov 2021, 08:05:12
+ {txt}closed on:  {res}14 Apr 2022, 09:28:01
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}
