@@ -29,6 +29,8 @@ This presentation of these ideas draws heavily upon the Stata documentation, alt
 
 # Derivation
 
+## A Regression Model With Random Effects
+
 We start with our regression equation.
 
 $$y_{it} = \beta_0 + \beta_1 x_{it} + u_{0i} + e_{it}$$
@@ -60,19 +62,19 @@ $$\sum_{t} y_{it} / T_i = \sum_{t} \beta_0 / T_i + \sum_{t} \beta_1 x_{it} / T_i
 
 :::::
 
-# Then
+## The Between Estimator
 
 $$\bar y_i = \beta_0 + \beta_1 \bar x_i + u_{0i} + \bar e_i$$
 
 This is sometimes called the between estimator.
 
-# Finally
+## The Fixed Effects Estimator
 
 We can subtract this most recent equation from the first equation.
 
 $$y_{it} - \bar y_i = \beta (x_{it} - \bar x_i) + (e_{it} - \bar e_i)$$
 
-This is the fixed effects estimator.
+This is the fixed effects (or *within*) estimator.
 
 
 
