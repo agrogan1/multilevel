@@ -3,15 +3,15 @@
       name:  {res}<unnamed>
        {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel/reshaping-data/reshaping-data.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}14 Apr 2022, 09:28:01
+ {txt}opened on:  {res}18 Apr 2022, 11:42:41
 {txt}
 {com}. //_1
 . display c(current_date)
-{res}14 Apr 2022
+{res}18 Apr 2022
 {txt}
 {com}. //_2
 . display c(current_time)
-{res}09:28:01
+{res}11:42:41
 {txt}
 {com}. //_3
 . clear all
@@ -142,7 +142,7 @@ Number of observations     {res}          72   {txt}->   {res}144
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel/reshaping-data/reshaping-data.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}14 Apr 2022, 09:28:01
+ {txt}closed on:  {res}18 Apr 2022, 11:42:41
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

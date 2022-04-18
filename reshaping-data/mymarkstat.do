@@ -14,7 +14,9 @@ markstat using "reshaping-data.stmd", docx // Word
 
 graph close _all
 
-* markstat using "reshaping-data.stmd", pdf // PDF
+* does not work because of emoji's
+
+* markstat using "reshaping-data.stmd", pdf // PDF 
 
 * graph close _all
 
