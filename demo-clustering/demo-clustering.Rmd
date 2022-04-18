@@ -24,8 +24,6 @@ knitr::opts_chunk$set(echo = FALSE,
 
 ```{r}
 
-library(foreign) # import data
-
 library(lme4) # MLM
 
 library(ggplot2) # beautiful graphs
@@ -42,7 +40,16 @@ library(sjPlot) # nice tables for MLM
 
 ```
 
-```{r}
+
+# Grouped and Individual Data
+
+> "The data were generated from random numbers, and there is no relation between X and Y at all. Firstly, values of X and Y were generated for each 'subject,' then a further random number was added to make the individual observation."
+
+From Bland and Altman, *BMJ*, 1994, 308, 896.
+
+So... we follow their procedure.
+
+```{r, echo=TRUE, eval=TRUE}
 
 set.seed(3846) # random seed
 
@@ -54,7 +61,7 @@ y <- rnorm(5, 100, 10) # group y
 
 # 5 obs / group
 
-id <- seq(1,25) 
+id <- seq(1, 25) 
 
 group_num <- rep(g, 1, each=5)
 
@@ -62,13 +69,13 @@ x_group <- rep(x, each = 5) # x for the group
 
 y_group <- rep(y, each = 5) # y for the group
 
-x_noise <- rnorm(25, 0, 1)
+x_noise <- rnorm(25, 0, 1) # random noise
 
-y_noise <- rnorm(25, 0, 1)
+y_noise <- rnorm(25, 0, 1) # random noise
 
-x_individual <- x_group + x_noise
+x_individual <- x_group + x_noise # individual = group + noise
 
-y_individual <- y_group + y_noise
+y_individual <- y_group + y_noise # individual = group + noise
 
 mydata <- data.frame(id, 
                      group_num,
@@ -79,15 +86,7 @@ mydata <- data.frame(id,
 
 ```
 
-# Grouped and Individual Data
-
-> "The data were generated from random numbers, and there is no relation between X and Y at all.  Firstly, values of X and Y were generated for each ‘subject,’ then a further random number was added to make the individual observation."
-
-From Bland and Altman, *BMJ*, 1994, 308, 896.
-
-So... we follow their procedure.
-
-> The animation below illustrates the process of simulating the data. 
+> The animation below illustrates the process of simulating the data.
 
 ```{r, echo=TRUE, eval=TRUE}
 
@@ -167,4 +166,3 @@ tab_model(myOLS, myMLM,
           show.stat = TRUE)
 
 ```
-
