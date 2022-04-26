@@ -57,9 +57,12 @@
 <h2 class="anchored" data-anchor-id="research-question">Research Question</h2>
 <p>Given this review of the literature, my research question is ________________.</p>
 </section>
-<section id="methodology" class="level2">
+<section id="methodology" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="methodology">Methodology</h2>
-<section id="sample" class="level3">
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>NB: You don’t have to include everything I’ve listed here. Try for 80-90%.</p>
+</div></div><section id="sample" class="level3">
 <h3 class="anchored" data-anchor-id="sample">Sample</h3>
 <ul>
 <li>A simple demographic description of the sample.</li>
@@ -106,10 +109,93 @@
 </ul>
 </section>
 </section>
-<section id="results" class="level2">
+<section id="results" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="results">Results</h2>
-<p>Tell me in words how your variables are distributed in your sample and include a table</p>
-<p>What is the influence of each predictor variable in your relationship in terms of <span class="math inline">\(\beta\)</span> and p value? Please compute the unconditional intra-class correlation coefficient as part of your results. The graph to the right demonstrates one aspect of this relationship.</p>
+<p>Tell me in words how your variables are distributed in your sample and include a table.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<caption>Table continues below</caption>
+<colgroup>
+<col style="width: 15%">
+<col style="width: 20%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">variable</th>
+<th style="text-align: center;">numeric.mean</th>
+<th style="text-align: center;">numeric.sd</th>
+<th style="text-align: center;">numeric.p0</th>
+<th style="text-align: center;">numeric.p100</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">z</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">100.1</td>
+<td style="text-align: center;">9.443</td>
+<td style="text-align: center;">80.33</td>
+<td style="text-align: center;">130</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">y</td>
+<td style="text-align: center;">1008</td>
+<td style="text-align: center;">103.2</td>
+<td style="text-align: center;">754.5</td>
+<td style="text-align: center;">1235</td>
+</tr>
+</tbody>
+</table>
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 27%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">factor.top_counts</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0: 61, 1: 39</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>A hypothetical example. If all my variables are continuous, it’s appropriate to show means. If some of my variables are categorical, it’s more appropriate to show frequency distributions.</p>
+<p>In order to format my results nicely, I copied them into Excel first, formatted them, and then copied them into Word.</p>
+</div></div><div class="cell">
+<div class="cell-output-display">
+<p><img src="cross-sectional-multilevel_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>A hypothetical example of a graph showing the distribution of one of my variables of interest to give some visual interest to this paper.</p>
+<p>Note that I’ve tried to pay some attention to meaningful titles and axis labels.</p>
+<p>Note also you can make use of one of Stata’s <code>scheme</code>s to make your graphs visually interesting.</p>
+<p>It’s also worth trying out the <code>lean1</code> and <code>lean2</code> schemes (type <code>findit lean2</code> to install).</p>
+<p>And the daring are welcome to try my “Michigan” graph scheme, available <a href="https://agrogan1.github.io/Stata/michigan-graph-scheme/">here</a>, <em>caveat emptor</em>.</p>
+</div></div><p>What is the influence of each predictor variable in your relationship in terms of <span class="math inline">\(\beta\)</span> and p value? Please compute the unconditional intra-class correlation coefficient as part of your results. The graph to the right demonstrates one aspect of this relationship.</p>
 </section>
 <section id="discussion" class="level2">
 <h2 class="anchored" data-anchor-id="discussion">Discussion</h2>
@@ -118,7 +204,7 @@
 </section>
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>[usually 1 paragraph]</p>
+<p><strong>usually 1 paragraph</strong></p>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>

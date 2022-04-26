@@ -5,6 +5,28 @@ format: html
 editor: visual
 ---
 
+```{r, include=FALSE}
+
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      message = FALSE)
+
+library(ggplot2)
+
+library(ggthemes)
+
+library(dplyr) # data wrangling
+
+library(psych) # descriptive statistics
+
+library(skimr) # descriptive statistics
+
+library(pander) # nice tables
+
+library(sjPlot) # nice tables for MLM
+
+```
+
 # The Relationship of A and B to C
 
 ::: column-margin
@@ -26,6 +48,12 @@ What do we know about the nature of this question already?. Here, please review 
 Given this review of the literature, my research question is \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_.
 
 ## Methodology
+
+::: column-margin
+
+NB:  You don’t have to include everything I’ve listed here. Try for 80-90%.
+
+:::
 
 ### Sample
 
@@ -65,7 +93,66 @@ Given this review of the literature, my research question is \_\_\_\_\_\_\_\_\_\
 
 ## Results
 
-Tell me in words how your variables are distributed in your sample and include a table
+Tell me in words how your variables are distributed in your sample and include a table.
+
+```{r}
+
+N <- 100
+
+x <- rnorm(N, 100, 10)
+
+y <- rnorm(N, 1000, 100)
+
+z <- rbinom(N, 1, .5)
+
+z <- factor(z)
+
+mydata <- data.frame(x, y, z)
+
+pander(skim(mydata) %>% 
+         rename(variable = skim_variable) %>%
+         select(variable,
+                numeric.mean,
+                numeric.sd,
+                numeric.p0,
+                numeric.p100,
+                factor.top_counts))
+
+```
+
+::: column-margin
+
+A hypothetical example.  If all my variables are continuous, it’s appropriate to show means.  If some of my variables are categorical, it’s more appropriate to show frequency distributions.  
+
+In order to format my results nicely, I copied them into Excel first, formatted them, and then copied them into Word.
+
+:::
+
+```{r}
+
+age <- rnorm(N, 50, 10)
+
+ggplot(data = NULL,
+       aes(x = age)) +
+  labs(title = "Distribution of Age") +
+  geom_histogram() +
+  theme_stata()
+
+```
+
+::: column-margin
+
+A hypothetical example of a graph showing the distribution of one of my variables of interest to give some visual interest to this paper.
+
+Note that I’ve tried to pay some attention to meaningful titles and axis labels.
+
+Note also you can make use of one of Stata's `scheme`s to make your graphs visually interesting.
+
+It’s also worth trying out the `lean1` and `lean2` schemes (type `findit lean2` to install).
+
+And the daring are welcome to try my "Michigan" graph scheme, available [here](https://agrogan1.github.io/Stata/michigan-graph-scheme/), *caveat emptor*.
+
+:::
 
 What is the influence of each predictor variable in your relationship in terms of $\beta$ and p value? Please compute the unconditional intra-class correlation coefficient as part of your results. The graph to the right demonstrates one aspect of this relationship.
 
@@ -75,7 +162,7 @@ Briefly recapitulate or summarize briefly the results in written form. Do your r
 
 ## Conclusion
 
-\[usually 1 paragraph\]
+**usually 1 paragraph**
 
 ## References
 
@@ -88,3 +175,7 @@ Smith, & Jones. (2007). Some very important developmental stuff. *The Journal of
 Jones & Jones. (2008). Stuff we forgot to say in our earlier articles. *Extremely Sophisticated Quantitative Analysis*, 5(7), 1-25.
 
 Smith, & Smith. (1990). Stuff that we hope will be important some day. *The Journal of Heretofor Unanticipated Results*, 1(1), 1-2.
+
+
+
+
