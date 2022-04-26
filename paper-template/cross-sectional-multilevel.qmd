@@ -23,6 +23,8 @@ library(skimr) # descriptive statistics
 
 library(pander) # nice tables
 
+library(lme4) # MLM's
+
 library(sjPlot) # nice tables for MLM
 
 ```
@@ -41,7 +43,15 @@ Why is this an important problem? Are a large number of people affected by A? Ar
 
 What do we know about the nature of this question already?. Here, please review 3-5 articles that discuss the importance of one factor by itself, or some relationship of the factors.
 
-(author, date) studied (sample) to examine (research question). (author, date) found that \_\_\_\_\_\_\_\_\_\_\_\_\_\_. (author, date) also found that \_\_\_\_\_\_\_\_\_\_\_\_\_\_. (author, date) also found that \_\_\_\_\_\_\_\_\_\_\_\_\_\_. However, one (strength/limitation) of the study was that \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_. These authors suggested (policy, program, intervention, research strategy). (author, date) studied (sample) to examine (research question). (author, date) found that \_\_\_\_\_\_\_\_\_\_\_\_\_\_. (author, date) also found that \_\_\_\_\_\_\_\_\_\_\_\_\_\_. (author, date) also found that \_\_\_\_\_\_\_\_\_\_\_\_\_\_. However, one (strength/limitation) of the study was that \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_. These authors suggested (policy, program, intervention, research strategy). (author, date) studied (sample) to examine (research question). (author, date) found that \_\_\_\_\_\_\_\_\_\_\_\_\_\_. (author, date) also found that \_\_\_\_\_\_\_\_\_\_\_\_\_\_. (author, date) also found that \_\_\_\_\_\_\_\_\_\_\_\_\_\_. However, one (strength/limitation) of the study was that \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_. These authors suggested (policy, program, intervention, research strategy). (author, date) studied (sample) to examine (research question). (author, date) found that \_\_\_\_\_\_\_\_\_\_\_\_\_\_. (author, date) also found that \_\_\_\_\_\_\_\_\_\_\_\_\_\_. (author, date) also found that \_\_\_\_\_\_\_\_\_\_\_\_\_\_. However, one (strength/limitation) of the study was that \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_. These authors suggested (policy, program, intervention, research strategy). (author, date) studied (sample) to examine (research question). (author, date) found that \_\_\_\_\_\_\_\_\_\_\_\_\_\_. (author, date) also found that \_\_\_\_\_\_\_\_\_\_\_\_\_\_. (author, date) also found that \_\_\_\_\_\_\_\_\_\_\_\_\_\_. However, one (strength/limitation) of the study was that \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_. These authors suggested (policy, program, intervention, research strategy).
+(author, date) studied (sample) to examine (research question). (author, date) found that \_\_\_\_\_\_\_\_\_\_\_\_\_\_. (author, date) also found that \_\_\_\_\_\_\_\_\_\_\_\_\_\_. (author, date) also found that \_\_\_\_\_\_\_\_\_\_\_\_\_\_. However, one (strength/limitation) of the study was that \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_. These authors suggested (policy, program, intervention, research strategy).
+
+(author, date) studied (sample) to examine (research question). (author, date) found that \_\_\_\_\_\_\_\_\_\_\_\_\_\_. (author, date) also found that \_\_\_\_\_\_\_\_\_\_\_\_\_\_. (author, date) also found that \_\_\_\_\_\_\_\_\_\_\_\_\_\_. However, one (strength/limitation) of the study was that \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_. These authors suggested (policy, program, intervention, research strategy).
+
+(author, date) studied (sample) to examine (research question). (author, date) found that \_\_\_\_\_\_\_\_\_\_\_\_\_\_. (author, date) also found that \_\_\_\_\_\_\_\_\_\_\_\_\_\_. (author, date) also found that \_\_\_\_\_\_\_\_\_\_\_\_\_\_. However, one (strength/limitation) of the study was that \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_. These authors suggested (policy, program, intervention, research strategy).
+
+(author, date) studied (sample) to examine (research question). (author, date) found that \_\_\_\_\_\_\_\_\_\_\_\_\_\_. (author, date) also found that \_\_\_\_\_\_\_\_\_\_\_\_\_\_. (author, date) also found that \_\_\_\_\_\_\_\_\_\_\_\_\_\_. However, one (strength/limitation) of the study was that \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_. These authors suggested (policy, program, intervention, research strategy).
+
+(author, date) studied (sample) to examine (research question). (author, date) found that \_\_\_\_\_\_\_\_\_\_\_\_\_\_. (author, date) also found that \_\_\_\_\_\_\_\_\_\_\_\_\_\_. (author, date) also found that \_\_\_\_\_\_\_\_\_\_\_\_\_\_. However, one (strength/limitation) of the study was that \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_. These authors suggested (policy, program, intervention, research strategy).
 
 ## Research Question
 
@@ -50,9 +60,7 @@ Given this review of the literature, my research question is \_\_\_\_\_\_\_\_\_\
 ## Methodology
 
 ::: column-margin
-
-NB:  You don’t have to include everything I’ve listed here. Try for 80-90%.
-
+NB: You don't have to include everything I've listed here. Try for 70-90%.
 :::
 
 ### Sample
@@ -95,66 +103,91 @@ NB:  You don’t have to include everything I’ve listed here. Try for 80-90%.
 
 Tell me in words how your variables are distributed in your sample and include a table.
 
+::: column-margin
+A hypothetical example. If all my variables are continuous, it's appropriate to show means. If some of my variables are categorical, it's more appropriate to show frequency distributions.
+
+In order to format my results nicely, I could copy them into Excel first, format them, and then copy them into Word. There are also some newer ways to make nicely formatted tables in Stata.
+:::
+
 ```{r}
 
 N <- 100
 
 x <- rnorm(N, 100, 10)
 
-y <- rnorm(N, 1000, 100)
-
 z <- rbinom(N, 1, .5)
+
+u <- rep(1:10, each = 10)
+
+e <- rnorm(N, 0, 10)
+
+y <- x + z + u + e
 
 z <- factor(z)
 
-mydata <- data.frame(x, y, z)
+mydata <- data.frame(x, y, z, u)
 
 pander(skim(mydata) %>% 
-         rename(variable = skim_variable) %>%
+         rename(variable = skim_variable,
+                mean = numeric.mean,
+                sd = numeric.sd,
+                minimum = numeric.p0,
+                maximum = numeric.p100,
+                counts = factor.top_counts) %>%
          select(variable,
-                numeric.mean,
-                numeric.sd,
-                numeric.p0,
-                numeric.p100,
-                factor.top_counts))
+                mean,
+                sd,
+                minimum,
+                maximum,
+                counts))
 
 ```
 
-::: column-margin
-
-A hypothetical example.  If all my variables are continuous, it’s appropriate to show means.  If some of my variables are categorical, it’s more appropriate to show frequency distributions.  
-
-In order to format my results nicely, I copied them into Excel first, formatted them, and then copied them into Word.
-
-:::
-
 ```{r}
 
-age <- rnorm(N, 50, 10)
-
-ggplot(data = NULL,
-       aes(x = age)) +
-  labs(title = "Distribution of Age") +
+ggplot(data = mydata,
+       aes(x = x)) +
+  labs(title = "Distribution of x") +
   geom_histogram() +
   theme_stata()
 
 ```
 
-::: column-margin
+```{r}
 
+ggplot(data = mydata,
+       aes(x = x,
+           y = y)) +
+  labs(title = "y as a Function of x") +
+  geom_smooth(method = "lm") +
+  theme_stata()
+
+```
+
+::: column-margin
 A hypothetical example of a graph showing the distribution of one of my variables of interest to give some visual interest to this paper.
 
-Note that I’ve tried to pay some attention to meaningful titles and axis labels.
+Note that I've tried to pay some attention to meaningful titles and axis labels.
 
 Note also you can make use of one of Stata's `scheme`s to make your graphs visually interesting.
 
-It’s also worth trying out the `lean1` and `lean2` schemes (type `findit lean2` to install).
+It's also worth trying out the `lean1` and `lean2` schemes (type `findit lean2` to install).
 
 And the daring are welcome to try my "Michigan" graph scheme, available [here](https://agrogan1.github.io/Stata/michigan-graph-scheme/), *caveat emptor*.
-
 :::
 
-What is the influence of each predictor variable in your relationship in terms of $\beta$ and p value? Please compute the unconditional intra-class correlation coefficient as part of your results. The graph to the right demonstrates one aspect of this relationship.
+What is the influence of each predictor variable in your relationship in terms of $\beta$ and p value? Please compute the unconditional intra-class correlation coefficient as part of your results. The graph right demonstrates one aspect of this relationship.
+
+```{r}
+
+myMLM <- lmer(y ~ x + z + (1 | u), data = mydata)
+
+sjPlot::tab_model(myMLM,
+                  show.se = TRUE,
+                  show.ci = FALSE,
+                  show.stat = TRUE)
+
+```
 
 ## Discussion
 
@@ -175,7 +208,3 @@ Smith, & Jones. (2007). Some very important developmental stuff. *The Journal of
 Jones & Jones. (2008). Stuff we forgot to say in our earlier articles. *Extremely Sophisticated Quantitative Analysis*, 5(7), 1-25.
 
 Smith, & Smith. (1990). Stuff that we hope will be important some day. *The Journal of Heretofor Unanticipated Results*, 1(1), 1-2.
-
-
-
-
