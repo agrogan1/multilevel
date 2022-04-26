@@ -1,0 +1,53 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\agrogan\Desktop\GitHub\multilevel\visualizing-MLM\visualizing-MLM.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}26 Apr 2022, 16:27:28
+{txt}
+{com}. //_1
+. display c(current_date)
+{res}26 Apr 2022
+{txt}
+{com}. //_2
+. display c(current_time)
+{res}16:27:28
+{txt}
+{com}. //_3
+. use hsb.dta
+{txt}
+{com}. //_4
+. spagplot mathach ses, id(schoolid)
+{res}{txt}
+{com}. //_5
+. graph export myspaghetti.png, width(500) replace
+{txt}{p 0 4 2}
+file {bf}
+myspaghetti.png{rm}
+saved as
+PNG
+format
+{p_end}
+
+{com}. //_6
+. spagplot mathach ses, id(schoolid) scheme(michigan)
+{res}{txt}
+{com}. //_7
+. graph export myspaghetti2.png, width(500) replace
+{txt}{p 0 4 2}
+file {bf}
+myspaghetti2.png{rm}
+saved as
+PNG
+format
+{p_end}
+
+{com}. //_^
+. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\agrogan\Desktop\GitHub\multilevel\visualizing-MLM\visualizing-MLM.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}26 Apr 2022, 16:27:32
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

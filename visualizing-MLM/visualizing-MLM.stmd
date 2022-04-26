@@ -6,19 +6,37 @@
 geometry: margin=1 in
 ---
 
-<style>h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
+<style>body {max-width: 90%} h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
 
 # Introduction
 
+# Get Data
+
+    use hsb.dta
+
+# Scatterplots
+
+# Simple Linear Fits
+
 # Spaghetti Plots
+
+## `spagplot`
 
     spagplot mathach ses, id(schoolid)
 	
-	spagplot mathach ses, id(schoolid) scheme(michigan)
+    graph export myspaghetti.png, width(500) replace
 
-	* `spagplot`
-* `xtline`
-* coding by hand
+![Basic Spaghetti Plot](myspaghetti.png)
+	
+    spagplot mathach ses, id(schoolid) scheme(michigan)
+	
+	graph export myspaghetti2.png, width(500) replace
+
+![Spaghetti Plot With Michigan Graph Scheme](myspaghetti2.png)
+
+## `xtline`
+
+## Coding by Hand
 
 # Small Multiples
 
@@ -26,18 +44,16 @@ geometry: margin=1 in
 
 # Visualizing Uncertainty
 
-
 * shaded regions
-* normal curves
-* gradient
-* spaghetti plot
-
-# Spaghetti Plots
-
-
-# Correlation of $\beta_0$ and $\beta_t$
 
 # Curvilinear and Linear Fits
 
+# `margins` and `marginsplot`
+
 (esp. w/ longitudinal data)
+
+# Reference
+
+`hsb.dta` from *Multilevel Modeling Using Stata* (Rabe-Hesketh and Skrondal), versions 2 and 3
+
 
