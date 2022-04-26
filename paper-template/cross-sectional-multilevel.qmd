@@ -143,7 +143,7 @@ pander(skim(mydata) %>%
 
 ```
 
-```{r}
+```{r, fig.cap="A Sample Univariate Graph"}
 
 ggplot(data = mydata,
        aes(x = x)) +
@@ -153,7 +153,7 @@ ggplot(data = mydata,
 
 ```
 
-```{r}
+```{r, fig.cap="A Sample Bivariate Graph"}
 
 ggplot(data = mydata,
        aes(x = x,
@@ -176,7 +176,7 @@ It's also worth trying out the `lean1` and `lean2` schemes (type `findit lean2` 
 And the daring are welcome to try my "Michigan" graph scheme, available [here](https://agrogan1.github.io/Stata/michigan-graph-scheme/), *caveat emptor*.
 :::
 
-What is the influence of each predictor variable in your relationship in terms of $\beta$ and p value? Please compute the unconditional intra-class correlation coefficient as part of your results. The graph right demonstrates one aspect of this relationship.
+What is the influence of each predictor variable in your relationship in terms of $\beta$ and p value? Please compute the unconditional intra-class correlation coefficient as part of your results. The graph demonstrates one aspect of this relationship.
 
 ```{r}
 
