@@ -102,12 +102,11 @@ library(ggplot2)
 p0 <- ggplot(mydata, 
              aes(x = x,
                  y = y)) +
-  geom_point() +
   geom_smooth(method = "lm") +
   labs(title = "y as a function of x") +
   theme_minimal()
 
-p0 # replay
+p0 + geom_point() # replay and add points
 
 ```
 
@@ -117,7 +116,11 @@ This "aware" graph is aware of the grouped nature of the data.
 
 ```{r}
 
-p0 + geom_smooth(aes(color = group), method = "lm") + scale_color_viridis_d()
+p0 + 
+  geom_point(aes(color = group)) + # points with group color
+  geom_smooth(aes(color = group), # smoothers with group color
+              method = "lm") + 
+  scale_color_viridis_d()
 
 ```
 
