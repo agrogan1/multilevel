@@ -9,6 +9,10 @@
 
 * [Multilevel Models, Equations, Syntax & English](https://agrogan1.github.io/multilevel/key-handouts/models-equations-syntax-English/models-equations-syntax-English.html) | [PDF](https://agrogan1.github.io/multilevel/key-handouts/models-equations-syntax-English/models-equations-syntax-English.pdf)
 
+## Paper Template
+
+* [Paper Template for a Cross-Sectional MLM Paper](https://agrogan1.github.io/multilevel/paper-template/cross-sectional-multilevel.html)
+
 ## Gutten Tree Data
 
 * [Multilevel Models With The Gutten Tree Data](https://agrogan1.github.io/multilevel/mlm-gutten/mlm-gutten.html)
