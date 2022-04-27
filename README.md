@@ -13,6 +13,10 @@
 
 * [Paper Template for a Cross-Sectional MLM Paper](https://agrogan1.github.io/multilevel/paper-template/cross-sectional-multilevel.html)
 
+## Writing Up Multilevel Results (Tables of Results)
+
+* [Writing Up Multilevel Results](https://agrogan1.github.io/multilevel/writing-up-multilevel-results/writing-up-multilevel-results.html)
+
 ## Gutten Tree Data
 
 * [Multilevel Models With The Gutten Tree Data](https://agrogan1.github.io/multilevel/mlm-gutten/mlm-gutten.html)
