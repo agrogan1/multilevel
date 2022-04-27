@@ -3,10 +3,10 @@ title: "Writing Up Multilevel Results"
 author: "Andy Grogan-Kaylor"
 date: "`r Sys.Date()`"
 output:
-  pdf_document:
-    toc: yes
   distill::distill_article:
     highlight: haddock
+    toc: yes
+  pdf_document:
     toc: yes
 ---
 
@@ -38,9 +38,9 @@ CCC               2.34     3.21     .01     [1.23, 4.56]
 Random            variance
 Effects
 
-var(intercept)    .012                       [.011, .051]
+var($u_0$)        .012                       [.011, .051]
 
-var(error)        .456                       [.123, .456]
+var($e_i$)        .456                       [.123, .456]
 ------------------------------------------------------------------
 
 [^1]: Of course these are just pretend variable labels, and you would include real illustrative variable labels instead.
