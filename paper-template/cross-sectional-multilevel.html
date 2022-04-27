@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
   <meta charset="utf-8">
-  <meta name="generator" content="quarto-0.9.178">
+  <meta name="generator" content="quarto-0.9.180">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <meta name="author" content="A Student">
   <title>Cross Sectional Multilevel Model Paper Template</title>
@@ -120,6 +120,10 @@
 <div class="no-row-height column-margin column-container"><div class="">
 <p>A hypothetical example. If all my variables are continuous, it’s appropriate to show means. If some of my variables are categorical, it’s more appropriate to show frequency distributions.</p>
 <p>In order to format my results nicely, I could copy them into Excel first, format them, and then copy them into Word. There are also some newer ways to make nicely formatted tables in Stata.</p>
+<p>In the graphs, note that I’ve tried to pay some attention to meaningful titles and axis labels.</p>
+<p>Note also you can make use of one of Stata’s <code>scheme</code>s to make your graphs visually interesting.</p>
+<p>It’s also worth trying out the <code>lean1</code> and <code>lean2</code> schemes (type <code>findit lean2</code> to install).</p>
+<p>And the daring are welcome to try my “Michigan” graph scheme, available <a href="https://agrogan1.github.io/Stata/michigan-graph-scheme/">here</a>, <em>caveat emptor</em>.</p>
 </div></div><div class="cell">
 <div class="cell-output-display">
 <table class="table table-sm table-striped">
@@ -148,22 +152,22 @@
 <td style="text-align: center;">NA</td>
 <td style="text-align: center;">NA</td>
 <td style="text-align: center;">NA</td>
-<td style="text-align: center;">0: 50, 1: 50</td>
+<td style="text-align: center;">0: 51, 1: 49</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">x</td>
-<td style="text-align: center;">100.5</td>
-<td style="text-align: center;">9.995</td>
-<td style="text-align: center;">74.86</td>
-<td style="text-align: center;">123.7</td>
+<td style="text-align: center;">102</td>
+<td style="text-align: center;">9.945</td>
+<td style="text-align: center;">79.25</td>
+<td style="text-align: center;">128.3</td>
 <td style="text-align: center;">NA</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">y</td>
-<td style="text-align: center;">105.2</td>
-<td style="text-align: center;">14.67</td>
-<td style="text-align: center;">63.25</td>
-<td style="text-align: center;">147.8</td>
+<td style="text-align: center;">108.4</td>
+<td style="text-align: center;">14.19</td>
+<td style="text-align: center;">72.33</td>
+<td style="text-align: center;">137</td>
 <td style="text-align: center;">NA</td>
 </tr>
 <tr class="even">
@@ -198,14 +202,7 @@
 </div>
 </div>
 </div>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<p>A hypothetical example of a graph showing the distribution of one of my variables of interest to give some visual interest to this paper.</p>
-<p>Note that I’ve tried to pay some attention to meaningful titles and axis labels.</p>
-<p>Note also you can make use of one of Stata’s <code>scheme</code>s to make your graphs visually interesting.</p>
-<p>It’s also worth trying out the <code>lean1</code> and <code>lean2</code> schemes (type <code>findit lean2</code> to install).</p>
-<p>And the daring are welcome to try my “Michigan” graph scheme, available <a href="https://agrogan1.github.io/Stata/michigan-graph-scheme/">here</a>, <em>caveat emptor</em>.</p>
-</div></div><p>What is the influence of each predictor variable in your relationship in terms of <span class="math inline">\(\beta\)</span> and p value? Please compute the unconditional intra-class correlation coefficient as part of your results. The graph demonstrates one aspect of this relationship.</p>
+<p>What is the influence of each predictor variable in your relationship in terms of <span class="math inline">\(\beta\)</span> and p value? Please compute the unconditional intra-class correlation coefficient as part of your results.</p>
 <div class="cell">
 <div class="cell-output-display">
 <table style="border-collapse:collapse; border:none;">
@@ -222,24 +219,24 @@
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">(Intercept)</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">-1.39</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">10.31</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">-0.13</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.893</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">6.49</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">9.62</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.67</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.501</td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">x</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">1.05</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.10</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">10.22</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.98</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.09</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">10.77</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</strong></td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">z [1]</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">3.39</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">1.77</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">1.92</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">2.04</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.94</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.350</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.058</td>
 </tr>
 <tr>
 <td colspan="5" style="font-weight:bold; text-align:left; padding-top:.8em;">Random Effects</td>
@@ -247,16 +244,16 @@
 
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">σ<sup>2</sup></td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="4">101.44</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="4">75.01</td>
 </tr>
 
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">τ<sub>00</sub> <sub>u</sub></td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="4">1.59</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="4">25.80</td>
 
 </tr><tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">ICC</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="4">0.02</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="4">0.26</td>
 
 </tr><tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">N <sub>u</sub></td>
@@ -267,7 +264,7 @@
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">Marginal R<sup>2</sup> / Conditional R<sup>2</sup></td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="4">0.525 / 0.532</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="4">0.485 / 0.617</td>
 </tr>
 
 </tbody></table>

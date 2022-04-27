@@ -107,6 +107,14 @@ Tell me in words how your variables are distributed in your sample and include a
 A hypothetical example. If all my variables are continuous, it's appropriate to show means. If some of my variables are categorical, it's more appropriate to show frequency distributions.
 
 In order to format my results nicely, I could copy them into Excel first, format them, and then copy them into Word. There are also some newer ways to make nicely formatted tables in Stata.
+
+In the graphs, note that I've tried to pay some attention to meaningful titles and axis labels.
+
+Note also you can make use of one of Stata's `scheme`s to make your graphs visually interesting.
+
+It's also worth trying out the `lean1` and `lean2` schemes (type `findit lean2` to install).
+
+And the daring are welcome to try my "Michigan" graph scheme, available [here](https://agrogan1.github.io/Stata/michigan-graph-scheme/), *caveat emptor*.
 :::
 
 ```{r}
@@ -164,19 +172,7 @@ ggplot(data = mydata,
 
 ```
 
-::: column-margin
-A hypothetical example of a graph showing the distribution of one of my variables of interest to give some visual interest to this paper.
-
-Note that I've tried to pay some attention to meaningful titles and axis labels.
-
-Note also you can make use of one of Stata's `scheme`s to make your graphs visually interesting.
-
-It's also worth trying out the `lean1` and `lean2` schemes (type `findit lean2` to install).
-
-And the daring are welcome to try my "Michigan" graph scheme, available [here](https://agrogan1.github.io/Stata/michigan-graph-scheme/), *caveat emptor*.
-:::
-
-What is the influence of each predictor variable in your relationship in terms of $\beta$ and p value? Please compute the unconditional intra-class correlation coefficient as part of your results. The graph demonstrates one aspect of this relationship.
+What is the influence of each predictor variable in your relationship in terms of $\beta$ and p value? Please compute the unconditional intra-class correlation coefficient as part of your results. 
 
 ```{r}
 
