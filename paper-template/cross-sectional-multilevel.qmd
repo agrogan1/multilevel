@@ -172,7 +172,7 @@ ggplot(data = mydata,
 
 ```
 
-What is the influence of each predictor variable in your relationship in terms of $\beta$ and p value? Please compute the unconditional intra-class correlation coefficient as part of your results. 
+What is the influence of each predictor variable in your relationship in terms of $\beta$ and p value? Please compute the unconditional intra-class correlation coefficient as part of your results.
 
 ```{r}
 
