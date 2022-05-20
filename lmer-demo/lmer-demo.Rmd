@@ -3,31 +3,23 @@ title: "lmer Demo"
 author: "Andy Grogan-Kaylor"
 date: "`r Sys.Date()`"
 output:
+  distill::distill_article:
+    code_folding: hide
+    highlight: haddock
+    toc: yes
   pdf_document: 
     fig_height: 4
     highlight: tango
     latex_engine: xelatex
     number_sections: yes
     toc: yes
-  html_document: 
-    code_download: yes
-    code_folding: hide
-    highlight: haddock
-    number_sections: yes
-    theme: readable
-    toc: yes
-    toc_float:
-      collapsed: no
-      smooth_scroll: yes
-  distill::distill_article:
-    code_folding: hide
-    highlight: haddock
-    toc: yes
 ---
 
 ```{r setup, include=FALSE}
 
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE,
+                      warning = FALSE,
+                      message = FALSE)
 
 ```
 
@@ -52,13 +44,24 @@ data("gutten") # Von Guttenberg Tree Data
 
 ```
 
-```{r, eval=FALSE, echo=FALSE}
+```{r}
 
-library(haven) # read Stata
+library(haven) # write to Stata
 
-imm23 <- read_dta("https://stats.idre.ucla.edu/stat/examples/imm/imm23.dta")
+gutten2 <- gutten # make a copy
+
+colnames(gutten2)[4] <- "age_base"
+
+colnames(gutten2)[6] <- "dbh_cm"
+
+colnames(gutten2)[8] <- "age_bh"
+
+colnames(gutten2)[9] <- "tree_ID"
+
+write_dta(gutten2, "gutten.dta")
 
 ```
+
 
 # Data Wrangling (Centering)
 
