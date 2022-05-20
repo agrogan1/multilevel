@@ -3,15 +3,15 @@ title: "lmer Demo"
 author: "Andy Grogan-Kaylor"
 date: "`r Sys.Date()`"
 output:
-  distill::distill_article:
-    code_folding: hide
-    highlight: haddock
-    toc: yes
   pdf_document: 
     fig_height: 4
     highlight: tango
     latex_engine: xelatex
     number_sections: yes
+    toc: yes
+  distill::distill_article:
+    code_folding: hide
+    highlight: haddock
     toc: yes
 ---
 
