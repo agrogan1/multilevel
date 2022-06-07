@@ -16,7 +16,9 @@ generate id = _n // cluster id
 
 generate u0 = rnormal(0, 10) // random intercept (L2 error)
 
-expand 2 // 2 observations per cluster
+generate n = runiformint(1, 3) // 1 to 3 observations per cluster
+
+expand n // n observations per cluster
 
 generate x = rnormal(100, 10) // independent variable
 
@@ -59,7 +61,7 @@ est store GEE // GEE
 est table OLS OLS_clustered MLM RE GEE, ///
 b(%9.3f) star stats(N r2 r2_a) ///
 equations(1) ///
-title("Simulated Data: 2 obs per cluster; regression slope of 3.0")
+title("Simulated Data: 1 to 3 obs per cluster; regression slope of 3.0")
 
 * write out pdf
 
@@ -67,15 +69,17 @@ putpdf begin, landscape // open PDF
 
 putpdf paragraph // new paragraph
 
-putpdf text ("Simulated Data: 2 obs per cluster; regression slope of 3.0.")
+putpdf text ("Simulated Data: 1 to 3 obs per cluster; regression slope of 3.0.")
 
 putpdf paragraph // new paragraph
 
-putpdf text ("Results from summary table below suggest each model does well in estimating regression slope.")
+putpdf text ("Results from summary table below suggest each model does well in estimating regression slope.  ")
+
+putpdf text ("These results suggest good estimation of within cluster variances.")
 
 putpdf paragraph // new paragraph
 
-putpdf text ("Results from individual commands suggest each model does well in estimating cluster variances.")
+putpdf text ("Results from individual commands suggest each model does well in estimating between cluster variances.")
 
 putpdf table tbl1 = etable // add results from table of estimates
 
