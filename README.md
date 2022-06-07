@@ -52,4 +52,10 @@
 
 * [`lmer` Demo](https://agrogan1.github.io/multilevel/lmer-demo/lmer-demo.html)
 
+## Multiple Methods for Analyzing Clustered Data
+
+* [Multiple Methods](https://github.com/agrogan1/multilevel/tree/master/multiple-methods-for-clustered-data)
+
+
+
 
