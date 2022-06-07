@@ -24,6 +24,8 @@ generate e = rnormal(0, 1) // individual error
 
 generate y = 3 * x + u + e
 
+save simulated-clustered-data.dta, replace
+
 * explore graphically
 
 spagplot y x, id(id) // spaghetti plot
