@@ -18,13 +18,15 @@ generate u0 = rnormal(0, 10) // random intercept (L2 error)
 
 generate n = runiformint(1, 3) // 1 to 3 observations per cluster
 
+generate x = rnormal(100, 10) // independent variable
+
 expand n // n observations per cluster
 
-generate x = rnormal(100, 10) // independent variable
+replace x = x + rnormal(0, 10) // add some random noise to each x
 
 generate e = rnormal(0, 1) // individual error
 
-generate y = 3 * x + u + e
+generate y = 3 * x + u0 + e
 
 save simulated-clustered-data.dta, replace
 
@@ -44,17 +46,17 @@ regress y x, cluster(id) // OLS w clustered standard errors
 
 est store OLS_clustered
 
-mixed y x || id:
+mixed y x || id: // multilevel model
 
-est store MLM // multilevel model
+est store MLM 
 
-xtreg y x, i(id)
+xtreg y x, i(id) // random effects
 
-est store RE // random effects
+est store RE 
 
-xtgee y x, i(id)
+xtgee y x, i(id) // GEE
 
-est store GEE // GEE
+est store GEE 
 
 * nice table of estimates
 
