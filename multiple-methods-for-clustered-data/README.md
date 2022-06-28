@@ -1,12 +1,13 @@
 # Multiple Methods for Analyzing Clustered Data
 
-An evolving folder examining multiple methods for analyzing clustered data.
+An evolving folder examining multiple methods for analyzing clustered data, with a particular focus on data where the number of observations / cluster is small.
 
 1. `regress y x` // OLS
 2. `regress y x, cluster(id)` // OLS w clustered standard errors
 3. `mixed y x || id:` // multilevel model
-4. `xtreg y x, i(id)` // random effects
-5. `xtgee y x, i(id)` // GEE
+4. `bayes: mixed y x || id:` // Bayesian multilevel model
+5. `xtreg y x, i(id)` // random effects
+6. `xtgee y x, i(id)` // GEE
 
 The `do` file is the script. The do file generates simulated data with a $\beta$ for $x$ of 3.0. The variance of $u_0$ is 100.
 

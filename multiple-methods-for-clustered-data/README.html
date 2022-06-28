@@ -368,12 +368,15 @@ pre code {
 <div id="multiple-methods-for-analyzing-clustered-data" class="section level1">
 <h1>Multiple Methods for Analyzing Clustered Data</h1>
 <p>An evolving folder examining multiple methods for analyzing clustered
-data.</p>
+data, with a particular focus on data where the number of observations /
+cluster is small.</p>
 <ol style="list-style-type: decimal">
 <li><code>regress y x</code> // OLS</li>
 <li><code>regress y x, cluster(id)</code> // OLS w clustered standard
 errors</li>
 <li><code>mixed y x || id:</code> // multilevel model</li>
+<li><code>bayes: mixed y x || id:</code> // Bayesian multilevel
+model</li>
 <li><code>xtreg y x, i(id)</code> // random effects</li>
 <li><code>xtgee y x, i(id)</code> // GEE</li>
 </ol>
