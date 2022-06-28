@@ -58,7 +58,7 @@ xtgee y x, i(id) // GEE
 
 est store GEE 
 
-bayes: mixed y x || id: // Bayesian MLM
+* bayes: mixed y x || id: // Bayesian MLM
 
 * nice table of estimates
 
@@ -92,9 +92,5 @@ putpdf text ("Bayesian results, which cannot be included in this PDF, are simila
 putpdf table tbl1 = etable // add results from table of estimates
 
 putpdf save multiple-methods-for-clustered-data.pdf, replace // close PDF
-
-
-
-
 
 
