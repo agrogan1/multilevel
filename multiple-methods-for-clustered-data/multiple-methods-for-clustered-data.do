@@ -58,6 +58,8 @@ xtgee y x, i(id) // GEE
 
 est store GEE 
 
+bayes: mixed y x || id: // Bayesian MLM
+
 * nice table of estimates
 
 est table OLS OLS_clustered MLM RE GEE, ///
@@ -82,6 +84,10 @@ putpdf text ("These results suggest good estimation of within cluster variances.
 putpdf paragraph // new paragraph
 
 putpdf text ("Results from individual commands suggest each model does well in estimating between cluster variances.")
+
+putpdf paragraph // new paragraph
+
+putpdf text ("Bayesian results, which cannot be included in this PDF, are similarly effective in recovering model parameters.")
 
 putpdf table tbl1 = etable // add results from table of estimates
 
