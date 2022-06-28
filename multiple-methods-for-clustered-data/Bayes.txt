@@ -1,0 +1,60 @@
+ bayes: mixed y x || id: // Bayesian MLM
+note: Gibbs sampling is used for regression coefficients and variance components.
+  
+Burn-in 2500 aaaaaaaaa1000aaaaaaaaa2000aaaaa done
+Simulation 10000 .........1000.........2000.........3000.........4000.........5000........
+> .6000.........7000.........8000.........9000.........10000 done
+
+Multilevel structure
+------------------------------------------------------------------------------
+id
+    {U0}: random intercepts
+------------------------------------------------------------------------------
+
+Model summary
+------------------------------------------------------------------------------
+Likelihood: 
+  y ~ normal(xb_y,{e.y:sigma2})
+
+Priors: 
+   {y:x _cons} ~ normal(0,10000)                                           (1)
+          {U0} ~ normal(0,{U0:sigma2})                                     (1)
+  {e.y:sigma2} ~ igamma(.01,.01)
+
+Hyperprior: 
+  {U0:sigma2} ~ igamma(.01,.01)
+------------------------------------------------------------------------------
+(1) Parameters are elements of the linear form xb_y.
+
+Bayesian multilevel regression                   MCMC iterations  =     12,500
+Metropolis–Hastings and Gibbs sampling           Burn-in          =      2,500
+                                                 MCMC sample size =     10,000
+Group variable: id                               Number of groups =        500
+                                                 Obs per group:
+                                                              min =          1
+                                                              avg =        2.0
+                                                              max =          3
+                                                 Number of obs    =      1,003
+                                                 Acceptance rate  =      .9049
+                                                 Efficiency:  min =     .00109
+                                                              avg =    .002896
+Log marginal-likelihood                                       max =     .00481
+ 
+------------------------------------------------------------------------------
+             |                                                Equal-tailed
+             |      Mean   Std. dev.     MCSE     Median  [95% cred. interval]
+-------------+----------------------------------------------------------------
+y            |
+           x |   2.99098   .0140961   .002084   2.993963    2.95016   3.010135
+       _cons |  .1039096   1.432309   .206526  -.1826188  -1.927797   4.194274
+-------------+----------------------------------------------------------------
+id           |
+   U0:sigma2 |  77.31979   46.89078   14.0925   102.5237   .0257159   119.1195
+-------------+----------------------------------------------------------------
+e.y          |
+      sigma2 |  28.17729   44.40027   13.4473   1.160088   1.001789   108.7593
+------------------------------------------------------------------------------
+Note: Default priors are used for model parameters.
+Note: There is a high autocorrelation after 500 lags.
+Note: Adaptation tolerance is not met in at least one of the blocks.
+
