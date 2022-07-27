@@ -3,14 +3,14 @@ title: "Bayesian and Frequentist Multilevel Modeling"
 author: "Andy Grogan-Kaylor"
 date: "`r Sys.Date()`"
 output:
+  distill::distill_article:
+    highlight: haddock
+    toc: yes
   pdf_document: 
     fig_height: 3
     highlight: haddock
     latex_engine: xelatex
     number_sections: yes
-    toc: yes
-  distill::distill_article:
-    highlight: haddock
     toc: yes
 link-citations: yes
 bibliography: Bayesian-and-frequentist-MLM.bib
@@ -21,7 +21,7 @@ mainfont: Arial
 
 ```{r setup, include=FALSE}
 
-library(tint)
+# library(tint)
 
 # invalidate cache when the package version changes
 
@@ -126,7 +126,7 @@ As Kruschke [-@Kruschke2014] observes, multiple comparisons (especially when the
 
 # Smaller Samples
 
-Bayesian multilevel models may be better with small samples [@VandeSchoot2015], especially samples with small numbers of Level 2 units [@Hox2012]. Some of this advantage may occur when parameters are not normally distributed [@Muthen2012]. It appears that much of this improvement in performance is dependent upon the use of informative priors [@Smid2020], and that Bayesian models with small samples may provide worse estimates than maximum likelihood estimates when less informative, or inaccurate, priors are used [@McNeish2016].
+Bayesian multilevel models may be better with small samples [@VandeSchoot2015; @Rognli2022], especially samples with small numbers of Level 2 units [@Hox2012]. Some of this advantage may occur when parameters are not normally distributed [@Muthen2012]. It appears that much of this improvement in performance is dependent upon the use of informative priors [@Smid2020], and that Bayesian models with small samples may provide worse estimates than maximum likelihood estimates when less informative, or inaccurate, priors are used [@McNeish2016].
 
 # Full Distribution of Parameters
 
@@ -196,7 +196,7 @@ persp(mydensity,
 
 ```
 
-As Stata Corporation notes, "In a Bayesian multilevel model, *random effects* are model parameters just like regression coefficients and variance components" [@StataCorp2020].  This ability to estimate the *distributions* of these random effects means that the *distribution* of the random effect for one group can be compared to another. For example, the *distribution* of a parameter in one country could be directly compared to the *distribution* of that same parameter in another country. One could even estimate the probability that a particular $\beta$ had a higher value in one group (e.g. country), than in another. As Balov [-@Balov2016] suggests, this Bayesian approach allows us to "quantify the credibility" of these comparisons, which would not be possible with a frequentist approach.
+As Stata Corporation notes, "In a Bayesian multilevel model, *random effects* are model parameters just like regression coefficients and variance components" [@StataCorp2020].  This ability to estimate the *distributions* of these random effects means that the *distribution* of the random effect for one group can be compared to another. For example, the *distribution* of a parameter in one country could be directly compared to the *distribution* of that same parameter in another country. One could even estimate the probability that a particular $\beta$ had a higher value in one group (e.g. country), than in another. As Balov [-@Balov2016] suggests, this Bayesian approach allows us to "quantify the credibility" of these comparisons, which would not be possible with a frequentist approach. Rognli et al. [-@Rognli2022] make a similar point about estimating the probability of a practically or substantively meaningful effect size.
 
 As an example, Stunnenberg et al. [-@Stunnenberg2018] conducted a Bayesian analysis where the results of the multilevel analysis were used to inform treatment decisions. Here the data were repeated measures on patients, and thus the patients were the groups: "On completion of each treatment set, a Bayesian analysis was conducted to calculate the posterior probability of mexiletine [treatment] producing a clinically meaningful difference in the individual patient." 
 
