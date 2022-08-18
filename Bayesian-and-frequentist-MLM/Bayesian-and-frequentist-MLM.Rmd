@@ -238,13 +238,13 @@ Bayesian estimators allow for the incorporation of non-linear terms [@Burkner201
 
 # Maximal Models
 
-Hypothetically, one might imagine that there could be group level unobserved factors which affect regression slopes--i.e. the relationship between a predictor *x* and outcome variable *y*. Arguably, were one to ignore these unobserved factors in statistical estimation, they would show up either in an error term ($e_i$ or $u_0$), or in the regression coefficients ($\beta$). Were they to show up in the regression coefficients this would represent statistical bias and a substantive mis-estimation of important effects. thus, there is a conceptual argument for including as many random effects—i.e. random slopes—in a statistical model as possible.
+Hypothetically, one might imagine that there could be group level unobserved factors which affect regression slopes--i.e. the relationship between a predictor *x* and outcome variable *y*. Arguably, were one to ignore these unobserved factors in statistical estimation, they would show up either in an error term ($e_i$ or $u_0$), or in the regression coefficients ($\beta$). Were they to show up in the regression coefficients this would represent statistical bias and a substantive mis-estimation of important effects. thus, there is a conceptual argument for including as many random effects—i.e. random slopes—in a statistical model as possible. 
 
-Bayesian estimators allow for the estimation of so called *maximal models* [@Barr2013; @Frank2018], which allow for the inclusion of a large number of random slopes, e.g. $u_1, u_2, u_3, ..., etc.$ even when some of those estimated slopes are close to 0. 
+Bayesian estimators more readily allow for the estimation of so called *maximal models* [@Barr2013; @Frank2018], which allow for the inclusion of a large number of random slopes, e.g. $u_1, u_2, u_3, ..., etc.$ even when some of those estimated slopes are close to 0. 
 
 It should be noted that  Matuschek et al. [-@Matuschek2017] argue that such a *maximal* approach may lead to a loss of statistical power and further argue that one should adhere to "a random effect structure that is supported by the data." 
 
-In contrast, Nalborczyk et al. [-@nalborczyk_batailler_loevenbruck_vilain_bürkner_2019] argue that maximal models are supported under the Bayesian approach. Oberauer [-@Oberauer2022] also argues for including multiple random slopes.
+In contrast, Nalborczyk et al. [-@nalborczyk_batailler_loevenbruck_vilain_burkner_2019] argue that maximal models are supported under the Bayesian approach. Oberauer [-@Oberauer2022] also argues for including multiple random slopes. Schielzeth and Forstmeier [-@Schielzeth2009] make a similar argument from a frequentist perspective.
 
 ```{r, echo=FALSE, results='asis'}
 
