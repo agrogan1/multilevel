@@ -30,6 +30,19 @@ knitr::opts_chunk$set(echo = TRUE,
                       message = FALSE)
 
 ```
+# Introduction
+
+Associations between two variables can be *very different* (or even *reversed*) depending upon whether or not the analysis is "aware" of the grouped, nested, or clustered nature of the data. 
+
+Thus, a model that is "aware" of the clustered nature of the data may provide very different--likely better--substantive conclusions than a model that is not aware of the clustered nature of the data.
+
+# Set a Random Seed For Replicability
+
+```{r}
+
+set.seed(1080) # random seed
+
+```
 
 # Call The Libraries
 
@@ -126,7 +139,7 @@ p0 +
 
 # Regressions
 
-## OLS
+## A "Naive" OLS Analysis
 
 The OLS model with only *x* as a covariate is not aware of the grouped structure of the data, and the coefficient for *x* reflects this.
 
@@ -141,7 +154,7 @@ sjPlot::tab_model(myOLS,
 
 ```
 
-## MLM
+## An "Aware" MLM Analysis
 
 The multilevel model is aware of the grouped structure of the data, and the coefficient for *x* reflects this.
 
