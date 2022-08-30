@@ -1,7 +1,7 @@
 ---
 title: "Multilevel Structure"
 description: |
-  Structure of the data may be different at different levels.
+  Structure of the data may be different at different levels. Results may differ greatly when we apply multilevel thinking.
 author:
 - name: Andy Grogan-Kaylor
   url: https://agrogan1.github.io/
@@ -32,9 +32,9 @@ knitr::opts_chunk$set(echo = TRUE,
 ```
 # Introduction
 
-Associations between two variables can be *very different* (or even *reversed*) depending upon whether or not the analysis is "aware" of the grouped, nested, or clustered nature of the data. 
+Associations between two variables can be *very different* (or even *reversed*) depending upon whether or not the analysis is "aware" of the grouped, nested, or clustered nature of the data. In multilevel analysis, the groups are often neighborhoods, communities, or even different countries.
 
-Thus, a model that is "aware" of the clustered nature of the data may provide very different--likely better--substantive conclusions than a model that is not aware of the clustered nature of the data.
+A model that is "aware" of the clustered nature of the data may provide very different--likely better--substantive conclusions than a model that is not aware of the clustered nature of the data.
 
 # Set a Random Seed For Replicability
 
@@ -50,11 +50,7 @@ set.seed(1080) # random seed
 
 library(ggplot2) # beautiful graphs
 
-# library(gganimate) # animated ggplots
-
 library(lme4) # MLM
-
-# library(pander) # nice tables
 
 library(sjPlot) # nice tables for MLM
 
@@ -72,7 +68,7 @@ group1 <- rep(1, 10)
 
 x1 <- seq(1,10)
 
-y1 <- 10 + -1 * x1 + e
+y1 <- 50 + 1 * x1 + e
 
 # group 2
 
@@ -80,7 +76,7 @@ group2 <- rep(2, 10)
 
 x2 <- seq(11, 20)
 
-y2 <- 30 + -1 * x2 + e
+y2 <- 30 + 1 * x2 + e
 
 # group 3
 
@@ -88,7 +84,7 @@ group3 <- rep(3, 10)
 
 x3 <- seq(21, 30)
 
-y3 <- 50 + -1 * x3 + e
+y3 <- 10 + 1 * x3 + e
 
 # combine into a dataframe
 
@@ -168,6 +164,18 @@ sjPlot::tab_model(myMLM,
                   show.stat = TRUE)
 
 ```
+
+# A Thought Experiment
+
+When might a situation like this arise in practice? This is surprisingly difficult to think through. 
+
+Imagine that *x* is a protective factor, or an intervention or treatment. Imagine that *y* is a desirable outcome, like improved mental health or psychological well being.
+
+Now imagine that community members provide more of the protective factor or more of the intervention in situations where there are lower levels of the desirable outcome. If we think about it, this is a very plausible situation. 
+
+> A naive analysis that was unaware of the grouped nature of the data would therefore misconstrue the results, suggesting that the intervention was harmful, when it was in fact helpful.
+
+These data are constructed to provide this kind of extreme example, but it easy to see how multilevel thinking, and multilevel analysis may provide better answers than we would get if we ignored the grouped nature of the data.
 
 
 
