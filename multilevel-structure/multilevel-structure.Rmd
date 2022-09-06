@@ -175,6 +175,19 @@ Now imagine that community members provide more of the protective factor or more
 
 > A naive analysis that was unaware of the grouped nature of the data would therefore misconstrue the results, suggesting that the intervention was harmful, when it was in fact helpful.
 
+```{r}
+
+p0 + 
+  geom_point(aes(color = group)) + # points with group color
+  geom_smooth(aes(color = group), # smoothers with group color
+              method = "lm") + 
+  labs(title = "beneficial outcome as a function of intervention or treatment",
+       x = "intervention or treatment",
+       y = "desirable outcome") +
+  scale_color_viridis_d()
+
+```
+
 These data are constructed to provide this kind of extreme example, but it easy to see how multilevel thinking, and multilevel analysis may provide better answers than we would get if we ignored the grouped nature of the data.
 
 
