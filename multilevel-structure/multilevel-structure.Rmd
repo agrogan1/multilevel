@@ -30,7 +30,7 @@ knitr::opts_chunk$set(echo = TRUE,
 
 Associations between two variables can be *very different* (or even *reversed*) depending upon whether or not the analysis is "aware" of the grouped, nested, or clustered nature of the data. In multilevel analysis, the groups are often neighborhoods, communities, or even different countries.
 
-A model that is "aware" of the clustered nature of the data may provide very different--likely better--substantive conclusions than a model that is not aware of the clustered nature of the data. This phenomena is closely related to the "ecological fallacy": the idea that group level and multilevel relationships are necessarily the same [@FIREBAUGH20014023].
+A model that is "aware" of the clustered nature of the data may provide very different--likely better--substantive conclusions than a model that is not aware of the clustered nature of the data. This phenomena is closely related to the "ecological fallacy": the idea that group level and individual level relationships are necessarily the same [@FIREBAUGH20014023].
 
 # Set a Random Seed For Replicability
 
