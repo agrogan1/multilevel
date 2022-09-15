@@ -90,7 +90,7 @@ y <- c(y1, y2, y3)
 
 group <- factor(c(group1, group2, group3))
 
-mydata <- data.frame(x, y, group) 
+multilevelstructure <- data.frame(x, y, group) 
 
 ```
 
@@ -104,7 +104,7 @@ This "naive" graph is unaware of the grouped nature of the data.
 
 library(ggplot2)
 
-p0 <- ggplot(mydata, 
+p0 <- ggplot(multilevelstructure, 
              aes(x = x,
                  y = y)) +
   geom_smooth(method = "lm") +
@@ -137,7 +137,7 @@ The OLS model with only *x* as a covariate is not aware of the grouped structure
 
 ```{r}
 
-myOLS <- lm(y ~ x, data = mydata)
+myOLS <- lm(y ~ x, data = multilevelstructure)
 
 sjPlot::tab_model(myOLS,
                   show.se = TRUE,
@@ -152,7 +152,7 @@ The multilevel model is aware of the grouped structure of the data, and the coef
 
 ```{r}
 
-myMLM <- lmer(y ~ x + (1 | group), data = mydata)
+myMLM <- lmer(y ~ x + (1 | group), data = multilevelstructure)
 
 sjPlot::tab_model(myMLM,
                   show.se = TRUE,
