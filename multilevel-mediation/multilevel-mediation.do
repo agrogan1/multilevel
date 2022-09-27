@@ -6,7 +6,9 @@
 * I build on this using gsem, to estimate a MULTILEVEL model, using ideas from
 * https://www.stata.com/manuals/semexample42g.pdf
 
+**********
 * setup
+**********
 
 clear all // clear workspace
 
@@ -18,7 +20,9 @@ set seed 1234
 
 * get data
 
-use https://stats.idre.ucla.edu/stat/data/hsbdemo, clear 
+* use https://stats.idre.ucla.edu/stat/data/hsbdemo, clear 
+
+use hsbdemo.dta, clear
 
 * look at data
 
@@ -27,19 +31,23 @@ describe
 * estimate model
 
 *    ↗️ write ↘️
-* math  ➡️  science
+* math   ➡️  science
 
 * x: math
 * mediator: write
 * y: science
 
+******************************
 * no clustering
+******************************
 
 gsem (write <- math) (science <- write math)
 
 est store noclustering
 
+************************************************************
 * multilevel mediation model w/ random effects (MLM)
+************************************************************
 
 * gsem (y <- m x z) (m <- x)
 
@@ -57,7 +65,9 @@ nlcom _b[science:write]*_b[read:math] // indirect effect
 
 nlcom _b[science:math] + _b[science:write]*_b[read:math] // total = direct + indirect
 
+******************************
 * clustered standard errors
+******************************
 
 * https://www.stata.com/manuals13/semintro8.pdf#semintro8
 
@@ -65,7 +75,9 @@ gsem (write <- math) (science <- write math), vce(cluster cid)
 
 est store clusteredSEs // store clustered standard error estimates
 
+******************************
 * nice table of estimates
+******************************
 
 * est table noclustering MLM clusteredSEs, star
 
