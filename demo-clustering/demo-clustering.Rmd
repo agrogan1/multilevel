@@ -166,3 +166,8 @@ tab_model(myOLS, myMLM,
           show.stat = TRUE)
 
 ```
+
+
+
+
+
