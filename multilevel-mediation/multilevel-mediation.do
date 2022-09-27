@@ -38,6 +38,14 @@ describe
 * y: science
 
 ******************************
+OLS (no mediation analysis)
+******************************
+
+regress science write math
+
+est store OLS
+
+******************************
 * no clustering
 ******************************
 
@@ -61,9 +69,9 @@ est store MLM // store MLM estimates
 
 * total and indirect effects
 
-nlcom _b[science:write]*_b[read:math] // indirect effect
+nlcom _b[science:write]*_b[write:math] // indirect effect
 
-nlcom _b[science:math] + _b[science:write]*_b[read:math] // total = direct + indirect
+nlcom _b[science:math] + _b[science:write]*_b[write:math] // total = direct + indirect
 
 ******************************
 * clustered standard errors
@@ -79,5 +87,37 @@ est store clusteredSEs // store clustered standard error estimates
 * nice table of estimates
 ******************************
 
-* est table noclustering MLM clusteredSEs, star
+est table OLS noclustering MLM clusteredSEs, star
+
+**********************************************************************
+* graphical analysis of why MLM might differ from other approaches
+**********************************************************************
+* https://agrogan1.github.io/multilevel/multilevel-structure/multilevel-structure.html
+
+twoway (scatter science write) /// scatterplot
+(lfit science write), /// linear fit
+title("Science Score by Writing Score") ///
+subtitle("by Classroom") /// 
+scheme(s1color) /// nice graph scheme
+name(science_by_writing, replace)
+
+graph export "science_by_writing.png", ///
+as(png) ///
+name("science_by_writing") replace
+
+twoway (scatter science write) /// scatterplot
+(lfit science write), /// linear fit
+by(cid, /// by classroom
+title("Science Score by Writing Score") ///
+subtitle("by Classroom")) /// 
+scheme(s1color) /// nice graph scheme
+name(science_by_writing_by_classroom, replace)
+
+graph export "science_by_writing_by_classroom.png", ///
+as(png) ///
+name("science_by_writing_by_classroom") replace
+
+
+
+
 
