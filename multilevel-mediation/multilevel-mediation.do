@@ -33,11 +33,21 @@ describe
 * mediator: write
 * y: science
 
-* multilevel mediation model w/ random effects
+* no clustering
+
+gsem (write <- math) (science <- write math)
+
+est store noclustering
+
+* multilevel mediation model w/ random effects (MLM)
+
+* gsem (y <- m x z) (m <- x)
 
 * gsem (read <- math M1[cid]) (science <- read math M2[cid]) 
 
 gsem (write <- math M1[cid]) (science <- write math M2[cid])
+
+est store MLM // store MLM estimates
 
 * think about setting covariance to 0: cov(M1[cid]*M2[cid]@0)
 
@@ -46,4 +56,16 @@ gsem (write <- math M1[cid]) (science <- write math M2[cid])
 nlcom _b[science:write]*_b[read:math] // indirect effect
 
 nlcom _b[science:math] + _b[science:write]*_b[read:math] // total = direct + indirect
+
+* clustered standard errors
+
+* https://www.stata.com/manuals13/semintro8.pdf#semintro8
+
+gsem (write <- math) (science <- write math), vce(cluster cid)
+
+est store clusteredSEs // store clustered standard error estimates
+
+* nice table of estimates
+
+* est table noclustering MLM clusteredSEs, star
 
