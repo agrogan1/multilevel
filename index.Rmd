@@ -50,6 +50,8 @@ knitr::include_graphics("neighborhood.png")
 
 <aside>
 <mark>Stata will be the statistical software employed in this course, and students will need access to Stata to participate.</mark>
+
+<mark>For the first time, participation in this class will also require purchase of a textbook, likely *Multilevel and Longitudinal Modeling Using Stata, Fourth Edition, Volume I: Continuous Responses* by Rabe-Hesketh and Skrondal.</mark>
 </aside>
 
 ```{r get_data, eval=FALSE}
