@@ -195,9 +195,9 @@ plot(fit3, variable = c("sd_tree_ID__Intercept",
 
 ```
 
-# Compare All 3 Models
+# Compare All 3 Models 🌲
 
-```{r}
+```{r, layout = "l-page"}
 
 tab_model(fit1, fit2, fit3,
           dv.labels = c("lmer", "brms default priors", "brms informative priors"), 
