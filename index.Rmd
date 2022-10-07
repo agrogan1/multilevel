@@ -42,7 +42,7 @@ library(plotly)
 
 ```
 
-```{r, fig.cap="Neighborhood, School and Country Effects"}
+```{r, fig.height=3, fig.cap="Neighborhood, School and Country Effects"}
 
 knitr::include_graphics("neighborhood.png")
 
@@ -51,52 +51,8 @@ knitr::include_graphics("neighborhood.png")
 <aside>
 <mark>Stata will be the statistical software employed in this course, and students will need access to Stata to participate.</mark>
 
-<mark>For the first time, participation in this class will also require purchase of a textbook, likely *Multilevel and Longitudinal Modeling Using Stata, Fourth Edition, Volume I: Continuous Responses* by Rabe-Hesketh and Skrondal.</mark>
+<span style="background-color: #00FFFF">For the first time, participation in this class will also require purchase of a textbook, likely *Multilevel and Longitudinal Modeling Using Stata, Fourth Edition, Volume I: Continuous Responses* by Rabe-Hesketh and Skrondal.</span>
 </aside>
-
-```{r get_data, eval=FALSE}
-
-hsb_small <- read_dta("hsb_small.dta")
-
-# mydata$id <- as.factor(mydata$id)
-
-hsb_small$schoolid <- factor(hsb_small$id, 
-                             labels = c("A", "B", "C", 
-                                        "D", "E", "F"))
-
-```
-
-```{r, layout="l-page", fig.height= 3.0, fig.cap="A Subsample of The High School and Beyond Data Set", eval=FALSE}
-
-p0 <- ggplot(hsb_small, 
-             aes(x=schoolid, 
-                 y = mathach,
-                 color = schoolid,
-                 text = paste("School: ", 
-                              schoolid,
-                              "<br>",
-                              "Math Achievement: ",
-                              mathach))) +
-  geom_boxplot(show.legend = FALSE) +
-  geom_jitter() +
-  labs(title = "An Illustration of the High School and Beyond Data",
-       caption = "Each dot represents a student") + 
-  xlab("School") + 
-  ylab("Math Achievement") +
-  scale_color_viridis_d(name = "School \nID") +
-  theme_minimal() +
-  theme(axis.title.y = element_text(size = 8),
-        axis.title.x = element_text(size = 14),
-        axis.text.x = element_text(size = 14),
-        legend.position = "bottom")
-
-ggplotly(p0, tooltip="text") 
-
-ggsave("p0.png", 
-       width = 6, 
-       height = 2.0)
-
-```
 
 Multilevel models have become a standard statistical tool for quantitative research on neighborhoods, communities and schools.  The cross-sectional multilevel model is appropriate for situations in which respondents are clustered inside larger social or geographic units e.g. people in geographic areas, residents in neighborhoods, or children in classrooms and/or schools. Cross-sectional multilevel models enable *multilevel thinking* thinking at multiple levels (units of analysis) and conceptualizing effects at the *country*, *community*, *family*, and *individual* levels.
 
@@ -114,37 +70,10 @@ The first part of the course is all about the idea of “nesting”:  e.g. stude
 
 > NB that the major assignments in this class are two short empirical papers where students apply the concepts of multilevel modeling. This means that students who are interested in this class should start thinking about appropriate data sets to use in the course. Data for the first of two papers should be suitable for a *cross-sectional multilevel* analysis. This data for the first paper should contain some indicator of where study participants live or study, whether that is a Census tract, neighborhood, state, country, classroom or school, etc.. Data for the second of two papers should be suitable for a *multilevel longitudinal analysis*. This data for the second paper should contain repeated measures of some outcome on the same individuals over at least 2 time points.
 
-```{r, layout="l-page", fig.cap="School Specific Regression Lines", eval=FALSE}
-
-p1 <- ggplot(hsb_small, aes(x = ses, 
-                         y = mathach, 
-                         color = schoolid)) + 
-  geom_point() + 
-  geom_smooth(method = lm, 
-              size = 2) + 
-  scale_color_viridis_d(name = "School \nID") +
-  facet_wrap(~schoolid, 
-             nrow = 2) +
-  labs(title = "High School and Beyond Data", 
-       caption = "Every school has its own regression line",
-       x = "Student SES", 
-       y = "math achievement score") + 
-  theme_minimal() +
-  theme(axis.title.y = element_text(size = 8),
-        axis.title.x = element_text(size = 14),
-        axis.text.x = element_text(size = 14),
-        legend.position = "bottom")
-
-ggplotly(p1) 
-
-ggsave("schools.png", p1)
-
-```
-
 Perhaps surprisingly, the multilevel model for cross-sectional data can easily accommodate longitudinal data where study participants are observed repeatedly over time. Longitudinal multilevel models represent a different kind of *multilevel thinking* where we extend the algebra of the multilevel model to think about *events* or *occasions*, nested inside *individuals.*
 
 
-```{r, fig.cap="Studies of Growth and Change"}
+```{r, fig.height=3, fig.cap="Studies of Growth and Change"}
 
 knitr::include_graphics("plant.png")
 
