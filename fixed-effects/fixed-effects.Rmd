@@ -72,7 +72,7 @@ This is sometimes called the between estimator.
 
 We can subtract this most recent equation from the first equation.
 
-$$y_{it} - \bar y_i = \beta (x_{it} - \bar x_i) + (e_{it} - \bar e_i)$$
+$$y_{it} - \bar y_i = \beta_1 (x_{it} - \bar x_i) + (e_{it} - \bar e_i)$$
 
 This is the fixed effects (or *within*) estimator.
 

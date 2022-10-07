@@ -1,6 +1,6 @@
 * render comparison of FE and MLM
 
-cd "\Users\agrogan\Desktop\GitHub\multilevel\fixed-effects-example-World-Bank-data"
+cd "/Users/agrogan/Desktop/GitHub/multilevel/fixed-effects-example-World-Bank-data"
 
 doedit "fixed-effects-example-World-Bank-data.txt"
 

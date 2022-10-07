@@ -59,7 +59,7 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
       padding-top: 50px;
       padding-bottom: 50px;
       hyphens: auto;
-      word-wrap: break-word;
+      overflow-wrap: break-word;
       text-rendering: optimizeLegibility;
       font-kerning: normal;
     }
@@ -67,6 +67,9 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
       body {
         font-size: 0.9em;
         padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
       }
     }
     @media print {
@@ -130,6 +133,7 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
     pre code {
       padding: 0;
       overflow: visible;
+      overflow-wrap: normal;
     }
     .sourceCode {
      background-color: transparent;
@@ -171,6 +175,12 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
     #TOC li {
       list-style: none;
     }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
     #TOC a:not(:hover) {
       text-decoration: none;
     }
@@ -181,45 +191,59 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
   </style>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">Comparing Multilevel Models and Fixed Effects Regression</h1>
+<h1 class="title">Comparing Multilevel Models and Fixed Effects
+Regression</h1>
 <p class="author">Andy Grogan-Kaylor</p>
-<p class="date">17 Mar 2022 12:17:43</p>
+<p class="date">7 Oct 2022 16:38:25</p>
 </header>
 <h1 id="background">Background</h1>
 <style>body {max-width: 90%;} h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
 <blockquote>
-<p>This example draws from the Stata documentation for the <code>xtreg</code> command.</p>
+<p>This example draws from the Stata documentation for the
+<code>xtreg</code> command.</p>
 </blockquote>
-<p>Multilevel models for longitudinal data, and fixed effects regression provide two alternative methods for analyzing longitudinal data.</p>
+<p>Multilevel models for longitudinal data, and fixed effects regression
+provide two alternative methods for analyzing longitudinal data.</p>
 <blockquote>
 <p>Briefly…</p>
 <ul>
-<li><p>Multilevel models use both within person and between person variation, and provide statistical control for observed variables that are included in the model.</p></li>
-<li><p>Fixed effect regressions use only within person variation. As a consequence, fixed effects regression is unable to provide parameter estimates for time invariant variables, even when they are included in the statistical model. Fixed effects regressions provide statistical controls for all time invariant variables, whether observed or unobserved.</p></li>
+<li><p>Multilevel models use both within person and between person
+variation, and provide statistical control for observed variables that
+are included in the model.</p></li>
+<li><p>Fixed effect regressions use only within person variation. As a
+consequence, fixed effects regression is unable to provide parameter
+estimates for time invariant variables, even when they are included in
+the statistical model. Fixed effects regressions provide statistical
+controls for all time invariant variables, whether observed or
+unobserved.</p></li>
 </ul>
 </blockquote>
 <h1 id="get-the-data-use">Get The Data (<code>use</code>)</h1>
 <blockquote>
-<p>We are going to use the sample NLS data on work from <em>Stata Corporation</em>.</p>
+<p>We are going to use the sample NLS data on work from <em>Stata
+Corporation</em>.</p>
 </blockquote>
 <pre class='stata'>. clear all
 </pre>
 <pre class='stata'>. use https://www.stata-press.com/data/r16/nlswork, clear
 (National Longitudinal Survey.  Young Women 14-26 years of age in 1968)
 </pre>
-<h1 id="describe-the-key-variables-describe">Describe the Key Variables (<code>describe</code>)</h1>
+<h1 id="describe-the-key-variables-describe">Describe the Key Variables
+(<code>describe</code>)</h1>
 <pre class='stata'>. describe ln_w grade age race union south
 
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
-──────────────────────────────────────────────────────────────────────────────────────
+──────────────────────────────────────────────────────────────────────────────────────────
 ln_wage         float   %9.0g                 ln(wage/GNP deflator)
 grade           byte    %8.0g                 current grade completed
 age             byte    %8.0g                 age in current year
@@ -229,14 +253,29 @@ south           byte    %8.0g                 1 if south
 </pre>
 <h1 id="equation">Equation</h1>
 <p>Both models estimate the following equation.</p>
-<p><span class="math display">\[y_{it} = \beta_0 + \beta_1 x_{it} + u_{0i} + e_{it}\]</span></p>
-<p>Here <span class="math inline">\(\beta_0\)</span> is the intercept, <span class="math inline">\(\beta_1\)</span> is a slope, <span class="math inline">\(u_{0i}\)</span> is a person specific intercept, and <span class="math inline">\(e_{it}\)</span> is a measurement specific error term.</p>
+<p><span class="math display">\[y_{it} = \beta_0 + \beta_1 x_{it} +
+u_{0i} + e_{it}\]</span></p>
+<p>Here <span class="math inline">\(\beta_0\)</span> is the intercept,
+<span class="math inline">\(\beta_1\)</span> is a slope, <span
+class="math inline">\(u_{0i}\)</span> is a person specific intercept,
+and <span class="math inline">\(e_{it}\)</span> is a measurement
+specific error term.</p>
 <blockquote>
-<p>In the <em>multilevel model</em> discussed below, the <span class="math inline">\(u_{0i}\)</span> are considered to have a <em>distribution</em>, with a mean of 0 and a standard deviation <span class="math inline">\(\sigma_{u0}\)</span>. In the <em>fixed effects regression model</em>, the <span class="math inline">\(u_{0i}\)</span> are considered to be <em>fixed</em>, and <em>directly estimable</em>, although in practice, estimates for each of the <span class="math inline">\(u_{0i}\)</span> are usually not provided.</p>
+<p>In the <em>multilevel model</em> discussed below, the <span
+class="math inline">\(u_{0i}\)</span> are considered to have a
+<em>distribution</em>, with a mean of 0 and a standard deviation <span
+class="math inline">\(\sigma_{u0}\)</span>. In the <em>fixed effects
+regression model</em>, the <span class="math inline">\(u_{0i}\)</span>
+are considered to be <em>fixed</em>, and <em>directly estimable</em>,
+although in practice, estimates for each of the <span
+class="math inline">\(u_{0i}\)</span> are usually not provided.</p>
 </blockquote>
-<h1 id="multilevel-model-mixed-y-x-id">Multilevel Model (<code>mixed y x || id:</code>)</h1>
+<h1 id="multilevel-model-mixed-y-x-id">Multilevel Model
+(<code>mixed y x || id:</code>)</h1>
 <blockquote>
-<p>The model uses within and between person variation. Estimates are provided for all variables. The model only controls for variables that are included in the model.</p>
+<p>The model uses within and between person variation. Estimates are
+provided for all variables. The model only controls for variables that
+are included in the model.</p>
 </blockquote>
 <pre class='stata'>. mixed ln_w grade age i.race union south || idcode: 
 
@@ -285,9 +324,12 @@ LR test vs. linear model: chibar2(01) = 8473.10       Prob >= chibar2 = 0.0000
 </pre>
 <pre class='stata'>. est store MLM
 </pre>
-<h1 id="fixed-effects-regression-xtreg-y-x-iid-fe">Fixed Effects Regression (<code>xtreg y x, i(id) fe</code>)</h1>
+<h1 id="fixed-effects-regression-xtreg-y-x-iid-fe">Fixed Effects
+Regression (<code>xtreg y x, i(id) fe</code>)</h1>
 <blockquote>
-<p>The model uses only within person variation. Estimates are only provided for within person change over time. The model controls for all time invariant variables whether observed or unobserved.</p>
+<p>The model uses only within person variation. Estimates are only
+provided for within person change over time. The model controls for all
+time invariant variables whether observed or unobserved.</p>
 </blockquote>
 <pre class='stata'>. xtreg ln_w grade age i.race union south, i(idcode) fe
 note: grade omitted because of collinearity.
@@ -327,14 +369,25 @@ F test that all u_i=0: F(4147, 15073) = 9.60                 Prob > F = 0.0000
 </pre>
 <pre class='stata'>. est store FE
 </pre>
-<h1 id="compare-the-two-sets-of-estimates-estimates-table">Compare The Two Sets of Estimates (<code>estimates table</code>)</h1>
+<h1 id="compare-the-two-sets-of-estimates-estimates-table">Compare The
+Two Sets of Estimates (<code>estimates table</code>)</h1>
 <blockquote>
 <ol type="1">
-<li><p>The multilevel model controls for variables that are included in the model.</p></li>
-<li><p>The fixed effects model controls for variables that are included in the model, as well as all time invariant characteristics of participants.</p></li>
-<li><p>The multilevel model uses both within and between person variation; the fixed effects model uses only within person variation.</p></li>
-<li><p>The fixed effects model is unable to provide information on time invariant characteristics of individuals even if they are included in the model.</p></li>
-<li><p>Coefficients in the fixed effects model are generally smaller than coefficients in the multilevel model. (Often, though not in this example, coefficients that were significant in the multilevel model are not significant in the fixed effects model).</p></li>
+<li><p>The multilevel model controls for variables that are included in
+the model.</p></li>
+<li><p>The fixed effects model controls for variables that are included
+in the model, as well as all time invariant characteristics of
+participants.</p></li>
+<li><p>The multilevel model uses both within and between person
+variation; the fixed effects model uses only within person
+variation.</p></li>
+<li><p>The fixed effects model is unable to provide information on time
+invariant characteristics of individuals even if they are included in
+the model.</p></li>
+<li><p>Coefficients in the fixed effects model are generally smaller
+than coefficients in the multilevel model. (Often, though not in this
+example, coefficients that were significant in the multilevel model are
+not significant in the fixed effects model).</p></li>
 </ol>
 </blockquote>
 <pre class='stata'>. est table MLM FE, star equations(1)

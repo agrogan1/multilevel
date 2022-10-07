@@ -2,9 +2,7 @@
 
 clear all
 
-cd "C:\Users\agrogan\Desktop\GitHub\multilevel\fixed-effects-example" // Windows
-
-cd "/Users/agrogan/Desktop/GitHub/multilevel/fixed-effects-example" // Mac
+cd "/Users/agrogan/Desktop/GitHub/multilevel/fixed-effects-example" 
 
 doedit "fixed-effects-example.stmd"
 
