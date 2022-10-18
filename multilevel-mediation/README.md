@@ -8,7 +8,7 @@ Under development. Comments, questions, and corrections are most welcome.
 
 Perhaps helpfully, perhaps confusingly, I have included syntax for mediation with clustered standard errors.
 
-The graphs help to understand why the *multilevel* and *clustered standard error* analyses give different results.
+The graphs (`.png` files) help to understand why the *multilevel* and *clustered standard error* analyses give different results.
 
 ![heuristic diagram of multilevel mediation](multilevel-mediation.png)
 
