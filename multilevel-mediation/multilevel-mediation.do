@@ -103,7 +103,7 @@ name(science_by_writing, replace)
 
 graph export "science_by_writing.png", ///
 as(png) ///
-name("science_by_writing") replace
+name("science_by_writing") width(1000) replace
 
 twoway (scatter science write) /// scatterplot
 (lfit science write), /// linear fit
@@ -115,7 +115,7 @@ name(science_by_writing_by_classroom, replace)
 
 graph export "science_by_writing_by_classroom.png", ///
 as(png) ///
-name("science_by_writing_by_classroom") replace
+name("science_by_writing_by_classroom") width(1000) replace
 
 
 
