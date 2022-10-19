@@ -30,7 +30,7 @@ knitr::opts_chunk$set(echo = TRUE,
 
 Associations between two variables can be *very different* (or even *reversed*) depending upon whether or not the analysis is "aware" of the grouped, nested, or clustered nature of the data. In multilevel analysis, the groups are often neighborhoods, communities, or even different countries.
 
-A model that is "aware" of the clustered nature of the data may provide very different--likely better--substantive conclusions than a model that is not aware of the clustered nature of the data. This phenomena is closely related to the "ecological fallacy": the idea that group level and individual level relationships are necessarily the same [@FIREBAUGH20014023].
+A model that is "aware" of the clustered nature of the data may provide very different--likely better--substantive conclusions than a model that is not aware of the clustered nature of the data. This phenomena is closely related to the "ecological fallacy": the idea that group level and individual level relationships are not necessarily the same [@FIREBAUGH20014023].
 
 # Set a Random Seed For Replicability
 
@@ -62,7 +62,7 @@ e <- rnorm(10, 0, 1) # error
 
 group1 <- rep(1, 10)
 
-x1 <- seq(1,10)
+x1 <- seq(1, 10)
 
 y1 <- 50 + 1 * x1 + e
 
@@ -167,7 +167,7 @@ When might a situation like this arise in practice? This is surprisingly difficu
 
 Imagine that *x* is a protective factor, or an intervention or treatment. Imagine that *y* is a desirable outcome, like improved mental health or psychological well being.
 
-Now imagine that community members provide more of the protective factor or more of the intervention in situations where there are lower levels of the desirable outcome. If we think about it, this is a very plausible situation. 
+Now imagine that community members provide more of the protective factor or more of the intervention in communities where there are lower levels of the desirable outcome. If we think about it, this is a very plausible situation. 
 
 > A naive analysis that was unaware of the grouped nature of the data would therefore misconstrue the results, suggesting that the intervention was harmful, when it was in fact helpful.
 
@@ -177,9 +177,9 @@ p0 +
   geom_point(aes(color = group)) + # points with group color
   geom_smooth(aes(color = group), # smoothers with group color
               method = "lm") + 
-  labs(title = "beneficial outcome as a function of intervention or treatment",
+  labs(title = "psychological well-being as a function of intervention or treatment",
        x = "intervention or treatment",
-       y = "desirable outcome") +
+       y = "psychological well-being") +
   scale_color_viridis_d()
 
 ```
