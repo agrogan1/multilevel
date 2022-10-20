@@ -30,10 +30,10 @@ digraph boxes_and_circles {
  	
  	label = "mediation";
  
-  x1 -> m1 [label = <&beta;<SUB>xm</SUB>>]
-  m1 -> y1 [label = <&beta;<SUB>my</SUB>>]
-  x1 -> y1 [label = <&beta;<SUB>xy</SUB>>]
-  z1 -> y1 [label = <&beta;<SUB>zy</SUB>>]
+  x1 -> m1 [label = <&beta;<SUB>xm</SUB>> fontsize="20"]
+  m1 -> y1 [label = <&beta;<SUB>my</SUB>> fontsize="20"]
+  x1 -> y1 [label = <&beta;<SUB>xy</SUB>> fontsize="20"]
+  z1 -> y1 [label = <&beta;<SUB>zy</SUB>> fontsize="20"]
   x1 -> z1 [dir = both]
   
   u0 -> y1
