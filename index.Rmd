@@ -78,6 +78,7 @@ Perhaps surprisingly, the multilevel model for cross-sectional data can easily a
 knitr::include_graphics("plant.png")
 
 ```
+
 Further, while this is sometimes not recognized, multilevel models for longitudinal data are closely related to other important longitudinal data models, such as fixed effects regression, an important technique for controlling for unobserved variables.  Multilevel models are also closely related to statistical models for meta-analysis of multiple studies.
 
 This course focuses on the use of multilevel and longitudinal data analysis for social work and social science research.  The course is conceptualized as covering the following topics:
@@ -85,7 +86,7 @@ This course focuses on the use of multilevel and longitudinal data analysis for 
 1. The multilevel model for cross-sectional data.
 2. The extension of multilevel modeling to longitudinal research (i.e. growth trajectory models).
 3. Other panel data models such as fixed effects and random effects models.
-4. Possible additional topics based on student interest (models for dichotomous outcomes; power analysis for single level and multilevel models, multiple imputation for missing data in multilevel models; meta-analysis)
+4. Possible additional topics based on student interest (models for dichotomous outcomes; power analysis for single level and multilevel models; meta-analysis)
 
 The models discussed in this course are primarily intended, and best developed, for continuous outcomes, so are most appropriate for students with research questions that can in some way be conceptualized as continuous outcomes.
 
