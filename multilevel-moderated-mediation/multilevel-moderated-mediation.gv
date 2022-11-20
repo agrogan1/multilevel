@@ -14,17 +14,21 @@ digraph G {
   
   u0 [label = <u<SUB>0j</SUB>>]
 
-  x -> dummy1[ arrowhead = none ]
+  edge[weight = 1]
   
-  moderator1 -> dummy1
+  x -> dummy1[ arrowhead = none ]
   
   dummy1 -> mediator
   
   mediator -> dummy2[ arrowhead = none ]
   
-  moderator2 -> dummy2
+  dummy2 -> y 
   
-  dummy2 -> y
+  edge[weight = 2]
+  
+  moderator1 -> dummy1
+  
+  moderator2 -> dummy2 
   
   x -> y
   
