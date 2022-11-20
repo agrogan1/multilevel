@@ -1,0 +1,34 @@
+digraph G {
+  
+  rankdir = LR
+  
+  {rank = same; moderator1; dummy1}
+  
+  {rank = same; moderator2; dummy2}
+  
+  {rank = same; u0; y}
+
+  dummy1[shape = point, width = 0 ]
+  
+  dummy2[shape = point, width = 0 ]
+  
+  u0 [label = <u<SUB>0j</SUB>>]
+
+  x -> dummy1[ arrowhead = none ]
+  
+  moderator1 -> dummy1
+  
+  dummy1 -> mediator
+  
+  mediator -> dummy2[ arrowhead = none ]
+  
+  moderator2 -> dummy2
+  
+  dummy2 -> y
+  
+  x -> y
+  
+  u0 -> y
+  
+  
+}
