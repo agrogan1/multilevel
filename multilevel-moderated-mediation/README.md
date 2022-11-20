@@ -1,6 +1,6 @@
 # Multilevel Moderated Mediation
 
-A folder with an example of multilevel moderated mediation.
+A folder with an example of multilevel moderated mediation. See the `do` file for an example.
 
 Under development. Comments, questions, and corrections are most welcome.
 
