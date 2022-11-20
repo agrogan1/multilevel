@@ -16,7 +16,7 @@ cd "/Users/agrogan/Desktop/GitHub/multilevel/multilevel-mediation"
 
 pwd // check working directory
 
-set seed 1234
+set seed 1234 // random seed
 
 * get data
 
