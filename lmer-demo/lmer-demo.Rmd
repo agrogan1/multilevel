@@ -1,17 +1,17 @@
 ---
-title: "lmer Demo"
+title: "`lmer` Demo"
 author: "Andy Grogan-Kaylor"
 date: "`r Sys.Date()`"
 output:
+  distill::distill_article:
+    code_folding: hide
+    highlight: haddock
+    toc: yes
   pdf_document: 
     fig_height: 4
     highlight: tango
     latex_engine: xelatex
     number_sections: yes
-    toc: yes
-  distill::distill_article:
-    code_folding: hide
-    highlight: haddock
     toc: yes
 ---
 
@@ -75,7 +75,7 @@ gutten$age.base.C <- gutten$age.base - mean(gutten$age.base)
 
 # Graph
 
-```{r}
+```{r, fig.cap="Tree Height by Tree Age"}
 
 library(ggplot2)
 
@@ -88,6 +88,7 @@ p_uncentered <- ggplot(gutten,
   geom_line() +
   labs(title = "Tree Height By Tree Age",
        subtitle = "Uncentered Data") +
+  scale_color_viridis_d() +
   theme_minimal() +
   theme(legend.position = "none")
 
@@ -100,6 +101,7 @@ p_centered <- ggplot(gutten,
   geom_line() +
   labs(title = "Tree Height By Tree Age",
        subtitle = "Centered Data") +
+  scale_color_viridis_d() +
   theme_minimal() +
   theme(legend.position = "none")
 
