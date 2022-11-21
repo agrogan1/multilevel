@@ -59,7 +59,10 @@ generate schtypXwrite = schtyp * write
 * estimate model
 ********************
 
-gsem(write <- math female femaleXmath) (science <- write schtyp schtypXwrite math female)
+gsem ///
+(write <- math female femaleXmath M1[cid]) ///
+(science <- write schtyp schtypXwrite math female M2[cid]), ///
+difficult // option for difficult ML
 
 * there is not evidence for mediation in either case
 
