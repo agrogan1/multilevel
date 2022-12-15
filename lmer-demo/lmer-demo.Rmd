@@ -3,17 +3,17 @@ title: "`lmer` Demo"
 author: "Andy Grogan-Kaylor"
 date: "`r Sys.Date()`"
 output:
-  distill::distill_article:
-    code_folding: true
-    highlight: haddock
-    toc: yes
-    number_sections: yes
   pdf_document: 
     fig_height: 4
     highlight: tango
     latex_engine: xelatex
     number_sections: yes
     toc: yes
+  distill::distill_article:
+    code_folding: true
+    highlight: haddock
+    toc: yes
+    number_sections: yes
 ---
 
 ```{r setup, include=FALSE}
@@ -118,8 +118,6 @@ p_uncentered + p_centered
 
 library(lme4) # MLM
 
-library(sjPlot) # nice tables for MLM
-
 ```
 
 ## Unconditional Model
@@ -129,9 +127,7 @@ library(sjPlot) # nice tables for MLM
 fit0 <- lmer(height ~ (1 | tree.ID), 
              data = gutten)
 
-# summary(fit0)
-
-tab_model(fit0, show.p = FALSE) # nicely formatted table
+summary(fit0)
 
 ```
 
@@ -142,9 +138,7 @@ tab_model(fit0, show.p = FALSE) # nicely formatted table
 fit1 <- lmer(height ~ age.base + (1 | tree.ID), 
              data = gutten)
 
-# summary(fit1)
-
-tab_model(fit1, show.p = FALSE) # nicely formatted table
+summary(fit1)
 
 ```
 
@@ -155,9 +149,7 @@ tab_model(fit1, show.p = FALSE) # nicely formatted table
 fit2 <- lmer(height ~ age.base + (1 + age.base | tree.ID), 
              data = gutten)
 
-# summary(fit2)
-
-tab_model(fit2, show.p = FALSE) # nicely formatted table
+summary(fit2)
 
 ```
 
@@ -170,8 +162,12 @@ tab_model(fit2, show.p = FALSE) # nicely formatted table
 fit3 <- lmer(height ~ age.base.C + (1 + age.base.C || tree.ID), 
              data = gutten)
 
-# summary(fit3)
-
-tab_model(fit3, show.p = FALSE) # nicely formatted table
+summary(fit3)
 
 ```
+
+
+
+
+
+
