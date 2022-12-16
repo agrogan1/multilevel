@@ -50,8 +50,6 @@ knitr::include_graphics("neighborhood.png")
 
 <aside>
 <mark>Stata will be the statistical software employed in this course, and students will need access to Stata to participate.</mark>
-
-<span style="background-color: #00FFFF">For the first time, I am considering that this class <blink>**may**</blink> also require purchase of a textbook, possibly *Multilevel and Longitudinal Modeling Using Stata, Fourth Edition, Volume I: Continuous Responses* by Rabe-Hesketh and Skrondal. This decision is not final, so please contact me prior to purchasing any texts.</span>
 </aside>
 
 Multilevel models have become a standard statistical tool for quantitative research on neighborhoods, communities and schools.  The cross-sectional multilevel model is appropriate for situations in which respondents are clustered inside larger social or geographic units e.g. people in geographic areas, residents in neighborhoods, or children in classrooms and/or schools. Cross-sectional multilevel models enable *multilevel thinking* thinking at multiple levels (units of analysis) and conceptualizing effects at the *country*, *community*, *family*, and *individual* levels.
