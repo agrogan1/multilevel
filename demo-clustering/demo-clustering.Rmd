@@ -22,6 +22,16 @@ knitr::opts_chunk$set(echo = FALSE,
 
 ```
 
+```{css, echo=FALSE}
+
+d-article blockquote {
+  color: black;
+  border-left: 2px solid #FFCB05; 
+  padding: 0.5em 10px;
+}
+  
+```
+
 ```{r}
 
 library(lme4) # MLM
