@@ -9,6 +9,8 @@ format:
     theme:
       light: united
       dark: vapor
+  pptx:
+    reference-doc: template.pptx
 editor: source
 ---
 
