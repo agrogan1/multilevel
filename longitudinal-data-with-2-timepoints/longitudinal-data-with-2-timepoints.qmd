@@ -1,0 +1,68 @@
+---
+title: "Longitudinal Data With 2 Timepoints"
+author: "Andy Grogan-Kaylor"
+date: "today"
+format:
+  html:
+    toc: true
+    number-sections: true
+    code-fold: true
+    code-summary: "Show the code"
+    theme:
+      light: united
+      dark: vapor
+---
+
+# Call the Libraries
+
+```{r, message=FALSE}
+
+library(haven) # import Stata data
+
+library(lme4) # MLM
+
+library(sjPlot) # nice tables for MLM
+
+library(dplyr) # data wrangling
+
+library(pander) # nice tables
+
+```
+
+# Get The Data
+
+We have 3 timepoints for each `id`.
+
+```{r}
+
+mydata <- read_dta("https://github.com/agrogan1/multilevel-thinking/raw/main/simulate-and-analyze-multilevel-data/simulated_multilevel_longitudinal_data.dta")
+
+pander(head(mydata)) # replay
+
+```
+
+# Filter The Data To Use Only the First 2 Timepoints
+
+Now we have 2 timepoints for each `id`.
+
+```{r}
+
+mydata <- mydata %>% filter(t <= 2)
+
+pander(head(mydata)) # replay
+
+```
+
+# Estimate A Model With A Random Slope
+
+$$y_{ij} = \beta_0 + \beta_1 t + u_{0i} + u_{1i} \times t + e_{it}$$
+
+```{r, warning=FALSE}
+
+myfit <- lmer(outcome ~ t + (1 + t || id), data = mydata)
+
+tab_model(myfit, show.r2 = FALSE)
+
+```
+
+
