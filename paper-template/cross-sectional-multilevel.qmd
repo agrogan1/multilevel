@@ -190,7 +190,8 @@ myMLM <- lmer(y ~ x + z + (1 | u), data = mydata)
 sjPlot::tab_model(myMLM,
                   show.se = TRUE,
                   show.ci = FALSE,
-                  show.stat = TRUE)
+                  show.stat = TRUE,
+                  show.r2 = FALSE)
 
 ```
 
