@@ -8,9 +8,9 @@ geometry: margin=1 in
 
 <style>body {max-width: 90%} h1 {color: black; font-weight: bold;} h2 {color: black;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;}</style>
 
-![](../lorax-small.png)
-
 ![Norway Spruce and Larch Forest in Austrian Alps, https://ec.europa.eu/jrc/en/research-topic/forestry/qr-tree-project/norway-spruce](fotolia-small.jpg)
+
+![The Lorax](../lorax-small.png)
 
 # Data Source 🌲
 
@@ -36,7 +36,7 @@ The documentation goes on to further note that:
 
 `tree` An identifier for the tree within location.
 
-`age.base` The tree age taken at ground level.
+`age_base` The tree age taken at ground level.
 
 > It might be best to use a centered age variable, centered at the grand mean of tree age: 
 
@@ -46,13 +46,13 @@ The documentation goes on to further note that:
 
 `height` Tree height, m.
 
-`dbh.cm` Tree diameter, cm.
+`dbh_cm` Tree diameter, cm.
 
 `volume` Tree volume.
 
-`age.bh` Tree age taken at 1.3 m.
+`age_bh` Tree age taken at 1.3 m.
 
-`tree.ID` A factor uniquely identifying the tree.
+`tree_ID` A factor uniquely identifying the tree.
 
 # Your Quantitative Forestry Tasks (Should You Choose To Accept Them) 🌲
 
