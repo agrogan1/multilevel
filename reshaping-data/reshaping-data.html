@@ -186,10 +186,15 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
     }
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
   </style>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
@@ -199,7 +204,7 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 <header id="title-block-header">
 <h1 class="title">Reshaping Data Using Black Spruce Data</h1>
 <p class="author">Andy Grogan-Kaylor</p>
-<p class="date">18 Apr 2022 11:42:39</p>
+<p class="date">22 Feb 2023 10:20:20</p>
 </header>
 <h1 id="background">Background 🌲</h1>
 <style>body {max-width: 90%;} h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
@@ -226,25 +231,22 @@ growth of these seedlings.”</p>
 <pre class='stata'>. clear all
 
 .     
-. use "https://github.com/agrogan1/multilevel/raw/master/reshaping-data/Spruce.dta", c
-> lear
+. use "https://github.com/agrogan1/multilevel/raw/master/reshaping-data/Spruce.dta", clear
 </pre>
 
 <h1 id="describe-the-data">Describe The Data 🌲</h1>
 <pre class='stata'>. describe    
 
-Contains data from https://github.com/agrogan1/multilevel/raw/master/reshaping-data/Sp
-> ruce.dta
+Contains data from https://github.com/agrogan1/multilevel/raw/master/reshaping-data/Spruce.dta
  Observations:            72                  
     Variables:             9                  26 Apr 2020 12:18
-──────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
-──────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────
 Tree            long    %12.0g                Tree number
 Competition     long    %12.0g     Competition
-                                              C (competition), CR (competition
-                                                removed)
+                                              C (competition), CR (competition removed)
 Fertilizer      long    %12.0g     Fertilizer
                                               F (fertilized), NF (not fertilized)
 Height0         double  %10.0g                Height (cm) of seedling at planting
@@ -253,7 +255,7 @@ Diameter0       double  %10.0g                Diameter (cm) of seedling at plant
 Diameter5       double  %10.0g                Diameter (cm) of seedling at year 5
 Ht_change       double  %10.0g                Change (cm) in height
 Di_change       double  %10.0g                Change (cm) in diameter
-──────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────
 Sorted by: 
 </pre>
 <h1 id="keep-only-relevant-variables">Keep Only Relevant Variables
@@ -306,10 +308,11 @@ time point so that it has the <code>stub-time</code> format.</li>
 <blockquote>
 <p>Notice how the variables in this data set are already in the
 <code>stub-time</code> format. If the variables had a different format,
-e.g. <code>height_five_years</code>, <code>height_zero_years</code>, we
-would have to rename them
+e.g. <code>height_five_years</code>, <code>height_zero_years</code>, it
+would usually be easier to rename them
 e.g. <code>rename height_five_years height5</code>, and
-<code>rename height_zero_years height0</code>.</p>
+<code>rename height_zero_years height0</code>.<a href="#fn1"
+class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 </blockquote>
 <ol start="3" type="1">
 <li>Look at the data using <code>browse</code> or <code>list</code> to
@@ -377,5 +380,18 @@ recruitment of Picea mariana in thawed boreal permafrost peatlands.
 <p>Chihara, L. M., &amp; Hesterberg, T. C. (2018). <em>Mathematical
 Statistics with Resampling and R</em>.
 https://doi.org/10.1002/9781119505969</p>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>In recent versions of Stata, there are advanced ways of
+dealing with variables with names such as <code>x1suffix</code>,
+<code>x2suffix</code>, <code>x3suffix</code>, etc.. See
+<code>help reshape</code> for information on these new approaches.
+However, I still find it is often easier to <code>rename</code>’
+variables before <code>reshape</code>-ing them.<a href="#fnref1"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 </body>
 </html>
