@@ -12,7 +12,7 @@
 # get data
 
 # using data from
-# https://stats.idre.ucla.edu/stata/examples/mlm-imm/introduction-to-multilevel-modeling-by-kreft-and-de-# get data
+# https://stats.oarc.ucla.edu/other/examples/imm/
 
 library(haven) # read Stata
 
@@ -26,16 +26,17 @@ ggplot(imm23, # data I am using
        aes(x = ses, # x is ses
            y = math)) + # y is math achievement
   geom_smooth(method = "lm", # linear model smoother for whole sample
-              size = 2,
+              linewidth = 2,
               color = "black",
-              se = FALSE) + 
+              se = FALSE) + # no CI's
   geom_smooth(aes(color = factor(schid)), # school specific linear smoother
-              method = "lm", 
-              se = FALSE) +
+              method = "lm", # linear model
+              se = FALSE) + # no CI's 
   labs(title = "Spaghetti Plot",
        x = "socioeconomic status",
        y = "math score") +
-  scale_color_discrete(name = "school") +
+  # scale_color_discrete(name = "school") +
+  scale_color_viridis_d(name = "school") + # nice viridis colors
   theme_minimal()
 
 
