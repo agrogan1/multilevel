@@ -6,7 +6,7 @@
 geometry: margin=1 in
 ---
 
-<style>body {max-width: 90%;} h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
+<style>body {max-width: 90%;} h1 {color: #00274C;} h2 {color: #2F65A7;} p {font-size: 110%;} pre.stata {font-size: 110%;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
 
 # Get Data
  
@@ -20,9 +20,9 @@ geometry: margin=1 in
 
     spagplot math ses, id(schid) 
 	
-    graph export graph1.png, width(500) replace
+    graph export graph1.png, width(1500) replace
 
-![Basic Spaghetti Plot](graph1.png)
+![Basic Spaghetti Plot](graph1.png){width=75%}
 
 # Add Better Scheme
 
@@ -33,17 +33,17 @@ geometry: margin=1 in
 	title("Spaghetti Plot of Math Score By SES") ///
 	note(" ") // blank "note" since title explains this graph
 	
-    graph export graph2.png, width(500) replace
+    graph export graph2.png, width(1500) replace
 
-![Spaghetti Plot With Better Options](graph2.png)	
+![Spaghetti Plot With Better Options](graph2.png){width=75%}	
 
 # Now Try `twoway` Syntax
 
     twoway lfit math ses, scheme(michigan) title("Math Score By SES")
 	
-    graph export graph3.png, width(500) replace
+    graph export graph3.png, width(1500) replace
 
-![Initial `twoway` Graph](graph3.png)
+![Initial `twoway` Graph](graph3.png){width=75%}
 
 # Separate Panels For Schools
 
@@ -53,7 +53,7 @@ This ONLY works well with a limited number of schools.
 	
     graph export graph4.png, width(1000) replace
 
-![Separate Panels For Schools](graph4.png)	
+![Separate Panels For Schools](graph4.png){width=75%}	
 
 # Separate Panels For Schools With Scatterplots
 
@@ -63,7 +63,7 @@ This ONLY works well with a limited number of schools.
 
     graph export graph5.png, width(1000) replace
 
-![Separate Panels For Schools With Scatterplots](graph5.png)		
+![Separate Panels For Schools With Scatterplots](graph5.png){width=75%}		
 
 # "Model Based" Spaghetti Plot	
 
@@ -83,9 +83,9 @@ To do this we first estimate a multilevel model.
 	
 	spagplot yhat ses, id(schid) scheme(michigan)
 	
-	graph export graph6A.png, width(500) replace
+	graph export graph6A.png, width(1500) replace
 
-![Spaghetti Plot With Predicted Values](graph6A.png)		
+![Spaghetti Plot With Predicted Values](graph6A.png){width=75%}		
 
 ## "Model Based" Predicted Values
 
@@ -122,9 +122,9 @@ We are using $\beta_0$, the random intercept $u_0$, $\beta_{ses}$ multiplied by 
 
     twoway scatter yhat2 ses, scheme(michigan)
 	
-	graph export graph6B.png, width(500) replace
+	graph export graph6B.png, width(1500) replace
 
-![Initial "Model Based" Spaghetti Plot](graph6B.png)		
+![Initial "Model Based" Spaghetti Plot](graph6B.png){width=75%}		
 
 We still have a small amount of work to do to make this look more "spaghetti plot like".
 
@@ -141,8 +141,8 @@ We are going to use `twoway connect` to create connected line plots. We employ o
 	msymbol(none) /// no marker symbol; only lines
 	scheme(michigan) // michigan scheme
 	
-	graph export graph7.png, width(500) replace
+	graph export graph7.png, width(1500) replace
 
-![Finalized "Model Based" Spaghetti Plot](graph7.png)		
+![Finalized "Model Based" Spaghetti Plot](graph7.png){width=75%}		
 
 

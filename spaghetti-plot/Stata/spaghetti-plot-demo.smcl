@@ -3,11 +3,11 @@
       name:  {res}<unnamed>
        {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel/spaghetti-plot/Stata/spaghetti-plot-demo.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res} 3 Feb 2022, 17:04:17
+ {txt}opened on:  {res} 1 Mar 2023, 12:10:38
 {txt}
 {com}. //_1
 . display c(current_date)
-{res} 3 Feb 2022
+{res} 1 Mar 2023
 {txt}
 {com}. //_2
 . use https://stats.idre.ucla.edu/stat/examples/imm/imm23, clear
@@ -19,7 +19,7 @@
 . spagplot math ses, id(schid) 
 {res}{txt}
 {com}. //_5
-. graph export graph1.png, width(500) replace
+. graph export graph1.png, width(1500) replace
 {txt}{p 0 4 2}
 file {bf}
 /Users/agrogan/Desktop/GitHub/multilevel/spaghetti-plot/Stata/graph1.png{rm}
@@ -35,7 +35,7 @@ format
 > note(" ") // blank "note" since title explains this graph
 {res}{txt}
 {com}. //_7
-. graph export graph2.png, width(500) replace
+. graph export graph2.png, width(1500) replace
 {txt}{p 0 4 2}
 file {bf}
 /Users/agrogan/Desktop/GitHub/multilevel/spaghetti-plot/Stata/graph2.png{rm}
@@ -48,7 +48,7 @@ format
 . twoway lfit math ses, scheme(michigan) title("Math Score By SES")
 {res}{txt}
 {com}. //_9
-. graph export graph3.png, width(500) replace
+. graph export graph3.png, width(1500) replace
 {txt}{p 0 4 2}
 file {bf}
 /Users/agrogan/Desktop/GitHub/multilevel/spaghetti-plot/Stata/graph3.png{rm}
@@ -132,7 +132,7 @@ LR test vs. linear model:{col 27}{help j_chibar##|_new:chibar2(01) =} {res}25.58
 . spagplot yhat ses, id(schid) scheme(michigan)
 {res}{txt}
 {com}. //_17
-. graph export graph6A.png, width(500) replace
+. graph export graph6A.png, width(1500) replace
 {txt}{p 0 4 2}
 file {bf}
 /Users/agrogan/Desktop/GitHub/multilevel/spaghetti-plot/Stata/graph6A.png{rm}
@@ -201,7 +201,7 @@ LR test vs. linear model:{col 27}{help j_chibar##|_new:chibar2(01) =} {res}25.58
 . twoway scatter yhat2 ses, scheme(michigan)
 {res}{txt}
 {com}. //_24
-. graph export graph6B.png, width(500) replace
+. graph export graph6B.png, width(1500) replace
 {txt}{p 0 4 2}
 file {bf}
 /Users/agrogan/Desktop/GitHub/multilevel/spaghetti-plot/Stata/graph6B.png{rm}
@@ -224,7 +224,7 @@ format
 > scheme(michigan) // michigan scheme
 {res}{txt}
 {com}. //_27
-. graph export graph7.png, width(500) replace
+. graph export graph7.png, width(1500) replace
 {txt}{p 0 4 2}
 file {bf}
 /Users/agrogan/Desktop/GitHub/multilevel/spaghetti-plot/Stata/graph7.png{rm}
@@ -238,7 +238,7 @@ format
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel/spaghetti-plot/Stata/spaghetti-plot-demo.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res} 3 Feb 2022, 17:05:04
+ {txt}closed on:  {res} 1 Mar 2023, 12:11:22
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}
