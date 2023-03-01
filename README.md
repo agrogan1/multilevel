@@ -35,7 +35,7 @@
 
 ## Visualization
 
-* [Visualizing Multilevel Models](https://agrogan1.github.io/multilevel/visualizing-MLM/visualizing-MLM.html)
+* [Visualizing Multilevel Models](https://agrogan1.github.io/multilevel/visualizing-MLM/visualizing-MLM.html) [[HTML Slides](https://agrogan1.github.io/multilevel/visualizing-MLM/visualizing-MLM-slidy.html)]
 
 ## Reshaping Data
 
