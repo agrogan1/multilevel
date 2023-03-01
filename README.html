@@ -297,23 +297,17 @@ overflow-y: auto;
 border: 1px solid #ddd;
 border-radius: 4px;
 }
-.tabset-dropdown > .nav-tabs > li.active:before {
-content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+content: "\e259";
 font-family: 'Glyphicons Halflings';
 display: inline-block;
 padding: 10px;
 border-right: 1px solid #ddd;
 }
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-content: "";
-border: none;
-}
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-content: "";
+content: "\e258";
 font-family: 'Glyphicons Halflings';
-display: inline-block;
-padding: 10px;
-border-right: 1px solid #ddd;
+border: none;
 }
 .tabset-dropdown > .nav-tabs > li.active {
 display: block;
@@ -415,6 +409,13 @@ Longitudinal MLM With the Gutten Tree Data</a></li>
 <li><a href="https://github.com/agrogan1/multilevel/blob/master/spaghetti-plot/Stata-simple/Stata-simple-spaghetti-plot.do">A
 simple rubric for making Spaghetti plots in Stata</a></li>
 <li><a href="https://agrogan1.github.io/multilevel/spaghetti-plot/R/spaghetti-plot-demo.html">R</a></li>
+</ul>
+</div>
+<div id="visualization" class="section level2">
+<h2>Visualization</h2>
+<ul>
+<li><a href="https://agrogan1.github.io/multilevel/visualizing-MLM/visualizing-MLM.html">Visualizing
+Multilevel Models</a></li>
 </ul>
 </div>
 <div id="reshaping-data" class="section level2">

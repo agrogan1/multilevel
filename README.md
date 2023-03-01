@@ -33,6 +33,10 @@
 * [A simple rubric for making Spaghetti plots in Stata](https://github.com/agrogan1/multilevel/blob/master/spaghetti-plot/Stata-simple/Stata-simple-spaghetti-plot.do)
 * [R](https://agrogan1.github.io/multilevel/spaghetti-plot/R/spaghetti-plot-demo.html)
 
+## Visualization
+
+* [Visualizing Multilevel Models](https://agrogan1.github.io/multilevel/visualizing-MLM/visualizing-MLM.html)
+
 ## Reshaping Data
 
 * [Reshaping Data](https://agrogan1.github.io/multilevel/reshaping-data/reshaping-data.html)
