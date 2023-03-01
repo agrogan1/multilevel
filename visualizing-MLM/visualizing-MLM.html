@@ -1,15 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta http-equiv="Content-Style-Type" content="text/css" />
-  <meta name="generator" content="pandoc" />
-  <meta name="author" content="Andy Grogan-Kaylor" />
-  <title>Visualizing Multilevel Models</title>
-  <style type="text/css">code{white-space: pre;}</style>
 <style>
 /* CSS for Markstat 2.0 using Pandoc 2.0 */
-body{padding:14px 28px; max-width:45em;}
+body{padding:14px 28px;}
 body, table {font-family: Helvetica, Arial, Sans-serif; font-size: 14px;}
 h1, h2, h3, h4 {font-weight: normal; color: #3366cc}
 h1 {font-size: 200%;}
@@ -37,61 +31,431 @@ p.date, h3.date {text-align:center;margin-top:4px; margin-bottom:0}
 /* Tables*/
 table { margin:auto; border-collapse:collapse; }
 table caption { margin-bottom:1ex;}
-td {padding:0 0 0 0} /* override */
-table:not([class]) th { padding:4px 6px } 
-table:not([class]) td { padding:4px 6px } 
-table:not([class]) thead tr:first-child th {border-top:1px solid black; padding-top:6px}
-table:not([class]) thead tr:last-child  th {padding-bottom:6px}
-table:not([class]) tbody tr:first-child td {border-top:1px solid black; padding-top:6px}
-table:not([class]) tbody tr:last-child  td {padding-bottom:6px;}
-table:not([class]) tbody:last-child tr:last-child td {border-bottom:1px solid black;}
+th, td { padding:4px 6px;}
+thead tr:first-child th {border-top:1px solid black; padding-top:6px}
+thead tr:last-child  th {padding-bottom:6px}
+tbody tr:first-child td {border-top:1px solid black; padding-top:6px}
+tbody tr:last-child  td {padding-bottom:6px;}
+table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 </style>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Andy Grogan-Kaylor" />
+  <title>Visualizing Multilevel Models</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
 </head>
 <body>
-<div id="header">
+<header id="title-block-header">
 <h1 class="title">Visualizing Multilevel Models</h1>
-<h2 class="author">Andy Grogan-Kaylor</h2>
-<h3 class="date">26 Apr 2022 16:27:28</h3>
-</div>
-<style>body {max-width: 90%} h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
+<p class="author">Andy Grogan-Kaylor</p>
+<p class="date">1 Mar 2023 12:15:06</p>
+</header>
+<style>body {max-width: 90%} h1 {color: #00274C;} h2 {color: #2F65A7;} p {font-size: 110%;} pre.stata {font-size: 110%;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
 <h1 id="introduction">Introduction</h1>
+<p>An evolving set of notes on visualizing results from multilevel
+models.</p>
+<p>The examples below use the <code>simulated_multilevel_data.dta</code>
+file from <a
+href="https://agrogan1.github.io/multilevel-thinking/simulated-multi-country-data.html"><em>Multilevel
+Thinking</em></a>. Here is a <a
+href="https://github.com/agrogan1/multilevel-multilingual/raw/main/simulated_multilevel_data.dta">direct
+link</a> to download the data.</p>
+<h1 id="setup">Setup</h1>
+<p>I am not terrifically fond of Stata’s default <code>s2color</code>
+graph scheme. Therefore I make use of the <code>michigan</code> graph
+scheme available at: <a
+href="https://agrogan1.github.io/Stata/michigan-graph-scheme/">https://agrogan1.github.io/Stata/michigan-graph-scheme/</a></p>
+<pre class='stata'>. set scheme michigan
+</pre>
+<p>Stata’s <code>s1color</code> scheme would also would be an option as
+would be Asjad Naqvi’s incredible schemepack: <a
+href="https://github.com/asjadnaqvi/stata-schemepack">https://github.com/asjadnaqvi/stata-schemepack</a></p>
 <h1 id="get-data">Get Data</h1>
-<pre class='stata'>. use hsb.dta
+<pre class='stata'>. use "https://github.com/agrogan1/multilevel-thinking/raw/main/simulate-and-analyze-multi
+> level-data/simulated_multilevel_data.dta", clear
 </pre>
 <h1 id="scatterplots">Scatterplots</h1>
-<h1 id="simple-linear-fits">Simple Linear Fits</h1>
+<pre class='stata'>. twoway scatter outcome warmth
+</pre>
+<pre class='stata'>. graph export myscatter.png, width(1500) replace
+file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/myscatter.png saved as PNG
+    format
+</pre>
+<figure>
+<img src="myscatter.png" style="width:75.0%" alt="Scatterplot" />
+<figcaption aria-hidden="true">Scatterplot</figcaption>
+</figure>
+<h1 id="simple-linear-fit">Simple Linear Fit</h1>
+<pre class='stata'>. twoway lfit outcome warmth
+</pre>
+<pre class='stata'>. graph export mylinear.png, width(1500) replace
+file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mylinear.png saved as PNG
+    format
+</pre>
+<figure>
+<img src="mylinear.png" style="width:75.0%" alt="Scatterplot" />
+<figcaption aria-hidden="true">Scatterplot</figcaption>
+</figure>
+<h1 id="combine-scatterplot-and-linear-fit">Combine Scatterplot and
+Linear Fit</h1>
+<pre class='stata'>. twoway (scatter outcome warmth) (lfit outcome warmth)
+</pre>
+<pre class='stata'>. graph export myscatterlinear.png, width(1500) replace
+file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/myscatterlinear.png saved
+    as PNG format
+</pre>
+<figure>
+<img src="myscatterlinear.png" style="width:75.0%"
+alt="Scatterplot and Linear Fit" />
+<figcaption aria-hidden="true">Scatterplot and Linear Fit</figcaption>
+</figure>
 <h1 id="spaghetti-plots">Spaghetti Plots</h1>
 <h2 id="spagplot"><code>spagplot</code></h2>
-<pre class='stata'>. spagplot mathach ses, id(schoolid)
+<pre class='stata'>. spagplot outcome warmth, id(country)
 </pre>
-<pre class='stata'>. graph export myspaghetti.png, width(500) replace
-file myspaghetti.png saved as PNG format
+<pre class='stata'>. graph export myspaghetti.png, width(1500) replace
+file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/myspaghetti.png saved as
+    PNG format
 </pre>
-<div class="figure">
-<img src="myspaghetti.png" alt="Basic Spaghetti Plot" />
-<p class="caption">Basic Spaghetti Plot</p>
-</div>
-<pre class='stata'>. spagplot mathach ses, id(schoolid) scheme(michigan)
-</pre>
-<pre class='stata'>. graph export myspaghetti2.png, width(500) replace
-file myspaghetti2.png saved as PNG format
-</pre>
-<div class="figure">
-<img src="myspaghetti2.png" alt="Spaghetti Plot With Michigan Graph Scheme" />
-<p class="caption">Spaghetti Plot With Michigan Graph Scheme</p>
-</div>
-<h2 id="xtline"><code>xtline</code></h2>
-<h2 id="coding-by-hand">Coding by Hand</h2>
+<figure>
+<img src="myspaghetti.png" style="width:75.0%" alt="Spaghetti Plot" />
+<figcaption aria-hidden="true">Spaghetti Plot</figcaption>
+</figure>
+<h2 id="spaghetti-plot-with-predicted-values">Spaghetti Plot With
+Predicted Values</h2>
 <h1 id="small-multiples">Small Multiples</h1>
-<h1 id="multivariate-predicted-relationships">Multivariate (Predicted) Relationships</h1>
-<h1 id="visualizing-uncertainty">Visualizing Uncertainty</h1>
-<ul>
-<li>shaded regions</li>
-</ul>
+<p>I use the <code>aspect</code> option to adjust the <em>aspect
+ratio</em> of the graph for better visual presentation. I also use the
+<code>mcolor(%30)</code> option to create some transparency in the dots
+of the scatterplot, which helps the presentation of these small
+multiples. The <code>mcolor(%30)</code> option could be useful in the
+other graphs in this tutorial as well.</p>
+<pre class='stata'>. twoway (scatter outcome warmth, mcolor(%30)) (lfit outcome warmth), by(country) aspect(1
+> )
+</pre>
+<pre class='stata'>. graph export mysmallmultiples.png, width(1500) replace
+file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mysmallmultiples.png saved
+    as PNG format
+</pre>
+<figure>
+<img src="mysmallmultiples.png" style="width:75.0%"
+alt="Small Multiples" />
+<figcaption aria-hidden="true">Small Multiples</figcaption>
+</figure>
+<h1 id="multivariate-predicted-relationships">Multivariate (Predicted)
+Relationships</h1>
+<h2 id="using-predicted-values">Using Predicted Values</h2>
+<h3 id="estimate-the-model">Estimate The Model</h3>
+<pre class='stata'>. mixed outcome warmth physical_punishment i.group || country: // estimate MLM
+
+Performing EM optimization: 
+
+Performing gradient-based optimization: 
+
+Iteration 0:   log likelihood = -9668.0859  
+Iteration 1:   log likelihood = -9668.0859  
+
+Computing standard errors:
+
+Mixed-effects ML regression                     Number of obs     =      3,000
+Group variable: country                         Number of groups  =         30
+                                                Obs per group:
+                                                              min =        100
+                                                              avg =      100.0
+                                                              max =        100
+                                                Wald chi2(3)      =     401.00
+Log likelihood = -9668.0859                     Prob > chi2       =     0.0000
+
+────────────────────┬────────────────────────────────────────────────────────────────
+            outcome │ Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+────────────────────┼────────────────────────────────────────────────────────────────
+             warmth │    .961837   .0581809    16.53   0.000     .8478046    1.075869
+physical_punishment │  -.8457672   .0798128   -10.60   0.000    -1.002197   -.6893369
+            2.group │   1.084409   .2200548     4.93   0.000     .6531099    1.515709
+              _cons │   51.64797   .4645466   111.18   0.000     50.73748    52.55847
+────────────────────┴────────────────────────────────────────────────────────────────
+
+─────────────────────────────┬────────────────────────────────────────────────
+  Random-effects parameters  │   Estimate   Std. err.     [95% conf. interval]
+─────────────────────────────┼────────────────────────────────────────────────
+country: Identity            │
+                  var(_cons) │      3.403   .9717558      1.944438    5.955659
+─────────────────────────────┼────────────────────────────────────────────────
+               var(Residual) │   36.01911   .9346952      34.23295    37.89847
+─────────────────────────────┴────────────────────────────────────────────────
+LR test vs. linear model: chibar2(01) = 200.29        Prob >= chibar2 = 0.0000
+</pre>
+<h3 id="generate-predicted-values">Generate Predicted Values</h3>
+<pre class='stata'>. predict outcome_hat // predict yhat
+(option xb assumed)
+</pre>
+<h3 id="graph-with-twoway-syntax">Graph With <code>twoway</code>
+Syntax</h3>
+<pre class='stata'>. twoway (scatter outcome_hat warmth) (lfit outcome_hat warmth)
+</pre>
+<pre class='stata'>. graph export mypredictedvalues.png, width(1500) replace
+file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mypredictedvalues.png
+    saved as PNG format
+</pre>
+<figure>
+<img src="mypredictedvalues.png" style="width:75.0%"
+alt="Predicted Values From predict" />
+<figcaption aria-hidden="true">Predicted Values From
+<code>predict</code></figcaption>
+</figure>
+<h2 id="margins-and-marginsplot"><code>margins</code> and
+<code>marginsplot</code></h2>
+<h3 id="estimate-the-model-1">Estimate The Model</h3>
+<pre class='stata'>. mixed outcome warmth physical_punishment i.group || country: // estimate MLM
+
+Performing EM optimization: 
+
+Performing gradient-based optimization: 
+
+Iteration 0:   log likelihood = -9668.0859  
+Iteration 1:   log likelihood = -9668.0859  
+
+Computing standard errors:
+
+Mixed-effects ML regression                     Number of obs     =      3,000
+Group variable: country                         Number of groups  =         30
+                                                Obs per group:
+                                                              min =        100
+                                                              avg =      100.0
+                                                              max =        100
+                                                Wald chi2(3)      =     401.00
+Log likelihood = -9668.0859                     Prob > chi2       =     0.0000
+
+────────────────────┬────────────────────────────────────────────────────────────────
+            outcome │ Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+────────────────────┼────────────────────────────────────────────────────────────────
+             warmth │    .961837   .0581809    16.53   0.000     .8478046    1.075869
+physical_punishment │  -.8457672   .0798128   -10.60   0.000    -1.002197   -.6893369
+            2.group │   1.084409   .2200548     4.93   0.000     .6531099    1.515709
+              _cons │   51.64797   .4645466   111.18   0.000     50.73748    52.55847
+────────────────────┴────────────────────────────────────────────────────────────────
+
+─────────────────────────────┬────────────────────────────────────────────────
+  Random-effects parameters  │   Estimate   Std. err.     [95% conf. interval]
+─────────────────────────────┼────────────────────────────────────────────────
+country: Identity            │
+                  var(_cons) │      3.403   .9717558      1.944438    5.955659
+─────────────────────────────┼────────────────────────────────────────────────
+               var(Residual) │   36.01911   .9346952      34.23295    37.89847
+─────────────────────────────┴────────────────────────────────────────────────
+LR test vs. linear model: chibar2(01) = 200.29        Prob >= chibar2 = 0.0000
+</pre>
+<h3
+id="generate-predicted-values-at-specified-values-with-margins">Generate
+Predicted Values <em>At Specified Values</em> With
+<code>margins</code></h3>
+<pre class='stata'>. margins group, at(warmth = (1 2 3 4 5 6 7)) // predictive *margins*
+
+Predictive margins                                       Number of obs = 3,000
+
+Expression: Linear prediction, fixed portion, predict()
+1._at: warmth = 1
+2._at: warmth = 2
+3._at: warmth = 3
+4._at: warmth = 4
+5._at: warmth = 5
+6._at: warmth = 6
+7._at: warmth = 7
+
+─────────────┬────────────────────────────────────────────────────────────────
+             │            Delta-method
+             │     Margin   std. err.      z    P>|z|     [95% conf. interval]
+─────────────┼────────────────────────────────────────────────────────────────
+   _at#group │
+        1 1  │    50.4999   .3983539   126.77   0.000     49.71914    51.28066
+        1 2  │   51.58431   .3994365   129.14   0.000     50.80143    52.36719
+        2 1  │   51.46174   .3809288   135.10   0.000     50.71513    52.20834
+        2 2  │   52.54615     .38173   137.65   0.000     51.79797    53.29432
+        3 1  │   52.42357    .371884   140.97   0.000      51.6947    53.15245
+        3 2  │   53.50798   .3723656   143.70   0.000     52.77816    54.23781
+        4 1  │   53.38541   .3718315   143.57   0.000     52.65664    54.11419
+        4 2  │   54.46982   .3719738   146.43   0.000     53.74077    55.19888
+        5 1  │   54.34725   .3807751   142.73   0.000     53.60094    55.09355
+        5 2  │   55.43166   .3805823   145.65   0.000     54.68573    56.17759
+        6 1  │   55.30909    .398109   138.93   0.000     54.52881    56.08937
+        6 2  │    56.3935    .397607   141.83   0.000      55.6142    57.17279
+        7 1  │   56.27092   .4228024   133.09   0.000     55.44225     57.0996
+        7 2  │   57.35533   .4220306   135.90   0.000     56.52817     58.1825
+─────────────┴────────────────────────────────────────────────────────────────
+</pre>
+<h3 id="graph-with-marginsplot">Graph With <code>marginsplot</code></h3>
+<pre class='stata'>. marginsplot // plot of predicted values
+
+Variables that uniquely identify margins: warmth group
+</pre>
+<pre class='stata'>. graph export mymarginsplot.png, width(1500) replace
+file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mymarginsplot.png saved as
+    PNG format
+</pre>
+<figure>
+<img src="mymarginsplot.png" style="width:75.0%"
+alt="Predicted Values From margins and marginsplot" />
+<figcaption aria-hidden="true">Predicted Values From
+<code>margins</code> and <code>marginsplot</code></figcaption>
+</figure>
 <h1 id="curvilinear-and-linear-fits">Curvilinear and Linear Fits</h1>
-<h1 id="margins-and-marginsplot"><code>margins</code> and <code>marginsplot</code></h1>
-<p>(esp. w/ longitudinal data)</p>
-<h1 id="reference">Reference</h1>
-<p><code>hsb.dta</code> from <em>Multilevel Modeling Using Stata</em> (Rabe-Hesketh and Skrondal), versions 2 and 3</p>
+<h1 id="random-effects">Random Effects</h1>
 </body>
 </html>
