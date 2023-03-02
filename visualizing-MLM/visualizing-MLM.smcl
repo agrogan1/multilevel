@@ -3,15 +3,15 @@
       name:  {res}<unnamed>
        {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/visualizing-MLM.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res} 1 Mar 2023, 15:07:48
+ {txt}opened on:  {res} 2 Mar 2023, 11:03:21
 {txt}
 {com}. //_1
 . display c(current_date)
-{res} 1 Mar 2023
+{res} 2 Mar 2023
 {txt}
 {com}. //_2
 . display c(current_time)
-{res}15:07:48
+{res}11:03:21
 {txt}
 {com}. //_3
 . set scheme michigan
@@ -46,9 +46,22 @@ format
 {p_end}
 
 {com}. //_9
-. twoway (scatter outcome warmth) (lfit outcome warmth)
+. twoway lfitci outcome warmth
 {res}{txt}
 {com}. //_10
+. graph export mylfitci.png, width(1500) replace
+{txt}{p 0 4 2}
+file {bf}
+/Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mylfitci.png{rm}
+saved as
+PNG
+format
+{p_end}
+
+{com}. //_11
+. twoway (scatter outcome warmth) (lfit outcome warmth)
+{res}{txt}
+{com}. //_12
 . graph export myscatterlinear.png, width(1500) replace
 {txt}{p 0 4 2}
 file {bf}
@@ -58,10 +71,10 @@ PNG
 format
 {p_end}
 
-{com}. //_11
+{com}. //_13
 . spagplot outcome warmth, id(country)
 {res}{txt}
-{com}. //_12
+{com}. //_14
 . graph export myspaghetti.png, width(1500) replace
 {txt}{p 0 4 2}
 file {bf}
@@ -71,10 +84,10 @@ PNG
 format
 {p_end}
 
-{com}. //_13
+{com}. //_15
 . twoway (scatter outcome warmth, mcolor(%30)) (lfit outcome warmth), by(country) aspect(1)
 {res}{txt}
-{com}. //_14
+{com}. //_16
 . graph export mysmallmultiples.png, width(1500) replace
 {txt}{p 0 4 2}
 file {bf}
@@ -84,7 +97,7 @@ PNG
 format
 {p_end}
 
-{com}. //_15
+{com}. //_17
 . mixed outcome warmth physical_punishment i.group || country: // estimate MLM
 {res}
 {txt}Performing EM optimization: 
@@ -124,14 +137,14 @@ format
 {txt}{hline 29}{c BT}{hline 48}
 LR test vs. linear model:{col 27}{help j_chibar##|_new:chibar2(01) =} {res}200.29{col 55}{txt}Prob >= chibar2 = {col 73}{res}0.0000
 {txt}
-{com}. //_16
+{com}. //_18
 . predict outcome_hat // predict yhat
 {txt}(option {bf:xb} assumed)
 
-{com}. //_17
+{com}. //_19
 . twoway (scatter outcome_hat warmth) (lfit outcome_hat warmth)
 {res}{txt}
-{com}. //_18
+{com}. //_20
 . graph export mypredictedvalues.png, width(1500) replace
 {txt}{p 0 4 2}
 file {bf}
@@ -141,7 +154,20 @@ PNG
 format
 {p_end}
 
-{com}. //_19
+{com}. //_21
+. spagplot outcome_hat warmth, id(country)
+{res}{txt}
+{com}. //_22
+. graph export myspaghetti2.png, width(1500) replace
+{txt}{p 0 4 2}
+file {bf}
+/Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/myspaghetti2.png{rm}
+saved as
+PNG
+format
+{p_end}
+
+{com}. //_23
 . mixed outcome warmth physical_punishment i.group || country: // estimate MLM
 {res}
 {txt}Performing EM optimization: 
@@ -181,7 +207,7 @@ format
 {txt}{hline 29}{c BT}{hline 48}
 LR test vs. linear model:{col 27}{help j_chibar##|_new:chibar2(01) =} {res}200.29{col 55}{txt}Prob >= chibar2 = {col 73}{res}0.0000
 {txt}
-{com}. //_20
+{com}. //_24
 . margins group, at(warmth = (1 2 3 4 5 6 7)) // predictive *margins*
 {res}
 {txt}{col 1}Predictive margins{col 58}{lalign 13:Number of obs}{col 71} = {res}{ralign 5:3,000}
@@ -218,12 +244,12 @@ LR test vs. linear model:{col 27}{help j_chibar##|_new:chibar2(01) =} {res}200.2
 {txt}{space 8}7 2  {c |}{col 14}{res}{space 2} 57.35533{col 26}{space 2} .4220306{col 37}{space 1}  135.90{col 46}{space 3}0.000{col 54}{space 4} 56.52817{col 67}{space 3}  58.1825
 {txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 {res}{txt}
-{com}. //_21
+{com}. //_25
 . marginsplot // plot of predicted values
 {res}
 {text}{p 0 0 2}Variables that uniquely identify margins: {bf:warmth group}{p_end}
 {res}{txt}
-{com}. //_22
+{com}. //_26
 . graph export mymarginsplot.png, width(1500) replace
 {txt}{p 0 4 2}
 file {bf}
@@ -238,7 +264,7 @@ format
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/visualizing-MLM.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res} 1 Mar 2023, 15:08:35
+ {txt}closed on:  {res} 2 Mar 2023, 11:04:00
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}
