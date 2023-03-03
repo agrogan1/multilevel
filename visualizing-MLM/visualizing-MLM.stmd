@@ -12,6 +12,8 @@ geometry: margin=1 in
 
 An evolving set of notes on visualizing results from multilevel models.
 
+> When this document is presented in *slide show format*, some slides may be long, and you may need to *scroll down* to see the full slide. In slide show format use the left and right arrow keys to navigate through the slides. `b` will make the text bigger. `s` will make the text smaller.
+
 The examples below use the `simulated_multilevel_data.dta` file from [*Multilevel Thinking*](https://agrogan1.github.io/multilevel-thinking/simulated-multi-country-data.html). Here is a [direct link](https://github.com/agrogan1/multilevel-multilingual/raw/main/simulated_multilevel_data.dta) to download the data.
 
 # Setup
