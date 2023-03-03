@@ -102,6 +102,12 @@ I use the `aspect` option to adjust the *aspect ratio* of the graph for better v
 
 ![Predicted Values From `predict`](mypredictedvalues.png){width=75%}
 
+	twoway (lfit outcome_hat warmth)
+	
+	graph export mypredictedvalues2.png, width(1500) replace
+
+![Predicted Values From `predict` With Only Linear Fit](mypredictedvalues2.png){width=75%}
+
 ## Spaghetti Plot With Predicted Values
 
     spagplot outcome_hat warmth, id(country)

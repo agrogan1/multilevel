@@ -3,7 +3,7 @@
       name:  {res}<unnamed>
        {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/visualizing-MLM.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res} 3 Mar 2023, 10:54:40
+ {txt}opened on:  {res} 3 Mar 2023, 16:34:12
 {txt}
 {com}. //_1
 . display c(current_date)
@@ -11,7 +11,7 @@
 {txt}
 {com}. //_2
 . display c(current_time)
-{res}10:54:40
+{res}16:34:12
 {txt}
 {com}. //_3
 . set scheme michigan
@@ -155,9 +155,22 @@ format
 {p_end}
 
 {com}. //_21
-. spagplot outcome_hat warmth, id(country)
+. twoway (lfit outcome_hat warmth)
 {res}{txt}
 {com}. //_22
+. graph export mypredictedvalues2.png, width(1500) replace
+{txt}{p 0 4 2}
+file {bf}
+/Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mypredictedvalues2.png{rm}
+saved as
+PNG
+format
+{p_end}
+
+{com}. //_23
+. spagplot outcome_hat warmth, id(country)
+{res}{txt}
+{com}. //_24
 . graph export myspaghetti2.png, width(1500) replace
 {txt}{p 0 4 2}
 file {bf}
@@ -167,7 +180,7 @@ PNG
 format
 {p_end}
 
-{com}. //_23
+{com}. //_25
 . mixed outcome warmth physical_punishment i.group || country: // estimate MLM
 {res}
 {txt}Performing EM optimization: 
@@ -207,7 +220,7 @@ format
 {txt}{hline 29}{c BT}{hline 48}
 LR test vs. linear model:{col 27}{help j_chibar##|_new:chibar2(01) =} {res}200.29{col 55}{txt}Prob >= chibar2 = {col 73}{res}0.0000
 {txt}
-{com}. //_24
+{com}. //_26
 . margins group, at(warmth = (1 2 3 4 5 6 7)) // predictive *margins*
 {res}
 {txt}{col 1}Predictive margins{col 58}{lalign 13:Number of obs}{col 71} = {res}{ralign 5:3,000}
@@ -244,12 +257,12 @@ LR test vs. linear model:{col 27}{help j_chibar##|_new:chibar2(01) =} {res}200.2
 {txt}{space 8}7 2  {c |}{col 14}{res}{space 2} 57.35533{col 26}{space 2} .4220306{col 37}{space 1}  135.90{col 46}{space 3}0.000{col 54}{space 4} 56.52817{col 67}{space 3}  58.1825
 {txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 {res}{txt}
-{com}. //_25
+{com}. //_27
 . marginsplot // plot of predicted values
 {res}
 {text}{p 0 0 2}Variables that uniquely identify margins: {bf:warmth group}{p_end}
 {res}{txt}
-{com}. //_26
+{com}. //_28
 . graph export mymarginsplot.png, width(1500) replace
 {txt}{p 0 4 2}
 file {bf}
@@ -264,7 +277,7 @@ format
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/visualizing-MLM.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res} 3 Mar 2023, 10:55:23
+ {txt}closed on:  {res} 3 Mar 2023, 16:35:06
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

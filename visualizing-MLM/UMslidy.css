@@ -54,6 +54,9 @@ pre {
   color: black;
   background-color: white;
 }
+p.caption {
+  color: red;
+}
 table {
   border-collapse: collapse;
 }
