@@ -103,7 +103,7 @@ Andy Grogan-Kaylor
 class="title-slide slide section level1 title">
 <h1 class="title">Visualizing Multilevel Models</h1>
 <p>Andy Grogan-Kaylor</p>
-<p>2 Mar 2023 11:00:57</p>
+<p>3 Mar 2023 10:17:03</p>
 </div>
 
 </div>
@@ -135,8 +135,8 @@ href="https://github.com/asjadnaqvi/stata-schemepack">https://github.com/asjadna
 <div id="get-data" class="title-slide slide section level1">
 <h1>Get Data</h1>
 <div class="sourceCode" id="cb2"><pre
-class="sourceCode stata"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">use</span> <span class="st">&quot;https://github.com/agrogan1/multilevel-thinking/raw/main/simulate-and-analyze-multi</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="st">&gt; level-data/simulated_multilevel_data.dta&quot;</span>, <span class="kw">clear</span></span></code></pre></div>
+class="sourceCode stata"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">use</span> <span class="st">&quot;https://github.com/agrogan1/multilevel-thinking/raw/main/simulate-and-analyze-m</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="st">&gt; ultilevel-data/simulated_multilevel_data.dta&quot;</span>, <span class="kw">clear</span></span></code></pre></div>
 </div>
 
 <div id="scatterplots" class="title-slide slide section level1">
@@ -145,8 +145,8 @@ class="sourceCode stata"><code class="sourceCode stata"><span id="cb2-1"><a href
 class="sourceCode stata"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">twoway</span> <span class="kw">scatter</span> outcome warmth</span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre
 class="sourceCode stata"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">graph</span> <span class="kw">export</span> myscatter.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/myscatter.png saved <span class="kw">as</span> PNG</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">format</span></span></code></pre></div>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/myscatter.png saved <span class="kw">as</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    PNG <span class="kw">format</span></span></code></pre></div>
 <div class="figure">
 <img src="myscatter.png" style="width:75.0%" alt="" />
 <p class="caption">Scatterplot</p>
@@ -159,8 +159,8 @@ class="sourceCode stata"><code class="sourceCode stata"><span id="cb4-1"><a href
 class="sourceCode stata"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">twoway</span> <span class="kw">lfit</span> outcome warmth</span></code></pre></div>
 <div class="sourceCode" id="cb6"><pre
 class="sourceCode stata"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">graph</span> <span class="kw">export</span> mylinear.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mylinear.png saved <span class="kw">as</span> PNG</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">format</span></span></code></pre></div>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mylinear.png saved <span class="kw">as</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    PNG <span class="kw">format</span></span></code></pre></div>
 <div class="figure">
 <img src="mylinear.png" style="width:75.0%" alt="" />
 <p class="caption">Linear Fit</p>
@@ -174,8 +174,8 @@ class="title-slide slide section level1">
 class="sourceCode stata"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">twoway</span> lfitci outcome warmth</span></code></pre></div>
 <div class="sourceCode" id="cb8"><pre
 class="sourceCode stata"><code class="sourceCode stata"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">graph</span> <span class="kw">export</span> mylfitci.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mylfitci.png saved <span class="kw">as</span> PNG</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">format</span></span></code></pre></div>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mylfitci.png saved <span class="kw">as</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    PNG <span class="kw">format</span></span></code></pre></div>
 <div class="figure">
 <img src="mylfitci.png" style="width:75.0%" alt="" />
 <p class="caption">Linear Fit With Confidence Interval</p>
@@ -189,8 +189,8 @@ class="title-slide slide section level1">
 class="sourceCode stata"><code class="sourceCode stata"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">twoway</span> (<span class="kw">scatter</span> outcome warmth) (<span class="kw">lfit</span> outcome warmth)</span></code></pre></div>
 <div class="sourceCode" id="cb10"><pre
 class="sourceCode stata"><code class="sourceCode stata"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">graph</span> <span class="kw">export</span> myscatterlinear.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/myscatterlinear.png saved</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">as</span> PNG <span class="kw">format</span></span></code></pre></div>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/myscatterlinear.png</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    saved <span class="kw">as</span> PNG <span class="kw">format</span></span></code></pre></div>
 <div class="figure">
 <img src="myscatterlinear.png" style="width:75.0%" alt="" />
 <p class="caption">Scatterplot and Linear Fit</p>
@@ -204,8 +204,8 @@ class="title-slide slide section level1">
 class="sourceCode stata"><code class="sourceCode stata"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>. spagplot outcome warmth, id(country)</span></code></pre></div>
 <div class="sourceCode" id="cb12"><pre
 class="sourceCode stata"><code class="sourceCode stata"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">graph</span> <span class="kw">export</span> myspaghetti.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/myspaghetti.png saved <span class="kw">as</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    PNG <span class="kw">format</span></span></code></pre></div>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/myspaghetti.png saved</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">as</span> PNG <span class="kw">format</span></span></code></pre></div>
 <div class="figure">
 <img src="myspaghetti.png" style="width:75.0%" alt="" />
 <p class="caption">Spaghetti Plot</p>
@@ -221,12 +221,12 @@ of the scatterplot, which helps the presentation of these small
 multiples. The <code>mcolor(%30)</code> option could be useful in the
 other graphs in this tutorial as well.</p>
 <div class="sourceCode" id="cb13"><pre
-class="sourceCode stata"><code class="sourceCode stata"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">twoway</span> (<span class="kw">scatter</span> outcome warmth, mcolor(%30)) (<span class="kw">lfit</span> outcome warmth), <span class="kw">by</span>(country) aspect(1</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>&gt; )</span></code></pre></div>
+class="sourceCode stata"><code class="sourceCode stata"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">twoway</span> (<span class="kw">scatter</span> outcome warmth, mcolor(%30)) (<span class="kw">lfit</span> outcome warmth), <span class="kw">by</span>(country) aspe</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>&gt; <span class="kw">ct</span>(1)</span></code></pre></div>
 <div class="sourceCode" id="cb14"><pre
 class="sourceCode stata"><code class="sourceCode stata"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">graph</span> <span class="kw">export</span> mysmallmultiples.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mysmallmultiples.png saved</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">as</span> PNG <span class="kw">format</span></span></code></pre></div>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mysmallmultiples.png</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    saved <span class="kw">as</span> PNG <span class="kw">format</span></span></code></pre></div>
 <div class="figure">
 <img src="mysmallmultiples.png" style="width:75.0%" alt="" />
 <p class="caption">Small Multiples</p>
@@ -315,8 +315,8 @@ class="slide section level2">
 class="sourceCode stata"><code class="sourceCode stata"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>. spagplot outcome_hat warmth, id(country)</span></code></pre></div>
 <div class="sourceCode" id="cb20"><pre
 class="sourceCode stata"><code class="sourceCode stata"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">graph</span> <span class="kw">export</span> myspaghetti2.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/myspaghetti2.png saved <span class="kw">as</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    PNG <span class="kw">format</span></span></code></pre></div>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/myspaghetti2.png saved</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">as</span> PNG <span class="kw">format</span></span></code></pre></div>
 <div class="figure">
 <img src="myspaghetti2.png" style="width:75.0%" alt="" />
 <p class="caption">Spaghetti Plot With Predicted Values</p>
@@ -409,8 +409,8 @@ class="sourceCode stata"><code class="sourceCode stata"><span id="cb23-1"><a hre
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>Variables that uniquely identify margins: warmth <span class="fu">group</span></span></code></pre></div>
 <div class="sourceCode" id="cb24"><pre
 class="sourceCode stata"><code class="sourceCode stata"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">graph</span> <span class="kw">export</span> mymarginsplot.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mymarginsplot.png saved <span class="kw">as</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    PNG <span class="kw">format</span></span></code></pre></div>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mymarginsplot.png</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    saved <span class="kw">as</span> PNG <span class="kw">format</span></span></code></pre></div>
 <div class="figure">
 <img src="mymarginsplot.png" style="width:75.0%" alt="" />
 <p class="caption">Predicted Values From <code>margins</code> and

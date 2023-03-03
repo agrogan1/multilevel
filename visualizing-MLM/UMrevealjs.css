@@ -1,0 +1,13 @@
+h1, h1.title, .reveal h1 {
+  font-size: 8px;
+  line-height: 90px;
+}
+
+h2, h2.title, h2.author, .reveal h2, .reveal p {
+  font-weight: normal;
+  line-height: 90px;
+}
+.slide {
+    height: 750px;
+    overflow-y: auto !important;
+}

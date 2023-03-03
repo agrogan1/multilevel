@@ -205,7 +205,7 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 <header id="title-block-header">
 <h1 class="title">Visualizing Multilevel Models</h1>
 <p class="author">Andy Grogan-Kaylor</p>
-<p class="date">2 Mar 2023 11:00:57</p>
+<p class="date">3 Mar 2023 10:17:03</p>
 </header>
 <style>body {max-width: 90%} h1 {color: #00274C;} h2 {color: #2F65A7;} p {font-size: 110%;} pre.stata {font-size: 110%;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
 <h1 id="introduction">Introduction</h1>
@@ -228,15 +228,15 @@ href="https://agrogan1.github.io/Stata/michigan-graph-scheme/">https://agrogan1.
 would be Asjad Naqvi’s incredible <code>schemepack</code>: <a
 href="https://github.com/asjadnaqvi/stata-schemepack">https://github.com/asjadnaqvi/stata-schemepack</a></p>
 <h1 id="get-data">Get Data</h1>
-<pre class='stata'>. use "https://github.com/agrogan1/multilevel-thinking/raw/main/simulate-and-analyze-multi
-> level-data/simulated_multilevel_data.dta", clear
+<pre class='stata'>. use "https://github.com/agrogan1/multilevel-thinking/raw/main/simulate-and-analyze-m
+> ultilevel-data/simulated_multilevel_data.dta", clear
 </pre>
 <h1 id="scatterplots">Scatterplots</h1>
 <pre class='stata'>. twoway scatter outcome warmth
 </pre>
 <pre class='stata'>. graph export myscatter.png, width(1500) replace
-file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/myscatter.png saved as PNG
-    format
+file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/myscatter.png saved as
+    PNG format
 </pre>
 <figure>
 <img src="myscatter.png" style="width:75.0%" alt="Scatterplot" />
@@ -246,8 +246,8 @@ file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/myscatter.png save
 <pre class='stata'>. twoway lfit outcome warmth
 </pre>
 <pre class='stata'>. graph export mylinear.png, width(1500) replace
-file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mylinear.png saved as PNG
-    format
+file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mylinear.png saved as
+    PNG format
 </pre>
 <figure>
 <img src="mylinear.png" style="width:75.0%" alt="Linear Fit" />
@@ -258,8 +258,8 @@ Interval</h1>
 <pre class='stata'>. twoway lfitci outcome warmth
 </pre>
 <pre class='stata'>. graph export mylfitci.png, width(1500) replace
-file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mylfitci.png saved as PNG
-    format
+file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mylfitci.png saved as
+    PNG format
 </pre>
 <figure>
 <img src="mylfitci.png" style="width:75.0%"
@@ -272,8 +272,8 @@ Linear Fit</h1>
 <pre class='stata'>. twoway (scatter outcome warmth) (lfit outcome warmth)
 </pre>
 <pre class='stata'>. graph export myscatterlinear.png, width(1500) replace
-file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/myscatterlinear.png saved
-    as PNG format
+file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/myscatterlinear.png
+    saved as PNG format
 </pre>
 <figure>
 <img src="myscatterlinear.png" style="width:75.0%"
@@ -285,8 +285,8 @@ alt="Scatterplot and Linear Fit" />
 <pre class='stata'>. spagplot outcome warmth, id(country)
 </pre>
 <pre class='stata'>. graph export myspaghetti.png, width(1500) replace
-file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/myspaghetti.png saved as
-    PNG format
+file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/myspaghetti.png saved
+    as PNG format
 </pre>
 <figure>
 <img src="myspaghetti.png" style="width:75.0%" alt="Spaghetti Plot" />
@@ -299,12 +299,12 @@ ratio</em> of the graph for better visual presentation. I also use the
 of the scatterplot, which helps the presentation of these small
 multiples. The <code>mcolor(%30)</code> option could be useful in the
 other graphs in this tutorial as well.</p>
-<pre class='stata'>. twoway (scatter outcome warmth, mcolor(%30)) (lfit outcome warmth), by(country) aspect(1
-> )
+<pre class='stata'>. twoway (scatter outcome warmth, mcolor(%30)) (lfit outcome warmth), by(country) aspe
+> ct(1)
 </pre>
 <pre class='stata'>. graph export mysmallmultiples.png, width(1500) replace
-file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mysmallmultiples.png saved
-    as PNG format
+file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mysmallmultiples.png
+    saved as PNG format
 </pre>
 <figure>
 <img src="mysmallmultiples.png" style="width:75.0%"
@@ -389,8 +389,8 @@ Predicted Values</h2>
 <pre class='stata'>. spagplot outcome_hat warmth, id(country)
 </pre>
 <pre class='stata'>. graph export myspaghetti2.png, width(1500) replace
-file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/myspaghetti2.png saved as
-    PNG format
+file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/myspaghetti2.png saved
+    as PNG format
 </pre>
 <figure>
 <img src="myspaghetti2.png" style="width:75.0%"
@@ -484,8 +484,8 @@ Expression: Linear prediction, fixed portion, predict()
 Variables that uniquely identify margins: warmth group
 </pre>
 <pre class='stata'>. graph export mymarginsplot.png, width(1500) replace
-file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mymarginsplot.png saved as
-    PNG format
+file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mymarginsplot.png
+    saved as PNG format
 </pre>
 <figure>
 <img src="mymarginsplot.png" style="width:75.0%"
