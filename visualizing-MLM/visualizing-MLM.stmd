@@ -99,14 +99,13 @@ I use the `aspect` option to adjust the *aspect ratio* of the graph for better v
 	twoway (scatter outcome_hat warmth) (lfit outcome_hat warmth)
 	
 	graph export mypredictedvalues.png, width(1500) replace
-
-![Predicted Values From `predict`](mypredictedvalues.png){width=75%}
-
+	
 	twoway (lfit outcome_hat warmth)
 	
 	graph export mypredictedvalues2.png, width(1500) replace
 
-![Predicted Values From `predict` With Only Linear Fit](mypredictedvalues2.png){width=75%}
+![Predicted Values From `predict`](mypredictedvalues.png){width=25%} \ ![Predicted Values From `predict` With Only Linear Fit](mypredictedvalues2.png){width=25%}
+
 
 ## Spaghetti Plot With Predicted Values
 

@@ -205,7 +205,7 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 <header id="title-block-header">
 <h1 class="title">Visualizing Multilevel Models</h1>
 <p class="author">Andy Grogan-Kaylor</p>
-<p class="date">3 Mar 2023 16:33:24</p>
+<p class="date">4 Mar 2023 11:40:47</p>
 </header>
 <style>body {max-width: 90%} h1 {color: #00274C;} h2 {color: #2F65A7;} p {font-size: 110%;} pre.stata {font-size: 110%;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
 <h1 id="introduction">Introduction</h1>
@@ -385,24 +385,16 @@ Syntax</h3>
 file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mypredictedvalues.png
     saved as PNG format
 </pre>
-<figure>
-<img src="mypredictedvalues.png" style="width:75.0%"
-alt="Predicted Values From predict" />
-<figcaption aria-hidden="true">Predicted Values From
-<code>predict</code></figcaption>
-</figure>
 <pre class='stata'>. twoway (lfit outcome_hat warmth)
 </pre>
 <pre class='stata'>. graph export mypredictedvalues2.png, width(1500) replace
 file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mypredictedvalues2.png
     saved as PNG format
 </pre>
-<figure>
-<img src="mypredictedvalues2.png" style="width:75.0%"
-alt="Predicted Values From predict With Only Linear Fit" />
-<figcaption aria-hidden="true">Predicted Values From
-<code>predict</code> With Only Linear Fit</figcaption>
-</figure>
+<p><img src="mypredictedvalues.png" style="width:25.0%"
+alt="Predicted Values From predict" />  <img
+src="mypredictedvalues2.png" style="width:25.0%"
+alt="Predicted Values From predict With Only Linear Fit" /></p>
 <h2 id="spaghetti-plot-with-predicted-values">Spaghetti Plot With
 Predicted Values</h2>
 <pre class='stata'>. spagplot outcome_hat warmth, id(country)
