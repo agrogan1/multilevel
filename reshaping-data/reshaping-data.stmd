@@ -91,6 +91,8 @@ In the reshape command below, notice that we only include the variables that we 
     reshape long Height Diameter, i(Tree) j(year)
 ```
 
+> The `id` variable, whatever it is named, has to uniquely identify the observations. A useful command here is `isid`, e.g. `isid id`. If your `id` variable is not unique, it is often due to missing values. `drop if id == .` usually solves the problem. Because `Tree` is the id variable in this dataset, the appropriate command would be `drop if Tree == .`.
+
 ## Use `list` To Look At A Sample Of The Data
 
 ```s
