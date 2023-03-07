@@ -205,7 +205,7 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 <header id="title-block-header">
 <h1 class="title">Visualizing Multilevel Models</h1>
 <p class="author">Andy Grogan-Kaylor</p>
-<p class="date">4 Mar 2023 11:40:47</p>
+<p class="date">7 Mar 2023 10:22:45</p>
 </header>
 <style>body {max-width: 90%} h1 {color: #00274C;} h2 {color: #2F65A7;} p {font-size: 110%;} pre.stata {font-size: 110%;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
 <h1 id="introduction">Introduction</h1>
@@ -224,6 +224,24 @@ href="https://agrogan1.github.io/multilevel-thinking/simulated-multi-country-dat
 Thinking</em></a>. Here is a <a
 href="https://github.com/agrogan1/multilevel-multilingual/raw/main/simulated_multilevel_data.dta">direct
 link</a> to download the data.</p>
+<h1 id="organizing-questions">Organizing Questions</h1>
+<p>Try to think about some of the advantages and disadvantages of
+different approaches to visualizing multilevel models. In multilevel
+models, we don’t want to just <em>control for</em> variation, but to
+start to <em>explore</em> the variation. Put concretely:</p>
+<ul>
+<li>Some approaches use <em>dots</em>. Some approaches use
+<em>lines</em>. Some approaches use <em>dots and lines</em>.</li>
+<li>Some approaches use the <em>raw unadjusted</em> data. Other
+approaches use <em>adjusted or model predicted</em> data.</li>
+<li>Some approaches attempt to show the <em>Level 2 specific regression
+lines</em>; some approaches only show an <em>average regression
+line</em>.</li>
+<li>What approaches might work well with <em>large numbers</em> of Level
+2 units? What approaches might work well with <em>smaller numbers</em>
+of Level 2 units?</li>
+</ul>
+<p>What approach(es) do you prefer?</p>
 <h1 id="setup">Setup</h1>
 <p>I am not terrifically fond of Stata’s default <code>s2color</code>
 graph scheme. Therefore I make use of the <code>michigan</code> graph

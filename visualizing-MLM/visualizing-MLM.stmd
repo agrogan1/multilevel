@@ -16,6 +16,17 @@ An evolving set of notes on visualizing results from multilevel models.
 
 The examples below use the `simulated_multilevel_data.dta` file from [*Multilevel Thinking*](https://agrogan1.github.io/multilevel-thinking/simulated-multi-country-data.html). Here is a [direct link](https://github.com/agrogan1/multilevel-multilingual/raw/main/simulated_multilevel_data.dta) to download the data.
 
+# Organizing Questions
+
+Try to think about some of the advantages and disadvantages of different approaches to visualizing multilevel models. In multilevel models, we don't want to just *control for* variation, but to start to *explore* the variation. Put concretely:
+
+* Some approaches use *dots*. Some approaches use *lines*. Some approaches use *dots and lines*.
+* Some approaches use the *raw unadjusted* data. Other approaches use *adjusted or model predicted* data.
+* Some approaches attempt to show the *Level 2 specific regression lines*; some approaches only show an *average regression line*.
+* What approaches might work well with *large numbers* of Level 2 units? What approaches might work well with *smaller numbers* of Level 2 units?
+
+What approach(es) do you prefer?
+
 # Setup
 
 I am not terrifically fond of Stata's default `s2color` graph scheme. Therefore I make use of the `michigan` graph scheme available at: [https://agrogan1.github.io/Stata/michigan-graph-scheme/](https://agrogan1.github.io/Stata/michigan-graph-scheme/)
