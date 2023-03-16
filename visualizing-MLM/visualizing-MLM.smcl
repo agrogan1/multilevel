@@ -3,15 +3,15 @@
       name:  {res}<unnamed>
        {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/visualizing-MLM.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res} 7 Mar 2023, 10:23:29
+ {txt}opened on:  {res}16 Mar 2023, 17:00:50
 {txt}
 {com}. //_1
 . display c(current_date)
-{res} 7 Mar 2023
+{res}16 Mar 2023
 {txt}
 {com}. //_2
 . display c(current_time)
-{res}10:23:29
+{res}17:00:50
 {txt}
 {com}. //_3
 . set scheme michigan
@@ -98,16 +98,52 @@ format
 {p_end}
 
 {com}. //_17
+. set seed 3846 // random seed for reproducibility
+{txt}
+{com}. //_18
+. gen randomid = runiform() // generate a random id variable
+{txt}
+{com}. //_19
+. * by country (i.e. by Level 2 unit) replace the randomid 
+. * with the first randomid for that country (Level 2 unit)
+. * so that every person in that country has the same random id
+. //_20
+. bysort country: replace randomid = randomid[1] 
+{txt}(2,970 real changes made)
+
+{com}. //_21
+. summarize randomid // descriptive statistics for random id
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 4}randomid {c |}{res}      3,000    .6174022    .2374704   .0733026   .9657055
+{txt}
+{com}. //_22
+. twoway (scatter outcome warmth, mcolor(%30)) /// scatterplot
+> (lfit outcome warmth) /// linear fit
+> if randomid < .5, /// only use a subset of randomid's
+> by(country) aspect(1) // by country
+{res}{txt}
+{com}. //_23
+. graph export mysmallmultiples2.png, width(1500) replace
+{txt}{p 0 4 2}
+file {bf}
+/Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mysmallmultiples2.png{rm}
+saved as
+PNG
+format
+{p_end}
+
+{com}. //_24
 . mixed outcome warmth physical_punishment i.group || country: // estimate MLM
 {res}
-{txt}Performing EM optimization: 
+{txt}Performing EM optimization ...
 {res}
-{txt}Performing gradient-based optimization: 
-{res}
+{txt}Performing gradient-based optimization: {res}
 {txt}Iteration 0:{space 3}log likelihood = {res:-9668.0859}  
-{res}{txt}Iteration 1:{space 3}log likelihood = {res:-9668.0859}  
+Iteration 1:{space 3}log likelihood = {res:-9668.0859}  
 {res}
-{txt}Computing standard errors:
+{txt}Computing standard errors ...
 {res}
 {txt}Mixed-effects ML regression{col 49}Number of obs{col 67}={col 69}{res}     3,000
 {txt}Group variable: {res}country{col 49}{txt}Number of groups{col 67}={col 69}{res}        30
@@ -137,14 +173,14 @@ format
 {txt}{hline 29}{c BT}{hline 48}
 LR test vs. linear model:{col 27}{help j_chibar##|_new:chibar2(01) =} {res}200.29{col 55}{txt}Prob >= chibar2 = {col 73}{res}0.0000
 {txt}
-{com}. //_18
+{com}. //_25
 . predict outcome_hat // predict yhat
 {txt}(option {bf:xb} assumed)
 
-{com}. //_19
+{com}. //_26
 . twoway (scatter outcome_hat warmth) (lfit outcome_hat warmth)
 {res}{txt}
-{com}. //_20
+{com}. //_27
 . graph export mypredictedvalues.png, width(1500) replace
 {txt}{p 0 4 2}
 file {bf}
@@ -154,10 +190,10 @@ PNG
 format
 {p_end}
 
-{com}. //_21
+{com}. //_28
 . twoway (lfit outcome_hat warmth)
 {res}{txt}
-{com}. //_22
+{com}. //_29
 . graph export mypredictedvalues2.png, width(1500) replace
 {txt}{p 0 4 2}
 file {bf}
@@ -167,10 +203,10 @@ PNG
 format
 {p_end}
 
-{com}. //_23
+{com}. //_30
 . spagplot outcome_hat warmth, id(country)
 {res}{txt}
-{com}. //_24
+{com}. //_31
 . graph export myspaghetti2.png, width(1500) replace
 {txt}{p 0 4 2}
 file {bf}
@@ -180,17 +216,16 @@ PNG
 format
 {p_end}
 
-{com}. //_25
+{com}. //_32
 . mixed outcome warmth physical_punishment i.group || country: // estimate MLM
 {res}
-{txt}Performing EM optimization: 
+{txt}Performing EM optimization ...
 {res}
-{txt}Performing gradient-based optimization: 
-{res}
+{txt}Performing gradient-based optimization: {res}
 {txt}Iteration 0:{space 3}log likelihood = {res:-9668.0859}  
-{res}{txt}Iteration 1:{space 3}log likelihood = {res:-9668.0859}  
+Iteration 1:{space 3}log likelihood = {res:-9668.0859}  
 {res}
-{txt}Computing standard errors:
+{txt}Computing standard errors ...
 {res}
 {txt}Mixed-effects ML regression{col 49}Number of obs{col 67}={col 69}{res}     3,000
 {txt}Group variable: {res}country{col 49}{txt}Number of groups{col 67}={col 69}{res}        30
@@ -220,7 +255,7 @@ format
 {txt}{hline 29}{c BT}{hline 48}
 LR test vs. linear model:{col 27}{help j_chibar##|_new:chibar2(01) =} {res}200.29{col 55}{txt}Prob >= chibar2 = {col 73}{res}0.0000
 {txt}
-{com}. //_26
+{com}. //_33
 . margins group, at(warmth = (1 2 3 4 5 6 7)) // predictive *margins*
 {res}
 {txt}{col 1}Predictive margins{col 58}{lalign 13:Number of obs}{col 71} = {res}{ralign 5:3,000}
@@ -257,12 +292,12 @@ LR test vs. linear model:{col 27}{help j_chibar##|_new:chibar2(01) =} {res}200.2
 {txt}{space 8}7 2  {c |}{col 14}{res}{space 2} 57.35533{col 26}{space 2} .4220306{col 37}{space 1}  135.90{col 46}{space 3}0.000{col 54}{space 4} 56.52817{col 67}{space 3}  58.1825
 {txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 {res}{txt}
-{com}. //_27
+{com}. //_34
 . marginsplot // plot of predicted values
 {res}
 {text}{p 0 0 2}Variables that uniquely identify margins: {bf:warmth group}{p_end}
 {res}{txt}
-{com}. //_28
+{com}. //_35
 . graph export mymarginsplot.png, width(1500) replace
 {txt}{p 0 4 2}
 file {bf}
@@ -277,7 +312,7 @@ format
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/visualizing-MLM.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res} 7 Mar 2023, 10:24:22
+ {txt}closed on:  {res}16 Mar 2023, 17:01:47
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

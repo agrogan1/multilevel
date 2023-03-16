@@ -39,7 +39,7 @@ Stata's `s1color` scheme would also would be an option as would be Asjad Naqvi's
 
     use "https://github.com/agrogan1/multilevel-thinking/raw/main/simulate-and-analyze-multilevel-data/simulated_multilevel_data.dta", clear
 
-# Scatterplots
+# Scatterplots (`twoway scatter y x`)
 
     twoway scatter outcome warmth
 	
@@ -47,7 +47,7 @@ Stata's `s1color` scheme would also would be an option as would be Asjad Naqvi's
 	
 ![Scatterplot](myscatter.png){width=75%}
 	
-# Simple Linear Fit
+# Simple Linear Fit (`twoway lfit y x`)
 
     twoway lfit outcome warmth
 	
@@ -55,7 +55,7 @@ Stata's `s1color` scheme would also would be an option as would be Asjad Naqvi's
 	
 ![Linear Fit](mylinear.png){width=75%}
 
-# Linear Fit With Confidence Interval
+# Linear Fit With Confidence Interval (`twoway lfitci y x`)
 
     twoway lfitci outcome warmth
 	
@@ -63,7 +63,7 @@ Stata's `s1color` scheme would also would be an option as would be Asjad Naqvi's
 	
 ![Linear Fit With Confidence Interval](mylfitci.png){width=75%}
 
-# Combine Scatterplot and Linear Fit
+# Combine Scatterplot and Linear Fit (`twoway (scatter y x) (lfit y x)`)
 
     twoway (scatter outcome warmth) (lfit outcome warmth)
 	
@@ -71,7 +71,7 @@ Stata's `s1color` scheme would also would be an option as would be Asjad Naqvi's
 	
 ![Scatterplot and Linear Fit](myscatterlinear.png){width=75%}
 
-# Spaghetti Plots (`spagplot`)
+# Spaghetti Plots (`spagplot y x, id(group)`)
 
     spagplot outcome warmth, id(country)
 	
@@ -79,7 +79,9 @@ Stata's `s1color` scheme would also would be an option as would be Asjad Naqvi's
 
 ![Spaghetti Plot](myspaghetti.png){width=75%}
 	
-# Small Multiples
+# Small Multiples (`twoway y x, by(group)`)
+
+*Small Multiples*, showing a separate graph for each group in the data, are an increasingly popular data visualization technique. Below, I build a small multiples graph using the `by` option in Stata.
 
 I use the `aspect` option to adjust the *aspect ratio* of the graph for better visual presentation. I also use the `mcolor(%30)` option to create some transparency in the dots of the scatterplot, which helps the presentation of these small multiples. The `mcolor(%30)` option could be useful in the other graphs in this tutorial as well.
 
@@ -88,14 +90,41 @@ I use the `aspect` option to adjust the *aspect ratio* of the graph for better v
 	graph export mysmallmultiples.png, width(1500) replace
 
 ![Small Multiples](mysmallmultiples.png){width=75%}
+
+# Taking A Random Sample
+
+At times, we may have *too many* Level 2 units to effectively display them on a *spaghetti plot*, or using *small multiples*. If this is the case, we may need to *randomly sample* Level 2 units. This can be difficult to accomplish as our standard `sample` command operates on each row, or on Level 1 units. 
+
+We can accomplish random sampling at Level 2, with a little bit of code.
+
+    set seed 3846 // random seed for reproducibility
+
+    gen randomid = runiform() // generate a random id variable
+		
+	* by country (i.e. by Level 2 unit) replace the randomid 
+	* with the first randomid for that country (Level 2 unit)
+	* so that every person in that country has the same random id
+
+	bysort country: replace randomid = randomid[1] 
 	
+	summarize randomid // descriptive statistics for random id
+
+    twoway (scatter outcome warmth, mcolor(%30)) /// scatterplot
+	(lfit outcome warmth) /// linear fit
+	if randomid < .5, /// only use a subset of randomid's
+	by(country) aspect(1) // by country
+	
+	graph export mysmallmultiples2.png, width(1500) replace
+
+![Small Multiples With A Random Sample Of Countries](mysmallmultiples2.png){width=75%}
+
 # Multivariate (Predicted) Relationships
 
 > A sometimes unacknowledged point is that graphs--unless we take steps to correct this--reflect *unadjusted*, or *bivariate* associations. We may sometimes wish to develop a graphs that reflect the *adjusted* or *predicted* estimates from our models.
 
 > In multilevel models, *prediction* is a complex question. The procedures below outline graphs that incorporate predictions using the variables, but do not include predictions that incorporate the random effects. (This will be added!)
 
-## Using Predicted Values
+## Using Predicted Values (`predict`)
 
 ### Estimate The Model
 
