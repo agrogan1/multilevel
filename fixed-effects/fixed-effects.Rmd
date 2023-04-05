@@ -4,7 +4,7 @@ description: |
   Comparing and Contrasting With Multilevel Modeling.
 author:
   - name: Andy Grogan-Kaylor
-    url: https://www.umich.edu/~agrogan
+    url: https://agrogan1.github.io/
     affiliation: University of Michigan
     affiliation_url: https://www.umich.edu
 date: "`r Sys.Date()`"
@@ -12,7 +12,7 @@ output:
   distill::distill_article:
     highlight: haddock
     toc: yes
-    code_folding: TRUE
+    code_folding: FALSE
 ---
 
 ```{r setup, include=FALSE}
@@ -23,13 +23,30 @@ xaringanExtra::use_panelset()
 
 ```
 
+```{css, echo=FALSE}
+
+d-article blockquote {
+  color: black;
+  border-left: 2px solid #FFCB05; 
+  padding: 0.5em 10px;
+}
+h1, h2, h3, h4, h5, h6 {
+  color: #00274C;
+  font-weight: 300;
+}
+.panelset {  
+  color: #9A3324;
+}
+  
+```
+
 # Acknowledgement
 
 This presentation of these ideas draws heavily upon the Stata documentation, although I have changed the notation slightly, and drawn out a few steps.
 
 # Derivation
 
-## A Regression Model With Random Effects
+## A Regression Model With Person Specific Effects
 
 We start with our regression equation.
 
