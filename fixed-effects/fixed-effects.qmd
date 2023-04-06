@@ -2,17 +2,15 @@
 title: "Fixed Effects Regression"
 description: |
   Comparing and Contrasting With Multilevel Modeling.
-author:
-  - name: Andy Grogan-Kaylor
-    url: https://agrogan1.github.io/
-    affiliation: University of Michigan
-    affiliation_url: https://www.umich.edu
-date: "`r Sys.Date()`"
-output: 
-  distill::distill_article:
-    highlight: haddock
-    toc: yes
-    code_folding: FALSE
+author: "Andrew Grogan-Kaylor"
+date: "today"
+format:
+  html:
+    toc: true
+    number-sections: true
+    theme:
+      light: united
+      dark: vapor
 ---
 
 ```{r setup, include=FALSE}
@@ -21,23 +19,6 @@ knitr::opts_chunk$set(echo = FALSE)
 
 xaringanExtra::use_panelset()
 
-```
-
-```{css, echo=FALSE}
-
-d-article blockquote {
-  color: black;
-  border-left: 2px solid #FFCB05; 
-  padding: 0.5em 10px;
-}
-h1, h2, h3, h4, h5, h6 {
-  color: #00274C;
-  font-weight: 300;
-}
-.panelset {  
-  color: #9A3324;
-}
-  
 ```
 
 # Acknowledgement
@@ -50,7 +31,7 @@ This presentation of these ideas draws heavily upon the Stata documentation, alt
 
 We start with our regression equation.
 
-$$y_{it} = \beta_0 + \beta_1 x_{it} + u_{0i} + e_{it}$$
+$$y_{it} = \beta_0 + \beta_1 x_{it} + u_{0i} + e_{it}$$ {#eq-regression}
 
 ::::: {.panelset}
 
@@ -81,17 +62,19 @@ $$\sum_{t} y_{it} / T_i = \sum_{t} \beta_0 / T_i + \sum_{t} \beta_1 x_{it} / T_i
 
 ## The Between Estimator
 
-$$\bar y_i = \beta_0 + \beta_1 \bar x_i + u_{0i} + \bar e_i$$
+If @eq-regression is true, then the below must also be true:
+
+$$\bar y_i = \beta_0 + \beta_1 \bar x_i + u_{0i} + \bar e_i$$ {#eq-between}
 
 This is sometimes called the between estimator.
 
 ## The Fixed Effects Estimator
 
-We can subtract this most recent equation from the first equation.
+We can subtract @eq-between from @eq-regression.
 
-$$y_{it} - \bar y_i = \beta_1 (x_{it} - \bar x_i) + (e_{it} - \bar e_i)$$
+$$y_{it} - \bar y_i = \beta_1 (x_{it} - \bar x_i) + (e_{it} - \bar e_i)$$ {#eq-within}
 
-This is the fixed effects (or *within*) estimator.
+@eq-within is the fixed effects (or *within*) estimator.
 
 
 
