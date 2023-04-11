@@ -146,7 +146,6 @@ We can accomplish random sampling at Level 2, with a little bit of code.
 
 ![Predicted Values From `predict`](mypredictedvalues.png){width=25%} \ ![Predicted Values From `predict` With Only Linear Fit](mypredictedvalues2.png){width=25%}
 
-
 ## Spaghetti Plot With Predicted Values
 
     spagplot outcome_hat warmth, id(country)
@@ -172,7 +171,46 @@ We can accomplish random sampling at Level 2, with a little bit of code.
 	graph export mymarginsplot.png, width(1500) replace
 
 ![Predicted Values From `margins` and `marginsplot`](mymarginsplot.png){width=75%}
+
+# Show More of the Variation
+
+As another possibility, we may wish to show more of the variation, by showing the variation in the *independent* variable and the *dependent* variable along with a *scatterplot* and *linear fit*. This is commonly known as a rug plot, and requires a little bit of manual programming in Stata.
+
+## Manually Generate The Densities To Plot Them Below
+
+    kdensity warmth, generate(warmth_x warmth_d) // manually generate outcome densities
+
+    kdensity outcome, generate(outcome_y outcome_d) // manually generate outcome densities
+
+## Rescale The Densities So They Plot Well
+
+> You may have to experiment with the scaling and moving factors.
+
+    replace warmth_d = 100 * warmth_d // rescale the density so it plots well
+
+    replace outcome_d = -10 * outcome_d - .5 // rescale AND FLIP AND MOVE the density so it plots well
+
+    label variable outcome_y "density: beneficial outcome" // relabel y variable
+
+## Graph All Of The Quantities Together
 	
+    twoway (scatter outcome warmth, mcolor(%10)) /// scatterplot w some transparency
+    (lfit outcome warmth) /// linear fit
+    (scatter warmth_d warmth_x) /// scatter plot of x density 
+    (scatter outcome_y outcome_d), /// scatterplot of y density (note flipped order)
+    title("Outcome by Warmth") /// title
+    ytitle("beneficial outcome") /// manual ytitle
+    xtitle("parental warmth") /// manual xtitle
+    legend(position(6) rows(2) ) /// legend at bottom; 2 rows
+    xlabel(0 1 2 3 4 5 6 7) /// manual x labels
+    name(mynewscatter, replace)
+
+    graph export mynewscatter.png, width(1500) replace
+
+![Scatterplot and Linear Fit With Marginal Rug Plots](mynewscatter.png){width=75%}
+
+# Spaghetti Plot With Rug Plot
+
 # Curvilinear and Linear Fits
 
 # Random Effects

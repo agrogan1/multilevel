@@ -207,7 +207,7 @@ table:not([class]) tbody:last-child tr:last-child td {border-bottom:1px solid bl
 <header id="title-block-header">
 <h1 class="title">Visualizing Multilevel Models</h1>
 <p class="author">Andy Grogan-Kaylor</p>
-<p class="date">16 Mar 2023 16:59:58</p>
+<p class="date">11 Apr 2023 11:07:36</p>
 </header>
 <style>body {max-width: 90%} h1 {color: #00274C;} h2 {color: #2F65A7;} p {font-size: 110%;} pre.stata {font-size: 110%;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
 <h1 id="introduction">Introduction</h1>
@@ -573,6 +573,56 @@ alt="Predicted Values From margins and marginsplot" />
 <figcaption aria-hidden="true">Predicted Values From
 <code>margins</code> and <code>marginsplot</code></figcaption>
 </figure>
+<h1 id="show-more-of-the-variation">Show More of the Variation</h1>
+<p>As another possibility, we may wish to show more of the variation, by
+showing the variation in the <em>independent</em> variable and the
+<em>dependent</em> variable along with a <em>scatterplot</em> and
+<em>linear fit</em>. This is commonly known as a rug plot, and requires
+a little bit of manual programming in Stata.</p>
+<h2 id="manually-generate-the-densities-to-plot-them-below">Manually
+Generate The Densities To Plot Them Below</h2>
+<pre class='stata'>. kdensity warmth, generate(warmth_x warmth_d) // manually generate outcome densities
+</pre>
+<pre class='stata'>. kdensity outcome, generate(outcome_y outcome_d) // manually generate outcome densities
+</pre>
+<h2 id="rescale-the-densities-so-they-plot-well">Rescale The Densities
+So They Plot Well</h2>
+<blockquote>
+<p>You may have to experiment with the scaling and moving factors.</p>
+</blockquote>
+<pre class='stata'>. replace warmth_d = 100 * warmth_d // rescale the density so it plots well
+(50 real changes made)
+</pre>
+<pre class='stata'>. replace outcome_d = -10 * outcome_d - .5 // rescale AND FLIP AND MOVE the density so it 
+> plots well
+(50 real changes made)
+</pre>
+<pre class='stata'>. label variable outcome_y "density: beneficial outcome" // relabel y variable
+</pre>
+<h2 id="graph-all-of-quantities-together">Graph All of Quantities
+Together</h2>
+<pre class='stata'>. twoway (scatter outcome warmth, mcolor(%10)) /// scatterplot w some transparency
+> (lfit outcome warmth) /// linear fit
+> (scatter warmth_d warmth_x) /// scatter plot of x density 
+> (scatter outcome_y outcome_d), /// scatterplot of y density (note flipped order)
+> title("Outcome by Warmth") /// title
+> ytitle("beneficial outcome") /// manual ytitle
+> xtitle("parental warmth") /// manual xtitle
+> legend(position(6) rows(2) ) /// legend at bottom; 2 rows
+> xlabel(0 1 2 3 4 5 6 7) /// manual x labels
+> name(mynewscatter, replace)
+</pre>
+<pre class='stata'>. graph export mynewscatter.png, width(1500) replace
+file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mynewscatter.png saved as
+    PNG format
+</pre>
+<figure>
+<img src="mynewscatter.png" style="width:75.0%"
+alt="Scatterplot and Linear Fit With Marginal Rug Plots" />
+<figcaption aria-hidden="true">Scatterplot and Linear Fit With Marginal
+Rug Plots</figcaption>
+</figure>
+<h1 id="spaghetti-plot-with-rug-plot">Spaghetti Plot With Rug Plot</h1>
 <h1 id="curvilinear-and-linear-fits">Curvilinear and Linear Fits</h1>
 <h1 id="random-effects">Random Effects</h1>
 </body>

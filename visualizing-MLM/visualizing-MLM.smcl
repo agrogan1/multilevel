@@ -3,15 +3,15 @@
       name:  {res}<unnamed>
        {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/visualizing-MLM.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}16 Mar 2023, 17:00:50
+ {txt}opened on:  {res}11 Apr 2023, 11:08:35
 {txt}
 {com}. //_1
 . display c(current_date)
-{res}16 Mar 2023
+{res}11 Apr 2023
 {txt}
 {com}. //_2
 . display c(current_time)
-{res}17:00:50
+{res}11:08:35
 {txt}
 {com}. //_3
 . set scheme michigan
@@ -162,8 +162,8 @@ Iteration 1:{space 3}log likelihood = {res:-9668.0859}
 {txt}{space 12}2.group {c |}{col 21}{res}{space 2} 1.084409{col 33}{space 2} .2200548{col 44}{space 1}    4.93{col 53}{space 3}0.000{col 61}{space 4} .6531099{col 74}{space 3} 1.515709
 {txt}{space 14}_cons {c |}{col 21}{res}{space 2} 51.64797{col 33}{space 2} .4645466{col 44}{space 1}  111.18{col 53}{space 3}0.000{col 61}{space 4} 50.73748{col 74}{space 3} 52.55847
 {txt}{hline 20}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
-
-{hline 29}{c TT}{hline 48}
+{res}
+{txt}{hline 29}{c TT}{hline 48}
 {col 3}Random-effects parameters{col 30}{c |}{col 34}Estimate{col 45}Std. err.{col 59}[95% conf. interval]
 {hline 29}{c +}{hline 48}
 {res}country{txt}: Identity{col 30}{c |}
@@ -244,8 +244,8 @@ Iteration 1:{space 3}log likelihood = {res:-9668.0859}
 {txt}{space 12}2.group {c |}{col 21}{res}{space 2} 1.084409{col 33}{space 2} .2200548{col 44}{space 1}    4.93{col 53}{space 3}0.000{col 61}{space 4} .6531099{col 74}{space 3} 1.515709
 {txt}{space 14}_cons {c |}{col 21}{res}{space 2} 51.64797{col 33}{space 2} .4645466{col 44}{space 1}  111.18{col 53}{space 3}0.000{col 61}{space 4} 50.73748{col 74}{space 3} 52.55847
 {txt}{hline 20}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
-
-{hline 29}{c TT}{hline 48}
+{res}
+{txt}{hline 29}{c TT}{hline 48}
 {col 3}Random-effects parameters{col 30}{c |}{col 34}Estimate{col 45}Std. err.{col 59}[95% conf. interval]
 {hline 29}{c +}{hline 48}
 {res}country{txt}: Identity{col 30}{c |}
@@ -307,12 +307,51 @@ PNG
 format
 {p_end}
 
+{com}. //_36
+. kdensity warmth, generate(warmth_x warmth_d) // manually generate outcome densities
+{res}{txt}
+{com}. //_37
+. kdensity outcome, generate(outcome_y outcome_d) // manually generate outcome densities
+{res}{txt}
+{com}. //_38
+. replace warmth_d = 100 * warmth_d // rescale the density so it plots well
+{txt}(50 real changes made)
+
+{com}. //_39
+. replace outcome_d = -10 * outcome_d - .5 // rescale AND FLIP AND MOVE the density so it plots well
+{txt}(50 real changes made)
+
+{com}. //_40
+. label variable outcome_y "density: beneficial outcome" // relabel y variable
+{txt}
+{com}. //_41
+. twoway (scatter outcome warmth, mcolor(%10)) /// scatterplot w some transparency
+> (lfit outcome warmth) /// linear fit
+> (scatter warmth_d warmth_x) /// scatter plot of x density 
+> (scatter outcome_y outcome_d), /// scatterplot of y density (note flipped order)
+> title("Outcome by Warmth") /// title
+> ytitle("beneficial outcome") /// manual ytitle
+> xtitle("parental warmth") /// manual xtitle
+> legend(position(6) rows(2) ) /// legend at bottom; 2 rows
+> xlabel(0 1 2 3 4 5 6 7) /// manual x labels
+> name(mynewscatter, replace)
+{res}{txt}
+{com}. //_42
+. graph export mynewscatter.png, width(1500) replace
+{txt}{p 0 4 2}
+file {bf}
+/Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mynewscatter.png{rm}
+saved as
+PNG
+format
+{p_end}
+
 {com}. //_^
 . log close
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/visualizing-MLM.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}16 Mar 2023, 17:01:47
+ {txt}closed on:  {res}11 Apr 2023, 11:09:45
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}
