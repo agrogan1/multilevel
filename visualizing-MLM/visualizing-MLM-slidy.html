@@ -103,7 +103,7 @@ Andy Grogan-Kaylor
 class="title-slide slide section level1 title">
 <h1 class="title">Visualizing Multilevel Models</h1>
 <p>Andy Grogan-Kaylor</p>
-<p>11 Apr 2023 11:07:36</p>
+<p>17 Apr 2023 17:47:24</p>
 </div>
 
 </div>
@@ -535,8 +535,12 @@ class="sourceCode stata"><code class="sourceCode stata"><span id="cb37-1"><a hre
 <div class="sourceCode" id="cb38"><pre
 class="sourceCode stata"><code class="sourceCode stata"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">label</span> <span class="kw">variable</span> outcome_y <span class="st">&quot;density: beneficial outcome&quot;</span> <span class="co">// relabel y variable</span></span></code></pre></div>
 </div>
-<div id="graph-all-of-quantities-together" class="slide section level2">
-<h1>Graph All of Quantities Together</h1>
+<div id="scatterplot-with-linear-fit-and-marginal-density-plots"
+class="slide section level2">
+<h1>Scatterplot With Linear Fit and Marginal Density Plots</h1>
+<p>This graph gives us an idea not only of the relationship between
+<em>x</em> and <em>y</em>, but also a sense of the distributions of
+<em>x</em> and <em>y</em>.</p>
 <div class="sourceCode" id="cb39"><pre
 class="sourceCode stata"><code class="sourceCode stata"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">twoway</span> (<span class="kw">scatter</span> outcome warmth, mcolor(%10)) <span class="co">/// scatterplot w some transparency</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>&gt; (<span class="kw">lfit</span> outcome warmth) <span class="co">/// linear fit</span></span>
@@ -558,11 +562,9 @@ class="sourceCode stata"><code class="sourceCode stata"><span id="cb40-1"><a hre
 Plots</p>
 </div>
 </div>
-
-<div id="spaghetti-plot-with-rug-plot"
-class="title-slide slide section level1">
-<h1>Spaghetti Plot With Rug Plot</h1>
-
+<div id="spaghetti-plot-with-linear-fit-and-marginal-density-plots"
+class="slide section level2">
+<h1>Spaghetti Plot With Linear Fit and Marginal Density Plots</h1>
 </div>
 
 <div id="curvilinear-and-linear-fits"

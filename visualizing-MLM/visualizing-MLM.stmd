@@ -172,9 +172,9 @@ We can accomplish random sampling at Level 2, with a little bit of code.
 
 ![Predicted Values From `margins` and `marginsplot`](mymarginsplot.png){width=75%}
 
-# Show More of the Variation
+# Scatterplot With Linear Fit and Marginal Density Plots
 
-As another possibility, we may wish to show more of the variation, by showing the variation in the *independent* variable and the *dependent* variable along with a *scatterplot* and *linear fit*. This is commonly known as a rug plot, and requires a little bit of manual programming in Stata.
+As another possibility, we may wish to show more of the variation, by showing the variation in the *independent* variable and the *dependent* variable along with a *scatterplot* and *linear fit*. This is a complex graph and requires a little bit of manual programming in Stata.
 
 ## Manually Generate The Densities To Plot Them Below
 
@@ -192,7 +192,7 @@ As another possibility, we may wish to show more of the variation, by showing th
 
     label variable outcome_y "density: beneficial outcome" // relabel y variable
 
-## Graph All Of The Quantities Together
+## Make The Graph 
 	
     twoway (scatter outcome warmth, mcolor(%10)) /// scatterplot w some transparency
     (lfit outcome warmth) /// linear fit
@@ -207,9 +207,9 @@ As another possibility, we may wish to show more of the variation, by showing th
 
     graph export mynewscatter.png, width(1500) replace
 
-![Scatterplot and Linear Fit With Marginal Rug Plots](mynewscatter.png){width=75%}
+![Scatterplot and Linear Fit With Marginal Density Plots](mynewscatter.png){width=75%}
 
-# Spaghetti Plot With Rug Plot
+## Spaghetti Plot With Linear Fit and Marginal Density Plots
 
 # Curvilinear and Linear Fits
 
