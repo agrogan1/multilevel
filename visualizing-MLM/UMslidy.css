@@ -54,6 +54,9 @@ pre {
   color: black;
   background-color: white;
 }
+code:not(code.sourceCode) {
+  color: red;
+}
 p.caption {
   color: red;
 }
