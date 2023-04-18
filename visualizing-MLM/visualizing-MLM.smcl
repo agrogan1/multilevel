@@ -3,15 +3,15 @@
       name:  {res}<unnamed>
        {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/visualizing-MLM.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}17 Apr 2023, 17:52:24
+ {txt}opened on:  {res}18 Apr 2023, 12:40:54
 {txt}
 {com}. //_1
 . display c(current_date)
-{res}17 Apr 2023
+{res}18 Apr 2023
 {txt}
 {com}. //_2
 . display c(current_time)
-{res}17:52:24
+{res}12:40:54
 {txt}
 {com}. //_3
 . set scheme michigan
@@ -308,14 +308,14 @@ format
 {p_end}
 
 {com}. //_36
-. kdensity warmth, generate(warmth_x warmth_d) // manually generate outcome densities
+. kdensity warmth, generate(warmth_x warmth_d) n(8) // manually generate outcome densities
 {res}{txt}
 {com}. //_37
 . kdensity outcome, generate(outcome_y outcome_d) // manually generate outcome densities
 {res}{txt}
 {com}. //_38
 . replace warmth_d = 100 * warmth_d // rescale the density so it plots well
-{txt}(50 real changes made)
+{txt}(8 real changes made)
 
 {com}. //_39
 . replace outcome_d = -10 * outcome_d - .5 // rescale AND FLIP AND MOVE the density so it plots well
@@ -327,8 +327,8 @@ format
 {com}. //_41
 . twoway (scatter outcome warmth, mcolor(%10)) /// scatterplot w some transparency
 > (lfit outcome warmth) /// linear fit
-> (scatter warmth_d warmth_x) /// scatter plot of x density 
-> (scatter outcome_y outcome_d), /// scatterplot of y density (note flipped order)
+> (line warmth_d warmth_x) /// line plot of x density 
+> (line outcome_y outcome_d), /// line plot of y density (note flipped order)
 > title("Outcome by Warmth") /// title
 > ytitle("beneficial outcome") /// manual ytitle
 > xtitle("parental warmth") /// manual xtitle
@@ -351,7 +351,7 @@ format
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/visualizing-MLM.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}17 Apr 2023, 17:53:32
+ {txt}closed on:  {res}18 Apr 2023, 12:41:58
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}
