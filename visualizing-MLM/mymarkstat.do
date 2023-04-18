@@ -6,6 +6,8 @@ clear all
 
 cd "/Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM" // bilingual
 
+* edit
+
 doedit visualizing-MLM.stmd
 
 * render
