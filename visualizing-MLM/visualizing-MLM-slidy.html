@@ -103,7 +103,7 @@ Andy Grogan-Kaylor
 class="title-slide slide section level1 title">
 <h1 class="title">Visualizing Multilevel Models</h1>
 <p>Andy Grogan-Kaylor</p>
-<p>17 Apr 2023 17:47:24</p>
+<p>18 Apr 2023 12:39:57</p>
 </div>
 
 </div>
@@ -502,20 +502,29 @@ class="sourceCode stata"><code class="sourceCode stata"><span id="cb33-1"><a hre
 </div>
 </div>
 
-<div id="show-more-of-the-variation"
+<div
+id="scatterplot-with-linear-fit-and-marginal-density-plots-twoway-..."
 class="title-slide slide section level1">
-<h1>Show More of the Variation</h1>
+<h1>Scatterplot With Linear Fit and Marginal Density Plots
+(<code>twoway ...</code>)</h1>
 <p>As another possibility, we may wish to show more of the variation, by
 showing the variation in the <em>independent</em> variable and the
 <em>dependent</em> variable along with a <em>scatterplot</em> and
-<em>linear fit</em>. This is commonly known as a rug plot, and requires
-a little bit of manual programming in Stata.</p>
+<em>linear fit</em>. This is a complex graph and requires a little bit
+of manual programming in Stata.</p>
 </div>
-<div id="manually-generate-the-densities-to-plot-them-below"
+<div
+id="manually-generate-the-densities-to-plot-them-below-kdensity-..."
 class="slide section level2">
-<h1>Manually Generate The Densities To Plot Them Below</h1>
+<h1>Manually Generate The Densities To Plot Them Below
+(<code>kdensity ...</code>)</h1>
+<blockquote>
+<p>We generate the density for <em>warmth</em> at only a few points
+(<code>n(8)</code>) since this variable has relatively few
+categories.</p>
+</blockquote>
 <div class="sourceCode" id="cb34"><pre
-class="sourceCode stata"><code class="sourceCode stata"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">kdensity</span> warmth, <span class="kw">generate</span>(warmth_x warmth_d) <span class="co">// manually generate outcome densities</span></span></code></pre></div>
+class="sourceCode stata"><code class="sourceCode stata"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">kdensity</span> warmth, <span class="kw">generate</span>(warmth_x warmth_d) n(8) <span class="co">// manually generate outcome densities</span></span></code></pre></div>
 <div class="sourceCode" id="cb35"><pre
 class="sourceCode stata"><code class="sourceCode stata"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">kdensity</span> outcome, <span class="kw">generate</span>(outcome_y outcome_d) <span class="co">// manually generate outcome densities</span></span></code></pre></div>
 </div>
@@ -527,7 +536,7 @@ class="slide section level2">
 </blockquote>
 <div class="sourceCode" id="cb36"><pre
 class="sourceCode stata"><code class="sourceCode stata"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">replace</span> warmth_d = 100 * warmth_d <span class="co">// rescale the density so it plots well</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>(50 <span class="fu">real</span> changes made)</span></code></pre></div>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>(8 <span class="fu">real</span> changes made)</span></code></pre></div>
 <div class="sourceCode" id="cb37"><pre
 class="sourceCode stata"><code class="sourceCode stata"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">replace</span> outcome_d = -10 * outcome_d - .5 <span class="co">// rescale AND FLIP AND MOVE the density so it </span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>&gt; plots well</span>
@@ -535,17 +544,17 @@ class="sourceCode stata"><code class="sourceCode stata"><span id="cb37-1"><a hre
 <div class="sourceCode" id="cb38"><pre
 class="sourceCode stata"><code class="sourceCode stata"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">label</span> <span class="kw">variable</span> outcome_y <span class="st">&quot;density: beneficial outcome&quot;</span> <span class="co">// relabel y variable</span></span></code></pre></div>
 </div>
-<div id="scatterplot-with-linear-fit-and-marginal-density-plots"
-class="slide section level2">
-<h1>Scatterplot With Linear Fit and Marginal Density Plots</h1>
-<p>This graph gives us an idea not only of the relationship between
-<em>x</em> and <em>y</em>, but also a sense of the distributions of
-<em>x</em> and <em>y</em>.</p>
+<div id="make-the-graph-twoway-..." class="slide section level2">
+<h1>Make The Graph (<code>twoway ...</code>)</h1>
+<blockquote>
+<p>You may have to experiment with whether scatterplots or line plots
+work best for displaying the x and y densities.</p>
+</blockquote>
 <div class="sourceCode" id="cb39"><pre
 class="sourceCode stata"><code class="sourceCode stata"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">twoway</span> (<span class="kw">scatter</span> outcome warmth, mcolor(%10)) <span class="co">/// scatterplot w some transparency</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>&gt; (<span class="kw">lfit</span> outcome warmth) <span class="co">/// linear fit</span></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>&gt; (<span class="kw">scatter</span> warmth_d warmth_x) <span class="co">/// scatter plot of x density </span></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>&gt; (<span class="kw">scatter</span> outcome_y outcome_d), <span class="co">/// scatterplot of y density (note flipped order)</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>&gt; (<span class="kw">line</span> warmth_d warmth_x) <span class="co">/// line plot of x density </span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>&gt; (<span class="kw">line</span> outcome_y outcome_d), <span class="co">/// line plot of y density (note flipped order)</span></span>
 <span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>&gt; <span class="bn">title</span>(<span class="st">&quot;Outcome by Warmth&quot;</span>) <span class="co">/// title</span></span>
 <span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>&gt; <span class="bn">ytitle</span>(<span class="st">&quot;beneficial outcome&quot;</span>) <span class="co">/// manual ytitle</span></span>
 <span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>&gt; <span class="bn">xtitle</span>(<span class="st">&quot;parental warmth&quot;</span>) <span class="co">/// manual xtitle</span></span>
@@ -558,7 +567,7 @@ class="sourceCode stata"><code class="sourceCode stata"><span id="cb40-1"><a hre
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    PNG <span class="kw">format</span></span></code></pre></div>
 <div class="figure">
 <img src="mynewscatter.png" style="width:75.0%" alt="" />
-<p class="caption">Scatterplot and Linear Fit With Marginal Rug
+<p class="caption">Scatterplot and Linear Fit With Marginal Density
 Plots</p>
 </div>
 </div>
