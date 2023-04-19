@@ -132,7 +132,7 @@ We can accomplish random sampling at Level 2, with a little bit of code.
 	
 ### Generate Predicted Values
 	
-	predict outcome_hat // predict yhat
+	predict outcome_hat, fitted // predict yhat (`fitted` uses fixed AND random effects)
 	
 ### Graph With `twoway` Syntax	
 	
@@ -144,7 +144,9 @@ We can accomplish random sampling at Level 2, with a little bit of code.
 	
 	graph export mypredictedvalues2.png, width(1500) replace
 
-![Predicted Values From `predict`](mypredictedvalues.png){width=25%} \ ![Predicted Values From `predict` With Only Linear Fit](mypredictedvalues2.png){width=25%}
+![Predicted Values From `predict`](mypredictedvalues.png){width=50%} 
+
+![Predicted Values From `predict` With Only Linear Fit](mypredictedvalues2.png){width=50%}
 
 ## Spaghetti Plot With Predicted Values
 

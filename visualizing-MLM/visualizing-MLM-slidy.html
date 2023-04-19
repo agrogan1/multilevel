@@ -103,7 +103,7 @@ Andy Grogan-Kaylor
 class="title-slide slide section level1 title">
 <h1 class="title">Visualizing Multilevel Models</h1>
 <p>Andy Grogan-Kaylor</p>
-<p>18 Apr 2023 12:39:57</p>
+<p>19 Apr 2023 15:26:28</p>
 </div>
 
 </div>
@@ -372,8 +372,7 @@ class="sourceCode stata"><code class="sourceCode stata"><span id="cb22-1"><a hre
 <span id="cb22-37"><a href="#cb22-37" aria-hidden="true" tabindex="-1"></a>LR <span class="kw">test</span> vs. linear <span class="kw">model</span>: chibar2(01) = 200.29        Prob &gt;= chibar2 = 0.0000</span></code></pre></div>
 <h3 id="generate-predicted-values">Generate Predicted Values</h3>
 <div class="sourceCode" id="cb23"><pre
-class="sourceCode stata"><code class="sourceCode stata"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">predict</span> outcome_hat <span class="co">// predict yhat</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>(option <span class="kw">xb</span> assumed)</span></code></pre></div>
+class="sourceCode stata"><code class="sourceCode stata"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">predict</span> outcome_hat, <span class="kw">fitted</span> <span class="co">// predict yhat (`fitted` uses fixed AND random effects)</span></span></code></pre></div>
 <h3 id="graph-with-twoway-syntax">Graph With <code>twoway</code>
 Syntax</h3>
 <div class="sourceCode" id="cb24"><pre
@@ -388,10 +387,15 @@ class="sourceCode stata"><code class="sourceCode stata"><span id="cb26-1"><a hre
 class="sourceCode stata"><code class="sourceCode stata"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">graph</span> <span class="kw">export</span> mypredictedvalues2.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mypredictedvalues2.png</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    saved <span class="kw">as</span> PNG <span class="kw">format</span></span></code></pre></div>
-<p><img src="mypredictedvalues.png" style="width:25.0%"
-alt="Predicted Values From predict" />  <img
-src="mypredictedvalues2.png" style="width:25.0%"
-alt="Predicted Values From predict With Only Linear Fit" /></p>
+<div class="figure">
+<img src="mypredictedvalues.png" style="width:50.0%" alt="" />
+<p class="caption">Predicted Values From <code>predict</code></p>
+</div>
+<div class="figure">
+<img src="mypredictedvalues2.png" style="width:50.0%" alt="" />
+<p class="caption">Predicted Values From <code>predict</code> With Only
+Linear Fit</p>
+</div>
 </div>
 <div id="spaghetti-plot-with-predicted-values"
 class="slide section level2">

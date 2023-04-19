@@ -207,7 +207,7 @@ table:not([class]) tbody:last-child tr:last-child td {border-bottom:1px solid bl
 <header id="title-block-header">
 <h1 class="title">Visualizing Multilevel Models</h1>
 <p class="author">Andy Grogan-Kaylor</p>
-<p class="date">18 Apr 2023 12:39:57</p>
+<p class="date">19 Apr 2023 15:26:28</p>
 </header>
 <style>body {max-width: 90%} h1 {color: #00274C;} h2 {color: #2F65A7;} p {font-size: 110%;} pre.stata {font-size: 110%;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
 <h1 id="introduction">Introduction</h1>
@@ -444,8 +444,7 @@ country: Identity            │
 LR test vs. linear model: chibar2(01) = 200.29        Prob >= chibar2 = 0.0000
 </pre>
 <h3 id="generate-predicted-values">Generate Predicted Values</h3>
-<pre class='stata'>. predict outcome_hat // predict yhat
-(option xb assumed)
+<pre class='stata'>. predict outcome_hat, fitted // predict yhat (`fitted` uses fixed AND random effects)
 </pre>
 <h3 id="graph-with-twoway-syntax">Graph With <code>twoway</code>
 Syntax</h3>
@@ -461,10 +460,18 @@ file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mypredictedvalues.
 file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mypredictedvalues2.png
     saved as PNG format
 </pre>
-<p><img src="mypredictedvalues.png" style="width:25.0%"
-alt="Predicted Values From predict" />  <img
-src="mypredictedvalues2.png" style="width:25.0%"
-alt="Predicted Values From predict With Only Linear Fit" /></p>
+<figure>
+<img src="mypredictedvalues.png" style="width:50.0%"
+alt="Predicted Values From predict" />
+<figcaption aria-hidden="true">Predicted Values From
+<code>predict</code></figcaption>
+</figure>
+<figure>
+<img src="mypredictedvalues2.png" style="width:50.0%"
+alt="Predicted Values From predict With Only Linear Fit" />
+<figcaption aria-hidden="true">Predicted Values From
+<code>predict</code> With Only Linear Fit</figcaption>
+</figure>
 <h2 id="spaghetti-plot-with-predicted-values">Spaghetti Plot With
 Predicted Values</h2>
 <pre class='stata'>. spagplot outcome_hat warmth, id(country)

@@ -3,15 +3,15 @@
       name:  {res}<unnamed>
        {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/visualizing-MLM.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}18 Apr 2023, 12:40:54
+ {txt}opened on:  {res}19 Apr 2023, 15:27:37
 {txt}
 {com}. //_1
 . display c(current_date)
-{res}18 Apr 2023
+{res}19 Apr 2023
 {txt}
 {com}. //_2
 . display c(current_time)
-{res}12:40:54
+{res}15:27:37
 {txt}
 {com}. //_3
 . set scheme michigan
@@ -174,9 +174,8 @@ Iteration 1:{space 3}log likelihood = {res:-9668.0859}
 LR test vs. linear model:{col 27}{help j_chibar##|_new:chibar2(01) =} {res}200.29{col 55}{txt}Prob >= chibar2 = {col 73}{res}0.0000
 {txt}
 {com}. //_25
-. predict outcome_hat // predict yhat
-{txt}(option {bf:xb} assumed)
-
+. predict outcome_hat, fitted // predict yhat (`fitted` uses fixed AND random effects)
+{txt}
 {com}. //_26
 . twoway (scatter outcome_hat warmth) (lfit outcome_hat warmth)
 {res}{txt}
@@ -351,7 +350,7 @@ format
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/visualizing-MLM.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}18 Apr 2023, 12:41:58
+ {txt}closed on:  {res}19 Apr 2023, 15:28:44
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}
