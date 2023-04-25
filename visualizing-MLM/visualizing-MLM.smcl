@@ -3,15 +3,15 @@
       name:  {res}<unnamed>
        {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/visualizing-MLM.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}19 Apr 2023, 15:27:37
+ {txt}opened on:  {res}25 Apr 2023, 11:39:06
 {txt}
 {com}. //_1
 . display c(current_date)
-{res}19 Apr 2023
+{res}25 Apr 2023
 {txt}
 {com}. //_2
 . display c(current_time)
-{res}15:27:37
+{res}11:39:06
 {txt}
 {com}. //_3
 . set scheme michigan
@@ -350,7 +350,7 @@ format
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/visualizing-MLM.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}19 Apr 2023, 15:28:44
+ {txt}closed on:  {res}25 Apr 2023, 11:40:11
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}
