@@ -53,6 +53,8 @@ img {
 pre {
   color: black;
   background-color: white;
+  border: 2px solid grey;
+  border-left: 5px solid #00274C;
 }
 code:not(code.sourceCode) {
   color: red;
