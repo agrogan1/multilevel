@@ -207,7 +207,7 @@ table:not([class]) tbody:last-child tr:last-child td {border-bottom:1px solid bl
 <header id="title-block-header">
 <h1 class="title">Visualizing Multilevel Models</h1>
 <p class="author">Andy Grogan-Kaylor</p>
-<p class="date">19 May 2023 15:54:39</p>
+<p class="date">21 May 2023 13:19:45</p>
 </header>
 <style>body {max-width: 90%} h1 {color: #00274C;} h2 {color: #2F65A7;} p {font-size: 110%;} pre.stata {font-size: 110%;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {font-size: 110%; color: red;}</style>
 <h1 id="introduction">Introduction</h1>
@@ -255,16 +255,15 @@ href="https://agrogan1.github.io/Stata/michigan-graph-scheme/">https://agrogan1.
 would be Asjad Naqvi’s incredible <code>schemepack</code>: <a
 href="https://github.com/asjadnaqvi/stata-schemepack">https://github.com/asjadnaqvi/stata-schemepack</a></p>
 <h1 id="get-data">Get Data</h1>
-<pre class='stata'>. use "https://github.com/agrogan1/multilevel-thinking/raw/main/simulate-and-analyze-multi
-> level-data/simulated_multilevel_data.dta", clear
+<pre class='stata'>. use "https://github.com/agrogan1/multilevel-thinking/raw/main/simulate-and-analyze-multilevel-dat
+> a/simulated_multilevel_data.dta", clear
 </pre>
 <h1 id="scatterplots-twoway-scatter-y-x">Scatterplots
 (<code>twoway scatter y x</code>)</h1>
 <pre class='stata'>. twoway scatter outcome warmth
 </pre>
 <pre class='stata'>. graph export myscatter.png, width(1500) replace
-file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/myscatter.png saved as PNG
-    format
+file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/myscatter.png saved as PNG format
 </pre>
 <figure>
 <img src="myscatter.png" style="width:75.0%" alt="Scatterplot" />
@@ -275,8 +274,7 @@ file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/myscatter.png save
 <pre class='stata'>. twoway lfit outcome warmth
 </pre>
 <pre class='stata'>. graph export mylinear.png, width(1500) replace
-file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mylinear.png saved as PNG
-    format
+file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mylinear.png saved as PNG format
 </pre>
 <figure>
 <img src="mylinear.png" style="width:75.0%" alt="Linear Fit" />
@@ -287,8 +285,7 @@ Fit With Confidence Interval (<code>twoway lfitci y x</code>)</h1>
 <pre class='stata'>. twoway lfitci outcome warmth
 </pre>
 <pre class='stata'>. graph export mylfitci.png, width(1500) replace
-file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mylfitci.png saved as PNG
-    format
+file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mylfitci.png saved as PNG format
 </pre>
 <figure>
 <img src="mylfitci.png" style="width:75.0%"
@@ -303,8 +300,8 @@ Scatterplot and Linear Fit
 <pre class='stata'>. twoway (scatter outcome warmth) (lfit outcome warmth)
 </pre>
 <pre class='stata'>. graph export myscatterlinear.png, width(1500) replace
-file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/myscatterlinear.png saved
-    as PNG format
+file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/myscatterlinear.png saved as PNG
+    format
 </pre>
 <figure>
 <img src="myscatterlinear.png" style="width:75.0%"
@@ -316,8 +313,7 @@ alt="Scatterplot and Linear Fit" />
 <pre class='stata'>. spagplot outcome warmth, id(country)
 </pre>
 <pre class='stata'>. graph export myspaghetti.png, width(1500) replace
-file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/myspaghetti.png saved as
-    PNG format
+file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/myspaghetti.png saved as PNG format
 </pre>
 <figure>
 <img src="myspaghetti.png" style="width:75.0%" alt="Spaghetti Plot" />
@@ -335,12 +331,11 @@ ratio</em> of the graph for better visual presentation. I also use the
 of the scatterplot, which helps the presentation of these small
 multiples. The <code>mcolor(%30)</code> option could be useful in the
 other graphs in this tutorial as well.</p>
-<pre class='stata'>. twoway (scatter outcome warmth, mcolor(%30)) (lfit outcome warmth), by(country) aspect(1
-> )
+<pre class='stata'>. twoway (scatter outcome warmth, mcolor(%30)) (lfit outcome warmth), by(country) aspect(1)
 </pre>
 <pre class='stata'>. graph export mysmallmultiples.png, width(1500) replace
-file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mysmallmultiples.png saved
-    as PNG format
+file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mysmallmultiples.png saved as PNG
+    format
 </pre>
 <figure>
 <img src="mysmallmultiples.png" style="width:75.0%"
@@ -379,8 +374,8 @@ code.</p>
 > by(country) aspect(1) // by country
 </pre>
 <pre class='stata'>. graph export mysmallmultiples2.png, width(1500) replace
-file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mysmallmultiples2.png
-    saved as PNG format
+file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mysmallmultiples2.png saved as PNG
+    format
 </pre>
 <figure>
 <img src="mysmallmultiples2.png" style="width:75.0%"
@@ -410,19 +405,19 @@ effects. (This will be added!)</p>
 Performing EM optimization ...
 
 Performing gradient-based optimization: 
-Iteration 0:   log likelihood = -9668.0859  
-Iteration 1:   log likelihood = -9668.0859  
+Iteration 0:  Log likelihood = -9668.0859  
+Iteration 1:  Log likelihood = -9668.0859  
 
 Computing standard errors ...
 
-Mixed-effects ML regression                     Number of obs     =      3,000
-Group variable: country                         Number of groups  =         30
-                                                Obs per group:
-                                                              min =        100
-                                                              avg =      100.0
-                                                              max =        100
-                                                Wald chi2(3)      =     401.00
-Log likelihood = -9668.0859                     Prob > chi2       =     0.0000
+Mixed-effects ML regression                          Number of obs    =  3,000
+Group variable: country                              Number of groups =     30
+                                                     Obs per group:
+                                                                  min =    100
+                                                                  avg =  100.0
+                                                                  max =    100
+                                                     Wald chi2(3)     = 401.00
+Log likelihood = -9668.0859                          Prob > chi2      = 0.0000
 
 ────────────────────┬────────────────────────────────────────────────────────────────
             outcome │ Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
@@ -451,14 +446,14 @@ Syntax</h3>
 <pre class='stata'>. twoway (scatter outcome_hat warmth) (lfit outcome_hat warmth)
 </pre>
 <pre class='stata'>. graph export mypredictedvalues.png, width(1500) replace
-file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mypredictedvalues.png
-    saved as PNG format
+file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mypredictedvalues.png saved as PNG
+    format
 </pre>
 <pre class='stata'>. twoway (lfit outcome_hat warmth)
 </pre>
 <pre class='stata'>. graph export mypredictedvalues2.png, width(1500) replace
-file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mypredictedvalues2.png
-    saved as PNG format
+file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mypredictedvalues2.png saved as PNG
+    format
 </pre>
 <figure>
 <img src="mypredictedvalues.png" style="width:50.0%"
@@ -477,8 +472,8 @@ Predicted Values</h2>
 <pre class='stata'>. spagplot outcome_hat warmth, id(country)
 </pre>
 <pre class='stata'>. graph export myspaghetti2.png, width(1500) replace
-file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/myspaghetti2.png saved as
-    PNG format
+file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/myspaghetti2.png saved as PNG
+    format
 </pre>
 <figure>
 <img src="myspaghetti2.png" style="width:75.0%"
@@ -494,19 +489,19 @@ Values</figcaption>
 Performing EM optimization ...
 
 Performing gradient-based optimization: 
-Iteration 0:   log likelihood = -9668.0859  
-Iteration 1:   log likelihood = -9668.0859  
+Iteration 0:  Log likelihood = -9668.0859  
+Iteration 1:  Log likelihood = -9668.0859  
 
 Computing standard errors ...
 
-Mixed-effects ML regression                     Number of obs     =      3,000
-Group variable: country                         Number of groups  =         30
-                                                Obs per group:
-                                                              min =        100
-                                                              avg =      100.0
-                                                              max =        100
-                                                Wald chi2(3)      =     401.00
-Log likelihood = -9668.0859                     Prob > chi2       =     0.0000
+Mixed-effects ML regression                          Number of obs    =  3,000
+Group variable: country                              Number of groups =     30
+                                                     Obs per group:
+                                                                  min =    100
+                                                                  avg =  100.0
+                                                                  max =    100
+                                                     Wald chi2(3)     = 401.00
+Log likelihood = -9668.0859                          Prob > chi2      = 0.0000
 
 ────────────────────┬────────────────────────────────────────────────────────────────
             outcome │ Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
@@ -571,8 +566,8 @@ Expression: Linear prediction, fixed portion, predict()
 Variables that uniquely identify margins: warmth group
 </pre>
 <pre class='stata'>. graph export mymarginsplot.png, width(1500) replace
-file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mymarginsplot.png saved as
-    PNG format
+file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mymarginsplot.png saved as PNG
+    format
 </pre>
 <figure>
 <img src="mymarginsplot.png" style="width:75.0%"
@@ -589,6 +584,12 @@ showing the variation in the <em>independent</em> variable and the
 <em>dependent</em> variable along with a <em>scatterplot</em> and
 <em>linear fit</em>. This is a complex graph and requires a little bit
 of manual programming in Stata.</p>
+<blockquote>
+<p>You could also investigate the user written program
+<code>binscatterhist</code> (<code>ssc install binscatterhist</code>)
+which produces a similar looking graph, and automates much of this
+work.</p>
+</blockquote>
 <h2
 id="manually-generate-the-densities-to-plot-them-below-kdensity-...">Manually
 Generate The Densities To Plot Them Below
@@ -610,8 +611,7 @@ So They Plot Well</h2>
 <pre class='stata'>. replace warmth_d = 100 * warmth_d // rescale the density so it plots well
 (8 real changes made)
 </pre>
-<pre class='stata'>. replace outcome_d = -10 * outcome_d - .5 // rescale AND FLIP AND MOVE the density so it 
-> plots well
+<pre class='stata'>. replace outcome_d = 5 * outcome_d - .5 // rescale AND MOVE the density so it plots well
 (50 real changes made)
 </pre>
 <pre class='stata'>. label variable outcome_y "density: beneficial outcome" // relabel y variable
@@ -634,8 +634,8 @@ work best for displaying the x and y densities.</p>
 > name(mynewscatter, replace)
 </pre>
 <pre class='stata'>. graph export mynewscatter.png, width(1500) replace
-file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mynewscatter.png saved as
-    PNG format
+file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mynewscatter.png saved as PNG
+    format
 </pre>
 <figure>
 <img src="mynewscatter.png" style="width:75.0%"
