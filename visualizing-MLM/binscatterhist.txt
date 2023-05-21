@@ -1,0 +1,3 @@
+you can also investigate the program binscatterhist
+
+ssc install binscatterhist
