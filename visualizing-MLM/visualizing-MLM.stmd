@@ -178,6 +178,8 @@ We can accomplish random sampling at Level 2, with a little bit of code.
 
 As another possibility, we may wish to show more of the variation, by showing the variation in the *independent* variable and the *dependent* variable along with a *scatterplot* and *linear fit*. This is a complex graph and requires a little bit of manual programming in Stata.
 
+> You could also investigate the user written program `binscatterhist` (`ssc install binscatterhist`) which produces a similar looking graph, and automates much of this work.
+
 ## Manually Generate The Densities To Plot Them Below (`kdensity ...`)
 
 > We generate the density for *warmth* at only a few points (`n(8)`) since this variable has relatively few categories.
@@ -192,7 +194,7 @@ As another possibility, we may wish to show more of the variation, by showing th
 
     replace warmth_d = 100 * warmth_d // rescale the density so it plots well
 
-    replace outcome_d = -10 * outcome_d - .5 // rescale AND FLIP AND MOVE the density so it plots well
+    replace outcome_d = 5 * outcome_d - .5 // rescale AND MOVE the density so it plots well
 
     label variable outcome_y "density: beneficial outcome" // relabel y variable
 

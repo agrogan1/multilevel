@@ -3,15 +3,15 @@
       name:  {res}<unnamed>
        {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/visualizing-MLM.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}19 May 2023, 15:55:42
+ {txt}opened on:  {res}21 May 2023, 13:19:45
 {txt}
 {com}. //_1
 . display c(current_date)
-{res}19 May 2023
+{res}21 May 2023
 {txt}
 {com}. //_2
 . display c(current_time)
-{res}15:55:42
+{res}13:19:45
 {txt}
 {com}. //_3
 . set scheme michigan
@@ -139,20 +139,20 @@ format
 {res}
 {txt}Performing EM optimization ...
 {res}
-{txt}Performing gradient-based optimization: {res}
-{txt}Iteration 0:{space 3}log likelihood = {res:-9668.0859}  
-Iteration 1:{space 3}log likelihood = {res:-9668.0859}  
+{txt}Performing gradient-based optimization: 
+{res}{txt}Iteration 0:{space 2}Log likelihood = {res:-9668.0859}  
+Iteration 1:{space 2}Log likelihood = {res:-9668.0859}  
 {res}
 {txt}Computing standard errors ...
 {res}
-{txt}Mixed-effects ML regression{col 49}Number of obs{col 67}={col 69}{res}     3,000
-{txt}Group variable: {res}country{col 49}{txt}Number of groups{col 67}={col 69}{res}        30
-{txt}{col 49}Obs per group:
-{col 63}min{col 67}={col 69}{res}       100
-{txt}{col 63}avg{col 67}={col 69}{res}     100.0
-{txt}{col 63}max{col 67}={col 69}{res}       100
-{col 49}{txt}Wald chi2({res}3{txt}){col 67}={col 70}{res}   401.00
-{txt}Log likelihood = {res}-9668.0859{col 49}{txt}Prob > chi2{col 67}={col 73}{res}0.0000
+{txt}Mixed-effects ML regression{col 54}Number of obs{col 70} = {res} 3,000
+{txt}Group variable: {res}country{col 54}{txt}Number of groups{col 70} = {res}    30
+{txt}{col 54}Obs per group:
+{col 67}min = {res}   100
+{txt}{col 67}avg = {res} 100.0
+{txt}{col 67}max = {res}   100
+{col 54}{txt}Wald chi2({res}3{txt}){col 70} = {res}401.00
+{txt}Log likelihood = {res}-9668.0859{col 54}{txt}Prob > chi2{col 70} = {res}0.0000
 
 {txt}{hline 20}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 {col 1}            outcome{col 21}{c |} Coefficient{col 33}  Std. err.{col 45}      z{col 53}   P>|z|{col 61}     [95% con{col 74}f. interval]
@@ -220,20 +220,20 @@ format
 {res}
 {txt}Performing EM optimization ...
 {res}
-{txt}Performing gradient-based optimization: {res}
-{txt}Iteration 0:{space 3}log likelihood = {res:-9668.0859}  
-Iteration 1:{space 3}log likelihood = {res:-9668.0859}  
+{txt}Performing gradient-based optimization: 
+{res}{txt}Iteration 0:{space 2}Log likelihood = {res:-9668.0859}  
+Iteration 1:{space 2}Log likelihood = {res:-9668.0859}  
 {res}
 {txt}Computing standard errors ...
 {res}
-{txt}Mixed-effects ML regression{col 49}Number of obs{col 67}={col 69}{res}     3,000
-{txt}Group variable: {res}country{col 49}{txt}Number of groups{col 67}={col 69}{res}        30
-{txt}{col 49}Obs per group:
-{col 63}min{col 67}={col 69}{res}       100
-{txt}{col 63}avg{col 67}={col 69}{res}     100.0
-{txt}{col 63}max{col 67}={col 69}{res}       100
-{col 49}{txt}Wald chi2({res}3{txt}){col 67}={col 70}{res}   401.00
-{txt}Log likelihood = {res}-9668.0859{col 49}{txt}Prob > chi2{col 67}={col 73}{res}0.0000
+{txt}Mixed-effects ML regression{col 54}Number of obs{col 70} = {res} 3,000
+{txt}Group variable: {res}country{col 54}{txt}Number of groups{col 70} = {res}    30
+{txt}{col 54}Obs per group:
+{col 67}min = {res}   100
+{txt}{col 67}avg = {res} 100.0
+{txt}{col 67}max = {res}   100
+{col 54}{txt}Wald chi2({res}3{txt}){col 70} = {res}401.00
+{txt}Log likelihood = {res}-9668.0859{col 54}{txt}Prob > chi2{col 70} = {res}0.0000
 
 {txt}{hline 20}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 {col 1}            outcome{col 21}{c |} Coefficient{col 33}  Std. err.{col 45}      z{col 53}   P>|z|{col 61}     [95% con{col 74}f. interval]
@@ -317,7 +317,7 @@ format
 {txt}(8 real changes made)
 
 {com}. //_39
-. replace outcome_d = -10 * outcome_d - .5 // rescale AND FLIP AND MOVE the density so it plots well
+. replace outcome_d = 5 * outcome_d - .5 // rescale AND MOVE the density so it plots well
 {txt}(50 real changes made)
 
 {com}. //_40
@@ -350,7 +350,7 @@ format
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/visualizing-MLM.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}19 May 2023, 15:56:59
+ {txt}closed on:  {res}21 May 2023, 13:20:39
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}
