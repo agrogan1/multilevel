@@ -1,0 +1,96 @@
+---
+title: "Visualizing Multilevel Models"
+author: "Andy Grogan-Kaylor"
+date: "today"
+format:
+  revealjs:
+    smaller: true
+    scrollable: true
+    echo: true
+    transition: slide
+    output-file: "visualizing-MLM-revealjs.html"
+  html:
+    toc: true
+    number-sections: true
+    theme:
+      light: cosmo
+      dark: vapor
+  pdf:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    colorlinks: true
+---
+
+# Introduction
+
+```{css, echo=FALSE}
+
+blockquote {
+  color: black;
+  border-left: 2px solid #FFCB05; 
+  padding: 0.5em 10px;
+}
+  
+```
+
+```{r}
+#| echo: false
+#| output: false
+
+library(Statamarkdown)
+
+```
+
+An evolving set of notes on visualizing results from multilevel models.
+
+> When this document is presented in *slide show format*, some slides may be long, and you may need to *scroll down* to see the full slide. 
+
+The examples below use the `simulated_multilevel_data.dta` file from [*Multilevel Thinking*](https://agrogan1.github.io/multilevel-thinking/simulated-multi-country-data.html). Here is a [direct link](https://github.com/agrogan1/multilevel-multilingual/raw/main/simulated_multilevel_data.dta) to download the data.
+
+# Organizing Questions
+
+Try to think about some of the advantages and disadvantages of different approaches to visualizing multilevel models. In multilevel models, we don't want to just *control for* variation, but to start to *explore* the variation. Put concretely:
+
+* Some approaches use *dots*. Some approaches use *lines*. Some approaches use *dots and lines*.
+* Some approaches use the *raw unadjusted* data. Other approaches use *adjusted or model predicted* data.
+* Some approaches attempt to show the *Level 2 specific regression lines*; some approaches only show an *average regression line*.
+* What approaches might work well with *large numbers* of Level 2 units? What approaches might work well with *smaller numbers* of Level 2 units?
+
+What approach(es) do you prefer?
+
+# Setup
+
+I am not terrifically fond of the default `s2color` graph scheme in earlier versions of Stata. Here I make use of the `michigan` graph scheme available at: [https://agrogan1.github.io/Stata/michigan-graph-scheme/](https://agrogan1.github.io/Stata/michigan-graph-scheme/)
+
+```{stata, collectcode=TRUE}
+
+set scheme michigan
+
+```
+	
+Stata's `s1color` scheme would also would be an option as would be Asjad Naqvi's incredible `schemepack`: [https://github.com/asjadnaqvi/stata-schemepack](https://github.com/asjadnaqvi/stata-schemepack)
+
+# Get Data
+
+```{stata, collectcode=TRUE}
+
+use "https://github.com/agrogan1/multilevel-thinking/raw/main/simulate-and-analyze-multilevel-data/simulated_multilevel_data.dta", clear
+
+```
+
+# Scatterplots (`twoway scatter y x`)
+
+```{stata}
+
+twoway scatter outcome warmth
+	
+graph export myscatter.png, width(1500) replace
+
+```
+
+![Scatterplot](myscatter.png){width=75%}
+	
+
+
+

@@ -103,7 +103,7 @@ Andy Grogan-Kaylor
 class="title-slide slide section level1 title">
 <h1 class="title">Visualizing Multilevel Models</h1>
 <p>Andy Grogan-Kaylor</p>
-<p>21 May 2023 13:13:42</p>
+<p>31 May 2023 12:59:42</p>
 </div>
 
 </div>
@@ -543,9 +543,8 @@ class="slide section level2">
 class="sourceCode stata"><code class="sourceCode stata"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">replace</span> warmth_d = 100 * warmth_d <span class="co">// rescale the density so it plots well</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>(8 <span class="fu">real</span> changes made)</span></code></pre></div>
 <div class="sourceCode" id="cb37"><pre
-class="sourceCode stata"><code class="sourceCode stata"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">replace</span> outcome_d = -10 * outcome_d - .5 <span class="co">// rescale AND FLIP AND MOVE the density so it plots wel</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>&gt; <span class="ot">l</span></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>(50 <span class="fu">real</span> changes made)</span></code></pre></div>
+class="sourceCode stata"><code class="sourceCode stata"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">replace</span> outcome_d = 5 * outcome_d - .5 <span class="co">// rescale AND MOVE the density so it plots well</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>(50 <span class="fu">real</span> changes made)</span></code></pre></div>
 <div class="sourceCode" id="cb38"><pre
 class="sourceCode stata"><code class="sourceCode stata"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>. <span class="kw">label</span> <span class="kw">variable</span> outcome_y <span class="st">&quot;density: beneficial outcome&quot;</span> <span class="co">// relabel y variable</span></span></code></pre></div>
 </div>
