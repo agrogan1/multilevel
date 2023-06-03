@@ -35,13 +35,15 @@ I am not terrifically fond of Stata's default `s2color` graph scheme. Therefore 
 	
 Stata's `s1color` scheme would also would be an option as would be Asjad Naqvi's incredible `schemepack`: [https://github.com/asjadnaqvi/stata-schemepack](https://github.com/asjadnaqvi/stata-schemepack)
 
+Throughout the tutorial, I make frequent use of the `mcolor(%30)` option to add some visual interest to scatterplots by adding transparency to the markers.
+
 # Get Data
 
     use "https://github.com/agrogan1/multilevel-thinking/raw/main/simulate-and-analyze-multilevel-data/simulated_multilevel_data.dta", clear
 
 # Scatterplots (`twoway scatter y x`)
 
-    twoway scatter outcome warmth
+    twoway scatter outcome warmth, mcolor(%30)
 	
 	graph export myscatter.png, width(1500) replace
 	
@@ -65,7 +67,7 @@ Stata's `s1color` scheme would also would be an option as would be Asjad Naqvi's
 
 # Combine Scatterplot and Linear Fit (`twoway (scatter y x) (lfit y x)`)
 
-    twoway (scatter outcome warmth) (lfit outcome warmth)
+    twoway (scatter outcome warmth, mcolor(%30)) (lfit outcome warmth)
 	
 	graph export myscatterlinear.png, width(1500) replace
 	
@@ -81,11 +83,11 @@ Stata's `s1color` scheme would also would be an option as would be Asjad Naqvi's
 	
 # Small Multiples (`twoway y x, by(group)`)
 
-*Small Multiples*, showing a separate graph for each group in the data, are an increasingly popular data visualization technique. Below, I build a small multiples graph using the `by` option in Stata.
+*Small Multiples*, showing a separate graph for each group in the data, are an increasingly popular data visualization technique. Below, I build a small multiples graph using the `by` option in Stata. I use the `aspect` option to adjust the *aspect ratio* of the graph for better visual presentation. 
 
-I use the `aspect` option to adjust the *aspect ratio* of the graph for better visual presentation. I also use the `mcolor(%30)` option to create some transparency in the dots of the scatterplot, which helps the presentation of these small multiples. The `mcolor(%30)` option could be useful in the other graphs in this tutorial as well.
-
-    twoway (scatter outcome warmth, mcolor(%30)) (lfit outcome warmth), by(country) aspect(1)
+    twoway (scatter outcome warmth, mcolor(%30)) ///
+	(lfit outcome warmth), ///
+	by(country) aspect(1)
     
 	graph export mysmallmultiples.png, width(1500) replace
 
@@ -136,7 +138,7 @@ We can accomplish random sampling at Level 2, with a little bit of code.
 	
 ### Graph With `twoway` Syntax	
 	
-	twoway (scatter outcome_hat warmth) (lfit outcome_hat warmth)
+	twoway (scatter outcome_hat warmth, mcolor(%30)) (lfit outcome_hat warmth)
 	
 	graph export mypredictedvalues.png, width(1500) replace
 	

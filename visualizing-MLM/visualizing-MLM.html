@@ -207,7 +207,7 @@ table:not([class]) tbody:last-child tr:last-child td {border-bottom:1px solid bl
 <header id="title-block-header">
 <h1 class="title">Visualizing Multilevel Models</h1>
 <p class="author">Andy Grogan-Kaylor</p>
-<p class="date">31 May 2023 12:59:42</p>
+<p class="date">3 Jun 2023 11:20:37</p>
 </header>
 <style>body {max-width: 90%} h1 {color: #00274C;} h2 {color: #2F65A7;} p {font-size: 110%;} pre.stata {font-size: 110%;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {font-size: 110%; color: red;}</style>
 <h1 id="introduction">Introduction</h1>
@@ -254,13 +254,16 @@ href="https://agrogan1.github.io/Stata/michigan-graph-scheme/">https://agrogan1.
 <p>Stata’s <code>s1color</code> scheme would also would be an option as
 would be Asjad Naqvi’s incredible <code>schemepack</code>: <a
 href="https://github.com/asjadnaqvi/stata-schemepack">https://github.com/asjadnaqvi/stata-schemepack</a></p>
+<p>Throughout the tutorial, I make frequent use of the
+<code>mcolor(%30)</code> option to add some visual interest to
+scatterplots by adding transparency to the markers.</p>
 <h1 id="get-data">Get Data</h1>
 <pre class='stata'>. use "https://github.com/agrogan1/multilevel-thinking/raw/main/simulate-and-analyze-multilevel-dat
 > a/simulated_multilevel_data.dta", clear
 </pre>
 <h1 id="scatterplots-twoway-scatter-y-x">Scatterplots
 (<code>twoway scatter y x</code>)</h1>
-<pre class='stata'>. twoway scatter outcome warmth
+<pre class='stata'>. twoway scatter outcome warmth, mcolor(%30)
 </pre>
 <pre class='stata'>. graph export myscatter.png, width(1500) replace
 file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/myscatter.png saved as PNG format
@@ -297,7 +300,7 @@ Interval</figcaption>
 id="combine-scatterplot-and-linear-fit-twoway-scatter-y-x-lfit-y-x">Combine
 Scatterplot and Linear Fit
 (<code>twoway (scatter y x) (lfit y x)</code>)</h1>
-<pre class='stata'>. twoway (scatter outcome warmth) (lfit outcome warmth)
+<pre class='stata'>. twoway (scatter outcome warmth, mcolor(%30)) (lfit outcome warmth)
 </pre>
 <pre class='stata'>. graph export myscatterlinear.png, width(1500) replace
 file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/myscatterlinear.png saved as PNG
@@ -324,14 +327,11 @@ file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/myspaghetti.png sa
 <p><em>Small Multiples</em>, showing a separate graph for each group in
 the data, are an increasingly popular data visualization technique.
 Below, I build a small multiples graph using the <code>by</code> option
-in Stata.</p>
-<p>I use the <code>aspect</code> option to adjust the <em>aspect
-ratio</em> of the graph for better visual presentation. I also use the
-<code>mcolor(%30)</code> option to create some transparency in the dots
-of the scatterplot, which helps the presentation of these small
-multiples. The <code>mcolor(%30)</code> option could be useful in the
-other graphs in this tutorial as well.</p>
-<pre class='stata'>. twoway (scatter outcome warmth, mcolor(%30)) (lfit outcome warmth), by(country) aspect(1)
+in Stata. I use the <code>aspect</code> option to adjust the <em>aspect
+ratio</em> of the graph for better visual presentation.</p>
+<pre class='stata'>. twoway (scatter outcome warmth, mcolor(%30)) ///
+> (lfit outcome warmth), ///
+> by(country) aspect(1)
 </pre>
 <pre class='stata'>. graph export mysmallmultiples.png, width(1500) replace
 file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mysmallmultiples.png saved as PNG
@@ -443,7 +443,7 @@ LR test vs. linear model: chibar2(01) = 200.29        Prob >= chibar2 = 0.0000
 </pre>
 <h3 id="graph-with-twoway-syntax">Graph With <code>twoway</code>
 Syntax</h3>
-<pre class='stata'>. twoway (scatter outcome_hat warmth) (lfit outcome_hat warmth)
+<pre class='stata'>. twoway (scatter outcome_hat warmth, mcolor(%30)) (lfit outcome_hat warmth)
 </pre>
 <pre class='stata'>. graph export mypredictedvalues.png, width(1500) replace
 file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mypredictedvalues.png saved as PNG

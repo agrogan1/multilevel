@@ -83,7 +83,7 @@ use "https://github.com/agrogan1/multilevel-thinking/raw/main/simulate-and-analy
 
 ```{stata}
 
-twoway scatter outcome warmth
+twoway scatter outcome warmth, mcolor(%30)
 	
 graph export myscatter.png, width(1500) replace
 
