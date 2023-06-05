@@ -3,12 +3,6 @@ title: "Visualizing Multilevel Models"
 author: "Andy Grogan-Kaylor"
 date: "today"
 format:
-  revealjs:
-    smaller: true
-    scrollable: true
-    echo: true
-    transition: slide
-    output-file: "visualizing-MLM-revealjs.html"
   html:
     toc: true
     number-sections: true
@@ -23,14 +17,6 @@ format:
 ---
 
 # Introduction
-
-```{css, echo=FALSE,eval=FALSE}
-
-.reveal.smaller .slides h1 {
-    font-size : 2em;
-}
-
-```
 
 ```{css, echo=FALSE}
 
@@ -234,9 +220,9 @@ graph export mypredictedvalues2.png, width(1500) replace
 
 ```
 
-![Predicted Values From `predict`](mypredictedvalues.png){width=50%} 
+![Predicted Values From `predict`](mypredictedvalues.png){width=75%} 
 
-![Predicted Values From `predict` With Only Linear Fit](mypredictedvalues2.png){width=50%}
+![Predicted Values From `predict` With Only Linear Fit](mypredictedvalues2.png){width=75%}
 
 ## Spaghetti Plot With Predicted Values
 
