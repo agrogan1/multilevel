@@ -24,6 +24,14 @@ format:
 
 # Introduction
 
+```{css, echo=FALSE,eval=FALSE}
+
+.reveal.smaller .slides h1 {
+    font-size : 2em;
+}
+
+```
+
 ```{css, echo=FALSE}
 
 blockquote {
@@ -69,7 +77,9 @@ set scheme michigan
 
 ```
 	
-Stata's `s1color` scheme would also would be an option as would be Asjad Naqvi's incredible `schemepack`: [https://github.com/asjadnaqvi/stata-schemepack](https://github.com/asjadnaqvi/stata-schemepack)
+Stata's `s1color` scheme would also would be an option as would be Asjad Naqvi's incredible `schemepack`: [https://github.com/asjadnaqvi/stata-schemepack](https://github.com/asjadnaqvi/stata-schemepack).
+
+Throughout the tutorial, I make frequent use of the `mcolor(%30)` option to add some visual interest to scatterplots by adding transparency to the markers.
 
 # Get Data
 
@@ -91,6 +101,257 @@ graph export myscatter.png, width(1500) replace
 
 ![Scatterplot](myscatter.png){width=75%}
 	
+# Simple Linear Fit (`twoway lfit y x`)
+
+```{stata}
+
+twoway lfit outcome warmth
+	
+graph export mylinear.png, width(1500) replace
+
+```
+	
+![Linear Fit](mylinear.png){width=75%}
+
+# Linear Fit With Confidence Interval (`twoway lfitci y x`)
+
+```{stata}
+
+twoway lfitci outcome warmth
+	
+graph export mylfitci.png, width(1500) replace
+
+```
+	
+![Linear Fit With Confidence Interval](mylfitci.png){width=75%}
+
+# Combine Scatterplot and Linear Fit (`twoway (scatter y x) (lfit y x)`)
+
+```{stata}
+
+twoway (scatter outcome warmth, mcolor(%30)) (lfit outcome warmth)
+	
+graph export myscatterlinear.png, width(1500) replace
+
+```
+
+![Scatterplot and Linear Fit](myscatterlinear.png){width=75%}
+
+# Spaghetti Plots (`spagplot y x, id(group)`)
+
+```{stata}
+
+spagplot outcome warmth, id(country)
+	
+graph export myspaghetti.png, width(1500) replace
+
+```
+
+![Spaghetti Plot](myspaghetti.png){width=75%}
+	
+# Small Multiples (`twoway y x, by(group)`)
+
+*Small Multiples*, showing a separate graph for each group in the data, are an increasingly popular data visualization technique. Below, I build a small multiples graph using the `by` option in Stata. I use the `aspect` option to adjust the *aspect ratio* of the graph for better visual presentation. 
+
+```{stata}
+
+twoway (scatter outcome warmth, mcolor(%30)) ///
+(lfit outcome warmth), ///
+by(country) aspect(1)
+    
+graph export mysmallmultiples.png, width(1500) replace
+
+```
+
+![Small Multiples](mysmallmultiples.png){width=75%}
+
+# Taking A Random Sample
+
+At times, we may have *too many* Level 2 units to effectively display them on a *spaghetti plot*, or using *small multiples*. If this is the case, we may need to *randomly sample* Level 2 units. This can be difficult to accomplish as our standard `sample` command operates on each row, or on Level 1 units. 
+
+We can accomplish random sampling at Level 2, with a little bit of code.
+
+```{stata}
+
+set seed 3846 // random seed for reproducibility
+
+gen randomid = runiform() // generate a random id variable
+		
+* by country (i.e. by Level 2 unit) replace the randomid 
+* with the first randomid for that country (Level 2 unit)
+* so that every person in that country has the same random id
+
+bysort country: replace randomid = randomid[1] 
+	
+summarize randomid // descriptive statistics for random id
+
+twoway (scatter outcome warmth, mcolor(%30)) /// scatterplot
+(lfit outcome warmth) /// linear fit
+if randomid < .5, /// only use a subset of randomids
+by(country) aspect(1) // by country
+	
+graph export mysmallmultiples2.png, width(1500) replace
+
+```
+
+![Small Multiples With A Random Sample Of Countries](mysmallmultiples2.png){width=75%}
+
+# Multivariate (Predicted) Relationships
+
+> A sometimes unacknowledged point is that graphs--unless we take steps to correct this--reflect *unadjusted*, or *bivariate* associations. We may sometimes wish to develop a graphs that reflect the *adjusted* or *predicted* estimates from our models.
+
+> In multilevel models, *prediction* is a complex question. The procedures below outline graphs that incorporate predictions using the variables, but do not include predictions that incorporate the random effects. (This will be added!)
+
+## Using Predicted Values (`predict`)
+
+### Estimate The Model
+
+```{stata, collectcode=TRUE}
+
+mixed outcome warmth physical_punishment i.group || country: // estimate MLM
+
+```
+
+### Generate Predicted Values
+	
+```{stata, collectcode=TRUE}
+	
+predict outcome_hat, fitted // predict yhat (`fitted` uses fixed AND random effects)
+
+```
+
+### Graph With `twoway` Syntax	
+
+```{stata}	
+
+twoway (scatter outcome_hat warmth, mcolor(%30)) (lfit outcome_hat warmth)
+
+graph export mypredictedvalues.png, width(1500) replace
+	
+twoway (lfit outcome_hat warmth)
+	
+graph export mypredictedvalues2.png, width(1500) replace
+
+```
+
+![Predicted Values From `predict`](mypredictedvalues.png){width=50%} 
+
+![Predicted Values From `predict` With Only Linear Fit](mypredictedvalues2.png){width=50%}
+
+## Spaghetti Plot With Predicted Values
+
+```{stata}
+
+spagplot outcome_hat warmth, id(country)
+	
+graph export myspaghetti2.png, width(1500) replace
+
+```
+
+![Spaghetti Plot With Predicted Values](myspaghetti2.png){width=75%}
+	
+## `margins` and `marginsplot`
+
+### Estimate The Model
+
+```{stata, collectcode = TRUE}
+
+mixed outcome warmth physical_punishment i.group || country: // estimate MLM
+
+```
+
+### Generate Predicted Values *At Specified Values* With `margins`
+
+```{stata, collectcode = TRUE}
+
+margins group, at(warmth = (1 2 3 4 5 6 7)) // predictive *margins*
+
+```
+
+### Graph With `marginsplot`
+	
+```{stata}
+	
+marginsplot // plot of predicted values
+	
+graph export mymarginsplot.png, width(1500) replace
+
+```
+
+![Predicted Values From `margins` and `marginsplot`](mymarginsplot.png){width=75%}
+
+# Scatterplot With Linear Fit and Marginal Density Plots (`twoway ...`)
+
+As another possibility, we may wish to show more of the variation, by showing the variation in the *independent* variable and the *dependent* variable along with a *scatterplot* and *linear fit*. This is a complex graph and requires a little bit of manual programming in Stata.
+
+> You could also investigate the user written program `binscatterhist` (`ssc install binscatterhist`) which produces a similar looking graph, and automates much of this work.
+
+## Manually Generate The Densities To Plot Them Below (`kdensity ...`)
+
+> We generate the density for *warmth* at only a few points (`n(8)`) since this variable has relatively few categories.
+
+```{stata, collectcode = TRUE}
+
+kdensity warmth, generate(warmth_x warmth_d) n(8) // manually generate outcome densities
+
+kdensity outcome, generate(outcome_y outcome_d) // manually generate outcome densities
+
+```
+
+## Rescale The Densities So They Plot Well
+
+> You may have to experiment with the scaling and moving factors.
+
+```{stata, collectcode = TRUE}
+
+replace warmth_d = 100 * warmth_d // rescale the density so it plots well
+
+replace outcome_d = 5 * outcome_d - .5 // rescale AND MOVE the density so it plots well
+
+label variable outcome_y "density: beneficial outcome" // relabel y variable
+
+```
+
+## Make The Graph (`twoway ...`)
+
+> You may have to experiment with whether scatterplots or line plots work best for displaying the x and y densities.
+
+```{stata}
+
+twoway (scatter outcome warmth, mcolor(%10)) /// scatterplot w some transparency
+(lfit outcome warmth) /// linear fit
+(line warmth_d warmth_x) /// line plot of x density 
+(line outcome_y outcome_d), /// line plot of y density (note flipped order)
+title("Outcome by Warmth") /// title
+ytitle("beneficial outcome") /// manual ytitle
+xtitle("parental warmth") /// manual xtitle
+legend(position(6) rows(2) ) /// legend at bottom; 2 rows
+xlabel(0 1 2 3 4 5 6 7) /// manual x labels
+name(mynewscatter, replace)
+
+graph export mynewscatter.png, width(1500) replace
+
+```
+
+![Scatterplot and Linear Fit With Marginal Density Plots](mynewscatter.png){width=75%}
+
+## Spaghetti Plot With Linear Fit and Marginal Density Plots
+
+# Curvilinear and Linear Fits
+
+# Random Effects
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
