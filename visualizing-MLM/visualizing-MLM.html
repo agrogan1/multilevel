@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Andy Grogan-Kaylor">
-<meta name="dcterms.date" content="2023-06-05">
+<meta name="dcterms.date" content="2023-06-08">
 
 <title>Visualizing Multilevel Models</title>
 <style>
@@ -172,7 +172,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">June 5, 2023</p>
+      <p class="date">June 8, 2023</p>
     </div>
   </div>
   
@@ -400,7 +400,7 @@ file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mysmallmultiples2.
 <p>A sometimes unacknowledged point is that graphs–unless we take steps to correct this–reflect <em>unadjusted</em>, or <em>bivariate</em> associations. We may sometimes wish to develop a graphs that reflect the <em>adjusted</em> or <em>predicted</em> estimates from our models.</p>
 </blockquote>
 <blockquote class="blockquote">
-<p>In multilevel models, <em>prediction</em> is a complex question. The procedures below outline graphs that incorporate predictions using the variables, but do not include predictions that incorporate the random effects. (This will be added!)</p>
+<p>In multilevel models, <em>prediction</em> is a complex question. Prediction may–or may not–incorporate the information from the random effects. The procedures below outline graphs that incorporate predictions using the random effects, by using the <code>predict ..., fitted</code> syntax.</p>
 </blockquote>
 <section id="using-predicted-values-predict" class="level2" data-number="12.1">
 <h2 data-number="12.1" class="anchored" data-anchor-id="using-predicted-values-predict"><span class="header-section-number">12.1</span> Using Predicted Values (<code>predict</code>)</h2>
