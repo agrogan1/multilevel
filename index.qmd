@@ -1,17 +1,21 @@
 ---
 title: "Multilevel and Longitudinal Modeling (SW 864)"
-description: |
-  An Interdisciplinary Doctoral Statistics Course
+subtitle: "An Interdisciplinary Doctoral Statistics Course"
 author:
   - name: Andy Grogan-Kaylor 
     url: https://agrogan1.github.io/
     affiliation: University of Michigan
     affiliation_url: https://umich.edu/
-date: "`r Sys.Date()`"
-output:
-  distill::distill_article:
-    highlight: haddock
-    toc: yes
+date: "today"
+format:
+  html:
+    toc: false
+    number-sections: false
+    theme:
+      light: united
+      dark: vapor
+    fig-height: 3
+    css: styles.css
 ---
 
 ```{r setup, include=FALSE}
@@ -20,17 +24,9 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ```
 
-```{css, echo=FALSE}
-
-d-article blockquote {
-  color: black;
-  border-left: 2px solid gold; 
-  padding: 0.5em 10px;
-  }
-  
-```
-
 ```{r}
+#| message: false
+#| warning: false
 
 library(haven)
 
@@ -42,40 +38,39 @@ library(plotly)
 
 ```
 
-```{r, fig.height=3, fig.cap="Neighborhood, School and Country Effects"}
 
-knitr::include_graphics("neighborhood.png")
+![Neighborhood, School and Country Effects](neighborhood.png){width=50%}
 
-```
 
-<aside>
-<mark>Stata will be the statistical software employed in this course, and students will need access to Stata to participate.</mark>
-</aside>
+
+::: {.callout-important}
+Stata will be the statistical software employed in this course, and students will need access to Stata to participate.
+:::
 
 Multilevel models have become a standard statistical tool for quantitative research on neighborhoods, communities and schools.  The cross-sectional multilevel model is appropriate for situations in which respondents are clustered inside larger social or geographic units e.g. people in geographic areas, residents in neighborhoods, or children in classrooms and/or schools. Cross-sectional multilevel models enable *multilevel thinking* thinking at multiple levels (units of analysis) and conceptualizing effects at the *country*, *community*, *family*, and *individual* levels.
 
-<aside>
-<mark>Participation in this class requires that you have a personal laptop computer that is powerful enough to run standard statistical software (e.g. Stata) at a reasonable speed.  The School of Social Work is not able to provide laptop computers.</mark>
-</aside>
+::: {.callout-important}
+Participation in this class requires that you have a personal laptop computer that is powerful enough to run standard statistical software (e.g. Stata) at a reasonable speed.  The School of Social Work is not able to provide laptop computers.
+:::
 
-> This course requires a solid understanding of ordinary least squares regression (OLS) as a starting point. Generally this means that one has taken the introductory graduate level 2 semester sequence in statistics in a discipline like Psychology or Sociology.
+::: {.callout-important}
+This course requires a solid understanding of ordinary least squares regression (OLS) as a starting point. Generally this means that one has taken the introductory graduate level 2 semester sequence in statistics in a discipline like Psychology or Sociology.
+:::
 
-<aside>
-<mark>Previously this course was numbered SW 832. The new number for the course is SW 864.</mark>
-</aside>
+::: {.callout-tip}
+Previously this course was numbered SW 832. The new number for the course is SW 864.
+::: 
 
 The first part of the course is all about the idea of “nesting”:  e.g. students nested in classrooms, residents nested in neighborhoods, study participants nested in cities. The second part of the course extends these ideas to longitudinal data, thinking about situations where we have repeated measures on an outcome of interest, like anxiety, depression or substance abuse.  Course assignments focus on individually focused student data driven projects, so for students considering the course, it is useful to have an available data set has both some kind of “nesting” as well as repeated measures of some outcome of interest.
 
-> NB that the major assignments in this class are two short empirical papers where students apply the concepts of multilevel modeling. This means that students who are interested in this class should start thinking about appropriate data sets to use in the course. Data for the first of two papers should be suitable for a *cross-sectional multilevel* analysis. This data for the first paper should contain some indicator of where study participants live or study, whether that is a Census tract, neighborhood, state, country, classroom or school, etc.. Data for the second of two papers should be suitable for a *multilevel longitudinal analysis*. This data for the second paper should contain repeated measures of some outcome on the same individuals over at least 2 time points.
+::: {.callout-note}
+NB that the major assignments in this class are two short empirical papers where students apply the concepts of multilevel modeling. This means that students who are interested in this class should start thinking about appropriate data sets to use in the course. Data for the first of two papers should be suitable for a *cross-sectional multilevel* analysis. This data for the first paper should contain some indicator of where study participants live or study, whether that is a Census tract, neighborhood, state, country, classroom or school, etc.. Data for the second of two papers should be suitable for a *multilevel longitudinal analysis*. This data for the second paper should contain repeated measures of some outcome on the same individuals over at least 2 time points.
+:::
 
 Perhaps surprisingly, the multilevel model for cross-sectional data can easily accommodate longitudinal data where study participants are observed repeatedly over time. Longitudinal multilevel models represent a different kind of *multilevel thinking* where we extend the algebra of the multilevel model to think about *events* or *occasions*, nested inside *individuals.*
 
+![Studies of Growth and Change](plant.png){width=50%}
 
-```{r, fig.height=3, fig.cap="Studies of Growth and Change"}
-
-knitr::include_graphics("plant.png")
-
-```
 
 Further, while this is sometimes not recognized, multilevel models for longitudinal data are closely related to other important longitudinal data models, such as fixed effects regression, an important technique for controlling for unobserved variables. Multilevel models are also closely related to statistical models for meta-analysis of multiple studies.
 
@@ -92,7 +87,7 @@ The first half of the semester will be devoted to a discussion of cross-sectiona
 
 The course is intended for students who have some familiarity with ordinary least squares regression, since the OLS model will be used as a starting point for discussion.
 
-The treatment of these topics involves discussion of the underlying statistical theory, but is also focused on the application of these models with real data.  <mark>Stata is intended to be the primary statistical software used in this course.</mark>
+The treatment of these topics involves discussion of the underlying statistical theory, but is also focused on the application of these models with real data.  **Stata is intended to be the primary statistical software used in this course.**
 
 Depending upon student interest, some reference may be made to the analysis of these models in other statistical packages such as R, STAN (`brms`) or SAS. Instruction is a mixture of in class lecture and discussion, and time spent in a lab session, working on your own laptop, working through actual data problems with statistical software.  Typically, students write two data driven papers for the course, one due about the middle of the semester, and one due at the end of the semester.  It is my intent that the papers should be based upon data from your own discipline(s) and interests.  Frequently papers from the course go on to serve as the foundation for dissertation chapters or articles submitted for publication.
 
