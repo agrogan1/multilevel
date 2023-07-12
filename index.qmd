@@ -9,8 +9,8 @@ author:
 date: "today"
 format:
   html:
-    toc: false
-    number-sections: false
+    toc: true
+    number-sections: true
     theme:
       light: united
       dark: vapor
@@ -43,27 +43,27 @@ library(plotly)
 
 
 
-::: {.callout-important}
-Stata will be the statistical software employed in this course, and students will need access to Stata to participate.
+Multilevel models have become a standard statistical tool for quantitative research on neighborhoods, communities and schools.  The cross-sectional multilevel model is appropriate for situations in which respondents are clustered inside larger social or geographic units e.g. people in geographic areas, residents in neighborhoods, or children in classrooms and/or schools. Cross-sectional multilevel models enable *multilevel thinking* at multiple levels (units of analysis) and conceptualizing effects at the *country*, *community*, *family*, and *individual* levels.
+
+::: {.column-margin}
+<span style="background-color: #FFFF00">Stata will be the statistical software employed in this course, and students will need access to Stata to participate.</mark>
 :::
 
-Multilevel models have become a standard statistical tool for quantitative research on neighborhoods, communities and schools.  The cross-sectional multilevel model is appropriate for situations in which respondents are clustered inside larger social or geographic units e.g. people in geographic areas, residents in neighborhoods, or children in classrooms and/or schools. Cross-sectional multilevel models enable *multilevel thinking* thinking at multiple levels (units of analysis) and conceptualizing effects at the *country*, *community*, *family*, and *individual* levels.
-
-::: {.callout-important}
+::: {.column-margin}
 Participation in this class requires that you have a personal laptop computer that is powerful enough to run standard statistical software (e.g. Stata) at a reasonable speed.  The School of Social Work is not able to provide laptop computers.
 :::
 
-::: {.callout-important}
-This course requires a solid understanding of ordinary least squares regression (OLS) as a starting point. Generally this means that one has taken the introductory graduate level 2 semester sequence in statistics in a discipline like Psychology or Sociology.
+::: {.column-margin}
+<span style="background-color: #FFFF00">This course requires a solid understanding of ordinary least squares regression (OLS) as a starting point. Generally this means that one has taken the introductory graduate level 2 semester sequence in statistics in a discipline like Psychology or Sociology.</mark>
 :::
 
-::: {.callout-tip}
+::: {.column-margin}
 Previously this course was numbered SW 832. The new number for the course is SW 864.
 ::: 
 
 The first part of the course is all about the idea of “nesting”:  e.g. students nested in classrooms, residents nested in neighborhoods, study participants nested in cities. The second part of the course extends these ideas to longitudinal data, thinking about situations where we have repeated measures on an outcome of interest, like anxiety, depression or substance abuse.  Course assignments focus on individually focused student data driven projects, so for students considering the course, it is useful to have an available data set has both some kind of “nesting” as well as repeated measures of some outcome of interest.
 
-::: {.callout-note}
+::: {.callout-important}
 NB that the major assignments in this class are two short empirical papers where students apply the concepts of multilevel modeling. This means that students who are interested in this class should start thinking about appropriate data sets to use in the course. Data for the first of two papers should be suitable for a *cross-sectional multilevel* analysis. This data for the first paper should contain some indicator of where study participants live or study, whether that is a Census tract, neighborhood, state, country, classroom or school, etc.. Data for the second of two papers should be suitable for a *multilevel longitudinal analysis*. This data for the second paper should contain repeated measures of some outcome on the same individuals over at least 2 time points.
 :::
 

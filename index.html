@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Andy Grogan-Kaylor">
-<meta name="dcterms.date" content="2023-07-11">
+<meta name="dcterms.date" content="2023-07-12">
 
 <title>Multilevel and Longitudinal Modeling (SW 864)</title>
 <style>
@@ -42,11 +42,13 @@ ul.task-list li input[type="checkbox"] {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="fullcontent">
+<body>
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
-<main class="content" id="quarto-document-content">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  
+</div>
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -75,7 +77,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 11, 2023</p>
+      <p class="date">July 12, 2023</p>
     </div>
   </div>
   
@@ -94,33 +96,20 @@ ul.task-list li input[type="checkbox"] {
 <p></p><figcaption class="figure-caption">Neighborhood, School and Country Effects</figcaption><p></p>
 </figure>
 </div>
-<div class="callout-important callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Stata will be the statistical software employed in this course, and students will need access to Stata to participate.</p>
-</div>
-</div>
-<p>Multilevel models have become a standard statistical tool for quantitative research on neighborhoods, communities and schools. The cross-sectional multilevel model is appropriate for situations in which respondents are clustered inside larger social or geographic units e.g.&nbsp;people in geographic areas, residents in neighborhoods, or children in classrooms and/or schools. Cross-sectional multilevel models enable <em>multilevel thinking</em> thinking at multiple levels (units of analysis) and conceptualizing effects at the <em>country</em>, <em>community</em>, <em>family</em>, and <em>individual</em> levels.</p>
-<div class="callout-important callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
+<p>Multilevel models have become a standard statistical tool for quantitative research on neighborhoods, communities and schools. The cross-sectional multilevel model is appropriate for situations in which respondents are clustered inside larger social or geographic units e.g.&nbsp;people in geographic areas, residents in neighborhoods, or children in classrooms and/or schools. Cross-sectional multilevel models enable <em>multilevel thinking</em> at multiple levels (units of analysis) and conceptualizing effects at the <em>country</em>, <em>community</em>, <em>family</em>, and <em>individual</em> levels.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><span style="background-color: #FFFF00">Stata will be the statistical software employed in this course, and students will need access to Stata to participate.</span></p>
+</div><div class="">
 <p>Participation in this class requires that you have a personal laptop computer that is powerful enough to run standard statistical software (e.g.&nbsp;Stata) at a reasonable speed. The School of Social Work is not able to provide laptop computers.</p>
-</div>
-</div>
+</div><div class="">
+<p><span style="background-color: #FFFF00">This course requires a solid understanding of ordinary least squares regression (OLS) as a starting point. Generally this means that one has taken the introductory graduate level 2 semester sequence in statistics in a discipline like Psychology or Sociology.</span></p>
+</div><div class="">
+<p>Previously this course was numbered SW 832. The new number for the course is SW 864.</p>
+</div></div>
+
+
+<p>The first part of the course is all about the idea of “nesting”: e.g.&nbsp;students nested in classrooms, residents nested in neighborhoods, study participants nested in cities. The second part of the course extends these ideas to longitudinal data, thinking about situations where we have repeated measures on an outcome of interest, like anxiety, depression or substance abuse. Course assignments focus on individually focused student data driven projects, so for students considering the course, it is useful to have an available data set has both some kind of “nesting” as well as repeated measures of some outcome of interest.</p>
 <div class="callout-important callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -128,33 +117,6 @@ Important
 </div>
 <div class="callout-caption-container flex-fill">
 Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This course requires a solid understanding of ordinary least squares regression (OLS) as a starting point. Generally this means that one has taken the introductory graduate level 2 semester sequence in statistics in a discipline like Psychology or Sociology.</p>
-</div>
-</div>
-<div class="callout-tip callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Previously this course was numbered SW 832. The new number for the course is SW 864.</p>
-</div>
-</div>
-<p>The first part of the course is all about the idea of “nesting”: e.g.&nbsp;students nested in classrooms, residents nested in neighborhoods, study participants nested in cities. The second part of the course extends these ideas to longitudinal data, thinking about situations where we have repeated measures on an outcome of interest, like anxiety, depression or substance abuse. Course assignments focus on individually focused student data driven projects, so for students considering the course, it is useful to have an available data set has both some kind of “nesting” as well as repeated measures of some outcome of interest.</p>
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-caption-container flex-fill">
-Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
