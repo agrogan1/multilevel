@@ -101,13 +101,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#estimate-the-model" id="toc-estimate-the-model" class="nav-link" data-scroll-target="#estimate-the-model"><span class="header-section-number">12.1.1</span> Estimate The Model</a></li>
   <li><a href="#generate-predicted-values" id="toc-generate-predicted-values" class="nav-link" data-scroll-target="#generate-predicted-values"><span class="header-section-number">12.1.2</span> Generate Predicted Values</a></li>
   <li><a href="#graph-with-twoway-syntax" id="toc-graph-with-twoway-syntax" class="nav-link" data-scroll-target="#graph-with-twoway-syntax"><span class="header-section-number">12.1.3</span> Graph With <code>twoway</code> Syntax</a></li>
+  <li><a href="#spaghetti-plot-with-predicted-values" id="toc-spaghetti-plot-with-predicted-values" class="nav-link" data-scroll-target="#spaghetti-plot-with-predicted-values"><span class="header-section-number">12.1.4</span> Spaghetti Plot With Predicted Values</a></li>
   </ul></li>
-  <li><a href="#spaghetti-plot-with-predicted-values" id="toc-spaghetti-plot-with-predicted-values" class="nav-link" data-scroll-target="#spaghetti-plot-with-predicted-values"><span class="header-section-number">12.2</span> Spaghetti Plot With Predicted Values</a></li>
-  <li><a href="#margins-and-marginsplot" id="toc-margins-and-marginsplot" class="nav-link" data-scroll-target="#margins-and-marginsplot"><span class="header-section-number">12.3</span> <code>margins</code> and <code>marginsplot</code></a>
+  <li><a href="#margins-and-marginsplot" id="toc-margins-and-marginsplot" class="nav-link" data-scroll-target="#margins-and-marginsplot"><span class="header-section-number">12.2</span> <code>margins</code> and <code>marginsplot</code></a>
   <ul class="collapse">
-  <li><a href="#estimate-the-model-1" id="toc-estimate-the-model-1" class="nav-link" data-scroll-target="#estimate-the-model-1"><span class="header-section-number">12.3.1</span> Estimate The Model</a></li>
-  <li><a href="#generate-predicted-values-at-specified-values-with-margins" id="toc-generate-predicted-values-at-specified-values-with-margins" class="nav-link" data-scroll-target="#generate-predicted-values-at-specified-values-with-margins"><span class="header-section-number">12.3.2</span> Generate Predicted Values <em>At Specified Values</em> With <code>margins</code></a></li>
-  <li><a href="#graph-with-marginsplot" id="toc-graph-with-marginsplot" class="nav-link" data-scroll-target="#graph-with-marginsplot"><span class="header-section-number">12.3.3</span> Graph With <code>marginsplot</code></a></li>
+  <li><a href="#estimate-the-model-1" id="toc-estimate-the-model-1" class="nav-link" data-scroll-target="#estimate-the-model-1"><span class="header-section-number">12.2.1</span> Estimate The Model</a></li>
+  <li><a href="#generate-predicted-values-at-specified-values-with-margins" id="toc-generate-predicted-values-at-specified-values-with-margins" class="nav-link" data-scroll-target="#generate-predicted-values-at-specified-values-with-margins"><span class="header-section-number">12.2.2</span> Generate Predicted Values <em>At Specified Values</em> With <code>margins</code></a></li>
+  <li><a href="#graph-with-marginsplot" id="toc-graph-with-marginsplot" class="nav-link" data-scroll-target="#graph-with-marginsplot"><span class="header-section-number">12.2.3</span> Graph With <code>marginsplot</code></a></li>
   </ul></li>
   </ul></li>
   <li><a href="#scatterplot-with-linear-fit-and-marginal-density-plots-twoway-..." id="toc-scatterplot-with-linear-fit-and-marginal-density-plots-twoway-..." class="nav-link" data-scroll-target="#scatterplot-with-linear-fit-and-marginal-density-plots-twoway-..."><span class="header-section-number">13</span> Scatterplot With Linear Fit and Marginal Density Plots (<code>twoway ...</code>)</a>
@@ -448,9 +448,8 @@ file mypredictedvalues2.png saved as PNG format</code></pre>
 </figure>
 </div>
 </section>
-</section>
-<section id="spaghetti-plot-with-predicted-values" class="level2" data-number="12.2">
-<h2 data-number="12.2" class="anchored" data-anchor-id="spaghetti-plot-with-predicted-values"><span class="header-section-number">12.2</span> Spaghetti Plot With Predicted Values</h2>
+<section id="spaghetti-plot-with-predicted-values" class="level3" data-number="12.1.4">
+<h3 data-number="12.1.4" class="anchored" data-anchor-id="spaghetti-plot-with-predicted-values"><span class="header-section-number">12.1.4</span> Spaghetti Plot With Predicted Values</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>spagplot outcome_hat warmth, id(country)</span>
@@ -467,11 +466,12 @@ file mypredictedvalues2.png saved as PNG format</code></pre>
 </figure>
 </div>
 </section>
-<section id="margins-and-marginsplot" class="level2" data-number="12.3">
-<h2 data-number="12.3" class="anchored" data-anchor-id="margins-and-marginsplot"><span class="header-section-number">12.3</span> <code>margins</code> and <code>marginsplot</code></h2>
-<p>In contrast to <code>predict</code>, which generates a predicted value for <em>every observation in the data</em>, <code>margins</code> generates predicted values at <em>specific values</em> of certain variables.</p>
-<section id="estimate-the-model-1" class="level3" data-number="12.3.1">
-<h3 data-number="12.3.1" class="anchored" data-anchor-id="estimate-the-model-1"><span class="header-section-number">12.3.1</span> Estimate The Model</h3>
+</section>
+<section id="margins-and-marginsplot" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="margins-and-marginsplot"><span class="header-section-number">12.2</span> <code>margins</code> and <code>marginsplot</code></h2>
+<p>In contrast to <code>predict</code>, which generates a predicted value for <em>every observation in the data</em>, <code>margins</code> generates predicted values at <em>specific values of certain variables</em>.</p>
+<section id="estimate-the-model-1" class="level3" data-number="12.2.1">
+<h3 data-number="12.2.1" class="anchored" data-anchor-id="estimate-the-model-1"><span class="header-section-number">12.2.1</span> Estimate The Model</h3>
 <div class="cell" data-collectcode="true">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>mixed outcome warmth physical_punishment i.<span class="fu">group</span> || country: <span class="co">// estimate MLM</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -512,8 +512,8 @@ LR test vs. linear model: chibar2(01) = 200.29        Prob &gt;= chibar2 = 0.000
 </div>
 </div>
 </section>
-<section id="generate-predicted-values-at-specified-values-with-margins" class="level3" data-number="12.3.2">
-<h3 data-number="12.3.2" class="anchored" data-anchor-id="generate-predicted-values-at-specified-values-with-margins"><span class="header-section-number">12.3.2</span> Generate Predicted Values <em>At Specified Values</em> With <code>margins</code></h3>
+<section id="generate-predicted-values-at-specified-values-with-margins" class="level3" data-number="12.2.2">
+<h3 data-number="12.2.2" class="anchored" data-anchor-id="generate-predicted-values-at-specified-values-with-margins"><span class="header-section-number">12.2.2</span> Generate Predicted Values <em>At Specified Values</em> With <code>margins</code></h3>
 <div class="cell" data-collectcode="true">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>margins <span class="fu">group</span>, <span class="fu">at</span>(warmth = (1 2 3 4 5 6 7)) <span class="co">// predictive *margins*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -552,8 +552,8 @@ Expression: Linear prediction, fixed portion, predict()
 </div>
 </div>
 </section>
-<section id="graph-with-marginsplot" class="level3" data-number="12.3.3">
-<h3 data-number="12.3.3" class="anchored" data-anchor-id="graph-with-marginsplot"><span class="header-section-number">12.3.3</span> Graph With <code>marginsplot</code></h3>
+<section id="graph-with-marginsplot" class="level3" data-number="12.2.3">
+<h3 data-number="12.2.3" class="anchored" data-anchor-id="graph-with-marginsplot"><span class="header-section-number">12.2.3</span> Graph With <code>marginsplot</code></h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>marginsplot <span class="co">// plot of predicted values</span></span>
