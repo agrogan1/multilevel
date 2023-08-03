@@ -188,6 +188,8 @@ graph export mysmallmultiples2.png, width(1500) replace
 
 ## Using Predicted Values (`predict`)
 
+`predict` generates a predicted value for *every observation in the data*.
+
 ### Estimate The Model
 
 ```{stata, collectcode=TRUE}
@@ -222,7 +224,7 @@ graph export mypredictedvalues2.png, width(1500) replace
 
 ![Predicted Values From `predict` With Only Linear Fit](mypredictedvalues2.png){width=75%}
 
-## Spaghetti Plot With Predicted Values
+### Spaghetti Plot With Predicted Values
 
 ```{stata}
 
@@ -235,6 +237,8 @@ graph export myspaghetti2.png, width(1500) replace
 ![Spaghetti Plot With Predicted Values](myspaghetti2.png){width=75%}
 	
 ## `margins` and `marginsplot`
+
+In contrast to `predict`, which generates a predicted value for *every observation in the data*, `margins` generates predicted values at *specific values of certain variables*. 
 
 ### Estimate The Model
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Andy Grogan-Kaylor">
-<meta name="dcterms.date" content="2023-07-28">
+<meta name="dcterms.date" content="2023-08-03">
 
 <title>Visualizing Multilevel Models</title>
 <style>
@@ -143,7 +143,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">July 28, 2023</p>
+      <p class="date">August 3, 2023</p>
     </div>
   </div>
   
@@ -367,6 +367,7 @@ file mysmallmultiples2.png saved as PNG format</code></pre>
 </blockquote>
 <section id="using-predicted-values-predict" class="level2" data-number="12.1">
 <h2 data-number="12.1" class="anchored" data-anchor-id="using-predicted-values-predict"><span class="header-section-number">12.1</span> Using Predicted Values (<code>predict</code>)</h2>
+<p><code>predict</code> generates a predicted value for <em>every observation in the data</em>.</p>
 <section id="estimate-the-model" class="level3" data-number="12.1.1">
 <h3 data-number="12.1.1" class="anchored" data-anchor-id="estimate-the-model"><span class="header-section-number">12.1.1</span> Estimate The Model</h3>
 <div class="cell" data-collectcode="true">
@@ -468,6 +469,7 @@ file mypredictedvalues2.png saved as PNG format</code></pre>
 </section>
 <section id="margins-and-marginsplot" class="level2" data-number="12.3">
 <h2 data-number="12.3" class="anchored" data-anchor-id="margins-and-marginsplot"><span class="header-section-number">12.3</span> <code>margins</code> and <code>marginsplot</code></h2>
+<p>In contrast to <code>predict</code>, which generates a predicted value for <em>every observation in the data</em>, <code>margins</code> generates predicted values at <em>specific values</em> of certain variables.</p>
 <section id="estimate-the-model-1" class="level3" data-number="12.3.1">
 <h3 data-number="12.3.1" class="anchored" data-anchor-id="estimate-the-model-1"><span class="header-section-number">12.3.1</span> Estimate The Model</h3>
 <div class="cell" data-collectcode="true">
