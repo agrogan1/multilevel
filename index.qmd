@@ -1,11 +1,12 @@
 ---
 title: "Multilevel and Longitudinal Modeling (SW 864)"
 subtitle: "An Interdisciplinary Doctoral Statistics Course"
-author:
-  - name: Andy Grogan-Kaylor 
-    url: https://agrogan1.github.io/
-    affiliation: University of Michigan
-    affiliation_url: https://umich.edu/
+author: 
+  name: Andy Grogan-Kaylor 
+  url: https://agrogan1.github.io/
+  affiliation: 
+    - name: University of Michigan
+      url: https://umich.edu/
 date: "today"
 format:
   html:
