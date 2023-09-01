@@ -1,30 +1,22 @@
 ---
 title: "Demonstration of Clustered Data"
-author:
-- name: Andy Grogan-Kaylor
-  url: https://agrogan1.github.io/
-  affiliation: University of Michigan
-  affiliation_url: https://umich.edu/
-date: '`r Sys.Date()`'
-output: 
-  distill::distill_article:
-    highlight: haddock
-    toc: yes
-    toc_float: yes
-    code_folding: true
+author: "Andy Grogan-Kaylor"
+date: "today"
+format: 
+  html:
+    toc: true
+    code-fold: true
+    code-summary: "Show the code"  
+    code-tools: true  
+    number-sections: true
+    theme:
+      light: cosmo
+      dark: vapor
 ---
-
-```{r setup, include=FALSE}
-
-knitr::opts_chunk$set(echo = FALSE,
-                      warning = FALSE,
-                      message = FALSE)
-
-```
 
 ```{css, echo=FALSE}
 
-d-article blockquote {
+blockquote {
   color: black;
   border-left: 2px solid #FFCB05; 
   padding: 0.5em 10px;
@@ -33,6 +25,7 @@ d-article blockquote {
 ```
 
 ```{r}
+#| output: false
 
 library(lme4) # MLM
 
@@ -59,7 +52,7 @@ From Bland and Altman, *BMJ*, 1994, 308, 896.
 
 So... we follow their procedure.
 
-```{r, echo=TRUE, eval=TRUE}
+```{r}
 
 set.seed(3846) # random seed
 
@@ -98,7 +91,7 @@ mydata <- data.frame(id,
 
 > The animation below illustrates the process of simulating the data.
 
-```{r, echo=TRUE, eval=TRUE}
+```{r}
 
 ggplot(mydata,
        aes(color = factor(group_num),
@@ -116,10 +109,10 @@ ggplot(mydata,
              show.legend = FALSE) + 
   transition_layers(layer_length = 1,
                     transition_length = 3) +
-  enter_fade() +
-  enter_grow() +
-  exit_fade() +
-  exit_shrink() +
+  # enter_fade() +
+  # enter_grow() +
+  # exit_fade() +
+  # exit_shrink() +
   labs(title = "Illustrating the Process of Simulating the Data",
        x = "x",
        y = "y") +
