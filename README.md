@@ -2,7 +2,7 @@
 
 ## Why MLM?
 
-* [Demonstration of different methods with clustered data](https://agrogan1.github.io/multilevel/demo-clustering/demo-clustering.html)
+* [Demonstration of clustered data](https://agrogan1.github.io/multilevel/demo-clustering/demo-clustering.html)
 * [Multilevel Structure](https://agrogan1.github.io/multilevel/multilevel-structure/multilevel-structure.html)
 
 ## Key Handouts
