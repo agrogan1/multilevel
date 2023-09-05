@@ -108,11 +108,11 @@ ggplot(mydata,
                 y = y_individual),
              show.legend = FALSE) + 
   transition_layers(layer_length = 1,
-                    transition_length = 3) +
-  # enter_fade() +
-  # enter_grow() +
-  # exit_fade() +
-  # exit_shrink() +
+                    transition_length = 7) +
+  enter_fade() +
+  enter_grow() +
+  exit_fade() +
+  exit_shrink() +
   labs(title = "Illustrating the Process of Simulating the Data",
        x = "x",
        y = "y") +
