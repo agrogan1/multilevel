@@ -5,21 +5,23 @@
 
 * The general idea is to:
 * run a mixed model
-* generate predicted values
+* generate predicted values that include the random effects
 * use some sophisticated graphing syntax to graph fitted values and overall regression line
-* we use the c(L) option to connect ascending values
+* use the c(L) option to connect ascending values
+
+* with older versions of Stata we may want to `set scheme s1color`; with newer versions of Stata, we can use the new default scheme
 
 * Example
-
-set scheme s1color // nice graphing scheme
 
 use "https://github.com/agrogan1/multilevel/raw/master/mlm-R2-gutten/gutten.dta", clear // get data
 
 mixed height age_base || tree_ID: // mixed model
 
-predict yhat, fitted // predicted (fitted) values
+predict yhat, fitted // predicted (fitted) values that use random effects
 
-twoway (line yhat age_base, connect(L) lwidth(vthin)) (lfit yhat age_base, lwidth(thick))
+twoway /// twoway graph
+(line yhat age_base, connect(L) lwidth(vthin)) /// fit lines for each group
+(lfit yhat age_base, lwidth(thick)) // overall fit line
 
 
 
