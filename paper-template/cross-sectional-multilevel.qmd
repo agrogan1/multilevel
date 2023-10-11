@@ -191,7 +191,9 @@ sjPlot::tab_model(myMLM,
                   show.se = TRUE,
                   show.ci = FALSE,
                   show.stat = TRUE,
-                  show.r2 = FALSE)
+                  show.r2 = FALSE,
+                  show.ngroups = FALSE,
+                  show.obs = TRUE)
 
 ```
 
