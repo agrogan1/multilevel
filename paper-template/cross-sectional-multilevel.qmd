@@ -9,8 +9,6 @@ format:
     theme:
       light: united
       dark: vapor
-  pptx:
-    reference-doc: template.pptx
 editor: source
 ---
 
@@ -115,13 +113,13 @@ Tell me in words how your variables are distributed in your sample and include a
 ::: column-margin
 A hypothetical example. If all my variables are continuous, it's appropriate to show means. If some of my variables are categorical, it's more appropriate to show frequency distributions.
 
-In order to format my results nicely, I could copy them into Excel first, format them, and then copy them into Word. There are also some newer ways to make nicely formatted tables in Stata.
+**In order to format my results more nicely,** I should copy them into Excel first, format them, and then copy them into Word. There are also some newer ways to make nicely formatted tables in Stata.
 
 In the graphs, note that I've tried to pay some attention to meaningful titles and axis labels.
 
 Note also you can make use of one of Stata's `scheme`s to make your graphs visually interesting.
 
-It's also worth trying out the `lean1` and `lean2` schemes (type `findit lean2` to install).
+It's also worth trying out the `lean1` and `lean2` schemes (type `findit lean2` to install). In new versions of Stata, the new default scheme `stcolor` provides visually appealing graphs.
 
 And the daring are welcome to try my "Michigan" graph scheme, available [here](https://agrogan1.github.io/Stata/michigan-graph-scheme/), *caveat emptor*.
 :::

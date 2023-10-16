@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="A Student">
-<meta name="dcterms.date" content="2023-10-11">
+<meta name="dcterms.date" content="2023-10-16">
 
 <title>Cross Sectional Multilevel Model Paper Template</title>
 <style>
@@ -66,7 +66,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">7</span> Conclusion</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">8</span> References</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="cross-sectional-multilevel.pptx"><i class="bi bi-file-slides"></i>Powerpoint</a></li></ul></div></nav>
+</nav>
 </div>
 <main class="content page-columns page-full" id="quarto-document-content">
 
@@ -89,7 +89,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 11, 2023</p>
+      <p class="date">October 16, 2023</p>
     </div>
   </div>
   
@@ -178,10 +178,10 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="no-row-height column-margin column-container"><div class="">
 <p>A hypothetical example. If all my variables are continuous, it’s appropriate to show means. If some of my variables are categorical, it’s more appropriate to show frequency distributions.</p>
-<p>In order to format my results nicely, I could copy them into Excel first, format them, and then copy them into Word. There are also some newer ways to make nicely formatted tables in Stata.</p>
+<p><strong>In order to format my results more nicely,</strong> I should copy them into Excel first, format them, and then copy them into Word. There are also some newer ways to make nicely formatted tables in Stata.</p>
 <p>In the graphs, note that I’ve tried to pay some attention to meaningful titles and axis labels.</p>
 <p>Note also you can make use of one of Stata’s <code>scheme</code>s to make your graphs visually interesting.</p>
-<p>It’s also worth trying out the <code>lean1</code> and <code>lean2</code> schemes (type <code>findit lean2</code> to install).</p>
+<p>It’s also worth trying out the <code>lean1</code> and <code>lean2</code> schemes (type <code>findit lean2</code> to install). In new versions of Stata, the new default scheme <code>stcolor</code> provides visually appealing graphs.</p>
 <p>And the daring are welcome to try my “Michigan” graph scheme, available <a href="https://agrogan1.github.io/Stata/michigan-graph-scheme/">here</a>, <em>caveat emptor</em>.</p>
 </div></div><div class="cell">
 <div class="cell-output-display">
@@ -211,22 +211,22 @@ ul.task-list li input[type="checkbox"] {
 <td style="text-align: center;">NA</td>
 <td style="text-align: center;">NA</td>
 <td style="text-align: center;">NA</td>
-<td style="text-align: center;">0: 51, 1: 49</td>
+<td style="text-align: center;">0: 62, 1: 38</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">x</td>
-<td style="text-align: center;">101.5</td>
-<td style="text-align: center;">10.72</td>
-<td style="text-align: center;">76.05</td>
-<td style="text-align: center;">123</td>
+<td style="text-align: center;">100.9</td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">75.26</td>
+<td style="text-align: center;">125.7</td>
 <td style="text-align: center;">NA</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">y</td>
-<td style="text-align: center;">107.2</td>
-<td style="text-align: center;">14.2</td>
-<td style="text-align: center;">77.74</td>
-<td style="text-align: center;">145.2</td>
+<td style="text-align: center;">105.7</td>
+<td style="text-align: center;">15.25</td>
+<td style="text-align: center;">60.31</td>
+<td style="text-align: center;">139.9</td>
 <td style="text-align: center;">NA</td>
 </tr>
 <tr class="even">
@@ -279,24 +279,24 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">(Intercept)</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">19.49</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">10.48</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">1.86</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.066</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">2.06</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">8.88</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.23</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.817</td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">x</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.86</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.10</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">8.50</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">1.03</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.09</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">12.04</td>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</strong></td>
 </tr>
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">z [1]</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">1.60</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">2.10</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.76</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.448</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">-1.60</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">1.96</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">-0.82</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.415</td>
 </tr>
 <tr>
 <td colspan="5" style="font-weight:bold; text-align:left; padding-top:.8em;">Random Effects</td>
@@ -304,16 +304,16 @@ ul.task-list li input[type="checkbox"] {
 
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">σ<sup>2</sup></td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="4">105.23</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="4">85.73</td>
 </tr>
 
 <tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">τ<sub>00</sub> <sub>u</sub></td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="4">11.65</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="4">24.16</td>
 
 </tr><tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">ICC</td>
-<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="4">0.10</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="4">0.22</td>
 
 </tr><tr>
 <td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">N <sub>u</sub></td>
