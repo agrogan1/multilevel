@@ -3,15 +3,15 @@
       name:  {res}<unnamed>
        {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel/reshaping-data/reshaping-data.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res} 4 Mar 2023, 12:05:12
+ {txt}opened on:  {res}18 Oct 2023, 14:02:54
 {txt}
 {com}. //_1
 . display c(current_date)
-{res} 4 Mar 2023
+{res}18 Oct 2023
 {txt}
 {com}. //_2
 . display c(current_time)
-{res}12:05:12
+{res}14:02:54
 {txt}
 {com}. //_3
 . clear all
@@ -56,20 +56,21 @@
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
 {hline}
-{p 0 48}{res}{bind:Tree           }{txt}{bind: long    }{bind:{txt}%12.0g    }{space 1}{bind:         }{bind:  }{res}{res}Tree number{p_end}
-{p 0 48}{bind:Competition    }{txt}{bind: long    }{bind:{txt}%12.0g    }{space 1}{txt}Competition{p_end}
+{p 0 48}{res}{bind:Tree           }{txt}{bind: long    }{bind:%12.0g    }{space 1}{bind:         }{bind:  }{res}{res}Tree number{p_end}
+{p 0 48}{bind:Competition    }{txt}{bind: long    }{bind:%12.0g    }{space 1}{txt}Competition{p_end}
 {p 0 48}{space 44}{bind:  }{res}{res}C (competition), CR (competition removed){p_end}
-{p 0 48}{bind:Fertilizer     }{txt}{bind: long    }{bind:{txt}%12.0g    }{space 1}{txt}Fertilizer{p_end}
+{p 0 48}{bind:Fertilizer     }{txt}{bind: long    }{bind:%12.0g    }{space 1}{txt}Fertilizer{p_end}
 {p 0 48}{space 44}{bind:  }{res}{res}F (fertilized), NF (not fertilized){p_end}
-{p 0 48}{bind:Height0        }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Height (cm) of seedling at planting{p_end}
-{p 0 48}{bind:Height5        }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Height (cm) of seedling at year 5{p_end}
-{p 0 48}{bind:Diameter0      }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Diameter (cm) of seedling at planting{p_end}
-{p 0 48}{bind:Diameter5      }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Diameter (cm) of seedling at year 5{p_end}
-{p 0 48}{bind:Ht_change      }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Change (cm) in height{p_end}
-{p 0 48}{bind:Di_change      }{txt}{bind: double  }{bind:{txt}%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Change (cm) in diameter{p_end}
+{p 0 48}{bind:Height0        }{txt}{bind: double  }{bind:%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Height (cm) of seedling at planting{p_end}
+{p 0 48}{bind:Height5        }{txt}{bind: double  }{bind:%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Height (cm) of seedling at year 5{p_end}
+{p 0 48}{bind:Diameter0      }{txt}{bind: double  }{bind:%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Diameter (cm) of seedling at planting{p_end}
+{p 0 48}{bind:Diameter5      }{txt}{bind: double  }{bind:%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Diameter (cm) of seedling at year 5{p_end}
+{p 0 48}{bind:Ht_change      }{txt}{bind: double  }{bind:%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Change (cm) in height{p_end}
+{p 0 48}{bind:Di_change      }{txt}{bind: double  }{bind:%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Change (cm) in diameter{p_end}
 {txt}{hline}
 Sorted by: 
-
+     Note: {res}Dataset has changed since last saved.
+{txt}
 {com}. //_6
 . keep Tree Competition Fertilizer Height0 Height5 Diameter0 Diameter5
 {txt}
@@ -142,7 +143,7 @@ Number of observations     {res}          72   {txt}->   {res}144
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel/reshaping-data/reshaping-data.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res} 4 Mar 2023, 12:05:12
+ {txt}closed on:  {res}18 Oct 2023, 14:02:55
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}
