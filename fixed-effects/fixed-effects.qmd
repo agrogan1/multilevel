@@ -9,7 +9,7 @@ format:
     toc: true
     number-sections: true
     theme:
-      light: united
+      light: cosmo
       dark: vapor
 ---
 
