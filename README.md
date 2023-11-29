@@ -41,6 +41,10 @@
 
 * [Reshaping Data](https://agrogan1.github.io/multilevel/reshaping-data/reshaping-data.html)
 
+## Filling in Missing Observations
+
+* [Filling in Missing Observations](https://github.com/agrogan1/multilevel/tree/master/filling-in-missing-observations)
+
 ## Fixed Effects Regression
 
 * [Derivation](https://agrogan1.github.io/multilevel/fixed-effects/fixed-effects.html)
