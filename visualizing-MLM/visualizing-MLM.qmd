@@ -53,7 +53,7 @@ What approach(es) do you prefer?
 
 # Setup
 
-I am not terrifically fond of the default `s2color` graph scheme in earlier versions of Stata. Here I make use of the `michigan` graph scheme available at: [https://agrogan1.github.io/Stata/michigan-graph-scheme/](https://agrogan1.github.io/Stata/michigan-graph-scheme/)
+I am not terrifically fond of the default `s2color` graph scheme in earlier versions of Stata. Here I make use of the `michigan` graph scheme available at: [https://agrogan1.github.io/Stata/michigan-graph-scheme/](https://agrogan1.github.io/Stata/michigan-graph-scheme/). The `stcolor` graph scheme available in newer versions of Stata would likely also work well. 
 
 ```{stata, collectcode=TRUE}
 
