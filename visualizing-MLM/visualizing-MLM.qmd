@@ -53,7 +53,7 @@ What approach(es) do you prefer?
 
 # Setup
 
-I am not terrifically fond of the default `s2color` graph scheme in earlier versions of Stata. Here I make use of the `michigan` graph scheme available at: [https://agrogan1.github.io/Stata/michigan-graph-scheme/](https://agrogan1.github.io/Stata/michigan-graph-scheme/). The `stcolor` graph scheme available in newer versions of Stata would likely also work well. 
+I am not terrifically fond of the default `s2color` graph scheme in earlier versions of Stata. Here I make use of the `michigan` graph scheme available at: [https://agrogan1.github.io/Stata/michigan-graph-scheme/](https://agrogan1.github.io/Stata/michigan-graph-scheme/). 
 
 ```{stata, collectcode=TRUE}
 
@@ -61,7 +61,7 @@ set scheme michigan
 
 ```
 	
-Stata's `s1color` scheme would also would be an option as would be Asjad Naqvi's incredible `schemepack`: [https://github.com/asjadnaqvi/stata-schemepack](https://github.com/asjadnaqvi/stata-schemepack).
+Stata's `s1color` scheme--available in newer versions of Stata--would also would be an option as would be Asjad Naqvi's incredible `schemepack`: [https://github.com/asjadnaqvi/stata-schemepack](https://github.com/asjadnaqvi/stata-schemepack).
 
 Throughout the tutorial, I make frequent use of the `mcolor(%30)` option to add some visual interest to scatterplots by adding transparency to the markers.
 
