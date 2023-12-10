@@ -188,13 +188,13 @@ ul.task-list li input[type="checkbox"] {
 <div class="cell-output cell-output-stdout">
 <pre><code>    Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
-           x |        100    100.5775     10.4609   77.22126   126.9314
-           y |        100    107.5587    15.04167   75.46601   143.6488
+           x |        100    100.8225     8.71197    81.2936   121.1466
+           y |        100    107.6816    13.22501   69.53086   145.2771
 
           z |      Freq.     Percent        Cum.
 ------------+-----------------------------------
-          0 |         62       62.00       62.00
-          1 |         38       38.00      100.00
+          0 |         52       52.00       52.00
+          1 |         48       48.00      100.00
 ------------+-----------------------------------
       Total |        100      100.00</code></pre>
 </div>
@@ -211,12 +211,12 @@ ul.task-list li input[type="checkbox"] {
 <figcaption class="figure-caption">A scatterplot and linear fit</figcaption>
 </figure>
 </div>
-<p>What is the influence of each predictor variable in your relationship in terms of <span class="math inline">\(\beta\)</span> and p value? Please compute the unconditional intra-class correlation coefficient as part of your results.</p>
+<p>What is the influence of each predictor variable in your relationship in terms of <span class="math inline">\(\beta\)</span> and p value? <span style="color:red;">Please compute the unconditional intra-class correlation coefficient as part of your results.</span></p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>Performing EM optimization Performing gradient-based optimization: 
-Iteration 0:  Log likelihood = -371.04347  
-Iteration 1:  Log likelihood = -371.04347  
+Iteration 0:  Log likelihood = -369.49222  
+Iteration 1:  Log likelihood = -369.49222  
 
 Computing standard errors ...
 
@@ -226,26 +226,26 @@ Group variable: u                                    Number of groups =     10
                                                                   min =     10
                                                                   avg =   10.0
                                                                   max =     10
-                                                     Wald chi2(2)     = 109.59
-Log likelihood = -371.04347                          Prob &gt; chi2      = 0.0000
+                                                     Wald chi2(2)     =  88.68
+Log likelihood = -369.49222                          Prob &gt; chi2      = 0.0000
 
 ------------------------------------------------------------------------------
            y | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-           x |   1.005735   .0961335    10.46   0.000     .8173169    1.194153
-           z |   .2060553   1.964594     0.10   0.916    -3.644477    4.056588
-       _cons |   6.119992   10.35734     0.59   0.555    -14.18002    26.42001
+           x |   1.042158   .1125085     9.26   0.000      .821645     1.26267
+           z |  -.4646062   1.926578    -0.24   0.809    -4.240629    3.311417
+       _cons |   3.296319   12.19543     0.27   0.787    -20.60628    27.19891
 ------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------
   Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
 -----------------------------+------------------------------------------------
 u: Identity                  |
-                  var(_cons) |   32.11255   18.14129      10.61224    97.17236
+                  var(_cons) |   10.23227   8.745244      1.916342    54.63499
 -----------------------------+------------------------------------------------
-               var(Residual) |   83.53032   12.45209      62.36676    111.8755
+               var(Residual) |   87.76707   13.10626      65.49703    117.6093
 ------------------------------------------------------------------------------
-LR test vs. linear model: chibar2(01) = 16.74         Prob &gt;= chibar2 = 0.0000</code></pre>
+LR test vs. linear model: chibar2(01) = 3.13          Prob &gt;= chibar2 = 0.0385</code></pre>
 </div>
 </div>
 </section>

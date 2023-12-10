@@ -18,23 +18,23 @@ knitr::opts_chunk$set(echo = FALSE,
                       warning = FALSE,
                       message = FALSE)
 
-library(ggplot2) # nice graphs
+# library(ggplot2) # nice graphs
 
-library(ggthemes) # themes for ggplot
+# library(ggthemes) # themes for ggplot
 
 library(dplyr) # data wrangling
 
 library(haven) # read and write to Stata
 
-library(psych) # descriptive statistics
+# library(psych) # descriptive statistics
 
-library(skimr) # descriptive statistics
+# library(skimr) # descriptive statistics
 
-library(pander) # nice tables
+# library(pander) # nice tables
 
-library(lme4) # MLM's
+# library(lme4) # MLM's
 
-library(sjPlot) # nice tables for MLM
+# library(sjPlot) # nice tables for MLM
 
 library(Statamarkdown) # use Stata!!!
 
@@ -221,7 +221,7 @@ graph export mytwoway.png, replace
 ![A scatterplot and linear fit](mytwoway.png){width=50%}
 
 
-What is the influence of each predictor variable in your relationship in terms of $\beta$ and p value? Please compute the unconditional intra-class correlation coefficient as part of your results.
+What is the influence of each predictor variable in your relationship in terms of $\beta$ and p value? <span style="color:red;">Please compute the unconditional intra-class correlation coefficient as part of your results.</span>
 
 ```{r}
 #| eval: false
