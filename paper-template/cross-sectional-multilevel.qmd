@@ -18,11 +18,13 @@ knitr::opts_chunk$set(echo = FALSE,
                       warning = FALSE,
                       message = FALSE)
 
-library(ggplot2)
+library(ggplot2) # nice graphs
 
-library(ggthemes)
+library(ggthemes) # themes for ggplot
 
 library(dplyr) # data wrangling
+
+library(haven) # read and write to Stata
 
 library(psych) # descriptive statistics
 
@@ -33,6 +35,8 @@ library(pander) # nice tables
 library(lme4) # MLM's
 
 library(sjPlot) # nice tables for MLM
+
+library(Statamarkdown) # use Stata!!!
 
 ```
 
@@ -111,15 +115,17 @@ NB: You don't have to include everything I've listed here. Try for 70-90%.
 Tell me in words how your variables are distributed in your sample and include a table.
 
 ::: column-margin
-A hypothetical example. If all my variables are continuous, it's appropriate to show means. If some of my variables are categorical, it's more appropriate to show frequency distributions.
+A hypothetical example. <span style="color:red;">Note that I have pasted in my *raw* results here. You should devote more attention to *formatting* your results as if for a publication.</span> 
 
-**In order to format my results more nicely,** I should copy them into Excel first, format them, and then copy them into Word. There are also some newer ways to make nicely formatted tables in Stata.
+<span style="color:red;">**In order to format my results more nicely,**</span> I could copy them into Excel first, format them, and then copy them into Word. There are also some newer ways to make nicely formatted tables in Stata. Ask the Instructor for details.
+
+If all my variables are continuous, it's appropriate to show means. If some of my variables are categorical, it's more appropriate to show frequency distributions.
 
 In the graphs, note that I've tried to pay some attention to meaningful titles and axis labels.
 
-Note also you can make use of one of Stata's `scheme`s to make your graphs visually interesting.
+Note also you can make use of one of Stata's `scheme`s to make your graphs visually interesting. In new versions of Stata, the new default scheme `stcolor` provides visually appealing graphs.
 
-It's also worth trying out the `lean1` and `lean2` schemes (type `findit lean2` to install). In new versions of Stata, the new default scheme `stcolor` provides visually appealing graphs.
+It's also worth trying out the `lean1` and `lean2` schemes (type `findit lean2` to install). 
 
 And the daring are welcome to try my "Michigan" graph scheme, available [here](https://agrogan1.github.io/Stata/michigan-graph-scheme/), *caveat emptor*.
 :::
@@ -130,7 +136,7 @@ N <- 100
 
 x <- rnorm(N, 100, 10)
 
-z <- rbinom(N, 1, .5)
+z <- rbinom(N, 1, .35)
 
 u <- rep(1:10, each = 10)
 
@@ -142,23 +148,23 @@ z <- factor(z)
 
 mydata <- data.frame(x, y, z, u)
 
-pander(skim(mydata) %>% 
-         rename(variable = skim_variable,
-                mean = numeric.mean,
-                sd = numeric.sd,
-                minimum = numeric.p0,
-                maximum = numeric.p100,
-                counts = factor.top_counts) %>%
-         select(variable,
-                mean,
-                sd,
-                minimum,
-                maximum,
-                counts))
+write_dta(mydata, "mydata.dta")
 
 ```
 
-```{r, fig.cap="A Sample Univariate Graph"}
+```{stata}
+
+use mydata.dta, clear
+
+summarize x y
+
+tabulate z
+
+```
+
+```{r}
+#| fig-cap: "A Sample Univariate Graph"
+#| eval: false
 
 ggplot(data = mydata,
        aes(x = x)) +
@@ -168,7 +174,26 @@ ggplot(data = mydata,
 
 ```
 
-```{r, fig.cap="A Sample Bivariate Graph"}
+```{stata}
+#| output: false
+
+use mydata.dta, clear
+
+histogram x, percent ///
+title("An Informative Graph Title") ///
+xtitle("An Informative Label for This Variable") ///
+note("Use the , percent option in histograms")
+
+graph export myhistogram.png, replace
+
+```
+
+![A histogram of one variable](myhistogram.png){width=50%}
+
+
+```{r}
+#| fig-cap: "A Sample Bivariate Graph"
+#| eval: false
 
 ggplot(data = mydata,
        aes(x = x,
@@ -179,9 +204,27 @@ ggplot(data = mydata,
 
 ```
 
+```{stata}
+#| output: false
+
+use mydata.dta, clear
+
+twoway (scatter y x) (lfit y x), ///
+title("An Informative Graph Title") ///
+xtitle("An Informative Label for This Variable") ///
+ytitle("An Informative Label for This Variable")
+
+graph export mytwoway.png, replace
+
+```
+
+![A scatterplot and linear fit](mytwoway.png){width=50%}
+
+
 What is the influence of each predictor variable in your relationship in terms of $\beta$ and p value? Please compute the unconditional intra-class correlation coefficient as part of your results.
 
 ```{r}
+#| eval: false
 
 myMLM <- lmer(y ~ x + z + (1 | u), data = mydata)
 
@@ -195,6 +238,14 @@ sjPlot::tab_model(myMLM,
 
 ```
 
+```{stata}
+
+use mydata.dta, clear
+
+mixed y x z || u:
+  
+```
+
 # Discussion
 
 Briefly recapitulate or summarize briefly the results in written form. Do your results support the hypothesis or inform the research question or the discussion in the literature? How so or why? Do your results say anything about causal connections between your two measures? Are your results congruent with any theory about causal connections between your two measures? Can you demonstrate associations that are not necessarily causal? What are the implications for practice, interventions, policy or further research? Do your findings suggest anything about particular policies or programs that should be implemented, funded or continued? Are there gaps in the research that suggest further research is needed? What are the limitations of the methods used? i.e especially given that you are not examining all of the predictors that are theoretically relevant, are there are other variables that should be considered in future, more complicated research?\
@@ -205,12 +256,12 @@ Briefly recapitulate or summarize briefly the results in written form. Do your r
 
 # References
 
-Jones & Smith. (2006). Further really amazing results. *Amazing Results Quarterly*, 15(2), 246-280.
+Jones & Smith. (2023). Further really amazing results. *Amazing Results Quarterly*, 15(2), 246-280.
 
-Smith, & Jones. (2006). Some very important policy stuff. The *Journal of Very Important Policy Stuff*, 1(1), 1-2.
+Smith, & Jones. (2015). Some very important policy stuff. The *Journal of Very Important Policy Stuff*, 1(1), 1-2.
 
-Smith, & Jones. (2007). Some very important developmental stuff. *The Journal of Very Important Developmental Stuff*, 1(1), 1-2.
+Smith, & Jones. (2202). Some very important developmental stuff. *The Journal of Very Important Developmental Stuff*, 1(1), 1-2.
 
-Jones & Jones. (2008). Stuff we forgot to say in our earlier articles. *Extremely Sophisticated Quantitative Analysis*, 5(7), 1-25.
+Jones & Jones. (2021). Stuff we forgot to say in our earlier articles. *Extremely Sophisticated Quantitative Analysis*, 5(7), 1-25.
 
 Smith, & Smith. (1990). Stuff that we hope will be important some day. *The Journal of Heretofor Unanticipated Results*, 1(1), 1-2.
