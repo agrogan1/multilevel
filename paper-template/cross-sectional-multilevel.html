@@ -66,7 +66,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">7</span> Conclusion</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">8</span> References</a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="cross-sectional-multilevel.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
 </div>
 <main class="content page-columns page-full" id="quarto-document-content">
 
@@ -177,77 +177,127 @@ ul.task-list li input[type="checkbox"] {
 <p>Tell me in words how your variables are distributed in your sample and include a table.</p>
 
 <div class="no-row-height column-margin column-container"><div class="">
-<p>A hypothetical example. <span style="color:red;">Note that I have pasted in my <em>raw</em> results here. You should devote more attention to <em>formatting</em> your results as if for a publication.</span></p>
+<p>A hypothetical example. <span style="color:red;">You should devote attention to <em>formatting</em> your results as if for a publication. NB: You do not have to copy my format exactly. Especially for a multivariate model, I prefer a more complete presentation using <span class="math inline">\(\beta\)</span>, SE, t and p value.</span></p>
 <p><span style="color:red;"><strong>In order to format my results more nicely,</strong></span> I could copy them into Excel first, format them, and then copy them into Word. There are also some newer ways to make nicely formatted tables in Stata. Ask the Instructor for details.</p>
 <p>If all my variables are continuous, it’s appropriate to show means. If some of my variables are categorical, it’s more appropriate to show frequency distributions.</p>
 <p>In the graphs, note that I’ve tried to pay some attention to meaningful titles and axis labels.</p>
 <p>Note also you can make use of one of Stata’s <code>scheme</code>s to make your graphs visually interesting. In new versions of Stata, the new default scheme <code>stcolor</code> provides visually appealing graphs.</p>
 <p>It’s also worth trying out the <code>lean1</code> and <code>lean2</code> schemes (type <code>findit lean2</code> to install).</p>
 <p>And the daring are welcome to try my “Michigan” graph scheme, available <a href="https://agrogan1.github.io/Stata/michigan-graph-scheme/">here</a>, <em>caveat emptor</em>.</p>
-</div></div><div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-           x |        100    100.8225     8.71197    81.2936   121.1466
-           y |        100    107.6816    13.22501   69.53086   145.2771
-
-          z |      Freq.     Percent        Cum.
-------------+-----------------------------------
-          0 |         52       52.00       52.00
-          1 |         48       48.00      100.00
-------------+-----------------------------------
-      Total |        100      100.00</code></pre>
-</div>
-</div>
+</div></div><table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th>Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>N</td>
+<td>100</td>
+</tr>
+<tr class="even">
+<td>x</td>
+<td>98.539 (9.184)</td>
+</tr>
+<tr class="odd">
+<td>y</td>
+<td>103.951 (12.012)</td>
+</tr>
+<tr class="even">
+<td>z</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>0</td>
+<td>69 (69.0%)</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>31 (31.0%)</td>
+</tr>
+</tbody>
+</table>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="myhistogram.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<p><img src="myhistogram.png" class="img-fluid figure-img" style="width:75.0%"></p>
 <figcaption class="figure-caption">A histogram of one variable</figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="mytwoway.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<p><img src="mytwoway.png" class="img-fluid figure-img" style="width:75.0%"></p>
 <figcaption class="figure-caption">A scatterplot and linear fit</figcaption>
 </figure>
 </div>
 <p>What is the influence of each predictor variable in your relationship in terms of <span class="math inline">\(\beta\)</span> and p value? <span style="color:red;">Please compute the unconditional intra-class correlation coefficient as part of your results.</span></p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>Performing EM optimization Performing gradient-based optimization: 
-Iteration 0:  Log likelihood = -369.49222  
-Iteration 1:  Log likelihood = -369.49222  
-
-Computing standard errors ...
-
-Mixed-effects ML regression                          Number of obs    =    100
-Group variable: u                                    Number of groups =     10
-                                                     Obs per group:
-                                                                  min =     10
-                                                                  avg =   10.0
-                                                                  max =     10
-                                                     Wald chi2(2)     =  88.68
-Log likelihood = -369.49222                          Prob &gt; chi2      = 0.0000
-
-------------------------------------------------------------------------------
-           y | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
--------------+----------------------------------------------------------------
-           x |   1.042158   .1125085     9.26   0.000      .821645     1.26267
-           z |  -.4646062   1.926578    -0.24   0.809    -4.240629    3.311417
-       _cons |   3.296319   12.19543     0.27   0.787    -20.60628    27.19891
-------------------------------------------------------------------------------
-
-------------------------------------------------------------------------------
-  Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
------------------------------+------------------------------------------------
-u: Identity                  |
-                  var(_cons) |   10.23227   8.745244      1.916342    54.63499
------------------------------+------------------------------------------------
-               var(Residual) |   87.76707   13.10626      65.49703    117.6093
-------------------------------------------------------------------------------
-LR test vs. linear model: chibar2(01) = 3.13          Prob &gt;= chibar2 = 0.0385</code></pre>
-</div>
-</div>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th>MLM</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>x</td>
+<td>0.631</td>
+<td>**</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>(0.113)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>z</td>
+<td>1.220</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>(2.217)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>_cons</td>
+<td>40.220</td>
+<td>**</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>(11.581)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>var(_cons)</td>
+<td>6.819</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>(7.773)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>var(e)</td>
+<td>101.345</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>(15.116)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Number of observations</td>
+<td>100</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>** p&lt;.01, * p&lt;.05</p>
 </section>
 <section id="discussion" class="level1" data-number="6">
 <h1 data-number="6"><span class="header-section-number">6</span> Discussion</h1>

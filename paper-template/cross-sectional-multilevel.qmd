@@ -9,6 +9,9 @@ format:
     theme:
       light: united
       dark: vapor
+  pdf:
+    toc: true
+    number-sections: true
 editor: source
 ---
 
@@ -115,7 +118,7 @@ NB: You don't have to include everything I've listed here. Try for 70-90%.
 Tell me in words how your variables are distributed in your sample and include a table.
 
 ::: column-margin
-A hypothetical example. <span style="color:red;">Note that I have pasted in my *raw* results here. You should devote more attention to *formatting* your results as if for a publication.</span> 
+A hypothetical example. <span style="color:red;">You should devote attention to *formatting* your results as if for a publication. NB: You do not have to copy my format exactly. Especially for a multivariate model, I prefer a more complete presentation using $\beta$, SE, t and p value.</span> 
 
 <span style="color:red;">**In order to format my results more nicely,**</span> I could copy them into Excel first, format them, and then copy them into Word. There are also some newer ways to make nicely formatted tables in Stata. Ask the Instructor for details.
 
@@ -156,10 +159,15 @@ write_dta(mydata, "mydata.dta")
 
 use mydata.dta, clear
 
-summarize x y
+* summarize x y
 
-tabulate z
+* tabulate z
 
+quietly: dtable x y i.z, export("table1.md", as(markdown) replace)
+
+```
+
+```{r, child=c('table1.md')}
 ```
 
 ```{r}
@@ -188,7 +196,7 @@ graph export myhistogram.png, replace
 
 ```
 
-![A histogram of one variable](myhistogram.png){width=50%}
+![A histogram of one variable](myhistogram.png){width=75%}
 
 
 ```{r}
@@ -218,7 +226,7 @@ graph export mytwoway.png, replace
 
 ```
 
-![A scatterplot and linear fit](mytwoway.png){width=50%}
+![A scatterplot and linear fit](mytwoway.png){width=75%}
 
 
 What is the influence of each predictor variable in your relationship in terms of $\beta$ and p value? <span style="color:red;">Please compute the unconditional intra-class correlation coefficient as part of your results.</span>
@@ -242,8 +250,20 @@ sjPlot::tab_model(myMLM,
 
 use mydata.dta, clear
 
-mixed y x z || u:
+quietly: mixed y x z || u:
   
+est store MLM
+  
+quietly: etable, estimates(MLM) ///
+novarlabel /// variable names only
+/*cstat(_r_b)*/ /// beta's only
+showstars showstarsnote ///
+column(estimates) ///
+export("table2.md", as(markdown) replace)
+
+```
+
+```{r, child=c('table2.md')}
 ```
 
 # Discussion
