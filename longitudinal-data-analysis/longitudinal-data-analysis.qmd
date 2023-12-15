@@ -1,0 +1,175 @@
+---
+title: "Multiple Methods of Longitudinal Data Analysis"
+subtitle: "Draft Notes"
+author: "Andy Grogan-Kaylor"
+date: "today"
+format:
+  html:
+    theme: 
+      light: cosmo
+      dark: vapor
+    toc: true
+    number-sections: true
+    highlight-style: haddock
+    code-fold: true
+  pdf: 
+    toc: true
+    number-sections: true
+    highlight-style: haddock
+---
+
+# Some Data
+
+```{r}
+#| output: false
+#| echo: false
+
+set.seed(3846)
+
+library(Statamarkdown)
+
+```
+
+```{stata, collectcode = TRUE}
+
+clear all
+
+set seed 3846 //  set random seed
+
+quietly set obs 10 // 10 observations
+
+generate id = _n // id number
+
+quietly expand 3 // expand by 3
+
+sort id // sort by id
+
+bysort id: generate t = _n // time variable
+
+generate x = rnormal(10, 3) // random normal variable
+
+generate w = rbinomial(1, .3) // random binomial variable
+
+generate e = rnormal(0, 1) // random error
+
+generate y = x + w + e // regression equation
+
+drop e // drop error
+
+list // list out the data
+
+save longitudinal.dta, replace
+
+```
+
+# Multilevel Modeling
+
+## Equation
+
+$y_{it} = \beta_0 + \beta_1 x_{it} + \beta_2 w_{it} + u_{0i} + e_{it}$
+
+::: column-margin
+We assume that $u_{0i}$ has a normal distribution, but do not directly estimate the values of $u_{0i}$ for each individual.
+:::
+
+```{r}
+#| column: margin
+#| echo: false
+
+hist(rnorm(1000, 0, 1),
+     main = expression(u['0i']),
+     xlab = "",
+     col = "lightblue",
+     yaxt="n",
+     cex.main = 3.0)
+
+```
+
+## Syntax And Results
+
+```{stata}
+
+use longitudinal.dta, clear
+
+mixed y x i.w || id:
+
+```
+
+# Fixed Effects
+
+## Equation
+
+$y_{it} = \beta_0 + \beta_1 x_{it} + \beta_2 w_{it} + u_{0i} + e_{it}$
+
+::: column-margin
+We assume that the $u_{0i}$ are in fact, estimable. However, we end up estimating $y_{it} - \bar y_i = \beta_1 (x_{it} - \bar x_i) + \beta_2 (w_{it} - \bar w_i) + (e_{it} - \bar e_i)$. The $u_{0i}$ have dropped out of this equation.
+:::
+
+## Syntax And Results
+
+```{stata}
+
+use longitudinal.dta, clear
+
+xtreg y x i.w, i(id) fe
+
+```
+
+# Difference in Differences
+
+???
+
+# Cross Lagged Regression
+
+## Equation
+
+Similar to before, there is an equation predicting *y*.
+
+$y_{2i} = \beta_0 + \beta_1 y_{1i} + \beta_2 x_{1i} + \beta_3 w_{2i} + e_i$
+
+However, we need an equation for each time point, so:
+
+$y_{3i} = \beta_0 + \beta_1 y_{2i} + \beta_2 x_{2i} + \beta_3 w_{2i} + e_i$
+
+And, there are also equations predicting *x*.
+
+$x_{2i} = \beta_0 + \beta_1 x_{1i} + \beta_2 y_{1i} + \beta_3 w_{1i} + e_i$
+
+$x_{3i} = \beta_0 + \beta_1 x_{2i} + \beta_2 y_{2i} + \beta_3 w_{2i} + e_i$
+
+In cross-lagged regression, we need the data to be in wide format rather than long format.
+
+## Data Wrangling
+
+```{stata}
+
+use longitudinal.dta, clear
+
+reshape wide y x w, i(id) j(t) // reshape data to wide
+
+save longitudinalWIDE.dta, replace
+
+```
+
+## Syntax And Results
+
+```{stata}
+
+use longitudinalWIDE.dta, clear
+
+sem (y2 <- y1 x1 w1) ///
+(x2 <- x1 y1 w1) ///
+(y3 <- y2 x2 w2) ///
+(x3 <- x2 y2 w2)  
+
+```
+
+# Summary [^1]
+
+[^1]: Some of the decisions in this table are arguable.
+
+| Statistical Method      | Control for Time Invariant Observed | Control for Time Varying Observed | Control for Time InvariantUnobserved | Control for Time Varying Unobserved | Estimate Reciprocal Causality | Control for Earlier or Baseline y |
+|-------------------------|-------------------------------------|-----------------------------------|--------------------------------------|-------------------------------------|-------------------------------|-----------------------------------|
+| Multilevel Modeling     | yes                                 | yes                               | partially                            | no                                  | no                            | automatic                         |
+| Fixed Effects           | yes                                 | yes                               | yes                                  | no                                  | no                            | automatic                         |
+| Cross-Lagged Regression | yes                                 | yes                               | no                                   | no                                  | yes                           | must explicitly specify           |
