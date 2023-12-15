@@ -60,9 +60,10 @@
 
 * [`lmer` Demo](https://agrogan1.github.io/multilevel/lmer-demo/lmer-demo.html)
 
-## Multiple Methods for Analyzing Clustered Data
+## Multiple Methods 
 
-* [Multiple Methods](https://github.com/agrogan1/multilevel/tree/master/multiple-methods-for-clustered-data)
+* [Multiple Methods for Analyzing Clustered Data](https://github.com/agrogan1/multilevel/tree/master/multiple-methods-for-clustered-data)
+* [Multiple Methods of Longitudinal Data Analysis](https://agrogan1.github.io/multilevel/longitudinal-data-analysis/longitudinal-data-analysis.html)
 
 ## Multilevel Mediation
 
