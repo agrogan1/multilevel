@@ -475,21 +475,22 @@ LR test of model vs. saturated: chi2(10) = 85.21          Prob &gt; chi2 = 0.000
 <span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>                      <span class="st">`</span><span class="at">Control for Time Invariant Unobserved</span><span class="st">`</span>,</span>
 <span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>                      <span class="st">`</span><span class="at">Control for Time Varying Unobserved</span><span class="st">`</span>,</span>
 <span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>                      <span class="st">`</span><span class="at">Estimate Reciprocal Causality</span><span class="st">`</span>,</span>
-<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>                      <span class="st">`</span><span class="at">Control for Earlier or Baseline y</span><span class="st">`</span>)</span>
-<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>pander<span class="sc">::</span> <span class="fu">pander</span>(mytable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>                      <span class="st">`</span><span class="at">Control for Earlier or Baseline y</span><span class="st">`</span>,</span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>                      <span class="at">check.names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>pander<span class="sc">::</span> <span class="fu">pander</span>(mytable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <table class="table table-sm table-striped small">
 <caption>Table continues below</caption>
 <colgroup>
 <col style="width: 36%">
-<col style="width: 52%">
+<col style="width: 40%">
 </colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: center;">Method</th>
-<th style="text-align: center;">Control.for.Time.Invariant.Observed</th>
+<th style="text-align: center;">Control for Time Invariant Observed</th>
 </tr>
 </thead>
 <tbody>
@@ -510,13 +511,13 @@ LR test of model vs. saturated: chi2(10) = 85.21          Prob &gt; chi2 = 0.000
 <table class="table table-sm table-striped small">
 <caption>Table continues below</caption>
 <colgroup>
-<col style="width: 47%">
-<col style="width: 52%">
+<col style="width: 37%">
+<col style="width: 40%">
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;">Control.for.Time.Varying.Observed</th>
-<th style="text-align: center;">Control.for.Time.Invariant.Unobserved</th>
+<th style="text-align: center;">Control for Time Varying Observed</th>
+<th style="text-align: center;">Control for Time Invariant Unobserved</th>
 </tr>
 </thead>
 <tbody>
@@ -537,13 +538,13 @@ LR test of model vs. saturated: chi2(10) = 85.21          Prob &gt; chi2 = 0.000
 <table class="table table-sm table-striped small">
 <caption>Table continues below</caption>
 <colgroup>
-<col style="width: 52%">
+<col style="width: 37%">
 <col style="width: 44%">
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;">Control.for.Time.Varying.Unobserved</th>
-<th style="text-align: center;">Estimate.Reciprocal.Causality</th>
+<th style="text-align: center;">Control for Time Varying Unobserved</th>
+<th style="text-align: center;">Estimate Reciprocal Causality</th>
 </tr>
 </thead>
 <tbody>
@@ -563,11 +564,11 @@ LR test of model vs. saturated: chi2(10) = 85.21          Prob &gt; chi2 = 0.000
 </table>
 <table class="table table-sm table-striped small">
 <colgroup>
-<col style="width: 50%">
+<col style="width: 36%">
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;">Control.for.Earlier.or.Baseline.y</th>
+<th style="text-align: center;">Control for Earlier or Baseline y</th>
 </tr>
 </thead>
 <tbody>

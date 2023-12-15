@@ -218,7 +218,8 @@ mytable <- data.frame(Method,
                       `Control for Time Invariant Unobserved`,
                       `Control for Time Varying Unobserved`,
                       `Estimate Reciprocal Causality`,
-                      `Control for Earlier or Baseline y`)
+                      `Control for Earlier or Baseline y`,
+                      check.names = FALSE)
 
 pander:: pander(mytable)
 
