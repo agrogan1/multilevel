@@ -1,38 +1,25 @@
 ---
 title: "Bayesian and Frequentist Multilevel Modeling"
 author: "Andy Grogan-Kaylor"
-date: "`r Sys.Date()`"
-output:
-  distill::distill_article:
-    highlight: haddock
-    toc: yes
-  pdf_document: 
-    fig_height: 3
-    highlight: haddock
-    latex_engine: xelatex
-    number_sections: yes
-    toc: yes
-link-citations: yes
+date: "today"
+execute:
+  echo: false
+format:
+  html:
+    theme: 
+      light: cosmo
+      dark: vapor
+    toc: true
+    number-sections: true
+  pdf: 
+    toc: true
+    number-sections: true  
 bibliography: Bayesian-and-frequentist-MLM.bib
-biblio-style: apalike
-citation_url: https://agrogan1.github.io/Bayes/Bayesian-and-frequentist-MLM/Bayesian-and-frequentist-MLM.html
-mainfont: Arial
+csl: apa.csl
+css: styles.css
 ---
 
-```{r setup, include=FALSE}
-
-# library(tint)
-
-# invalidate cache when the package version changes
-
-knitr::opts_chunk$set(tidy = FALSE, 
-                      # cache.extra = packageVersion('tint'),
-                      echo = FALSE,
-                      warning = FALSE,
-                      message = FALSE,
-                      fig.margin = TRUE)
-
-options(htmltools.dir.version = FALSE)
+```{r}
 
 library(MASS)
 
@@ -44,7 +31,10 @@ library(ggthemes)
 
 # Introduction
 
-```{r, fig.height=3, fig.cap="Simulated Multilevel Model"}
+```{r}
+#| fig-height: 3
+#| fig-cap: "Simulated Multilevel Model"
+#| message: false
 
 N1 <- 100 # L1 sample size
 
@@ -82,6 +72,8 @@ ggplot(data = mydata,
   theme_minimal() +
   scale_color_viridis_d() +
   labs(title = "Multilevel Model")
+
+ggsave("multilevel.png")
 
 ```
 
@@ -134,7 +126,9 @@ Bayesian models of all kinds provide full distributions of the parameters (e.g. 
 
 Information about the full distribution of a parameter, such as the estimate of the probability distribution of values of a risk factor, a protective factor, or the effect of an intervention, may be substantively meaningful [@Rindskopf2020]. Such information may be especially important when the distribution of a regression parameter is non-normal [@VandeSchoot2014; @Finch2017] e.g. in smaller samples.
 
-```{r, fig.height=3, fig.cap="Distribution of a Single Parameter"}
+```{r}
+#| fig-height: 3
+#| fig-cap: "Distribution of a Single Parameter"
 
 beta1 <- rbeta(10000, 1.0, 2.5)
 
@@ -147,13 +141,15 @@ ggplot(data = NULL,
             colour="red", 
             angle= -90) +
   theme_minimal() + 
-  labs(title = "Distribution of \u03b2",
-       subtitle = "\u03b2 is Skewed",
-       x = "\u03b2") 
+  labs(title = "Distribution of Beta",
+       subtitle = "Beta is Skewed",
+       x = "Beta") 
 
 ```
 
-```{r, fig.height=3, fig.cap="Joint Distribution of Parameters"}
+```{r}
+#| fig-height: 3
+#| fig-cap: "Joint Distribution of Parameters"
 
 # inspired by a coding approach at
 # https://stackoverflow.com/questions/11530010/how-to-simulate-bimodal-distribution
@@ -206,7 +202,10 @@ Bayesian estimators allow one to directly model $\sigma_{u_0}$, the variance of 
 
 # Non-Linear Terms
 
-```{r, fig.height=3, fig.cap="Non-Linear Terms"}
+```{r}
+#| fig-height: 3
+#| fig-cap: "Non-Linear Terms"
+#| message: false
 
 # options(scipen = 999)
 
@@ -228,14 +227,6 @@ ggplot(data=NULL,
 
 Bayesian estimators allow for the incorporation of non-linear terms [@Burkner2018]. Such non-linear terms offer ways of non-parametrically fitting curvature. An open question is whether such methods represent a kind of over-fitting.  A related question is the degree to which non-linear terms provide substantively interpretable results.
 
-```{r, echo=FALSE, eval=FALSE}
-
-# Random Slopes Close to Zero
-
-# There is some suggestion that Bayesian models may be better at estimating models with random slopes closer to 0.
-
-```
-
 # Maximal Models
 
 Hypothetically, one might imagine that there could be group level unobserved factors which affect regression slopes--i.e. the relationship between a predictor *x* and outcome variable *y*. Arguably, were one to ignore these unobserved factors in statistical estimation, they would show up either in an error term ($e_i$ or $u_0$), or in the regression coefficients ($\beta$). Were they to show up in the regression coefficients this would represent statistical bias and a substantive mis-estimation of important effects. thus, there is a conceptual argument for including as many random effects—i.e. random slopes—in a statistical model as possible. 
@@ -246,7 +237,9 @@ It should be noted that  Matuschek et al. [-@Matuschek2017] argue that such a *m
 
 In contrast, Nalborczyk et al. [-@nalborczyk_batailler_loevenbruck_vilain_burkner_2019] argue that maximal models are supported under the Bayesian approach. Oberauer [-@Oberauer2022] also argues for including multiple random slopes. Schielzeth and Forstmeier [-@Schielzeth2009] make a similar argument from a frequentist perspective.
 
-```{r, echo=FALSE, results='asis'}
+```{r}
+#| echo: false
+#| results: asis
 
 # print a reference header when not HTML5
 
