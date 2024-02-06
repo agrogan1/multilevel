@@ -15,6 +15,7 @@ format:
     theme:
       light: cosmo
       dark: vapor
+    lightbox: true
     fig-height: 3
     css: styles.css
 ---
