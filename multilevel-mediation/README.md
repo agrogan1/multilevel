@@ -7,6 +7,9 @@ A folder with an example of multilevel mediation.
 > [!IMPORTANT]  
 > Under development. The diagram and equations are pretty good. The syntax needs work. Comments, questions, and corrections are most welcome.
 
+>[!NOTE]
+> `x` is an independent variable of primary interest. `z` is another indendent variable--sometimes thought of as a control variable--of secondary interest. `m` is a mediator. `y` is the outcome.
+
 [Here](https://github.com/agrogan1/multilevel/blob/master/multilevel-mediation/multilevel-mediation.do) is a direct link to the `do` file above.
 
 Perhaps helpfully, perhaps confusingly, I have also included syntax for mediation with clustered standard errors.
