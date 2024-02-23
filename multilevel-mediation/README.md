@@ -12,13 +12,13 @@ Perhaps helpfully, perhaps confusingly, I have also included syntax for mediatio
 
 The graphs (`.png` files) help to understand why the *multilevel* and *clustered standard error* analyses give different results.
 
-## Diagram
-
-![heuristic diagram of multilevel mediation](multilevel-mediation.png)
-
 ## Equations
 
 $y = \beta_0 + \beta_{my} m + \beta_{xy} x + \beta_{zy} z + u_{0j}$
 
 $m = \beta_0 + \beta_{xm} x + \beta_{zm} z + u_{0j}$
+
+## Diagram
+
+![heuristic diagram of multilevel mediation](multilevel-mediation.png)
 
