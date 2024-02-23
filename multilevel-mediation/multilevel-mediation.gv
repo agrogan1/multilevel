@@ -36,12 +36,14 @@ digraph boxes_and_circles {
   m1 -> y1 [label = <&beta;<SUB>my</SUB>> fontsize="20"]
   x1 -> y1 [label = <&beta;<SUB>xy</SUB>> fontsize="20"]
   z1 -> y1 [label = <&beta;<SUB>zy</SUB>> fontsize="20"]
-  z1 -> m1 [label = = <&beta;<SUB>zm</SUB>> fontsize="20"]
+  z1 -> m1 [label = <&beta;<SUB>zm</SUB>> fontsize="20"]
   x1 -> z1 [dir = both]
   
   u0 -> y1
 
   u0 -> m1
+  
+  {rank = same; x1; z1; u0}
   
  	}  
 

@@ -1,4 +1,6 @@
 * Multilevel Mediation in Stata
+* NB: This example is simpler than the diagram 
+* which is a more general situation
 
 * I start with data, and a single level sem example from
 * https://stats.oarc.ucla.edu/stata/faq/how-can-i-do-mediation-analysis-with-the-sem-command/
@@ -57,7 +59,7 @@ est store noclustering
 * multilevel mediation model w/ random effects (MLM)
 ************************************************************
 
-* gsem (y <- m x z) (m <- x)
+* gsem (y <- m x z) (m <- x z)
 
 * gsem (read <- math M1[cid]) (science <- read math M2[cid]) 
 
