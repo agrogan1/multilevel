@@ -12,4 +12,6 @@ The graphs (`.png` files) help to understand why the *multilevel* and *clustered
 
 ![heuristic diagram of multilevel mediation](multilevel-mediation.png)
 
+$$y = \beta_x x$$
+
 
