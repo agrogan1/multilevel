@@ -1,5 +1,7 @@
 # Multilevel Mediation
 
+## Introduction
+
 A folder with an example of multilevel mediation.
 
 Under development. Comments, questions, and corrections are most welcome.
@@ -10,8 +12,13 @@ Perhaps helpfully, perhaps confusingly, I have included syntax for mediation wit
 
 The graphs (`.png` files) help to understand why the *multilevel* and *clustered standard error* analyses give different results.
 
+## Diagram
+
 ![heuristic diagram of multilevel mediation](multilevel-mediation.png)
 
-$$y = \beta_0 + \beta_m m + \beta_x x + \beta_z z + u_0$$
+## Equations
 
+$y = \beta_0 + \beta_{my} m + \beta_{xy} x + \beta_{zy} z + u_{0j}$
+
+$m = \beta_0 + \beta_m m + \beta_x x + \beta_z z + u_{0j}$
 
