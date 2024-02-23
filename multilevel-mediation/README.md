@@ -20,5 +20,5 @@ The graphs (`.png` files) help to understand why the *multilevel* and *clustered
 
 $y = \beta_0 + \beta_{my} m + \beta_{xy} x + \beta_{zy} z + u_{0j}$
 
-$m = \beta_0 + \beta_m m + \beta_x x + \beta_z z + u_{0j}$
+$m = \beta_0 + \beta_{xm} x + \beta_{zm} z + u_{0j}$
 
