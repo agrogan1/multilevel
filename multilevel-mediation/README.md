@@ -18,6 +18,9 @@ The graphs (`.png` files) help to understand why the *multilevel* and *clustered
 
 ## Equations
 
+>[!TIP]
+> Every variable with arrows going into it is a dependent variable. Every dependent variable has its own equation.
+
 $y = \beta_0 + \beta_{my} m + \beta_{xy} x + \beta_{zy} z + u_{0j}$
 
 $m = \beta_0 + \beta_{xm} x + \beta_{zm} z + u_{0j}$
