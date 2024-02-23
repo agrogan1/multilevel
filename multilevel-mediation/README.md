@@ -4,7 +4,8 @@
 
 A folder with an example of multilevel mediation.
 
-Under development. Comments, questions, and corrections are most welcome.
+> [!TIP]
+Under development. The diagram and equations are pretty good. The syntax needs work. Comments, questions, and corrections are most welcome.
 
 [Here](https://github.com/agrogan1/multilevel/blob/master/multilevel-mediation/multilevel-mediation.do) is a direct link to the `do` file above.
 
