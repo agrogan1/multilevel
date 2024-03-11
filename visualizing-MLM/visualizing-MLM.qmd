@@ -14,6 +14,7 @@ format:
     toc-depth: 3
     number-sections: true
     colorlinks: true
+bibliography: visualizing-MLM.bib
 ---
 
 # Introduction
@@ -38,7 +39,9 @@ library(Statamarkdown)
 
 An evolving set of notes on visualizing results from multilevel models.
 
-The examples below use the `simulated_multilevel_data.dta` file from [*Multilevel Thinking*](https://agrogan1.github.io/multilevel-thinking/simulated-multi-country-data.html). Here is a [direct link](https://github.com/agrogan1/multilevel-multilingual/raw/main/simulated_multilevel_data.dta) to download the data.
+The examples below use the `simulated_multilevel_data.dta` file from [*Multilevel Thinking*](https://agrogan1.github.io/multilevel-thinking/simulated-multi-country-data.html). Here is a [direct link](https://github.com/agrogan1/multilevel-multilingual/raw/main/simulated_multilevel_data.dta) to download the data. 
+
+This document relies on the extraordinary `Statamarkdown` library [@Hemken2023].
 
 # Organizing Questions
 
@@ -184,11 +187,11 @@ graph export mysmallmultiples2.png, width(1500) replace
 
 > A sometimes unacknowledged point is that graphs--unless we take steps to correct this--reflect *unadjusted*, or *bivariate* associations. We may sometimes wish to develop a graphs that reflect the *adjusted* or *predicted* estimates from our models.
 
-> In multilevel models, *prediction* is a complex question. Prediction may--or may not--incorporate the information from the random effects. The procedures below outline graphs that incorporate predictions using the random effects, by using the `predict ..., fitted` syntax.
-
 ## Using Predicted Values (`predict`)
 
 `predict` generates a predicted value for *every observation in the data*.
+
+> In multilevel models, *prediction* is a complex question. Prediction may--or may not--incorporate the information from the random effects. The procedures below outline graphs that incorporate predictions using the random effects, by using the `predict ..., fitted` syntax.
 
 ### Estimate The Model
 
@@ -328,6 +331,8 @@ graph export mynewscatter.png, width(1500) replace
 # Curvilinear and Linear Fits
 
 # Random Effects
+
+# References
 
 
 
