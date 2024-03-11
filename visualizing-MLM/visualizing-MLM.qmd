@@ -6,9 +6,8 @@ format:
   html:
     toc: true
     number-sections: true
-    theme:
-      light: cosmo
-      dark: vapor
+    theme: cosmo
+    lightbox: true
   pdf:
     toc: true
     toc-depth: 3

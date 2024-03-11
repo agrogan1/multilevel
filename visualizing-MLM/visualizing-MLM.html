@@ -85,12 +85,13 @@ div.csl-indent {
 <script src="visualizing-MLM_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="visualizing-MLM_files/libs/quarto-html/anchor.min.js"></script>
 <link href="visualizing-MLM_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="visualizing-MLM_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="visualizing-MLM_files/libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="visualizing-MLM_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="visualizing-MLM_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="visualizing-MLM_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="visualizing-MLM_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="visualizing-MLM_files/libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="visualizing-MLM_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="visualizing-MLM_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="visualizing-MLM_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="visualizing-MLM_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 
 
 </head>
@@ -190,7 +191,8 @@ blockquote {
 </style>
 </div>
 <p>An evolving set of notes on visualizing results from multilevel models.</p>
-<p>The examples below use the <code>simulated_multilevel_data.dta</code> file from <a href="https://agrogan1.github.io/multilevel-thinking/simulated-multi-country-data.html"><em>Multilevel Thinking</em></a>. Here is a <a href="https://github.com/agrogan1/multilevel-multilingual/raw/main/simulated_multilevel_data.dta">direct link</a> to download the data. This document relies on the extraordinary <code>Statamarkdown</code> library <span class="citation" data-cites="Hemken2023">(<a href="#ref-Hemken2023" role="doc-biblioref">Hemken 2023</a>)</span>.</p>
+<p>The examples below use the <code>simulated_multilevel_data.dta</code> file from <a href="https://agrogan1.github.io/multilevel-thinking/simulated-multi-country-data.html"><em>Multilevel Thinking</em></a>. Here is a <a href="https://github.com/agrogan1/multilevel-multilingual/raw/main/simulated_multilevel_data.dta">direct link</a> to download the data.</p>
+<p>This document relies on the extraordinary <code>Statamarkdown</code> library <span class="citation" data-cites="Hemken2023">(<a href="#ref-Hemken2023" role="doc-biblioref">Hemken 2023</a>)</span>.</p>
 </section>
 <section id="organizing-questions" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Organizing Questions</h1>
@@ -234,7 +236,7 @@ blockquote {
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="myscatter.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p><a href="myscatter.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1" title="Scatterplot"><img src="myscatter.png" class="img-fluid figure-img" style="width:75.0%" alt="Scatterplot"></a></p>
 <figcaption>Scatterplot</figcaption>
 </figure>
 </div>
@@ -253,7 +255,7 @@ blockquote {
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="mylinear.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p><a href="mylinear.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2" title="Linear Fit"><img src="mylinear.png" class="img-fluid figure-img" style="width:75.0%" alt="Linear Fit"></a></p>
 <figcaption>Linear Fit</figcaption>
 </figure>
 </div>
@@ -272,7 +274,7 @@ blockquote {
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="mylfitci.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p><a href="mylfitci.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" data-glightbox="description: .lightbox-desc-3" title="Linear Fit With Confidence Interval"><img src="mylfitci.png" class="img-fluid figure-img" style="width:75.0%" alt="Linear Fit With Confidence Interval"></a></p>
 <figcaption>Linear Fit With Confidence Interval</figcaption>
 </figure>
 </div>
@@ -291,7 +293,7 @@ blockquote {
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="myscatterlinear.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p><a href="myscatterlinear.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" data-glightbox="description: .lightbox-desc-4" title="Scatterplot and Linear Fit"><img src="myscatterlinear.png" class="img-fluid figure-img" style="width:75.0%" alt="Scatterplot and Linear Fit"></a></p>
 <figcaption>Scatterplot and Linear Fit</figcaption>
 </figure>
 </div>
@@ -310,7 +312,7 @@ blockquote {
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="myspaghetti.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p><a href="myspaghetti.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" data-glightbox="description: .lightbox-desc-5" title="Spaghetti Plot"><img src="myspaghetti.png" class="img-fluid figure-img" style="width:75.0%" alt="Spaghetti Plot"></a></p>
 <figcaption>Spaghetti Plot</figcaption>
 </figure>
 </div>
@@ -332,7 +334,7 @@ blockquote {
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="mysmallmultiples.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p><a href="mysmallmultiples.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" data-glightbox="description: .lightbox-desc-6" title="Small Multiples"><img src="mysmallmultiples.png" class="img-fluid figure-img" style="width:75.0%" alt="Small Multiples"></a></p>
 <figcaption>Small Multiples</figcaption>
 </figure>
 </div>
@@ -375,7 +377,7 @@ file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mysmallmultiples2.
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="mysmallmultiples2.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p><a href="mysmallmultiples2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" data-glightbox="description: .lightbox-desc-7" title="Small Multiples With A Random Sample Of Countries"><img src="mysmallmultiples2.png" class="img-fluid figure-img" style="width:75.0%" alt="Small Multiples With A Random Sample Of Countries"></a></p>
 <figcaption>Small Multiples With A Random Sample Of Countries</figcaption>
 </figure>
 </div>
@@ -464,13 +466,13 @@ file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mypredictedvalues2
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="mypredictedvalues.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p><a href="mypredictedvalues.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" data-glightbox="description: .lightbox-desc-8" title="Predicted Values From predict"><img src="mypredictedvalues.png" class="img-fluid figure-img" style="width:75.0%" alt="Predicted Values From predict"></a></p>
 <figcaption>Predicted Values From <code>predict</code></figcaption>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="mypredictedvalues2.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p><a href="mypredictedvalues2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" data-glightbox="description: .lightbox-desc-9" title="Predicted Values From predict With Only Linear Fit"><img src="mypredictedvalues2.png" class="img-fluid figure-img" style="width:75.0%" alt="Predicted Values From predict With Only Linear Fit"></a></p>
 <figcaption>Predicted Values From <code>predict</code> With Only Linear Fit</figcaption>
 </figure>
 </div>
@@ -489,7 +491,7 @@ file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mypredictedvalues2
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="myspaghetti2.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p><a href="myspaghetti2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" data-glightbox="description: .lightbox-desc-10" title="Spaghetti Plot With Predicted Values"><img src="myspaghetti2.png" class="img-fluid figure-img" style="width:75.0%" alt="Spaghetti Plot With Predicted Values"></a></p>
 <figcaption>Spaghetti Plot With Predicted Values</figcaption>
 </figure>
 </div>
@@ -598,7 +600,7 @@ file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mymarginsplot.png 
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="mymarginsplot.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p><a href="mymarginsplot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11" data-glightbox="description: .lightbox-desc-11" title="Predicted Values From margins and marginsplot"><img src="mymarginsplot.png" class="img-fluid figure-img" style="width:75.0%" alt="Predicted Values From margins and marginsplot"></a></p>
 <figcaption>Predicted Values From <code>margins</code> and <code>marginsplot</code></figcaption>
 </figure>
 </div>
@@ -668,7 +670,7 @@ file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mymarginsplot.png 
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="mynewscatter.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<p><a href="mynewscatter.png" class="lightbox" data-gallery="quarto-lightbox-gallery-12" data-glightbox="description: .lightbox-desc-12" title="Scatterplot and Linear Fit With Marginal Density Plots"><img src="mynewscatter.png" class="img-fluid figure-img" style="width:75.0%" alt="Scatterplot and Linear Fit With Marginal Density Plots"></a></p>
 <figcaption>Scatterplot and Linear Fit With Marginal Density Plots</figcaption>
 </figure>
 </div>
@@ -683,12 +685,26 @@ file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mymarginsplot.png 
 <section id="random-effects" class="level1" data-number="15">
 <h1 data-number="15"><span class="header-section-number">15</span> Random Effects</h1>
 </section>
-<section id="references" class="level1 unnumbered" data-number="16">
-
+<section id="references" class="level1" data-number="16">
+<h1 data-number="16"><span class="header-section-number">16</span> References</h1>
+<div class="hidden" aria-hidden="true">
+<span class="glightbox-desc lightbox-desc-1">Scatterplot</span>
+<span class="glightbox-desc lightbox-desc-2">Linear Fit</span>
+<span class="glightbox-desc lightbox-desc-3">Linear Fit With Confidence Interval</span>
+<span class="glightbox-desc lightbox-desc-4">Scatterplot and Linear Fit</span>
+<span class="glightbox-desc lightbox-desc-5">Spaghetti Plot</span>
+<span class="glightbox-desc lightbox-desc-6">Small Multiples</span>
+<span class="glightbox-desc lightbox-desc-7">Small Multiples With A Random Sample Of Countries</span>
+<span class="glightbox-desc lightbox-desc-8">Predicted Values From <code>predict</code></span>
+<span class="glightbox-desc lightbox-desc-9">Predicted Values From <code>predict</code> With Only Linear Fit</span>
+<span class="glightbox-desc lightbox-desc-10">Spaghetti Plot With Predicted Values</span>
+<span class="glightbox-desc lightbox-desc-11">Predicted Values From <code>margins</code> and <code>marginsplot</code></span>
+<span class="glightbox-desc lightbox-desc-12">Scatterplot and Linear Fit With Marginal Density Plots</span>
+</div>
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">16 References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Hemken2023" class="csl-entry" role="listitem">
 Hemken, Doug. 2023. <em>Statamarkdown: ’Stata’ Markdown</em>. <a href="https://CRAN.R-project.org/package=Statamarkdown">https://CRAN.R-project.org/package=Statamarkdown</a>.
 </div>
@@ -714,150 +730,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
-    }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
-    }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
-      }
-    }
-  }
-  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-    let newTheme = '';
-    if(darkModeDefault) {
-      newTheme = isAlternate ? baseTheme : alternateTheme;
-    } else {
-      newTheme = isAlternate ? alternateTheme : baseTheme;
-    }
-    const changeGiscusTheme = () => {
-      // From: https://github.com/giscus/giscus/issues/336
-      const sendMessage = (message) => {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-      }
-      sendMessage({
-        setConfig: {
-          theme: newTheme
-        }
-      });
-    }
-    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-    if (isGiscussLoaded) {
-      changeGiscusTheme();
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
-        }
-      }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
-        } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
-      return false;
-    }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  const darkModeDefault = false;
-  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-    toggleGiscusIfUsed(toAlternate, darkModeDefault);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -1226,6 +1098,31 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom","selector":".lightbox","loop":false});
+window.onload = () => {
+  lightboxQuarto.on('slide_before_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    const href = trigger.getAttribute('href');
+    if (href !== null) {
+      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+      if (imgEl !== null) {
+        const srcAttr = imgEl.getAttribute("src");
+        if (srcAttr && srcAttr.startsWith("data:")) {
+          slideConfig.href = srcAttr;
+        }
+      }
+    } 
+  });
+
+  lightboxQuarto.on('slide_after_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    if (window.Quarto?.typesetMath) {
+      window.Quarto.typesetMath(slideNode);
+    }
+  });
+
+};
+          </script>
 
 
 
