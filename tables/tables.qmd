@@ -1,0 +1,87 @@
+---
+title: "Tables for Multilevel Models in Stata"
+date: "today"
+author: "Andy Grogan-Kaylor"
+format: html
+editor: source
+---
+
+# Introduction
+
+Stata has a number of ways of making tables. There are some *tweaks* that may be especially useful for multilevel models.
+
+```{r}
+#| echo: false
+#| output: false
+
+library(Statamarkdown)
+
+```
+
+# Data Source 🌲
+
+The data used in this example are derived from the R package *Functions and Datasets for "Forest Analytics with R"*.
+
+According to the documentation, the source of these data are: "von Guttenberg’s Norway spruce (Picea abies [L.] Karst) tree measurement data."
+
+![Old Tjikko, a 9,550 Year Old Norway Spruce in Sweden](Old-Tjikko-Small.jpg)
+
+The documentation goes on to further note that:
+
+> "The data are measures from 107 trees. The trees were selected as being of average size from healthy and well stocked stands in the Alps."
+
+# Setup
+
+```{stata, collectcode=TRUE}
+
+clear all // clear workspace
+
+use "gutten.dta", clear // use tree data as example
+
+describe // describe the data
+
+```
+
+# Estimate a Multilevel Model
+
+```{stata, collectcode=TRUE}
+
+mixed height age_base i.site || tree_ID: // mixed model
+
+est store M1 // store the estimates (this would work with multiple stored estimates)
+
+```
+
+# Use Estimates Table
+
+```{stata, collectcode=TRUE}
+
+estimates table M1, b(%9.3f) star // nicely formatted table of results
+
+```
+
+# Use Estimates Table With `, variance post`
+
+> Frustratingly, with multilevel models, the default behavior of estimates table is to report the $ln$ of the random effects. I use the `, variance post` option to post the *variance* rather than the *logarithm of the variance*.
+
+```{stata, collectcode=TRUE}
+
+mixed height age_base i.site || tree_ID: // mixed model
+
+estat sd, variance post // post results as variance scale rather than log scale
+
+est store M2 // store the estimates (this would work with multiple stored estimates)
+
+estimates table M1 M2, b(%9.3f) star // nicely formatted table of results
+
+```
+
+# Use `etable`
+
+```{stata, collectcode=TRUE}
+
+mixed height age_base i.site || tree_ID: // mixed model
+
+```
+
+
