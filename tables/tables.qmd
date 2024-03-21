@@ -2,7 +2,20 @@
 title: "Tables for Multilevel Models in Stata"
 date: "today"
 author: "Andy Grogan-Kaylor"
-format: html
+format:
+  html:
+    toc: true
+    number-sections: true
+    theme:
+      light: cosmo
+      dark: vapor
+    css: styles.css
+    mermaid: 
+      theme: default
+  typst: 
+    toc: false
+    number-sections: true
+    columns: 1
 editor: source
 ---
 
