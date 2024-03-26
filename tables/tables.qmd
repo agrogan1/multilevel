@@ -19,7 +19,7 @@ format:
 editor: source
 ---
 
-# Introduction
+# Introduction🌲
 
 Stata has a number of ways of making tables. Here are some alternative commands, and some *tweaks* that may be especially useful for multilevel models.
 
@@ -43,7 +43,7 @@ The documentation goes on to further note that:
 
 > "The data are measures from 107 trees. The trees were selected as being of average size from healthy and well stocked stands in the Alps."
 
-# Setup
+# Setup🌲
 
 ```{stata, collectcode=TRUE}
 
@@ -55,7 +55,7 @@ describe // describe the data
 
 ```
 
-# Estimate a Multilevel Model
+# Estimate a Multilevel Model🌲
 
 ```{stata, collectcode=TRUE}
 
@@ -65,7 +65,7 @@ est store M1 // store the estimates (this would work with multiple stored estima
 
 ```
 
-# Use Estimates Table
+# Use `estimates table` {#sec-estimates} 
 
 ```{stata, collectcode=TRUE}
 
@@ -73,9 +73,9 @@ estimates table M1, b(%9.3f) star // nicely formatted table of results
 
 ```
 
-# Use Estimates Store With `, variance post`
+# Use `estimates store` With `, variance post`🌲
 
-> Frustratingly, with multilevel models, the default behavior of `estimates table` is to report the $ln$ of the random effects. I use the `, variance post` option to post the *variance* rather than the *logarithm of the variance*.
+Frustratingly, as you can see in @sec-estimates, with multilevel models, the default behavior of `estimates table` is to report the $ln$ of the random effects. Below, I use the `, variance post` option to post the *variance* rather than the *logarithm of the variance*.
 
 > Notice how `, variance post` essentially *replays* the results, but with the random effects as variances, rather than as the logarithm of the standard deviation.
 
@@ -89,7 +89,13 @@ est store M2 // store the estimates (this would work with multiple stored estima
 
 ```
 
-# Use Estimates Table To Compare These Approaches
+# Use `estimates table` To Compare These Approaches🌲
+
+::: {.callout-warning}
+## We Usually Use `estimates table` for *Different* Models
+
+When used with multiple sets of estimates, we usually use `estimates table` to present the results of *different* models, rather than the same model presented in different ways. Below, however, for the sake of illustration, we present the *same* model in two different ways.
+:::
 
 ```{stata, collectcode=TRUE}
 
@@ -100,7 +106,7 @@ estimates table M1 M2, b(%9.3f) star ///
 
 ```
 
-# Use `etable`
+# Use `etable`🌲
 
 > `etable` is a newer Stata command that is very useful for making nicely formatted tables. `etable` works with one estimate or multiple estimates.
 
@@ -115,3 +121,40 @@ column(estimate) // column is modelname
 ```
 
 > There is also a very helpful `export` option for exporting these tables to a variety of ouput formats. See `help etable` in Stata for more information. 
+
+# Add One More Set of Estimates for Illustration🌲
+
+## Multiple Estimates With `estimates table`🌲
+
+```{stata}
+
+mixed height age_base i.site i.location || tree_ID: // mixed model
+
+estat sd, variance post // post results as variance scale rather than log scale
+
+est store M3 // store the estimates (this would work with multiple stored estimates)
+
+est table M2 M3, b(%9.3f) star 
+
+```
+
+## Multiple Estimates With `etable`🌲
+
+```{stata}
+
+mixed height age_base i.site i.location || tree_ID: // mixed model
+
+est store M4
+
+etable, estimates(M1 M4) /// use these estimate(s)
+novarlabel /// variable names only
+cstat(_r_b) /// beta's only
+showstars showstarsnote /// 
+column(estimate) // column is modelname
+
+
+```
+
+
+
+
