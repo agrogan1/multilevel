@@ -13,7 +13,12 @@
 
 * [Paper Template for a Cross-Sectional MLM Paper](https://agrogan1.github.io/multilevel/paper-template/cross-sectional-multilevel.html)
 
-## Writing Up Multilevel Results (Tables of Results)
+## Tables of Results for Multilevel Models
+
+* The [longer handout](https://agrogan1.github.io/multilevel/tables/tables.html) that got out of control.
+* A [shorter working example](https://agrogan1.github.io/multilevel/tables/tables2.html).
+
+## Writing Up Multilevel Results And Formatting Tables of Results
 
 * [Writing Up Multilevel Results](https://agrogan1.github.io/multilevel/writing-up-multilevel-results/writing-up-multilevel-results.html)
 
