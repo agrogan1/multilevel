@@ -1,0 +1,112 @@
+---
+title: "Tables for Multilevel Models in Stata"
+subtitle: "A Shorter Working Example"
+date: "today"
+author: "Andy Grogan-Kaylor"
+format:
+  html:
+    toc: true
+    number-sections: true
+    theme:
+      light: cosmo
+      dark: vapor
+    css: styles.css
+    mermaid: 
+      theme: default
+  typst: 
+    toc: false
+    number-sections: true
+    columns: 1
+editor: source
+---
+
+# Introduction 🌲
+
+This is a shorter working example to make tables in Stata.
+
+```{r}
+#| echo: false
+#| output: false
+
+library(Statamarkdown)
+
+```
+
+# Data Source 🌲
+
+The data used in this example are derived from the R package *Functions and Datasets for "Forest Analytics with R"*.
+
+According to the documentation, the source of these data are: "von Guttenberg’s Norway spruce (Picea abies [L.] Karst) tree measurement data."
+
+![Old Tjikko, a 9,550 Year Old Norway Spruce in Sweden](Old-Tjikko-Small.jpg)
+
+The documentation goes on to further note that:
+
+> "The data are measures from 107 trees. The trees were selected as being of average size from healthy and well stocked stands in the Alps."
+
+# Setup🌲
+
+```{stata, collectcode=TRUE}
+
+clear all // clear workspace
+
+use "gutten.dta", clear // use tree data as example
+
+```
+
+# Variables 🌲
+
+`site` Growth *quality* class of the tree’s habitat. 5 levels.
+
+`location` Distinguishes tree *location*. 7 levels.
+
+`tree` An identifier for the tree within location.
+
+`age_base` The tree age taken at ground level.
+
+`height` Tree height, m.
+
+`dbh_cm` Tree diameter, cm.
+
+`volume` Tree volume.
+
+`age_bh` Tree age taken at 1.3 m.
+
+`tree_ID` A factor uniquely identifying the tree.
+
+
+# Estimate Multilevel Models🌲
+
+::: {.callout-tip}
+## Use `quietly` To Suppress Output
+
+For the sake of parsimony, I use `quietly:` to suppress the output of the `mixed` commands.
+:::
+
+```{stata, collectcode=TRUE}
+
+quietly: mixed height age_base i.site || tree_ID: // shorter mixed model
+
+est store M1 // store the estimates
+
+quietly: mixed height age_base i.site i.location || tree_ID: // longer mixed model
+
+est store M2 // store the estimates 
+
+```
+
+{{< pagebreak >}}
+
+# Table With `etable`🌲
+
+```{stata, collectcode=TRUE}
+
+etable, estimates(M1 M2) /// use these estimate(s)
+novarlabel /// variable names only
+cstat(_r_b) /// beta's only
+showstars showstarsnote /// show stars and note
+column(estimate) // column is modelname
+
+
+```
+
