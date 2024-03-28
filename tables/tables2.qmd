@@ -7,6 +7,8 @@ format:
   html:
     toc: true
     number-sections: true
+    title-block-banner: fotolia-small.jpg
+    title-block-banner-color: black
     theme:
       light: sandstone
       dark: vapor
