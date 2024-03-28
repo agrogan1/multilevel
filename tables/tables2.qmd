@@ -7,7 +7,7 @@ format:
   html:
     toc: true
     number-sections: true
-    title-block-banner: fotolia-small.jpg
+    title-block-banner: NorwaySpruce.png
     title-block-banner-color: black
     theme:
       light: sandstone
