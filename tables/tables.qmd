@@ -6,8 +6,10 @@ format:
   html:
     toc: true
     number-sections: true
+    title-block-banner: NorwaySpruce.png
+    title-block-banner-color: black    
     theme:
-      light: cosmo
+      light: sandstone
       dark: vapor
     css: styles.css
     mermaid: 
@@ -19,7 +21,7 @@ format:
 editor: source
 ---
 
-# Introduction🌲
+# Introduction 🌲
 
 Stata has a number of ways of making tables. Here are some alternative commands, and some *tweaks* that may be especially useful for multilevel models.
 
@@ -43,7 +45,7 @@ The documentation goes on to further note that:
 
 > "The data are measures from 107 trees. The trees were selected as being of average size from healthy and well stocked stands in the Alps."
 
-# Setup🌲
+# Setup 🌲
 
 ```{stata, collectcode=TRUE}
 
@@ -55,7 +57,7 @@ describe // describe the data
 
 ```
 
-# Estimate a Multilevel Model🌲
+# Estimate a Multilevel Model 🌲
 
 ```{stata, collectcode=TRUE}
 
@@ -65,7 +67,7 @@ est store M1 // store the estimates (this would work with multiple stored estima
 
 ```
 
-# Use `estimates table` {#sec-estimates} 
+# Use `estimates table` 🌲 {#sec-estimates} 
 
 ```{stata, collectcode=TRUE}
 
@@ -73,7 +75,7 @@ estimates table M1, b(%9.3f) star // nicely formatted table of results
 
 ```
 
-# Use `estimates store` With `, variance post`🌲
+# Use `estimates store` With `, variance post` 🌲
 
 Frustratingly, as you can see in @sec-estimates, with multilevel models, the default behavior of `estimates table` is to report the $ln$ of the random effects. Below, I use the `, variance post` option to post the *variance* rather than the *logarithm of the variance*.
 
