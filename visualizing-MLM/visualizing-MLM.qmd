@@ -38,7 +38,7 @@ library(Statamarkdown)
 
 An evolving set of notes on visualizing results from multilevel models.
 
-The examples below use the `simulated_multilevel_data.dta` file from [*Multilevel Thinking*](https://agrogan1.github.io/multilevel-thinking/simulated-multi-country-data.html). Here is a [direct link](https://github.com/agrogan1/multilevel-multilingual/raw/main/simulated_multilevel_data.dta) to download the data. 
+The examples below use the `simulated_multilevel_data.dta` file from my draft text book on *Multilevel Thinking*. Here is a [direct link](https://github.com/agrogan1/multilevel-multilingual/raw/main/simulated_multilevel_data.dta) to download the data. 
 
 This document relies on the extraordinary `Statamarkdown` library [@Hemken2023].
 
@@ -196,7 +196,7 @@ graph export mysmallmultiples2.png, width(1500) replace
 
 ```{stata, collectcode=TRUE}
 
-mixed outcome warmth physical_punishment i.group || country: // estimate MLM
+mixed outcome warmth physical_punishment i.intervention || country: // estimate MLM
 
 ```
 
@@ -246,7 +246,7 @@ In contrast to `predict`, which generates a predicted value for *every observati
 
 ```{stata, collectcode = TRUE}
 
-mixed outcome warmth physical_punishment i.group || country: // estimate MLM
+mixed outcome warmth physical_punishment i.intervention || country: // estimate MLM
 
 ```
 
@@ -254,7 +254,7 @@ mixed outcome warmth physical_punishment i.group || country: // estimate MLM
 
 ```{stata, collectcode = TRUE}
 
-margins group, at(warmth = (1 2 3 4 5 6 7)) // predictive *margins*
+margins intervention, at(warmth = (1 2 3 4 5 6 7)) // predictive *margins*
 
 ```
 
@@ -331,7 +331,7 @@ graph export mynewscatter.png, width(1500) replace
 
 # Random Effects
 
-# References
+
 
 
 

@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Andy Grogan-Kaylor">
-<meta name="dcterms.date" content="2024-03-11">
+<meta name="dcterms.date" content="2024-05-07">
 
 <title>Visualizing Multilevel Models</title>
 <style>
@@ -140,7 +140,6 @@ div.csl-indent {
   </ul></li>
   <li><a href="#curvilinear-and-linear-fits" id="toc-curvilinear-and-linear-fits" class="nav-link" data-scroll-target="#curvilinear-and-linear-fits"><span class="header-section-number">14</span> Curvilinear and Linear Fits</a></li>
   <li><a href="#random-effects" id="toc-random-effects" class="nav-link" data-scroll-target="#random-effects"><span class="header-section-number">15</span> Random Effects</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">16</span> References</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="visualizing-MLM.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
 </div>
@@ -165,7 +164,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">March 11, 2024</p>
+      <p class="date">May 7, 2024</p>
     </div>
   </div>
   
@@ -191,7 +190,7 @@ blockquote {
 </style>
 </div>
 <p>An evolving set of notes on visualizing results from multilevel models.</p>
-<p>The examples below use the <code>simulated_multilevel_data.dta</code> file from <a href="https://agrogan1.github.io/multilevel-thinking/simulated-multi-country-data.html"><em>Multilevel Thinking</em></a>. Here is a <a href="https://github.com/agrogan1/multilevel-multilingual/raw/main/simulated_multilevel_data.dta">direct link</a> to download the data.</p>
+<p>The examples below use the <code>simulated_multilevel_data.dta</code> file from my draft text book on <em>Multilevel Thinking</em>. Here is a <a href="https://github.com/agrogan1/multilevel-multilingual/raw/main/simulated_multilevel_data.dta">direct link</a> to download the data.</p>
 <p>This document relies on the extraordinary <code>Statamarkdown</code> library <span class="citation" data-cites="Hemken2023">(<a href="#ref-Hemken2023" role="doc-biblioref">Hemken 2023</a>)</span>.</p>
 </section>
 <section id="organizing-questions" class="level1" data-number="2">
@@ -230,8 +229,7 @@ blockquote {
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> myscatter.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/myscatter.png saved as
-    PNG format</code></pre>
+<pre><code>file myscatter.png saved as PNG format</code></pre>
 </div>
 </div>
 <div class="quarto-figure quarto-figure-center">
@@ -249,8 +247,7 @@ blockquote {
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> mylinear.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mylinear.png saved as
-    PNG format</code></pre>
+<pre><code>file mylinear.png saved as PNG format</code></pre>
 </div>
 </div>
 <div class="quarto-figure quarto-figure-center">
@@ -268,8 +265,7 @@ blockquote {
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> mylfitci.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mylfitci.png saved as
-    PNG format</code></pre>
+<pre><code>file mylfitci.png saved as PNG format</code></pre>
 </div>
 </div>
 <div class="quarto-figure quarto-figure-center">
@@ -287,8 +283,7 @@ blockquote {
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> myscatterlinear.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/myscatterlinear.png
-    saved as PNG format</code></pre>
+<pre><code>file myscatterlinear.png saved as PNG format</code></pre>
 </div>
 </div>
 <div class="quarto-figure quarto-figure-center">
@@ -306,8 +301,7 @@ blockquote {
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> myspaghetti.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/myspaghetti.png saved
-    as PNG format</code></pre>
+<pre><code>file myspaghetti.png saved as PNG format</code></pre>
 </div>
 </div>
 <div class="quarto-figure quarto-figure-center">
@@ -328,8 +322,7 @@ blockquote {
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> mysmallmultiples.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mysmallmultiples.png
-    saved as PNG format</code></pre>
+<pre><code>file mysmallmultiples.png saved as PNG format</code></pre>
 </div>
 </div>
 <div class="quarto-figure quarto-figure-center">
@@ -371,8 +364,7 @@ blockquote {
     randomid |      3,000    .6174022    .2374704   .0733026   .9657055
 
 
-file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mysmallmultiples2.png
-    saved as PNG format</code></pre>
+file mysmallmultiples2.png saved as PNG format</code></pre>
 </div>
 </div>
 <div class="quarto-figure quarto-figure-center">
@@ -397,13 +389,11 @@ file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mysmallmultiples2.
 <h3 data-number="12.1.1" class="anchored" data-anchor-id="estimate-the-model"><span class="header-section-number">12.1.1</span> Estimate The Model</h3>
 <div class="cell" data-collectcode="true">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>mixed outcome warmth physical_punishment i.<span class="fu">group</span> || country: <span class="co">// estimate MLM</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>mixed outcome warmth physical_punishment i.intervention || country: <span class="co">// estimate MLM</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Performing EM optimization ...
-
-Performing gradient-based optimization: 
-Iteration 0:  Log likelihood = -9668.0859  
-Iteration 1:  Log likelihood = -9668.0859  
+<pre><code>Performing EM optimization Performing gradient-based optimization: 
+Iteration 0:  Log likelihood = -9628.1621  
+Iteration 1:  Log likelihood = -9628.1621  
 
 Computing standard errors ...
 
@@ -413,27 +403,27 @@ Group variable: country                              Number of groups =     30
                                                                   min =    100
                                                                   avg =  100.0
                                                                   max =    100
-                                                     Wald chi2(3)     = 401.00
-Log likelihood = -9668.0859                          Prob &gt; chi2      = 0.0000
+                                                     Wald chi2(3)     = 370.90
+Log likelihood = -9628.1621                          Prob &gt; chi2      = 0.0000
 
--------------------------------------------------------------------------------------
-            outcome | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
---------------------+----------------------------------------------------------------
-             warmth |    .961837   .0581809    16.53   0.000     .8478046    1.075869
-physical_punishment |  -.8457672   .0798128   -10.60   0.000    -1.002197   -.6893369
-            2.group |   1.084409   .2200548     4.93   0.000     .6531099    1.515709
-              _cons |   51.64797   .4645466   111.18   0.000     50.73748    52.55847
--------------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+     outcome | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+      warmth |   .8330937   .0574809    14.49   0.000     .7204332    .9457543
+physical_p~t |  -.9937819   .0798493   -12.45   0.000    -1.150284   -.8372801
+2.interven~n |   .6406044   .2175496     2.94   0.003     .2142151    1.066994
+       _cons |   52.65238   .4664841   112.87   0.000     51.73809    53.56668
+------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------
   Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
 -----------------------------+------------------------------------------------
 country: Identity            |
-                  var(_cons) |      3.403   .9717558      1.944438    5.955659
+                  var(_cons) |   3.371762   .9613269      1.928279    5.895816
 -----------------------------+------------------------------------------------
-               var(Residual) |   36.01911   .9346952      34.23295    37.89847
+               var(Residual) |    35.0675    .910002      33.32853    36.89721
 ------------------------------------------------------------------------------
-LR test vs. linear model: chibar2(01) = 200.29        Prob &gt;= chibar2 = 0.0000</code></pre>
+LR test vs. linear model: chibar2(01) = 204.14        Prob &gt;= chibar2 = 0.0000</code></pre>
 </div>
 </div>
 </section>
@@ -456,12 +446,10 @@ LR test vs. linear model: chibar2(01) = 200.29        Prob &gt;= chibar2 = 0.000
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> mypredictedvalues2.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mypredictedvalues.png
-    saved as PNG format
+<pre><code>file mypredictedvalues.png saved as PNG format
 
 
-file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mypredictedvalues2.png
-    saved as PNG format</code></pre>
+file mypredictedvalues2.png saved as PNG format</code></pre>
 </div>
 </div>
 <div class="quarto-figure quarto-figure-center">
@@ -485,8 +473,7 @@ file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mypredictedvalues2
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> myspaghetti2.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/myspaghetti2.png saved
-    as PNG format</code></pre>
+<pre><code>file myspaghetti2.png saved as PNG format</code></pre>
 </div>
 </div>
 <div class="quarto-figure quarto-figure-center">
@@ -504,13 +491,11 @@ file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mypredictedvalues2
 <h3 data-number="12.2.1" class="anchored" data-anchor-id="estimate-the-model-1"><span class="header-section-number">12.2.1</span> Estimate The Model</h3>
 <div class="cell" data-collectcode="true">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>mixed outcome warmth physical_punishment i.<span class="fu">group</span> || country: <span class="co">// estimate MLM</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>mixed outcome warmth physical_punishment i.intervention || country: <span class="co">// estimate MLM</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Performing EM optimization ...
-
-Performing gradient-based optimization: 
-Iteration 0:  Log likelihood = -9668.0859  
-Iteration 1:  Log likelihood = -9668.0859  
+<pre><code>Performing EM optimization Performing gradient-based optimization: 
+Iteration 0:  Log likelihood = -9628.1621  
+Iteration 1:  Log likelihood = -9628.1621  
 
 Computing standard errors ...
 
@@ -520,27 +505,27 @@ Group variable: country                              Number of groups =     30
                                                                   min =    100
                                                                   avg =  100.0
                                                                   max =    100
-                                                     Wald chi2(3)     = 401.00
-Log likelihood = -9668.0859                          Prob &gt; chi2      = 0.0000
+                                                     Wald chi2(3)     = 370.90
+Log likelihood = -9628.1621                          Prob &gt; chi2      = 0.0000
 
--------------------------------------------------------------------------------------
-            outcome | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
---------------------+----------------------------------------------------------------
-             warmth |    .961837   .0581809    16.53   0.000     .8478046    1.075869
-physical_punishment |  -.8457672   .0798128   -10.60   0.000    -1.002197   -.6893369
-            2.group |   1.084409   .2200548     4.93   0.000     .6531099    1.515709
-              _cons |   51.64797   .4645466   111.18   0.000     50.73748    52.55847
--------------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+     outcome | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+      warmth |   .8330937   .0574809    14.49   0.000     .7204332    .9457543
+physical_p~t |  -.9937819   .0798493   -12.45   0.000    -1.150284   -.8372801
+2.interven~n |   .6406044   .2175496     2.94   0.003     .2142151    1.066994
+       _cons |   52.65238   .4664841   112.87   0.000     51.73809    53.56668
+------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------
   Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
 -----------------------------+------------------------------------------------
 country: Identity            |
-                  var(_cons) |      3.403   .9717558      1.944438    5.955659
+                  var(_cons) |   3.371762   .9613269      1.928279    5.895816
 -----------------------------+------------------------------------------------
-               var(Residual) |   36.01911   .9346952      34.23295    37.89847
+               var(Residual) |    35.0675    .910002      33.32853    36.89721
 ------------------------------------------------------------------------------
-LR test vs. linear model: chibar2(01) = 200.29        Prob &gt;= chibar2 = 0.0000</code></pre>
+LR test vs. linear model: chibar2(01) = 204.14        Prob &gt;= chibar2 = 0.0000</code></pre>
 </div>
 </div>
 </section>
@@ -548,7 +533,7 @@ LR test vs. linear model: chibar2(01) = 200.29        Prob &gt;= chibar2 = 0.000
 <h3 data-number="12.2.2" class="anchored" data-anchor-id="generate-predicted-values-at-specified-values-with-margins"><span class="header-section-number">12.2.2</span> Generate Predicted Values <em>At Specified Values</em> With <code>margins</code></h3>
 <div class="cell" data-collectcode="true">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>margins <span class="fu">group</span>, <span class="fu">at</span>(warmth = (1 2 3 4 5 6 7)) <span class="co">// predictive *margins*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>margins intervention, <span class="fu">at</span>(warmth = (1 2 3 4 5 6 7)) <span class="co">// predictive *margins*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Predictive margins                                       Number of obs = 3,000
 
@@ -565,21 +550,22 @@ Expression: Linear prediction, fixed portion, predict()
              |            Delta-method
              |     Margin   std. err.      z    P&gt;|z|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-   _at#group |
-        1 1  |    50.4999   .3983539   126.77   0.000     49.71914    51.28066
-        1 2  |   51.58431   .3994365   129.14   0.000     50.80143    52.36719
-        2 1  |   51.46174   .3809288   135.10   0.000     50.71513    52.20834
-        2 2  |   52.54615     .38173   137.65   0.000     51.79797    53.29432
-        3 1  |   52.42357    .371884   140.97   0.000      51.6947    53.15245
-        3 2  |   53.50798   .3723656   143.70   0.000     52.77816    54.23781
-        4 1  |   53.38541   .3718315   143.57   0.000     52.65664    54.11419
-        4 2  |   54.46982   .3719738   146.43   0.000     53.74077    55.19888
-        5 1  |   54.34725   .3807751   142.73   0.000     53.60094    55.09355
-        5 2  |   55.43166   .3805823   145.65   0.000     54.68573    56.17759
-        6 1  |   55.30909    .398109   138.93   0.000     54.52881    56.08937
-        6 2  |    56.3935    .397607   141.83   0.000      55.6142    57.17279
-        7 1  |   56.27092   .4228024   133.09   0.000     55.44225     57.0996
-        7 2  |   57.35533   .4220306   135.90   0.000     56.52817     58.1825
+         _at#|
+intervention |
+        1 1  |   51.02222   .3966755   128.62   0.000     50.24475    51.79969
+        1 2  |   51.66283   .3955286   130.62   0.000     50.88761    52.43805
+        2 1  |   51.85532   .3788571   136.87   0.000     51.11277    52.59786
+        2 2  |   52.49592   .3789096   138.54   0.000     51.75327    53.23857
+        3 1  |   52.68841   .3692182   142.70   0.000     51.96476    53.41207
+        3 2  |   53.32902    .370554   143.92   0.000     52.60274    54.05529
+        4 1  |   53.52151   .3684014   145.28   0.000     52.79945    54.24356
+        4 2  |   54.16211   .3710204   145.98   0.000     53.43492     54.8893
+        5 1  |    54.3546    .376464   144.38   0.000     53.61674    55.09246
+        5 2  |    54.9952   .3802764   144.62   0.000     54.24988    55.74053
+        6 1  |   55.18769   .3928599   140.48   0.000      54.4177    55.95768
+        6 2  |    55.8283   .3977088   140.37   0.000      55.0488    56.60779
+        7 1  |   56.02079   .4166062   134.47   0.000     55.20425    56.83732
+        7 2  |   56.66139   .4223062   134.17   0.000     55.83369     57.4891
 ------------------------------------------------------------------------------</code></pre>
 </div>
 </div>
@@ -592,10 +578,9 @@ Expression: Linear prediction, fixed portion, predict()
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> mymarginsplot.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Variables that uniquely identify margins: warmth group
+<pre><code>Variables that uniquely identify margins: warmth intervention
 
-file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mymarginsplot.png saved
-    as PNG format</code></pre>
+file mymarginsplot.png saved as PNG format</code></pre>
 </div>
 </div>
 <div class="quarto-figure quarto-figure-center">
@@ -664,8 +649,7 @@ file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mymarginsplot.png 
 <span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> mynewscatter.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mynewscatter.png saved
-    as PNG format</code></pre>
+<pre><code>file mynewscatter.png saved as PNG format</code></pre>
 </div>
 </div>
 <div class="quarto-figure quarto-figure-center">
@@ -684,9 +668,6 @@ file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mymarginsplot.png 
 </section>
 <section id="random-effects" class="level1" data-number="15">
 <h1 data-number="15"><span class="header-section-number">15</span> Random Effects</h1>
-</section>
-<section id="references" class="level1" data-number="16">
-<h1 data-number="16"><span class="header-section-number">16</span> References</h1>
 <div class="hidden" aria-hidden="true">
 <span class="glightbox-desc lightbox-desc-1">Scatterplot</span>
 <span class="glightbox-desc lightbox-desc-2">Linear Fit</span>
@@ -789,6 +770,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -823,7 +822,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -1098,7 +1101,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","openEffect":"zoom","selector":".lightbox","loop":false});
+<script>var lightboxQuarto = GLightbox({"loop":false,"openEffect":"zoom","selector":".lightbox","closeEffect":"zoom","descPosition":"bottom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
