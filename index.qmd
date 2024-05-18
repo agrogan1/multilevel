@@ -13,7 +13,7 @@ format:
     toc: true
     number-sections: true
     theme:
-      light: cosmo
+      light: yeti
       dark: vapor
     lightbox: true
     fig-height: 3
@@ -41,7 +41,7 @@ library(plotly)
 ```
 
 
-![Neighborhood, School and Country Effects](neighborhood.png){width=50%}
+![Neighborhood, School and Country Effects](town.png){width=50%}
 
 
 
