@@ -10,6 +10,7 @@ format:
   html:
     toc: true
     number-sections: true
+    page-layout: full
     theme:
       light: yeti
       dark: vapor
@@ -19,6 +20,7 @@ format:
   pdf: 
     toc: false
     number-sections: true
+    classoption: landscape
 ---
 
 ```{r setup, include=FALSE}
