@@ -5,20 +5,20 @@ author:
   url: https://agrogan1.github.io/
   affiliation: University of Michigan
   affiliation_url: https://umich.edu/
-date: '`r Sys.Date()`'
-output:
-  pdf_document:
-    highlight: haddock
-    latex_engine: xelatex
-  distill::distill_article:
-    highlight: haddock
-    toc: yes
-    toc_float: no
-  word_document: 
-    toc: no
-    reference_docx: "markstat.docx"
-citation_url: https://agrogan1.github.io
-classoption: landscape
+date: "today"
+format:
+  html:
+    toc: true
+    number-sections: true
+    theme:
+      light: yeti
+      dark: vapor
+    css: styles.css
+    mermaid: 
+      theme: default
+  pdf: 
+    toc: false
+    number-sections: true
 ---
 
 ```{r setup, include=FALSE}
@@ -62,7 +62,7 @@ Stata <- c("`mixed y`",
            "`mixed y || groupid:` <br>`estat icc`",
            "`mixed y x || groupid:` <br>`mixed y x z || groupid:`",
            "`mixed y x || groupid: x`",
-           "`mixed y x z || ///` <br>`groupid: x z`")
+           "`mixed y x z || groupid: x z`")
 
 English <- c("We estimated the mean of [outcome]",
              "We estimated the relationship of [independent variable(s)] with [outcome]",
@@ -78,55 +78,7 @@ mydata <- data.frame(model, equation, Stata, English)
 
 ```{r}
 
-if(opts_knit$get("rmarkdown.pandoc.to") == 'html5'){
-  
-  mydata %>%
-    kbl(escape = FALSE) %>%
-    kable_paper("hover",
-                full_width = TRUE,
-                html_font = "Roboto") %>%
-    row_spec(0,
-             color = "white",
-             background = "#00274C") %>% # header row
-    column_spec(3,
-                width_min = "15em",
-                monospace = TRUE) %>% # column 3 is monospaced
-    column_spec(4, width_min = "15em") %>%
-    footnote(general = c("`///` is a line wrapping character to allow Stata commands to span multiple lines.", 
-    "For binary outcomes, use command `melogit` instead.", "`mixed` without a clustering variable will give very similar results to `regress`."))
-    
-  
-}
-
-if(opts_knit$get("rmarkdown.pandoc.to") == 'latex'){
-  
-  mydata$model <- gsub("<br>","\n", mydata$model) # <br> to \n for LaTeX
-  
-  mydata$equation <- gsub("<br>","\n", mydata$equation) # <br> to \n for LaTeX
-  
-  mydata$equation <- gsub("\\\\\\\\","\\\\", mydata$equation)
-  
-  mydata$Stata <- gsub("<br>","\n", mydata$Stata) # <br> to \n for LaTeX
-  
-  set.alignment('left')
-
-  pander(mydata, split.cells = 10)
-  
-  # kable(mydata, "latex", 
-  #       escape = FALSE,
-  #       booktabs = TRUE,
-  #       longtable = TRUE) %>%
-  #   column_spec(1:4, width = "5cm")
-  
-}
-
-if(opts_knit$get("rmarkdown.pandoc.to") == 'docx'){
-  
-  set.alignment('left')
-
-  pander(mydata, split.cells = 10)
-  
-}
+pander(mydata, split.cells = 10)
 
 ```
 
