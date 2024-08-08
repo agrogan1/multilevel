@@ -1,26 +1,15 @@
 ---
 title: "Bayesian Longitudinal Multilevel Models"
-author:
-- name: Andy Grogan-Kaylor
-  url: https://www.umich.edu/~agrogan
-  affiliation: University of Michigan
-  affiliation_url: https://www.umich.edu
-date: "`r Sys.Date()`"
-output:
-  distill::distill_article:
-    highlight: haddock
-    toc: yes
-    code_folding: true
-  word_document:
-    toc: yes
-    reference_docx: "markstat.docx"
-  pdf_document:
-    toc: yes
-    number_sections: yes
-    highlight: haddock
-    latex_engine: xelatex
-description: |
-  Using brms / STAN
+subtitle: "Using brms / STAN"
+author: "Andy Grogan-Kaylor"
+date: "today"
+format:
+  html:
+    toc: true
+    number-sections: true
+    theme:
+      light: yeti
+      dark: vapor
 ---
 
 ```{r setup, include=FALSE}
@@ -37,8 +26,9 @@ library(sjPlot) # nice tables for MLM
 
 You will need to install the relevant packages: `lme4` for frequentist MLM, and `brms`, which also installs `STAN`, for Bayesian MLM.
 
-```{r, eval=FALSE}
-
+```{r}
+#| eval: false
+ 
 install.packages(c("lme4", "brms"))
 
 ```
@@ -58,6 +48,7 @@ The documentation goes on to further note that:
 # Import The Data 🌲
 
 ```{r}
+#| label: getdata
 
 library(haven)
 
@@ -89,14 +80,17 @@ gutten
 
 # A Basic Multilevel Model 🌲
 
-$$\text{height}_{it} = \beta_0 + \beta \text{age_base} + \beta \text{site} + \beta \text{age_base * site} + u_{0\text{ tree.ID}} + e_{it}$$ Both `lmer` (frequentist MLM) and `brms` (Bayesian MLM) use the idea of translating the above equation into a *formula*:
+$$\text{height}_{it} = \beta_0 + \beta \text{age_base} + \beta \text{site} + \beta \text{age_base * site} + u_{0\text{ tree.ID}} + e_{it}$$ 
+
+Both `lmer` (frequentist MLM) and `brms` (Bayesian MLM) use the idea of translating the above equation into a *formula*:
 
 `height ~ age_base + site + (1 | tree_ID)`
 
 # Graph (Spaghetti Plot)
 
 ```{r}
-
+#| label: graph
+ 
 library(ggplot2)
 
 ggplot(gutten,
@@ -120,13 +114,14 @@ ggplot(gutten,
 > NB: `*` provides with an interaction term and main effects.
  
 ```{r}
+#| label: frequentist
 
 library(lme4)
 
 fit1 <- lmer(height ~ age_base * site + (1 | tree_ID), 
              data = gutten)
 
-summary(fit1)
+tab_model(fit1)
 
 ```
 
@@ -135,6 +130,7 @@ summary(fit1)
 > The models below take a non-trivial amount of time to run.
 
 ```{r}
+#| label: Bayes1
 
 library(brms)
 
@@ -144,13 +140,14 @@ fit2 <- brm(height ~ age_base * site + (1 | tree_ID),
             warmup = 2000, 
             iter = 5000)
 
-summary(fit2)
+tab_model(fit2)
 
 ```
 
 # Set Informative Priors 🌲
 
 ```{r}
+#| label: prior
 
 prior1 <- c(
   prior(normal(0, 10), class = Intercept), 
@@ -163,6 +160,7 @@ prior1 <- c(
 # Run The Model With More Informative Prior 🌲
 
 ```{r}
+#| label: Bayes2
 
 fit3 <- brm(height ~ age_base * site + (1 | tree_ID), 
             data = gutten,
@@ -171,7 +169,7 @@ fit3 <- brm(height ~ age_base * site + (1 | tree_ID),
             warmup = 2000, 
             iter = 5000)
 
-summary(fit3)
+tab_model(fit3)
 
 ```
 
@@ -180,6 +178,7 @@ summary(fit3)
 > `plot(fit3)` will give me a reasonable plot of *every* parameter, but the layout may not be optimal. I am using separate plot calls below, but to do so, I need to know the *names* of the parameters, which can be tricky in `brms`. One way to do this is to use `plot(fit3)` to see all the parameter names, and then divide the single `plot` call into multiple `plot` calls to improve the layout.
 
 ```{r}
+#| label: plotposterior
 
 # plot(fit3)
 
@@ -197,7 +196,9 @@ plot(fit3, variable = c("sd_tree_ID__Intercept",
 
 # Compare All 3 Models 🌲
 
-```{r, layout = "l-page"}
+```{r}
+#| column: screen
+#| label: allmodels
 
 tab_model(fit1, fit2, fit3,
           dv.labels = c("lmer", "brms default priors", "brms informative priors"), 
