@@ -80,7 +80,7 @@ gutten
 
 # A Basic Multilevel Model 🌲
 
-$$\text{height}_{it} = \beta_0 + \beta \text{age_base} + \beta \text{site} + \beta \text{age_base * site} + u_{0\text{ tree.ID}} + e_{it}$$ 
+$$\text{height}_{it} = \beta_0 + \beta \text{age_base} + \beta \text{site} + \beta \text{age_base * site} + u_{0 \text{ tree.ID}} + e_{it}$$
 
 Both `lmer` (frequentist MLM) and `brms` (Bayesian MLM) use the idea of translating the above equation into a *formula*:
 
