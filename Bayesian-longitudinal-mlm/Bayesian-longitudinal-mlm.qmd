@@ -80,7 +80,7 @@ gutten
 
 # A Basic Multilevel Model 🌲
 
-$$\text{height}_{it} = \beta_0 + \beta \text{age_base} + \beta \text{site} + \beta \text{age_base * site} + u_{0 \text{ tree.ID}} + e_{it}$$
+$$\text{height}_{it} = \beta_0 + \beta \text{agebase} + \beta \text{site} + \beta \text{agebase} \times \text{site} + u_{0 \text{ tree.ID}} + e_{it}$$
 
 Both `lmer` (frequentist MLM) and `brms` (Bayesian MLM) use the idea of translating the above equation into a *formula*:
 
@@ -88,8 +88,11 @@ Both `lmer` (frequentist MLM) and `brms` (Bayesian MLM) use the idea of translat
 
 # Graph (Spaghetti Plot)
 
+Let's first graph the model to get a visual idea of likely model results.
+
 ```{r}
 #| label: graph
+#| code-fold: true
  
 library(ggplot2)
 
@@ -111,7 +114,7 @@ ggplot(gutten,
 
 # Frequentist Model in `lmer` 🌲
 
-> NB: `*` provides with an interaction term and main effects.
+> NB: `*` provides both an interaction term and main effects.
  
 ```{r}
 #| label: frequentist
@@ -197,7 +200,7 @@ plot(fit3, variable = c("sd_tree_ID__Intercept",
 # Compare All 3 Models 🌲
 
 ```{r}
-#| column: screen
+#| column: page
 #| label: allmodels
 
 tab_model(fit1, fit2, fit3,
