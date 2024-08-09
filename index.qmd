@@ -40,10 +40,7 @@ library(plotly)
 
 ```
 
-
-![Neighborhood, School and Country Effects](town.png){width=50%}
-
-
+![Neighborhood, School and Country Effects](town.png){width=75%}
 
 Multilevel models have become a standard statistical tool for quantitative research on neighborhoods, communities and schools.  The cross-sectional multilevel model is appropriate for situations in which respondents are clustered inside larger social or geographic units e.g. people in geographic areas, residents in neighborhoods, or children in classrooms and/or schools. Cross-sectional multilevel models enable *multilevel thinking* at multiple levels (units of analysis) and conceptualizing effects at the *country*, *community*, *family*, and *individual* levels.
 
@@ -71,7 +68,7 @@ NB that the major assignments in this class are two short empirical papers where
 
 Perhaps surprisingly, the multilevel model for cross-sectional data can easily accommodate longitudinal data where study participants are observed repeatedly over time. Longitudinal multilevel models represent a different kind of *multilevel thinking* where we extend the algebra of the multilevel model to think about *events* or *occasions*, nested inside *individuals.*
 
-![Studies of Growth and Change](plant.png){width=50%}
+![Studies of Growth and Change](plant.png){width=75%}
 
 
 Further, while this is sometimes not recognized, multilevel models for longitudinal data are closely related to other important longitudinal data models, such as fixed effects regression, an important technique for controlling for unobserved variables. Multilevel models are also closely related to statistical models for meta-analysis of multiple studies.
