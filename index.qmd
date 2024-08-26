@@ -53,7 +53,9 @@ You will need to already have Stata, to purchase Stata from [https://www.stata.c
 :::
 
 ::: {.column-margin}
+::: {.callout-note}
 Participation in this class requires that you have a personal laptop computer that is powerful enough to run standard statistical software (e.g. Stata) at a reasonable speed.  The School of Social Work is not able to provide laptop computers.
+:::
 :::
 
 ::: {.column-margin}
@@ -63,7 +65,9 @@ This course requires a solid understanding of ordinary least squares regression 
 :::
 
 ::: {.column-margin}
+::: {.callout-tip}
 Previously this course was numbered SW 832. The new number for the course is SW 864.
+:::
 ::: 
 
 The first part of the course is all about the idea of “nesting”:  e.g. students nested in classrooms, residents nested in neighborhoods, study participants nested in cities. The second part of the course extends these ideas to longitudinal data, thinking about situations where we have repeated measures on an outcome of interest, like anxiety, depression or substance abuse.  Course assignments focus on individually focused student data driven projects, so for students considering the course, it is useful to have an available data set has both some kind of “nesting” as well as repeated measures of some outcome of interest.
