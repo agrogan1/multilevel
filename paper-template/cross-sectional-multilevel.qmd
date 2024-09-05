@@ -7,19 +7,20 @@ format:
     toc: true
     number-sections: true
     theme:
-      light: united
+      light: yeti
       dark: vapor
+    lightbox: true
   pdf:
     toc: true
     number-sections: true
 editor: source
+execute: 
+  echo: false
 ---
 
-```{r, include=FALSE}
-
-knitr::opts_chunk$set(echo = FALSE,
-                      warning = FALSE,
-                      message = FALSE)
+```{r}
+#| echo: false
+#| output: false
 
 # library(ggplot2) # nice graphs
 
@@ -280,7 +281,7 @@ Jones & Smith. (2023). Further really amazing results. *Amazing Results Quarterl
 
 Smith, & Jones. (2015). Some very important policy stuff. The *Journal of Very Important Policy Stuff*, 1(1), 1-2.
 
-Smith, & Jones. (2202). Some very important developmental stuff. *The Journal of Very Important Developmental Stuff*, 1(1), 1-2.
+Smith, & Jones. (2302). Back to the future: Some very important developmental stuff. *The Journal of Very Important Developmental Stuff*, 1(1), 1-2.
 
 Jones & Jones. (2021). Stuff we forgot to say in our earlier articles. *Extremely Sophisticated Quantitative Analysis*, 5(7), 1-25.
 
