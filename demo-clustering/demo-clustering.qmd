@@ -12,6 +12,7 @@ format:
     theme:
       light: yeti
       dark: vapor
+    lightbox: true
 ---
 
 ```{css, echo=FALSE}
