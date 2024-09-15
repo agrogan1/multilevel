@@ -104,7 +104,7 @@ est store M2 // store the estimates
 ```{stata, collectcode=TRUE}
 
 etable, estimates(M1 M2) /// use these estimate(s)
-novarlabel /// variable names only
+novarlabel /// variable names only; could use variable labels
 cstat(_r_b) /// beta's only
 showstars showstarsnote /// show stars and note
 column(estimate) // column is modelname
