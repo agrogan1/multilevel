@@ -78,6 +78,7 @@ use "https://github.com/agrogan1/multilevel-thinking/raw/main/simulate-and-analy
 # Scatterplots (`twoway scatter y x`)
 
 ```{stata}
+#| output: false
 
 twoway scatter outcome warmth, mcolor(%30)
 	
