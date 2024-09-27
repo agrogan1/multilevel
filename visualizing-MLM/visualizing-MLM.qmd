@@ -7,6 +7,7 @@ format:
     toc: true
     number-sections: true
     theme: yeti
+    highlight-style: haddock
     lightbox: true
   pdf:
     toc: true
@@ -91,6 +92,7 @@ graph export myscatter.png, width(1500) replace
 # Simple Linear Fit (`twoway lfit y x`)
 
 ```{stata}
+#| output: false
 
 twoway lfit outcome warmth
 	
@@ -103,6 +105,7 @@ graph export mylinear.png, width(1500) replace
 # Linear Fit With Confidence Interval (`twoway lfitci y x`)
 
 ```{stata}
+#| output: false
 
 twoway lfitci outcome warmth
 	
@@ -115,6 +118,7 @@ graph export mylfitci.png, width(1500) replace
 # Combine Scatterplot and Linear Fit (`twoway (scatter y x) (lfit y x)`)
 
 ```{stata}
+#| output: false
 
 twoway (scatter outcome warmth, mcolor(%30)) (lfit outcome warmth)
 	
@@ -127,6 +131,7 @@ graph export myscatterlinear.png, width(1500) replace
 # Spaghetti Plots (`spagplot y x, id(group)`)
 
 ```{stata}
+#| output: false
 
 spagplot outcome warmth, id(country)
 	
@@ -141,6 +146,7 @@ graph export myspaghetti.png, width(1500) replace
 *Small Multiples*, showing a separate graph for each group in the data, are an increasingly popular data visualization technique. Below, I build a small multiples graph using the `by` option in Stata. I use the `aspect` option to adjust the *aspect ratio* of the graph for better visual presentation. 
 
 ```{stata}
+#| output: false
 
 twoway (scatter outcome warmth, mcolor(%30)) ///
 (lfit outcome warmth), ///
@@ -154,7 +160,7 @@ graph export mysmallmultiples.png, width(1500) replace
 
 # Taking A Random Sample
 
-At times, we may have *too many* Level 2 units to effectively display them on a *spaghetti plot*, or using *small multiples*. If this is the case, we may need to *randomly sample* Level 2 units. This can be difficult to accomplish as our standard `sample` command operates on each row, or on Level 1 units. 
+At times, we may have *too many* Level 2 units to effectively display them on a *spaghetti plot*, or using *small multiples*. If this is the case, we may need to *randomly sample* **Level 2** units. This can be difficult to accomplish as our standard `sample` command operates on each row, or on Level 1 units. 
 
 We can accomplish random sampling at Level 2, with a little bit of code.
 
@@ -212,6 +218,7 @@ predict outcome_hat, fitted // predict yhat (`fitted` uses fixed AND random effe
 ### Graph With `twoway` Syntax	
 
 ```{stata}	
+#| output: false
 
 twoway (scatter outcome_hat warmth, mcolor(%30)) (lfit outcome_hat warmth)
 
@@ -230,6 +237,7 @@ graph export mypredictedvalues2.png, width(1500) replace
 ### Spaghetti Plot With Predicted Values
 
 ```{stata}
+#| output: false
 
 spagplot outcome_hat warmth, id(country)
 	
@@ -262,6 +270,7 @@ margins intervention, at(warmth = (1 2 3 4 5 6 7)) // predictive *margins*
 ### Graph With `marginsplot`
 	
 ```{stata}
+#| output: false
 	
 marginsplot // plot of predicted values
 	
@@ -308,6 +317,7 @@ label variable outcome_y "density: beneficial outcome" // relabel y variable
 > You may have to experiment with whether scatterplots or line plots work best for displaying the x and y densities.
 
 ```{stata}
+#| output: false
 
 twoway (scatter outcome warmth, mcolor(%10)) /// scatterplot w some transparency
 (lfit outcome warmth) /// linear fit
