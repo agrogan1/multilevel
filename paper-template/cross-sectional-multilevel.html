@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.29">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="A Student">
-<meta name="dcterms.date" content="2024-09-05">
+<meta name="dcterms.date" content="2024-09-29">
 
 <title>Cross Sectional Multilevel Model Paper Template</title>
 <style>
@@ -119,7 +119,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 5, 2024</p>
+      <p class="date">September 29, 2024</p>
     </div>
   </div>
   
@@ -156,7 +156,19 @@ window.Quarto = {
 <h1 data-number="4"><span class="header-section-number">4</span> Methodology</h1>
 
 <div class="no-row-height column-margin column-container"><div class="">
-<p>NB: You don’t have to include everything I’ve listed here. Try for 70-90%.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You don’t have to include everything I’ve listed here. Try for 70-90%.</p>
+</div>
+</div>
 </div></div><section id="sample" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="sample"><span class="header-section-number">4.1</span> Sample</h2>
 <ul>
@@ -209,14 +221,8 @@ window.Quarto = {
 <p>Tell me in words how your variables are distributed in your sample and include a table.</p>
 
 <div class="no-row-height column-margin column-container"><div class="">
-<p>A hypothetical example. <span style="color:red;">You should devote attention to <em>formatting</em> your results as if for a publication. NB: You do not have to copy my format exactly. Especially for a multivariate model, I prefer a more complete presentation using <span class="math inline">\(\beta\)</span>, SE, t and p value.</span></p>
-<p><span style="color:red;"><strong>In order to format my results more nicely,</strong></span> I could copy them into Excel first, format them, and then copy them into Word. There are also some newer ways to make nicely formatted tables in Stata. Ask the Instructor for details.</p>
 <p>If all my variables are continuous, it’s appropriate to show means. If some of my variables are categorical, it’s more appropriate to show frequency distributions.</p>
-<p>In the graphs, note that I’ve tried to pay some attention to meaningful titles and axis labels.</p>
-<p>Note also you can make use of one of Stata’s <code>scheme</code>s to make your graphs visually interesting. In new versions of Stata, the new default scheme <code>stcolor</code> provides visually appealing graphs.</p>
-<p>It’s also worth trying out the <code>lean1</code> and <code>lean2</code> schemes (type <code>findit lean2</code> to install).</p>
-<p>And the daring are welcome to try my “Michigan” graph scheme, available <a href="https://agrogan1.github.io/Stata/michigan-graph-scheme/">here</a>, <em>caveat emptor</em>.</p>
-</div></div><table class="table">
+</div></div><table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -230,11 +236,11 @@ window.Quarto = {
 </tr>
 <tr class="even">
 <td>x</td>
-<td>98.652 (10.183)</td>
+<td>99.602 (10.973)</td>
 </tr>
 <tr class="odd">
 <td>y</td>
-<td>103.803 (15.062)</td>
+<td>106.510 (14.575)</td>
 </tr>
 <tr class="even">
 <td>z</td>
@@ -242,15 +248,21 @@ window.Quarto = {
 </tr>
 <tr class="odd">
 <td>0</td>
-<td>66 (66.0%)</td>
+<td>67 (67.0%)</td>
 </tr>
 <tr class="even">
 <td>1</td>
-<td>34 (34.0%)</td>
+<td>33 (33.0%)</td>
 </tr>
 </tbody>
 </table>
-<div class="quarto-figure quarto-figure-center">
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>In the graphs, note that I’ve tried to pay some attention to meaningful titles and axis labels.</p>
+<p>Note also you can make use of one of Stata’s <code>scheme</code>s to make your graphs visually interesting. In new versions of Stata, the new default scheme <code>stcolor</code> provides visually appealing graphs.</p>
+<p>Asjad Naqvi has a wonderful <a href="https://github.com/asjadnaqvi/stata-schemepack">set of graph schemes</a>.</p>
+<p>And the daring are welcome to try my “Michigan” graph scheme, available <a href="https://agrogan1.github.io/Stata/michigan-graph-scheme/">here</a>, <em>caveat emptor</em>.</p>
+</div></div><div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="myhistogram.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="A histogram of one variable"><img src="myhistogram.png" class="img-fluid figure-img" style="width:75.0%" alt="A histogram of one variable"></a></p>
 <figcaption>A histogram of one variable</figcaption>
@@ -263,7 +275,11 @@ window.Quarto = {
 </figure>
 </div>
 <p>What is the influence of each predictor variable in your relationship in terms of <span class="math inline">\(\beta\)</span> and p value? <span style="color:red;">Please compute the unconditional intra-class correlation coefficient as part of your results.</span></p>
-<table class="table">
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>A hypothetical example. You should devote attention to <em>formatting</em> your results as if for a publication. You do not have to copy my format exactly. Especially for a multivariate model, I prefer a more complete presentation using <span class="math inline">\(\beta\)</span>, SE, t and p value.</p>
+<p><strong>In order to format my results more nicely,</strong> I could copy them into Excel first, format them, and then copy them into Word. There are also some <a href="https://agrogan1.github.io/posts/tables-in-Stata/index.html">newer ways to make nicely formatted tables in Stata</a>.</p>
+</div></div><table class="caption-top table">
 <thead>
 <tr class="header">
 <th></th>
@@ -274,52 +290,52 @@ window.Quarto = {
 <tbody>
 <tr class="odd">
 <td>x</td>
-<td>0.985</td>
+<td>0.966</td>
 <td>**</td>
 </tr>
 <tr class="even">
 <td></td>
-<td>(0.108)</td>
+<td>(0.088)</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td>z</td>
-<td>3.750</td>
+<td>2.463</td>
 <td></td>
 </tr>
 <tr class="even">
 <td></td>
-<td>(2.301)</td>
+<td>(2.080)</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td>_cons</td>
-<td>1.575</td>
+<td>6.977</td>
 <td></td>
 </tr>
 <tr class="even">
 <td></td>
-<td>(11.309)</td>
+<td>(8.890)</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td>var(_cons)</td>
-<td>13.323</td>
+<td>5.054</td>
 <td></td>
 </tr>
 <tr class="even">
 <td></td>
-<td>(11.115)</td>
+<td>(6.453)</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td>var(e)</td>
-<td>111.152</td>
+<td>89.089</td>
 <td></td>
 </tr>
 <tr class="even">
 <td></td>
-<td>(16.579)</td>
+<td>(13.295)</td>
 <td></td>
 </tr>
 <tr class="odd">
@@ -916,30 +932,37 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"loop":false,"closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","openEffect":"zoom"});
-window.onload = () => {
-  lightboxQuarto.on('slide_before_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    const href = trigger.getAttribute('href');
-    if (href !== null) {
-      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-      if (imgEl !== null) {
-        const srcAttr = imgEl.getAttribute("src");
-        if (srcAttr && srcAttr.startsWith("data:")) {
-          slideConfig.href = srcAttr;
-        }
-      }
-    } 
-  });
-
-  lightboxQuarto.on('slide_after_load', (data) => {
-    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-    if (window.Quarto?.typesetMath) {
-      window.Quarto.typesetMath(slideNode);
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","loop":false});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
     }
-  });
-
-};
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
           </script>
 
 

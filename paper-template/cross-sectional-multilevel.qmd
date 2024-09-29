@@ -75,7 +75,9 @@ Given this review of the literature, my research question is \_\_\_\_\_\_\_\_\_\
 # Methodology
 
 ::: column-margin
-NB: You don't have to include everything I've listed here. Try for 70-90%.
+::: {.callout-tip}
+You don't have to include everything I've listed here. Try for 70-90%.
+:::
 :::
 
 ## Sample
@@ -119,20 +121,9 @@ NB: You don't have to include everything I've listed here. Try for 70-90%.
 Tell me in words how your variables are distributed in your sample and include a table.
 
 ::: column-margin
-A hypothetical example. <span style="color:red;">You should devote attention to *formatting* your results as if for a publication. NB: You do not have to copy my format exactly. Especially for a multivariate model, I prefer a more complete presentation using $\beta$, SE, t and p value.</span> 
-
-<span style="color:red;">**In order to format my results more nicely,**</span> I could copy them into Excel first, format them, and then copy them into Word. There are also some newer ways to make nicely formatted tables in Stata. Ask the Instructor for details.
-
 If all my variables are continuous, it's appropriate to show means. If some of my variables are categorical, it's more appropriate to show frequency distributions.
-
-In the graphs, note that I've tried to pay some attention to meaningful titles and axis labels.
-
-Note also you can make use of one of Stata's `scheme`s to make your graphs visually interesting. In new versions of Stata, the new default scheme `stcolor` provides visually appealing graphs.
-
-It's also worth trying out the `lean1` and `lean2` schemes (type `findit lean2` to install). 
-
-And the daring are welcome to try my "Michigan" graph scheme, available [here](https://agrogan1.github.io/Stata/michigan-graph-scheme/), *caveat emptor*.
 :::
+
 
 ```{r}
 
@@ -182,6 +173,17 @@ ggplot(data = mydata,
   theme_stata()
 
 ```
+
+
+::: column-margin
+In the graphs, note that I've tried to pay some attention to meaningful titles and axis labels.
+
+Note also you can make use of one of Stata's `scheme`s to make your graphs visually interesting. In new versions of Stata, the new default scheme `stcolor` provides visually appealing graphs.
+
+Asjad Naqvi has a wonderful [set of graph schemes](https://github.com/asjadnaqvi/stata-schemepack).
+
+And the daring are welcome to try my "Michigan" graph scheme, available [here](https://agrogan1.github.io/Stata/michigan-graph-scheme/), *caveat emptor*.
+:::
 
 ```{stata}
 #| output: false
@@ -246,6 +248,12 @@ sjPlot::tab_model(myMLM,
                   show.obs = TRUE)
 
 ```
+
+::: column-margin
+A hypothetical example. You should devote attention to *formatting* your results as if for a publication. You do not have to copy my format exactly. Especially for a multivariate model, I prefer a more complete presentation using $\beta$, SE, t and p value.
+
+**In order to format my results more nicely,** I could copy them into Excel first, format them, and then copy them into Word. There are also some [newer ways to make nicely formatted tables in Stata](https://agrogan1.github.io/posts/tables-in-Stata/index.html).
+:::
 
 ```{stata}
 
