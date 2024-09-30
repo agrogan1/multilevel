@@ -114,7 +114,7 @@ div.csl-indent {
   <li><a href="#combine-scatterplot-and-linear-fit-twoway-scatter-y-x-lfit-y-x" id="toc-combine-scatterplot-and-linear-fit-twoway-scatter-y-x-lfit-y-x" class="nav-link" data-scroll-target="#combine-scatterplot-and-linear-fit-twoway-scatter-y-x-lfit-y-x"><span class="header-section-number">8</span> Combine Scatterplot and Linear Fit (<code>twoway (scatter y x) (lfit y x)</code>)</a></li>
   <li><a href="#spaghetti-plots-spagplot-y-x-idgroup" id="toc-spaghetti-plots-spagplot-y-x-idgroup" class="nav-link" data-scroll-target="#spaghetti-plots-spagplot-y-x-idgroup"><span class="header-section-number">9</span> Spaghetti Plots (<code>spagplot y x, id(group)</code>)</a></li>
   <li><a href="#small-multiples-twoway-y-x-bygroup" id="toc-small-multiples-twoway-y-x-bygroup" class="nav-link" data-scroll-target="#small-multiples-twoway-y-x-bygroup"><span class="header-section-number">10</span> Small Multiples (<code>twoway y x, by(group)</code>)</a></li>
-  <li><a href="#taking-a-random-sample" id="toc-taking-a-random-sample" class="nav-link" data-scroll-target="#taking-a-random-sample"><span class="header-section-number">11</span> Taking A Random Sample</a></li>
+  <li><a href="#small-multiples-with-a-random-sample" id="toc-small-multiples-with-a-random-sample" class="nav-link" data-scroll-target="#small-multiples-with-a-random-sample"><span class="header-section-number">11</span> Small Multiples With A Random Sample</a></li>
   <li><a href="#multivariate-predicted-relationships" id="toc-multivariate-predicted-relationships" class="nav-link" data-scroll-target="#multivariate-predicted-relationships"><span class="header-section-number">12</span> Multivariate (Predicted) Relationships</a>
   <ul class="collapse">
   <li><a href="#using-predicted-values-predict" id="toc-using-predicted-values-predict" class="nav-link" data-scroll-target="#using-predicted-values-predict"><span class="header-section-number">12.1</span> Using Predicted Values (<code>predict</code>)</a>
@@ -309,8 +309,8 @@ blockquote {
 </figure>
 </div>
 </section>
-<section id="taking-a-random-sample" class="level1" data-number="11">
-<h1 data-number="11"><span class="header-section-number">11</span> Taking A Random Sample</h1>
+<section id="small-multiples-with-a-random-sample" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Small Multiples With A Random Sample</h1>
 <p>At times, we may have <em>too many</em> Level 2 units to effectively display them on a <em>spaghetti plot</em>, or using <em>small multiples</em>. If this is the case, we may need to <em>randomly sample</em> <strong>Level 2</strong> units. This can be difficult to accomplish as our standard <code>sample</code> command operates on each row, or on Level 1 units.</p>
 <p>We can accomplish random sampling at Level 2, with a little bit of code.</p>
 <div class="cell">
@@ -1057,7 +1057,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"loop":false,"descPosition":"bottom","openEffect":"zoom","selector":".lightbox","closeEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","loop":false,"openEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {

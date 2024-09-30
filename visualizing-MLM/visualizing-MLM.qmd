@@ -158,7 +158,7 @@ graph export mysmallmultiples.png, width(1500) replace
 
 ![Small Multiples](mysmallmultiples.png){width=75%}
 
-# Taking A Random Sample
+# Small Multiples With A Random Sample
 
 At times, we may have *too many* Level 2 units to effectively display them on a *spaghetti plot*, or using *small multiples*. If this is the case, we may need to *randomly sample* **Level 2** units. This can be difficult to accomplish as our standard `sample` command operates on each row, or on Level 1 units. 
 
