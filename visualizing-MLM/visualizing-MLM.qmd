@@ -183,7 +183,7 @@ twoway (scatter outcome warmth, mcolor(%30)) /// scatterplot
 if randomid < .5, /// only use a subset of randomids
 by(country) aspect(1) // by country
 	
-graph export mysmallmultiples2.png, width(1500) replace
+quietly: graph export mysmallmultiples2.png, width(1500) replace
 
 ```
 
@@ -342,6 +342,7 @@ graph export mynewscatter.png, width(1500) replace
 
 # Random Effects
 
+# References
 
 
 

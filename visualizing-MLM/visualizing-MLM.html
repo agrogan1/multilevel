@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Andy Grogan-Kaylor">
-<meta name="dcterms.date" content="2024-09-27">
+<meta name="dcterms.date" content="2024-09-30">
 
 <title>Visualizing Multilevel Models</title>
 <style>
@@ -140,6 +140,7 @@ div.csl-indent {
   </ul></li>
   <li><a href="#curvilinear-and-linear-fits" id="toc-curvilinear-and-linear-fits" class="nav-link" data-scroll-target="#curvilinear-and-linear-fits"><span class="header-section-number">14</span> Curvilinear and Linear Fits</a></li>
   <li><a href="#random-effects" id="toc-random-effects" class="nav-link" data-scroll-target="#random-effects"><span class="header-section-number">15</span> Random Effects</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">16</span> References</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="visualizing-MLM.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
 </div>
@@ -164,7 +165,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 27, 2024</p>
+      <p class="date">September 30, 2024</p>
     </div>
   </div>
   
@@ -331,17 +332,13 @@ blockquote {
 <span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="kw">if</span> randomid &lt; .5, <span class="co">/// only use a subset of randomids</span></span>
 <span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="kw">by</span>(country) aspect(1) <span class="co">// by country</span></span>
 <span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> mysmallmultiples2.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="kw">quietly</span>: <span class="kw">graph</span> <span class="kw">export</span> mysmallmultiples2.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(2,970 real changes made)
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
-    randomid |      3,000    .6174022    .2374704   .0733026   .9657055
-
-
-file /Users/agrogan/Desktop/GitHub/multilevel/visualizing-MLM/mysmallmultiples2.png saved
-    as PNG format</code></pre>
+    randomid |      3,000    .6174022    .2374704   .0733026   .9657055</code></pre>
 </div>
 </div>
 <div class="quarto-figure quarto-figure-center">
@@ -625,12 +622,15 @@ _at#intervention |
 <section id="curvilinear-and-linear-fits" class="level1" data-number="14">
 <h1 data-number="14"><span class="header-section-number">14</span> Curvilinear and Linear Fits</h1>
 </section>
-<section id="random-effects" class="level1 unnumbered" data-number="15">
+<section id="random-effects" class="level1" data-number="15">
+<h1 data-number="15"><span class="header-section-number">15</span> Random Effects</h1>
+</section>
+<section id="references" class="level1 unnumbered" data-number="16">
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">15 Random Effects</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">16 References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Hemken2023" class="csl-entry" role="listitem">
 Hemken, Doug. 2023. <em>Statamarkdown: ’Stata’ Markdown</em>. <a href="https://CRAN.R-project.org/package=Statamarkdown">https://CRAN.R-project.org/package=Statamarkdown</a>.
 </div>
@@ -1057,7 +1057,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","selector":".lightbox","closeEffect":"zoom","descPosition":"bottom","loop":false});
+<script>var lightboxQuarto = GLightbox({"loop":false,"descPosition":"bottom","openEffect":"zoom","selector":".lightbox","closeEffect":"zoom"});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
