@@ -101,6 +101,8 @@ est store M2 // store the estimates
 
 # Table With `etable`🌲
 
+## Regression Coefficients With Significance Stars
+
 ```{stata, collectcode=TRUE}
 
 etable, estimates(M1 M2) /// use these estimate(s)
@@ -112,3 +114,13 @@ column(estimate) // column is modelname
 
 ```
 
+## Regression Coefficients With p Values
+
+```{stata, collectcode=TRUE}
+
+etable, estimates(M1 M2) /// use these estimate(s)
+novarlabel /// variable names only; could use variable labels
+cstat(_r_b) cstat(_r_p) /// beta's and p values
+column(estimate) // column is modelname
+
+```

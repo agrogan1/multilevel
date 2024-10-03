@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Andy Grogan-Kaylor">
-<meta name="dcterms.date" content="2024-09-15">
+<meta name="dcterms.date" content="2024-10-03">
 
 <title>Tables for Multilevel Models in Stata</title>
 <style>
@@ -117,7 +117,7 @@ background-size: cover;
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">September 15, 2024</p>
+        <p class="date">October 3, 2024</p>
       </div>
     </div>
     
@@ -136,7 +136,11 @@ background-size: cover;
   <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup"><span class="header-section-number">3</span> Setup🌲</a></li>
   <li><a href="#variables" id="toc-variables" class="nav-link" data-scroll-target="#variables"><span class="header-section-number">4</span> Variables 🌲</a></li>
   <li><a href="#estimate-multilevel-models" id="toc-estimate-multilevel-models" class="nav-link" data-scroll-target="#estimate-multilevel-models"><span class="header-section-number">5</span> Estimate Multilevel Models🌲</a></li>
-  <li><a href="#table-with-etable" id="toc-table-with-etable" class="nav-link" data-scroll-target="#table-with-etable"><span class="header-section-number">6</span> Table With <code>etable</code>🌲</a></li>
+  <li><a href="#table-with-etable" id="toc-table-with-etable" class="nav-link" data-scroll-target="#table-with-etable"><span class="header-section-number">6</span> Table With <code>etable</code>🌲</a>
+  <ul class="collapse">
+  <li><a href="#regression-coefficients-with-significance-stars" id="toc-regression-coefficients-with-significance-stars" class="nav-link" data-scroll-target="#regression-coefficients-with-significance-stars"><span class="header-section-number">6.1</span> Regression Coefficients With Significance Stars</a></li>
+  <li><a href="#regression-coefficients-with-p-values" id="toc-regression-coefficients-with-p-values" class="nav-link" data-scroll-target="#regression-coefficients-with-p-values"><span class="header-section-number">6.2</span> Regression Coefficients With p Values</a></li>
+  </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="tables2.pdf"><i class="bi bi-file-pdf"></i>Typst</a></li></ul></div></nav>
 </div>
@@ -215,6 +219,8 @@ Use <code>quietly</code> To Suppress Output
 </section>
 <section id="table-with-etable" class="level1" data-number="6">
 <h1 data-number="6"><span class="header-section-number">6</span> Table With <code>etable</code>🌲</h1>
+<section id="regression-coefficients-with-significance-stars" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="regression-coefficients-with-significance-stars"><span class="header-section-number">6.1</span> Regression Coefficients With Significance Stars</h2>
 <div class="cell" data-collectcode="true">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>etable, <span class="kw">estimates</span>(M1 M2) <span class="co">/// use these estimate(s)</span></span>
@@ -246,6 +252,51 @@ Number of observations    1200       1200
 ** p&lt;.01, * p&lt;.05</code></pre>
 </div>
 </div>
+</section>
+<section id="regression-coefficients-with-p-values" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="regression-coefficients-with-p-values"><span class="header-section-number">6.2</span> Regression Coefficients With p Values</h2>
+<div class="cell" data-collectcode="true">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>etable, <span class="kw">estimates</span>(M1 M2) <span class="co">/// use these estimate(s)</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>novarlabel <span class="co">/// variable names only; could use variable labels</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>cstat(_r_b) cstat(_r_p) <span class="co">/// beta's and p values</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>column(estimate) <span class="co">// column is modelname</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                          M1      M2  
+--------------------------------------
+age_base                 0.214   0.214
+                          0.00    0.00
+site                                  
+  2                     -3.316  -2.994
+                          0.00    0.00
+  3                     -8.095  -7.765
+                          0.00    0.00
+  4                    -11.510 -10.844
+                          0.00    0.00
+  5                    -15.866 -15.179
+                          0.00    0.00
+location                              
+  2                             -0.322
+                                  0.80
+  3                              0.475
+                                  0.46
+  4                              0.060
+                                  0.93
+  5                             -0.450
+                                  0.40
+  6                             -0.255
+                                  0.72
+  7                             -1.454
+                                  0.05
+_cons                    8.233   8.181
+                          0.00    0.00
+var(_cons)               2.171   1.981
+var(e)                   8.393   8.397
+Number of observations    1200    1200
+--------------------------------------</code></pre>
+</div>
+</div>
+</section>
 </section>
 
 </main>
