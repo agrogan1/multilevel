@@ -54,6 +54,10 @@ xtreg y x, i(id) // random effects
 
 est store RE 
 
+xtreg y x, i(id) fe // fixed effects
+
+est store FE
+
 xtgee y x, i(id) // GEE
 
 est store GEE 
@@ -62,7 +66,7 @@ est store GEE
 
 * nice table of estimates
 
-est table OLS OLS_clustered MLM RE GEE, ///
+est table OLS OLS_clustered MLM RE FE GEE, ///
 b(%9.3f) star stats(N r2 r2_a) ///
 equations(1) ///
 title("Simulated Data: 1 to 3 obs per cluster; regression slope of 3.0")
