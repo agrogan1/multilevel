@@ -38,6 +38,10 @@
 * [A "simple" rubric for making Spaghetti plots in Stata](https://github.com/agrogan1/multilevel/blob/master/spaghetti-plot/Stata-simple/)
 * [R](https://agrogan1.github.io/multilevel/spaghetti-plot/R/spaghetti-plot-demo.html)
 
+## Three Dimensional Scatterplot / Spaghetti Plot
+
+* [Three Dimensional Scatterplot / Spaghetti Plot](https://agrogan1.github.io/multilevel/threeDscatterplot/threeDscatterplot.html)
+
 ## Visualization
 
 * [Visualizing Multilevel Models](https://agrogan1.github.io/multilevel/visualizing-MLM/visualizing-MLM.html) [[HTML Slides](https://agrogan1.github.io/multilevel/visualizing-MLM/visualizing-MLM-slidy.html)] [[PDF](https://agrogan1.github.io/multilevel/visualizing-MLM/visualizing-MLM.pdf)]
