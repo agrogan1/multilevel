@@ -1,0 +1,80 @@
+---
+title: "Three Dimensional Scatterplot / Spaghetti Plot"
+author: "Andy Grogan-Kaylor"
+date: "today"
+format:
+  html:
+    toc: true
+    number-sections: true
+    code-fold: true
+    lightbox: true
+    theme:
+      light: yeti
+      dark: vapor
+---
+
+# Call Libraries
+
+```{r}
+#| output: false
+
+# library(scatterplot3d)
+
+library(car)
+
+library(rgl)
+
+library(haven)
+
+library(dplyr)
+
+
+```
+
+# Get Data
+
+```{r}
+#| output: false
+
+simulated_multilevel_data <- 
+  read_dta("https://github.com/agrogan1/multilevel-thinking/raw/refs/heads/main/simulate-and-analyze-multilevel-data/simulated_multilevel_data.dta")
+
+simulated_multilevel_data <- simulated_multilevel_data %>%
+  filter(country < 10)
+  
+simulated_multilevel_data$country <- factor(simulated_multilevel_data$country)
+
+```
+
+# Three Dimensional Scatterplot / Spaghetti Plot
+
+```{r}
+#| message: false
+
+clear3d()
+
+scatter3d(simulated_multilevel_data$outcome ~ 
+            simulated_multilevel_data$warmth +
+            simulated_multilevel_data$physical_punishment,
+          groups = simulated_multilevel_data$country,
+          surface.col = 1:30,
+          surface = TRUE,
+          xlab="Parental Warmth",
+          zlab = "Physical Punishment",
+          ylab = "Outcome")
+
+text3d(x=0, y=1, z=0, 
+       "Three Dimensional Scatterplot / Spaghetti Plot",
+       cex = 2.0)
+
+rglwidget()
+
+```
+
+
+
+
+
+       
+       
+       
