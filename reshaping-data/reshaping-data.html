@@ -61,6 +61,10 @@
     img {
       max-width: 100%;
     }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
     h1, h2, h3, h4, h5, h6 {
       margin-top: 1.4em;
     }
@@ -153,16 +157,16 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
   </style>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 <style>
 /* CSS for Markstat 2.0 using Pandoc 2.0 */
 body{padding:14px 28px; max-width:45em;}
@@ -207,7 +211,7 @@ table:not([class]) tbody:last-child tr:last-child td {border-bottom:1px solid bl
 <header id="title-block-header">
 <h1 class="title">Reshaping Data Using Black Spruce Data</h1>
 <p class="author">Andy Grogan-Kaylor</p>
-<p class="date">18 Oct 2023 14:02:53</p>
+<p class="date">13 Oct 2024 15:21:09</p>
 </header>
 <h1 id="background">Background 🌲</h1>
 <style>body {max-width: 90%;} h1 {color: #00274C;} h2 {color: #2F65A7;} p {font-size: 110%;} pre.stata {font-size: 110%;  line-height: 115%;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
@@ -240,13 +244,14 @@ growth of these seedlings.”</p>
 <h1 id="describe-the-data">Describe The Data 🌲</h1>
 <pre class='stata'>. describe    
 
-Contains data from https://github.com/agrogan1/multilevel/raw/master/reshaping-data/Spruce.dta
+Contains data from https://github.com/agrogan1/multilevel/raw/master/reshaping-data/Spruce.
+> dta
  Observations:            72                  
     Variables:             9                  26 Apr 2020 12:18
-────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
-────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────
 Tree            long    %12.0g                Tree number
 Competition     long    %12.0g     Competition
                                               C (competition), CR (competition removed)
@@ -258,7 +263,7 @@ Diameter0       double  %10.0g                Diameter (cm) of seedling at plant
 Diameter5       double  %10.0g                Diameter (cm) of seedling at year 5
 Ht_change       double  %10.0g                Change (cm) in height
 Di_change       double  %10.0g                Change (cm) in diameter
-────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────
 Sorted by: 
      Note: Dataset has changed since last saved.
 </pre>
