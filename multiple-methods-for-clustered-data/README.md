@@ -13,7 +13,7 @@ The `do` file is the script. The do file generates simulated data with a $\beta$
 
 The `dta` file is a data file of the simulated data.
 
-The `pdf` is a summary table of results. `Bayes.txt` is a separate text file of Bayesian results.
+The `md` is a [summary table of results](multiple-methods-for-clustered-data.md). `Bayes.txt` is a separate text file of Bayesian results.
 
 The `png` is a spaghetti plot of the data. 
 
