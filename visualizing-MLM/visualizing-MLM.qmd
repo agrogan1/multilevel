@@ -67,7 +67,7 @@ set scheme michigan
 
 ```
 	
-Stata's `s1color` scheme--available in newer versions of Stata--would also would be an option as would be Asjad Naqvi's incredible `schemepack`: [https://github.com/asjadnaqvi/stata-schemepack](https://github.com/asjadnaqvi/stata-schemepack).
+Stata's `stcolor` scheme--available in newer versions of Stata--would also be an option as would be Asjad Naqvi's incredible `schemepack`: [https://github.com/asjadnaqvi/stata-schemepack](https://github.com/asjadnaqvi/stata-schemepack).
 
 Throughout the tutorial, I make frequent use of the `mcolor(%30)` option to add some visual interest to scatterplots by adding transparency to the markers.
 
