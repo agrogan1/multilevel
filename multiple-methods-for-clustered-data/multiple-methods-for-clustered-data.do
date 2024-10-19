@@ -6,8 +6,6 @@ cd "/Users/agrogan/Desktop/GitHub/multilevel/multiple-methods-for-clustered-data
 
 set seed 3846 // random seed
 
-set scheme s1color // graph scheme
-
 * simulate data
 
 set obs 500 // 50 clusters
@@ -64,37 +62,16 @@ est store GEE
 
 * bayes: mixed y x || id: // Bayesian MLM
 
-* nice table of estimates
+* nice table of estimates exported as PDF
 
-est table OLS OLS_clustered MLM RE FE GEE, ///
-b(%9.3f) star stats(N r2 r2_a) ///
-equations(1) ///
-title("Simulated Data: 1 to 3 obs per cluster; regression slope of 3.0")
+etable, estimates(OLS OLS_clustered MLM RE FE GEE) ///
+cstat(_r_b) /// beta's only
+showstars showstarsnote /// show stars and note
+column(estimate) /// column is modelname
+export("multiple-methods-for-clustered-data.pdf", replace)
 
-* write out pdf
 
-putpdf begin, landscape // open PDF
 
-putpdf paragraph // new paragraph
 
-putpdf text ("Simulated Data: 1 to 3 obs per cluster; regression slope of 3.0.")
-
-putpdf paragraph // new paragraph
-
-putpdf text ("Results from summary table below suggest each model does well in estimating regression slope.  ")
-
-putpdf text ("These results suggest good estimation of within cluster variances.")
-
-putpdf paragraph // new paragraph
-
-putpdf text ("Results from individual commands suggest each model does well in estimating between cluster variances.")
-
-putpdf paragraph // new paragraph
-
-putpdf text ("Bayesian results, which cannot be included in this PDF, are similarly effective in recovering model parameters.")
-
-putpdf table tbl1 = etable // add results from table of estimates
-
-putpdf save multiple-methods-for-clustered-data.pdf, replace // close PDF
 
 
