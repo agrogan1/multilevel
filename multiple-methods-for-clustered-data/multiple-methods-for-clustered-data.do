@@ -68,7 +68,7 @@ etable, estimates(OLS OLS_clustered MLM RE FE GEE) ///
 cstat(_r_b) /// beta's only
 showstars showstarsnote /// show stars and note
 column(estimate) /// column is modelname
-export("multiple-methods-for-clustered-data.pdf", replace)
+export("multiple-methods-for-clustered-data.md", replace)
 
 
 
