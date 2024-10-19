@@ -1,0 +1,1 @@
+pandoc -t slidy -s visualizing-MLM.md -o visualizing-MLM-slidy.html
