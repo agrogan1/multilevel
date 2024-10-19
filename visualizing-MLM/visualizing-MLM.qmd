@@ -14,6 +14,9 @@ format:
     toc-depth: 3
     number-sections: true
     colorlinks: true
+  gfm: 
+    toc: false
+    fig-height: 3
 bibliography: visualizing-MLM.bib
 ---
 
@@ -70,9 +73,19 @@ Throughout the tutorial, I make frequent use of the `mcolor(%30)` option to add 
 
 # Get Data
 
+```{r}
+#| echo: false
+#| output: false
+#| label: file-copy
+
+file.copy("../../multilevel-thinking/simulate-and-analyze-multilevel-data/simulated_multilevel_data.dta", 
+          ".",
+          overwrite = TRUE) # copy over most recent version
+```
+
 ```{stata, collectcode=TRUE}
 
-use "https://github.com/agrogan1/multilevel-thinking/raw/main/simulate-and-analyze-multilevel-data/simulated_multilevel_data.dta", clear
+use "simulated_multilevel_data.dta", clear
 
 ```
 
@@ -336,16 +349,20 @@ graph export mynewscatter.png, width(1500) replace
 
 ![Scatterplot and Linear Fit With Marginal Density Plots](mynewscatter.png){width=75%}
 
+```{r}
+#| echo: false
+#| eval: false
+#| output: false
+
 ## Spaghetti Plot With Linear Fit and Marginal Density Plots
 
 # Curvilinear and Linear Fits
 
 # Random Effects
 
+```
+
 # References
-
-
-
 
 
 

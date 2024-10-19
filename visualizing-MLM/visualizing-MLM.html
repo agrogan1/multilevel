@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Andy Grogan-Kaylor">
-<meta name="dcterms.date" content="2024-09-30">
+<meta name="dcterms.date" content="2024-10-19">
 
 <title>Visualizing Multilevel Models</title>
 <style>
@@ -136,13 +136,10 @@ div.csl-indent {
   <li><a href="#manually-generate-the-densities-to-plot-them-below-kdensity-..." id="toc-manually-generate-the-densities-to-plot-them-below-kdensity-..." class="nav-link" data-scroll-target="#manually-generate-the-densities-to-plot-them-below-kdensity-..."><span class="header-section-number">13.1</span> Manually Generate The Densities To Plot Them Below (<code>kdensity ...</code>)</a></li>
   <li><a href="#rescale-the-densities-so-they-plot-well" id="toc-rescale-the-densities-so-they-plot-well" class="nav-link" data-scroll-target="#rescale-the-densities-so-they-plot-well"><span class="header-section-number">13.2</span> Rescale The Densities So They Plot Well</a></li>
   <li><a href="#make-the-graph-twoway-..." id="toc-make-the-graph-twoway-..." class="nav-link" data-scroll-target="#make-the-graph-twoway-..."><span class="header-section-number">13.3</span> Make The Graph (<code>twoway ...</code>)</a></li>
-  <li><a href="#spaghetti-plot-with-linear-fit-and-marginal-density-plots" id="toc-spaghetti-plot-with-linear-fit-and-marginal-density-plots" class="nav-link" data-scroll-target="#spaghetti-plot-with-linear-fit-and-marginal-density-plots"><span class="header-section-number">13.4</span> Spaghetti Plot With Linear Fit and Marginal Density Plots</a></li>
   </ul></li>
-  <li><a href="#curvilinear-and-linear-fits" id="toc-curvilinear-and-linear-fits" class="nav-link" data-scroll-target="#curvilinear-and-linear-fits"><span class="header-section-number">14</span> Curvilinear and Linear Fits</a></li>
-  <li><a href="#random-effects" id="toc-random-effects" class="nav-link" data-scroll-target="#random-effects"><span class="header-section-number">15</span> Random Effects</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">16</span> References</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">14</span> References</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="visualizing-MLM.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="visualizing-MLM.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="visualizing-MLM.md"><i class="bi bi-file-code"></i>Github (GFM)</a></li></ul></div></nav>
 </div>
 <main class="content" id="quarto-document-content">
 
@@ -165,7 +162,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 30, 2024</p>
+      <p class="date">October 19, 2024</p>
     </div>
   </div>
   
@@ -219,7 +216,7 @@ blockquote {
 <h1 data-number="4"><span class="header-section-number">4</span> Get Data</h1>
 <div class="cell" data-collectcode="true">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"https://github.com/agrogan1/multilevel-thinking/raw/main/simulate-and-analyze-multilevel-data/simulated_multilevel_data.dta"</span>, <span class="kw">clear</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"simulated_multilevel_data.dta"</span>, <span class="kw">clear</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="scatterplots-twoway-scatter-y-x" class="level1" data-number="5">
@@ -615,22 +612,13 @@ _at#intervention |
 </figure>
 </div>
 </section>
-<section id="spaghetti-plot-with-linear-fit-and-marginal-density-plots" class="level2" data-number="13.4">
-<h2 data-number="13.4" class="anchored" data-anchor-id="spaghetti-plot-with-linear-fit-and-marginal-density-plots"><span class="header-section-number">13.4</span> Spaghetti Plot With Linear Fit and Marginal Density Plots</h2>
 </section>
-</section>
-<section id="curvilinear-and-linear-fits" class="level1" data-number="14">
-<h1 data-number="14"><span class="header-section-number">14</span> Curvilinear and Linear Fits</h1>
-</section>
-<section id="random-effects" class="level1" data-number="15">
-<h1 data-number="15"><span class="header-section-number">15</span> Random Effects</h1>
-</section>
-<section id="references" class="level1 unnumbered" data-number="16">
+<section id="references" class="level1 unnumbered" data-number="14">
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">16 References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">14 References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Hemken2023" class="csl-entry" role="listitem">
 Hemken, Doug. 2023. <em>Statamarkdown: ’Stata’ Markdown</em>. <a href="https://CRAN.R-project.org/package=Statamarkdown">https://CRAN.R-project.org/package=Statamarkdown</a>.
 </div>
@@ -1057,7 +1045,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","loop":false,"openEffect":"zoom"});
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","openEffect":"zoom","descPosition":"bottom","closeEffect":"zoom","loop":false});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
