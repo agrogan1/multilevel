@@ -106,17 +106,19 @@
     charset="utf-8" type="text/javascript"></script>
 </head>
 <body>
-<div id="visualizing-multilevel-models" class="slide section level1">
+<div id="visualizing-multilevel-models" class="title-slide slide section level1">
 <h1>Visualizing Multilevel Models</h1>
-<p>Andy Grogan-Kaylor 2024-10-19</p>
+<p>Andy Grogan-Kaylor 2024-10-21</p>
 </div>
-<div id="introduction" class="slide section level1">
+
+<div id="introduction" class="title-slide slide section level1">
 <h1>Introduction</h1>
 <p>An evolving set of notes on visualizing results from multilevel models.</p>
 <p>The examples below use the <code>simulated_multilevel_data.dta</code> file from my draft text book on <em>Multilevel Thinking</em>. Here is a <a href="https://github.com/agrogan1/multilevel-multilingual/raw/main/simulated_multilevel_data.dta">direct link</a> to download the data.</p>
 <p>This document relies on the extraordinary <code>Statamarkdown</code> library (Hemken 2023).</p>
 </div>
-<div id="organizing-questions" class="slide section level1">
+
+<div id="organizing-questions" class="title-slide slide section level1">
 <h1>Organizing Questions</h1>
 <p>Try to think about some of the advantages and disadvantages of different approaches to visualizing multilevel models. In multilevel models, we don’t want to just <em>control for</em> variation, but to start to <em>explore</em> the variation. Put concretely:</p>
 <ul class="incremental">
@@ -127,34 +129,39 @@
 </ul>
 <p>What approach(es) do you prefer?</p>
 </div>
-<div id="setup" class="slide section level1">
+
+<div id="setup" class="title-slide slide section level1">
 <h1>Setup</h1>
 <p>I am not terrifically fond of the default <code>s2color</code> graph scheme in earlier versions of Stata. Here I make use of the <code>michigan</code> graph scheme available at: <a href="https://agrogan1.github.io/Stata/michigan-graph-scheme/" class="uri">https://agrogan1.github.io/Stata/michigan-graph-scheme/</a>.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span> <span class="dv">scheme</span> michigan</span></code></pre></div>
-<p>Stata’s <code>s1color</code> scheme–available in newer versions of Stata–would also would be an option as would be Asjad Naqvi’s incredible <code>schemepack</code>: <a href="https://github.com/asjadnaqvi/stata-schemepack" class="uri">https://github.com/asjadnaqvi/stata-schemepack</a>.</p>
+<p>Stata’s <code>stcolor</code> scheme–available in newer versions of Stata–would also be an option as would be Asjad Naqvi’s incredible <code>schemepack</code>: <a href="https://github.com/asjadnaqvi/stata-schemepack" class="uri">https://github.com/asjadnaqvi/stata-schemepack</a>.</p>
 <p>Throughout the tutorial, I make frequent use of the <code>mcolor(%30)</code> option to add some visual interest to scatterplots by adding transparency to the markers.</p>
 </div>
-<div id="get-data" class="slide section level1">
+
+<div id="get-data" class="title-slide slide section level1">
 <h1>Get Data</h1>
 <div class="sourceCode" id="cb2"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">&quot;simulated_multilevel_data.dta&quot;</span>, <span class="kw">clear</span></span></code></pre></div>
 </div>
-<div id="scatterplots-twoway-scatter-y-x" class="slide section level1">
+
+<div id="scatterplots-twoway-scatter-y-x" class="title-slide slide section level1">
 <h1>Scatterplots (<code>twoway scatter y x</code>)</h1>
 <div class="sourceCode" id="cb3"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">twoway</span> <span class="kw">scatter</span> outcome warmth, mcolor(%30)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> myscatter.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code></pre></div>
 <p><img src="myscatter.png" style="width:75.0%" alt="Scatterplot" /></p>
 </div>
-<div id="simple-linear-fit-twoway-lfit-y-x" class="slide section level1">
+
+<div id="simple-linear-fit-twoway-lfit-y-x" class="title-slide slide section level1">
 <h1>Simple Linear Fit (<code>twoway lfit y x</code>)</h1>
 <div class="sourceCode" id="cb4"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">twoway</span> <span class="kw">lfit</span> outcome warmth</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> mylinear.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code></pre></div>
 <p><img src="mylinear.png" style="width:75.0%" alt="Linear Fit" /></p>
 </div>
-<div id="linear-fit-with-confidence-interval-twoway-lfitci-y-x" class="slide section level1">
+
+<div id="linear-fit-with-confidence-interval-twoway-lfitci-y-x" class="title-slide slide section level1">
 <h1>Linear Fit With Confidence Interval (<code>twoway lfitci y x</code>)</h1>
 <div class="sourceCode" id="cb5"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">twoway</span> lfitci outcome warmth</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    </span>
@@ -162,7 +169,8 @@
 <p><img src="mylfitci.png" style="width:75.0%"
 alt="Linear Fit With Confidence Interval" /></p>
 </div>
-<div id="combine-scatterplot-and-linear-fit-twoway-scatter-y-x-lfit-y-x" class="slide section level1">
+
+<div id="combine-scatterplot-and-linear-fit-twoway-scatter-y-x-lfit-y-x" class="title-slide slide section level1">
 <h1>Combine Scatterplot and Linear Fit (<code>twoway (scatter y x) (lfit y x)</code>)</h1>
 <div class="sourceCode" id="cb6"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">twoway</span> (<span class="kw">scatter</span> outcome warmth, mcolor(%30)) (<span class="kw">lfit</span> outcome warmth)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    </span>
@@ -170,14 +178,16 @@ alt="Linear Fit With Confidence Interval" /></p>
 <p><img src="myscatterlinear.png" style="width:75.0%"
 alt="Scatterplot and Linear Fit" /></p>
 </div>
-<div id="spaghetti-plots-spagplot-y-x-idgroup" class="slide section level1">
+
+<div id="spaghetti-plots-spagplot-y-x-idgroup" class="title-slide slide section level1">
 <h1>Spaghetti Plots (<code>spagplot y x, id(group)</code>)</h1>
 <div class="sourceCode" id="cb7"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>spagplot outcome warmth, id(country)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> myspaghetti.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code></pre></div>
 <p><img src="myspaghetti.png" style="width:75.0%" alt="Spaghetti Plot" /></p>
 </div>
-<div id="small-multiples-twoway-y-x-bygroup" class="slide section level1">
+
+<div id="small-multiples-twoway-y-x-bygroup" class="title-slide slide section level1">
 <h1>Small Multiples (<code>twoway y x, by(group)</code>)</h1>
 <p><em>Small Multiples</em>, showing a separate graph for each group in the data, are an increasingly popular data visualization technique. Below, I build a small multiples graph using the <code>by</code> option in Stata. I use the <code>aspect</code> option to adjust the <em>aspect ratio</em> of the graph for better visual presentation.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">twoway</span> (<span class="kw">scatter</span> outcome warmth, mcolor(%30)) <span class="co">///</span></span>
@@ -188,7 +198,8 @@ alt="Scatterplot and Linear Fit" /></p>
 <p><img src="mysmallmultiples.png" style="width:75.0%"
 alt="Small Multiples" /></p>
 </div>
-<div id="small-multiples-with-a-random-sample" class="slide section level1">
+
+<div id="small-multiples-with-a-random-sample" class="title-slide slide section level1">
 <h1>Small Multiples With A Random Sample</h1>
 <p>At times, we may have <em>too many</em> Level 2 units to effectively display them on a <em>spaghetti plot</em>, or using <em>small multiples</em>. If this is the case, we may need to <em>randomly sample</em> <strong>Level 2</strong> units. This can be difficult to accomplish as our standard <code>sample</code> command operates on each row, or on Level 1 units.</p>
 <p>We can accomplish random sampling at Level 2, with a little bit of code.</p>
@@ -219,12 +230,15 @@ alt="Small Multiples" /></p>
 <p><img src="mysmallmultiples2.png" style="width:75.0%"
 alt="Small Multiples With A Random Sample Of Countries" /></p>
 </div>
-<div id="multivariate-predicted-relationships" class="slide section level1">
+
+<div id="multivariate-predicted-relationships" class="title-slide slide section level1">
 <h1>Multivariate (Predicted) Relationships</h1>
 <blockquote>
 <p>A sometimes unacknowledged point is that graphs–unless we take steps to correct this–reflect <em>unadjusted</em>, or <em>bivariate</em> associations. We may sometimes wish to develop a graphs that reflect the <em>adjusted</em> or <em>predicted</em> estimates from our models.</p>
 </blockquote>
-<h2 id="using-predicted-values-predict">Using Predicted Values (<code>predict</code>)</h2>
+</div>
+<div id="using-predicted-values-predict" class="slide section level2">
+<h1>Using Predicted Values (<code>predict</code>)</h1>
 <p><code>predict</code> generates a predicted value for <em>every observation in the data</em>.</p>
 <blockquote>
 <p>In multilevel models, <em>prediction</em> is a complex question. Prediction may–or may not–incorporate the information from the random effects. The procedures below outline graphs that incorporate predictions using the random effects, by using the <code>predict ..., fitted</code> syntax.</p>
@@ -288,7 +302,9 @@ alt="Predicted Values From predict With Only Linear Fit" /></p>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> myspaghetti2.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code></pre></div>
 <p><img src="myspaghetti2.png" style="width:75.0%"
 alt="Spaghetti Plot With Predicted Values" /></p>
-<h2 id="margins-and-marginsplot"><code>margins</code> and <code>marginsplot</code></h2>
+</div>
+<div id="margins-and-marginsplot" class="slide section level2">
+<h1><code>margins</code> and <code>marginsplot</code></h1>
 <p>In contrast to <code>predict</code>, which generates a predicted value for <em>every observation in the data</em>, <code>margins</code> generates predicted values at <em>specific values of certain variables</em>.</p>
 <h3 id="estimate-the-model-1">Estimate The Model</h3>
 <div class="sourceCode" id="cb16"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a></span>
@@ -369,13 +385,16 @@ _at#intervention |
 <p><img src="mymarginsplot.png" style="width:75.0%"
 alt="Predicted Values From margins and marginsplot" /></p>
 </div>
-<div id="scatterplot-with-linear-fit-and-marginal-density-plots-twoway-..." class="slide section level1">
+
+<div id="scatterplot-with-linear-fit-and-marginal-density-plots-twoway-..." class="title-slide slide section level1">
 <h1>Scatterplot With Linear Fit and Marginal Density Plots (<code>twoway ...</code>)</h1>
 <p>As another possibility, we may wish to show more of the variation, by showing the variation in the <em>independent</em> variable and the <em>dependent</em> variable along with a <em>scatterplot</em> and <em>linear fit</em>. This is a complex graph and requires a little bit of manual programming in Stata.</p>
 <blockquote>
 <p>You could also investigate the user written program <code>binscatterhist</code> (<code>ssc install binscatterhist</code>) which produces a similar looking graph, and automates much of this work.</p>
 </blockquote>
-<h2 id="manually-generate-the-densities-to-plot-them-below-kdensity-...">Manually Generate The Densities To Plot Them Below (<code>kdensity ...</code>)</h2>
+</div>
+<div id="manually-generate-the-densities-to-plot-them-below-kdensity-..." class="slide section level2">
+<h1>Manually Generate The Densities To Plot Them Below (<code>kdensity ...</code>)</h1>
 <blockquote>
 <p>We generate the density for <em>warmth</em> at only a few points (<code>n(8)</code>) since this variable has relatively few categories.</p>
 </blockquote>
@@ -383,7 +402,9 @@ alt="Predicted Values From margins and marginsplot" /></p>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="kw">kdensity</span> warmth, <span class="kw">generate</span>(warmth_x warmth_d) n(8) <span class="co">// manually generate outcome densities</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="kw">kdensity</span> outcome, <span class="kw">generate</span>(outcome_y outcome_d) <span class="co">// manually generate outcome densities</span></span></code></pre></div>
-<h2 id="rescale-the-densities-so-they-plot-well">Rescale The Densities So They Plot Well</h2>
+</div>
+<div id="rescale-the-densities-so-they-plot-well" class="slide section level2">
+<h1>Rescale The Densities So They Plot Well</h1>
 <blockquote>
 <p>You may have to experiment with the scaling and moving factors.</p>
 </blockquote>
@@ -396,7 +417,9 @@ alt="Predicted Values From margins and marginsplot" /></p>
 <pre><code>(8 real changes made)
 
 (50 real changes made)</code></pre>
-<h2 id="make-the-graph-twoway-...">Make The Graph (<code>twoway ...</code>)</h2>
+</div>
+<div id="make-the-graph-twoway-..." class="slide section level2">
+<h1>Make The Graph (<code>twoway ...</code>)</h1>
 <blockquote>
 <p>You may have to experiment with whether scatterplots or line plots work best for displaying the x and y densities.</p>
 </blockquote>
@@ -415,7 +438,8 @@ alt="Predicted Values From margins and marginsplot" /></p>
 <p><img src="mynewscatter.png" style="width:75.0%"
 alt="Scatterplot and Linear Fit With Marginal Density Plots" /></p>
 </div>
-<div id="references" class="slide section level1">
+
+<div id="references" class="title-slide slide section level1">
 <h1>References</h1>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div id="ref-Hemken2023" class="csl-entry">

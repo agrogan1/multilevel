@@ -16,6 +16,7 @@ format:
     colorlinks: true
   gfm: 
     toc: false
+    number-sections: true
     fig-height: 3
 bibliography: visualizing-MLM.bib
 ---

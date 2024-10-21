@@ -1,6 +1,6 @@
 # Visualizing Multilevel Models
 Andy Grogan-Kaylor
-2024-10-19
+2024-10-21
 
 # Introduction
 
@@ -45,8 +45,8 @@ scheme available at:
 set scheme michigan
 ```
 
-Stata’s `s1color` scheme–available in newer versions of Stata–would also
-would be an option as would be Asjad Naqvi’s incredible `schemepack`:
+Stata’s `stcolor` scheme–available in newer versions of Stata–would also
+be an option as would be Asjad Naqvi’s incredible `schemepack`:
 <https://github.com/asjadnaqvi/stata-schemepack>.
 
 Throughout the tutorial, I make frequent use of the `mcolor(%30)` option
