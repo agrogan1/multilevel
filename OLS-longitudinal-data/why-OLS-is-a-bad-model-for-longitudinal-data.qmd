@@ -1,0 +1,319 @@
+---
+title: "Why OLS Is A Bad Model For Longitudinal Data"
+author: "Andy Grogan-Kaylor"
+date: "today"
+format:
+  html:
+    toc: true
+    number-sections: true
+    anchor-sections: true
+    theme:
+      light: yeti
+      dark: vapor
+  pdf:
+    toc: true
+    number-sections: true
+    geometry: margin=1in
+  docx: 
+    toc: true
+    number-sections: true
+    reference-doc: markstat.docx
+  revealjs: 
+    output-file: why-OLS-is-a-bad-model-for-longitudinal-data-revealjs.html
+    smaller: true
+    scrollable: true
+    transition: slide
+    controls: true 
+    controls-tutorial: true
+    chalkboard: true
+    title-slide-attributes:
+      data-background-color: black
+prefer-html: true    
+editor: source
+bibliography: MLM.bib
+nocite: |
+  @Bryk1992, @Hox2018
+---
+
+```{r}
+#| echo: false
+
+library(haven) # read Stata
+
+library(pander) # nice tables
+
+```
+
+```{css, echo=FALSE}
+
+blockquote {
+  color: black;
+  border-left: 2px solid gold; 
+  padding: 0.5em 10px;
+  }
+ 
+h1.title {
+  font-size: 50px;
+  color: white;
+  background-color: red;
+}
+
+.quarto-title-author-name {
+  font-size: 30px;
+  color: white;
+}
+
+p.author {
+  color: white;
+}
+
+ 
+```
+
+# A Beginning Idea
+
+> "The language we have in that world is not large enough for the territory that we've already entered." [@Whyte2016]
+
+# An Empirical Example {#sec-empirical-example}
+
+![Happiness as a Function of Time and Pizza](Longitudinal3.png)
+
+# Introduction
+
+We are all familiar with the idea of:
+
+$y_i = \beta_0 + \beta_1 x + e_i$ (OLS)
+
+> **get substantive example**
+
+| id  | x1  | x2  | x3 | y1 | y2 | y3 |
+|-----|-----|-----|----|----|----|----|
+| 1   |     |     |    |    |    |    |
+| 2   |     |     |    |    |    |    |
+| 3   |     |     |    |    |    |    |
+
+: Data in WIDE format
+
+# A First Longitudinal Model
+
+We could imagine a longitudinal model where we regress $y_i$ at time 2 on $y_i$ at time 1....
+
+$y_{i2} = \beta_0 + \beta_1 x + \beta_2 y_{i1} + e_i$
+
+And we could even make this (*perhaps confusingly*) a multilevel model for individual $i$ in social unit $j$:
+
+$y_{i2j} = \beta_0 + \beta_1 x + \beta_2 y_{i1j} + u_{0j} + e_{ij}$
+
+... and add all of the usual random slope terms...
+
+# What About Change Scores?
+
+$y_{i2} - y_{i1} = \beta_0 + \beta_1 x + e_{i}$
+
+::: {.callout-tip}
+## What Happens To The Regression Coefficients in a Change Score Model?
+
+$\beta y_{i1}$ 
+:::
+
+# What If We Have More Than Two Time Points?
+
+$y_{i3} = \beta_0 + \beta_1 x + \beta_2 y_{i1} + \beta_3 y_{i2} + e_{i}$
+
+::: {.callout-tip}
+What is the problem here? We have 2 terms that are likely to be collinear:
+
+$\beta_2$ & $\beta_3$
+:::
+
+This issue only becomes worse the more time points we add.
+
+As a result, we are not really modeling $y_2$ and $y_1$.
+
+# Two Conceptual Diagrams
+
+```{r}
+#| fig-cap: "An OLS Or Multilevel Model For 2 Timepoints"
+#| fig-height: 3
+#| eval: false
+#| echo: false
+
+DiagrammeR::grViz("
+
+digraph boxes_and_circles {
+
+  # a 'graph' statement
+  graph [overlap = true, 
+        fontsize = 10,
+        rankdir = LR]
+
+  # several 'node' statements
+  node [shape = box,
+        fontname = Helvetica]
+
+  node [shape = circle,
+        fixedsize = true,
+        width = 1.25] // sets as circles
+  x1 y1 y2
+
+  # several 'edge' statements
+  
+  x1 -> y2
+  y1 -> y2
+
+}
+                     
+                     ")
+```
+
+```{r}
+#| fig-cap: "A Cross Lagged Model For 3 Timepoints"
+#| fig-height: 3
+#| eval: false
+#| echo: false
+
+DiagrammeR::grViz("
+
+digraph boxes_and_circles {
+
+  # a 'graph' statement
+  graph [overlap = true, 
+        fontsize = 10,
+        rankdir = LR]
+
+  # several 'node' statements
+  node [shape = box,
+        fontname = Helvetica]
+
+  node [shape = circle,
+        fixedsize = true,
+        width = 1.25] // sets as circles
+  x1 x2 y1 y2
+
+  # several 'edge' statements
+  
+  x1 -> y2
+  x1 -> x2
+  y1 -> y2
+  y1 -> x2
+  x2 -> x3
+  x2 -> y3
+  y2 -> y3
+  y2 -> x3
+  
+}
+                     
+                     ")
+```
+
+## OLS or MLM for 2 Timepoints
+
+![An OLS Or Multilevel Model For 2 Timepoints](twotimepoints.png){width=50%}
+
+## Cross-Lagged Model
+
+![A Cross Lagged Model For 3 Timepoints](threetimepoints.png){width=50%}
+
+# Additionally ...
+
+::: {.callout-warning}
+## No Explicit Function of Time
+
+*Additionally*, we do not have an explicit function of time. We don't know really have a clear idea of whether our outcome increases with time, or decreases with time. Or whether the effect is curvilinear e.g. $t^2$ or $\ln(t)$.
+:::
+
+::: {.callout-warning}
+## *Unbalanced* Data Are A Problem
+
+*Additionally*, any data that is *unbalanced* i.e. study participants enter the study late, or leave the study early are going to be difficult for this kind of model to deal with.
+:::
+
+::: {.callout-warning}
+## Missing Data Are A Problem
+
+*Similarly*, data that is *missing at one time point, but present at other time points*, is going to be a problem for this kind of model. (and it is going to be difficult for many of our colleagues to see how we can get around this issue.)
+:::
+
+# Our Answer To the Problem 
+
+::: {.callout-tip}
+## We Reshape The Data and Use the SAME Notation!!!
+
+"Mathematics is the art of giving the same name to different things." [@Poincare1908] 
+:::
+
+## Data in Long Format
+
+| id  | t   | x   |  y  |
+|-----|-----|-----|-----|
+| 1   | 1   |     |     |
+| 1   | 2   |     |     |
+| 1   | 3   |     |     |
+| 2   | 1   |     |     |
+| 2   | 2   |     |     |
+| 2   | 3   |     |     |
+| 3   | 1   |     |     |
+| 3   | 2   |     |     |
+| 3   | 3   |     |     |
+
+: Data in LONG format
+
+*So*.... we take our standard multilevel notation.
+
+$y_{ij} = \beta_0 + \beta_1 x + u_{0j} + e_{ij}$ (Simple MLM)
+
+cross out *j* write in *t*.
+
+$y_{it} = \beta_0 + \beta_1 t + u_{0i} + e_{it}$ (LONGITUDINAL MLM)
+
+::: {.callout-tip}
+Every row is a *person-observation* (person *i* observed at time *t*). Every person has *multiple rows*.
+:::
+
+# This Has The Following Advantages:
+
+1.  No multicollinearity issue.
+2.  *Unbalanced data is less of a problem*, the data structure and estimation are robust to these possibilities.
+3. *Missing data is less of a problem *(assuming *MCAR*). When a person observation is missing, that person simply has fewer rows of data. But all rows of data are "matched" to the same person by $i$.
+
+## How To Address Missing Data?
+
+::: {.callout-warning}
+### Addressing Missing Data is Complicated!!!
+
+It is sometimes best to (a) do nothing; (b) do something complicated.
+:::
+
+* Ignore it.
+* Fill in the mean.
+* Use previous observation.
+* Use next observation.
+* Linearly interpolate previous and next observation.
+* Regression imputation.
+* Multiple imputation.
+
+## Further...
+
+3.  We now have an *explicit function of time* $\beta_1 t$ and could even add $\beta_2 t^2$ or substitute $\beta \ln(t)$.
+4.  *Multiple time-points are not a problem*. Same algebra for 2 time points as for 10,000 time points. (Helpful when we start to think about intensive longitudinal data *e.g.* George Holden's *recording study*).
+5.  We are *measuring exactly the time at which events take place* for each individual. Not simply saying *Wave 1*, *Wave 2*, *Wave 3*, etc...
+6.  Every individual could have a *completely different set of time points* and even a *completely different number of time points*.
+
+And we can even add $\beta x$ back into the model.
+
+::: {.callout-caution}
+We do need to think carefully about what is the appropriate variable for time. Is it the variable we used to reshape the data--often `wave`--or some other more appropriate metric, like `age`?
+:::
+
+Let's continue to explore how this model works.
+
+# References
+
+
+
+
+
+
+
+
+
