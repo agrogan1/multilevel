@@ -54,6 +54,10 @@
 
 * [Filling in Missing Observations](https://github.com/agrogan1/multilevel/tree/master/filling-in-missing-observations)
 
+## Why OLS Is A Bad Model For Longitudinal Data
+
+[Why OLS Is A Bad Model For Longitudinal Data](https://agrogan1.github.io/multilevel/OLS-longitudinal-data/why-OLS-is-a-bad-model-for-longitudinal-data.html)
+
 ## Fixed Effects Regression
 
 * [Derivation](https://agrogan1.github.io/multilevel/fixed-effects/fixed-effects.html)
