@@ -20,6 +20,7 @@ format:
     reference-doc: markstat.docx
   revealjs: 
     output-file: why-OLS-is-a-bad-model-for-longitudinal-data-revealjs.html
+    css: revealjs.css
     smaller: true
     scrollable: true
     transition: slide
@@ -51,22 +52,6 @@ blockquote {
   border-left: 2px solid gold; 
   padding: 0.5em 10px;
   }
- 
-h1.title {
-  font-size: 50px;
-  color: white;
-  background-color: red;
-}
-
-.quarto-title-author-name {
-  font-size: 30px;
-  color: white;
-}
-
-p.author {
-  color: white;
-}
-
  
 ```
 
@@ -105,6 +90,10 @@ And we could even make this (*perhaps confusingly*) a multilevel model for indiv
 $y_{i2j} = \beta_0 + \beta_1 x + \beta_2 y_{i1j} + u_{0j} + e_{ij}$
 
 ... and add all of the usual random slope terms...
+
+::: {.callout-tip}
+Any problems yet?
+:::
 
 # What About Change Scores?
 
@@ -271,6 +260,8 @@ Every row is a *person-observation* (person *i* observed at time *t*). Every per
 :::
 
 # This Has The Following Advantages:
+
+## First...
 
 1.  No multicollinearity issue.
 2.  *Unbalanced data is less of a problem*, the data structure and estimation are robust to these possibilities.
