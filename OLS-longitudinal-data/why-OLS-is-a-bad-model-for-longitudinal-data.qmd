@@ -13,7 +13,7 @@ format:
   pdf:
     toc: true
     number-sections: true
-    geometry: margin=1in
+    geometry: margin=.7in
   docx: 
     toc: true
     number-sections: true
@@ -55,7 +55,9 @@ blockquote {
  
 ```
 
-# A Beginning Idea
+# Some Beginning Ideas
+
+> "Despite the incredible diversity existing among and within human cultures, there are many phenomena that occur regularly in all known societies. These commonalities, or universals, while deriving in part from human nature, may also have specific social, cultural, and systemic sources. We need to develop a working understanding of these universals so that we might advance legitimate, empirically based human science set on creating knowledge that is politically relevant to fostering real solutions to the problems that complicate human co-existence in the Age of the Anthropocene." [@Antweiler2016]
 
 > "The language we have in that world is not large enough for the territory that we've already entered." [@Whyte2016]
 
@@ -296,7 +298,13 @@ And we can even add $\beta x$ back into the model.
 We do need to think carefully about what is the appropriate variable for time. Is it the variable we used to reshape the data--often `wave`--or some other more appropriate metric, like `age`?
 :::
 
-Let's continue to explore how this model works.
+## Lastly
+
+::: {.callout-caution}
+Generating appropriate descriptive statistics can be a problem.
+:::
+
+## Let's continue to explore how this model works.
 
 # References
 

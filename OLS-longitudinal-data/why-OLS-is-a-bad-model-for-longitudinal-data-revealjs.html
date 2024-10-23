@@ -8,10 +8,10 @@
 <link href="why-OLS-is-a-bad-model-for-longitudinal-data_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="why-OLS-is-a-bad-model-for-longitudinal-data_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="why-OLS-is-a-bad-model-for-longitudinal-data_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.57">
+  <meta name="generator" content="quarto-1.4.553">
 
   <meta name="author" content="Andy Grogan-Kaylor">
-  <meta name="dcterms.date" content="2024-10-22">
+  <meta name="dcterms.date" content="2024-10-23">
   <title>Why OLS Is A Bad Model For Longitudinal Data</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -361,7 +361,7 @@ Andy Grogan-Kaylor
 </div>
 </div>
 
-  <p class="date">2024-10-22</p>
+  <p class="date">2024-10-23</p>
 </section>
 <section class="slide level2">
 
@@ -377,8 +377,11 @@ blockquote {
 </style>
 </div>
 </section>
-<section id="a-beginning-idea" class="title-slide slide level1 center">
-<h1>A Beginning Idea</h1>
+<section id="some-beginning-ideas" class="title-slide slide level1 center">
+<h1>Some Beginning Ideas</h1>
+<blockquote>
+<p>“Despite the incredible diversity existing among and within human cultures, there are many phenomena that occur regularly in all known societies. These commonalities, or universals, while deriving in part from human nature, may also have specific social, cultural, and systemic sources. We need to develop a working understanding of these universals so that we might advance legitimate, empirically based human science set on creating knowledge that is politically relevant to fostering real solutions to the problems that complicate human co-existence in the Age of the Anthropocene.” <span class="citation" data-cites="Antweiler2016">(<a href="#/references" role="doc-biblioref" onclick="">Antweiler 2016</a>)</span></p>
+</blockquote>
 <blockquote>
 <p>“The language we have in that world is not large enough for the territory that we’ve already entered.” <span class="citation" data-cites="Whyte2016">(<a href="#/references" role="doc-biblioref" onclick="">Whyte and Tippett 2016</a>)</span></p>
 </blockquote>
@@ -396,7 +399,7 @@ blockquote {
 <blockquote>
 <p><strong>get substantive example</strong></p>
 </blockquote>
-<table class="caption-top">
+<table>
 <caption>Data in WIDE format</caption>
 <thead>
 <tr class="header">
@@ -577,7 +580,7 @@ blockquote {
 </section>
 <section id="data-in-long-format" class="slide level2">
 <h2>Data in Long Format</h2>
-<table class="caption-top">
+<table>
 <caption>Data in LONG format</caption>
 <thead>
 <tr class="header">
@@ -722,7 +725,25 @@ blockquote {
 </div>
 </div>
 </div>
-<p>Let’s continue to explore how this model works.</p>
+</section>
+<section id="lastly" class="slide level2">
+<h2>Lastly</h2>
+<div class="callout callout-caution callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Caution</strong></p>
+</div>
+<div class="callout-content">
+<p>Generating appropriate descriptive statistics can be a problem.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="lets-continue-to-explore-how-this-model-works." class="slide level2">
+<h2>Let’s continue to explore how this model works.</h2>
 </section></section>
 <section id="references" class="title-slide slide level1 smaller scrollable">
 <h1>References</h1>
@@ -732,6 +753,9 @@ blockquote {
 </div>
 </div>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Antweiler2016" class="csl-entry" role="listitem">
+Antweiler, Christoph. 2016. <em>Our Common Denominator: Human Universals Revisited</em>. Berghahn.
+</div>
 <div id="ref-Bryk1992" class="csl-entry" role="listitem">
 Bryk, Anthony S, and Stephen W Raudenbush. 1992. <em>Hierarchical Linear Models: Applications and Data Analysis Methods.</em> <em>Hierarchical Linear Models: Applications and Data Analysis Methods.</em> Sage Publications, Inc.
 </div>
@@ -959,42 +983,80 @@ Whyte, David, and Krista Tippett. 2016. <span>“<span>D</span>avid <span>W</spa
       });
     </script>
     
+
     <script>
+
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
       // slide changes (different for each slide format).
+
       (function () {
+
         // dispatch for htmlwidgets
+
         function fireSlideEnter() {
+
           const event = window.document.createEvent("Event");
+
           event.initEvent("slideenter", true, true);
+
           window.document.dispatchEvent(event);
+
         }
+
+    
 
         function fireSlideChanged(previousSlide, currentSlide) {
+
           fireSlideEnter();
 
+    
+
           // dispatch for shiny
+
           if (window.jQuery) {
+
             if (previousSlide) {
+
               window.jQuery(previousSlide).trigger("hidden");
+
             }
+
             if (currentSlide) {
+
               window.jQuery(currentSlide).trigger("shown");
+
             }
+
           }
+
         }
+
+    
 
         // hookup for slidy
+
         if (window.w3c_slidy) {
+
           window.w3c_slidy.add_observer(function (slide_num) {
+
             // slide_num starts at position 1
+
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
           });
+
         }
 
+    
+
       })();
+
     </script>
+
+    
 
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -1028,7 +1090,18 @@ Whyte, David, and Krista Tippett. 2016. <span>“<span>D</span>avid <span>W</spa
         }
         return false;
       }
-      const onCopySuccess = function(e) {
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1060,29 +1133,7 @@ Whyte, David, and Krista Tippett. 2016. <span>“<span>D</span>avid <span>W</spa
         }, 1000);
         // clear code selection
         e.clearSelection();
-      }
-      const getTextToCopy = function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-        text: getTextToCopy
       });
-      clipboard.on('success', onCopySuccess);
-      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-        // For code content inside modals, clipBoardJS needs to be initialized with a container option
-        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-          text: getTextToCopy,
-          container: window.document.getElementById('quarto-embedded-source-code-modal')
-        });
-        clipboardModal.on('success', onCopySuccess);
-      }
         var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
         var mailtoRegex = new RegExp(/^mailto:/);
           var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1090,7 +1141,7 @@ Whyte, David, and Krista Tippett. 2016. <span>“<span>D</span>avid <span>W</spa
             return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
         }
         // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
         for (var i=0; i<links.length; i++) {
           const link = links[i];
           if (!isInternal(link.href)) {

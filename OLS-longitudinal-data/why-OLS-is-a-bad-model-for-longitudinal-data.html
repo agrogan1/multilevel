@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Andy Grogan-Kaylor">
-<meta name="dcterms.date" content="2024-10-22">
+<meta name="dcterms.date" content="2024-10-23">
 
 <title>Why OLS Is A Bad Model For Longitudinal Data</title>
 <style>
@@ -58,7 +58,7 @@ div.csl-indent {
 <link href="why-OLS-is-a-bad-model-for-longitudinal-data_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="why-OLS-is-a-bad-model-for-longitudinal-data_files/libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -98,7 +98,7 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#a-beginning-idea" id="toc-a-beginning-idea" class="nav-link active" data-scroll-target="#a-beginning-idea"><span class="header-section-number">1</span> A Beginning Idea</a></li>
+  <li><a href="#some-beginning-ideas" id="toc-some-beginning-ideas" class="nav-link active" data-scroll-target="#some-beginning-ideas"><span class="header-section-number">1</span> Some Beginning Ideas</a></li>
   <li><a href="#sec-empirical-example" id="toc-sec-empirical-example" class="nav-link" data-scroll-target="#sec-empirical-example"><span class="header-section-number">2</span> An Empirical Example</a></li>
   <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">3</span> Introduction</a></li>
   <li><a href="#a-first-longitudinal-model" id="toc-a-first-longitudinal-model" class="nav-link" data-scroll-target="#a-first-longitudinal-model"><span class="header-section-number">4</span> A First Longitudinal Model</a></li>
@@ -119,6 +119,8 @@ window.Quarto = {
   <li><a href="#first" id="toc-first" class="nav-link" data-scroll-target="#first"><span class="header-section-number">10.1</span> First…</a></li>
   <li><a href="#how-to-address-missing-data" id="toc-how-to-address-missing-data" class="nav-link" data-scroll-target="#how-to-address-missing-data"><span class="header-section-number">10.2</span> How To Address Missing Data?</a></li>
   <li><a href="#further" id="toc-further" class="nav-link" data-scroll-target="#further"><span class="header-section-number">10.3</span> Further…</a></li>
+  <li><a href="#lastly" id="toc-lastly" class="nav-link" data-scroll-target="#lastly"><span class="header-section-number">10.4</span> Lastly</a></li>
+  <li><a href="#lets-continue-to-explore-how-this-model-works." id="toc-lets-continue-to-explore-how-this-model-works." class="nav-link" data-scroll-target="#lets-continue-to-explore-how-this-model-works."><span class="header-section-number">10.5</span> Let’s continue to explore how this model works.</a></li>
   </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">11</span> References</a></li>
   </ul>
@@ -145,7 +147,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 22, 2024</p>
+      <p class="date">October 23, 2024</p>
     </div>
   </div>
   
@@ -168,8 +170,11 @@ blockquote {
  
 </style>
 </div>
-<section id="a-beginning-idea" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> A Beginning Idea</h1>
+<section id="some-beginning-ideas" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Some Beginning Ideas</h1>
+<blockquote class="blockquote">
+<p>“Despite the incredible diversity existing among and within human cultures, there are many phenomena that occur regularly in all known societies. These commonalities, or universals, while deriving in part from human nature, may also have specific social, cultural, and systemic sources. We need to develop a working understanding of these universals so that we might advance legitimate, empirically based human science set on creating knowledge that is politically relevant to fostering real solutions to the problems that complicate human co-existence in the Age of the Anthropocene.” <span class="citation" data-cites="Antweiler2016">(<a href="#ref-Antweiler2016" role="doc-biblioref">Antweiler 2016</a>)</span></p>
+</blockquote>
 <blockquote class="blockquote">
 <p>“The language we have in that world is not large enough for the territory that we’ve already entered.” <span class="citation" data-cites="Whyte2016">(<a href="#ref-Whyte2016" role="doc-biblioref">Whyte and Tippett 2016</a>)</span></p>
 </blockquote>
@@ -190,7 +195,7 @@ blockquote {
 <blockquote class="blockquote">
 <p><strong>get substantive example</strong></p>
 </blockquote>
-<table class="caption-top table">
+<table class="table">
 <caption>Data in WIDE format</caption>
 <thead>
 <tr class="header">
@@ -372,7 +377,7 @@ We Reshape The Data and Use the SAME Notation!!!
 </div>
 <section id="data-in-long-format" class="level2" data-number="9.1">
 <h2 data-number="9.1" class="anchored" data-anchor-id="data-in-long-format"><span class="header-section-number">9.1</span> Data in Long Format</h2>
-<table class="caption-top table">
+<table class="table">
 <caption>Data in LONG format</caption>
 <thead>
 <tr class="header">
@@ -515,7 +520,25 @@ Caution
 <p>We do need to think carefully about what is the appropriate variable for time. Is it the variable we used to reshape the data–often <code>wave</code>–or some other more appropriate metric, like <code>age</code>?</p>
 </div>
 </div>
-<p>Let’s continue to explore how this model works.</p>
+</section>
+<section id="lastly" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="lastly"><span class="header-section-number">10.4</span> Lastly</h2>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Generating appropriate descriptive statistics can be a problem.</p>
+</div>
+</div>
+</section>
+<section id="lets-continue-to-explore-how-this-model-works." class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="lets-continue-to-explore-how-this-model-works."><span class="header-section-number">10.5</span> Let’s continue to explore how this model works.</h2>
 </section>
 </section>
 <section id="references" class="level1 unnumbered" data-number="11">
@@ -524,6 +547,9 @@ Caution
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">11 References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Antweiler2016" class="csl-entry" role="listitem">
+Antweiler, Christoph. 2016. <em>Our Common Denominator: Human Universals Revisited</em>. Berghahn.
+</div>
 <div id="ref-Bryk1992" class="csl-entry" role="listitem">
 Bryk, Anthony S, and Stephen W Raudenbush. 1992. <em>Hierarchical Linear Models: Applications and Data Analysis Methods.</em> <em>Hierarchical Linear Models: Applications and Data Analysis Methods.</em> Sage Publications, Inc.
 </div>
@@ -717,7 +743,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -749,29 +786,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -779,7 +794,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
