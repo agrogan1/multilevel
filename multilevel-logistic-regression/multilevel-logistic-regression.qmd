@@ -1,0 +1,17 @@
+---
+title: "Multilevel Logistic Regression"
+author: "Andy Grogan-Kaylor"
+format: 
+  revealjs:
+    html-math-method: mathjax
+    transition: slide
+    controls: true 
+    controls-tutorial: true
+    chalkboard: true
+---
+
+## Multilevel Logistic Regression
+
+$$\underbrace{\ln \Big(\frac{p(\text{outcome})}{1-p(\text{outcome})} \Big)}_{\text{log odds}} = \underbrace{\beta_0}_{\text{intercept}} + \underbrace{\beta_1 x_1 + \beta_2 x_2}_{\text{independent variables}} + \underbrace{u_0}_{\text{random effect(s)}}$$
+
+
