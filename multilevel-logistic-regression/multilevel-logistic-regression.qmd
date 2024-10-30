@@ -3,6 +3,8 @@ title: "Multilevel Logistic Regression"
 author: "Andy Grogan-Kaylor"
 format: 
   revealjs:
+    theme: sky
+    smaller: true
     html-math-method: mathjax
     transition: slide
     controls: true 
