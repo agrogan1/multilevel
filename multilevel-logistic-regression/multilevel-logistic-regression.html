@@ -246,6 +246,7 @@
     }
     .reveal .slide:not(.center) {
       height: 100%;
+      overflow-y: auto;
     }
     .reveal .slide.scrollable {
       overflow-y: auto;
@@ -342,7 +343,8 @@ Andy Grogan-Kaylor
 <section id="multilevel-logistic-regression" class="slide level2">
 <h2>Multilevel Logistic Regression</h2>
 <p><span class="math display">\[\underbrace{\ln \Big(\frac{p(\text{outcome})}{1-p(\text{outcome})} \Big)}_{\text{log odds}} = \underbrace{\beta_0}_{\text{intercept}} + \underbrace{\beta_1 x_1 + \beta_2 x_2}_{\text{independent variables}} + \underbrace{u_0}_{\text{random effect(s)}}\]</span></p>
-<div class="quarto-auto-generated-content">
+
+<img data-src="multilevel-logistic-regression_files/figure-revealjs/unnamed-chunk-1-1.png" width="960" class="r-stretch"><div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
@@ -560,6 +562,44 @@ Andy Grogan-Kaylor
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

@@ -5,6 +5,7 @@ format:
   revealjs:
     theme: solarized
     smaller: false
+    scrollable: true
     html-math-method: mathjax
     transition: slide
     controls: true 
@@ -15,5 +16,33 @@ format:
 ## Multilevel Logistic Regression
 
 $$\underbrace{\ln \Big(\frac{p(\text{outcome})}{1-p(\text{outcome})} \Big)}_{\text{log odds}} = \underbrace{\beta_0}_{\text{intercept}} + \underbrace{\beta_1 x_1 + \beta_2 x_2}_{\text{independent variables}} + \underbrace{u_0}_{\text{random effect(s)}}$$
+
+```{r}
+#| echo: false
+#| fig-height: 3
+
+library(ggplot2)
+
+library(ggthemes)
+
+x <- seq(-10, 10, .1)
+
+p <- exp(x) / (1 + exp(x))
+
+ggplot(data = NULL,
+       aes(x = x, 
+           y = p,
+           color = p)) + 
+  geom_point() +
+  labs(title = "Logistic Curve",
+       x = "x",
+       y = "probability of \noutcome") +
+  theme_solarized() +
+  scale_color_gradient(low = "#268bd2",
+                       high = "#dc322f",
+                       name = "probability") +
+  theme(title = element_text(size = rel(2)))
+
+```
 
 
