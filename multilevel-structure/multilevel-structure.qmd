@@ -7,28 +7,24 @@ author:
   url: https://agrogan1.github.io/
   affiliation: University of Michigan
   affiliation_url: https://umich.edu/
-date: '`r Sys.Date()`'
-output:
-  distill::distill_article:
-    highlight: haddock
-    toc: yes
-    toc_float: yes
-    code_folding: true
+date: "today"
+format:
+  html:
+    toc: false
+    number-sections: true
+    code-fold: true
+    code-summary: "Show the code"
+    theme:
+      light: yeti
+      dark: vapor
+  pdf:
+    toc: false
 bibliography: multilevel-structure.bib
-citation_url: https://agrogan1.github.io
 ---
-
-```{r setup, include=FALSE}
-
-knitr::opts_chunk$set(echo = TRUE,
-                      warning = FALSE,
-                      message = FALSE)
-
-```
 
 # Introduction
 
-Associations between two variables can be *very different* (or even *reversed*) depending upon whether or not the analysis is "aware" of the grouped, nested, or clustered nature of the data. In multilevel analysis, the groups are often neighborhoods, communities, or even different countries.
+Associations between two variables can be *very different* (or even *reversed*) depending upon whether or not the analysis is "aware" of the grouped, nested, or clustered nature of the data [@Nieuwenhuis2015]. In multilevel analysis, the groups are often neighborhoods, communities, or even different countries.
 
 A model that is "aware" of the clustered nature of the data may provide very different--likely better--substantive conclusions than a model that is not aware of the clustered nature of the data. This phenomena is closely related to the "ecological fallacy": the idea that group level and individual level relationships are not necessarily the same [@FIREBAUGH20014023].
 
@@ -43,6 +39,7 @@ set.seed(1080) # random seed
 # Call The Libraries
 
 ```{r}
+#| message: false
 
 library(ggplot2) # beautiful graphs
 
@@ -55,6 +52,7 @@ library(sjPlot) # nice tables for MLM
 # Simulate Some Data
 
 ```{r}
+#| message: false
 
 e <- rnorm(10, 0, 1) # error
 
@@ -101,6 +99,7 @@ multilevelstructure <- data.frame(x, y, group)
 This "naive" graph is unaware of the grouped nature of the data.
 
 ```{r}
+#| message: false
 
 library(ggplot2)
 
@@ -120,6 +119,7 @@ p0 + geom_point() # replay and add points
 This "aware" graph is aware of the grouped nature of the data.
 
 ```{r}
+#| message: false
 
 p0 + 
   geom_point(aes(color = group)) + # points with group color
@@ -136,6 +136,7 @@ p0 +
 The OLS model with only *x* as a covariate is not aware of the grouped structure of the data, and the coefficient for *x* reflects this.
 
 ```{r}
+#| message: false
 
 myOLS <- lm(y ~ x, data = multilevelstructure)
 
@@ -151,6 +152,7 @@ sjPlot::tab_model(myOLS,
 The multilevel model is aware of the grouped structure of the data, and the coefficient for *x* reflects this.
 
 ```{r}
+#| message: false
 
 myMLM <- lmer(y ~ x + (1 | group), data = multilevelstructure)
 
@@ -169,9 +171,14 @@ Imagine that *x* is a protective factor, or an intervention or treatment. Imagin
 
 Now imagine that community members provide more of the protective factor or more of the intervention in communities where there are lower levels of the desirable outcome. If we think about it, this is a very plausible situation. 
 
-> A naive analysis that was unaware of the grouped nature of the data would therefore misconstrue the results, suggesting that the intervention was harmful, when it was in fact helpful.
+::: {.callout-tip}
+## A Naive Analysis Would Misconstrue The Results
+
+A naive analysis that was unaware of the grouped nature of the data would therefore misconstrue the results, suggesting that the intervention was harmful, when it was in fact helpful.
+:::
 
 ```{r}
+#| message: false
 
 p0 + 
   geom_point(aes(color = group)) + # points with group color
