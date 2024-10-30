@@ -42,6 +42,10 @@
 
 * [Three Dimensional Scatterplot / Spaghetti Plot](https://agrogan1.github.io/multilevel/threeDscatterplot/threeDscatterplot.html)
 
+## Multilevel Logistic Regression
+
+* [Multilevel Logistic Regression](https://agrogan1.github.io/multilevel/multilevel-logistic-regression/multilevel-logistic-regression.html)
+
 ## Visualization
 
 * [Visualizing Multilevel Models](https://agrogan1.github.io/multilevel/visualizing-MLM/visualizing-MLM.html) [[HTML Slides](https://agrogan1.github.io/multilevel/visualizing-MLM/visualizing-MLM-slidy.html)] [[PDF](https://agrogan1.github.io/multilevel/visualizing-MLM/visualizing-MLM.pdf)]
