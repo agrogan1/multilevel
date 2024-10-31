@@ -4,7 +4,7 @@ author: "Andy Grogan-Kaylor"
 format: 
   revealjs:
     theme: solarized
-    smaller: false
+    smaller: true
     scrollable: true
     html-math-method: mathjax
     transition: slide
