@@ -41,7 +41,8 @@ ggplot(data = NULL,
   scale_color_gradient(low = "#268bd2",
                        high = "#dc322f",
                        name = "probability") +
-  theme(title = element_text(size = rel(2)))
+  theme(title = element_text(size = rel(2))) 
+
 
 ```
 
