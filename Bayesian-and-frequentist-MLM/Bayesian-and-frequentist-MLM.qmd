@@ -7,8 +7,9 @@ execute:
 format:
   html:
     theme: 
-      light: cosmo
+      light: yeti
       dark: vapor
+    lightbox: true
     toc: true
     number-sections: true
   pdf: 
