@@ -11,6 +11,7 @@ format:
     theme:
       light: yeti
       dark: vapor
+    lightbox: true
     highlight-style: haddock
   pdf:
     toc: true
@@ -72,18 +73,18 @@ graph export forestplot.png, replace
 
 ```
 
-![forest plot](forestplot.png)
+![forest plot](forestplot.png){width=50%}
 
 # Run The Meta Analysis With `differencefromrandom` And Better Options for Labels
 
 ```{stata, collectcode = TRUE, output = FALSE}
 
 meta forestplot, random(reml) ///
-nullrefline(favorsleft("Favors No ESP") favorsright("Favors ESP")) // reference line at null w labels
+nullrefline(favorsleft("Favors No ESP", color(red)) favorsright("Favors ESP", color(green))) // reference line at null w labels
 
 graph export forestplot2.png, replace
 
 ```
 
-![forest plot with better labels](forestplot2.png)
+![forest plot with better labels](forestplot2.png){width=50%}
 
