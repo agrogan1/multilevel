@@ -1,0 +1,89 @@
+---
+title: "Making Better Forest Plots in Meta-Analysis"
+subtitle: "Based Upon Student Contributions"
+author: "Andy Grogan-Kaylor"
+date: "today"
+format:
+  html:
+    toc: true
+    number-sections: true
+    anchor-sections: true
+    theme:
+      light: yeti
+      dark: vapor
+    highlight-style: haddock
+  pdf:
+    toc: true
+    number-sections: true
+    highlight-style: haddock    
+---
+
+# Get Data
+
+```{r}
+#| echo: false
+#| output: false
+
+library(Statamarkdown)
+
+```
+
+```{stata, collectcode = TRUE, output = FALSE}
+
+use Ganzfeld.dta
+
+```
+
+# Set Up The Data
+
+::: {.callout-tip}
+## `generate` the Difference From Random Chance
+
+This section uses the creative idea to `generate` a variable called `differencefromrandom`: the difference in the proportion of correct guesses from random chance.
+:::
+
+```{stata, collectcode = TRUE, output = FALSE}
+
+generate proportion = hits / trials // generate proportion
+
+generate differencefromrandom = proportion - 0.2 // generate proportion different from random chance = 0.2
+
+generate standarderror = sqrt(p*(1-p)/trials) // generate standard error of proportion
+
+drop if proportion == 0
+
+```
+
+# Set Up The Meta-Analysis With `differencefromrandom`
+
+```{stata, collectcode = TRUE}
+
+meta set differencefromrandom standarderror // set up meta-analysis
+
+```
+
+# Run The Meta Analysis With `differencefromrandom`
+
+```{stata, collectcode = TRUE, output = FALSE}
+
+meta forestplot, random(reml)  nullrefline // forestplot
+
+graph export forestplot.png, replace
+
+```
+
+![forest plot](forestplot.png)
+
+# Run The Meta Analysis With `differencefromrandom` And Better Options for Labels
+
+```{stata, collectcode = TRUE, output = FALSE}
+
+meta forestplot, random(reml) ///
+nullrefline(favorsleft("Favors No ESP") favorsright("Favors ESP")) // reference line at null w labels
+
+graph export forestplot2.png, replace
+
+```
+
+![forest plot with better labels](forestplot2.png)
+
