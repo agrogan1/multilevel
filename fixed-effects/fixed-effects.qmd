@@ -9,17 +9,10 @@ format:
     toc: true
     number-sections: true
     theme:
-      light: cosmo
+      light: yeti
       dark: vapor
+    lightbox: true
 ---
-
-```{r setup, include=FALSE}
-
-knitr::opts_chunk$set(echo = FALSE)
-
-xaringanExtra::use_panelset()
-
-```
 
 # Acknowledgement
 
@@ -33,17 +26,13 @@ We start with our regression equation.
 
 $$y_{it} = \beta_0 + \beta_1 x_{it} + u_{0i} + e_{it}$$ {#eq-regression}
 
-::::: {.panelset}
+::: {.panel-tabset}
 
-::: {.panel}
+## The Basics 
 
-## The Basics {.panel-name}
+<span style="color:red;font-size:3em">⇩</span>
 
-:::
-
-::: {.panel}
-
-## Intermediate Steps {.panel-name}
+## Intermediate Steps 
 
 ### Intermediate Step 1
 
@@ -56,9 +45,8 @@ $$\sum_{t} y_{it} = \sum_{t} \beta_0 + \sum_{t} \beta_1 x_{it} + \sum_{t} u_{0i}
 We can then divide by the number of time points ($T_i$).
 
 $$\sum_{t} y_{it} / T_i = \sum_{t} \beta_0 / T_i + \sum_{t} \beta_1 x_{it} / T_i + \sum_{t} u_{0i} / T_i + \sum_{t} e_{it} / T_i$$
-:::
 
-:::::
+:::
 
 ## The Between Estimator
 
