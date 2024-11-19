@@ -249,13 +249,19 @@ digraph boxes_and_circles {
 
 : Data in LONG format
 
+## Equation
+
 *So*.... we take our standard multilevel notation.
 
-$y_{ij} = \beta_0 + \beta_1 x + u_{0j} + e_{ij}$ (Simple MLM)
+### Simple MLM
+
+$$y_{ij} = \beta_0 + \beta_1 x + u_{0j} + e_{ij}$$ {#eq-crosssectional-mlm}
 
 cross out *j* write in *t*.
 
-$y_{it} = \beta_0 + \beta_1 t + u_{0i} + e_{it}$ (LONGITUDINAL MLM)
+### Longitudinal MLM
+
+$$y_{it} = \beta_0 + \beta_1 t + u_{0i} + e_{it}$$ {#eq-longitudinal-mlm}
 
 ::: {.callout-tip}
 Every row is a *person-observation* (person *i* observed at time *t*). Every person has *multiple rows*.

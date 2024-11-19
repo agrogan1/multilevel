@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.4.553">
 
   <meta name="author" content="Andy Grogan-Kaylor">
-  <meta name="dcterms.date" content="2024-10-23">
+  <meta name="dcterms.date" content="2024-11-19">
   <title>Why OLS Is A Bad Model For Longitudinal Data</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -361,7 +361,7 @@ Andy Grogan-Kaylor
 </div>
 </div>
 
-  <p class="date">2024-10-23</p>
+  <p class="date">2024-11-19</p>
 </section>
 <section class="slide level2">
 
@@ -647,10 +647,15 @@ blockquote {
 </tr>
 </tbody>
 </table>
+</section>
+<section id="equation" class="slide level2">
+<h2>Equation</h2>
 <p><em>So</em>…. we take our standard multilevel notation.</p>
-<p><span class="math inline">\(y_{ij} = \beta_0 + \beta_1 x + u_{0j} + e_{ij}\)</span> (Simple MLM)</p>
+<h3 id="simple-mlm">Simple MLM</h3>
+<p><span id="eq-crosssectional-mlm"><span class="math display">\[y_{ij} = \beta_0 + \beta_1 x + u_{0j} + e_{ij} \qquad(1)\]</span></span></p>
 <p>cross out <em>j</em> write in <em>t</em>.</p>
-<p><span class="math inline">\(y_{it} = \beta_0 + \beta_1 t + u_{0i} + e_{it}\)</span> (LONGITUDINAL MLM)</p>
+<h3 id="longitudinal-mlm">Longitudinal MLM</h3>
+<p><span id="eq-longitudinal-mlm"><span class="math display">\[y_{it} = \beta_0 + \beta_1 t + u_{0i} + e_{it} \qquad(2)\]</span></span></p>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">

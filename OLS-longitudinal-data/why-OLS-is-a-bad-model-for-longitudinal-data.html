@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Andy Grogan-Kaylor">
-<meta name="dcterms.date" content="2024-10-23">
+<meta name="dcterms.date" content="2024-11-19">
 
 <title>Why OLS Is A Bad Model For Longitudinal Data</title>
 <style>
@@ -113,6 +113,11 @@ window.Quarto = {
   <li><a href="#our-answer-to-the-problem" id="toc-our-answer-to-the-problem" class="nav-link" data-scroll-target="#our-answer-to-the-problem"><span class="header-section-number">9</span> Our Answer To the Problem</a>
   <ul class="collapse">
   <li><a href="#data-in-long-format" id="toc-data-in-long-format" class="nav-link" data-scroll-target="#data-in-long-format"><span class="header-section-number">9.1</span> Data in Long Format</a></li>
+  <li><a href="#equation" id="toc-equation" class="nav-link" data-scroll-target="#equation"><span class="header-section-number">9.2</span> Equation</a>
+  <ul class="collapse">
+  <li><a href="#simple-mlm" id="toc-simple-mlm" class="nav-link" data-scroll-target="#simple-mlm"><span class="header-section-number">9.2.1</span> Simple MLM</a></li>
+  <li><a href="#longitudinal-mlm" id="toc-longitudinal-mlm" class="nav-link" data-scroll-target="#longitudinal-mlm"><span class="header-section-number">9.2.2</span> Longitudinal MLM</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#this-has-the-following-advantages" id="toc-this-has-the-following-advantages" class="nav-link" data-scroll-target="#this-has-the-following-advantages"><span class="header-section-number">10</span> This Has The Following Advantages:</a>
   <ul class="collapse">
@@ -147,7 +152,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 23, 2024</p>
+      <p class="date">November 19, 2024</p>
     </div>
   </div>
   
@@ -444,10 +449,18 @@ We Reshape The Data and Use the SAME Notation!!!
 </tr>
 </tbody>
 </table>
+</section>
+<section id="equation" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="equation"><span class="header-section-number">9.2</span> Equation</h2>
 <p><em>So</em>…. we take our standard multilevel notation.</p>
-<p><span class="math inline">\(y_{ij} = \beta_0 + \beta_1 x + u_{0j} + e_{ij}\)</span> (Simple MLM)</p>
+<section id="simple-mlm" class="level3" data-number="9.2.1">
+<h3 data-number="9.2.1" class="anchored" data-anchor-id="simple-mlm"><span class="header-section-number">9.2.1</span> Simple MLM</h3>
+<p><span id="eq-crosssectional-mlm"><span class="math display">\[y_{ij} = \beta_0 + \beta_1 x + u_{0j} + e_{ij} \tag{1}\]</span></span></p>
 <p>cross out <em>j</em> write in <em>t</em>.</p>
-<p><span class="math inline">\(y_{it} = \beta_0 + \beta_1 t + u_{0i} + e_{it}\)</span> (LONGITUDINAL MLM)</p>
+</section>
+<section id="longitudinal-mlm" class="level3" data-number="9.2.2">
+<h3 data-number="9.2.2" class="anchored" data-anchor-id="longitudinal-mlm"><span class="header-section-number">9.2.2</span> Longitudinal MLM</h3>
+<p><span id="eq-longitudinal-mlm"><span class="math display">\[y_{it} = \beta_0 + \beta_1 t + u_{0i} + e_{it} \tag{2}\]</span></span></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -461,6 +474,7 @@ Tip
 <p>Every row is a <em>person-observation</em> (person <em>i</em> observed at time <em>t</em>). Every person has <em>multiple rows</em>.</p>
 </div>
 </div>
+</section>
 </section>
 </section>
 <section id="this-has-the-following-advantages" class="level1" data-number="10">
