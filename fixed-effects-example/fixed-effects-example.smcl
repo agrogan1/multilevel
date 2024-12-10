@@ -1,17 +1,17 @@
 {smcl}
-{txt}{sf}{ul off}{.-}
+{com}{sf}{ul off}{txt}{.-}
       name:  {res}<unnamed>
        {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel/fixed-effects-example/fixed-effects-example.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res} 7 Oct 2022, 16:38:25
+ {txt}opened on:  {res}10 Dec 2024, 10:33:35
 {txt}
 {com}. //_1
 . display c(current_date)
-{res} 7 Oct 2022
+{res}10 Dec 2024
 {txt}
 {com}. //_2
 . display c(current_time)
-{res}16:38:25
+{res}10:33:35
 {txt}
 {com}. //_3
 . clear all
@@ -26,33 +26,32 @@
 {txt}Variable      Storage   Display    Value
     name         type    format    label      Variable label
 {hline}
-{p 0 48}{res}{bind:ln_wage        }{txt}{bind: float   }{bind:{txt}%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}ln(wage/GNP deflator){p_end}
-{p 0 48}{bind:grade          }{txt}{bind: byte    }{bind:{txt}%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}current grade completed{p_end}
-{p 0 48}{bind:age            }{txt}{bind: byte    }{bind:{txt}%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}age in current year{p_end}
-{p 0 48}{bind:race           }{txt}{bind: byte    }{bind:{txt}%8.0g     }{space 1}{bind:racelbl  }{bind:  }{res}{res}race{p_end}
-{p 0 48}{bind:union          }{txt}{bind: byte    }{bind:{txt}%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}1 if union{p_end}
-{p 0 48}{bind:south          }{txt}{bind: byte    }{bind:{txt}%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}1 if south{p_end}
+{p 0 48}{res}{bind:ln_wage        }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}ln(wage/GNP deflator){p_end}
+{p 0 48}{bind:grade          }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}current grade completed{p_end}
+{p 0 48}{bind:age            }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}age in current year{p_end}
+{p 0 48}{bind:race           }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:racelbl  }{bind:  }{res}{res}race{p_end}
+{p 0 48}{bind:union          }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}1 if union{p_end}
+{p 0 48}{bind:south          }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}1 if south{p_end}
 {txt}
 {com}. //_6
 . mixed ln_w grade age i.race union south || idcode: 
 {res}
-{txt}Performing EM optimization: 
+{txt}Performing EM optimization ...
 {res}
 {txt}Performing gradient-based optimization: 
+{res}{txt}Iteration 0:{space 2}Log likelihood = {res: -5486.826}  
+Iteration 1:{space 2}Log likelihood = {res: -5486.826}  
 {res}
-{txt}Iteration 0:{space 3}log likelihood = {res: -5486.826}  
-{res}{txt}Iteration 1:{space 3}log likelihood = {res: -5486.826}  
+{txt}Computing standard errors ...
 {res}
-{txt}Computing standard errors:
-{res}
-{txt}Mixed-effects ML regression{col 49}Number of obs{col 67}={col 69}{res}    19,224
-{txt}Group variable: {res}idcode{col 49}{txt}Number of groups{col 67}={col 69}{res}     4,148
-{txt}{col 49}Obs per group:
-{col 63}min{col 67}={col 69}{res}         1
-{txt}{col 63}avg{col 67}={col 69}{res}       4.6
-{txt}{col 63}max{col 67}={col 69}{res}        12
-{col 49}{txt}Wald chi2({res}6{txt}){col 67}={col 70}{res}  3471.83
-{txt}Log likelihood = {res} -5486.826{col 49}{txt}Prob > chi2{col 67}={col 73}{res}0.0000
+{txt}Mixed-effects ML regression{col 53}Number of obs{col 69} = {res} 19,224
+{txt}Group variable: {res}idcode{col 53}{txt}Number of groups{col 69} = {res}  4,148
+{txt}{col 53}Obs per group:
+{col 66}min = {res}      1
+{txt}{col 66}avg = {res}    4.6
+{txt}{col 66}max = {res}     12
+{col 53}{txt}Wald chi2({res}6{txt}){col 69} = {res}3471.83
+{txt}Log likelihood = {res} -5486.826{col 53}{txt}Prob > chi2{col 69} = {res} 0.0000
 
 {txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 {col 1}     ln_wage{col 14}{c |} Coefficient{col 26}  Std. err.{col 38}      z{col 46}   P>|z|{col 54}     [95% con{col 67}f. interval]
@@ -96,7 +95,7 @@ LR test vs. linear model:{col 27}{help j_chibar##|_new:chibar2(01) =} {res}8473.
 {txt}     Between = {res}0.0712{col 63}{txt}avg{col 67}={col 69}{res}       4.6
 {txt}     Overall = {res}0.0847{col 63}{txt}max{col 67}={col 69}{res}        12
 
-{txt}{col 49}F({res}3{txt},{res}15073{txt}){col 67}={col 70}{res}   547.57
+{txt}{col 49}F({res}3{txt}, {res}15073{txt}){col 67}={col 70}{res}   547.57
 {txt}corr(u_i, Xb) = {res}0.0599{txt}{col 49}Prob > F{col 67}={col 73}{res}0.0000
 
 {txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
@@ -123,37 +122,42 @@ F test that all u_i=0: F({res}4147{txt}, {res}15073{txt}) = {res}9.60{col 62}{tx
 . est store FE
 {txt}
 {com}. //_10
-. est table MLM FE, star equations(1)
+. etable, estimates(MLM FE) column(estimate) showstars showstarsnote
 {res}
-{txt}{hline 12}{c -}{c TT}{c -}{hline 13}{c -}{c -}{c -}{hline 13}{c -}{c -}
-{ralign 12:Variable} {c |} {center 13:MLM} {space 1} {center 13:FE} {space 1}
-{hline 12}{c -}{c +}{c -}{hline 13}{c -}{c -}{c -}{hline 13}{c -}{c -}
-{res}{txt}{res}#1           {txt}{c |}{res}
-{txt}{space 7}grade {c |}{res} {ralign 10:.07815409}{lalign 3:***}{txt} {space 1}{res} {ralign 10:(omitted)}{lalign 3:}{txt} {space 1}
-{res}{txt}{space 9}age {c |}{res} {ralign 10:.01374911}{lalign 3:***}{txt} {space 1}{res} {ralign 10:.01538067}{lalign 3:***}{txt} {space 1}
-{res}{txt}{space 12} {c |}
-{space 8}race {c |}
-{space 6}black  {c |}{res} {ralign 10:-.04053471}{lalign 3:**}{txt} {space 1}{res} {ralign 10:(omitted)}{lalign 3:}{txt} {space 1}
-{res}{txt}{space 6}other  {c |}{res} {ralign 10:.04043574}{lalign 3:}{txt} {space 1}{res} {ralign 10:(omitted)}{lalign 3:}{txt} {space 1}
-{res}{txt}{space 12} {c |}
-{space 7}union {c |}{res} {ralign 10:.12439767}{lalign 3:***}{txt} {space 1}{res} {ralign 10:.10348514}{lalign 3:***}{txt} {space 1}
-{res}{txt}{space 7}south {c |}{res} {ralign 10:-.10194526}{lalign 3:***}{txt} {space 1}{res} {ralign 10:-.07599732}{lalign 3:***}{txt} {space 1}
-{res}{txt}{space 7}_cons {c |}{res} {ralign 10:.31107518}{lalign 3:***}{txt} {space 1}{res} {ralign 10:1.2794525}{lalign 3:***}{txt} {space 1}
-{res}{txt}{hline 12}{c -}{c +}{c -}{hline 13}{c -}{c -}{c -}{hline 13}{c -}{c -}
-{res}{txt}{res}lns1_1_1     {txt}{c |}{res}
-{txt}{space 7}_cons {c |}{res} {ralign 10:-1.1521609}{lalign 3:***}{txt} {space 1}{res} {ralign 10:}{lalign 3:}{txt} {space 1}
-{res}{txt}{hline 12}{c -}{c +}{c -}{hline 13}{c -}{c -}{c -}{hline 13}{c -}{c -}
-{res}{txt}{res}lnsig_e      {txt}{c |}{res}
-{txt}{space 7}_cons {c |}{res} {ralign 10:-1.3358773}{lalign 3:***}{txt} {space 1}{res} {ralign 10:}{lalign 3:}{txt} {space 1}
-{res}{txt}{hline 12}{c -}{c BT}{c -}{hline 13}{c -}{c -}{c -}{hline 13}{c -}{c -}
-{ralign 46:Legend: * p<0.05; ** p<0.01; *** p<0.001}
-{res}{txt}
+{smcl}
+{reset}{...}
+{hline 23}{c -}{hline 7}{c -}{hline 2}{c -}{hline 7}{c -}{hline 2}
+{space 23} {space 4}MLM{space 3} {space 4}FE{space 4}
+{hline 23}{c -}{hline 7}{c -}{hline 2}{c -}{hline 7}{c -}{hline 2}
+current grade completed {space 2}{result:0.078} {result:**} {space 7} {space 2}
+{space 23} {result:(0.002)} {space 2} {space 7} {space 2}
+age in current year{space 4} {space 2}{result:0.014} {result:**} {space 2}{result:0.015} {result:**}
+{space 23} {result:(0.000)} {space 2} {result:(0.000)} {space 2}
+race{space 19} {space 7} {space 2} {space 7} {space 2}
+  black{space 16} {space 1}{result:-0.041} {result:**} {space 7} {space 2}
+{space 23} {result:(0.013)} {space 2} {space 7} {space 2}
+  other{space 16} {space 2}{result:0.040} {space 2} {space 7} {space 2}
+{space 23} {result:(0.051)} {space 2} {space 7} {space 2}
+1 if union{space 13} {space 2}{result:0.124} {result:**} {space 2}{result:0.103} {result:**}
+{space 23} {result:(0.007)} {space 2} {result:(0.007)} {space 2}
+1 if south{space 13} {space 1}{result:-0.102} {result:**} {space 1}{result:-0.076} {result:**}
+{space 23} {result:(0.009)} {space 2} {result:(0.014)} {space 2}
+Intercept{space 14} {space 2}{result:0.311} {result:**} {space 2}{result:1.279} {result:**}
+{space 23} {result:(0.031)} {space 2} {result:(0.014)} {space 2}
+var(_cons){space 13} {space 2}{result:0.100} {space 2} {space 7} {space 2}
+{space 23} {result:(0.003)} {space 2} {space 7} {space 2}
+var(e){space 17} {space 2}{result:0.069} {space 2} {space 7} {space 2}
+{space 23} {result:(0.001)} {space 2} {space 7} {space 2}
+Number of observations{space 1} {space 2}{result:19224} {space 2} {space 2}{result:19224} {space 2}
+{hline 23}{c -}{hline 7}{c -}{hline 2}{c -}{hline 7}{c -}{hline 2}
+{p}** p<.01, * p<.05{p_end}
+
 {com}. //_^
 . log close
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}/Users/agrogan/Desktop/GitHub/multilevel/fixed-effects-example/fixed-effects-example.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res} 7 Oct 2022, 16:38:36
+ {txt}closed on:  {res}10 Dec 2024, 10:33:45
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

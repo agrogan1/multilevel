@@ -8,7 +8,7 @@ geometry: margin=1 in
 
 # Background 
 
-<style>body {max-width: 90%;} h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
+<style>body {max-width: 90%;} h1 {color: #00274C;} h2 {color: #2F65A7;} p {font-size: 110%;} pre.stata {font-size: 110%;  line-height: 115%;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
 
 > This example draws from the Stata documentation for the `xtreg` command.
 
@@ -70,7 +70,7 @@ Here $\beta_0$ is the intercept, $\beta_1$ is a slope, $u_{0i}$ is a person spec
 >
 > 5. Coefficients in the fixed effects model are generally smaller than coefficients in the multilevel model. (Often, though not in this example, coefficients that were significant in the multilevel model are not significant in the fixed effects model).
 
-    est table MLM FE, star equations(1)
+    etable, estimates(MLM FE) column(estimate) showstars showstarsnote
 
 
 
