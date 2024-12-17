@@ -11,6 +11,7 @@ format:
     theme: yeti
     highlight-style: haddock
     lightbox: true
+    anchor-sections: true
   pdf:
     toc: true
     toc-depth: 3
@@ -103,7 +104,7 @@ graph export myscatter.png, width(1500) replace
 
 ```
 
-![Scatterplot](myscatter.png){width=75%}
+![Scatterplot](myscatter.png){width=75% #fig-scatterplot}
 	
 # Simple Linear Fit (`twoway lfit y x`)
 
@@ -116,7 +117,7 @@ graph export mylinear.png, width(1500) replace
 
 ```
 	
-![Linear Fit](mylinear.png){width=75%}
+![Linear Fit](mylinear.png){width=75% #fig-linear-fit}
 
 # Linear Fit With Confidence Interval (`twoway lfitci y x`)
 
@@ -129,7 +130,7 @@ graph export mylfitci.png, width(1500) replace
 
 ```
 	
-![Linear Fit With Confidence Interval](mylfitci.png){width=75%}
+![Linear Fit With Confidence Interval](mylfitci.png){width=75% #fig-linear-fit-CI}
 
 # Combine Scatterplot and Linear Fit (`twoway (scatter y x) (lfit y x)`)
 
@@ -142,7 +143,7 @@ graph export myscatterlinear.png, width(1500) replace
 
 ```
 
-![Scatterplot and Linear Fit](myscatterlinear.png){width=75%}
+![Scatterplot and Linear Fit](myscatterlinear.png){width=75% #fig-scatterplot-linear-fit}
 
 # Spaghetti Plots (`spagplot y x, id(group)`)
 
@@ -155,7 +156,7 @@ graph export myspaghetti.png, width(1500) replace
 
 ```
 
-![Spaghetti Plot](myspaghetti.png){width=75%}
+![Spaghetti Plot](myspaghetti.png){width=75% #fig-spaghetti}
 	
 # Small Multiples (`twoway y x, by(group)`)
 
@@ -172,7 +173,7 @@ graph export mysmallmultiples.png, width(1500) replace
 
 ```
 
-![Small Multiples](mysmallmultiples.png){width=75%}
+![Small Multiples](mysmallmultiples.png){width=75% #fig-smallmultiples}
 
 # Small Multiples With A Random Sample
 
@@ -203,7 +204,7 @@ quietly: graph export mysmallmultiples2.png, width(1500) replace
 
 ```
 
-![Small Multiples With A Random Sample Of Countries](mysmallmultiples2.png){width=75%}
+![Small Multiples With A Random Sample Of Countries](mysmallmultiples2.png){width=75% #fig-smallmultiples-random-sample}
 
 # Multivariate (Predicted) Relationships
 
@@ -246,9 +247,9 @@ graph export mypredictedvalues2.png, width(1500) replace
 
 ```
 
-![Predicted Values From `predict`](mypredictedvalues.png){width=75%} 
+![Predicted Values From `predict`](mypredictedvalues.png){width=75% #fig-predicted} 
 
-![Predicted Values From `predict` With Only Linear Fit](mypredictedvalues2.png){width=75%}
+![Predicted Values From `predict` With Only Linear Fit](mypredictedvalues2.png){width=75% % #fig-predicted2}
 
 ### Spaghetti Plot With Predicted Values
 
@@ -261,7 +262,7 @@ graph export myspaghetti2.png, width(1500) replace
 
 ```
 
-![Spaghetti Plot With Predicted Values](myspaghetti2.png){width=75%}
+![Spaghetti Plot With Predicted Values](myspaghetti2.png){width=75% % #fig-predicted3}
 	
 ## `margins` and `marginsplot`
 
@@ -294,7 +295,7 @@ graph export mymarginsplot.png, width(1500) replace
 
 ```
 
-![Predicted Values From `margins` and `marginsplot`](mymarginsplot.png){width=75%}
+![Predicted Values From `margins` and `marginsplot`](mymarginsplot.png){width=75% #fig-marginsplot}
 
 # Scatterplot With Linear Fit and Marginal Density Plots (`twoway ...`)
 
