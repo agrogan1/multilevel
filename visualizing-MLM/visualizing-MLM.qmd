@@ -66,6 +66,7 @@ What approach(es) do you prefer?
 I am not terrifically fond of the default `s2color` graph scheme in earlier versions of Stata. Here I make use of the `michigan` graph scheme available at: [https://agrogan1.github.io/Stata/michigan-graph-scheme/](https://agrogan1.github.io/Stata/michigan-graph-scheme/). 
 
 ```{stata, collectcode=TRUE}
+#| output: false
 
 set scheme michigan
 
@@ -88,6 +89,7 @@ file.copy("../../multilevel-thinking/simulate-and-analyze-multilevel-data/simula
 ```
 
 ```{stata, collectcode=TRUE}
+#| output: false
 
 use "simulated_multilevel_data.dta", clear
 
@@ -227,6 +229,7 @@ mixed outcome warmth physical_punishment i.intervention || country: // estimate 
 ### Generate Predicted Values
 	
 ```{stata, collectcode=TRUE}
+#| output: false
 	
 predict outcome_hat, fitted // predict yhat (`fitted` uses fixed AND random effects)
 
@@ -249,7 +252,7 @@ graph export mypredictedvalues2.png, width(1500) replace
 
 ![Predicted Values From `predict`](mypredictedvalues.png){width=75% #fig-predicted} 
 
-![Predicted Values From `predict` With Only Linear Fit](mypredictedvalues2.png){width=75% % #fig-predicted2}
+![Predicted Values From `predict` With Only Linear Fit](mypredictedvalues2.png){width=75% #fig-predicted2}
 
 ### Spaghetti Plot With Predicted Values
 
@@ -262,7 +265,7 @@ graph export myspaghetti2.png, width(1500) replace
 
 ```
 
-![Spaghetti Plot With Predicted Values](myspaghetti2.png){width=75% % #fig-predicted3}
+![Spaghetti Plot With Predicted Values](myspaghetti2.png){width=75% #fig-predicted3}
 	
 ## `margins` and `marginsplot`
 

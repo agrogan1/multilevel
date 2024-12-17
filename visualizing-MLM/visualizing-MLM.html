@@ -206,8 +206,7 @@ blockquote {
 <h1 data-number="3"><span class="header-section-number">3</span> Setup</h1>
 <p>I am not terrifically fond of the default <code>s2color</code> graph scheme in earlier versions of Stata. Here I make use of the <code>michigan</code> graph scheme available at: <a href="https://agrogan1.github.io/Stata/michigan-graph-scheme/">https://agrogan1.github.io/Stata/michigan-graph-scheme/</a>.</p>
 <div class="cell" data-collectcode="true">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span> <span class="dv">scheme</span> michigan</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span> <span class="dv">scheme</span> michigan</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Stata’s <code>stcolor</code> scheme–available in newer versions of Stata–would also be an option as would be Asjad Naqvi’s incredible <code>schemepack</code>: <a href="https://github.com/asjadnaqvi/stata-schemepack">https://github.com/asjadnaqvi/stata-schemepack</a>.</p>
 <p>Throughout the tutorial, I make frequent use of the <code>mcolor(%30)</code> option to add some visual interest to scatterplots by adding transparency to the markers.</p>
@@ -215,26 +214,20 @@ blockquote {
 <section id="get-data" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Get Data</h1>
 <div class="cell" data-collectcode="true">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"simulated_multilevel_data.dta"</span>, <span class="kw">clear</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Running C:\Users\agrogan\Desktop\GitHub\multilevel\visualizing-MLM\profile.do .
-
-&gt; ..</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="st">"simulated_multilevel_data.dta"</span>, <span class="kw">clear</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="scatterplots-twoway-scatter-y-x" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Scatterplots (<code>twoway scatter y x</code>)</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">twoway</span> <span class="kw">scatter</span> outcome warmth, mcolor(%30)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> myscatter.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">twoway</span> <span class="kw">scatter</span> outcome warmth, mcolor(%30)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> myscatter.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="fig-scatterplot" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-scatterplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="myscatter.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" data-glightbox="description: .lightbox-desc-1"><img src="myscatter.png" class="img-fluid figure-img" style="width:75.0%"></a>
+<a href="myscatter.png" class="lightbox" data-glightbox="description: .lightbox-desc-1" data-gallery="quarto-lightbox-gallery-1"><img src="myscatter.png" class="img-fluid figure-img" style="width:75.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scatterplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Scatterplot
@@ -245,14 +238,14 @@ Figure&nbsp;1: Scatterplot
 <section id="simple-linear-fit-twoway-lfit-y-x" class="level1" data-number="6">
 <h1 data-number="6"><span class="header-section-number">6</span> Simple Linear Fit (<code>twoway lfit y x</code>)</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">twoway</span> <span class="kw">lfit</span> outcome warmth</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> mylinear.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">twoway</span> <span class="kw">lfit</span> outcome warmth</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> mylinear.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="fig-linear-fit" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-linear-fit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="mylinear.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" data-glightbox="description: .lightbox-desc-2"><img src="mylinear.png" class="img-fluid figure-img" style="width:75.0%"></a>
+<a href="mylinear.png" class="lightbox" data-glightbox="description: .lightbox-desc-2" data-gallery="quarto-lightbox-gallery-2"><img src="mylinear.png" class="img-fluid figure-img" style="width:75.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-linear-fit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: Linear Fit
@@ -263,14 +256,14 @@ Figure&nbsp;2: Linear Fit
 <section id="linear-fit-with-confidence-interval-twoway-lfitci-y-x" class="level1" data-number="7">
 <h1 data-number="7"><span class="header-section-number">7</span> Linear Fit With Confidence Interval (<code>twoway lfitci y x</code>)</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">twoway</span> lfitci outcome warmth</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> mylfitci.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">twoway</span> lfitci outcome warmth</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> mylfitci.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="fig-linear-fit-CI" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-linear-fit-CI-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="mylfitci.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" data-glightbox="description: .lightbox-desc-3"><img src="mylfitci.png" class="img-fluid figure-img" style="width:75.0%"></a>
+<a href="mylfitci.png" class="lightbox" data-glightbox="description: .lightbox-desc-3" data-gallery="quarto-lightbox-gallery-3"><img src="mylfitci.png" class="img-fluid figure-img" style="width:75.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-linear-fit-CI-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3: Linear Fit With Confidence Interval
@@ -281,14 +274,14 @@ Figure&nbsp;3: Linear Fit With Confidence Interval
 <section id="combine-scatterplot-and-linear-fit-twoway-scatter-y-x-lfit-y-x" class="level1" data-number="8">
 <h1 data-number="8"><span class="header-section-number">8</span> Combine Scatterplot and Linear Fit (<code>twoway (scatter y x) (lfit y x)</code>)</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">twoway</span> (<span class="kw">scatter</span> outcome warmth, mcolor(%30)) (<span class="kw">lfit</span> outcome warmth)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> myscatterlinear.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">twoway</span> (<span class="kw">scatter</span> outcome warmth, mcolor(%30)) (<span class="kw">lfit</span> outcome warmth)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> myscatterlinear.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="fig-scatterplot-linear-fit" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-scatterplot-linear-fit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="myscatterlinear.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" data-glightbox="description: .lightbox-desc-4"><img src="myscatterlinear.png" class="img-fluid figure-img" style="width:75.0%"></a>
+<a href="myscatterlinear.png" class="lightbox" data-glightbox="description: .lightbox-desc-4" data-gallery="quarto-lightbox-gallery-4"><img src="myscatterlinear.png" class="img-fluid figure-img" style="width:75.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scatterplot-linear-fit-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4: Scatterplot and Linear Fit
@@ -299,14 +292,14 @@ Figure&nbsp;4: Scatterplot and Linear Fit
 <section id="spaghetti-plots-spagplot-y-x-idgroup" class="level1" data-number="9">
 <h1 data-number="9"><span class="header-section-number">9</span> Spaghetti Plots (<code>spagplot y x, id(group)</code>)</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>spagplot outcome warmth, id(country)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> myspaghetti.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>spagplot outcome warmth, id(country)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> myspaghetti.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="fig-spaghetti" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-spaghetti-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="myspaghetti.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" data-glightbox="description: .lightbox-desc-5"><img src="myspaghetti.png" class="img-fluid figure-img" style="width:75.0%"></a>
+<a href="myspaghetti.png" class="lightbox" data-glightbox="description: .lightbox-desc-5" data-gallery="quarto-lightbox-gallery-5"><img src="myspaghetti.png" class="img-fluid figure-img" style="width:75.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spaghetti-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5: Spaghetti Plot
@@ -318,16 +311,16 @@ Figure&nbsp;5: Spaghetti Plot
 <h1 data-number="10"><span class="header-section-number">10</span> Small Multiples (<code>twoway y x, by(group)</code>)</h1>
 <p><em>Small Multiples</em>, showing a separate graph for each group in the data, are an increasingly popular data visualization technique. Below, I build a small multiples graph using the <code>by</code> option in Stata. I use the <code>aspect</code> option to adjust the <em>aspect ratio</em> of the graph for better visual presentation.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">twoway</span> (<span class="kw">scatter</span> outcome warmth, mcolor(%30)) <span class="co">///</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>(<span class="kw">lfit</span> outcome warmth), <span class="co">///</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">by</span>(country) aspect(1)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> mysmallmultiples.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">twoway</span> (<span class="kw">scatter</span> outcome warmth, mcolor(%30)) <span class="co">///</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>(<span class="kw">lfit</span> outcome warmth), <span class="co">///</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">by</span>(country) aspect(1)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> mysmallmultiples.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="fig-smallmultiples" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-smallmultiples-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="mysmallmultiples.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" data-glightbox="description: .lightbox-desc-6"><img src="mysmallmultiples.png" class="img-fluid figure-img" style="width:75.0%"></a>
+<a href="mysmallmultiples.png" class="lightbox" data-glightbox="description: .lightbox-desc-6" data-gallery="quarto-lightbox-gallery-6"><img src="mysmallmultiples.png" class="img-fluid figure-img" style="width:75.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-smallmultiples-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;6: Small Multiples
@@ -340,25 +333,25 @@ Figure&nbsp;6: Small Multiples
 <p>At times, we may have <em>too many</em> Level 2 units to effectively display them on a <em>spaghetti plot</em>, or using <em>small multiples</em>. If this is the case, we may need to <em>randomly sample</em> <strong>Level 2</strong> units. This can be difficult to accomplish as our standard <code>sample</code> command operates on each row, or on Level 1 units.</p>
 <p>We can accomplish random sampling at Level 2, with a little bit of code.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span> <span class="dv">seed</span> 3846 <span class="co">// random seed for reproducibility</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> randomid = runiform() <span class="co">// generate a random id variable</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>* <span class="kw">by</span> country (i.<span class="fu">e</span>. <span class="kw">by</span> Level 2 unit) <span class="kw">replace</span> the randomid </span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>* with the first randomid <span class="kw">for</span> that country (Level 2 unit)</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>* so that every person <span class="kw">in</span> that country has the same random id</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="kw">bysort</span> country: <span class="kw">replace</span> randomid = randomid[1] </span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="kw">summarize</span> randomid <span class="co">// descriptive statistics for random id</span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="kw">twoway</span> (<span class="kw">scatter</span> outcome warmth, mcolor(%30)) <span class="co">/// scatterplot</span></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>(<span class="kw">lfit</span> outcome warmth) <span class="co">/// linear fit</span></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="kw">if</span> randomid &lt; .5, <span class="co">/// only use a subset of randomids</span></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="kw">by</span>(country) aspect(1) <span class="co">// by country</span></span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="kw">quietly</span>: <span class="kw">graph</span> <span class="kw">export</span> mysmallmultiples2.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">set</span> <span class="dv">seed</span> 3846 <span class="co">// random seed for reproducibility</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="kw">gen</span> randomid = runiform() <span class="co">// generate a random id variable</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>* <span class="kw">by</span> country (i.<span class="fu">e</span>. <span class="kw">by</span> Level 2 unit) <span class="kw">replace</span> the randomid </span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>* with the first randomid <span class="kw">for</span> that country (Level 2 unit)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>* so that every person <span class="kw">in</span> that country has the same random id</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="kw">bysort</span> country: <span class="kw">replace</span> randomid = randomid[1] </span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="kw">summarize</span> randomid <span class="co">// descriptive statistics for random id</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="kw">twoway</span> (<span class="kw">scatter</span> outcome warmth, mcolor(%30)) <span class="co">/// scatterplot</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>(<span class="kw">lfit</span> outcome warmth) <span class="co">/// linear fit</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="kw">if</span> randomid &lt; .5, <span class="co">/// only use a subset of randomids</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="kw">by</span>(country) aspect(1) <span class="co">// by country</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="kw">quietly</span>: <span class="kw">graph</span> <span class="kw">export</span> mysmallmultiples2.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Running C:\Users\agrogan\Desktop\GitHub\multilevel\visualizing-MLM\profile.do .
 
@@ -377,7 +370,7 @@ Figure&nbsp;6: Small Multiples
 <div id="fig-smallmultiples-random-sample" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-smallmultiples-random-sample-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="mysmallmultiples2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" data-glightbox="description: .lightbox-desc-7"><img src="mysmallmultiples2.png" class="img-fluid figure-img" style="width:75.0%"></a>
+<a href="mysmallmultiples2.png" class="lightbox" data-glightbox="description: .lightbox-desc-7" data-gallery="quarto-lightbox-gallery-7"><img src="mysmallmultiples2.png" class="img-fluid figure-img" style="width:75.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-smallmultiples-random-sample-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;7: Small Multiples With A Random Sample Of Countries
@@ -399,8 +392,8 @@ Figure&nbsp;7: Small Multiples With A Random Sample Of Countries
 <section id="estimate-the-model" class="level3" data-number="12.1.1">
 <h3 data-number="12.1.1" class="anchored" data-anchor-id="estimate-the-model"><span class="header-section-number">12.1.1</span> Estimate The Model</h3>
 <div class="cell" data-collectcode="true">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>mixed outcome warmth physical_punishment i.intervention || country: <span class="co">// estimate MLM</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>mixed outcome warmth physical_punishment i.intervention || country: <span class="co">// estimate MLM</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Running C:\Users\agrogan\Desktop\GitHub\multilevel\visualizing-MLM\profile.do .
 
@@ -449,46 +442,58 @@ LR test vs. linear model: chibar2(01) = 204.14        Prob &gt;= chibar2 = 0.000
 <section id="generate-predicted-values" class="level3" data-number="12.1.2">
 <h3 data-number="12.1.2" class="anchored" data-anchor-id="generate-predicted-values"><span class="header-section-number">12.1.2</span> Generate Predicted Values</h3>
 <div class="cell" data-collectcode="true">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="kw">predict</span> outcome_hat, <span class="kw">fitted</span> <span class="co">// predict yhat (`fitted` uses fixed AND random effects)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Running C:\Users\agrogan\Desktop\GitHub\multilevel\visualizing-MLM\profile.do .
-
-&gt; ..</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">predict</span> outcome_hat, <span class="kw">fitted</span> <span class="co">// predict yhat (`fitted` uses fixed AND random effects)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="graph-with-twoway-syntax" class="level3" data-number="12.1.3">
 <h3 data-number="12.1.3" class="anchored" data-anchor-id="graph-with-twoway-syntax"><span class="header-section-number">12.1.3</span> Graph With <code>twoway</code> Syntax</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">twoway</span> (<span class="kw">scatter</span> outcome_hat warmth, mcolor(%30)) (<span class="kw">lfit</span> outcome_hat warmth)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> mypredictedvalues.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="kw">twoway</span> (<span class="kw">lfit</span> outcome_hat warmth)</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> mypredictedvalues2.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">twoway</span> (<span class="kw">scatter</span> outcome_hat warmth, mcolor(%30)) (<span class="kw">lfit</span> outcome_hat warmth)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> mypredictedvalues.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="kw">twoway</span> (<span class="kw">lfit</span> outcome_hat warmth)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> mypredictedvalues2.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="fig-predicted" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-predicted-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="mypredictedvalues.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" data-glightbox="description: .lightbox-desc-8"><img src="mypredictedvalues.png" class="img-fluid figure-img" style="width:75.0%"></a>
+<a href="mypredictedvalues.png" class="lightbox" data-glightbox="description: .lightbox-desc-8" data-gallery="quarto-lightbox-gallery-8"><img src="mypredictedvalues.png" class="img-fluid figure-img" style="width:75.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-predicted-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;8: Predicted Values From <code>predict</code>
 </figcaption>
 </figure>
 </div>
-<p><img src="mypredictedvalues2.png" class="img-fluid" alt="Predicted Values From predict With Only Linear Fit">{width=75% % #fig-predicted2}</p>
+<div id="fig-predicted2" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-predicted2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="mypredictedvalues2.png" class="lightbox" data-glightbox="description: .lightbox-desc-9" data-gallery="quarto-lightbox-gallery-9"><img src="mypredictedvalues2.png" class="img-fluid figure-img" style="width:75.0%"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-predicted2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: Predicted Values From <code>predict</code> With Only Linear Fit
+</figcaption>
+</figure>
+</div>
 </section>
 <section id="spaghetti-plot-with-predicted-values" class="level3" data-number="12.1.4">
 <h3 data-number="12.1.4" class="anchored" data-anchor-id="spaghetti-plot-with-predicted-values"><span class="header-section-number">12.1.4</span> Spaghetti Plot With Predicted Values</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>spagplot outcome_hat warmth, id(country)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> myspaghetti2.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>spagplot outcome_hat warmth, id(country)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> myspaghetti2.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><img src="myspaghetti2.png" class="img-fluid" alt="Spaghetti Plot With Predicted Values">{width=75% % #fig-predicted3}</p>
+<div id="fig-predicted3" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-predicted3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<a href="myspaghetti2.png" class="lightbox" data-glightbox="description: .lightbox-desc-10" data-gallery="quarto-lightbox-gallery-10"><img src="myspaghetti2.png" class="img-fluid figure-img" style="width:75.0%"></a>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-predicted3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: Spaghetti Plot With Predicted Values
+</figcaption>
+</figure>
+</div>
 </section>
 </section>
 <section id="margins-and-marginsplot" class="level2" data-number="12.2">
@@ -497,8 +502,8 @@ Figure&nbsp;8: Predicted Values From <code>predict</code>
 <section id="estimate-the-model-1" class="level3" data-number="12.2.1">
 <h3 data-number="12.2.1" class="anchored" data-anchor-id="estimate-the-model-1"><span class="header-section-number">12.2.1</span> Estimate The Model</h3>
 <div class="cell" data-collectcode="true">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>mixed outcome warmth physical_punishment i.intervention || country: <span class="co">// estimate MLM</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>mixed outcome warmth physical_punishment i.intervention || country: <span class="co">// estimate MLM</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Running C:\Users\agrogan\Desktop\GitHub\multilevel\visualizing-MLM\profile.do .
 
@@ -547,8 +552,8 @@ LR test vs. linear model: chibar2(01) = 204.14        Prob &gt;= chibar2 = 0.000
 <section id="generate-predicted-values-at-specified-values-with-margins" class="level3" data-number="12.2.2">
 <h3 data-number="12.2.2" class="anchored" data-anchor-id="generate-predicted-values-at-specified-values-with-margins"><span class="header-section-number">12.2.2</span> Generate Predicted Values <em>At Specified Values</em> With <code>margins</code></h3>
 <div class="cell" data-collectcode="true">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>margins intervention, <span class="fu">at</span>(warmth = (1 2 3 4 5 6 7)) <span class="co">// predictive *margins*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>margins intervention, <span class="fu">at</span>(warmth = (1 2 3 4 5 6 7)) <span class="co">// predictive *margins*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Running C:\Users\agrogan\Desktop\GitHub\multilevel\visualizing-MLM\profile.do .
 
@@ -594,17 +599,17 @@ intervention |
 <section id="graph-with-marginsplot" class="level3" data-number="12.2.3">
 <h3 data-number="12.2.3" class="anchored" data-anchor-id="graph-with-marginsplot"><span class="header-section-number">12.2.3</span> Graph With <code>marginsplot</code></h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>marginsplot <span class="co">// plot of predicted values</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> mymarginsplot.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>marginsplot <span class="co">// plot of predicted values</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> mymarginsplot.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="fig-marginsplot" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-marginsplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="mymarginsplot.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" data-glightbox="description: .lightbox-desc-9"><img src="mymarginsplot.png" class="img-fluid figure-img" style="width:75.0%"></a>
+<a href="mymarginsplot.png" class="lightbox" data-glightbox="description: .lightbox-desc-11" data-gallery="quarto-lightbox-gallery-11"><img src="mymarginsplot.png" class="img-fluid figure-img" style="width:75.0%"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-marginsplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9: Predicted Values From <code>margins</code> and <code>marginsplot</code>
+Figure&nbsp;11: Predicted Values From <code>margins</code> and <code>marginsplot</code>
 </figcaption>
 </figure>
 </div>
@@ -623,10 +628,10 @@ Figure&nbsp;9: Predicted Values From <code>margins</code> and <code>marginsplot<
 <p>We generate the density for <em>warmth</em> at only a few points (<code>n(8)</code>) since this variable has relatively few categories.</p>
 </blockquote>
 <div class="cell" data-collectcode="true">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="kw">kdensity</span> warmth, <span class="kw">generate</span>(warmth_x warmth_d) n(8) <span class="co">// manually generate outcome densities</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="kw">kdensity</span> outcome, <span class="kw">generate</span>(outcome_y outcome_d) <span class="co">// manually generate outcome densities</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="kw">kdensity</span> warmth, <span class="kw">generate</span>(warmth_x warmth_d) n(8) <span class="co">// manually generate outcome densities</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="kw">kdensity</span> outcome, <span class="kw">generate</span>(outcome_y outcome_d) <span class="co">// manually generate outcome densities</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Running C:\Users\agrogan\Desktop\GitHub\multilevel\visualizing-MLM\profile.do .
 
@@ -640,12 +645,12 @@ Figure&nbsp;9: Predicted Values From <code>margins</code> and <code>marginsplot<
 <p>You may have to experiment with the scaling and moving factors.</p>
 </blockquote>
 <div class="cell" data-collectcode="true">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> warmth_d = 100 * warmth_d <span class="co">// rescale the density so it plots well</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> outcome_d = 5 * outcome_d - .5 <span class="co">// rescale AND MOVE the density so it plots well</span></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">variable</span> outcome_y <span class="st">"density: beneficial outcome"</span> <span class="co">// relabel y variable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> warmth_d = 100 * warmth_d <span class="co">// rescale the density so it plots well</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> outcome_d = 5 * outcome_d - .5 <span class="co">// rescale AND MOVE the density so it plots well</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="kw">label</span> <span class="kw">variable</span> outcome_y <span class="st">"density: beneficial outcome"</span> <span class="co">// relabel y variable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Running C:\Users\agrogan\Desktop\GitHub\multilevel\visualizing-MLM\profile.do .
 
@@ -664,22 +669,22 @@ Figure&nbsp;9: Predicted Values From <code>margins</code> and <code>marginsplot<
 <p>You may have to experiment with whether scatterplots or line plots work best for displaying the x and y densities.</p>
 </blockquote>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">twoway</span> (<span class="kw">scatter</span> outcome warmth, mcolor(%10)) <span class="co">/// scatterplot w some transparency</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>(<span class="kw">lfit</span> outcome warmth) <span class="co">/// linear fit</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>(<span class="kw">line</span> warmth_d warmth_x) <span class="co">/// line plot of x density </span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>(<span class="kw">line</span> outcome_y outcome_d), <span class="co">/// line plot of y density (note flipped order)</span></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="bn">title</span>(<span class="st">"Outcome by Warmth"</span>) <span class="co">/// title</span></span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="bn">ytitle</span>(<span class="st">"beneficial outcome"</span>) <span class="co">/// manual ytitle</span></span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="bn">xtitle</span>(<span class="st">"parental warmth"</span>) <span class="co">/// manual xtitle</span></span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="bn">legend</span>(<span class="bn">position</span>(6) <span class="bn">rows</span>(2) ) <span class="co">/// legend at bottom; 2 rows</span></span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="kw">xlabel</span>(0 1 2 3 4 5 6 7) <span class="co">/// manual x labels</span></span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="bn">name</span>(mynewscatter, <span class="kw">replace</span>)</span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> mynewscatter.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">twoway</span> (<span class="kw">scatter</span> outcome warmth, mcolor(%10)) <span class="co">/// scatterplot w some transparency</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>(<span class="kw">lfit</span> outcome warmth) <span class="co">/// linear fit</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>(<span class="kw">line</span> warmth_d warmth_x) <span class="co">/// line plot of x density </span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>(<span class="kw">line</span> outcome_y outcome_d), <span class="co">/// line plot of y density (note flipped order)</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="bn">title</span>(<span class="st">"Outcome by Warmth"</span>) <span class="co">/// title</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="bn">ytitle</span>(<span class="st">"beneficial outcome"</span>) <span class="co">/// manual ytitle</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="bn">xtitle</span>(<span class="st">"parental warmth"</span>) <span class="co">/// manual xtitle</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="bn">legend</span>(<span class="bn">position</span>(6) <span class="bn">rows</span>(2) ) <span class="co">/// legend at bottom; 2 rows</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="kw">xlabel</span>(0 1 2 3 4 5 6 7) <span class="co">/// manual x labels</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="bn">name</span>(mynewscatter, <span class="kw">replace</span>)</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="kw">graph</span> <span class="kw">export</span> mynewscatter.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="mynewscatter.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" data-glightbox="description: .lightbox-desc-10" title="Scatterplot and Linear Fit With Marginal Density Plots"><img src="mynewscatter.png" class="img-fluid figure-img" style="width:75.0%" alt="Scatterplot and Linear Fit With Marginal Density Plots"></a></p>
+<p><a href="mynewscatter.png" class="lightbox" data-glightbox="description: .lightbox-desc-12" data-gallery="quarto-lightbox-gallery-12" title="Scatterplot and Linear Fit With Marginal Density Plots"><img src="mynewscatter.png" class="img-fluid figure-img" style="width:75.0%" alt="Scatterplot and Linear Fit With Marginal Density Plots"></a></p>
 <figcaption>Scatterplot and Linear Fit With Marginal Density Plots</figcaption>
 </figure>
 </div>
@@ -696,8 +701,10 @@ Figure&nbsp;9: Predicted Values From <code>margins</code> and <code>marginsplot<
 <span class="glightbox-desc lightbox-desc-6">Figure&nbsp;6: Small Multiples</span>
 <span class="glightbox-desc lightbox-desc-7">Figure&nbsp;7: Small Multiples With A Random Sample Of Countries</span>
 <span class="glightbox-desc lightbox-desc-8">Figure&nbsp;8: Predicted Values From <code>predict</code></span>
-<span class="glightbox-desc lightbox-desc-9">Figure&nbsp;9: Predicted Values From <code>margins</code> and <code>marginsplot</code></span>
-<span class="glightbox-desc lightbox-desc-10">Scatterplot and Linear Fit With Marginal Density Plots</span>
+<span class="glightbox-desc lightbox-desc-9">Figure&nbsp;9: Predicted Values From <code>predict</code> With Only Linear Fit</span>
+<span class="glightbox-desc lightbox-desc-10">Figure&nbsp;10: Spaghetti Plot With Predicted Values</span>
+<span class="glightbox-desc lightbox-desc-11">Figure&nbsp;11: Predicted Values From <code>margins</code> and <code>marginsplot</code></span>
+<span class="glightbox-desc lightbox-desc-12">Scatterplot and Linear Fit With Marginal Density Plots</span>
 </div>
 
 </section>
@@ -1118,7 +1125,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-<script>var lightboxQuarto = GLightbox({"openEffect":"zoom","descPosition":"bottom","closeEffect":"zoom","selector":".lightbox","loop":false});
+<script>var lightboxQuarto = GLightbox({"descPosition":"bottom","selector":".lightbox","loop":false,"closeEffect":"zoom","openEffect":"zoom"});
 window.onload = () => {
   lightboxQuarto.on('slide_before_load', (data) => {
     const { slideIndex, slideNode, slideConfig, player, trigger } = data;
