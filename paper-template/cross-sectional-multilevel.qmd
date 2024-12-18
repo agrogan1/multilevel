@@ -6,6 +6,7 @@ format:
   html:
     toc: true
     number-sections: true
+    anchor-sections: true
     theme:
       light: yeti
       dark: vapor
@@ -36,9 +37,9 @@ library(haven) # read and write to Stata
 
 # library(pander) # nice tables
 
-# library(lme4) # MLM's
+library(lme4) # MLM's
 
-# library(sjPlot) # nice tables for MLM
+library(sjPlot) # nice tables for MLM
 
 library(Statamarkdown) # use Stata!!!
 
