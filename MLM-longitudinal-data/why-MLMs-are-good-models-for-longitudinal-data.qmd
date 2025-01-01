@@ -1,0 +1,70 @@
+---
+title: "Why Multilevel Models Are Good Models For Longitudinal Data"
+subtitle: "Multilevel Models Offer An Incredibly Flexible Treatment of Time and Time Varying Processes and Covariates"
+author: "Andy Grogan-Kaylor"
+date: "today"
+format:
+  html:
+    toc: true
+    number-sections: true
+    anchor-sections: true
+    theme:
+      light: yeti
+      dark: vapor
+  pdf:
+    toc: true
+    number-sections: true
+    geometry: margin=1in
+editor: source
+bibliography: MLM.bib
+---
+
+# Data Structures
+
+Multilevel models for longitudinal data prefer data in long format.
+
+| id  | x1  | x2  | x3 | y1 | y2 | y3 |
+|-----|-----|-----|----|----|----|----|
+| 1   |     |     |    |    |    |    |
+| 2   |     |     |    |    |    |    |
+| 3   |     |     |    |    |    |    |
+
+: Data in WIDE format {#tbl-wide}
+
+| id  | t   | x   |  y  |
+|-----|-----|-----|-----|
+| 1   | 1   |     |     |
+| 1   | 2   |     |     |
+| 1   | 3   |     |     |
+| 2   | 1   |     |     |
+| 2   | 2   |     |     |
+| 2   | 3   |     |     |
+| 3   | 1   |     |     |
+| 3   | 2   |     |     |
+| 3   | 3   |     |     |
+
+: Data in LONG format {#tbl-long}
+
+# Equation
+
+$$y_{it} = \beta_0 + \beta_1 t_{it} + \beta_2 x_{it} + u_{0i} + e_{it}$$ {#eq-longitudinal-mlm}
+
+::: {.callout-tip}
+## Person-Observations
+
+Every row is a *person-observation* (person *i* observed at time *t*). Every person has *multiple rows*.
+:::
+
+# Advantages of the Multilevel Model for Longitudinal Data
+
+1. There is no multicollinearity issue with multiple $\beta$ coefficients for multiple waves of data. By inspection of @eq-longitudinal-mlm, we see that there is only a single $\beta$ coefficient for each variable, $\therefore$ no multicollinearity problem.
+2. *Unbalanced data is less of a problem*, the data structure and estimation are robust to these possibilities [@Singer2003; @Raudenbush2002].
+3. *Missing data is less of a problem *(assuming *MCAR*). When a person observation is missing, that person simply has fewer rows of data [@Hox2010; @Luke2004; @Raudenbush2002; @RabeHesketh2012]. But all rows of data are "matched" to the same person by $i$.
+3.  We have an *explicit function of time* $\beta_1 t$, and could treat time more flexibly, by creating a polynomial function of time e.g. by adding $\beta_2 t^2$, etc. [@Raudenbush2002; @Singer2003]. (We could even substitute $\beta \ln(t)$.)
+4.  Again, by inspection of @eq-longitudinal-mlm, we see that *multiple or many time-points are not a problem*. We would use the same algebra for 2 time points or for 10,000 time points. (Helpful when we start to think about intensive longitudinal data *e.g.* George Holden's *recording study*).
+5.  We are *measuring exactly the time at which events take place* for each individual [@Singer2003; @Luke2004]. Not simply saying *Wave 1*, *Wave 2*, *Wave 3*, etc...
+6.  Every individual could have a *completely different set of time points* and even a *completely different number of time points* [@Hox2010; @Hox2018; @Singer2003; @Luke2004].
+
+::: {.callout-caution}
+We do need to think carefully about what is the appropriate variable for time. Is it the variable we used to reshape the data--often `wave`--or some other more appropriate metric, like `age` or `time in study` [@Singer2003]?
+:::
