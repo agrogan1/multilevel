@@ -77,7 +77,7 @@ $y_i = \beta_0 + \beta_1 x + e_i$ (OLS)
 | 2   |     |     |    |    |    |    |
 | 3   |     |     |    |    |    |    |
 
-: Data in WIDE format
+: Data in WIDE format {#tbl-wide}
 
 # A First Longitudinal Model
 
@@ -245,7 +245,7 @@ digraph boxes_and_circles {
 | 3   | 2   |     |     |
 | 3   | 3   |     |     |
 
-: Data in LONG format
+: Data in LONG format {#tbl-long}
 
 ## Equation
 
@@ -262,6 +262,8 @@ cross out *j* write in *t*.
 $$y_{it} = \beta_0 + \beta_1 t + u_{0i} + e_{it}$$ {#eq-longitudinal-mlm}
 
 ::: {.callout-tip}
+## Person-Observations
+
 Every row is a *person-observation* (person *i* observed at time *t*). Every person has *multiple rows*.
 :::
 
