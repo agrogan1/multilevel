@@ -62,6 +62,10 @@
 
 [Why OLS Is A Bad Model For Longitudinal Data](https://agrogan1.github.io/multilevel/OLS-longitudinal-data/why-OLS-is-a-bad-model-for-longitudinal-data.html)
 
+## Why MLMs Are Good Models For Longitudinal Data
+
+[Why MLMs Are Good Models For Longitudinal Data](https://agrogan1.github.io/multilevel/MLM-longitudinal-data/why-MLMs-are-good-models-for-longitudinal-data.html)
+
 ## Fixed Effects Regression
 
 * [Derivation](https://agrogan1.github.io/multilevel/fixed-effects/fixed-effects.html)
