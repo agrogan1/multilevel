@@ -98,9 +98,10 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#data-structures" id="toc-data-structures" class="nav-link active" data-scroll-target="#data-structures"><span class="header-section-number">1</span> Data Structures</a></li>
-  <li><a href="#equation" id="toc-equation" class="nav-link" data-scroll-target="#equation"><span class="header-section-number">2</span> Equation</a></li>
-  <li><a href="#advantages-of-the-multilevel-model-for-longitudinal-data" id="toc-advantages-of-the-multilevel-model-for-longitudinal-data" class="nav-link" data-scroll-target="#advantages-of-the-multilevel-model-for-longitudinal-data"><span class="header-section-number">3</span> Advantages of the Multilevel Model for Longitudinal Data</a></li>
+  <li><a href="#visually" id="toc-visually" class="nav-link active" data-scroll-target="#visually"><span class="header-section-number">1</span> Visually</a></li>
+  <li><a href="#data-structures" id="toc-data-structures" class="nav-link" data-scroll-target="#data-structures"><span class="header-section-number">2</span> Data Structures</a></li>
+  <li><a href="#equation" id="toc-equation" class="nav-link" data-scroll-target="#equation"><span class="header-section-number">3</span> Equation</a></li>
+  <li><a href="#advantages-of-the-multilevel-model-for-longitudinal-data" id="toc-advantages-of-the-multilevel-model-for-longitudinal-data" class="nav-link" data-scroll-target="#advantages-of-the-multilevel-model-for-longitudinal-data"><span class="header-section-number">4</span> Advantages of the Multilevel Model for Longitudinal Data</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="why-MLMs-are-good-models-for-longitudinal-data.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
 </div>
@@ -138,8 +139,25 @@ window.Quarto = {
 </header>
 
 
-<section id="data-structures" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Data Structures</h1>
+<section id="visually" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Visually</h1>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-MLM" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-MLM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="why-MLMs-are-good-models-for-longitudinal-data_files/figure-html/fig-MLM-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-MLM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: A Multilevel Model For Longitudinal Data
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="data-structures" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Data Structures</h1>
 <p>Multilevel models for longitudinal data prefer data in long format.</p>
 <div id="tbl-wide" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -268,8 +286,8 @@ Table&nbsp;2: Data in LONG format
 </figure>
 </div>
 </section>
-<section id="equation" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Equation</h1>
+<section id="equation" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Equation</h1>
 <p><span id="eq-longitudinal-mlm"><span class="math display">\[y_{it} = \beta_0 + \beta_1 t_{it} + \beta_2 x_{it} + u_{0i} + e_{it} \tag{1}\]</span></span></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -285,8 +303,8 @@ Person-Observations
 </div>
 </div>
 </section>
-<section id="advantages-of-the-multilevel-model-for-longitudinal-data" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Advantages of the Multilevel Model for Longitudinal Data</h1>
+<section id="advantages-of-the-multilevel-model-for-longitudinal-data" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Advantages of the Multilevel Model for Longitudinal Data</h1>
 <ol type="1">
 <li>There is no multicollinearity issue with multiple <span class="math inline">\(\beta\)</span> coefficients for multiple waves of data. By inspection of <a href="#eq-longitudinal-mlm" class="quarto-xref">Equation&nbsp;1</a>, we see that there is only a single <span class="math inline">\(\beta\)</span> coefficient for each variable, <span class="math inline">\(\therefore\)</span> no multicollinearity problem.</li>
 <li><em>Unbalanced data is less of a problem</em>, the data structure and estimation are robust to these possibilities <span class="citation" data-cites="Singer2003 Raudenbush2002">(<a href="#ref-Singer2003" role="doc-biblioref">Singer and Willett 2003</a>; <a href="#ref-Raudenbush2002" role="doc-biblioref">Raudenbush and Bryk 2002</a>)</span>.</li>
