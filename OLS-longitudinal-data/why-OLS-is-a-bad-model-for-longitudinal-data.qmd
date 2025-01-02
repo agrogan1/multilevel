@@ -306,6 +306,66 @@ And we can even add $\beta x$ back into the model.
 We do need to think carefully about what is the appropriate variable for time. Is it the variable we used to reshape the data--often `wave`--or some other more appropriate metric, like `age` or `time in study` [@Singer2003]?
 :::
 
+## Visually
+
+```{r}
+#| echo: false
+
+set.seed(3846)
+
+N <- 10 # individuals
+
+N_t <- 3 # time points
+
+id <- rep(seq(1, N), each = N_t)
+
+t <- runif(N * N_t, min = 1, max = 10)
+
+u0 <- id
+
+e <- rnorm(N * N_t, 0, 1)
+
+y <- t + u0 + e
+
+mydata <- data.frame(id, t, y)
+
+mydata$y[1] <- NA # wave missing
+
+mydata$y[11] <- NA # wave missing
+
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| label: fig-MLM
+#| fig-cap: "A Multilevel Model For Longitudinal Data"
+
+library(ggplot2)
+
+mycaption <- paste("Individuals Start And End The Study At Different Times", 
+                   "\n",
+                   "Every Individual Has Different Time Points",
+                                      "\n",
+                   "Individuals Have Different Numbers of Time Points")
+
+ggplot(mydata,
+       aes(x = t,
+           y = y, 
+           color = factor(id))) +
+  geom_point(size = 3) +
+  geom_smooth(method="lm",
+              se = FALSE) +
+  theme_minimal() +
+  scale_color_viridis_d(name = "individual",
+                        option = "turbo") +
+  labs(title = "A Multilevel Model For Longitudinal Data",
+       subtitle = "Every Individual Has Their Own Regression Line", 
+       caption = mycaption)
+
+```
+
 ## Lastly
 
 ::: {.callout-caution}

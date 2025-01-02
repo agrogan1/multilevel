@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Andy Grogan-Kaylor">
-<meta name="dcterms.date" content="2025-01-01">
+<meta name="dcterms.date" content="2025-01-02">
 
 <title>Why OLS Is A Bad Model For Longitudinal Data</title>
 <style>
@@ -125,8 +125,9 @@ window.Quarto = {
   <li><a href="#how-to-address-missing-data" id="toc-how-to-address-missing-data" class="nav-link" data-scroll-target="#how-to-address-missing-data"><span class="header-section-number">10.2</span> How To Address Missing Data?</a></li>
   <li><a href="#further" id="toc-further" class="nav-link" data-scroll-target="#further"><span class="header-section-number">10.3</span> Further…</a></li>
   <li><a href="#appropriate-metric-for-time" id="toc-appropriate-metric-for-time" class="nav-link" data-scroll-target="#appropriate-metric-for-time"><span class="header-section-number">10.4</span> Appropriate Metric For Time</a></li>
-  <li><a href="#lastly" id="toc-lastly" class="nav-link" data-scroll-target="#lastly"><span class="header-section-number">10.5</span> Lastly</a></li>
-  <li><a href="#lets-continue-to-explore-how-this-model-works." id="toc-lets-continue-to-explore-how-this-model-works." class="nav-link" data-scroll-target="#lets-continue-to-explore-how-this-model-works."><span class="header-section-number">10.6</span> Let’s continue to explore how this model works.</a></li>
+  <li><a href="#visually" id="toc-visually" class="nav-link" data-scroll-target="#visually"><span class="header-section-number">10.5</span> Visually</a></li>
+  <li><a href="#lastly" id="toc-lastly" class="nav-link" data-scroll-target="#lastly"><span class="header-section-number">10.6</span> Lastly</a></li>
+  <li><a href="#lets-continue-to-explore-how-this-model-works." id="toc-lets-continue-to-explore-how-this-model-works." class="nav-link" data-scroll-target="#lets-continue-to-explore-how-this-model-works."><span class="header-section-number">10.7</span> Let’s continue to explore how this model works.</a></li>
   </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">11</span> References</a></li>
   </ul>
@@ -153,7 +154,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 1, 2025</p>
+      <p class="date">January 2, 2025</p>
     </div>
   </div>
   
@@ -201,8 +202,13 @@ blockquote {
 <blockquote class="blockquote">
 <p><strong>get substantive example</strong></p>
 </blockquote>
+<div id="tbl-wide" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-wide-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Data in WIDE format
+</figcaption>
+<div aria-describedby="tbl-wide-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
-<caption>Data in WIDE format</caption>
 <thead>
 <tr class="header">
 <th>id</th>
@@ -244,6 +250,9 @@ blockquote {
 </tr>
 </tbody>
 </table>
+</div>
+</figure>
+</div>
 </section>
 <section id="a-first-longitudinal-model" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> A First Longitudinal Model</h1>
@@ -383,8 +392,13 @@ We Reshape The Data and Use the SAME Notation!!!
 </div>
 <section id="data-in-long-format" class="level2" data-number="9.1">
 <h2 data-number="9.1" class="anchored" data-anchor-id="data-in-long-format"><span class="header-section-number">9.1</span> Data in Long Format</h2>
+<div id="tbl-long" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-long-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Data in LONG format
+</figcaption>
+<div aria-describedby="tbl-long-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="caption-top table">
-<caption>Data in LONG format</caption>
 <thead>
 <tr class="header">
 <th>id</th>
@@ -450,6 +464,9 @@ We Reshape The Data and Use the SAME Notation!!!
 </tr>
 </tbody>
 </table>
+</div>
+</figure>
+</div>
 </section>
 <section id="equation" class="level2" data-number="9.2">
 <h2 data-number="9.2" class="anchored" data-anchor-id="equation"><span class="header-section-number">9.2</span> Equation</h2>
@@ -539,8 +556,25 @@ Caution
 </div>
 </div>
 </section>
-<section id="lastly" class="level2" data-number="10.5">
-<h2 data-number="10.5" class="anchored" data-anchor-id="lastly"><span class="header-section-number">10.5</span> Lastly</h2>
+<section id="visually" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="visually"><span class="header-section-number">10.5</span> Visually</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-MLM" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-MLM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="why-OLS-is-a-bad-model-for-longitudinal-data_files/figure-html/fig-MLM-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-MLM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: A Multilevel Model For Longitudinal Data
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="lastly" class="level2" data-number="10.6">
+<h2 data-number="10.6" class="anchored" data-anchor-id="lastly"><span class="header-section-number">10.6</span> Lastly</h2>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -555,8 +589,8 @@ Caution
 </div>
 </div>
 </section>
-<section id="lets-continue-to-explore-how-this-model-works." class="level2" data-number="10.6">
-<h2 data-number="10.6" class="anchored" data-anchor-id="lets-continue-to-explore-how-this-model-works."><span class="header-section-number">10.6</span> Let’s continue to explore how this model works.</h2>
+<section id="lets-continue-to-explore-how-this-model-works." class="level2" data-number="10.7">
+<h2 data-number="10.7" class="anchored" data-anchor-id="lets-continue-to-explore-how-this-model-works."><span class="header-section-number">10.7</span> Let’s continue to explore how this model works.</h2>
 </section>
 </section>
 <section id="references" class="level1 unnumbered" data-number="11">
@@ -587,7 +621,7 @@ Rabe-Hesketh, Sophia, and Anders Skrondal. 2012. <em>Multilevel and Longitudinal
 Raudenbush, Stephen W, and Anthony S Bryk. 2002. <em>Hierarchical Linear Models: Applications and Data Analysis Methods</em>. Sage Publications.
 </div>
 <div id="ref-Singer2003" class="csl-entry" role="listitem">
-Singer, Judith D, and John B Willett. 2003. <em>Applied Longitudinal Data Analysis : Modeling Change and Event Occurrence</em>. <em>Applied Longitudinal Data Analysis : Modeling Change and Event Occurrence</em>. Oxford University Press.
+Singer, Judith D, and John B Willett. 2003. <em>Applied Longitudinal Data Analysis : Modeling Change and Event Occurrence</em>. Oxford University Press.
 </div>
 <div id="ref-Whyte2016" class="csl-entry" role="listitem">
 Whyte, David, and Krista Tippett. 2016. <span>“<span>D</span>avid <span>W</span>hyte: Seeking Language Large Enough.”</span> The On Being Project. <a href="https://onbeing.org/programs/david-whyte-seeking-language-large-enough/">https://onbeing.org/programs/david-whyte-seeking-language-large-enough/</a>.
