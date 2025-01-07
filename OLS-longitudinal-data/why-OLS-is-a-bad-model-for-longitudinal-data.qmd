@@ -271,9 +271,10 @@ Every row is a *person-observation* (person *i* observed at time *t*). Every per
 
 ## First...
 
-1. No multicollinearity issue. By inspection of @eq-longitudinal-mlm, we see that there is only a single $\beta$ coefficient for each variable, $\therefore$ no multicollinearity problem.
-2. *Unbalanced data is less of a problem*, the data structure and estimation are robust to these possibilities [@Singer2003; @Raudenbush2002].
-3. *Missing data is less of a problem *(assuming *MCAR*). When a person observation is missing, that person simply has fewer rows of data [@Hox2010; @Luke2004; @Raudenbush2002; @RabeHesketh2022]. But all rows of data are "matched" to the same person by $i$.
+1. Using the algebra in @eq-longitudinal-mlm, these models can easily accommodate both time varying and time invariant coefficients [@Hox2010; @Hox2018; @Singer2003; @Raudenbush2002; @RabeHesketh2022].
+2. No multicollinearity issue. By inspection of @eq-longitudinal-mlm, we see that there is only a single $\beta$ coefficient for each variable, $\therefore$ no multicollinearity problem.
+3. *Unbalanced data is less of a problem*, the data structure and estimation are robust to these possibilities [@Singer2003; @Raudenbush2002].
+4. *Missing data is less of a problem *(assuming *MCAR*). When a person observation is missing, that person simply has fewer rows of data [@Hox2010; @Luke2004; @Raudenbush2002; @RabeHesketh2022]. But all rows of data are "matched" to the same person by $i$.
 
 ## How To Address Missing Data?
 
@@ -293,10 +294,10 @@ It is sometimes best to (a) do nothing; (b) do something complicated.
 
 ## Further...
 
-3.  We now have an *explicit function of time* $\beta_1 t$, and could treat time more flexibly, by creating a polynomial function of time e.g. by adding $\beta_2 t^2$, etc. [@Raudenbush2002; @Singer2003]. (We could even substitute $\beta \ln(t)$.)
-4.  Again, by inspection of @eq-longitudinal-mlm, we see that *multiple or many time-points are not a problem*. Same algebra for 2 time points as for 10,000 time points. (Helpful when we start to think about intensive longitudinal data *e.g.* George Holden's *recording study*).
-5.  We are *measuring exactly the time at which events take place* for each individual [@Singer2003; @Luke2004]. Not simply saying *Wave 1*, *Wave 2*, *Wave 3*, etc...
-6.  Every individual could have a *completely different set of time points* and even a *completely different number of time points* [@Hox2010; @Hox2018; @Singer2003; @Luke2004].
+5.  We now have an *explicit function of time* $\beta_1 t$, and could treat time more flexibly, by creating a polynomial function of time e.g. by adding $\beta_2 t^2$, etc. [@Raudenbush2002; @Singer2003]. (We could even substitute $\beta \ln(t)$.)
+6.  Again, by inspection of @eq-longitudinal-mlm, we see that *multiple or many time-points are not a problem*. Same algebra for 2 time points as for 10,000 time points. (Helpful when we start to think about intensive longitudinal data *e.g.* George Holden's *recording study*).
+7.  We are *measuring exactly the time at which events take place* for each individual [@Singer2003; @Luke2004]. Not simply saying *Wave 1*, *Wave 2*, *Wave 3*, etc...
+8.  Every individual could have a *completely different set of time points* and even a *completely different number of time points* [@Hox2010; @Hox2018; @Singer2003; @Luke2004].
 
 And we can even add $\beta x$ back into the model.
 
