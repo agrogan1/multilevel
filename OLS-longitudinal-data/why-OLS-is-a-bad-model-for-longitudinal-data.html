@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Andy Grogan-Kaylor">
-<meta name="dcterms.date" content="2025-01-02">
+<meta name="dcterms.date" content="2025-01-07">
 
 <title>Why OLS Is A Bad Model For Longitudinal Data</title>
 <style>
@@ -154,7 +154,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 2, 2025</p>
+      <p class="date">January 7, 2025</p>
     </div>
   </div>
   
@@ -502,7 +502,7 @@ Person-Observations
 <ol type="1">
 <li>No multicollinearity issue. By inspection of <a href="#eq-longitudinal-mlm" class="quarto-xref">Equation&nbsp;2</a>, we see that there is only a single <span class="math inline">\(\beta\)</span> coefficient for each variable, <span class="math inline">\(\therefore\)</span> no multicollinearity problem.</li>
 <li><em>Unbalanced data is less of a problem</em>, the data structure and estimation are robust to these possibilities <span class="citation" data-cites="Singer2003 Raudenbush2002">(<a href="#ref-Singer2003" role="doc-biblioref">Singer and Willett 2003</a>; <a href="#ref-Raudenbush2002" role="doc-biblioref">Raudenbush and Bryk 2002</a>)</span>.</li>
-<li><em>Missing data is less of a problem </em>(assuming <em>MCAR</em>). When a person observation is missing, that person simply has fewer rows of data <span class="citation" data-cites="Hox2010 Luke2004 Raudenbush2002 RabeHesketh2012">(<a href="#ref-Hox2010" role="doc-biblioref">J. Hox 2010</a>; <a href="#ref-Luke2004" role="doc-biblioref">Luke 2004</a>; <a href="#ref-Raudenbush2002" role="doc-biblioref">Raudenbush and Bryk 2002</a>; <a href="#ref-RabeHesketh2012" role="doc-biblioref">Rabe-Hesketh and Skrondal 2012</a>)</span>. But all rows of data are “matched” to the same person by <span class="math inline">\(i\)</span>.</li>
+<li><em>Missing data is less of a problem </em>(assuming <em>MCAR</em>). When a person observation is missing, that person simply has fewer rows of data <span class="citation" data-cites="Hox2010 Luke2004 Raudenbush2002 RabeHesketh2022">(<a href="#ref-Hox2010" role="doc-biblioref">J. Hox 2010</a>; <a href="#ref-Luke2004" role="doc-biblioref">Luke 2004</a>; <a href="#ref-Raudenbush2002" role="doc-biblioref">Raudenbush and Bryk 2002</a>; <a href="#ref-RabeHesketh2022" role="doc-biblioref">Rabe-Hesketh and Skrondal 2022</a>)</span>. But all rows of data are “matched” to the same person by <span class="math inline">\(i\)</span>.</li>
 </ol>
 </section>
 <section id="how-to-address-missing-data" class="level2" data-number="10.2">
@@ -614,8 +614,8 @@ Luke, Douglas. 2004. <em>Multilevel Modeling</em>. SAGE Publications, Inc. <a hr
 <div id="ref-Poincare1908" class="csl-entry" role="listitem">
 Poincare, Henri. 1908. <em>Science Et Methode</em>. Flammarion.
 </div>
-<div id="ref-RabeHesketh2012" class="csl-entry" role="listitem">
-Rabe-Hesketh, Sophia, and Anders Skrondal. 2012. <em>Multilevel and Longitudinal Modeling Using Stata - Volume i: Continuous Responses</em>. <em>Stata Press</em>. 3rd ed. Stata Press.
+<div id="ref-RabeHesketh2022" class="csl-entry" role="listitem">
+Rabe-Hesketh, Sophia, and Anders Skrondal. 2022. <em>Multilevel and Longitudinal Modeling Using Stata</em>. <em>Stata Press</em>. 4th ed. Stata Press.
 </div>
 <div id="ref-Raudenbush2002" class="csl-entry" role="listitem">
 Raudenbush, Stephen W, and Anthony S Bryk. 2002. <em>Hierarchical Linear Models: Applications and Data Analysis Methods</em>. Sage Publications.

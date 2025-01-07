@@ -273,7 +273,7 @@ Every row is a *person-observation* (person *i* observed at time *t*). Every per
 
 1. No multicollinearity issue. By inspection of @eq-longitudinal-mlm, we see that there is only a single $\beta$ coefficient for each variable, $\therefore$ no multicollinearity problem.
 2. *Unbalanced data is less of a problem*, the data structure and estimation are robust to these possibilities [@Singer2003; @Raudenbush2002].
-3. *Missing data is less of a problem *(assuming *MCAR*). When a person observation is missing, that person simply has fewer rows of data [@Hox2010; @Luke2004; @Raudenbush2002; @RabeHesketh2012]. But all rows of data are "matched" to the same person by $i$.
+3. *Missing data is less of a problem *(assuming *MCAR*). When a person observation is missing, that person simply has fewer rows of data [@Hox2010; @Luke2004; @Raudenbush2002; @RabeHesketh2022]. But all rows of data are "matched" to the same person by $i$.
 
 ## How To Address Missing Data?
 
