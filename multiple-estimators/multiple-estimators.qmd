@@ -1,0 +1,37 @@
+---
+title: "Multiple Estimators for Longitudinal Data"
+subtitle: "Multilevel Models, Random Effects, Fixed Effects, and Correlated Random Effects"
+author: "Andrew Grogan-Kaylor"
+date: "today"
+format:
+  html:
+    toc: false
+    number-sections: true
+    theme:
+      light: yeti
+      dark: vapor
+  pdf:
+    toc: false
+---
+
+All estimators use *essentially* the same equation:
+
+$$y_{it} = \beta_0 + \beta_1 x_{it} + \beta_2 z_{it} + u_{0i} + e_{it}$$ {#eq-model}
+
+::: {.callout-tip}
+## Within and Between Variation
+
+Some estimators divide $x_{it}$ into a *within* component ($x_{it} - \overline{x}_i$), and a *between* ($\overline{x}_i - \overline{x}$) component.
+:::
+
+**Multilevel Models** estimate @eq-model. Both *within* and *between* variation is included in the estimates of $\beta$.
+
+**Random Effects Models** estimate @eq-model. Both *within* and *between* variation is included in the estimates of $\beta$.
+
+**Between Effects Models** (rarely used) estimate @eq-model. Only *between* variation is included in the estimates of $\beta$.
+
+**Fixed Effects Models** estimate @eq-model. Only *within* variation is included in the estimates of $\beta$.
+
+**Correlated Random Effects Models** estimate @eq-model. Separate $\beta$ parameters are provided for *within* and *between* variation.
+
+
