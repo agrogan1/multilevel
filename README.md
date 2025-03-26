@@ -85,6 +85,7 @@
 
 * [Multiple Methods for Analyzing Clustered Data](https://github.com/agrogan1/multilevel/tree/master/multiple-methods-for-clustered-data)
 * [Multiple Methods of Longitudinal Data Analysis](https://agrogan1.github.io/multilevel/longitudinal-data-analysis/longitudinal-data-analysis.html)
+* [Multiple Estimators for Longitudinal Data](https://agrogan1.github.io/multilevel/multiple-estimators/multiple-estimators.html)
 
 ## Multilevel Mediation
 
