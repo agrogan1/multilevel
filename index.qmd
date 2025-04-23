@@ -40,7 +40,7 @@ library(plotly)
 
 ```
 
-![Neighborhood, School and Country Effects](town.png){width=75%}
+![Neighborhood, School and Country Effects](communities.png){width=75%}
 
 Multilevel models have become a standard statistical tool for quantitative research on neighborhoods, communities and schools.  The cross-sectional multilevel model is appropriate for situations in which respondents are clustered inside larger social or geographic units e.g. people in geographic areas, residents in neighborhoods, or children in classrooms and/or schools. Cross-sectional multilevel models enable *multilevel thinking* at multiple levels (units of analysis) and conceptualizing effects at the *country*, *community*, *family*, and *individual* levels.
 
