@@ -1,30 +1,22 @@
 ---
 title: "`lmer` Demo"
 author: "Andy Grogan-Kaylor"
-date: "`r Sys.Date()`"
-output:
-  pdf_document: 
-    fig_height: 4
-    highlight: tango
-    latex_engine: xelatex
-    number_sections: yes
-    toc: yes
-  distill::distill_article:
-    code_folding: true
-    highlight: haddock
-    toc: yes
-    number_sections: yes
+date: "today"
+format:
+  html: 
+    toc: true
+    number-sections: true
+    theme: yeti
+    css: lmer-demo.css
+    lightbox: true
+  pdf: 
+    toc: true
+    number-sections: true
 ---
 
-```{r setup, include=FALSE}
-
-knitr::opts_chunk$set(echo = TRUE,
-                      warning = FALSE,
-                      message = FALSE)
-
-```
-
-```{r, fig.cap="Norway Spruce and Larch Forest in Austrian Alps, https://ec.europa.eu/jrc/en/research-topic/forestry/qr-tree-project/norway-spruce", echo=FALSE}
+```{r}
+#| fig-cap: "Norway Spruce and Larch Forest in Austrian Alps, https://ec.europa.eu/jrc/en/research-topic/forestry/qr-tree-project/norway-spruce"
+#| echo: false
 
 knitr::include_graphics("fotolia-small.jpg")
 
@@ -32,12 +24,13 @@ knitr::include_graphics("fotolia-small.jpg")
 
 # Get Data
 
-Data are from *von Guttenberg's Norway spruce (Picea abies [L.] Karst) tree measurement data*, from: Andrew Robinson and Jeff Hamann (2016). FAwR: Functions and Datasets for "Forest Analytics with R", R package version 1.1.1., https://CRAN.R-project.org/package=FAwR
+Data are from *von Guttenberg's Norway spruce (Picea abies [L.] Karst) tree measurement data*, from: Andrew Robinson and Jeff Hamann (2016). FAwR: Functions and Datasets for "Forest Analytics with R", R package version 1.1.1., [https://CRAN.R-project.org/package=FAwR](https://CRAN.R-project.org/package=FAwR)
 
 > "The data are measures from 107 trees. The trees were selected as being of average size from healthy and well stocked stands in the Alps."
 
 
 ```{r}
+#| message: false
 
 library(FAwR) # Forest Analytics with R
 
@@ -46,6 +39,7 @@ data("gutten") # Von Guttenberg Tree Data
 ```
 
 ```{r}
+#| echo: false
 
 library(haven) # write to Stata
 
@@ -76,11 +70,18 @@ gutten$age.base.C <- gutten$age.base - mean(gutten$age.base)
 
 # Graph
 
-```{r, fig.cap="Tree Height by Tree Age"}
+```{r}
+#| message: false
 
 library(ggplot2)
 
 library(patchwork)
+
+```
+
+
+```{r}
+#| fig-cap: "Tree Height by Tree Age"
 
 p_uncentered <- ggplot(gutten,
                        aes(x = age.base,
