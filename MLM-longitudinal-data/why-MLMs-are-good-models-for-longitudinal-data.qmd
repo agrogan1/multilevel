@@ -11,6 +11,7 @@ format:
     theme:
       light: yeti
       dark: vapor
+    lightbox: true
   pdf:
     toc: true
     number-sections: true
