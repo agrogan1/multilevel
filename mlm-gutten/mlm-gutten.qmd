@@ -1,0 +1,134 @@
+---
+title:  "Multilevel Models with the Von Guttenberg Tree Data"
+author: "Andy Grogan-Kaylor"
+date: "today"
+format:
+  html:
+    toc: true
+    number-sections: true
+    theme:
+      light: yeti
+      dark: vapor
+    css: styles.css
+    lightbox: true
+  pdf:
+    toc: false
+    toc-depth: 3
+    number-sections: true
+    colorlinks: true
+---
+
+![Norway Spruce and Larch Forest in Austrian Alps](fotolia-small.jpg)
+
+Figure Credit:  [https://ec.europa.eu/jrc/en/research-topic/forestry/qr-tree-project/norway-spruce](https://ec.europa.eu/jrc/en/research-topic/forestry/qr-tree-project/norway-spruce)
+
+![The Lorax](lorax-small.png)
+
+```{r}
+#| output: false
+#| echo: false
+
+library(Statamarkdown)
+
+```
+
+# Data Source 🌲
+
+The data used in this example are derived from the R package *Functions and Datasets for "Forest Analytics with R"*.
+
+According to the documentation, the source of these data are: "von Guttenberg’s Norway spruce (Picea abies [L.] Karst) tree measurement data."
+
+![Old Tjikko, a 9,550 Year Old Norway Spruce in Sweden](Old-Tjikko-Small.jpg)
+
+The documentation goes on to further note that:
+
+> "The data are measures from 107 trees. The trees were selected as being of average size from healthy and well stocked stands in the Alps."
+
+```{stata, collectcode=TRUE}
+
+use gutten.dta, clear
+
+```
+
+`use "https://github.com/agrogan1/multilevel/raw/master/mlm-R2-gutten/gutten.dta", clear` should work to obtain the data over the web. Please let me know if it does not.
+
+# Variables 🌲
+
+`site` Growth *quality* class of the tree’s habitat. 5 levels.
+
+`location` Distinguishes tree *location*. 7 levels.
+
+`tree` An identifier for the tree within location.
+
+`age_base` The tree age taken at ground level.
+
+> It might be best to use a centered age variable, centered at the grand mean of tree age: 
+
+```{stata, collectcode=TRUE}
+
+egen ageMEAN = mean(age_base) // mean value
+	
+generate ageCENTERED = age_base - ageMEAN // centered value
+
+```
+
+`height` Tree height, m.
+
+`dbh_cm` Tree diameter, cm.
+
+`volume` Tree volume.
+
+`age_bh` Tree age taken at 1.3 m.
+
+`tree_ID` A factor uniquely identifying the tree.
+
+# Your Quantitative Forestry Tasks (Should You Choose To Accept Them) 🌲
+
+I clearly need to learn more about quantitative approaches to forestry, but I would like to model tree height as a function of tree age (measured at base), site, and location.
+
+# Spaghetti Plot 🌲
+
+Use `spagplot` to examine these relationships. Remember that the `spagplot` syntax is `spagplot y x, id(id)`.  What is the most appropriate id variable here? 
+
+> `spagplot` can now be difficult to find, but for the time being, you can find it by typing `net from https://agrogan1.github.io/multilevel/spagplot` in Stata.
+
+```{stata}
+#| output:false
+
+spagplot height ageCENTERED, id(tree_ID) 
+	
+graph export myspagplot.png, width(2000) replace
+
+```
+
+`spagplot height ageCENTERED, id(tree_ID) scheme(s1rcolor)` also works well here.	
+	
+![Spaghetti Plot of Predicted Height by Age](myspagplot.png)
+
+# Multilevel Models 🌲
+
+## Unconditional Model
+
+Run an unconditional model with `mixed`. What Stata syntax do you use? What is the corresponding equation? What question is this syntax and equation asking and answering? Calculate the ICC. What does this number tell you?
+
+## Conditional Model 
+
+Now run a model with `mixed` where you examine the relationship of tree age, site, and location with tree height. Do any of your variables need to be treated as indicator (`i.`) variables? 
+
+What Stata syntax do you use? What is the corresponding equation? What question is this syntax and equation asking and answering? What do you find?
+
+::: {.callout-tip}
+## Quadratic Term?
+
+What if you examine $(\text{age of tree})^2$ as part of your model?
+
+`generate ageMEAN2 = ageMEAN^2`
+:::
+
+::: {.callout-tip}
+## Conditional ICC
+
+Does the ICC have any meaning after your *conditional* model?
+:::
+
+
