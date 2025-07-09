@@ -46,7 +46,7 @@ library(Statamarkdown)
 
 An evolving set of notes on visualizing results from multilevel models.
 
-The examples below use the `simulated_multilevel_data.dta` file from my text book on *Multilevel Thinking*. Here is a [link](https://agrogan1.github.io/multilevel-workshop/) to download the data. 
+The examples below use the `simulated_multilevel_data.dta` file from my text book on *Multilevel Thinking*. Here is a [link](https://agrogan1.github.io/multilevel-workshop/#simulated-multilevel-data) to download the data. 
 
 This document relies on the extraordinary `Statamarkdown` library [@Hemken2023].
 
