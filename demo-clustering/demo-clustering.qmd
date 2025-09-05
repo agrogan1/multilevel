@@ -12,18 +12,9 @@ format:
     theme:
       light: yeti
       dark: vapor
+    css: demo-clustering.css
     lightbox: true
 ---
-
-```{css, echo=FALSE}
-
-blockquote {
-  color: black;
-  border-left: 2px solid #FFCB05; 
-  padding: 0.5em 10px;
-}
-  
-```
 
 ```{r}
 #| output: false
@@ -90,7 +81,11 @@ mydata <- data.frame(id,
 
 ```
 
-> The animation below illustrates the process of simulating the data.
+::: {.callout-note}
+## Simulating The Data
+
+The animation below illustrates the process of simulating the data.
+:::
 
 ```{r}
 
@@ -104,9 +99,11 @@ ggplot(mydata,
   geom_text(aes(x = x_group,
                 y = y_group),
             color = "white",
+            size = 9,
             show.legend = FALSE) +
   geom_point(aes(x = x_individual, 
                 y = y_individual),
+             size = 3,
              show.legend = FALSE) + 
   transition_layers(layer_length = 1,
                     transition_length = 7) +
