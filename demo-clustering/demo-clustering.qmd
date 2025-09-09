@@ -124,6 +124,7 @@ ggplot(mydata,
 ## OLS
 
 ```{r}
+#| html-table-processing: none
 
 myOLS <- lm(y_individual ~ x_individual, data = mydata)
 
