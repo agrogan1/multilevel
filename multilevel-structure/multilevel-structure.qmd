@@ -17,6 +17,7 @@ format:
     theme:
       light: yeti
       dark: vapor
+    lightbox: true
 bibliography: multilevel-structure.bib
 ---
 
