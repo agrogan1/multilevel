@@ -17,14 +17,12 @@ format:
     theme:
       light: yeti
       dark: vapor
-  pdf:
-    toc: false
 bibliography: multilevel-structure.bib
 ---
 
 # Introduction
 
-Associations between two variables can be *very different* (or even *reversed*) depending upon whether or not the analysis is "aware" of the grouped, nested, or clustered nature of the data [@Nieuwenhuis2015]. In multilevel analysis, the groups are often neighborhoods, communities, or even different countries.
+Associations between two variables can be *very different* (or even *reversed*) depending upon whether or not the analysis is "aware" of the grouped, nested, or clustered nature of the data [@Nieuwenhuis2015; @DiezRoux2003; @Gelman2007]. In multilevel analysis, the groups are often neighborhoods, communities, or even different countries.
 
 A model that is "aware" of the clustered nature of the data may provide very different--likely better--substantive conclusions than a model that is not aware of the clustered nature of the data. This phenomena is closely related to the "ecological fallacy": the idea that group level and individual level relationships are not necessarily the same [@FIREBAUGH20014023].
 
@@ -137,13 +135,15 @@ The OLS model with only *x* as a covariate is not aware of the grouped structure
 
 ```{r}
 #| message: false
+#| html-table-processing: none
 
 myOLS <- lm(y ~ x, data = multilevelstructure)
 
 sjPlot::tab_model(myOLS,
                   show.se = TRUE,
                   show.ci = FALSE,
-                  show.stat = TRUE)
+                  show.stat = TRUE,
+                  dv.labels = c("OLS"))
 
 ```
 
@@ -159,7 +159,21 @@ myMLM <- lmer(y ~ x + (1 | group), data = multilevelstructure)
 sjPlot::tab_model(myMLM,
                   show.se = TRUE,
                   show.ci = FALSE,
-                  show.stat = TRUE)
+                  show.stat = TRUE,
+                  dv.labels = c("MLM"))
+
+```
+
+# Compare The Models
+
+```{r}
+#| message: false
+
+sjPlot::tab_model(myOLS, myMLM,
+                  show.se = TRUE,
+                  show.ci = FALSE,
+                  show.stat = TRUE,
+                  dv.labels = c("OLS", "MLM"))
 
 ```
 
