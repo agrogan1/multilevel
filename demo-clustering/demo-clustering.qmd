@@ -111,7 +111,7 @@ ggplot(mydata,
   enter_grow() +
   exit_fade() +
   exit_shrink() +
-  labs(title = "Illustrating the Process of Simulating the Data",
+  labs(title = "Illustrating the Process of Simulating Clustered Data",
        x = "x",
        y = "y") +
   theme_minimal() +
