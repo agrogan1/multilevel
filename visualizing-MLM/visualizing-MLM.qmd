@@ -12,6 +12,7 @@ format:
     highlight-style: haddock
     lightbox: true
     anchor-sections: true
+    css: visualizing-MLM.css
   pdf:
     toc: true
     toc-depth: 3
