@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Andy Grogan-Kaylor">
-<meta name="dcterms.date" content="2025-09-09">
+<meta name="dcterms.date" content="2025-09-20">
 <meta name="description" content="Structure of the data may be different at different levels. Results may differ greatly when we apply multilevel thinking.">
 
 <title>Multilevel Structure</title>
@@ -99,6 +99,16 @@ div.csl-indent {
 <script src="multilevel-structure_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="multilevel-structure_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="multilevel-structure_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<link href="multilevel-structure_files/libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="multilevel-structure_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="multilevel-structure_files/libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="multilevel-structure_files/libs/datatables-binding-0.33/datatables.js"></script>
+<script src="multilevel-structure_files/libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="multilevel-structure_files/libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="multilevel-structure_files/libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="multilevel-structure_files/libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="multilevel-structure_files/libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="multilevel-structure_files/libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
 
 
 </head>
@@ -303,7 +313,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 9, 2025</p>
+      <p class="date">September 20, 2025</p>
     </div>
   </div>
   
@@ -338,7 +348,11 @@ div.csl-indent {
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lme4) <span class="co"># MLM</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjPlot) <span class="co"># nice tables for MLM</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjPlot) <span class="co"># nice tables for MLM</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT) <span class="co"># nice tables</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) <span class="co"># data wrangling</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -381,8 +395,15 @@ div.csl-indent {
 <span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>group <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(group1, group2, group3))</span>
 <span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>multilevelstructure <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(x, y, group) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>multilevelstructure <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(x, y, group) </span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="fu">datatable</span>(multilevelstructure) <span class="sc">%&gt;%</span></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">formatRound</span>(<span class="st">'y'</span>, <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-15f39ab1bb379070a688" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-15f39ab1bb379070a688">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24","25","26","27","28","29","30"],[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],[50.67440476463187,50.78016727931242,51.82116690593687,52.54372915184581,54.94587332845288,56.8638980276526,55.53434352892633,59.57696264336702,59.06161657502003,59.21966860577276,40.67440476463187,40.78016727931242,41.82116690593687,42.54372915184581,44.94587332845288,46.8638980276526,45.53434352892633,49.57696264336702,49.06161657502003,49.21966860577276,30.67440476463187,30.78016727931242,31.82116690593687,32.54372915184581,34.94587332845288,36.8638980276526,35.53434352892633,39.57696264336702,39.06161657502003,39.21966860577276],["1","1","1","1","1","1","1","1","1","1","2","2","2","2","2","2","2","2","2","2","3","3","3","3","3","3","3","3","3","3"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>x<\/th>\n      <th>y<\/th>\n      <th>group<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":2,"render":"function(data, type, row, meta) {\n    return type !== 'display' ? data : DTWidget.formatRound(data, 2, 3, \",\", \".\", null);\n  }"},{"className":"dt-right","targets":[1,2]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"x","targets":1},{"name":"y","targets":2},{"name":"group","targets":3}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":["options.columnDefs.0.render"],"jsHooks":[]}</script>
+</div>
 </div>
 </section>
 <section id="graphs" class="level1" data-number="5">

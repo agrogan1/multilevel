@@ -46,6 +46,10 @@ library(lme4) # MLM
 
 library(sjPlot) # nice tables for MLM
 
+library(DT) # nice tables
+
+library(dplyr) # data wrangling
+
 ```
 
 # Simulate Some Data
@@ -88,6 +92,9 @@ y <- c(y1, y2, y3)
 group <- factor(c(group1, group2, group3))
 
 multilevelstructure <- data.frame(x, y, group) 
+
+datatable(multilevelstructure) %>%
+  formatRound('y', 2)
 
 ```
 
