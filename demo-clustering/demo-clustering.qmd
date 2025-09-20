@@ -14,6 +14,7 @@ format:
       dark: vapor
     css: demo-clustering.css
     lightbox: true
+bibliography: demo-clustering.bib
 ---
 
 ```{r}
@@ -38,9 +39,9 @@ library(sjPlot) # nice tables for MLM
 
 # Grouped and Individual Data
 
-> "The data were generated from random numbers, and there is no relation between X and Y at all. Firstly, values of X and Y were generated for each 'subject,' then a further random number was added to make the individual observation."
+@BlandAltman1994 suggested the following procedure for simulating some data:
 
-From Bland and Altman, *BMJ*, 1994, 308, 896.
+> "The data were generated from random numbers, and there is no relation between X and Y at all. Firstly, values of X and Y were generated for each 'subject,' then a further random number was added to make the individual observation." [@BlandAltman1994]
 
 So... we follow their procedure.
 
@@ -131,6 +132,7 @@ myOLS <- lm(y_individual ~ x_individual, data = mydata)
 # summary(myOLS)
 
 sjPlot::tab_model(myOLS,
+                  dv.labels = c("OLS"),
                   show.se = TRUE,
                   show.ci = FALSE,
                   show.stat = TRUE)
@@ -149,6 +151,7 @@ myMLM <- lmer(y_individual ~ x_individual + (1 | group_num),
 # summary(myMLM)
 
 sjPlot::tab_model(myMLM,
+                  dv.labels = c("MLM"),
                   show.se = TRUE,
                   show.ci = FALSE,
                   show.stat = TRUE)
