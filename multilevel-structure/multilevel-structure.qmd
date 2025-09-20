@@ -191,7 +191,7 @@ When might a situation like this arise in practice? This is surprisingly difficu
 
 Imagine that *x* is a protective factor, or an intervention or treatment. Imagine that *y* is a desirable outcome, like improved mental health or psychological well being.
 
-Now imagine that community members provide more of the protective factor or more of the intervention in communities where there are lower levels of the desirable outcome. If we think about it, this is a very plausible situation. 
+Now imagine that people provide more of the protective factor or more of the intervention in communities where there are lower levels of the desirable outcome. If we think about it, this is a very plausible situation. 
 
 ::: {.callout-tip}
 ## A Naive Analysis Would Misconstrue The Results
