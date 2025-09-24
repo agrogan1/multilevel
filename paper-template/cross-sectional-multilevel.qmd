@@ -48,9 +48,13 @@ library(Statamarkdown) # use Stata!!!
 # The Relationship of A and B to C
 
 ::: column-margin
-Alternative title ideas: "Predictors of \_\_\_\_\_";
+::: {.callout-tip}
+## Alternative title ideas
+
+"Predictors of \_\_\_\_\_";
 
 "A Multilevel Analysis of \_\_\_\_"
+:::
 :::
 
 # Introduction
