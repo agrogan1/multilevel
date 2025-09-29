@@ -190,7 +190,7 @@ Note also you can make use of one of Stata's `scheme`s to make your graphs visua
 
 Asjad Naqvi has a wonderful [set of graph schemes](https://github.com/asjadnaqvi/stata-schemepack).
 
-And the daring are welcome to try my "Michigan" graph scheme, available [here](https://agrogan1.github.io/Stata/michigan-graph-scheme/), *caveat emptor*.
+And the daring are welcome to try my ["Michigan" Stata graph scheme](https://agrogan1.github.io/Stata/michigan-graph-scheme/), or [R package for Michigan colors](https://agrogan1.github.io/michigancolors/), *caveat emptor*.
 :::
 :::
 
