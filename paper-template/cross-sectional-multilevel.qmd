@@ -127,7 +127,7 @@ Tell me in words how your variables are distributed in your sample and include a
 
 ::: column-margin
 ::: {.callout-tip}
-If all my variables are continuous, it's appropriate to show means. If some of my variables are categorical, it's more appropriate to show frequency distributions.
+If all my variables are continuous, it's appropriate to show means. If some of my variables are categorical, it's more appropriate to show frequency distributions. The new Stata command `dtable` can be quite helpful in building tables of descriptive statistics e.g. `dtable y x i.z`.
 :::
 :::
 
@@ -162,7 +162,7 @@ use mydata.dta, clear
 
 * tabulate z
 
-quietly: dtable x y i.z, export("table1.md", as(markdown) replace)
+quietly: dtable y x i.z, export("table1.md", as(markdown) replace)
 
 ```
 
