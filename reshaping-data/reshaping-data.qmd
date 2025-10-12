@@ -1,0 +1,147 @@
+---
+title: "Reshaping Data Using Black Spruce Data"
+author: "Andy Grogan-Kaylor"
+date: "today"
+format:
+  html:
+    toc: true
+    number-sections: true
+    theme: yeti
+    lightbox: true
+  pdf:
+    toc: false
+    toc-depth: 3
+    number-sections: true
+    colorlinks: true
+bibliography: reshaping-data.bib
+---
+
+# Background 🌲
+
+```{r}
+#| output: false
+#| echo: false
+
+library(Statamarkdown)
+
+```
+
+
+This is a handout about the process of `reshape`-ing data from *wide* to *long* and *vice versa*.
+
+@Chihara2018 provide a data set concerning the growth of Black Spruce Trees. According to these authors: 
+
+> "Black spruce (Picea mariana) is a species of a slow-growing coniferous tree found across the northern part of North America. It is commonly found on wet organic soils. In a study conducted in the 1990s, a biologist interested in factors affecting the growth of the black spruce planted its seedlings on sites located in boreal peatlands in northern Manitoba, Canada [@Camill2010]. The data set Spruce contains a part of the data from the study (Table 1.8). Seventy-two black spruce seedlings were planted in four plots under varying conditions (fertilizer–no fertilizer, competition–no competition), and their heights and diameters were measured over the course of 5 years. The researcher wanted to see whether the addition of fertilizer or the removal of competition from other plants (by weeding) affected the growth of these seedlings."
+
+# Get The Data 🌲
+
+```{stata, collectcode=TRUE}
+
+clear all
+	
+use "https://github.com/agrogan1/multilevel/raw/master/reshaping-data/Spruce.dta", clear
+
+```
+
+```{stata, collectcode=TRUE}
+
+label variable Tree "Tree number"
+    
+label variable Competition "C (competition), CR (competition removed)"
+    
+label variable Fertilizer "F (fertilized), NF (not fertilized)"
+    
+label variable Height0 "Height (cm) of seedling at planting"
+    
+label variable Height5 "Height (cm) of seedling at year 5"
+    
+label variable Diameter0 "Diameter (cm) of seedling at planting"
+        
+label variable Diameter5 "Diameter (cm) of seedling at year 5"
+    
+label variable Ht_change "Change (cm) in height"
+    
+label variable Di_change "Change (cm) in diameter"	
+
+```
+
+# Describe The Data 🌲
+	
+```{stata}
+
+describe	
+
+```
+
+# Keep Only Relevant Variables 🌲
+
+It is often *very useful* when working with longitudinal data to `keep` only the relevant variables to have a *manageable data set* to work with.
+
+```{stata, collectcode=TRUE}
+
+keep Tree Competition Fertilizer Height0 Height5 Diameter0 Diameter5
+
+```
+
+# List Out A Sample Of The Data 🌲
+
+```{stata}
+
+list in 1/10 
+
+```
+
+# Wide Compared To Long Data 🌲
+
+The data are currently in *wide* format, where *every row is an individual*, and *every individual has a single row of data*. For a given measure, each time point is in a *different column of data*.
+
+In *long* format, *every row is an individual-observation*, and *every individual has multiple rows of data*. For a given measure, each time point is in the *same column of data*, and the different time points are distinguished by a *time* variable.
+
+# Reshaping The Data 🌲
+
+We are going to `reshape` the data from *wide* format to *long* format.
+
+## Steps In Reshaping Data
+
+1. Only `keep` the relevant variables, as we did just above.
+2. `rename` each independent or dependent variable from each time point so that it has the `stub-time` format.
+
+::: {.callout-tip}
+### `stub-time` format
+
+Notice how the variables in this data set are already in the `stub-time` format. If the variables had a different format, e.g. `height_five_years`, `height_zero_years`, it would usually be easier to rename them e.g. `rename height_five_years height5`, and `rename height_zero_years height0`.[^advanced]
+:::
+
+[^advanced]: In recent versions of Stata, there are advanced ways of dealing with variables with names such as `x1suffix`, `x2suffix`, `x3suffix`, etc.. See `help reshape` for information on these new approaches. However, I still find it is often easier to `rename`' variables before `reshape`-ing them.
+
+3. Look at the data using `browse` or `list` to make sure that the `reshape` command worked properly.
+
+## Use `reshape`
+
+In the reshape command below, notice that we only include the variables that we consider to be *time varying*. Variables that are not included are considered to be *time invariant*. `Tree` is an *id* variable that is already in the data. `year` is a time variable that we are creating. We do not include `Competition` or `Fertilizer` in our reshape command because those are variables that do not change over time.
+
+```{stata, collectcode=TRUE}
+
+reshape long Height Diameter, i(Tree) j(year)
+
+```
+
+::: {.callout-tip}
+### `id` variable
+
+The `id` variable, whatever it is named, has to uniquely identify the observations. A useful command here is `isid`, e.g. `isid id`. If your `id` variable is not unique, it is often due to missing values. `drop if id == .` usually solves the problem. Because `Tree` is the id variable in this dataset, the appropriate command would be `drop if Tree == .`.
+:::
+
+## Use `list` To Look At A Sample Of The Data
+
+```{stata}
+
+list in 1/20
+
+```
+
+# References 🌲 
+
+
+
+
