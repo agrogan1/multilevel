@@ -45,6 +45,8 @@ use "https://github.com/agrogan1/multilevel/raw/master/reshaping-data/Spruce.dta
 ```
 
 ```{stata, collectcode=TRUE}
+#| code-fold: true
+#| code-summary: "Show the code"
 
 label variable Tree "Tree number"
     
