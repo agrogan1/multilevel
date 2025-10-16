@@ -12,3 +12,9 @@ h1.title {
 p.author {
   color: white;
 }
+
+.reveal blockquote {
+  color: black;
+  border-left: 3px solid red; 
+  padding: 0.5em 10px;
+}

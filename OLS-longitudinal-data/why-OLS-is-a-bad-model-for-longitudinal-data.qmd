@@ -1,5 +1,6 @@
 ---
 title: "Why OLS Is A Bad Model For Longitudinal Data"
+subtitle: "And Why The Equations and Data Structure of MLM Are The Answer"
 author: "Andy Grogan-Kaylor"
 date: "today"
 format:
@@ -7,9 +8,8 @@ format:
     toc: true
     number-sections: true
     anchor-sections: true
-    theme:
-      light: yeti
-      dark: vapor
+    theme: yeti
+    lightbox: true
   pdf:
     toc: true
     number-sections: true
@@ -18,6 +18,7 @@ format:
     toc: true
     number-sections: true
     reference-doc: markstat.docx
+    fig-dpi: 600
   revealjs: 
     output-file: why-OLS-is-a-bad-model-for-longitudinal-data-revealjs.html
     css: revealjs.css
@@ -61,7 +62,7 @@ blockquote {
 
 # An Empirical Example {#sec-empirical-example}
 
-![Happiness as a Function of Time and Pizza](Longitudinal3.png)
+![Happiness as a Function of Time, Ice Cream and French Fries](Longitudinal3.png){#fig-equation}
 
 # Introduction
 
@@ -69,7 +70,11 @@ We are all familiar with the idea of:
 
 $y_i = \beta_0 + \beta_1 x + e_i$ (OLS)
 
-> **get substantive example**
+::: {.callout-tip}
+## Substantive Example
+
+Let's use the substantive example in @fig-equation.
+:::
 
 | id  | x1  | x2  | x3 | y1 | y2 | y3 |
 |-----|-----|-----|----|----|----|----|
@@ -92,6 +97,8 @@ $y_{i2j} = \beta_0 + \beta_1 x + \beta_2 y_{i1j} + u_{0j} + e_{ij}$
 ... and add all of the usual random slope terms...
 
 ::: {.callout-tip}
+## Thought Question
+
 Any problems yet?
 :::
 
@@ -110,6 +117,8 @@ $\beta y_{i1}$
 $y_{i3} = \beta_0 + \beta_1 x + \beta_2 y_{i1} + \beta_3 y_{i2} + e_{i}$
 
 ::: {.callout-tip}
+## Multicollinearity
+
 What is the problem here? We have 2 terms that are likely to be collinear:
 
 $\beta_2$ & $\beta_3$
