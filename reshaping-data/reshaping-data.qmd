@@ -8,6 +8,7 @@ format:
     number-sections: true
     theme: yeti
     lightbox: true
+    css: styles.css
   pdf:
     toc: false
     toc-depth: 3
