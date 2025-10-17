@@ -32,6 +32,7 @@ format:
       data-background-color: black
 prefer-html: true    
 editor: source
+from: markdown+emoji
 bibliography: MLM.bib
 ---
 
@@ -53,6 +54,14 @@ blockquote {
   }
  
 ```
+
+::: {.content-visible when-format="html"}
+# How To Navigate This Presentation
+
+- Use the :arrow_left: :arrow_right: keys to move through the presentation.
+- Press *o* for *panel overview*.
+- Press **☰** for *menu*.
+:::
 
 # Some Beginning Ideas
 
@@ -128,90 +137,6 @@ This issue only becomes worse the more time points we add.
 
 As a result, we are not really modeling $y_2$ and $y_1$.
 
-# Two Conceptual Diagrams
-
-```{r}
-#| fig-cap: "An OLS Or Multilevel Model For 2 Timepoints"
-#| fig-height: 3
-#| eval: false
-#| echo: false
-
-DiagrammeR::grViz("
-
-digraph boxes_and_circles {
-
-  # a 'graph' statement
-  graph [overlap = true, 
-        fontsize = 10,
-        rankdir = LR]
-
-  # several 'node' statements
-  node [shape = box,
-        fontname = Helvetica]
-
-  node [shape = circle,
-        fixedsize = true,
-        width = 1.25] // sets as circles
-  x1 y1 y2
-
-  # several 'edge' statements
-  
-  x1 -> y2
-  y1 -> y2
-
-}
-                     
-                     ")
-```
-
-```{r}
-#| fig-cap: "A Cross Lagged Model For 3 Timepoints"
-#| fig-height: 3
-#| eval: false
-#| echo: false
-
-DiagrammeR::grViz("
-
-digraph boxes_and_circles {
-
-  # a 'graph' statement
-  graph [overlap = true, 
-        fontsize = 10,
-        rankdir = LR]
-
-  # several 'node' statements
-  node [shape = box,
-        fontname = Helvetica]
-
-  node [shape = circle,
-        fixedsize = true,
-        width = 1.25] // sets as circles
-  x1 x2 y1 y2
-
-  # several 'edge' statements
-  
-  x1 -> y2
-  x1 -> x2
-  y1 -> y2
-  y1 -> x2
-  x2 -> x3
-  x2 -> y3
-  y2 -> y3
-  y2 -> x3
-  
-}
-                     
-                     ")
-```
-
-## OLS or MLM for 2 Timepoints
-
-![An OLS Or Multilevel Model For 2 Timepoints](twotimepoints.png){width=50%}
-
-## Cross-Lagged Model
-
-![A Cross Lagged Model For 3 Timepoints](threetimepoints.png){width=50%}
-
 # Additionally ...
 
 ::: {.callout-warning}
@@ -276,7 +201,7 @@ $$y_{it} = \beta_0 + \beta_1 t + u_{0i} + e_{it}$$ {#eq-longitudinal-mlm}
 Every row is a *person-observation* (person *i* observed at time *t*). Every person has *multiple rows*.
 :::
 
-# This Has The Following Advantages:
+# This Has The Following Advantages
 
 ## First...
 
@@ -379,10 +304,94 @@ ggplot(mydata,
 ## Lastly
 
 ::: {.callout-caution}
-Generating appropriate descriptive statistics can be a problem.
+Generating appropriate descriptive statistics can be a question.
 :::
 
 ## Let's continue to explore how this model works.
+
+# Appendix: Two Conceptual Diagrams 
+
+```{r}
+#| fig-cap: "An OLS Or Multilevel Model For 2 Timepoints"
+#| fig-height: 3
+#| eval: false
+#| echo: false
+
+DiagrammeR::grViz("
+
+digraph boxes_and_circles {
+
+  # a 'graph' statement
+  graph [overlap = true, 
+        fontsize = 10,
+        rankdir = LR]
+
+  # several 'node' statements
+  node [shape = box,
+        fontname = Helvetica]
+
+  node [shape = circle,
+        fixedsize = true,
+        width = 1.25] // sets as circles
+  x1 y1 y2
+
+  # several 'edge' statements
+  
+  x1 -> y2
+  y1 -> y2
+
+}
+                     
+                     ")
+```
+
+```{r}
+#| fig-cap: "A Cross Lagged Model For 3 Timepoints"
+#| fig-height: 3
+#| eval: false
+#| echo: false
+
+DiagrammeR::grViz("
+
+digraph boxes_and_circles {
+
+  # a 'graph' statement
+  graph [overlap = true, 
+        fontsize = 10,
+        rankdir = LR]
+
+  # several 'node' statements
+  node [shape = box,
+        fontname = Helvetica]
+
+  node [shape = circle,
+        fixedsize = true,
+        width = 1.25] // sets as circles
+  x1 x2 y1 y2
+
+  # several 'edge' statements
+  
+  x1 -> y2
+  x1 -> x2
+  y1 -> y2
+  y1 -> x2
+  x2 -> x3
+  x2 -> y3
+  y2 -> y3
+  y2 -> x3
+  
+}
+                     
+                     ")
+```
+
+## OLS or MLM for 2 Timepoints
+
+![An OLS Or Multilevel Model For 2 Timepoints](twotimepoints.png){width=50%}
+
+## Cross-Lagged Model
+
+![A Cross Lagged Model For 3 Timepoints](threetimepoints.png){width=50%}
 
 # References
 

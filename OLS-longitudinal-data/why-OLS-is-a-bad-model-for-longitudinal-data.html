@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Andy Grogan-Kaylor">
-<meta name="dcterms.date" content="2025-10-16">
+<meta name="dcterms.date" content="2025-10-17">
 
 <title>Why OLS Is A Bad Model For Longitudinal Data</title>
 <style>
@@ -100,17 +100,13 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#some-beginning-ideas" id="toc-some-beginning-ideas" class="nav-link active" data-scroll-target="#some-beginning-ideas"><span class="header-section-number">1</span> Some Beginning Ideas</a></li>
-  <li><a href="#sec-empirical-example" id="toc-sec-empirical-example" class="nav-link" data-scroll-target="#sec-empirical-example"><span class="header-section-number">2</span> An Empirical Example</a></li>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">3</span> Introduction</a></li>
-  <li><a href="#a-first-longitudinal-model" id="toc-a-first-longitudinal-model" class="nav-link" data-scroll-target="#a-first-longitudinal-model"><span class="header-section-number">4</span> A First Longitudinal Model</a></li>
-  <li><a href="#what-about-change-scores" id="toc-what-about-change-scores" class="nav-link" data-scroll-target="#what-about-change-scores"><span class="header-section-number">5</span> What About Change Scores?</a></li>
-  <li><a href="#what-if-we-have-more-than-two-time-points" id="toc-what-if-we-have-more-than-two-time-points" class="nav-link" data-scroll-target="#what-if-we-have-more-than-two-time-points"><span class="header-section-number">6</span> What If We Have More Than Two Time Points?</a></li>
-  <li><a href="#two-conceptual-diagrams" id="toc-two-conceptual-diagrams" class="nav-link" data-scroll-target="#two-conceptual-diagrams"><span class="header-section-number">7</span> Two Conceptual Diagrams</a>
-  <ul class="collapse">
-  <li><a href="#ols-or-mlm-for-2-timepoints" id="toc-ols-or-mlm-for-2-timepoints" class="nav-link" data-scroll-target="#ols-or-mlm-for-2-timepoints"><span class="header-section-number">7.1</span> OLS or MLM for 2 Timepoints</a></li>
-  <li><a href="#cross-lagged-model" id="toc-cross-lagged-model" class="nav-link" data-scroll-target="#cross-lagged-model"><span class="header-section-number">7.2</span> Cross-Lagged Model</a></li>
-  </ul></li>
+  <li><a href="#how-to-navigate-this-presentation" id="toc-how-to-navigate-this-presentation" class="nav-link active" data-scroll-target="#how-to-navigate-this-presentation"><span class="header-section-number">1</span> How To Navigate This Presentation</a></li>
+  <li><a href="#some-beginning-ideas" id="toc-some-beginning-ideas" class="nav-link" data-scroll-target="#some-beginning-ideas"><span class="header-section-number">2</span> Some Beginning Ideas</a></li>
+  <li><a href="#sec-empirical-example" id="toc-sec-empirical-example" class="nav-link" data-scroll-target="#sec-empirical-example"><span class="header-section-number">3</span> An Empirical Example</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">4</span> Introduction</a></li>
+  <li><a href="#a-first-longitudinal-model" id="toc-a-first-longitudinal-model" class="nav-link" data-scroll-target="#a-first-longitudinal-model"><span class="header-section-number">5</span> A First Longitudinal Model</a></li>
+  <li><a href="#what-about-change-scores" id="toc-what-about-change-scores" class="nav-link" data-scroll-target="#what-about-change-scores"><span class="header-section-number">6</span> What About Change Scores?</a></li>
+  <li><a href="#what-if-we-have-more-than-two-time-points" id="toc-what-if-we-have-more-than-two-time-points" class="nav-link" data-scroll-target="#what-if-we-have-more-than-two-time-points"><span class="header-section-number">7</span> What If We Have More Than Two Time Points?</a></li>
   <li><a href="#additionally" id="toc-additionally" class="nav-link" data-scroll-target="#additionally"><span class="header-section-number">8</span> Additionally …</a></li>
   <li><a href="#our-answer-to-the-problem" id="toc-our-answer-to-the-problem" class="nav-link" data-scroll-target="#our-answer-to-the-problem"><span class="header-section-number">9</span> Our Answer To the Problem</a>
   <ul class="collapse">
@@ -121,7 +117,7 @@ window.Quarto = {
   <li><a href="#longitudinal-mlm" id="toc-longitudinal-mlm" class="nav-link" data-scroll-target="#longitudinal-mlm"><span class="header-section-number">9.2.2</span> Longitudinal MLM</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#this-has-the-following-advantages" id="toc-this-has-the-following-advantages" class="nav-link" data-scroll-target="#this-has-the-following-advantages"><span class="header-section-number">10</span> This Has The Following Advantages:</a>
+  <li><a href="#this-has-the-following-advantages" id="toc-this-has-the-following-advantages" class="nav-link" data-scroll-target="#this-has-the-following-advantages"><span class="header-section-number">10</span> This Has The Following Advantages</a>
   <ul class="collapse">
   <li><a href="#first" id="toc-first" class="nav-link" data-scroll-target="#first"><span class="header-section-number">10.1</span> First…</a></li>
   <li><a href="#how-to-address-missing-data" id="toc-how-to-address-missing-data" class="nav-link" data-scroll-target="#how-to-address-missing-data"><span class="header-section-number">10.2</span> How To Address Missing Data?</a></li>
@@ -131,7 +127,12 @@ window.Quarto = {
   <li><a href="#lastly" id="toc-lastly" class="nav-link" data-scroll-target="#lastly"><span class="header-section-number">10.6</span> Lastly</a></li>
   <li><a href="#lets-continue-to-explore-how-this-model-works." id="toc-lets-continue-to-explore-how-this-model-works." class="nav-link" data-scroll-target="#lets-continue-to-explore-how-this-model-works."><span class="header-section-number">10.7</span> Let’s continue to explore how this model works.</a></li>
   </ul></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">11</span> References</a></li>
+  <li><a href="#appendix-two-conceptual-diagrams" id="toc-appendix-two-conceptual-diagrams" class="nav-link" data-scroll-target="#appendix-two-conceptual-diagrams"><span class="header-section-number">11</span> Appendix: Two Conceptual Diagrams</a>
+  <ul class="collapse">
+  <li><a href="#ols-or-mlm-for-2-timepoints" id="toc-ols-or-mlm-for-2-timepoints" class="nav-link" data-scroll-target="#ols-or-mlm-for-2-timepoints"><span class="header-section-number">11.1</span> OLS or MLM for 2 Timepoints</a></li>
+  <li><a href="#cross-lagged-model" id="toc-cross-lagged-model" class="nav-link" data-scroll-target="#cross-lagged-model"><span class="header-section-number">11.2</span> Cross-Lagged Model</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">12</span> References</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="why-OLS-is-a-bad-model-for-longitudinal-data.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="why-OLS-is-a-bad-model-for-longitudinal-data.docx"><i class="bi bi-file-word"></i>MS Word</a></li><li><a href="why-OLS-is-a-bad-model-for-longitudinal-data-revealjs.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
 </div>
@@ -157,7 +158,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 16, 2025</p>
+      <p class="date">October 17, 2025</p>
     </div>
   </div>
   
@@ -180,8 +181,16 @@ blockquote {
  
 </style>
 </div>
-<section id="some-beginning-ideas" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Some Beginning Ideas</h1>
+<section id="how-to-navigate-this-presentation" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> How To Navigate This Presentation</h1>
+<ul>
+<li>Use the <span class="emoji" data-emoji="arrow_left">⬅️</span> <span class="emoji" data-emoji="arrow_right">➡️</span> keys to move through the presentation.</li>
+<li>Press <em>o</em> for <em>panel overview</em>.</li>
+<li>Press <strong>☰</strong> for <em>menu</em>.</li>
+</ul>
+</section>
+<section id="some-beginning-ideas" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Some Beginning Ideas</h1>
 <blockquote class="blockquote">
 <p>“Despite the incredible diversity existing among and within human cultures, there are many phenomena that occur regularly in all known societies. These commonalities, or universals, while deriving in part from human nature, may also have specific social, cultural, and systemic sources. We need to develop a working understanding of these universals so that we might advance legitimate, empirically based human science set on creating knowledge that is politically relevant to fostering real solutions to the problems that complicate human co-existence in the Age of the Anthropocene.” <span class="citation" data-cites="Antweiler2016">(<a href="#ref-Antweiler2016" role="doc-biblioref">Antweiler 2016</a>)</span></p>
 </blockquote>
@@ -189,8 +198,8 @@ blockquote {
 <p>“The language we have in that world is not large enough for the territory that we’ve already entered.” <span class="citation" data-cites="Whyte2016">(<a href="#ref-Whyte2016" role="doc-biblioref">Whyte and Tippett 2016</a>)</span></p>
 </blockquote>
 </section>
-<section id="sec-empirical-example" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> An Empirical Example</h1>
+<section id="sec-empirical-example" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> An Empirical Example</h1>
 <div id="fig-equation" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-equation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -202,8 +211,8 @@ Figure&nbsp;1: Happiness as a Function of Time, Ice Cream and French Fries
 </figure>
 </div>
 </section>
-<section id="introduction" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Introduction</h1>
+<section id="introduction" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Introduction</h1>
 <p>We are all familiar with the idea of:</p>
 <p><span class="math inline">\(y_i = \beta_0 + \beta_1 x + e_i\)</span> (OLS)</p>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -271,8 +280,8 @@ Table&nbsp;1: Data in WIDE format
 </figure>
 </div>
 </section>
-<section id="a-first-longitudinal-model" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> A First Longitudinal Model</h1>
+<section id="a-first-longitudinal-model" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> A First Longitudinal Model</h1>
 <p>We could imagine a longitudinal model where we regress <span class="math inline">\(y_i\)</span> at time 2 on <span class="math inline">\(y_i\)</span> at time 1….</p>
 <p><span class="math inline">\(y_{i2} = \beta_0 + \beta_1 x + \beta_2 y_{i1} + e_i\)</span></p>
 <p>And we could even make this (<em>perhaps confusingly</em>) a multilevel model for individual <span class="math inline">\(i\)</span> in social unit <span class="math inline">\(j\)</span>:</p>
@@ -292,8 +301,8 @@ Thought Question
 </div>
 </div>
 </section>
-<section id="what-about-change-scores" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> What About Change Scores?</h1>
+<section id="what-about-change-scores" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> What About Change Scores?</h1>
 <p><span class="math inline">\(y_{i2} - y_{i1} = \beta_0 + \beta_1 x + e_{i}\)</span></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -309,8 +318,8 @@ What Happens To The Regression Coefficients in a Change Score Model?
 </div>
 </div>
 </section>
-<section id="what-if-we-have-more-than-two-time-points" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> What If We Have More Than Two Time Points?</h1>
+<section id="what-if-we-have-more-than-two-time-points" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> What If We Have More Than Two Time Points?</h1>
 <p><span class="math inline">\(y_{i3} = \beta_0 + \beta_1 x + \beta_2 y_{i1} + \beta_3 y_{i2} + e_{i}\)</span></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -328,27 +337,6 @@ Multicollinearity
 </div>
 <p>This issue only becomes worse the more time points we add.</p>
 <p>As a result, we are not really modeling <span class="math inline">\(y_2\)</span> and <span class="math inline">\(y_1\)</span>.</p>
-</section>
-<section id="two-conceptual-diagrams" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> Two Conceptual Diagrams</h1>
-<section id="ols-or-mlm-for-2-timepoints" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="ols-or-mlm-for-2-timepoints"><span class="header-section-number">7.1</span> OLS or MLM for 2 Timepoints</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="twotimepoints.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="An OLS Or Multilevel Model For 2 Timepoints"><img src="twotimepoints.png" class="img-fluid figure-img" style="width:50.0%" alt="An OLS Or Multilevel Model For 2 Timepoints"></a></p>
-<figcaption>An OLS Or Multilevel Model For 2 Timepoints</figcaption>
-</figure>
-</div>
-</section>
-<section id="cross-lagged-model" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="cross-lagged-model"><span class="header-section-number">7.2</span> Cross-Lagged Model</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="threetimepoints.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="A Cross Lagged Model For 3 Timepoints"><img src="threetimepoints.png" class="img-fluid figure-img" style="width:50.0%" alt="A Cross Lagged Model For 3 Timepoints"></a></p>
-<figcaption>A Cross Lagged Model For 3 Timepoints</figcaption>
-</figure>
-</div>
-</section>
 </section>
 <section id="additionally" class="level1" data-number="8">
 <h1 data-number="8"><span class="header-section-number">8</span> Additionally …</h1>
@@ -513,7 +501,7 @@ Person-Observations
 </section>
 </section>
 <section id="this-has-the-following-advantages" class="level1" data-number="10">
-<h1 data-number="10"><span class="header-section-number">10</span> This Has The Following Advantages:</h1>
+<h1 data-number="10"><span class="header-section-number">10</span> This Has The Following Advantages</h1>
 <section id="first" class="level2" data-number="10.1">
 <h2 data-number="10.1" class="anchored" data-anchor-id="first"><span class="header-section-number">10.1</span> First…</h2>
 <ol type="1">
@@ -581,7 +569,7 @@ Caution
 <div id="fig-MLM" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-MLM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<a href="why-OLS-is-a-bad-model-for-longitudinal-data_files/figure-html/fig-MLM-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Figure&nbsp;2: A Multilevel Model For Longitudinal Data"><img src="why-OLS-is-a-bad-model-for-longitudinal-data_files/figure-html/fig-MLM-1.png" class="img-fluid figure-img" width="672"></a>
+<a href="why-OLS-is-a-bad-model-for-longitudinal-data_files/figure-html/fig-MLM-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Figure&nbsp;2: A Multilevel Model For Longitudinal Data"><img src="why-OLS-is-a-bad-model-for-longitudinal-data_files/figure-html/fig-MLM-1.png" class="img-fluid figure-img" width="672"></a>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-MLM-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: A Multilevel Model For Longitudinal Data
@@ -603,7 +591,7 @@ Caution
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Generating appropriate descriptive statistics can be a problem.</p>
+<p>Generating appropriate descriptive statistics can be a question.</p>
 </div>
 </div>
 </section>
@@ -611,12 +599,33 @@ Caution
 <h2 data-number="10.7" class="anchored" data-anchor-id="lets-continue-to-explore-how-this-model-works."><span class="header-section-number">10.7</span> Let’s continue to explore how this model works.</h2>
 </section>
 </section>
-<section id="references" class="level1 unnumbered" data-number="11">
+<section id="appendix-two-conceptual-diagrams" class="level1" data-number="11">
+<h1 data-number="11"><span class="header-section-number">11</span> Appendix: Two Conceptual Diagrams</h1>
+<section id="ols-or-mlm-for-2-timepoints" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="ols-or-mlm-for-2-timepoints"><span class="header-section-number">11.1</span> OLS or MLM for 2 Timepoints</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="twotimepoints.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="An OLS Or Multilevel Model For 2 Timepoints"><img src="twotimepoints.png" class="img-fluid figure-img" style="width:50.0%" alt="An OLS Or Multilevel Model For 2 Timepoints"></a></p>
+<figcaption>An OLS Or Multilevel Model For 2 Timepoints</figcaption>
+</figure>
+</div>
+</section>
+<section id="cross-lagged-model" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="cross-lagged-model"><span class="header-section-number">11.2</span> Cross-Lagged Model</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="threetimepoints.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="A Cross Lagged Model For 3 Timepoints"><img src="threetimepoints.png" class="img-fluid figure-img" style="width:50.0%" alt="A Cross Lagged Model For 3 Timepoints"></a></p>
+<figcaption>A Cross Lagged Model For 3 Timepoints</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="references" class="level1 unnumbered" data-number="12">
 
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">11 References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">12 References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Antweiler2016" class="csl-entry" role="listitem">
 Antweiler, Christoph. 2016. <em>Our Common Denominator: Human Universals Revisited</em>. Berghahn.
 </div>

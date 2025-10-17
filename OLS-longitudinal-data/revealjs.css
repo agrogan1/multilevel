@@ -1,4 +1,4 @@
-h1.title {
+h1.title, p.subtitle {
   font-size: 50px;
   color: white;
   background-color: red;
