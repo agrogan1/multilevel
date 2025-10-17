@@ -14,6 +14,18 @@ format:
     toc-depth: 3
     number-sections: true
     colorlinks: true
+  revealjs: 
+    output-file: reshaping-data-reveal.js
+    smaller: true
+    scrollable: true
+    transition: slide
+    controls: true 
+    controls-tutorial: true
+    chalkboard: true
+    title-slide-attributes:
+      data-background-color: darkgreen
+    execute:
+      echo: true
 bibliography: reshaping-data.bib
 ---
 
