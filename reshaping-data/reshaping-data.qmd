@@ -15,7 +15,7 @@ format:
     number-sections: true
     colorlinks: true
   revealjs: 
-    output-file: reshaping-data-reveal.js
+    output-file: reshaping-data-revealjs.html
     smaller: true
     scrollable: true
     transition: slide
