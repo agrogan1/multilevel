@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.7.33">
 
   <meta name="author" content="Andy Grogan-Kaylor">
-  <meta name="dcterms.date" content="2025-10-17">
+  <meta name="dcterms.date" content="2025-10-18">
   <title>Why OLS Is A Bad Model For Longitudinal Data</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -163,7 +163,7 @@ Andy Grogan-Kaylor
 </div>
 </div>
 
-  <p class="date">2025-10-17</p>
+  <p class="date">2025-10-18</p>
 </section>
 <section class="slide level2">
 
@@ -178,16 +178,12 @@ blockquote {
  
 </style>
 </div>
-</section>
-<section id="how-to-navigate-this-presentation" class="title-slide slide level1 center">
-<h1>How To Navigate This Presentation</h1>
 <ul>
 <li>Use the <span class="emoji" data-emoji="arrow_left">⬅️</span> <span class="emoji" data-emoji="arrow_right">➡️</span> keys to move through the presentation.</li>
 <li>Press <em>o</em> for <em>panel overview</em>.</li>
 <li>Press <strong>☰</strong> for <em>menu</em>.</li>
 </ul>
 </section>
-
 <section id="some-beginning-ideas" class="title-slide slide level1 center">
 <h1>Some Beginning Ideas</h1>
 <blockquote>
@@ -499,7 +495,19 @@ Table&nbsp;2: Data in LONG format
 <section>
 <section id="this-has-the-following-advantages" class="title-slide slide level1 center">
 <h1>This Has The Following Advantages</h1>
-
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Key Intuition</strong></p>
+</div>
+<div class="callout-content">
+<p>The <em>key intuition</em> is that any statistical procedure–whether it is aware of the clustering of the data or not–operates on the data on a <em>row by row</em> basis.</p>
+</div>
+</div>
+</div>
 </section>
 <section id="first" class="slide level2 scrollable">
 <h2>First…</h2>
@@ -690,7 +698,7 @@ Whyte, David, and Krista Tippett. 2016. <span>“<span>D</span>avid <span>W</spa
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: false,
+        slideNumber: 'h/v',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',

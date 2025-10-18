@@ -27,6 +27,7 @@ format:
     transition: slide
     controls: true 
     controls-tutorial: true
+    slide-number: h/v
     chalkboard: true
     title-slide-attributes:
       data-background-color: black
@@ -56,8 +57,6 @@ blockquote {
 ```
 
 ::: {.content-visible when-format="html"}
-# How To Navigate This Presentation
-
 - Use the :arrow_left: :arrow_right: keys to move through the presentation.
 - Press *o* for *panel overview*.
 - Press **☰** for *menu*.
@@ -202,6 +201,12 @@ Every row is a *person-observation* (person *i* observed at time *t*). Every per
 :::
 
 # This Has The Following Advantages
+
+::: {.callout-tip}
+## Key Intuition
+
+The *key intuition* is that any statistical procedure--whether it is aware of the clustering of the data or not--operates on the data on a *row by row* basis.
+:::
 
 ## First...
 
