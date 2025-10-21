@@ -21,6 +21,7 @@ format:
     transition: slide
     controls: true 
     controls-tutorial: true
+    slide-number: h/v
     chalkboard: true
     title-slide-attributes:
       data-background-color: darkgreen
