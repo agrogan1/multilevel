@@ -35,9 +35,9 @@ imm23 <- read_dta("https://stats.idre.ucla.edu/stat/examples/imm/imm23.dta")
 
 library(ggplot2)
 
-ggplot(imm23, # data I am using
-       aes(x = ses, # x is ses
-           y = math)) + # y is math achievement
+p0 <- ggplot(imm23, # data I am using
+             aes(x = ses, # x is ses
+                 y = math)) + # y is math achievement
   geom_smooth(method = "lm", # linear model smoother for whole sample
               linewidth = 2,
               color = "black",
@@ -52,9 +52,20 @@ ggplot(imm23, # data I am using
   scale_color_viridis_d(name = "school") + # nice viridis colors
   theme_minimal()
 
+p0 # replay
+
 ```
 
+# Spaghetti Plot Without Legend
 
+```{r}
+#| message: false
+#| code-fold: true 
+#| code-summary: "Show the code"
+
+p0 + theme(legend.position = "none")
+
+```
 
 
 
