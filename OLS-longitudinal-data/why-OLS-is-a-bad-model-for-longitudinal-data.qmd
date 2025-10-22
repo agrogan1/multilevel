@@ -14,11 +14,6 @@ format:
     toc: true
     number-sections: true
     geometry: margin=.7in
-  docx: 
-    toc: true
-    number-sections: true
-    reference-doc: markstat.docx
-    fig-dpi: 600
   revealjs: 
     output-file: why-OLS-is-a-bad-model-for-longitudinal-data-revealjs.html
     css: revealjs.css
@@ -230,6 +225,8 @@ It is sometimes best to (a) do nothing; (b) do something complicated.
 * Linearly interpolate previous and next observation.
 * Regression imputation.
 * Multiple imputation.
+
+See:  [https://agrogan1.github.io/posts/missing-data/index.html](https://agrogan1.github.io/posts/missing-data/index.html)
 
 ## Further...
 
