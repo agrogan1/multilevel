@@ -1,5 +1,5 @@
 ---
-title: "Why OLS Is A Bad Model For Longitudinal Data"
+title: "Why OLS Is (Often) A Bad Model For Longitudinal Data"
 subtitle: "And Why The Equations and Data Structure of MLM Are The Answer"
 author: "Andy Grogan-Kaylor"
 date: "today"

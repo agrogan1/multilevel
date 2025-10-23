@@ -120,7 +120,7 @@ $$y_{it} = \beta_0 + \beta_1 t_{it} + \beta_2 x_{it} + u_{0i} + e_{it}$$ {#eq-lo
 Every row is a *person-observation* (person *i* observed at time *t*). Every person has *multiple rows*.
 :::
 
-# Advantages of the Multilevel Model for Longitudinal Data
+# Advantages of the Multilevel Model for Longitudinal Data [^longdata]
 
 1. Using the algebra in @eq-longitudinal-mlm, these models can easily accommodate both time varying and time invariant coefficients [@Hox2010; @Hox2018; @Singer2003; @Raudenbush2002; @RabeHesketh2022].
 2. There is no multicollinearity issue with multiple $\beta$ coefficients for multiple waves of data. By inspection of @eq-longitudinal-mlm, we see that there is only a single $\beta$ coefficient for each variable, $\therefore$ no multicollinearity problem.
@@ -130,6 +130,8 @@ Every row is a *person-observation* (person *i* observed at time *t*). Every per
 6.  Again, by inspection of @eq-longitudinal-mlm, we see that *multiple or many time-points are not a problem*. We would use the same algebra for 2 time points or for 10,000 time points. (Helpful when we start to think about intensive longitudinal data *e.g.* George Holden's *recording study*).
 7.  We are *measuring exactly the time at which events take place* for each individual [@Singer2003; @Luke2004]. Not simply saying *Wave 1*, *Wave 2*, *Wave 3*, etc...
 8.  Unequally spaced time points are not a problem [@Raudenbush1995]. Every individual could have a *completely different set of time points* and even a *completely different number of time points* [@Hox2010; @Hox2018; @Singer2003; @Luke2004]. 
+
+[^longdata]: Many, if not most, of the advantages listed below will also apply to any approach using long data. 
 
 ::: {.callout-caution}
 We do need to think carefully about what is the appropriate variable for time. Is it the variable we used to reshape the data--often `wave`--or some other more appropriate metric, like `age` or `time in study` [@Singer2003]?
