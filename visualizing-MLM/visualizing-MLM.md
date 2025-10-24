@@ -1,15 +1,16 @@
 # Visualizing Multilevel Models
 Andy Grogan-Kaylor
-2024-10-21
+2025-10-24
 
 # Introduction
 
 An evolving set of notes on visualizing results from multilevel models.
 
 The examples below use the `simulated_multilevel_data.dta` file from my
-draft text book on *Multilevel Thinking*. Here is a [direct
-link](https://github.com/agrogan1/multilevel-multilingual/raw/main/simulated_multilevel_data.dta)
-to download the data.
+text book on [*Multilevel
+Thinking*](https://agrogan1.github.io/posts/multilevel-thinking/). Here
+is a [link to download the
+data](https://agrogan1.github.io/multilevel-workshop/#simulated-multilevel-data).
 
 This document relies on the extraordinary `Statamarkdown` library
 (Hemken 2023).
@@ -41,7 +42,6 @@ scheme available at:
 <https://agrogan1.github.io/Stata/michigan-graph-scheme/>.
 
 ``` stata
-
 set scheme michigan
 ```
 
@@ -56,7 +56,6 @@ the markers.
 # Get Data
 
 ``` stata
-
 use "simulated_multilevel_data.dta", clear
 ```
 
@@ -68,7 +67,13 @@ twoway scatter outcome warmth, mcolor(%30)
 graph export myscatter.png, width(1500) replace
 ```
 
-<img src="myscatter.png" style="width:75.0%" alt="Scatterplot" />
+<div id="fig-scatterplot">
+
+<img src="myscatter.png" style="width:75.0%" />
+
+Figure 1: Scatterplot
+
+</div>
 
 # Simple Linear Fit (`twoway lfit y x`)
 
@@ -78,7 +83,13 @@ twoway lfit outcome warmth
 graph export mylinear.png, width(1500) replace
 ```
 
-<img src="mylinear.png" style="width:75.0%" alt="Linear Fit" />
+<div id="fig-linear-fit">
+
+<img src="mylinear.png" style="width:75.0%" />
+
+Figure 2: Linear Fit
+
+</div>
 
 # Linear Fit With Confidence Interval (`twoway lfitci y x`)
 
@@ -88,8 +99,13 @@ twoway lfitci outcome warmth
 graph export mylfitci.png, width(1500) replace
 ```
 
-<img src="mylfitci.png" style="width:75.0%"
-alt="Linear Fit With Confidence Interval" />
+<div id="fig-linear-fit-CI">
+
+<img src="mylfitci.png" style="width:75.0%" />
+
+Figure 3: Linear Fit With Confidence Interval
+
+</div>
 
 # Combine Scatterplot and Linear Fit (`twoway (scatter y x) (lfit y x)`)
 
@@ -99,8 +115,13 @@ twoway (scatter outcome warmth, mcolor(%30)) (lfit outcome warmth)
 graph export myscatterlinear.png, width(1500) replace
 ```
 
-<img src="myscatterlinear.png" style="width:75.0%"
-alt="Scatterplot and Linear Fit" />
+<div id="fig-scatterplot-linear-fit">
+
+<img src="myscatterlinear.png" style="width:75.0%" />
+
+Figure 4: Scatterplot and Linear Fit
+
+</div>
 
 # Spaghetti Plots (`spagplot y x, id(group)`)
 
@@ -110,7 +131,13 @@ spagplot outcome warmth, id(country)
 graph export myspaghetti.png, width(1500) replace
 ```
 
-<img src="myspaghetti.png" style="width:75.0%" alt="Spaghetti Plot" />
+<div id="fig-spaghetti">
+
+<img src="myspaghetti.png" style="width:75.0%" />
+
+Figure 5: Spaghetti Plot
+
+</div>
 
 # Small Multiples (`twoway y x, by(group)`)
 
@@ -128,8 +155,13 @@ by(country) aspect(1)
 graph export mysmallmultiples.png, width(1500) replace
 ```
 
-<img src="mysmallmultiples.png" style="width:75.0%"
-alt="Small Multiples" />
+<div id="fig-smallmultiples">
+
+<img src="mysmallmultiples.png" style="width:75.0%" />
+
+Figure 6: Small Multiples
+
+</div>
 
 # Small Multiples With A Random Sample
 
@@ -169,11 +201,20 @@ quietly: graph export mysmallmultiples2.png, width(1500) replace
     -------------+---------------------------------------------------------
         randomid |      3,000    .6174022    .2374704   .0733026   .9657055
 
-<img src="mysmallmultiples2.png" style="width:75.0%"
-alt="Small Multiples With A Random Sample Of Countries" />
+<div id="fig-smallmultiples-random-sample">
+
+<img src="mysmallmultiples2.png" style="width:75.0%" />
+
+Figure 7: Small Multiples With A Random Sample Of Countries
+
+</div>
 
 # Multivariate (Predicted) Relationships
 
+> [!TIP]
+>
+> ### Multivariate vs. Bivariate Graphs
+>
 > A sometimes unacknowledged point is that graphs–unless we take steps
 > to correct this–reflect *unadjusted*, or *bivariate* associations. We
 > may sometimes wish to develop a graphs that reflect the *adjusted* or
@@ -184,6 +225,10 @@ alt="Small Multiples With A Random Sample Of Countries" />
 `predict` generates a predicted value for *every observation in the
 data*.
 
+> [!CAUTION]
+>
+> ### Prediction Requires Careful Thinking
+>
 > In multilevel models, *prediction* is a complex question. Prediction
 > may–or may not–incorporate the information from the random effects.
 > The procedures below outline graphs that incorporate predictions using
@@ -213,14 +258,14 @@ mixed outcome warmth physical_punishment i.intervention || country: // estimate 
                                                          Wald chi2(3)     = 370.90
     Log likelihood = -9628.1621                          Prob > chi2      = 0.0000
 
-    -------------------------------------------------------------------------------------
-                outcome | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
-    --------------------+----------------------------------------------------------------
-                 warmth |   .8330937   .0574809    14.49   0.000     .7204332    .9457543
-    physical_punishment |  -.9937819   .0798493   -12.45   0.000    -1.150284   -.8372801
-         1.intervention |   .6406043   .2175496     2.94   0.003      .214215    1.066994
-                  _cons |   51.65238   .4664841   110.73   0.000     50.73809    52.56668
-    -------------------------------------------------------------------------------------
+    ------------------------------------------------------------------------------------
+               outcome | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+    -------------------+----------------------------------------------------------------
+                warmth |   .8330937   .0574809    14.49   0.000     .7204332    .9457543
+    physical_punishm~t |  -.9937819   .0798493   -12.45   0.000    -1.150284   -.8372801
+        1.intervention |   .6406043   .2175496     2.94   0.003      .214215    1.066994
+                 _cons |   51.65238   .4664841   110.73   0.000     50.73809    52.56668
+    ------------------------------------------------------------------------------------
 
     ------------------------------------------------------------------------------
       Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
@@ -235,7 +280,6 @@ mixed outcome warmth physical_punishment i.intervention || country: // estimate 
 ### Generate Predicted Values
 
 ``` stata
-    
 predict outcome_hat, fitted // predict yhat (`fitted` uses fixed AND random effects)
 ```
 
@@ -251,11 +295,21 @@ twoway (lfit outcome_hat warmth)
 graph export mypredictedvalues2.png, width(1500) replace
 ```
 
-<img src="mypredictedvalues.png" style="width:75.0%"
-alt="Predicted Values From predict" />
+<div id="fig-predicted">
 
-<img src="mypredictedvalues2.png" style="width:75.0%"
-alt="Predicted Values From predict With Only Linear Fit" />
+<img src="mypredictedvalues.png" style="width:75.0%" />
+
+Figure 8: Predicted Values From `predict`
+
+</div>
+
+<div id="fig-predicted2">
+
+<img src="mypredictedvalues2.png" style="width:75.0%" />
+
+Figure 9: Predicted Values From `predict` With Only Linear Fit
+
+</div>
 
 ### Spaghetti Plot With Predicted Values
 
@@ -265,8 +319,13 @@ spagplot outcome_hat warmth, id(country)
 graph export myspaghetti2.png, width(1500) replace
 ```
 
-<img src="myspaghetti2.png" style="width:75.0%"
-alt="Spaghetti Plot With Predicted Values" />
+<div id="fig-predicted3">
+
+<img src="myspaghetti2.png" style="width:75.0%" />
+
+Figure 10: Spaghetti Plot With Predicted Values
+
+</div>
 
 ## `margins` and `marginsplot`
 
@@ -298,14 +357,14 @@ mixed outcome warmth physical_punishment i.intervention || country: // estimate 
                                                          Wald chi2(3)     = 370.90
     Log likelihood = -9628.1621                          Prob > chi2      = 0.0000
 
-    -------------------------------------------------------------------------------------
-                outcome | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
-    --------------------+----------------------------------------------------------------
-                 warmth |   .8330937   .0574809    14.49   0.000     .7204332    .9457543
-    physical_punishment |  -.9937819   .0798493   -12.45   0.000    -1.150284   -.8372801
-         1.intervention |   .6406043   .2175496     2.94   0.003      .214215    1.066994
-                  _cons |   51.65238   .4664841   110.73   0.000     50.73809    52.56668
-    -------------------------------------------------------------------------------------
+    ------------------------------------------------------------------------------------
+               outcome | Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+    -------------------+----------------------------------------------------------------
+                warmth |   .8330937   .0574809    14.49   0.000     .7204332    .9457543
+    physical_punishm~t |  -.9937819   .0798493   -12.45   0.000    -1.150284   -.8372801
+        1.intervention |   .6406043   .2175496     2.94   0.003      .214215    1.066994
+                 _cons |   51.65238   .4664841   110.73   0.000     50.73809    52.56668
+    ------------------------------------------------------------------------------------
 
     ------------------------------------------------------------------------------
       Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
@@ -364,8 +423,13 @@ marginsplot // plot of predicted values
 graph export mymarginsplot.png, width(1500) replace
 ```
 
-<img src="mymarginsplot.png" style="width:75.0%"
-alt="Predicted Values From margins and marginsplot" />
+<div id="fig-marginsplot">
+
+<img src="mymarginsplot.png" style="width:75.0%" />
+
+Figure 11: Predicted Values From `margins` and `marginsplot`
+
+</div>
 
 # Scatterplot With Linear Fit and Marginal Density Plots (`twoway ...`)
 
@@ -374,12 +438,18 @@ showing the variation in the *independent* variable and the *dependent*
 variable along with a *scatterplot* and *linear fit*. This is a complex
 graph and requires a little bit of manual programming in Stata.
 
+> [!NOTE]
+>
+> ### `binscatterhist`
+>
 > You could also investigate the user written program `binscatterhist`
 > (`ssc install binscatterhist`) which produces a similar looking graph,
 > and automates much of this work.
 
 ## Manually Generate The Densities To Plot Them Below (`kdensity ...`)
 
+> [!NOTE]
+>
 > We generate the density for *warmth* at only a few points (`n(8)`)
 > since this variable has relatively few categories.
 
@@ -392,6 +462,8 @@ kdensity outcome, generate(outcome_y outcome_d) // manually generate outcome den
 
 ## Rescale The Densities So They Plot Well
 
+> [!NOTE]
+>
 > You may have to experiment with the scaling and moving factors.
 
 ``` stata
@@ -409,6 +481,8 @@ label variable outcome_y "density: beneficial outcome" // relabel y variable
 
 ## Make The Graph (`twoway ...`)
 
+> [!NOTE]
+>
 > You may have to experiment with whether scatterplots or line plots
 > work best for displaying the x and y densities.
 

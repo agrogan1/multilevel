@@ -376,15 +376,35 @@ Figure&nbsp;7: Small Multiples With A Random Sample Of Countries
 </section>
 <section id="multivariate-predicted-relationships" class="level1" data-number="12">
 <h1 data-number="12"><span class="header-section-number">12</span> Multivariate (Predicted) Relationships</h1>
-<blockquote class="blockquote">
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Multivariate vs.&nbsp;Bivariate Graphs
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>A sometimes unacknowledged point is that graphs–unless we take steps to correct this–reflect <em>unadjusted</em>, or <em>bivariate</em> associations. We may sometimes wish to develop a graphs that reflect the <em>adjusted</em> or <em>predicted</em> estimates from our models.</p>
-</blockquote>
+</div>
+</div>
 <section id="using-predicted-values-predict" class="level2" data-number="12.1">
 <h2 data-number="12.1" class="anchored" data-anchor-id="using-predicted-values-predict"><span class="header-section-number">12.1</span> Using Predicted Values (<code>predict</code>)</h2>
 <p><code>predict</code> generates a predicted value for <em>every observation in the data</em>.</p>
-<blockquote class="blockquote">
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Prediction Requires Careful Thinking
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>In multilevel models, <em>prediction</em> is a complex question. Prediction may–or may not–incorporate the information from the random effects. The procedures below outline graphs that incorporate predictions using the random effects, by using the <code>predict ..., fitted</code> syntax.</p>
-</blockquote>
+</div>
+</div>
 <section id="estimate-the-model" class="level3" data-number="12.1.1">
 <h3 data-number="12.1.1" class="anchored" data-anchor-id="estimate-the-model"><span class="header-section-number">12.1.1</span> Estimate The Model</h3>
 <div class="cell" data-collectcode="true">
@@ -596,14 +616,34 @@ Figure&nbsp;11: Predicted Values From <code>margins</code> and <code>marginsplot
 <section id="scatterplot-with-linear-fit-and-marginal-density-plots-twoway-..." class="level1" data-number="13">
 <h1 data-number="13"><span class="header-section-number">13</span> Scatterplot With Linear Fit and Marginal Density Plots (<code>twoway ...</code>)</h1>
 <p>As another possibility, we may wish to show more of the variation, by showing the variation in the <em>independent</em> variable and the <em>dependent</em> variable along with a <em>scatterplot</em> and <em>linear fit</em>. This is a complex graph and requires a little bit of manual programming in Stata.</p>
-<blockquote class="blockquote">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<code>binscatterhist</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>You could also investigate the user written program <code>binscatterhist</code> (<code>ssc install binscatterhist</code>) which produces a similar looking graph, and automates much of this work.</p>
-</blockquote>
+</div>
+</div>
 <section id="manually-generate-the-densities-to-plot-them-below-kdensity-..." class="level2" data-number="13.1">
 <h2 data-number="13.1" class="anchored" data-anchor-id="manually-generate-the-densities-to-plot-them-below-kdensity-..."><span class="header-section-number">13.1</span> Manually Generate The Densities To Plot Them Below (<code>kdensity ...</code>)</h2>
-<blockquote class="blockquote">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>We generate the density for <em>warmth</em> at only a few points (<code>n(8)</code>) since this variable has relatively few categories.</p>
-</blockquote>
+</div>
+</div>
 <div class="cell" data-collectcode="true">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="kw">kdensity</span> warmth, <span class="kw">generate</span>(warmth_x warmth_d) n(8) <span class="co">// manually generate outcome densities</span></span>
@@ -613,9 +653,19 @@ Figure&nbsp;11: Predicted Values From <code>margins</code> and <code>marginsplot
 </section>
 <section id="rescale-the-densities-so-they-plot-well" class="level2" data-number="13.2">
 <h2 data-number="13.2" class="anchored" data-anchor-id="rescale-the-densities-so-they-plot-well"><span class="header-section-number">13.2</span> Rescale The Densities So They Plot Well</h2>
-<blockquote class="blockquote">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>You may have to experiment with the scaling and moving factors.</p>
-</blockquote>
+</div>
+</div>
 <div class="cell" data-collectcode="true">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="kw">replace</span> warmth_d = 100 * warmth_d <span class="co">// rescale the density so it plots well</span></span>
@@ -632,9 +682,19 @@ Figure&nbsp;11: Predicted Values From <code>margins</code> and <code>marginsplot
 </section>
 <section id="make-the-graph-twoway-..." class="level2" data-number="13.3">
 <h2 data-number="13.3" class="anchored" data-anchor-id="make-the-graph-twoway-..."><span class="header-section-number">13.3</span> Make The Graph (<code>twoway ...</code>)</h2>
-<blockquote class="blockquote">
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>You may have to experiment with whether scatterplots or line plots work best for displaying the x and y densities.</p>
-</blockquote>
+</div>
+</div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">twoway</span> (<span class="kw">scatter</span> outcome warmth, mcolor(%10)) <span class="co">/// scatterplot w some transparency</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>(<span class="kw">lfit</span> outcome warmth) <span class="co">/// linear fit</span></span>
