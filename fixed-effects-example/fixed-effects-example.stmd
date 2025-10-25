@@ -60,15 +60,13 @@ Here $\beta_0$ is the intercept, $\beta_1$ is a slope, $u_{0i}$ is a person spec
 	
 # Compare The Two Sets of Estimates (`estimates table`)
 
-> 1. The multilevel model controls for variables that are included in the model.
->
-> 2. The fixed effects model controls for variables that are included in the model, as well as all time invariant characteristics of participants.
->
-> 3. The multilevel model uses both within and between person variation; the fixed effects model uses only within person variation.
->
-> 4. The fixed effects model is unable to provide information on time invariant characteristics of individuals even if they are included in the model.
->
-> 5. Coefficients in the fixed effects model are generally smaller than coefficients in the multilevel model. (Often, though not in this example, coefficients that were significant in the multilevel model are not significant in the fixed effects model).
+1. The multilevel model controls for variables that are included in the model.
+2. The fixed effects model controls for variables that are included in the model, as well as all time invariant characteristics of countries.
+3. The multilevel model uses both within and between country variation; the fixed effects model uses only within country variation.
+4. The fixed effects model is unable to provide information on time invariant characteristics of countries (AKA Level 2 variables) even if they are included in the model. All time invariant characteristics of countries (AKA Level 2 variables) are excluded from the estimates.
+5. As a result of (3), the fixed effects model is less statistically efficient than the multilevel model. Coefficients in the fixed effects model are generally smaller than coefficients in the multilevel model. (Often, though not in this example, coefficients that were significant in the multilevel model are not significant in the fixed effects model). Sometimes this is a result of the increased statistical control afforded by the fixed effects regression; sometimes this is a result of the decreased statistical efficiency of the fixed effects regression.
+6. Multilevel models rely on the assumption that the random effects ($u$'s) are uncorrelated with the regressors ($x$'s). Fixed effects regression models do not rely on this assumption. 
+7. Random slopes are a part of the multilevel modeling framework allowing for exploration of the diversity of regression slopes across individuals and contexts. Random slopes are not part of the fixed effects regression framework.
 
     etable, estimates(MLM FE) column(estimate) showstars showstarsnote
 
