@@ -1,298 +1,254 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
-<head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <meta name="author" content="Andy Grogan-Kaylor" />
-  <title>Comparing Multilevel Models and Fixed Effects Regression</title>
-  <style>
-    html {
-      color: #1a1a1a;
-      background-color: #fdfdfd;
-    }
-    body {
-      margin: 0 auto;
-      max-width: 36em;
-      padding-left: 50px;
-      padding-right: 50px;
-      padding-top: 50px;
-      padding-bottom: 50px;
-      hyphens: auto;
-      overflow-wrap: break-word;
-      text-rendering: optimizeLegibility;
-      font-kerning: normal;
-    }
-    @media (max-width: 600px) {
-      body {
-        font-size: 0.9em;
-        padding: 12px;
-      }
-      h1 {
-        font-size: 1.8em;
-      }
-    }
-    @media print {
-      html {
-        background-color: white;
-      }
-      body {
-        background-color: transparent;
-        color: black;
-        font-size: 12pt;
-      }
-      p, h2, h3 {
-        orphans: 3;
-        widows: 3;
-      }
-      h2, h3, h4 {
-        page-break-after: avoid;
-      }
-    }
-    p {
-      margin: 1em 0;
-    }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
-    }
-    img {
-      max-width: 100%;
-    }
-    svg {
-      height: auto;
-      max-width: 100%;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      margin-top: 1.4em;
-    }
-    h5, h6 {
-      font-size: 1em;
-      font-style: italic;
-    }
-    h6 {
-      font-weight: normal;
-    }
-    ol, ul {
-      padding-left: 1.7em;
-      margin-top: 1em;
-    }
-    li > ol, li > ul {
-      margin-top: 0;
-    }
-    blockquote {
-      margin: 1em 0 1em 1.7em;
-      padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
-      color: #606060;
-    }
-    code {
-      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
-      font-size: 85%;
-      margin: 0;
-      hyphens: manual;
-    }
-    pre {
-      margin: 1em 0;
-      overflow: auto;
-    }
-    pre code {
-      padding: 0;
-      overflow: visible;
-      overflow-wrap: normal;
-    }
-    .sourceCode {
-     background-color: transparent;
-     overflow: visible;
-    }
-    hr {
-      background-color: #1a1a1a;
-      border: none;
-      height: 1px;
-      margin: 1em 0;
-    }
-    table {
-      margin: 1em 0;
-      border-collapse: collapse;
-      width: 100%;
-      overflow-x: auto;
-      display: block;
-      font-variant-numeric: lining-nums tabular-nums;
-    }
-    table caption {
-      margin-bottom: 0.75em;
-    }
-    tbody {
-      margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
-    }
-    th {
-      border-top: 1px solid #1a1a1a;
-      padding: 0.25em 0.5em 0.25em 0.5em;
-    }
-    td {
-      padding: 0.125em 0.5em 0.25em 0.5em;
-    }
-    header {
-      margin-bottom: 4em;
-      text-align: center;
-    }
-    #TOC li {
-      list-style: none;
-    }
-    #TOC ul {
-      padding-left: 1.3em;
-    }
-    #TOC > ul {
-      padding-left: 0;
-    }
-    #TOC a:not(:hover) {
-      text-decoration: none;
-    }
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    /* The extra [class] is a hack that increases specificity enough to
-       override a similar rule in reveal.js */
-    ul.task-list[class]{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      font-size: inherit;
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
-      vertical-align: middle;
-    }
-  </style>
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
-  type="text/javascript"></script>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.33">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Andrew Grogan-Kaylor">
+<meta name="dcterms.date" content="2025-10-25">
+
+<title>Comparing Multilevel Models and Fixed Effects Regression</title>
 <style>
-/* CSS for Markstat 2.0 using Pandoc 2.0 */
-body{padding:14px 28px; max-width:45em;}
-body, table {font-family: Helvetica, Arial, Sans-serif; font-size: 14px;}
-h1, h2, h3, h4 {font-weight: normal; color: #3366cc}
-h1 {font-size: 200%;}
-h2 {font-size: 150%;}
-h3 {font-size: 120%;}
-h4 {font-size: 100%; font-weight:bold}
-img.center {display:block; margin-left:auto; margin-right:auto}
-.small{font-size:8pt;}
-a {color: black;}
-a:visited {color: #808080;}
-a.plain {text-decoration:none;}
-a.plain:hover {text-decoration:underline;}
-.em {font-weight:bold;}
-pre, code {font-family: "lucida console", monospace;}
-pre.stata {font-size:13px; line-height:13px;}
-pre {padding:8px; border:1px solid #c0c0c0; border-radius:8px; background-color:#fdfdfd;}
-code {color:#3366cc; background-color:#fafafa;}
-pre code { color:black; background-color:white}
-/* Added for Pandoc */
-figure > img, div.figure > img {display:block; margin:auto}
-figcaption, p.caption {text-align:center; font-weight:bold; color:#3366cc;}
-h1.title {text-align:center; margin-bottom:0}
-p.author, h2.author {font-style:italic; text-align:center;margin-top:4px;margin-bottom:0}
-p.date, h3.date {text-align:center;margin-top:4px; margin-bottom:0}
-/* Tables*/
-table { margin:auto; border-collapse:collapse; }
-table caption { margin-bottom:1ex;}
-td {padding:0 0 0 0} /* override */
-table:not([class]) th { padding:4px 6px } 
-table:not([class]) td { padding:4px 6px } 
-table:not([class]) thead tr:first-child th {border-top:1px solid black; padding-top:6px}
-table:not([class]) thead tr:last-child  th {padding-bottom:6px}
-table:not([class]) tbody tr:first-child td {border-top:1px solid black; padding-top:6px}
-table:not([class]) tbody tr:last-child  td {padding-bottom:6px;}
-table:not([class]) tbody:last-child tr:last-child td {border-bottom:1px solid black;}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
+
+
+<script src="fixed-effects-example_files/libs/clipboard/clipboard.min.js"></script>
+<script src="fixed-effects-example_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="fixed-effects-example_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="fixed-effects-example_files/libs/quarto-html/popper.min.js"></script>
+<script src="fixed-effects-example_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="fixed-effects-example_files/libs/quarto-html/anchor.min.js"></script>
+<link href="fixed-effects-example_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="fixed-effects-example_files/libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="fixed-effects-example_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="fixed-effects-example_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="fixed-effects-example_files/libs/bootstrap/bootstrap-4eeb5248cdde89baaa6ac4eccee2427e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 </head>
-<body>
-<header id="title-block-header">
-<h1 class="title">Comparing Multilevel Models and Fixed Effects
-Regression</h1>
-<p class="author">Andy Grogan-Kaylor</p>
-<p class="date">10 Dec 2024 10:32:51</p>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background"><span class="header-section-number">1</span> Background</a></li>
+  <li><a href="#get-the-data-use" id="toc-get-the-data-use" class="nav-link" data-scroll-target="#get-the-data-use"><span class="header-section-number">2</span> Get The Data (<code>use</code>)</a></li>
+  <li><a href="#describe-the-key-variables-describe" id="toc-describe-the-key-variables-describe" class="nav-link" data-scroll-target="#describe-the-key-variables-describe"><span class="header-section-number">3</span> Describe the Key Variables (<code>describe</code>)</a></li>
+  <li><a href="#equation" id="toc-equation" class="nav-link" data-scroll-target="#equation"><span class="header-section-number">4</span> Equation</a></li>
+  <li><a href="#multilevel-model-mixed-y-x-id" id="toc-multilevel-model-mixed-y-x-id" class="nav-link" data-scroll-target="#multilevel-model-mixed-y-x-id"><span class="header-section-number">5</span> Multilevel Model (<code>mixed y x || id:</code>)</a></li>
+  <li><a href="#fixed-effects-regression-xtreg-y-x-iid-fe" id="toc-fixed-effects-regression-xtreg-y-x-iid-fe" class="nav-link" data-scroll-target="#fixed-effects-regression-xtreg-y-x-iid-fe"><span class="header-section-number">6</span> Fixed Effects Regression (<code>xtreg y x, i(id) fe</code>)</a></li>
+  <li><a href="#compare-the-two-sets-of-estimates-estimates-table" id="toc-compare-the-two-sets-of-estimates-estimates-table" class="nav-link" data-scroll-target="#compare-the-two-sets-of-estimates-estimates-table"><span class="header-section-number">7</span> Compare The Two Sets of Estimates (<code>estimates table</code>)</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Comparing Multilevel Models and Fixed Effects Regression</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Andrew Grogan-Kaylor </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 25, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
 </header>
-<h1 id="background">Background</h1>
-<style>body {max-width: 90%;} h1 {color: #00274C;} h2 {color: #2F65A7;} p {font-size: 110%;} pre.stata {font-size: 110%;  line-height: 115%;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
-<blockquote>
-<p>This example draws from the Stata documentation for the
-<code>xtreg</code> command.</p>
-</blockquote>
-<p>Multilevel models for longitudinal data, and fixed effects regression
-provide two alternative methods for analyzing longitudinal data.</p>
-<blockquote>
+
+
+<section id="background" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Background</h1>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This example draws from the Stata documentation for the <code>xtreg</code> command.</p>
+</div>
+</div>
+<p>Multilevel models for longitudinal data, and fixed effects regression provide two alternative methods for analyzing longitudinal data.</p>
 <p>Briefly…</p>
 <ul>
-<li><p>Multilevel models use both within person and between person
-variation, and provide statistical control for observed variables that
-are included in the model.</p></li>
-<li><p>Fixed effect regressions use only within person variation. As a
-consequence, fixed effects regression is unable to provide parameter
-estimates for time invariant variables, even when they are included in
-the statistical model. Fixed effects regressions provide statistical
-controls for all time invariant variables, whether observed or
-unobserved.</p></li>
+<li>Multilevel models use both within person and between person variation, and provide statistical control for observed variables that are included in the model.</li>
+<li>Fixed effect regressions use only within person variation. As a consequence, fixed effects regression is unable to provide parameter estimates for time invariant variables, even when they are included in the statistical model. Fixed effects regressions provide statistical controls for all time invariant variables, whether observed or unobserved.</li>
 </ul>
-</blockquote>
-<h1 id="get-the-data-use">Get The Data (<code>use</code>)</h1>
-<blockquote>
-<p>We are going to use the sample NLS data on work from <em>Stata
-Corporation</em>.</p>
-</blockquote>
-<pre class='stata'>. clear all
-</pre>
-<pre class='stata'>. use https://www.stata-press.com/data/r16/nlswork, clear
-(National Longitudinal Survey.  Young Women 14-26 years of age in 1968)
-</pre>
-<h1 id="describe-the-key-variables-describe">Describe the Key Variables
-(<code>describe</code>)</h1>
-<pre class='stata'>. describe ln_w grade age race union south
-
-Variable      Storage   Display    Value
+</section>
+<section id="get-the-data-use" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Get The Data (<code>use</code>)</h1>
+<p>We are going to use the sample NLS data on work from <em>Stata Corporation</em>.</p>
+<div class="cell" data-collectcode="true">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">clear</span> <span class="ot">all</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> https:<span class="co">//www.stata-press.com/data/r16/nlswork, clear</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(National Longitudinal Survey.  Young Women 14-26 years of age in 1968)</code></pre>
+</div>
+</div>
+</section>
+<section id="describe-the-key-variables-describe" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Describe the Key Variables (<code>describe</code>)</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">describe</span> ln_w grade age race <span class="kw">union</span> south</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Variable      Storage   Display    Value
     name         type    format    label      Variable label
-───────────────────────────────────────────────────────────────────────────────────────────
+-------------------------------------------------------------------------------------
 ln_wage         float   %9.0g                 ln(wage/GNP deflator)
 grade           byte    %8.0g                 current grade completed
 age             byte    %8.0g                 age in current year
 race            byte    %8.0g      racelbl    race
 union           byte    %8.0g                 1 if union
-south           byte    %8.0g                 1 if south
-</pre>
-<h1 id="equation">Equation</h1>
+south           byte    %8.0g                 1 if south</code></pre>
+</div>
+</div>
+</section>
+<section id="equation" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Equation</h1>
 <p>Both models estimate the following equation.</p>
-<p><span class="math display">\[y_{it} = \beta_0 + \beta_1 x_{it} +
-u_{0i} + e_{it}\]</span></p>
-<p>Here <span class="math inline">\(\beta_0\)</span> is the intercept,
-<span class="math inline">\(\beta_1\)</span> is a slope, <span
-class="math inline">\(u_{0i}\)</span> is a person specific intercept,
-and <span class="math inline">\(e_{it}\)</span> is a measurement
-specific error term.</p>
-<blockquote>
-<p>In the <em>multilevel model</em> discussed below, the <span
-class="math inline">\(u_{0i}\)</span> are considered to have a
-<em>distribution</em>, with a mean of 0 and a standard deviation <span
-class="math inline">\(\sigma_{u0}\)</span>. In the <em>fixed effects
-regression model</em>, the <span class="math inline">\(u_{0i}\)</span>
-are considered to be <em>fixed</em>, and <em>directly estimable</em>,
-although in practice, estimates for each of the <span
-class="math inline">\(u_{0i}\)</span> are usually not provided.</p>
-</blockquote>
-<h1 id="multilevel-model-mixed-y-x-id">Multilevel Model
-(<code>mixed y x || id:</code>)</h1>
-<blockquote>
-<p>The model uses within and between person variation. Estimates are
-provided for all variables. The model only controls for variables that
-are included in the model.</p>
-</blockquote>
-<pre class='stata'>. mixed ln_w grade age i.race union south || idcode: 
-
-Performing EM optimization ...
+<p><span class="math display">\[y_{it} = \beta_0 + \beta_1 x_{it} + u_{0i} + e_{it}\]</span></p>
+<p>Here <span class="math inline">\(\beta_0\)</span> is the intercept, <span class="math inline">\(\beta_1\)</span> is a slope, <span class="math inline">\(u_{0i}\)</span> is a person specific intercept, and <span class="math inline">\(e_{it}\)</span> is a measurement specific error term.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Key Idea
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In the <em>multilevel model</em> discussed below, the <span class="math inline">\(u_{0i}\)</span> are considered to have a <em>distribution</em>, with a mean of 0 and a standard deviation <span class="math inline">\(\sigma_{u0}\)</span>. In the <em>fixed effects regression model</em>, the <span class="math inline">\(u_{0i}\)</span> are considered to be <em>fixed</em>, and <em>directly estimable</em>, although in practice, estimates for each of the <span class="math inline">\(u_{0i}\)</span> are usually not provided.</p>
+</div>
+</div>
+</section>
+<section id="multilevel-model-mixed-y-x-id" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Multilevel Model (<code>mixed y x || id:</code>)</h1>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+MLM
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The model uses within and between person variation. Estimates are provided for all variables. The model only controls for variables that are included in the model.</p>
+</div>
+</div>
+<div class="cell" data-collectcode="true">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>mixed ln_w grade age i.race <span class="kw">union</span> south || idcode: </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="kw">est</span> <span class="kw">store</span> MLM</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Performing EM optimization ...
 
 Performing gradient-based optimization: 
 Iteration 0:  Log likelihood =  -5486.826  
@@ -307,44 +263,57 @@ Group variable: idcode                              Number of groups =   4,148
                                                                  avg =     4.6
                                                                  max =      12
                                                     Wald chi2(6)     = 3471.83
-Log likelihood =  -5486.826                         Prob > chi2      =  0.0000
+Log likelihood =  -5486.826                         Prob &gt; chi2      =  0.0000
 
-─────────────┬────────────────────────────────────────────────────────────────
-     ln_wage │ Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
-─────────────┼────────────────────────────────────────────────────────────────
-       grade │   .0781541   .0021992    35.54   0.000     .0738438    .0824644
-         age │   .0137491   .0003907    35.19   0.000     .0129833    .0145149
-             │
-        race │
-      black  │  -.0405347   .0126091    -3.21   0.001    -.0652482   -.0158212
-      other  │   .0404357   .0508123     0.80   0.426    -.0591545     .140026
-             │
-       union │   .1243977   .0065614    18.96   0.000     .1115375    .1372579
-       south │  -.1019453   .0090188   -11.30   0.000    -.1196219   -.0842687
-       _cons │   .3110752   .0314868     9.88   0.000     .2493622    .3727882
-─────────────┴────────────────────────────────────────────────────────────────
+------------------------------------------------------------------------------
+     ln_wage | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+       grade |   .0781541   .0021992    35.54   0.000     .0738438    .0824644
+         age |   .0137491   .0003907    35.19   0.000     .0129833    .0145149
+             |
+        race |
+      black  |  -.0405347   .0126091    -3.21   0.001    -.0652482   -.0158212
+      other  |   .0404357   .0508123     0.80   0.426    -.0591545     .140026
+             |
+       union |   .1243977   .0065614    18.96   0.000     .1115375    .1372579
+       south |  -.1019453   .0090188   -11.30   0.000    -.1196219   -.0842687
+       _cons |   .3110752   .0314868     9.88   0.000     .2493622    .3727882
+------------------------------------------------------------------------------
 
-─────────────────────────────┬────────────────────────────────────────────────
-  Random-effects parameters  │   Estimate   Std. err.     [95% conf. interval]
-─────────────────────────────┼────────────────────────────────────────────────
-idcode: Identity             │
-                  var(_cons) │   .0998265   .0027427      .0945931    .1053494
-─────────────────────────────┼────────────────────────────────────────────────
-               var(Residual) │   .0691308   .0007996      .0675813    .0707159
-─────────────────────────────┴────────────────────────────────────────────────
-LR test vs. linear model: chibar2(01) = 8473.10       Prob >= chibar2 = 0.0000
-</pre>
-<pre class='stata'>. est store MLM
-</pre>
-<h1 id="fixed-effects-regression-xtreg-y-x-iid-fe">Fixed Effects
-Regression (<code>xtreg y x, i(id) fe</code>)</h1>
-<blockquote>
-<p>The model uses only within person variation. Estimates are only
-provided for within person change over time. The model controls for all
-time invariant variables whether observed or unobserved.</p>
-</blockquote>
-<pre class='stata'>. xtreg ln_w grade age i.race union south, i(idcode) fe
-note: grade omitted because of collinearity.
+------------------------------------------------------------------------------
+  Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
+-----------------------------+------------------------------------------------
+idcode: Identity             |
+                  var(_cons) |   .0998265   .0027427      .0945931    .1053494
+-----------------------------+------------------------------------------------
+               var(Residual) |   .0691308   .0007996      .0675813    .0707159
+------------------------------------------------------------------------------
+LR test vs. linear model: chibar2(01) = 8473.10       Prob &gt;= chibar2 = 0.0000</code></pre>
+</div>
+</div>
+</section>
+<section id="fixed-effects-regression-xtreg-y-x-iid-fe" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Fixed Effects Regression (<code>xtreg y x, i(id) fe</code>)</h1>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+FE
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The model uses only within person variation. Estimates are only provided for within person change over time. The model controls for all time invariant variables whether observed or unobserved.</p>
+</div>
+</div>
+<div class="cell" data-collectcode="true">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">xtreg</span> ln_w grade age i.race <span class="kw">union</span> south, i(idcode) <span class="kw">fe</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="kw">est</span> <span class="kw">store</span> FE</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>note: grade omitted because of collinearity.
 note: 2.race omitted because of collinearity.
 note: 3.race omitted because of collinearity.
 
@@ -357,56 +326,47 @@ R-squared:                                      Obs per group:
      Overall = 0.0847                                         max =         12
 
                                                 F(3, 15073)       =     547.57
-corr(u_i, Xb) = 0.0599                          Prob > F          =     0.0000
+corr(u_i, Xb) = 0.0599                          Prob &gt; F          =     0.0000
 
-─────────────┬────────────────────────────────────────────────────────────────
-     ln_wage │ Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
-─────────────┼────────────────────────────────────────────────────────────────
-       grade │          0  (omitted)
-         age │   .0153807   .0004154    37.03   0.000     .0145665    .0161949
-             │
-        race │
-      black  │          0  (omitted)
-      other  │          0  (omitted)
-             │
-       union │   .1034851   .0070913    14.59   0.000     .0895853    .1173849
-       south │  -.0759973   .0135167    -5.62   0.000    -.1024917   -.0495029
-       _cons │   1.279453   .0143464    89.18   0.000     1.251332    1.307573
-─────────────┼────────────────────────────────────────────────────────────────
-     sigma_u │  .41784013
-     sigma_e │   .2618843
-         rho │  .71796552   (fraction of variance due to u_i)
-─────────────┴────────────────────────────────────────────────────────────────
-F test that all u_i=0: F(4147, 15073) = 9.60                 Prob > F = 0.0000
-</pre>
-<pre class='stata'>. est store FE
-</pre>
-<h1 id="compare-the-two-sets-of-estimates-estimates-table">Compare The
-Two Sets of Estimates (<code>estimates table</code>)</h1>
-<blockquote>
+------------------------------------------------------------------------------
+     ln_wage | Coefficient  Std. err.      t    P&gt;|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+       grade |          0  (omitted)
+         age |   .0153807   .0004154    37.03   0.000     .0145665    .0161949
+             |
+        race |
+      black  |          0  (omitted)
+      other  |          0  (omitted)
+             |
+       union |   .1034851   .0070913    14.59   0.000     .0895853    .1173849
+       south |  -.0759973   .0135167    -5.62   0.000    -.1024917   -.0495029
+       _cons |   1.279453   .0143464    89.18   0.000     1.251332    1.307573
+-------------+----------------------------------------------------------------
+     sigma_u |  .41784013
+     sigma_e |   .2618843
+         rho |  .71796552   (fraction of variance due to u_i)
+------------------------------------------------------------------------------
+F test that all u_i=0: F(4147, 15073) = 9.60                 Prob &gt; F = 0.0000</code></pre>
+</div>
+</div>
+</section>
+<section id="compare-the-two-sets-of-estimates-estimates-table" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> Compare The Two Sets of Estimates (<code>estimates table</code>)</h1>
 <ol type="1">
-<li><p>The multilevel model controls for variables that are included in
-the model.</p></li>
-<li><p>The fixed effects model controls for variables that are included
-in the model, as well as all time invariant characteristics of
-participants.</p></li>
-<li><p>The multilevel model uses both within and between person
-variation; the fixed effects model uses only within person
-variation.</p></li>
-<li><p>The fixed effects model is unable to provide information on time
-invariant characteristics of individuals even if they are included in
-the model.</p></li>
-<li><p>Coefficients in the fixed effects model are generally smaller
-than coefficients in the multilevel model. (Often, though not in this
-example, coefficients that were significant in the multilevel model are
-not significant in the fixed effects model).</p></li>
+<li>The multilevel model controls for variables that are included in the model.</li>
+<li>The fixed effects model controls for variables that are included in the model, as well as all time invariant characteristics of individuals.</li>
+<li>The multilevel model uses both within and between individual variation; the fixed effects model uses only within individual variation.</li>
+<li>The fixed effects model is unable to provide information on time invariant characteristics of individuals (AKA Level 2 variables) even if they are included in the model. All time invariant characteristics of individuals (AKA Level 2 variables) are excluded from the estimates.</li>
+<li>As a result of (3), the fixed effects model is less statistically efficient than the multilevel model. Coefficients in the fixed effects model are generally smaller than coefficients in the multilevel model. (Often, though not in this example, coefficients that were significant in the multilevel model are not significant in the fixed effects model). Sometimes this is a result of the increased statistical control afforded by the fixed effects regression; sometimes this is a result of the decreased statistical efficiency of the fixed effects regression.</li>
+<li>Multilevel models rely on the assumption that the random effects (<span class="math inline">\(u\)</span>’s) are uncorrelated with the regressors (<span class="math inline">\(x\)</span>’s). Fixed effects regression models do not rely on this assumption.</li>
+<li>Random slopes are a part of the multilevel modeling framework allowing for exploration of the diversity of regression slopes across individuals and contexts. Random slopes are not part of the fixed effects regression framework.</li>
 </ol>
-</blockquote>
-<pre class='stata'>. etable, estimates(MLM FE) column(estimate) showstars showstarsnote
-
-────────────────────────────────--─────────--
-                            MLM        FE    
-────────────────────────────────--─────────--
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>etable, <span class="kw">estimates</span>(MLM FE) column(estimate) showstars showstarsnote</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                            MLM        FE    
+---------------------------------------------
 current grade completed   0.078 **           
                         (0.002)              
 age in current year       0.014 **   0.015 **
@@ -427,8 +387,416 @@ var(_cons)                0.100
 var(e)                    0.069              
                         (0.001)              
 Number of observations    19224      19224   
-────────────────────────────────--─────────--
-** p&lt;.01, * p&lt;.05
-</pre>
-</body>
-</html>
+---------------------------------------------
+** p&lt;.01, * p&lt;.05</code></pre>
+</div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

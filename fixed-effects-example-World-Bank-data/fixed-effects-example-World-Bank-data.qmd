@@ -10,18 +10,25 @@ format:
     lightbox: true
 ---
 
-
 # Background
+
+```{r}
+#| output: false
+#| echo: false
+
+library(Statamarkdown)
+
+```
+
 
 Multilevel models for longitudinal data, and fixed effects regression provide two alternative methods for analyzing longitudinal data.
 
 Briefly…
 
-> Here, level 2 units are countries. Level 1 is a country-year. Level 2 is the country.
+Here, level 2 units are countries. Level 1 is a country-year. Level 2 is the country.
 
-> * Multilevel models use both within level 2 unit and between level 2 unit variation, and provide statistical control for observed variables that are included in the model.
->
-> * Fixed effect regressions use only within level 2 unit variation. As a consequence, fixed effects regression is unable to provide parameter estimates for time invariant variables, even when they are included in the statistical model. Fixed effects regressions provide statistical controls for all time invariant variables, whether observed or unobserved.
+* Multilevel models use both within level 2 unit and between level 2 unit variation, and provide statistical control for observed variables that are included in the model.
+* Fixed effect regressions use only within level 2 unit variation. As a consequence, fixed effects regression is unable to provide parameter estimates for time invariant variables, even when they are included in the statistical model. Fixed effects regressions provide statistical controls for all time invariant variables, whether observed or unobserved.
 
 # Equation
 
@@ -42,7 +49,7 @@ In the *multilevel model*, the $u_{0i}$ are considered to have a *distribution*,
 We are going to data from the [World Bank World Development Indicators](https://agrogan1.github.io/R/wbdemo/)
 
 
-```{stata}
+```{stata, collectcode=TRUE}
 
 use "WorldBankData.dta", clear
 
@@ -52,7 +59,7 @@ describe life_expectancy year Gini GDP undernourishment region
 
 # Process The Data
 
-```{stata}
+```{stata, collectcode=TRUE}
 
 drop if region == "Aggregates" // drop rows of data representing Aggregates
 
@@ -63,8 +70,11 @@ encode region, generate(regionNUMERIC) // numeric version of region
 # Graph
 
 ```{stata}
+#| output: false
 
 histogram life_expectancy, scheme(michigan) title("Life Expectancy at Birth") fcolor(%50)
+
+graph export histogram.png, replace
 
 ```
 
@@ -78,7 +88,7 @@ histogram life_expectancy, scheme(michigan) title("Life Expectancy at Birth") fc
 The model uses within and between level 2 unit variation. Estimates are provided for all variables. The model only controls for variables that are included in the model.
 :::
 
-```{stata}
+```{stata, collectcode=TRUE}
 
 mixed life_expectancy year Gini GDP undernourishment i.regionNUMERIC || country:
 
@@ -94,7 +104,7 @@ est store MLM
 The model uses only within level 2 unit variation. Estimates are only provided for within level 2 unit change over time. The model controls for all time invariant variables whether observed or unobserved.
 :::
 
-```{stata}
+```{stata, collectcode=TRUE}
 
 xtreg life_expectancy year Gini GDP undernourishment i.regionNUMERIC, i(country) fe
 
@@ -104,7 +114,7 @@ est store FE
 
 # Compare The Two Sets of Estimates (`estimates table`)
 
-::: {.callout-tip}
+::: {.callout-note}
 ## Omitted Category
 
 NB that the omitted category for region is "East Asia & Pacific".
@@ -113,7 +123,7 @@ NB that the omitted category for region is "East Asia & Pacific".
 1. The multilevel model controls for variables that are included in the model.
 2. The fixed effects model controls for variables that are included in the model, as well as all time invariant characteristics of countries.
 3. The multilevel model uses both within and between country variation; the fixed effects model uses only within country variation.
-4. The fixed effects model is unable to provide information on time invariant characteristics of countries (AKA Level 2 variables) even if they are included in the model. All time invariant characteristics of countries (AKA Level 2 variables) are excluded from the estimates.
+4. The fixed effects model is unable to provide information on time invariant characteristics of countries (AKA Level 2 variables) even if they are included in the model. All time invariant characteristics of countries (AKA Level 2 variables) are excluded from the estimates.
 5. As a result of (3), the fixed effects model is less statistically efficient than the multilevel model. Coefficients in the fixed effects model are generally smaller than coefficients in the multilevel model. (Often, though not in this example, coefficients that were significant in the multilevel model are not significant in the fixed effects model). Sometimes this is a result of the increased statistical control afforded by the fixed effects regression; sometimes this is a result of the decreased statistical efficiency of the fixed effects regression.
 6. Multilevel models rely on the assumption that the random effects ($u$'s) are uncorrelated with the regressors ($x$'s). Fixed effects regression models do not rely on this assumption. 
 7. Random slopes are a part of the multilevel modeling framework allowing for exploration of the diversity of regression slopes across individuals and contexts. Random slopes are not part of the fixed effects regression framework.
