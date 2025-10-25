@@ -1,9 +1,15 @@
-<<dd_version: 2>>
-<<dd_include: header.txt >>
+---
+title: "Comparing Fixed Effects and Multilevel Models Using World Bank Data"
+author: "Andrew Grogan-Kaylor"
+date: "today"
+format:
+  html:
+    toc: true
+    number-sections: true
+    theme: yeti
+    lightbox: true
+---
 
-
-Comparing Fixed Effects and Multilevel Models Using World Bank Data
-===============================================================
 
 # Background
 
@@ -25,83 +31,97 @@ $$y_{it} = \beta_0 + \beta_1 x_{it} + u_{0i} + e_{it}$$
 
 Here $\beta_0$ is the intercept, $\beta_1$ is a slope, $u_{0i}$ is a country specific intercept, and $e_{it}$ is a measurement specific error term.
 
-> In the *multilevel model*, the $u_{0i}$ are considered to have a *distribution*, with a mean of 0 and a standard deviation $\sigma_{u0}$. In the *fixed effects regression model*, the $u_{0i}$ are considered to be *fixed*, and *directly estimable*, although in practice, estimates for each of the $u_{0i}$ are usually not provided.
+::: {.callout-tip}
+## Key Idea
+
+In the *multilevel model*, the $u_{0i}$ are considered to have a *distribution*, with a mean of 0 and a standard deviation $\sigma_{u0}$. In the *fixed effects regression model*, the $u_{0i}$ are considered to be *fixed*, and *directly estimable*, although in practice, estimates for each of the $u_{0i}$ are usually not provided.
+:::
 
 # Get The Data
 
 We are going to data from the [World Bank World Development Indicators](https://agrogan1.github.io/R/wbdemo/)
 
-~~~~
-<<dd_do>>
+
+```{stata}
+
 use "WorldBankData.dta", clear
 
 describe life_expectancy year Gini GDP undernourishment region
-<</dd_do>>
-~~~~
+
+```
 
 # Process The Data
 
-~~~~
-<<dd_do>>
+```{stata}
+
 drop if region == "Aggregates" // drop rows of data representing Aggregates
 
 encode region, generate(regionNUMERIC) // numeric version of region
-<</dd_do>>
-~~~~
+
+```
 
 # Graph
 
-~~~~
-<<dd_do>>
-histogram life_expectancy, scheme(michigan) title("Life Expectancy at Birth") fcolor(%50)
-<</dd_do>>
-~~~~
+```{stata}
 
-<<dd_graph: sav("histogram.svg") alt("scatter mpg weight") replace height(400)>>
+histogram life_expectancy, scheme(michigan) title("Life Expectancy at Birth") fcolor(%50)
+
+```
+
+![histogram of life expectancy](histogram.png)
 
 # Multilevel Model (`mixed y x || id:`)
 
-> The model uses within and between level 2 unit variation. Estimates are provided for all variables. The model only controls for variables that are included in the model.
+::: {.callout-tip}
+## MLM
 
-~~~~
-<<dd_do>>
+The model uses within and between level 2 unit variation. Estimates are provided for all variables. The model only controls for variables that are included in the model.
+:::
+
+```{stata}
+
 mixed life_expectancy year Gini GDP undernourishment i.regionNUMERIC || country:
 
 est store MLM
-<</dd_do>>
-~~~~
+
+```
 
 # Fixed Effects Model (`xtreg y x, i(id) fe`)
 
-> The model uses only within level 2 unit variation. Estimates are only provided for within level 2 unit change over time. The model controls for all time invariant variables whether observed or unobserved.
+::: {.callout-tip}
+## FE
 
-~~~~
-<<dd_do>>
+The model uses only within level 2 unit variation. Estimates are only provided for within level 2 unit change over time. The model controls for all time invariant variables whether observed or unobserved.
+:::
+
+```{stata}
+
 xtreg life_expectancy year Gini GDP undernourishment i.regionNUMERIC, i(country) fe
 
 est store FE
-<</dd_do>>
-~~~~
+
+```
 
 # Compare The Two Sets of Estimates (`estimates table`)
 
-> NB that the omitted category for region is "East Asia & Pacific".
+::: {.callout-tip}
+## Omitted Category
 
-> 1. The multilevel model controls for variables that are included in the model.
->
-> 2. The fixed effects model controls for variables that are included in the model, as well as all time invariant characteristics of countries.
->
-> 3. The multilevel model uses both within and between country variation; the fixed effects model uses only within country variation.
->
-> 4. The fixed effects model is unable to provide information on time invariant characteristics of countries even if they are included in the model.
->
-> 5. Coefficients in the fixed effects model are generally smaller than coefficients in the multilevel model. (Often, though not in this example, coefficients that were significant in the multilevel model are not significant in the fixed effects model).
+NB that the omitted category for region is "East Asia & Pacific".
+:::
 
-~~~~
-<<dd_do>>
+1. The multilevel model controls for variables that are included in the model.
+2. The fixed effects model controls for variables that are included in the model, as well as all time invariant characteristics of countries.
+3. The multilevel model uses both within and between country variation; the fixed effects model uses only within country variation.
+4. The fixed effects model is unable to provide information on time invariant characteristics of countries (AKA Level 2 variables) even if they are included in the model. All time invariant characteristics of countries (AKA Level 2 variables) are excluded from the estimates.
+5. As a result of (3), the fixed effects model is less statistically efficient than the multilevel model. Coefficients in the fixed effects model are generally smaller than coefficients in the multilevel model. (Often, though not in this example, coefficients that were significant in the multilevel model are not significant in the fixed effects model). Sometimes this is a result of the increased statistical control afforded by the fixed effects regression; sometimes this is a result of the decreased statistical efficiency of the fixed effects regression.
+6. Multilevel models rely on the assumption that the random effects ($u$'s) are uncorrelated with the regressors ($x$'s). Fixed effects regression models do not rely on this assumption. 
+7. Random slopes are a part of the multilevel modeling framework allowing for exploration of the diversity of regression slopes across individuals and contexts. Random slopes are not part of the fixed effects regression framework.
+
+```{stata}
+
 est table MLM FE, star equations(1)  b(%9.3f) stats(N r2_a)
-<</dd_do>>
-~~~~
 
+```
 
 
