@@ -1,0 +1,67 @@
+---
+title: "multilevel-logistic-regression-2"
+format: html
+---
+
+```{r}
+
+library(Statamarkdown)
+
+```
+
+
+```{stata}
+
+use simulated_multilevel_data
+
+```
+
+```{r}
+
+library(haven)
+
+simulated_multilevel_data <- read_dta("simulated_multilevel_data.dta")
+
+simulated_multilevel_data$outcome_category <- 0 # initialize to 0
+
+simulated_multilevel_data$outcome_category[simulated_multilevel_data$outcome > 52] <- 1 # dichotomous outcome
+
+simulated_multilevel_data$intervention <- factor(simulated_multilevel_data$intervention)
+
+library(lme4)
+
+fit <- glmer(outcome_category ~ warmth + physical_punishment + 
+                identity + intervention +
+                (1 | country),
+              family = binomial(link = "logit"),
+              data = simulated_multilevel_data)
+
+
+fit <- glm(outcome_category ~ intervention,
+           family = binomial(link="logit"),
+           data = simulated_multilevel_data)
+
+newdata <- data.frame(warmth = c(mean(simulated_multilevel_data$warmth),
+                                 mean(simulated_multilevel_data$warmth)), 
+                      physical_punishment = c(mean(simulated_multilevel_data$physical_punishment),
+                                              mean(simulated_multilevel_data$physical_punishment)),
+                      identity= c(mean(simulated_multilevel_data$identity),
+                                  mean(simulated_multilevel_data$identity)),
+                      intervention = c(1, 0),
+                      HDI = c(mean(simulated_multilevel_data$HDI),
+                              mean(simulated_multilevel_data$HDI)),
+                      country = c(15, 15))
+
+predicted_probabilities <- predict(fit, 
+                                   newdata = newdata, 
+                                   type = "response")
+
+library(marginaleffects)
+
+avg_comparisons(fit, by = "intervention")
+
+predictions(fit, newdata = datagrid(intervention = c(0, 1)))
+
+    
+```
+
