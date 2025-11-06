@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Andy Grogan-Kaylor">
-<meta name="dcterms.date" content="2025-10-23">
+<meta name="dcterms.date" content="2025-11-06">
 
 <title>Why Multilevel Models Are Good Models For Longitudinal Data</title>
 <style>
@@ -266,11 +266,12 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#visually" id="toc-visually" class="nav-link active" data-scroll-target="#visually"><span class="header-section-number">1</span> Visually</a></li>
-  <li><a href="#data-structures" id="toc-data-structures" class="nav-link" data-scroll-target="#data-structures"><span class="header-section-number">2</span> Data Structures</a></li>
-  <li><a href="#equation" id="toc-equation" class="nav-link" data-scroll-target="#equation"><span class="header-section-number">3</span> Equation</a></li>
-  <li><a href="#advantages-of-the-multilevel-model-for-longitudinal-data-longdata" id="toc-advantages-of-the-multilevel-model-for-longitudinal-data-longdata" class="nav-link" data-scroll-target="#advantages-of-the-multilevel-model-for-longitudinal-data-longdata"><span class="header-section-number">4</span> Advantages of the Multilevel Model for Longitudinal Data </a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">5</span> References</a></li>
+  <li><a href="#key-idea" id="toc-key-idea" class="nav-link active" data-scroll-target="#key-idea"><span class="header-section-number">1</span> Key Idea</a></li>
+  <li><a href="#visually" id="toc-visually" class="nav-link" data-scroll-target="#visually"><span class="header-section-number">2</span> Visually</a></li>
+  <li><a href="#data-structures" id="toc-data-structures" class="nav-link" data-scroll-target="#data-structures"><span class="header-section-number">3</span> Data Structures</a></li>
+  <li><a href="#equation" id="toc-equation" class="nav-link" data-scroll-target="#equation"><span class="header-section-number">4</span> Equation</a></li>
+  <li><a href="#advantages-of-the-multilevel-model-for-longitudinal-data" id="toc-advantages-of-the-multilevel-model-for-longitudinal-data" class="nav-link" data-scroll-target="#advantages-of-the-multilevel-model-for-longitudinal-data"><span class="header-section-number">5</span> Advantages of the Multilevel Model for Longitudinal Data</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">6</span> References</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="why-MLMs-are-good-models-for-longitudinal-data.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
 </div>
@@ -297,7 +298,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 23, 2025</p>
+      <p class="date">November 6, 2025</p>
     </div>
   </div>
   
@@ -309,8 +310,24 @@ window.Quarto = {
 </header>
 
 
-<section id="visually" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Visually</h1>
+<section id="key-idea" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Key Idea</h1>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Multilevel Models are Useful for Complicated Longitudinal Data and Research Designs
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Multilevel models are uniquely suited for complicated longitudinal data and research designs. Among other advantages, multilevel models are able to easily accommodate designs where individuals are observed at different times and different numbers of times.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+</div>
+</div>
+</section>
+<section id="visually" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Visually</h1>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-MLM" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -326,8 +343,8 @@ Figure&nbsp;1: A Multilevel Model For Longitudinal Data
 </div>
 </div>
 </section>
-<section id="data-structures" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Data Structures</h1>
+<section id="data-structures" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Data Structures</h1>
 <p>Multilevel models for longitudinal data prefer data in long format.</p>
 <div id="tbl-wide" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -456,8 +473,8 @@ Table&nbsp;2: Data in LONG format
 </figure>
 </div>
 </section>
-<section id="equation" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Equation</h1>
+<section id="equation" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Equation</h1>
 <p><span id="eq-longitudinal-mlm"><span class="math display">\[y_{it} = \beta_0 + \beta_1 t_{it} + \beta_2 x_{it} + u_{0i} + e_{it} \tag{1}\]</span></span></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -473,8 +490,8 @@ Person-Observations
 </div>
 </div>
 </section>
-<section id="advantages-of-the-multilevel-model-for-longitudinal-data-longdata" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Advantages of the Multilevel Model for Longitudinal Data <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h1>
+<section id="advantages-of-the-multilevel-model-for-longitudinal-data" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Advantages of the Multilevel Model for Longitudinal Data</h1>
 <ol type="1">
 <li>Using the algebra in <a href="#eq-longitudinal-mlm" class="quarto-xref">Equation&nbsp;1</a>, these models can easily accommodate both time varying and time invariant coefficients <span class="citation" data-cites="Hox2010 Hox2018 Singer2003 Raudenbush2002 RabeHesketh2022">(<a href="#ref-Hox2010" role="doc-biblioref">Hox, 2010</a>; <a href="#ref-Hox2018" role="doc-biblioref">Hox et al., 2018</a>; <a href="#ref-RabeHesketh2022" role="doc-biblioref">Rabe-Hesketh &amp; Skrondal, 2022</a>; <a href="#ref-Raudenbush2002" role="doc-biblioref">Raudenbush &amp; Bryk, 2002</a>; <a href="#ref-Singer2003" role="doc-biblioref">Singer &amp; Willett, 2003</a>)</span>.</li>
 <li>There is no multicollinearity issue with multiple <span class="math inline">\(\beta\)</span> coefficients for multiple waves of data. By inspection of <a href="#eq-longitudinal-mlm" class="quarto-xref">Equation&nbsp;1</a>, we see that there is only a single <span class="math inline">\(\beta\)</span> coefficient for each variable, <span class="math inline">\(\therefore\)</span> no multicollinearity problem.</li>
@@ -499,13 +516,13 @@ Caution
 </div>
 </div>
 </section>
-<section id="references" class="level1 unnumbered" data-number="5">
+<section id="references" class="level1 unnumbered" data-number="6">
 
 
 </section>
 
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">5 References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">6 References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
 <div id="ref-Hox2010" class="csl-entry" role="listitem">
 Hox, J. (2010). <em>Multilevel analysis: Techniques and applications</em> (2nd ed.). Routledge.
 </div>
@@ -530,18 +547,18 @@ Singer, J. D., &amp; Willett, J. B. (2003). <em>Applied longitudinal data analys
 </div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>Many, if not most, of the advantages listed below will also apply to any approach using long data.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Many, if not most, of the advantages listed in this handout will also apply to any approach using long data.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{grogan-kaylor2025,
   author = {Grogan-Kaylor, Andy},
   title = {Why {Multilevel} {Models} {Are} {Good} {Models} {For}
     {Longitudinal} {Data}},
-  date = {2025-10-23},
+  date = {2025-11-06},
   url = {agrogan1.github.io/multilevel/MLM-longitudinal-data/why-MLMs-are-good-models-for-longitudinal-data.html},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-grogan-kaylor2025" class="csl-entry quarto-appendix-citeas" role="listitem">
-Grogan-Kaylor, A. (2025, October 23). <em>Why Multilevel Models Are Good
+Grogan-Kaylor, A. (2025, November 6). <em>Why Multilevel Models Are Good
 Models For Longitudinal Data</em>. <a href="https://agrogan1.github.io/multilevel/MLM-longitudinal-data/why-MLMs-are-good-models-for-longitudinal-data.html">agrogan1.github.io/multilevel/MLM-longitudinal-data/why-MLMs-are-good-models-for-longitudinal-data.html</a>
 </div></div></section></div></main>
 <!-- /main column -->
