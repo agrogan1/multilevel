@@ -30,7 +30,7 @@ $$y_{it} = \beta_0 + \beta_1 x_{it} + u_{0i} + e_{it}$$ {#eq-regression}
 
 ## The Basics 
 
-<span style="color:red;font-size:3em">⇩</span>
+<span style="font-size:55px;color:#E2231A;text-align:center;">⬇️</span>
 
 ## Intermediate Steps 
 
