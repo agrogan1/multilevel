@@ -10,9 +10,7 @@ format:
     toc: true
     number-sections: true
     anchor-sections: true
-    theme:
-      light: yeti
-      dark: vapor
+    theme: yeti
     lightbox: true
   pdf:
     toc: true
