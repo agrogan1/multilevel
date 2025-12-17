@@ -1,7 +1,9 @@
 ---
 title: "Why Multilevel Models Are Good Models For Longitudinal Data"
 subtitle: "Multilevel Models Offer An Incredibly Flexible Treatment of Time and Time Varying Processes and Covariates"
-author: "Andy Grogan-Kaylor"
+author: 
+  - name: "Andy Grogan-Kaylor"
+    url: https://agrogan1.github.io/
 date: "today"
 format:
   html:
