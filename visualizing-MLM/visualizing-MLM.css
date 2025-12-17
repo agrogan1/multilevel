@@ -1,3 +1,6 @@
 nav li code:not(.sourceCode) {
   color: #7d12ba;
 }
+code {
+  color: #FF0000;
+}
