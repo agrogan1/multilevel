@@ -12,6 +12,7 @@ format:
     anchor-sections: true
     theme: yeti
     lightbox: true
+    css: styles.css
   pdf:
     toc: true
     number-sections: true
@@ -106,6 +107,8 @@ Multilevel models for longitudinal data prefer data in long format.
 
 : Data in WIDE format {#tbl-wide}
 
+::: {.grid}
+::: {.g-col-4}
 | id  | t   | x   |  y  |
 |-----|-----|-----|-----|
 | 1   | 1   |     |     |
@@ -119,6 +122,8 @@ Multilevel models for longitudinal data prefer data in long format.
 | 3   | 3   |     |     |
 
 : Data in LONG format {#tbl-long}
+:::
+:::
 
 # Equation
 
