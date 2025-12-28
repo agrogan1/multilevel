@@ -72,7 +72,7 @@ The random effects in @eq-multiple are *optional* in the sense that they may or 
 
 # Intra-Class Correlation Coefficient
 
-$$\text{icc} = \frac{\text{var}(u_{0j})}{\text{var}(u_{0j}) + \text{var}(e_{ij})}$$
+$$\text{icc} = \frac{\text{var}(u_{0j})}{\text{var}(u_{0j}) + \text{var}(e_{ij})}$$ {#eq-ICC}
 
 # How Many Levels?
 
