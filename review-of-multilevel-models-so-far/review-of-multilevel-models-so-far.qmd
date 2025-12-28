@@ -1,8 +1,10 @@
 ---
 title: "Review of Multilevel Models So Far"
+author: "Andy Grogan-Kaylor"
+date: "today"
 format: 
   html:
-    theme: sketchy
+    theme: yeti
     toc: true
     number-sections: true
   pdf: 
@@ -25,6 +27,16 @@ library(Statamarkdown)
 
 ```
 
+```{css, echo=FALSE, eval=TRUE}
+
+body {
+  font-size: 110%;
+  background-color: #fffff8;
+  font-family: Georgia, "Times New Roman", Times, serif
+}
+
+```
+
 ```{stata}
 #| echo: false
 #| output: false
@@ -35,7 +47,8 @@ twoway ///
 legend(label(1 "Public") label(2 "Catholic")) ///
 title("Heuristic Illustration of High School and Beyond Data") ///
 xtitle("SES") ytitle("math score") ///
-xlabel(none) ylabel(none)
+xlabel(none) ylabel(none) ///
+scheme(sj)
 
 graph export heuristic.png, replace
 
@@ -67,12 +80,12 @@ For the $i^{th}$ student in the $j^{th}$ school in the $k^{th}$ district.
 
 $$\begin{aligned}
 y_{ijk} = \pi_{0jk} + \pi_{1jk} a + e_{ijk} \\
-\text{there are p level 1 coefficients} \\
+\color{red}{\text{there are p level 1 coefficients}} \\
 \pi_{pjk} = \beta_{0pk} + \beta_{1pk} + r_{pjk} \\
-\text{group specific effect for the jth group} \\
-\text{there are q level 2 coefficients} \\
+\color{red}{\text{group specific effect for the jth group}} \\
+\color{red}{\text{there are q level 2 coefficients}} \\
 \beta_{pqk} = \gamma_{0pq} + \gamma_{1pq} w + u_{pqk} \\
-\text{there are p*q level 3 coefficients} \\
+\color{red}{\text{there are p*q level 3 coefficients}} \\
 \end{aligned}$$ {#eq-multiple3}
 
 # A Single Level Equation

@@ -6,6 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Andy Grogan-Kaylor">
+<meta name="dcterms.date" content="2025-12-28">
 
 <title>Review of Multilevel Models So Far</title>
 <style>
@@ -33,7 +35,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="review-of-multilevel-models-so-far_files/libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="review-of-multilevel-models-so-far_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="review-of-multilevel-models-so-far_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="review-of-multilevel-models-so-far_files/libs/bootstrap/bootstrap-b096418e3d6ad2afea880a2d11186cbd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="review-of-multilevel-models-so-far_files/libs/bootstrap/bootstrap-4eeb5248cdde89baaa6ac4eccee2427e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -94,7 +96,19 @@ window.Quarto = {
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Andy Grogan-Kaylor </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 28, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -106,6 +120,17 @@ window.Quarto = {
 
 <section id="graph" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Graph</h1>
+<div class="cell">
+<style type="text/css">
+
+body {
+  font-size: 110%;
+  background-color: #fffff8;
+  font-family: Georgia, "Times New Roman", Times, serif
+}
+
+</style>
+</div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="heuristic.png" class="img-fluid figure-img"></p>
@@ -143,12 +168,12 @@ Random Effects Are Optional
 <p>For the <span class="math inline">\(i^{th}\)</span> student in the <span class="math inline">\(j^{th}\)</span> school in the <span class="math inline">\(k^{th}\)</span> district.</p>
 <p><span id="eq-multiple3"><span class="math display">\[\begin{aligned}
 y_{ijk} = \pi_{0jk} + \pi_{1jk} a + e_{ijk} \\
-\text{there are p level 1 coefficients} \\
+\color{red}{\text{there are p level 1 coefficients}} \\
 \pi_{pjk} = \beta_{0pk} + \beta_{1pk} + r_{pjk} \\
-\text{group specific effect for the jth group} \\
-\text{there are q level 2 coefficients} \\
+\color{red}{\text{group specific effect for the jth group}} \\
+\color{red}{\text{there are q level 2 coefficients}} \\
 \beta_{pqk} = \gamma_{0pq} + \gamma_{1pq} w + u_{pqk} \\
-\text{there are p*q level 3 coefficients} \\
+\color{red}{\text{there are p*q level 3 coefficients}} \\
 \end{aligned} \tag{2}\]</span></span></p>
 </section>
 <section id="a-single-level-equation" class="level1" data-number="5">
