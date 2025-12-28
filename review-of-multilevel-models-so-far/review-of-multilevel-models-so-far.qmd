@@ -27,7 +27,7 @@ library(Statamarkdown)
 
 ```
 
-```{css, echo=FALSE, eval=TRUE}
+```{css, echo=FALSE, eval=FALSE}
 
 body {
   font-size: 110%;
@@ -47,8 +47,7 @@ twoway ///
 legend(label(1 "Public") label(2 "Catholic")) ///
 title("Heuristic Illustration of High School and Beyond Data") ///
 xtitle("SES") ytitle("math score") ///
-xlabel(none) ylabel(none) ///
-scheme(sj)
+xlabel(none) ylabel(none) 
 
 graph export heuristic.png, replace
 
