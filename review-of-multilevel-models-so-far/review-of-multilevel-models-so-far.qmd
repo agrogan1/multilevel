@@ -1,0 +1,96 @@
+---
+title: "Review of Multilevel Models So Far"
+format: 
+  html:
+    theme: sketchy
+    toc: true
+    number-sections: true
+  pdf: 
+    toc: false
+    number-sections: true
+    geometry:
+      - left=.5in
+      - right=.5in
+      - top=.5in
+      - bottom =.5in
+---
+
+# Graph
+
+```{r}
+#| echo: false
+#| output: false
+
+library(Statamarkdown)
+
+```
+
+```{stata}
+#| echo: false
+#| output: false
+
+twoway ///
+(function y = x, lcolor(red) lwidth(thick)) ///
+(function y = 1 + .25 * x, lcolor(blue) lwidth(thick)),  ///
+legend(label(1 "Public") label(2 "Catholic")) ///
+title("Heuristic Illustration of High School and Beyond Data") ///
+xtitle("SES") ytitle("math score") ///
+xlabel(none) ylabel(none)
+
+graph export heuristic.png, replace
+
+```
+
+![heuristic illustration of HBS data](heuristic.png) 
+
+# Equation in Multiple Equation Format
+
+$$\begin{aligned}
+y_{ij} = \beta_{0j} + \beta_{1j} x + e_{ij} \\
+\beta_{0j} = \gamma_{00} + \gamma_{01} \text{sector} + u_{0j} \\
+\beta_{1j} = \gamma_{10} + \gamma_{11} \text{sector} + u_{0j} 
+\end{aligned}$$ {#eq-multiple}
+
+::: {.callout-tip}
+## Random Effects Are Optional
+
+The random effects in @eq-multiple are *optional* in the sense that they may or may not be included. Often only a *random intercept* is included. Inclusion of multiple *random slopes* may lead to non-convergence of the model.
+:::
+
+# Intra-Class Correlation Coefficient
+
+$$\text{icc} = \frac{\text{var}(u_{0j})}{\text{var}(u_{0j}) + \text{var}(e_{ij})}$$
+
+# How Many Levels?
+
+For the $i^{th}$ student in the $j^{th}$ school in the $k^{th}$ district.
+
+$$\begin{aligned}
+y_{ijk} = \pi_{0jk} + \pi_{1jk} a + e_{ijk} \\
+\text{there are p level 1 coefficients} \\
+\pi_{pjk} = \beta_{0pk} + \beta_{1pk} + r_{pjk} \\
+\text{group specific effect for the jth group} \\
+\text{there are q level 2 coefficients} \\
+\beta_{pqk} = \gamma_{0pq} + \gamma_{1pq} w + u_{pqk} \\
+\text{there are p*q level 3 coefficients} \\
+\end{aligned}$$ {#eq-multiple3}
+
+# A Single Level Equation
+
+Using substitution, we re-write @eq-multiple.
+
+$$y_{ij} = \gamma_{00} + \gamma_{01} \text{sector} + \gamma_{10} x + \gamma_{11} \text{sector} \times x + e_{ij} + u_{0j} + u_{1j} \times x$$ {#eq-single-gamma}
+
+Let's just call everything a $\beta$.
+
+$$y_{ij} = \beta_{0} + \beta_{1} \text{sector} + \beta_{2} x + \beta_{3} \text{sector} \times x + e_{ij} + u_{0j} + u_{1j} \times x$$ {#eq-single-beta}
+
+::: {.callout-tip}
+## $x$ is $\text{ses}$
+
+In the concrete example that I am using $x$ is $\text{ses}$
+:::
+
+
+
+
