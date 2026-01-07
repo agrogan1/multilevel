@@ -10,10 +10,9 @@ format:
   html:
     toc: true
     number-sections: true
+    theme: yeti
     page-layout: full
-    theme:
-      light: yeti
-      dark: vapor
+    title-block-banner: "#00274C"
     css: styles.css
     mermaid: 
       theme: default
@@ -53,7 +52,7 @@ model <- c("Intercept Only",
 equation <- c("$y = \\beta_0 + e_{ij}$",
               "$y = \\beta_0 + \\beta_1 x + e_{ij}$ <br>$y = \\beta_0 + \\beta_1 x + \\beta_2 z + e_{ij}$",
               "$y = \\beta_0 + e_{ij} + u_{0j}$",
-              "$\\frac{var(u_{0j})}{var(u_{0j}) + var(e_{ij})}$",
+              "$$\\frac{\\text{var}(u_{0j})}{\\text{var}(u_{0j}) + \\text{var}(e_{ij})}$$",
               "$y = \\beta_0 + \\beta_1x + e_{ij} + u_{0j}$ <br> $y = \\beta_0 + \\beta_1 x + \\beta_2 z + e_{ij} + u_{0j}$",
               "$y = \\beta_0 + \\beta_1 x + e_{ij} + u_{0j} + u_{1j} x$",
               "$y = \\beta_0 + \\beta_1 x + \\beta_2 z +$ <br>$e_{ij} + u_{0j} + u_{1j} x + u_{2j} z$")
@@ -79,8 +78,24 @@ mydata <- data.frame(model, equation, Stata, English)
 ```
 
 ```{r}
+#| eval: true
 
-pander(mydata, split.cells = 10)
+# gt(mydata) %>%
+#   tab_style(
+#     style = list(cell_text(style = "italic")),
+#     locations = cells_body(columns = Stata))
+
+pander(mydata, split.cells = 1)
+
+# pandoc.table(mydata, split.cells = 15)
+
+
+```
+
+```{r}
+#| eval: false
+
+mydata
 
 ```
 
