@@ -93,12 +93,12 @@ For the $i^{th}$ student in the $j^{th}$ school in the $k^{th}$ district.
 
 $$\begin{aligned}
 y_{ijk} = \pi_{0jk} + \pi_{1jk} a + e_{ijk} \\
-\color{orange}{\text{there are p level 1 coefficients}} \\
+\color{teal}{\text{there are p level 1 coefficients}} \\
 \pi_{pjk} = \beta_{0pk} + \beta_{1pk} + r_{pjk} \\
-\color{orange}{\text{group specific effect for the jth group}} \\
-\color{orange}{\text{there are q level 2 coefficients}} \\
+\color{teal}{\text{group specific effect for the jth group}} \\
+\color{teal}{\text{there are q level 2 coefficients}} \\
 \beta_{pqk} = \gamma_{0pq} + \gamma_{1pq} w + u_{pqk} \\
-\color{orange}{\text{there are p*q level 3 coefficients}} \\
+\color{teal}{\text{there are p*q level 3 coefficients}} \\
 \end{aligned}$$ {#eq-multiple3}
 
 # A Single Level Equation
