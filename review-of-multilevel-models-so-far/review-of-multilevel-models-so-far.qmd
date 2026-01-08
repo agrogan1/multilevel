@@ -4,7 +4,8 @@ author: "Andy Grogan-Kaylor"
 date: "today"
 format: 
   html:
-    theme: yeti
+    theme: sketchy
+    css: review-of-multilevel-models-so-far.css
     toc: true
     number-sections: true
     lightbox: true
@@ -42,13 +43,22 @@ body {
 #| echo: false
 #| output: false
 
+if "$S_OS" == "Windows" {
+	graph set window fontface "Tekton Pro"
+}
+
+if "$S_OS" == "MacOSX" {
+	graph set window fontface "Chalkboard"
+}
+
 twoway ///
 (function y = x, lcolor(red) lwidth(thick)) ///
 (function y = 1 + .25 * x, lcolor(blue) lwidth(thick)),  ///
 legend(label(1 "Public") label(2 "Catholic")) ///
 title("Heuristic Illustration of High School and Beyond Data") ///
 xtitle("SES") ytitle("math score") ///
-xlabel(none) ylabel(none) 
+xlabel(none) ylabel(none) ///
+scheme(stsj)
 
 graph export heuristic.png, replace
 
