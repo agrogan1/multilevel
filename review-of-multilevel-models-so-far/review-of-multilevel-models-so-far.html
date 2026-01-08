@@ -134,9 +134,9 @@ window.Quarto = {
 <section id="equation-in-multiple-equation-format" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Equation in Multiple Equation Format</h1>
 <p><span id="eq-multiple"><span class="math display">\[\begin{aligned}
-y_{ij} = \beta_{0j} + \beta_{1j} x + e_{ij} \\
-\beta_{0j} = \gamma_{00} + \gamma_{01} \text{sector} + u_{0j} \\
-\beta_{1j} = \gamma_{10} + \gamma_{11} \text{sector} + u_{0j}
+\color{red}{y_{ij} = \beta_{0j} + \beta_{1j} x + e_{ij}} \\
+\color{blue}{\beta_{0j} = \gamma_{00} + \gamma_{01} \text{sector} + u_{0j}} \\
+\color{blue}{\beta_{1j} = \gamma_{10} + \gamma_{11} \text{sector} + u_{0j}}
 \end{aligned} \tag{1}\]</span></span></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -161,20 +161,20 @@ Random Effects Are Optional
 <p>For the <span class="math inline">\(i^{th}\)</span> student in the <span class="math inline">\(j^{th}\)</span> school in the <span class="math inline">\(k^{th}\)</span> district.</p>
 <p><span id="eq-multiple3"><span class="math display">\[\begin{aligned}
 y_{ijk} = \pi_{0jk} + \pi_{1jk} a + e_{ijk} \\
-\color{red}{\text{there are p level 1 coefficients}} \\
+\color{orange}{\text{there are p level 1 coefficients}} \\
 \pi_{pjk} = \beta_{0pk} + \beta_{1pk} + r_{pjk} \\
-\color{red}{\text{group specific effect for the jth group}} \\
-\color{red}{\text{there are q level 2 coefficients}} \\
+\color{orange}{\text{group specific effect for the jth group}} \\
+\color{orange}{\text{there are q level 2 coefficients}} \\
 \beta_{pqk} = \gamma_{0pq} + \gamma_{1pq} w + u_{pqk} \\
-\color{red}{\text{there are p*q level 3 coefficients}} \\
+\color{orange}{\text{there are p*q level 3 coefficients}} \\
 \end{aligned} \tag{3}\]</span></span></p>
 </section>
 <section id="a-single-level-equation" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> A Single Level Equation</h1>
 <p>Using substitution, we re-write <a href="#eq-multiple" class="quarto-xref">Equation&nbsp;1</a>.</p>
-<p><span id="eq-single-gamma"><span class="math display">\[y_{ij} = \gamma_{00} + \gamma_{01} \text{sector} + \gamma_{10} x + \gamma_{11} \text{sector} \times x + e_{ij} + u_{0j} + u_{1j} \times x \tag{4}\]</span></span></p>
+<p><span id="eq-single-gamma"><span class="math display">\[\color{purple}{y_{ij} = \gamma_{00} + \gamma_{01} \text{sector} + \gamma_{10} x + \gamma_{11} \text{sector} \times x + e_{ij} + u_{0j} + u_{1j} \times x} \tag{4}\]</span></span></p>
 <p>Let’s just call everything a <span class="math inline">\(\beta\)</span>.</p>
-<p><span id="eq-single-beta"><span class="math display">\[y_{ij} = \beta_{0} + \beta_{1} \text{sector} + \beta_{2} x + \beta_{3} \text{sector} \times x + e_{ij} + u_{0j} + u_{1j} \times x \tag{5}\]</span></span></p>
+<p><span id="eq-single-beta"><span class="math display">\[\color{purple}{y_{ij} = \beta_{0} + \beta_{1} \text{sector} + \beta_{2} x + \beta_{3} \text{sector} \times x + e_{ij} + u_{0j} + u_{1j} \times x} \tag{5}\]</span></span></p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">

@@ -17,6 +17,9 @@ format:
       - right=.5in
       - top=.5in
       - bottom =.5in
+    include-in-header:
+      - text: |
+          \usepackage[dvipsnames]{xcolor}
 ---
 
 # Graph
@@ -69,9 +72,9 @@ graph export heuristic.png, replace
 # Equation in Multiple Equation Format
 
 $$\begin{aligned}
-y_{ij} = \beta_{0j} + \beta_{1j} x + e_{ij} \\
-\beta_{0j} = \gamma_{00} + \gamma_{01} \text{sector} + u_{0j} \\
-\beta_{1j} = \gamma_{10} + \gamma_{11} \text{sector} + u_{0j} 
+\color{red}{y_{ij} = \beta_{0j} + \beta_{1j} x + e_{ij}} \\
+\color{blue}{\beta_{0j} = \gamma_{00} + \gamma_{01} \text{sector} + u_{0j}} \\
+\color{blue}{\beta_{1j} = \gamma_{10} + \gamma_{11} \text{sector} + u_{0j}} 
 \end{aligned}$$ {#eq-multiple}
 
 ::: {.callout-tip}
@@ -90,23 +93,23 @@ For the $i^{th}$ student in the $j^{th}$ school in the $k^{th}$ district.
 
 $$\begin{aligned}
 y_{ijk} = \pi_{0jk} + \pi_{1jk} a + e_{ijk} \\
-\color{red}{\text{there are p level 1 coefficients}} \\
+\color{orange}{\text{there are p level 1 coefficients}} \\
 \pi_{pjk} = \beta_{0pk} + \beta_{1pk} + r_{pjk} \\
-\color{red}{\text{group specific effect for the jth group}} \\
-\color{red}{\text{there are q level 2 coefficients}} \\
+\color{orange}{\text{group specific effect for the jth group}} \\
+\color{orange}{\text{there are q level 2 coefficients}} \\
 \beta_{pqk} = \gamma_{0pq} + \gamma_{1pq} w + u_{pqk} \\
-\color{red}{\text{there are p*q level 3 coefficients}} \\
+\color{orange}{\text{there are p*q level 3 coefficients}} \\
 \end{aligned}$$ {#eq-multiple3}
 
 # A Single Level Equation
 
 Using substitution, we re-write @eq-multiple.
 
-$$y_{ij} = \gamma_{00} + \gamma_{01} \text{sector} + \gamma_{10} x + \gamma_{11} \text{sector} \times x + e_{ij} + u_{0j} + u_{1j} \times x$$ {#eq-single-gamma}
+$$\color{purple}{y_{ij} = \gamma_{00} + \gamma_{01} \text{sector} + \gamma_{10} x + \gamma_{11} \text{sector} \times x + e_{ij} + u_{0j} + u_{1j} \times x}$$ {#eq-single-gamma}
 
 Let's just call everything a $\beta$.
 
-$$y_{ij} = \beta_{0} + \beta_{1} \text{sector} + \beta_{2} x + \beta_{3} \text{sector} \times x + e_{ij} + u_{0j} + u_{1j} \times x$$ {#eq-single-beta}
+$$\color{purple}{y_{ij} = \beta_{0} + \beta_{1} \text{sector} + \beta_{2} x + \beta_{3} \text{sector} \times x + e_{ij} + u_{0j} + u_{1j} \times x}$$ {#eq-single-beta}
 
 ::: {.callout-tip}
 ## $x$ is $\text{ses}$
