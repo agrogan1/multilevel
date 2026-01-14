@@ -6,7 +6,7 @@
 geometry: margin=1 in
 ---
 
-<style>body {max-width: 90%} h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
+<style>body {max-width: 90%} h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} p {font-size: 115%;} code {color: red;}</style>
 
 # Introduction
 
@@ -34,6 +34,8 @@ Consider a cross-national data set where we are attempting to understand predict
 	generate u = country - 5 // random intercept
 	
 	generate behavior_problems = 110 + -.0001 * income + 10 * physical_punishment + u + e // plausible regression relationship
+	
+	drop e u // drop error terms
 
 </div>
 
@@ -87,13 +89,15 @@ $$\text{behavior problems} = \beta_0 + \beta_1 \text{income} + \beta_2 \text{phy
 
     mixed behavior_problems income physical_punishment || country:
 	
-We note that `s %5.3f 10000 * _b[income]` is the effect of every additional $10,000 of per capita income. `s %5.3f _b[physical_punishment]` is the effect of physical punishment. Notably, for this handout, `s %5.3f _b[_cons]` is the level of behavior problems for a child who did *not receive physical punishment* living in a family with **$0** *income*.
+We note that `s %5.3f 10000 * _b[income]` is the effect of every additional $10,000 of per capita income. `s %5.3f _b[physical_punishment]` is the effect of physical punishment. 
+
+Notably, for this handout, `s %5.3f _b[_cons]` is the level of behavior problems for a child who did *not receive physical punishment* living in a family with **$0** *income*.
 
 # Grand Mean Centering
 
 Grand mean centering helps us to have more meaningful intercepts of our continuous variables.
 
-Essentially, we are going to create $income_{\text{grand mean centered}} = income - \overline{income}$
+Essentially, we are going to create $\text{income}_{\text{grand mean centered}} = \text{income} - \overline{\text{income}}$
 
 ## Equation
 
@@ -128,7 +132,7 @@ In a graph, we see that *grand mean centering* has transformed the intercept so 
 
 # Group Mean Centering
 
-In group mean centering, we are doing something slightly different. We are creating a mean for each *group*, which in this data is *country*: e.g. $income_{\text{group mean centered}} = income - \overline{income_j}$, where $j$ is the index for *group* or *country*.
+In group mean centering, we are doing something slightly different. We are creating a mean for each *group*, which in this data is *country*: e.g. $\text{income}_{\text{group mean centered}} = \text{income} - \overline{\text{income}}_{.j}$, where $j$ is the index for *group* or *country*.
 
     bysort country: egen m_g_income = mean(income) // GROUP mean of income
 	
@@ -146,13 +150,13 @@ Two versions of the equation are equally appropriate. Both address *conceptually
 
 ### Covariate and Group Mean
 
-One parameterization of the multilevel model is to enter the *covariate* and its *group level mean* i.e. $x_{ij}$ and $\overline{x_j}$.  
+One parameterization of the multilevel model is to enter the *covariate* and its *group level mean* i.e. $x_{ij}$ and $\overline{x_{.j}}$.  
 
 $$\text{behavior problems} = \beta_0 + \beta_1 \text{income} + \beta_2 \text{income}_{\text{group mean}} + \beta_3 \text{physical punishment} + u_{\text{country}} + e_{ij}$$
 
 ### Group Mean Centered Covariate and Group Mean
 
-A second, equally valid, but conceptually different parameterization of the multilevel model is to enter the *covariate deviated from its group level mean* and the *group level mean* i.e. $x_{ij} - \overline{x_j}$ and $\overline{x_j}$.
+A second, equally valid, but conceptually different parameterization of the multilevel model is to enter the *covariate deviated from its group level mean* and the *group level mean* i.e. $x_{ij} - \overline{x_{.j}}$ and $\overline{x_{.j}}$.
 
 $$\text{behavior problems} = \beta_0 + \beta_1 \text{income}_{\text{group mean centered}} + \beta_2 \text{income}_{\text{group mean}} + \beta_3 \text{physical punishment} + u_{\text{country}} + e_{ij}$$
 

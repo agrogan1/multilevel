@@ -2,7 +2,7 @@
 
 clear all
 
-cd "C:\Users\agrogan\Box Sync\Box Sync\GitHub\multilevel\centering-in-cross-sectional-data" // Windows
+* cd "C:\Users\agrogan\Box Sync\Box Sync\GitHub\multilevel\centering-in-cross-sectional-data" // Windows
 
 cd "/Users/agrogan/Desktop/GitHub/multilevel/centering-in-cross-sectional-data" // Mac
 

@@ -1,43 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
-<style>
-/* CSS for Markstat 2.0 using Pandoc 2.0 */
-body{padding:14px 28px;}
-body, table {font-family: Helvetica, Arial, Sans-serif; font-size: 14px;}
-h1, h2, h3, h4 {font-weight: normal; color: #3366cc}
-h1 {font-size: 200%;}
-h2 {font-size: 150%;}
-h3 {font-size: 120%;}
-h4 {font-size: 100%; font-weight:bold}
-img.center {display:block; margin-left:auto; margin-right:auto}
-.small{font-size:8pt;}
-a {color: black;}
-a:visited {color: #808080;}
-a.plain {text-decoration:none;}
-a.plain:hover {text-decoration:underline;}
-.em {font-weight:bold;}
-pre, code {font-family: "lucida console", monospace;}
-pre.stata {font-size:13px; line-height:13px;}
-pre {padding:8px; border:1px solid #c0c0c0; border-radius:8px; background-color:#fdfdfd;}
-code {color:#3366cc; background-color:#fafafa;}
-pre code { color:black; background-color:white}
-/* Added for Pandoc */
-figure > img, div.figure > img {display:block; margin:auto}
-figcaption, p.caption {text-align:center; font-weight:bold; color:#3366cc;}
-h1.title {text-align:center; margin-bottom:0}
-p.author, h2.author {font-style:italic; text-align:center;margin-top:4px;margin-bottom:0}
-p.date, h3.date {text-align:center;margin-top:4px; margin-bottom:0}
-/* Tables*/
-table { margin:auto; border-collapse:collapse; }
-table caption { margin-bottom:1ex;}
-th, td { padding:4px 6px;}
-thead tr:first-child th {border-top:1px solid black; padding-top:6px}
-thead tr:last-child  th {padding-bottom:6px}
-tbody tr:first-child td {border-top:1px solid black; padding-top:6px}
-tbody tr:last-child  td {padding-bottom:6px;}
-table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
-</style>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
@@ -45,9 +8,6 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
   <title>Centering in Cross Sectional Data</title>
   <style>
     html {
-      line-height: 1.5;
-      font-family: Georgia, serif;
-      font-size: 20px;
       color: #1a1a1a;
       background-color: #fdfdfd;
     }
@@ -59,17 +19,23 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
       padding-top: 50px;
       padding-bottom: 50px;
       hyphens: auto;
-      word-wrap: break-word;
+      overflow-wrap: break-word;
       text-rendering: optimizeLegibility;
       font-kerning: normal;
     }
     @media (max-width: 600px) {
       body {
         font-size: 0.9em;
-        padding: 1em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
       }
     }
     @media print {
+      html {
+        background-color: white;
+      }
       body {
         background-color: transparent;
         color: black;
@@ -93,6 +59,10 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
       color: #1a1a1a;
     }
     img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
       max-width: 100%;
     }
     h1, h2, h3, h4, h5, h6 {
@@ -119,9 +89,10 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
       color: #606060;
     }
     code {
-      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
       font-size: 85%;
       margin: 0;
+      hyphens: manual;
     }
     pre {
       margin: 1em 0;
@@ -130,14 +101,15 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
     pre code {
       padding: 0;
       overflow: visible;
+      overflow-wrap: normal;
     }
     .sourceCode {
      background-color: transparent;
      overflow: visible;
     }
     hr {
-      background-color: #1a1a1a;
       border: none;
+      border-top: 1px solid #1a1a1a;
       height: 1px;
       margin: 1em 0;
     }
@@ -171,31 +143,89 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
     #TOC li {
       list-style: none;
     }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
     #TOC a:not(:hover) {
       text-decoration: none;
     }
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
   </style>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+<style>
+/* CSS for Markstat 2.0 using Pandoc 2.0 */
+body{padding:14px 28px; max-width:45em;}
+body, table {font-family: Helvetica, Arial, Sans-serif; font-size: 14px;}
+h1, h2, h3, h4 {font-weight: normal; color: #3366cc}
+h1 {font-size: 200%;}
+h2 {font-size: 150%;}
+h3 {font-size: 120%;}
+h4 {font-size: 100%; font-weight:bold}
+img.center {display:block; margin-left:auto; margin-right:auto}
+.small{font-size:8pt;}
+a {color: black;}
+a:visited {color: #808080;}
+a.plain {text-decoration:none;}
+a.plain:hover {text-decoration:underline;}
+.em {font-weight:bold;}
+pre, code {font-family: "lucida console", monospace;}
+pre.stata {font-size:13px; line-height:13px;}
+pre {padding:8px; border:1px solid #c0c0c0; border-radius:8px; background-color:#fdfdfd;}
+code {color:#3366cc; background-color:#fafafa;}
+pre code { color:black; background-color:white}
+/* Added for Pandoc */
+figure > img, div.figure > img {display:block; margin:auto}
+figcaption, p.caption {text-align:center; font-weight:bold; color:#3366cc;}
+h1.title {text-align:center; margin-bottom:0}
+p.author, h2.author {font-style:italic; text-align:center;margin-top:4px;margin-bottom:0}
+p.date, h3.date {text-align:center;margin-top:4px; margin-bottom:0}
+/* Tables*/
+table { margin:auto; border-collapse:collapse; }
+table caption { margin-bottom:1ex;}
+td {padding:0 0 0 0} /* override */
+table:not([class]) th { padding:4px 6px } 
+table:not([class]) td { padding:4px 6px } 
+table:not([class]) thead tr:first-child th {border-top:1px solid black; padding-top:6px}
+table:not([class]) thead tr:last-child  th {padding-bottom:6px}
+table:not([class]) tbody tr:first-child td {border-top:1px solid black; padding-top:6px}
+table:not([class]) tbody tr:last-child  td {padding-bottom:6px;}
+table:not([class]) tbody:last-child tr:last-child td {border-bottom:1px solid black;}
+</style>
 </head>
 <body>
 <header id="title-block-header">
 <h1 class="title">Centering in Cross Sectional Data</h1>
 <p class="author">Andy Grogan-Kaylor</p>
-<p class="date">27 Jan 2022 13:57:23</p>
+<p class="date">14 Jan 2026 11:47:46</p>
 </header>
-<style>body {max-width: 90%} h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} code {color: red;}</style>
+<style>body {max-width: 90%} h1 {color: #00274C;} h2 {color: #2F65A7;} blockquote {border-left: 5px solid #ffcb05; margin: 1.5em 10px; padding: 0.5em 10px;} p {font-size: 115%;} code {color: red;}</style>
 <h1 id="introduction">Introduction</h1>
-<p>These notes represent a brief discussion of centering with cross sectional data. Since so much of my current work focuses on cross national work on parenting and child development, I use these ideas as my substantive example.</p>
-<p>Consider a cross-national data set where we are attempting to understand predictors of <em>behavior problems</em> as a function of <em>per capita income</em> and <em>parental use of physical punishment</em>.</p>
+<p>These notes represent a brief discussion of centering with cross
+sectional data. Since so much of my current work focuses on cross
+national work on parenting and child development, I use these ideas as
+my substantive example.</p>
+<p>Consider a cross-national data set where we are attempting to
+understand predictors of <em>behavior problems</em> as a function of
+<em>per capita income</em> and <em>parental use of physical
+punishment</em>.</p>
 <h1 id="simulate-some-data">Simulate Some Data</h1>
 <button type="button" class="collapsible">
 Show / Hide Data Simulation Code
@@ -216,8 +246,10 @@ Number of observations (_N) was 0, now 100.
 </pre>
 <pre class='stata'>. generate u = country - 5 // random intercept
 </pre>
-<pre class='stata'>. generate behavior_problems = 110 + -.0001 * income + 10 * physical_punishment + u + e // plausib
-> le regression relationship
+<pre class='stata'>. generate behavior_problems = 110 + -.0001 * income + 10 * physical_punishment
+>  + u + e // plausible regression relationship
+</pre>
+<pre class='stata'>. drop e u // drop error terms
 </pre>
 </div>
 <style>
@@ -245,25 +277,27 @@ content.style.display = "block";
 </script>
 <pre class='stata'>. list in 1/10, table // list out some data
 
-     ┌───────────────────────────────────────────────────────────┐
-     │   income   physic~t   country           e    u   behavi~s │
-     ├───────────────────────────────────────────────────────────┤
-  1. │ 21579.42          0         1    .0918531   -4   103.9339 │
-  2. │ 15655.29          0         1    -.094519   -4     104.34 │
-  3. │ 39246.49          0         1   -.3080602   -4   101.7673 │
-  4. │ 69583.31          0         1    1.275062   -4   100.3167 │
-  5. │ 67367.33          0         1   -.0498039   -4   99.21346 │
-     ├───────────────────────────────────────────────────────────┤
-  6. │ 40218.38          1         1   -.0076342   -4   111.9705 │
-  7. │ 27119.36          0         1    .9204235   -4   104.2085 │
-  8. │ 46707.29          1         1    1.263075   -4   112.5923 │
-  9. │ 52002.02          0         1   -2.504091   -4   98.29571 │
- 10. │ 51194.89          1         2   -.5729868   -3   111.3075 │
-     └───────────────────────────────────────────────────────────┘
+     ┌──────────────────────────────────────────┐
+     │   income   physic~t   country   behavi~s │
+     ├──────────────────────────────────────────┤
+  1. │ 20148.49          0         1   103.3466 │
+  2. │ 18292.35          0         1   105.1445 │
+  3. │ 20029.46          0         1   104.3675 │
+  4. │ 49927.27          0         1   103.4318 │
+  5. │ 34768.54          0         1   102.9267 │
+     ├──────────────────────────────────────────┤
+  6. │ 47199.07          0         1   101.1913 │
+  7. │ 44796.36          1         1   111.0747 │
+  8. │ 50592.45          0         1   99.76586 │
+  9. │ 37461.37          0         1   101.8378 │
+ 10. │ 55994.71          1         2   111.1749 │
+     └──────────────────────────────────────────┘
 </pre>
 <h1 id="uncentered-data">Uncentered Data</h1>
 <h2 id="equation">Equation</h2>
-<p><span class="math display">\[\text{behavior problems} = \beta_0 + \beta_1 \text{income} + \beta_2 \text{physical punishment} + u_{\text{country}} + e_{ij}\]</span></p>
+<p><span class="math display">\[\text{behavior problems} = \beta_0 +
+\beta_1 \text{income} + \beta_2 \text{physical punishment} +
+u_{\text{country}} + e_{ij}\]</span></p>
 <h2 id="graph">Graph</h2>
 <pre class='stata'>. twoway (scatter behavior_problems income if physical_punishment ==0) ///
 > (scatter behavior_problems income if physical_punishment == 1), ///
@@ -274,57 +308,67 @@ content.style.display = "block";
 > scheme(michigan)
 </pre>
 <pre class='stata'>. graph export myscatter.png, width(1000) replace
-file /Users/agrogan/Desktop/GitHub/multilevel/centering-in-cross-sectional-data/myscatter.png
-    saved as PNG format
+file
+    /Users/agrogan/Desktop/GitHub/multilevel/centering-in-cross-sectional-dat
+    > a/myscatter.png saved as PNG format
 </pre>
 <figure>
-<img src="myscatter.png" style="width:50.0%" alt="Scatterplot" /><figcaption aria-hidden="true">Scatterplot</figcaption>
+<img src="myscatter.png" style="width:50.0%" alt="Scatterplot" />
+<figcaption aria-hidden="true">Scatterplot</figcaption>
 </figure>
 <h2 id="multilevel-model">Multilevel Model</h2>
 <pre class='stata'>. mixed behavior_problems income physical_punishment || country:
 
-Performing EM optimization: 
+Performing EM optimization ...
 
 Performing gradient-based optimization: 
+Iteration 0:  Log likelihood = -157.07646  
+Iteration 1:  Log likelihood = -157.07646  
 
-Iteration 0:   log likelihood = -175.93031  
-Iteration 1:   log likelihood = -175.93031  
+Computing standard errors ...
 
-Computing standard errors:
+Mixed-effects ML regression                         Number of obs    =     100
+Group variable: country                             Number of groups =      11
+                                                    Obs per group:
+                                                                 min =       1
+                                                                 avg =     9.1
+                                                                 max =      10
+                                                    Wald chi2(2)     = 2230.63
+Log likelihood = -157.07646                         Prob > chi2      =  0.0000
 
-Mixed-effects ML regression                     Number of obs     =        100
-Group variable: country                         Number of groups  =         11
-                                                Obs per group:
-                                                              min =          1
-                                                              avg =        9.1
-                                                              max =         10
-                                                Wald chi2(2)      =    1578.70
-Log likelihood = -175.93031                     Prob > chi2       =     0.0000
-
-────────────────────┬────────────────────────────────────────────────────────────────
-  behavior_problems │ Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
-────────────────────┼────────────────────────────────────────────────────────────────
-             income │   -.000085   6.47e-06   -13.13   0.000    -.0000977   -.0000723
-physical_punishment │   9.785201   .2517406    38.87   0.000     9.291798     10.2786
-              _cons │   110.4917   .9827684   112.43   0.000     108.5655    112.4179
-────────────────────┴────────────────────────────────────────────────────────────────
+─────────────┬────────────────────────────────────────────────────────────────
+behavior_p~s │ Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+─────────────┼────────────────────────────────────────────────────────────────
+      income │  -.0001021   5.25e-06   -19.44   0.000    -.0001124   -.0000918
+physical_p~t │   9.859842   .2315382    42.58   0.000     9.406036    10.31365
+       _cons │   110.9004   .9343151   118.70   0.000     109.0691    112.7316
+─────────────┴────────────────────────────────────────────────────────────────
 
 ─────────────────────────────┬────────────────────────────────────────────────
   Random-effects parameters  │   Estimate   Std. err.     [95% conf. interval]
 ─────────────────────────────┼────────────────────────────────────────────────
 country: Identity            │
-                  var(_cons) │    9.62149   4.267226      4.033909    22.94873
+                  var(_cons) │   8.878869   3.878162      3.771943    20.90019
 ─────────────────────────────┼────────────────────────────────────────────────
-               var(Residual) │   1.251906   .1880621      .9326183    1.680505
+               var(Residual) │   .8283655   .1242951      .6173058    1.111587
 ─────────────────────────────┴────────────────────────────────────────────────
-LR test vs. linear model: chibar2(01) = 151.93        Prob >= chibar2 = 0.0000
+LR test vs. linear model: chibar2(01) = 183.09        Prob >= chibar2 = 0.0000
 </pre>
-<p>We note that -0.850 is the effect of every additional $10,000 of per capita income. 9.785 is the effect of physical punishment. Notably, for this handout, 110.492 is the level of behavior problems for a child who did <em>not receive physical punishment</em> living in a family with <strong>$0</strong> <em>income</em>.</p>
+<p>We note that -1.021 is the effect of every additional $10,000 of per
+capita income. 9.860 is the effect of physical punishment.</p>
+<p>Notably, for this handout, 110.900 is the level of behavior problems
+for a child who did <em>not receive physical punishment</em> living in a
+family with <strong>$0</strong> <em>income</em>.</p>
 <h1 id="grand-mean-centering">Grand Mean Centering</h1>
-<p>Grand mean centering helps us to have more meaningful intercepts of our continuous variables.</p>
-<p>Essentially, we are going to create <span class="math inline">\(income_{\text{grand mean centered}} = income - \overline{income}\)</span></p>
+<p>Grand mean centering helps us to have more meaningful intercepts of
+our continuous variables.</p>
+<p>Essentially, we are going to create <span
+class="math inline">\(\text{income}_{\text{grand mean centered}} =
+\text{income} - \overline{\text{income}}\)</span></p>
 <h2 id="equation-1">Equation</h2>
-<p><span class="math display">\[\text{behavior problems} = \beta_0 + \beta_1 \text{income}_{\text{grand mean centered}} + \beta_2 \text{physical punishment} + u_{\text{country}} + e_{ij}\]</span></p>
+<p><span class="math display">\[\text{behavior problems} = \beta_0 +
+\beta_1 \text{income}_{\text{grand mean centered}} + \beta_2
+\text{physical punishment} + u_{\text{country}} + e_{ij}\]</span></p>
 <h2 id="graph-1">Graph</h2>
 <pre class='stata'>. egen m_income = mean(income) // grand mean of income
 </pre>
@@ -340,95 +384,142 @@ LR test vs. linear model: chibar2(01) = 151.93        Prob >= chibar2 = 0.0000
 > scheme(michigan)
 </pre>
 <pre class='stata'>. graph export myscatter2.png, width(1000) replace
-file /Users/agrogan/Desktop/GitHub/multilevel/centering-in-cross-sectional-data/myscatter2.png
-    saved as PNG format
+file
+    /Users/agrogan/Desktop/GitHub/multilevel/centering-in-cross-sectional-dat
+    > a/myscatter2.png saved as PNG format
 </pre>
 <figure>
-<img src="myscatter2.png" style="width:50.0%" alt="Scatterplot With Grand Mean Centering" /><figcaption aria-hidden="true">Scatterplot With Grand Mean Centering</figcaption>
+<img src="myscatter2.png" style="width:50.0%"
+alt="Scatterplot With Grand Mean Centering" />
+<figcaption aria-hidden="true">Scatterplot With Grand Mean
+Centering</figcaption>
 </figure>
-<p>In a graph, we see that <em>grand mean centering</em> has transformed the intercept so now the <span class="math inline">\(\beta_0\)</span> term is the level of behavior problems for the <em>average</em> child who did <em>not recieve physical punishment</em>.</p>
+<p>In a graph, we see that <em>grand mean centering</em> has transformed
+the intercept so now the <span class="math inline">\(\beta_0\)</span>
+term is the level of behavior problems for the <em>average</em> child
+who did <em>not recieve physical punishment</em>.</p>
 <h2 id="multilevel-model-1">Multilevel Model</h2>
 <pre class='stata'>. mixed behavior_problems c_income physical_punishment || country:
 
-Performing EM optimization: 
+Performing EM optimization ...
 
 Performing gradient-based optimization: 
+Iteration 0:  Log likelihood = -157.07646  
+Iteration 1:  Log likelihood = -157.07646  
 
-Iteration 0:   log likelihood = -175.93031  
-Iteration 1:   log likelihood = -175.93031  
+Computing standard errors ...
 
-Computing standard errors:
+Mixed-effects ML regression                         Number of obs    =     100
+Group variable: country                             Number of groups =      11
+                                                    Obs per group:
+                                                                 min =       1
+                                                                 avg =     9.1
+                                                                 max =      10
+                                                    Wald chi2(2)     = 2230.63
+Log likelihood = -157.07646                         Prob > chi2      =  0.0000
 
-Mixed-effects ML regression                     Number of obs     =        100
-Group variable: country                         Number of groups  =         11
-                                                Obs per group:
-                                                              min =          1
-                                                              avg =        9.1
-                                                              max =         10
-                                                Wald chi2(2)      =    1578.70
-Log likelihood = -175.93031                     Prob > chi2       =     0.0000
-
-────────────────────┬────────────────────────────────────────────────────────────────
-  behavior_problems │ Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
-────────────────────┼────────────────────────────────────────────────────────────────
-           c_income │   -.000085   6.47e-06   -13.13   0.000    -.0000977   -.0000723
-physical_punishment │   9.785201   .2517406    38.87   0.000     9.291798     10.2786
-              _cons │    107.058   .9485479   112.87   0.000     105.1989    108.9171
-────────────────────┴────────────────────────────────────────────────────────────────
+─────────────┬────────────────────────────────────────────────────────────────
+behavior_p~s │ Coefficient  Std. err.      z    P>|z|     [95% conf. interval]
+─────────────┼────────────────────────────────────────────────────────────────
+    c_income │  -.0001021   5.25e-06   -19.44   0.000    -.0001124   -.0000918
+physical_p~t │   9.859842   .2315382    42.58   0.000     9.406036    10.31365
+       _cons │   106.7117   .9085729   117.45   0.000      104.931    108.4925
+─────────────┴────────────────────────────────────────────────────────────────
 
 ─────────────────────────────┬────────────────────────────────────────────────
   Random-effects parameters  │   Estimate   Std. err.     [95% conf. interval]
 ─────────────────────────────┼────────────────────────────────────────────────
 country: Identity            │
-                  var(_cons) │    9.62149   4.267226      4.033909    22.94873
+                  var(_cons) │   8.878869   3.878162      3.771942    20.90019
 ─────────────────────────────┼────────────────────────────────────────────────
-               var(Residual) │   1.251906   .1880621      .9326183    1.680505
+               var(Residual) │   .8283655   .1242951      .6173058    1.111588
 ─────────────────────────────┴────────────────────────────────────────────────
-LR test vs. linear model: chibar2(01) = 151.93        Prob >= chibar2 = 0.0000
+LR test vs. linear model: chibar2(01) = 183.09        Prob >= chibar2 = 0.0000
 </pre>
 <blockquote>
-<p>We see that the <span class="math inline">\(\beta_1\)</span> and <span class="math inline">\(\beta_2\)</span> regression coefficients have not changed. However, the intercept, <span class="math inline">\(\beta_0\)</span> has changed, and is now more meaningful.</p>
+<p>We see that the <span class="math inline">\(\beta_1\)</span> and
+<span class="math inline">\(\beta_2\)</span> regression coefficients
+have not changed. However, the intercept, <span
+class="math inline">\(\beta_0\)</span> has changed, and is now more
+meaningful.</p>
 </blockquote>
 <h1 id="group-mean-centering">Group Mean Centering</h1>
-<p>In group mean centering, we are doing something slightly different. We are creating a mean for each <em>group</em>, which in this data is <em>country</em>: e.g. <span class="math inline">\(income_{\text{group mean centered}} = income - \overline{income_j}\)</span>, where <span class="math inline">\(j\)</span> is the index for <em>group</em> or <em>country</em>.</p>
+<p>In group mean centering, we are doing something slightly different.
+We are creating a mean for each <em>group</em>, which in this data is
+<em>country</em>: e.g. <span
+class="math inline">\(\text{income}_{\text{group mean centered}} =
+\text{income} - \overline{\text{income}}_{.j}\)</span>, where <span
+class="math inline">\(j\)</span> is the index for <em>group</em> or
+<em>country</em>.</p>
 <pre class='stata'>. bysort country: egen m_g_income = mean(income) // GROUP mean of income
 </pre>
 <pre class='stata'>. generate c_g_income = income - m_g_income // GROUP mean centered income
 </pre>
-<pre class='stata'>. bysort country: egen m_g_physical_punishment = mean(physical_punishment) // GROUP mean of physic
-> al punishment
+<pre class='stata'>. bysort country: egen m_g_physical_punishment = mean(physical_punishment) // G
+> ROUP mean of physical punishment
 </pre>
-<pre class='stata'>. generate c_g_physical_punishment = physical_punishment - m_g_physical_punishment // GROUP mean c
-> entered physical punishment
+<pre class='stata'>. generate c_g_physical_punishment = physical_punishment - m_g_physical_punishm
+> ent // GROUP mean centered physical punishment
 </pre>
 <blockquote>
-<p>Interestingly, <em>group mean centering</em> has many implications. Here I focus on how employing different variables might provide <em>conceptually</em> or <em>theoretically</em> different results. For the sake of parismony, in the brief discussion below I focus on these <em>conceptual</em> or <em>theoretical</em> differences, and do not provide output. I use the <code>quietly</code> prefix to suppress output.</p>
+<p>Interestingly, <em>group mean centering</em> has many implications.
+Here I focus on how employing different variables might provide
+<em>conceptually</em> or <em>theoretically</em> different results. For
+the sake of parismony, in the brief discussion below I focus on these
+<em>conceptual</em> or <em>theoretical</em> differences, and do not
+provide output. I use the <code>quietly</code> prefix to suppress
+output.</p>
 </blockquote>
 <h2 id="equation-2">Equation</h2>
-<p>Two versions of the equation are equally appropriate. Both address <em>conceptually</em> or <em>theoretically</em> different questions.</p>
+<p>Two versions of the equation are equally appropriate. Both address
+<em>conceptually</em> or <em>theoretically</em> different questions.</p>
 <h3 id="covariate-and-group-mean">Covariate and Group Mean</h3>
-<p>One parameterization of the multilevel model is to enter the <em>covariate</em> and its <em>group level mean</em> i.e. <span class="math inline">\(x_{ij}\)</span> and <span class="math inline">\(\overline{x_j}\)</span>.</p>
-<p><span class="math display">\[\text{behavior problems} = \beta_0 + \beta_1 \text{income} + \beta_2 \text{income}_{\text{group mean}} + \beta_3 \text{physical punishment} + u_{\text{country}} + e_{ij}\]</span></p>
-<h3 id="group-mean-centered-covariate-and-group-mean">Group Mean Centered Covariate and Group Mean</h3>
-<p>A second, equally valid, but conceptually different parameterization of the multilevel model is to enter the <em>covariate deviated from its group level mean</em> and the <em>group level mean</em> i.e. <span class="math inline">\(x_{ij} - \overline{x_j}\)</span> and <span class="math inline">\(\overline{x_j}\)</span>.</p>
-<p><span class="math display">\[\text{behavior problems} = \beta_0 + \beta_1 \text{income}_{\text{group mean centered}} + \beta_2 \text{income}_{\text{group mean}} + \beta_3 \text{physical punishment} + u_{\text{country}} + e_{ij}\]</span></p>
+<p>One parameterization of the multilevel model is to enter the
+<em>covariate</em> and its <em>group level mean</em> i.e. <span
+class="math inline">\(x_{ij}\)</span> and <span
+class="math inline">\(\overline{x_{.j}}\)</span>.</p>
+<p><span class="math display">\[\text{behavior problems} = \beta_0 +
+\beta_1 \text{income} + \beta_2 \text{income}_{\text{group mean}} +
+\beta_3 \text{physical punishment} + u_{\text{country}} +
+e_{ij}\]</span></p>
+<h3 id="group-mean-centered-covariate-and-group-mean">Group Mean
+Centered Covariate and Group Mean</h3>
+<p>A second, equally valid, but conceptually different parameterization
+of the multilevel model is to enter the <em>covariate deviated from its
+group level mean</em> and the <em>group level mean</em> i.e. <span
+class="math inline">\(x_{ij} - \overline{x_{.j}}\)</span> and <span
+class="math inline">\(\overline{x_{.j}}\)</span>.</p>
+<p><span class="math display">\[\text{behavior problems} = \beta_0 +
+\beta_1 \text{income}_{\text{group mean centered}} + \beta_2
+\text{income}_{\text{group mean}} + \beta_3 \text{physical punishment} +
+u_{\text{country}} + e_{ij}\]</span></p>
 <h2 id="multilevel-model-2">Multilevel Model</h2>
-<p>Again, for the sake of parsimony, I use the <code>quietly</code> prefix to suppress output of the multilevel models.</p>
+<p>Again, for the sake of parsimony, I use the <code>quietly</code>
+prefix to suppress output of the multilevel models.</p>
 <h3 id="covariate-and-group-mean-1">Covariate and Group Mean</h3>
 <blockquote>
-<p>This first parameterization focuses on <em>individual scores on covariates</em> and their <em>country level means</em>.</p>
+<p>This first parameterization focuses on <em>individual scores on
+covariates</em> and their <em>country level means</em>.</p>
 </blockquote>
-<p>What is the effect of <em>income</em>, <em>country level mean income</em>, <em>physical punishment</em> and <em>country level mean of physical punishment</em> on <em>behavior problems</em>?</p>
-<pre class='stata'>. quietly: mixed behavior_problems income m_g_income physical_punishment m_g_physical_punishment |
-> | country:
+<p>What is the effect of <em>income</em>, <em>country level mean
+income</em>, <em>physical punishment</em> and <em>country level mean of
+physical punishment</em> on <em>behavior problems</em>?</p>
+<pre class='stata'>. quietly: mixed behavior_problems income m_g_income physical_punishment m_g_ph
+> ysical_punishment || country:
 </pre>
-<h3 id="group-mean-centered-covariate-and-group-mean-1">Group Mean Centered Covariate and Group Mean</h3>
-<p>This second parameterization focuses on how <em>individuals differ from their country level means</em>, and <em>country level means</em>.</p>
+<h3 id="group-mean-centered-covariate-and-group-mean-1">Group Mean
+Centered Covariate and Group Mean</h3>
+<p>This second parameterization focuses on how <em>individuals differ
+from their country level means</em>, and <em>country level
+means</em>.</p>
 <blockquote>
-<p>What is the effect of <em>income deviated from its country level mean</em>, <em>country level mean income</em>, <em>physical punishment deviated from its country level punishment</em>, and <em>country level mean of physical punishment</em> on <em>behavior problems</em>?</p>
+<p>What is the effect of <em>income deviated from its country level
+mean</em>, <em>country level mean income</em>, <em>physical punishment
+deviated from its country level punishment</em>, and <em>country level
+mean of physical punishment</em> on <em>behavior problems</em>?</p>
 </blockquote>
-<pre class='stata'>. quietly: mixed behavior_problems c_g_physical_punishment m_g_income c_g_physical_punishment m_g_
-> physical_punishment || country:
+<pre class='stata'>. quietly: mixed behavior_problems c_g_physical_punishment m_g_income c_g_physi
+> cal_punishment m_g_physical_punishment || country:
 </pre>
 </body>
 </html>
