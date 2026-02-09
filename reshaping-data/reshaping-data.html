@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Andy Grogan-Kaylor">
-<meta name="dcterms.date" content="2025-10-22">
+<meta name="dcterms.date" content="2026-02-09">
 
 <title>Reshaping Data Using Black Spruce Data</title>
 <style>
@@ -116,7 +116,6 @@ div.csl-indent {
   <li><a href="#use-reshape" id="toc-use-reshape" class="nav-link" data-scroll-target="#use-reshape"><span class="header-section-number">7.2</span> Use <code>reshape</code></a></li>
   <li><a href="#use-list-to-look-at-a-sample-of-the-data" id="toc-use-list-to-look-at-a-sample-of-the-data" class="nav-link" data-scroll-target="#use-list-to-look-at-a-sample-of-the-data"><span class="header-section-number">7.3</span> Use <code>list</code> To Look At A Sample Of The Data</a></li>
   </ul></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">8</span> References 🌲</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="reshaping-data.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="reshaping-data-revealjs.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
 </div>
@@ -141,7 +140,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 22, 2025</p>
+      <p class="date">February 9, 2026</p>
     </div>
   </div>
   
@@ -197,62 +196,21 @@ div.csl-indent {
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">describe</span>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Contains data from https://github.com/agrogan1/multilevel/raw/master/reshaping-data/S
-&gt; pruce.dta
- Observations:            72                  
-    Variables:             9                  26 Apr 2020 12:18
--------------------------------------------------------------------------------------
-Variable      Storage   Display    Value
-    name         type    format    label      Variable label
--------------------------------------------------------------------------------------
-Tree            long    %12.0g                Tree number
-Competition     long    %12.0g     Competition
-                                              C (competition), CR (competition
-                                                removed)
-Fertilizer      long    %12.0g     Fertilizer
-                                              F (fertilized), NF (not fertilized)
-Height0         double  %10.0g                Height (cm) of seedling at planting
-Height5         double  %10.0g                Height (cm) of seedling at year 5
-Diameter0       double  %10.0g                Diameter (cm) of seedling at planting
-Diameter5       double  %10.0g                Diameter (cm) of seedling at year 5
-Ht_change       double  %10.0g                Change (cm) in height
-Di_change       double  %10.0g                Change (cm) in diameter
--------------------------------------------------------------------------------------
-Sorted by: 
-     Note: Dataset has changed since last saved.</code></pre>
-</div>
 </div>
 </section>
 <section id="keep-only-relevant-variables" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Keep Only Relevant Variables 🌲</h1>
 <p>It is often <em>very useful</em> when working with longitudinal data to <code>keep</code> only the relevant variables to have a <em>manageable data set</em> to work with.</p>
 <div class="cell" data-collectcode="true">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">keep</span> Tree Competition Fertilizer Height0 Height5 Diameter0 Diameter5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">keep</span> Tree Competition Fertilizer Height0 Height5 Diameter0 Diameter5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="list-out-a-sample-of-the-data" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> List Out A Sample Of The Data 🌲</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span> <span class="kw">in</span> 1/10 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     | Tree   Compet~n   Fertil~r   Height0   Height5   Diameter0   Diamet~5 |
-     |-----------------------------------------------------------------------|
-  1. |    1         NC          F        15        60    1.984375        7.4 |
-  2. |    2         NC          F         9      45.2    1.190625        5.2 |
-  3. |    3         NC          F        12        42   1.7859375        5.7 |
-  4. |    4         NC          F      13.7      49.5      1.5875        6.4 |
-  5. |    5         NC          F        12      47.3      1.5875        6.2 |
-     |-----------------------------------------------------------------------|
-  6. |    6         NC          F        12      56.4      1.5875        7.4 |
-  7. |    7         NC         NF      16.8      43.5    1.984375        4.9 |
-  8. |    8         NC         NF      14.6      49.2    1.984375        5.4 |
-  9. |    9         NC         NF        16        54    1.984375        7.1 |
- 10. |   10         NC         NF      15.4        45    1.984375        5.1 |
-     +-----------------------------------------------------------------------+</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span> <span class="kw">in</span> 1/10 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="wide-compared-to-long-data" class="level1" data-number="6">
@@ -267,15 +225,15 @@ Sorted by:
 <h2 data-number="7.1" class="anchored" data-anchor-id="steps-in-reshaping-data"><span class="header-section-number">7.1</span> Steps In Reshaping Data</h2>
 <ol type="1">
 <li>Only <code>keep</code> the relevant variables, as we did just above.</li>
-<li><code>rename</code> each independent or dependent variable from each time point so that it has the <code>stub-time</code> format.</li>
+<li><code>rename</code> each independent or dependent variable from each time point so that it has the <code>stub-time</code> (<a href="#tip-stub-time" class="quarto-xref">Tip&nbsp;1</a>) format.</li>
 </ol>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div id="tip-stub-time" class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<code>stub-time</code> format
+Tip&nbsp;1: <code>stub-time</code> format
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -290,21 +248,8 @@ Sorted by:
 <h2 data-number="7.2" class="anchored" data-anchor-id="use-reshape"><span class="header-section-number">7.2</span> Use <code>reshape</code></h2>
 <p>In the reshape command below, notice that we only include the variables that we consider to be <em>time varying</em>. Variables that are not included are considered to be <em>time invariant</em>. <code>Tree</code> is an <em>id</em> variable that is already in the data. <code>year</code> is a time variable that we are creating. We do not include <code>Competition</code> or <code>Fertilizer</code> in our reshape command because those are variables that do not change over time.</p>
 <div class="cell" data-collectcode="true">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">reshape</span> <span class="kw">long</span> Height Diameter, i(Tree) j(<span class="fu">year</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>(j = 0 5)
-
-Data                               Wide   -&gt;   Long
------------------------------------------------------------------------------
-Number of observations               72   -&gt;   144         
-Number of variables                   7   -&gt;   6           
-j variable (2 values)                     -&gt;   year
-xij variables:
-                        Height0 Height5   -&gt;   Height
-                    Diameter0 Diameter5   -&gt;   Diameter
------------------------------------------------------------------------------</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">reshape</span> <span class="kw">long</span> Height Diameter, i(Tree) j(<span class="fu">year</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -323,46 +268,15 @@ xij variables:
 <section id="use-list-to-look-at-a-sample-of-the-data" class="level2" data-number="7.3">
 <h2 data-number="7.3" class="anchored" data-anchor-id="use-list-to-look-at-a-sample-of-the-data"><span class="header-section-number">7.3</span> Use <code>list</code> To Look At A Sample Of The Data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span> <span class="kw">in</span> 1/20</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     | Tree   year   Compet~n   Fertil~r   Height    Diameter |
-     |--------------------------------------------------------|
-  1. |    1      0         NC          F       15    1.984375 |
-  2. |    1      5         NC          F       60         7.4 |
-  3. |    2      0         NC          F        9    1.190625 |
-  4. |    2      5         NC          F     45.2         5.2 |
-  5. |    3      0         NC          F       12   1.7859375 |
-     |--------------------------------------------------------|
-  6. |    3      5         NC          F       42         5.7 |
-  7. |    4      0         NC          F     13.7      1.5875 |
-  8. |    4      5         NC          F     49.5         6.4 |
-  9. |    5      0         NC          F       12      1.5875 |
- 10. |    5      5         NC          F     47.3         6.2 |
-     |--------------------------------------------------------|
- 11. |    6      0         NC          F       12      1.5875 |
- 12. |    6      5         NC          F     56.4         7.4 |
- 13. |    7      0         NC         NF     16.8    1.984375 |
- 14. |    7      5         NC         NF     43.5         4.9 |
- 15. |    8      0         NC         NF     14.6    1.984375 |
-     |--------------------------------------------------------|
- 16. |    8      5         NC         NF     49.2         5.4 |
- 17. |    9      0         NC         NF       16    1.984375 |
- 18. |    9      5         NC         NF       54         7.1 |
- 19. |   10      0         NC         NF     15.4    1.984375 |
- 20. |   10      5         NC         NF       45         5.1 |
-     +--------------------------------------------------------+</code></pre>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ot">list</span> <span class="kw">in</span> 1/20</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</section>
-</section>
-<section id="references" class="level1 unnumbered" data-number="8">
 
-
+</section>
 </section>
 
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">8 References 🌲</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Camill2010" class="csl-entry" role="listitem">
 Camill, Philip, Laura Chihara, Brad Adams, Christian Andreassi, A. N. N. Barry, Sahir Kalim, Jacob Limmer, Mike Mandell, and Greg Rafert. 2010. <span>“Early Life History Transitions and Recruitment of Picea Mariana in Thawed Boreal Permafrost Peatlands.”</span> <em>Ecology</em>. <a href="https://doi.org/10.1890/08-1839.1">https://doi.org/10.1890/08-1839.1</a>.
 </div>

@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.7.33">
 
   <meta name="author" content="Andy Grogan-Kaylor">
-  <meta name="dcterms.date" content="2025-10-22">
+  <meta name="dcterms.date" content="2026-02-09">
   <title>Reshaping Data Using Black Spruce Data</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -228,14 +228,14 @@ Andy Grogan-Kaylor
 </div>
 </div>
 
-  <p class="date">2025-10-22</p>
+  <p class="date">2026-02-09</p>
 </section>
 <section id="background" class="title-slide slide level1 center">
 <h1>Background 🌲</h1>
 <p>This is a handout about the process of <code>reshape</code>-ing data from <em>wide</em> to <em>long</em> and <em>vice versa</em>.</p>
-<p><span class="citation" data-cites="Chihara2018">Chihara and Hesterberg (<a href="#/references" role="doc-biblioref" onclick="">2018</a>)</span> provide a data set concerning the growth of Black Spruce Trees. According to these authors:</p>
+<p><span class="citation" data-cites="Chihara2018">Chihara and Hesterberg (<a href="#/references-1" role="doc-biblioref" onclick="">2018</a>)</span> provide a data set concerning the growth of Black Spruce Trees. According to these authors:</p>
 <blockquote>
-<p>“Black spruce (Picea mariana) is a species of a slow-growing coniferous tree found across the northern part of North America. It is commonly found on wet organic soils. In a study conducted in the 1990s, a biologist interested in factors affecting the growth of the black spruce planted its seedlings on sites located in boreal peatlands in northern Manitoba, Canada <span class="citation" data-cites="Camill2010">(<a href="#/references" role="doc-biblioref" onclick="">Camill et al. 2010</a>)</span>. The data set Spruce contains a part of the data from the study (Table 1.8). Seventy-two black spruce seedlings were planted in four plots under varying conditions (fertilizer–no fertilizer, competition–no competition), and their heights and diameters were measured over the course of 5 years. The researcher wanted to see whether the addition of fertilizer or the removal of competition from other plants (by weeding) affected the growth of these seedlings.”</p>
+<p>“Black spruce (Picea mariana) is a species of a slow-growing coniferous tree found across the northern part of North America. It is commonly found on wet organic soils. In a study conducted in the 1990s, a biologist interested in factors affecting the growth of the black spruce planted its seedlings on sites located in boreal peatlands in northern Manitoba, Canada <span class="citation" data-cites="Camill2010">(<a href="#/references-1" role="doc-biblioref" onclick="">Camill et al. 2010</a>)</span>. The data set Spruce contains a part of the data from the study (Table 1.8). Seventy-two black spruce seedlings were planted in four plots under varying conditions (fertilizer–no fertilizer, competition–no competition), and their heights and diameters were measured over the course of 5 years. The researcher wanted to see whether the addition of fertilizer or the removal of competition from other plants (by weeding) affected the growth of these seedlings.”</p>
 </blockquote>
 </section>
 
@@ -276,31 +276,6 @@ Andy Grogan-Kaylor
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb3-1"><a href=""></a></span>
 <span id="cb3-2"><a href=""></a><span class="kw">describe</span>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Contains data from https://github.com/agrogan1/multilevel/raw/master/reshaping-data/S
-&gt; pruce.dta
- Observations:            72                  
-    Variables:             9                  26 Apr 2020 12:18
--------------------------------------------------------------------------------------
-Variable      Storage   Display    Value
-    name         type    format    label      Variable label
--------------------------------------------------------------------------------------
-Tree            long    %12.0g                Tree number
-Competition     long    %12.0g     Competition
-                                              C (competition), CR (competition
-                                                removed)
-Fertilizer      long    %12.0g     Fertilizer
-                                              F (fertilized), NF (not fertilized)
-Height0         double  %10.0g                Height (cm) of seedling at planting
-Height5         double  %10.0g                Height (cm) of seedling at year 5
-Diameter0       double  %10.0g                Diameter (cm) of seedling at planting
-Diameter5       double  %10.0g                Diameter (cm) of seedling at year 5
-Ht_change       double  %10.0g                Change (cm) in height
-Di_change       double  %10.0g                Change (cm) in diameter
--------------------------------------------------------------------------------------
-Sorted by: 
-     Note: Dataset has changed since last saved.</code></pre>
-</div>
 </div>
 </section>
 
@@ -308,32 +283,16 @@ Sorted by:
 <h1>Keep Only Relevant Variables 🌲</h1>
 <p>It is often <em>very useful</em> when working with longitudinal data to <code>keep</code> only the relevant variables to have a <em>manageable data set</em> to work with.</p>
 <div class="cell" data-collectcode="true">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href=""></a></span>
-<span id="cb5-2"><a href=""></a><span class="kw">keep</span> Tree Competition Fertilizer Height0 Height5 Diameter0 Diameter5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb4-1"><a href=""></a></span>
+<span id="cb4-2"><a href=""></a><span class="kw">keep</span> Tree Competition Fertilizer Height0 Height5 Diameter0 Diameter5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 
 <section id="list-out-a-sample-of-the-data" class="title-slide slide level1 center">
 <h1>List Out A Sample Of The Data 🌲</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href=""></a></span>
-<span id="cb6-2"><a href=""></a><span class="ot">list</span> <span class="kw">in</span> 1/10 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     | Tree   Compet~n   Fertil~r   Height0   Height5   Diameter0   Diamet~5 |
-     |-----------------------------------------------------------------------|
-  1. |    1         NC          F        15        60    1.984375        7.4 |
-  2. |    2         NC          F         9      45.2    1.190625        5.2 |
-  3. |    3         NC          F        12        42   1.7859375        5.7 |
-  4. |    4         NC          F      13.7      49.5      1.5875        6.4 |
-  5. |    5         NC          F        12      47.3      1.5875        6.2 |
-     |-----------------------------------------------------------------------|
-  6. |    6         NC          F        12      56.4      1.5875        7.4 |
-  7. |    7         NC         NF      16.8      43.5    1.984375        4.9 |
-  8. |    8         NC         NF      14.6      49.2    1.984375        5.4 |
-  9. |    9         NC         NF        16        54    1.984375        7.1 |
- 10. |   10         NC         NF      15.4        45    1.984375        5.1 |
-     +-----------------------------------------------------------------------+</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb5-1"><a href=""></a></span>
+<span id="cb5-2"><a href=""></a><span class="ot">list</span> <span class="kw">in</span> 1/10 </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 
@@ -352,18 +311,20 @@ Sorted by:
 <h2>Steps In Reshaping Data</h2>
 <ol type="1">
 <li>Only <code>keep</code> the relevant variables, as we did just above.</li>
-<li><code>rename</code> each independent or dependent variable from each time point so that it has the <code>stub-time</code> format.</li>
+<li><code>rename</code> each independent or dependent variable from each time point so that it has the <code>stub-time</code> (<a href="#/tip-stub-time" class="quarto-xref">Tip&nbsp;1</a>) format.</li>
 </ol>
-<div class="callout callout-tip callout-titled callout-style-default">
+<div id="tip-stub-time">
+<div id="tip-stub-time" class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong><code>stub-time</code> format</strong></p>
+<p><strong>Tip&nbsp;1: <code>stub-time</code> format</strong></p>
 </div>
 <div class="callout-content">
 <p>Notice how the variables in this data set are already in the <code>stub-time</code> format. If the variables had a different format, e.g.&nbsp;<code>height_five_years</code>, <code>height_zero_years</code>, it would usually be easier to rename them e.g.&nbsp;<code>rename height_five_years height5</code>, and <code>rename height_zero_years height0</code>.<sup>1</sup></p>
+</div>
 </div>
 </div>
 </div>
@@ -375,21 +336,8 @@ Sorted by:
 <h2>Use <code>reshape</code></h2>
 <p>In the reshape command below, notice that we only include the variables that we consider to be <em>time varying</em>. Variables that are not included are considered to be <em>time invariant</em>. <code>Tree</code> is an <em>id</em> variable that is already in the data. <code>year</code> is a time variable that we are creating. We do not include <code>Competition</code> or <code>Fertilizer</code> in our reshape command because those are variables that do not change over time.</p>
 <div class="cell" data-collectcode="true">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb8-1"><a href=""></a></span>
-<span id="cb8-2"><a href=""></a><span class="kw">reshape</span> <span class="kw">long</span> Height Diameter, i(Tree) j(<span class="fu">year</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>(j = 0 5)
-
-Data                               Wide   -&gt;   Long
------------------------------------------------------------------------------
-Number of observations               72   -&gt;   144         
-Number of variables                   7   -&gt;   6           
-j variable (2 values)                     -&gt;   year
-xij variables:
-                        Height0 Height5   -&gt;   Height
-                    Diameter0 Diameter5   -&gt;   Diameter
------------------------------------------------------------------------------</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href=""></a></span>
+<span id="cb6-2"><a href=""></a><span class="kw">reshape</span> <span class="kw">long</span> Height Diameter, i(Tree) j(<span class="fu">year</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -408,39 +356,11 @@ xij variables:
 <section id="use-list-to-look-at-a-sample-of-the-data" class="slide level2">
 <h2>Use <code>list</code> To Look At A Sample Of The Data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb10-1"><a href=""></a></span>
-<span id="cb10-2"><a href=""></a><span class="ot">list</span> <span class="kw">in</span> 1/20</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     | Tree   year   Compet~n   Fertil~r   Height    Diameter |
-     |--------------------------------------------------------|
-  1. |    1      0         NC          F       15    1.984375 |
-  2. |    1      5         NC          F       60         7.4 |
-  3. |    2      0         NC          F        9    1.190625 |
-  4. |    2      5         NC          F     45.2         5.2 |
-  5. |    3      0         NC          F       12   1.7859375 |
-     |--------------------------------------------------------|
-  6. |    3      5         NC          F       42         5.7 |
-  7. |    4      0         NC          F     13.7      1.5875 |
-  8. |    4      5         NC          F     49.5         6.4 |
-  9. |    5      0         NC          F       12      1.5875 |
- 10. |    5      5         NC          F     47.3         6.2 |
-     |--------------------------------------------------------|
- 11. |    6      0         NC          F       12      1.5875 |
- 12. |    6      5         NC          F     56.4         7.4 |
- 13. |    7      0         NC         NF     16.8    1.984375 |
- 14. |    7      5         NC         NF     43.5         4.9 |
- 15. |    8      0         NC         NF     14.6    1.984375 |
-     |--------------------------------------------------------|
- 16. |    8      5         NC         NF     49.2         5.4 |
- 17. |    9      0         NC         NF       16    1.984375 |
- 18. |    9      5         NC         NF       54         7.1 |
- 19. |   10      0         NC         NF     15.4    1.984375 |
- 20. |   10      5         NC         NF       45         5.1 |
-     +--------------------------------------------------------+</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource stata number-lines code-with-copy"><code class="sourceCode stata"><span id="cb7-1"><a href=""></a></span>
+<span id="cb7-2"><a href=""></a><span class="ot">list</span> <span class="kw">in</span> 1/20</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section>
-<section id="references" class="title-slide slide level1 smaller scrollable">
+<section id="references-1" class="title-slide slide level1 smaller scrollable">
 <h1>References 🌲</h1>
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">

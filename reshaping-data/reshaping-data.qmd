@@ -39,6 +39,10 @@ bibliography: reshaping-data.bib
 
 library(Statamarkdown)
 
+stataexe <- "/Applications/StataNow/"
+
+knitr::opts_chunk$set(engine.path=list(stata=stataexe))
+
 ```
 
 
@@ -121,9 +125,9 @@ We are going to `reshape` the data from *wide* format to *long* format.
 ## Steps In Reshaping Data
 
 1. Only `keep` the relevant variables, as we did just above.
-2. `rename` each independent or dependent variable from each time point so that it has the `stub-time` format.
+2. `rename` each independent or dependent variable from each time point so that it has the `stub-time` (@tip-stub-time) format.
 
-::: {.callout-tip}
+::: {#tip-stub-time .callout-tip}
 ### `stub-time` format
 
 Notice how the variables in this data set are already in the `stub-time` format. If the variables had a different format, e.g. `height_five_years`, `height_zero_years`, it would usually be easier to rename them e.g. `rename height_five_years height5`, and `rename height_zero_years height0`.[^advanced]
@@ -157,7 +161,14 @@ list in 1/20
 
 ```
 
-# References 🌲 
+::: {.content-visible when-format="pdf"}
+# References 🌲
+:::
+
+::: {.content-visible when-format="revealjs"}
+# References 🌲
+:::
+
 
 
 
