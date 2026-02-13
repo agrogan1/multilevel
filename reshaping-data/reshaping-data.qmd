@@ -39,9 +39,9 @@ bibliography: reshaping-data.bib
 
 library(Statamarkdown)
 
-stataexe <- "/Applications/StataNow/"
+# stataexe <- "/Applications/StataNow/"
 
-knitr::opts_chunk$set(engine.path=list(stata=stataexe))
+# knitr::opts_chunk$set(engine.path=list(stata=stataexe))
 
 ```
 
