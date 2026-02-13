@@ -93,6 +93,8 @@ ggplot(mydata,
        subtitle = "Every Individual Has Their Own Regression Line", 
        caption = mycaption)
 
+ggsave("multilevel.png")
+
 ```
 
 # Data Structures
