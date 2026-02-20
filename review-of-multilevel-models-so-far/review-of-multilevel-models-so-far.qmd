@@ -12,6 +12,8 @@ format:
   pdf: 
     toc: false
     number-sections: true
+    mainfont: "Chalkboard"
+    sansfont: "Chalkboard"
     geometry:
       - left=.5in
       - right=.5in
