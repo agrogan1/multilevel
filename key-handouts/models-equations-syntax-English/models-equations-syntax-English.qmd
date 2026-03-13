@@ -20,6 +20,8 @@ format:
     toc: false
     number-sections: true
     classoption: landscape
+    margin-left: .5in
+    margin-right: .5in
 ---
 
 ```{r setup, include=FALSE}
