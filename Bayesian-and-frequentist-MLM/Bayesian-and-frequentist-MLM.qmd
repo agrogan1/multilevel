@@ -6,9 +6,7 @@ execute:
   echo: false
 format:
   html:
-    theme: 
-      light: yeti
-      dark: vapor
+    theme: yeti
     lightbox: true
     toc: true
     number-sections: true
