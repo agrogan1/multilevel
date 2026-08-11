@@ -1,0 +1,83 @@
+h1.title {
+  font-size: 75px;
+  color: #FFCB05;
+  background-color: #00274C;
+}
+
+.subtitle {
+  color: #FFCB05;
+  background-color: #00274C;
+}
+
+.quarto-title-author-name, .date {
+  font-size: 30px;
+  color: #FFCB05;
+  background-color: #00274C;
+}
+
+p.author {
+  color: white;
+}
+
+.reveal blockquote {
+  color: black;
+  text-align: left;
+  border-left: 3px solid #FFCB05; 
+  padding: 0.5em 10px;
+}
+
+.reveal .progress span { 
+  color: #D86018;
+}
+
+.reveal .slide figure>figcaption {
+  color: #D86018;
+}
+
+/* Highlights only rows within the body of the table */
+/* W3Schools */
+tbody tr:hover {
+  background-color: lightblue;
+  cursor: pointer; /* Optional: indicates the row is interactive */
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+.center-xy {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translateY(-50%), translateX(-50%);
+  transform: translateY(-50%), translateX(-50%);
+}
+
+.line-break {
+  white-space: pre-line;
+}
+
+.reveal .slides section .fragment.darkgreen {
+  color: black;
+}
+
+.reveal .slides section .fragment.darkgreen.visible {
+  color: white;
+  background-color: darkgreen;
+}
+
+.reveal .slides section .fragment.darkred {
+  color: black;
+}
+
+.reveal .slides section .fragment.darkred.visible {
+  color: white;
+  background-color: darkred;
+}
+
+

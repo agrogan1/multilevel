@@ -6,14 +6,14 @@
 <script src="meta-analysis_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="meta-analysis_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="meta-analysis_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="meta-analysis_files/libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="meta-analysis_files/libs/quarto-html/quarto-syntax-highlighting-b6a8276bf55561bdbc268162d41bd1f7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="meta-analysis_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="meta-analysis_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="meta-analysis_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.33">
+  <meta name="generator" content="quarto-1.9.30">
 
   <meta name="author" content="Andy Grogan-Kaylor">
-  <meta name="dcterms.date" content="2026-01-03">
+  <meta name="dcterms.date" content="2026-08-11">
   <title>Meta-Analysis of 50 Years of Corporal Punishment Research</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -21,6 +21,9 @@
   <link rel="stylesheet" href="meta-analysis_files/libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="meta-analysis_files/libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -32,8 +35,29 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-  </style>
-  <link rel="stylesheet" href="meta-analysis_files/libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="meta-analysis_files/libs/revealjs/dist/theme/quarto-2740581606dc327e82f18f789b69d8a0.css">
+  <link rel="stylesheet" href="meta-analysis.css">
   <link href="meta-analysis_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="meta-analysis_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="meta-analysis_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -128,12 +152,21 @@
       margin-right: 0; 
     }
   </style>
+  <link href="meta-analysis_files/libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet">
+  <script src="meta-analysis_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+  <script src="meta-analysis_files/libs/plotly-binding-4.12.0/plotly.js"></script>
+  <script src="meta-analysis_files/libs/typedarray-0.1/typedarray.min.js"></script>
+  <script src="meta-analysis_files/libs/jquery-3.5.1/jquery.min.js"></script>
+  <link href="meta-analysis_files/libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
+  <script src="meta-analysis_files/libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+  <link href="meta-analysis_files/libs/plotly-htmlwidgets-css-2.25.2/plotly-htmlwidgets.css" rel="stylesheet">
+  <script src="meta-analysis_files/libs/plotly-main-2.25.2/plotly-latest.min.js"></script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
+<section id="title-slide" data-background-color="#00274C" class="quarto-title-block center">
   <h1 class="title">Meta-Analysis of 50 Years of Corporal Punishment Research</h1>
 
 <div class="quarto-title-authors">
@@ -144,8 +177,25 @@ Andy Grogan-Kaylor
 </div>
 </div>
 
-  <p class="date">2026-01-03</p>
+  <p class="date">2026-08-11</p>
 </section>
+<section id="rationale" class="title-slide slide level1 smaller center">
+<h1>Rationale</h1>
+<blockquote>
+<p>“Whether spanking is helpful or harmful to children continues to be the source of considerable debate among both researchers and the public. This article addresses 2 persistent issues, namely whether effect sizes for spanking are distinct from those for physical abuse, and whether effect sizes for spanking are robust to study design differences. Meta-analyses focused specifically on spanking were conducted on a total of 111 unique effect sizes representing 160,927 children. Thirteen of 17 mean effect sizes were significantly different from zero and all indicated a link between spanking and increased risk for detrimental child outcomes. Effect sizes did not substantially differ between spanking and physical abuse or by study design characteristics.” <span class="citation" data-cites="Gershoff2016">(<a href="#/references" role="doc-biblioref" onclick="">Gershoff &amp; Grogan-Kaylor, 2016</a>)</span></p>
+</blockquote>
+</section>
+
+<section id="results" class="title-slide slide level1 center">
+<h1>Results</h1>
+<div class="cell">
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-5ab4c12043e30a33bf11" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-5ab4c12043e30a33bf11">{"x":{"data":[{"orientation":"h","width":0.89999999999999991,"base":0,"x":[0.089999999999999997],"y":[1],"text":"Outcome: Child alcohol or substance abuse<br />d: 0.090","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(68,1,84,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.90000000000000013,"base":0,"x":[0.13300000000000001],"y":[2],"text":"Outcome: Adult alcohol or substance abuse<br />d: 0.133","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(70,34,104,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.90000000000000036,"base":0,"x":[0.14299999999999999],"y":[3],"text":"Outcome: Immediate defiance<br />d: 0.143","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(70,39,108,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.90000000000000036,"base":0,"x":[0.151],"y":[4],"text":"Outcome: Low self-esteem<br />d: 0.151","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(69,44,112,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.90000000000000036,"base":0,"x":[0.16600000000000001],"y":[5],"text":"Outcome: Impaired cognitive ability<br />d: 0.166","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(69,51,119,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.90000000000000036,"base":0,"x":[0.23799999999999999],"y":[6],"text":"Outcome: Child internalizing behavior problems<br />d: 0.238","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(61,87,138,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.90000000000000036,"base":0,"x":[0.23999999999999999],"y":[7],"text":"Outcome: Adult mental health problems<br />d: 0.240","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(61,88,138,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999947,"base":0,"x":[0.30099999999999999],"y":[8],"text":"Outcome: Low self-regulation<br />d: 0.301","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(45,117,142,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999858,"base":0,"x":[0.33100000000000002],"y":[9],"text":"Outcome: Overall effect size<br />d: 0.331","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(43,130,140,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999858,"base":0,"x":[0.35499999999999998],"y":[10],"text":"Outcome: Adult antisocial behavior<br />d: 0.355","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(43,140,138,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999858,"base":0,"x":[0.37],"y":[11],"text":"Outcome: Child aggression<br />d: 0.370","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(42,147,137,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999858,"base":0,"x":[0.379],"y":[12],"text":"Outcome: Adult support for physical punishment<br />d: 0.379","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(42,151,136,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999858,"base":0,"x":[0.38200000000000001],"y":[13],"text":"Outcome: Low moral internalization<br />d: 0.382","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(41,152,136,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999858,"base":0,"x":[0.38700000000000001],"y":[14],"text":"Outcome: Child anti-social behavior<br />d: 0.387","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(41,155,135,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999858,"base":0,"x":[0.40999999999999998],"y":[15],"text":"Outcome: Child externalizing behavior problems<br />d: 0.410","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(36,165,133,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999858,"base":0,"x":[0.51100000000000001],"y":[16],"text":"Outcome: Negative parent-child relationship<br />d: 0.511","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(114,203,90,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999858,"base":0,"x":[0.52800000000000002],"y":[17],"text":"Outcome: Child mental health problems<br />d: 0.528","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(125,209,80,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"h","width":0.89999999999999858,"base":0,"x":[0.63500000000000001],"y":[18],"text":"Outcome: Victim of physical abuse<br />d: 0.635","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(253,231,37,1)","line":{"width":1.8897637795275593,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":49.607305936073068,"r":7.3059360730593621,"b":43.835616438356169,"l":235.61643835616437},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"title":{"text":"Effect Sizes of Physical Punishment","font":{"color":"rgba(0,0,0,1)","family":"","size":26.301369863013704},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.03175,0.66674999999999995],"tickmode":"array","ticktext":["0.0","0.2","0.4","0.6"],"tickvals":[0,0.19999999999999998,0.40000000000000002,0.60000000000000009],"categoryorder":"array","categoryarray":["0.0","0.2","0.4","0.6"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":10.95890410958904},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"Cohen's d Effect Size","font":{"color":"rgba(0,0,0,1)","family":"","size":21.917808219178081}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.40000000000000002,18.600000000000001],"tickmode":"array","ticktext":["Child alcohol or substance abuse","Adult alcohol or substance abuse","Immediate defiance","Low self-esteem","Impaired cognitive ability","Child internalizing behavior problems","Adult mental health problems","Low self-regulation","Overall effect size","Adult antisocial behavior","Child aggression","Adult support for physical punishment","Low moral internalization","Child anti-social behavior","Child externalizing behavior problems","Negative parent-child relationship","Child mental health problems","Victim of physical abuse"],"tickvals":[1,2,3,4,5,5.9999999999999991,7,8,9,10,11,12,13,14,15,16,17,18],"categoryorder":"array","categoryarray":["Child alcohol or substance abuse","Adult alcohol or substance abuse","Immediate defiance","Low self-esteem","Impaired cognitive ability","Child internalizing behavior problems","Adult mental health problems","Low self-regulation","Overall effect size","Adult antisocial behavior","Child aggression","Adult support for physical punishment","Low moral internalization","Child anti-social behavior","Child externalizing behavior problems","Negative parent-child relationship","Child mental health problems","Victim of physical abuse"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.6529680365296811,"tickwidth":0.66417600664176002,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":10.95890410958904},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"Outcome","font":{"color":"rgba(0,0,0,1)","family":"","size":21.917808219178081}},"hoverformat":".2f"},"shapes":[],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.8897637795275593,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"181654601a56":{"x":{},"y":{},"label":{},"fill":{},"type":"bar"}},"cur_data":"181654601a56","visdat":{"181654601a56":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+
 <section id="publicity" class="title-slide slide level1 center">
 <h1>Publicity</h1>
 <p><a href="articles.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img data-src="articles.png"></a></p>
@@ -170,8 +220,16 @@ Andy Grogan-Kaylor
 <li>Colombia instituted a ban on physical punishment in Summer 2020.</li>
 <li>Cited in <em>Corporal Punishment Of Children The Public Health Impact</em> (WHO Report).</li>
 </ul>
-
 </section></section>
+<section id="references" class="title-slide slide level1 smaller scrollable">
+<h1>References</h1>
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-Gershoff2016" class="csl-entry" role="listitem">
+Gershoff, E. T., &amp; Grogan-Kaylor, A. (2016). Spanking and child outcomes: Old controversies and new meta-analyses. <em>Journal of Family Psychology</em>, <em>30</em>, 453–469. <a href="https://doi.org/10.1037/fam0000191">https://doi.org/10.1037/fam0000191</a>
+</div>
+</div>
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
@@ -363,7 +421,7 @@ Andy Grogan-Kaylor
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -389,6 +447,44 @@ Andy Grogan-Kaylor
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
@@ -437,13 +533,14 @@ Andy Grogan-Kaylor
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy
