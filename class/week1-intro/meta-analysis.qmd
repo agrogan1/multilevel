@@ -1,7 +1,5 @@
 ---
 title: "Meta-Analysis of 50 Years of Corporal Punishment Research"
-title-slide-attributes:
-  data-background-color: "#00274C"
 author: "Andy Grogan-Kaylor"
 date: "today"
 format:
