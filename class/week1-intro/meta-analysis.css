@@ -1,6 +1,6 @@
 h1.title {
   font-size: 75px;
-  color: #FFCB05;
+  color: #FFCB05 !important;
   background-color: #00274C;
 }
 

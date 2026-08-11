@@ -1,5 +1,7 @@
 ---
 title: "Meta-Analysis of 50 Years of Corporal Punishment Research"
+title-slide-attributes:
+  data-background-color:  "#00274C"
 author: "Andy Grogan-Kaylor"
 date: "today"
 format:
@@ -18,6 +20,24 @@ format:
 bibliography: meta-analysis.bib
 csl: apa.csl
 ---
+
+# How To Navigate This Presentation
+
+```{r}
+
+library(emo)
+
+# library(ggplot2)
+# 
+# library(plotly)
+
+# set.seed(3846)
+
+```
+
+- Use the `r emo::ji("left_arrow")` `r emo::ji("right_arrow")` keys to move through the presentation.
+- Press *o* for *panel overview*.
+- You may need to hit *reload* to get some slides--especially those with visualizations--to load properly.
 
 # Rationale {.smaller}
 
