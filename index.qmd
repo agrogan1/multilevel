@@ -46,6 +46,8 @@ Multilevel models have become a standard statistical tool for quantitative resea
 ::: {.callout-important}
 <span style="background-color: #FFFF00">Stata will be the statistical software employed in this course, and students will need access to Stata to participate.</mark> 
 
+I use both R & Stata in my own work, but teach this class mostly in Stata because I believe that [working in Stata](https://agrogan1.github.io/Stata/two-page-stata/TwoPageStata.html) facilitates learning and understanding.
+
 You will need to already have Stata, to purchase Stata from [https://www.stata.com/](https://www.stata.com/), or to use [https://its.umich.edu/computing/computers-software/virtual-sites](https://its.umich.edu/computing/computers-software/virtual-sites) to access Stata.
 :::
 :::
