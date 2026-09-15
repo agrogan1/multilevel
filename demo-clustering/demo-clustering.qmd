@@ -15,6 +15,7 @@ format:
     css: demo-clustering.css
     lightbox: true
 bibliography: demo-clustering.bib
+csl: apa.csl
 ---
 
 ```{r}
