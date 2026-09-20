@@ -45,8 +45,8 @@ body {
 ```
 
 ```{stata}
-#| echo: false
-#| output: false
+*| echo: false
+*| output: false
 
 if "$S_OS" == "Windows" {
 	graph set window fontface "Tekton Pro"
@@ -76,7 +76,7 @@ graph export heuristic.png, replace
 $$\begin{aligned}
 \color{red}{y_{ij} = \beta_{0j} + \beta_{1j} x + e_{ij}} \\
 \color{blue}{\beta_{0j} = \gamma_{00} + \gamma_{01} \text{sector} + u_{0j}} \\
-\color{blue}{\beta_{1j} = \gamma_{10} + \gamma_{11} \text{sector} + u_{0j}} 
+\color{blue}{\beta_{1j} = \gamma_{10} + \gamma_{11} \text{sector} + u_{1j}} 
 \end{aligned}$$ {#eq-multiple}
 
 ::: {.callout-tip}
@@ -107,7 +107,11 @@ y_{ijk} = \pi_{0jk} + \pi_{1jk} a + e_{ijk} \\
 
 Using substitution, we re-write @eq-multiple.
 
-$$\color{purple}{y_{ij} = \gamma_{00} + \gamma_{01} \text{sector} + \gamma_{10} x + \gamma_{11} \text{sector} \times x + e_{ij} + u_{0j} + u_{1j} \times x}$$ {#eq-single-gamma}
+$$\color{purple}{y_{ij} = \gamma_{00} + \gamma_{01} \text{sector} + u_{0j} + (\gamma_{10} + \gamma_{11} \text{sector} + u_{1j}) \times x + e_{ij}}$$ {#eq-single-gamma-begin}
+
+We then rearrange the terms of @eq-single-gamma-begin.
+
+$$\color{purple}{y_{ij} = \gamma_{00} + \gamma_{01} \text{sector} + \gamma_{10} x + \gamma_{11} \text{sector} \times x + e_{ij} + u_{0j} + u_{1j} \times x}$$ {#eq-single-gamma-final}
 
 Let's just call everything a $\beta$.
 
