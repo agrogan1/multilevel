@@ -1,6 +1,8 @@
 ---
 title: "Bayesian and Frequentist Multilevel Modeling"
-author: "Andy Grogan-Kaylor"
+author: 
+  - name: "Andy Grogan-Kaylor"
+    url: https://agrogan1.github.io/
 date: "today"
 execute:
   echo: false
@@ -16,6 +18,8 @@ format:
 bibliography: Bayesian-and-frequentist-MLM.bib
 csl: apa.csl
 css: styles.css
+citation:
+  url: https://agrogan1.github.io/multilevel/Bayesian-and-frequentist-MLM/Bayesian-and-frequentist-MLM.html
 ---
 
 ```{r}
