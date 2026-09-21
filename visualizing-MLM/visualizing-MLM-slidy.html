@@ -8,6 +8,9 @@
   <meta name="generator" content="pandoc" />
   <title>visualizing-MLM</title>
   <style type="text/css">
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -92,7 +95,6 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
-      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -120,7 +122,7 @@
 <div id="visualizing-multilevel-models"
 class="title-slide slide section level1">
 <h1>Visualizing Multilevel Models</h1>
-<p>Andy Grogan-Kaylor 2025-10-24</p>
+<p>Andy Grogan-Kaylor 2026-09-21</p>
 </div>
 
 <div id="introduction" class="title-slide slide section level1">
@@ -301,7 +303,7 @@ class="sourceCode stata"><code class="sourceCode stata"><span id="cb9-1"><a href
 <span id="cb9-17"><a href="#cb9-17" tabindex="-1"></a><span class="kw">by</span>(country) aspect(1) <span class="co">// by country</span></span>
 <span id="cb9-18"><a href="#cb9-18" tabindex="-1"></a>    </span>
 <span id="cb9-19"><a href="#cb9-19" tabindex="-1"></a><span class="kw">quietly</span>: <span class="kw">graph</span> <span class="kw">export</span> mysmallmultiples2.png, <span class="kw">width</span>(1500) <span class="kw">replace</span></span></code></pre></div>
-<pre><code>(2,970 real changes made)
+<pre><code>(2970 real changes made)
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
 -------------+---------------------------------------------------------
@@ -360,14 +362,14 @@ Group variable: country                              Number of groups =     30
                                                      Wald chi2(3)     = 370.90
 Log likelihood = -9628.1621                          Prob &gt; chi2      = 0.0000
 
-------------------------------------------------------------------------------------
-           outcome | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
--------------------+----------------------------------------------------------------
-            warmth |   .8330937   .0574809    14.49   0.000     .7204332    .9457543
-physical_punishm~t |  -.9937819   .0798493   -12.45   0.000    -1.150284   -.8372801
-    1.intervention |   .6406043   .2175496     2.94   0.003      .214215    1.066994
-             _cons |   51.65238   .4664841   110.73   0.000     50.73809    52.56668
-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+            outcome | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+--------------------+----------------------------------------------------------------
+             warmth |   .8330937   .0574809    14.49   0.000     .7204332    .9457543
+physical_punishment |  -.9937819   .0798493   -12.45   0.000    -1.150284   -.8372801
+     1.intervention |   .6406043   .2175496     2.94   0.003      .214215    1.066994
+              _cons |   51.65238   .4664841   110.73   0.000     50.73809    52.56668
+-------------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------
   Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
@@ -438,14 +440,14 @@ Group variable: country                              Number of groups =     30
                                                      Wald chi2(3)     = 370.90
 Log likelihood = -9628.1621                          Prob &gt; chi2      = 0.0000
 
-------------------------------------------------------------------------------------
-           outcome | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
--------------------+----------------------------------------------------------------
-            warmth |   .8330937   .0574809    14.49   0.000     .7204332    .9457543
-physical_punishm~t |  -.9937819   .0798493   -12.45   0.000    -1.150284   -.8372801
-    1.intervention |   .6406043   .2175496     2.94   0.003      .214215    1.066994
-             _cons |   51.65238   .4664841   110.73   0.000     50.73809    52.56668
-------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+            outcome | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+--------------------+----------------------------------------------------------------
+             warmth |   .8330937   .0574809    14.49   0.000     .7204332    .9457543
+physical_punishment |  -.9937819   .0798493   -12.45   0.000    -1.150284   -.8372801
+     1.intervention |   .6406043   .2175496     2.94   0.003      .214215    1.066994
+              _cons |   51.65238   .4664841   110.73   0.000     50.73809    52.56668
+-------------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------
   Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
@@ -586,8 +588,7 @@ alt="Scatterplot and Linear Fit With Marginal Density Plots" /></p>
 
 <div id="references" class="title-slide slide section level1">
 <h1>References</h1>
-<div id="refs" class="references csl-bib-body hanging-indent"
-entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-Hemken2023" class="csl-entry">
 Hemken, Doug. 2023. <em>Statamarkdown: ’Stata’ Markdown</em>. <a
 href="https://CRAN.R-project.org/package=Statamarkdown"

@@ -4,11 +4,11 @@
   text-align: center;
   font-size: 150%;
 }
+
 h1 > code {
   color: red;
 }
+
 h2 > code {
   color: red;
 }
-
-
