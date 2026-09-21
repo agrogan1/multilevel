@@ -69,7 +69,7 @@ What approach(es) do you prefer?
 I am not terrifically fond of the default `s2color` graph scheme in earlier versions of Stata. Here I make use of the `michigan` graph scheme available at: [https://agrogan1.github.io/Stata/michigan-graph-scheme/](https://agrogan1.github.io/Stata/michigan-graph-scheme/). 
 
 ```{stata, collectcode=TRUE}
-#| output: false
+*| output: false
 
 set scheme michigan
 
@@ -92,7 +92,7 @@ file.copy("../../multilevel-thinking/simulate-and-analyze-multilevel-data/simula
 ```
 
 ```{stata, collectcode=TRUE}
-#| output: false
+*| output: false
 
 use "simulated_multilevel_data.dta", clear
 
@@ -101,7 +101,7 @@ use "simulated_multilevel_data.dta", clear
 # Scatterplots (`twoway scatter y x`)
 
 ```{stata}
-#| output: false
+*| output: false
 
 twoway scatter outcome warmth, mcolor(%30)
 	
@@ -114,7 +114,7 @@ graph export myscatter.png, width(1500) replace
 # Simple Linear Fit (`twoway lfit y x`)
 
 ```{stata}
-#| output: false
+*| output: false
 
 twoway lfit outcome warmth
 	
@@ -127,7 +127,7 @@ graph export mylinear.png, width(1500) replace
 # Linear Fit With Confidence Interval (`twoway lfitci y x`)
 
 ```{stata}
-#| output: false
+*| output: false
 
 twoway lfitci outcome warmth
 	
@@ -140,7 +140,7 @@ graph export mylfitci.png, width(1500) replace
 # Combine Scatterplot and Linear Fit (`twoway (scatter y x) (lfit y x)`)
 
 ```{stata}
-#| output: false
+*| output: false
 
 twoway (scatter outcome warmth, mcolor(%30)) (lfit outcome warmth)
 	
@@ -153,7 +153,7 @@ graph export myscatterlinear.png, width(1500) replace
 # Spaghetti Plots (`spagplot y x, id(group)`)
 
 ```{stata}
-#| output: false
+*| output: false
 
 spagplot outcome warmth, id(country)
 	
@@ -168,7 +168,7 @@ graph export myspaghetti.png, width(1500) replace
 *Small Multiples*, showing a separate graph for each group in the data, are an increasingly popular data visualization technique. Below, I build a small multiples graph using the `by` option in Stata. I use the `aspect` option to adjust the *aspect ratio* of the graph for better visual presentation. 
 
 ```{stata}
-#| output: false
+*| output: false
 
 twoway (scatter outcome warmth, mcolor(%30)) ///
 (lfit outcome warmth), ///
@@ -240,7 +240,7 @@ mixed outcome warmth physical_punishment i.intervention || country: // estimate 
 ### Generate Predicted Values
 	
 ```{stata, collectcode=TRUE}
-#| output: false
+*| output: false
 	
 predict outcome_hat, fitted // predict yhat (`fitted` uses fixed AND random effects)
 
@@ -249,7 +249,7 @@ predict outcome_hat, fitted // predict yhat (`fitted` uses fixed AND random effe
 ### Graph With `twoway` Syntax	
 
 ```{stata}	
-#| output: false
+*| output: false
 
 twoway (scatter outcome_hat warmth, mcolor(%30)) (lfit outcome_hat warmth)
 
@@ -268,7 +268,7 @@ graph export mypredictedvalues2.png, width(1500) replace
 ### Spaghetti Plot With Predicted Values
 
 ```{stata}
-#| output: false
+*| output: false
 
 spagplot outcome_hat warmth, id(country)
 	
@@ -301,7 +301,7 @@ margins intervention, at(warmth = (1 2 3 4 5 6 7)) // predictive *margins*
 ### Graph With `marginsplot`
 	
 ```{stata}
-#| output: false
+*| output: false
 	
 marginsplot // plot of predicted values
 	
@@ -358,7 +358,7 @@ You may have to experiment with whether scatterplots or line plots work best for
 :::
 
 ```{stata}
-#| output: false
+*| output: false
 
 twoway (scatter outcome warmth, mcolor(%10)) /// scatterplot w some transparency
 (lfit outcome warmth) /// linear fit
