@@ -23,6 +23,7 @@ format:
     number-sections: true
     fig-height: 3
 bibliography: visualizing-MLM.bib
+csl: apa.csl
 citation:
   url: https://agrogan1.github.io/multilevel/visualizing-MLM/visualizing-MLM.html
 ---
