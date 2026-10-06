@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Andy Grogan-Kaylor">
-<meta name="dcterms.date" content="2026-09-21">
+<meta name="dcterms.date" content="2026-10-06">
 
 <title>Visualizing Multilevel Models</title>
 <style>
@@ -167,7 +167,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 21, 2026</p>
+      <p class="date">October 6, 2026</p>
     </div>
   </div>
   
@@ -430,14 +430,14 @@ Group variable: country                              Number of groups =     30
                                                      Wald chi2(3)     = 370.90
 Log likelihood = -9628.1621                          Prob &gt; chi2      = 0.0000
 
--------------------------------------------------------------------------------------
-            outcome | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
---------------------+----------------------------------------------------------------
-             warmth |   .8330937   .0574809    14.49   0.000     .7204332    .9457543
-physical_punishment |  -.9937819   .0798493   -12.45   0.000    -1.150284   -.8372801
-     1.intervention |   .6406043   .2175496     2.94   0.003      .214215    1.066994
-              _cons |   51.65238   .4664841   110.73   0.000     50.73809    52.56668
--------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
+         outcome | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+-----------------+----------------------------------------------------------------
+          warmth |   .8330937   .0574809    14.49   0.000     .7204332    .9457543
+physical_punis~t |  -.9937819   .0798493   -12.45   0.000    -1.150284   -.8372801
+  1.intervention |   .6406043   .2175496     2.94   0.003      .214215    1.066994
+           _cons |   51.65238   .4664841   110.73   0.000     50.73809    52.56668
+----------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------
   Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
@@ -510,7 +510,7 @@ Figure&nbsp;10: Spaghetti Plot With Predicted Values
 </section>
 <section id="margins-and-marginsplot" class="level2" data-number="12.2">
 <h2 data-number="12.2" class="anchored" data-anchor-id="margins-and-marginsplot"><span class="header-section-number">12.2</span> <code>margins</code> and <code>marginsplot</code></h2>
-<p>In contrast to <code>predict</code>, which generates a predicted value for <em>every observation in the data</em>, <code>margins</code> generates predicted values at <em>specific values of certain variables</em>.</p>
+<p>In contrast to <code>predict</code>, which generates a predicted value for <em>every observation in the data</em>, <code>margins</code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> generates predicted values at <em>specific values of certain variables</em>.</p>
 <section id="estimate-the-model-1" class="level3" data-number="12.2.1">
 <h3 data-number="12.2.1" class="anchored" data-anchor-id="estimate-the-model-1"><span class="header-section-number">12.2.1</span> Estimate The Model</h3>
 <div class="cell" data-collectcode="true">
@@ -534,14 +534,14 @@ Group variable: country                              Number of groups =     30
                                                      Wald chi2(3)     = 370.90
 Log likelihood = -9628.1621                          Prob &gt; chi2      = 0.0000
 
--------------------------------------------------------------------------------------
-            outcome | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
---------------------+----------------------------------------------------------------
-             warmth |   .8330937   .0574809    14.49   0.000     .7204332    .9457543
-physical_punishment |  -.9937819   .0798493   -12.45   0.000    -1.150284   -.8372801
-     1.intervention |   .6406043   .2175496     2.94   0.003      .214215    1.066994
-              _cons |   51.65238   .4664841   110.73   0.000     50.73809    52.56668
--------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
+         outcome | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+-----------------+----------------------------------------------------------------
+          warmth |   .8330937   .0574809    14.49   0.000     .7204332    .9457543
+physical_punis~t |  -.9937819   .0798493   -12.45   0.000    -1.150284   -.8372801
+  1.intervention |   .6406043   .2175496     2.94   0.003      .214215    1.066994
+           _cons |   51.65238   .4664841   110.73   0.000     50.73809    52.56668
+----------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------
   Random-effects parameters  |   Estimate   Std. err.     [95% conf. interval]
@@ -559,7 +559,10 @@ LR test vs. linear model: chibar2(01) = 204.14        Prob &gt;= chibar2 = 0.000
 <h3 data-number="12.2.2" class="anchored" data-anchor-id="generate-predicted-values-at-specified-values-with-margins"><span class="header-section-number">12.2.2</span> Generate Predicted Values <em>At Specified Values</em> With <code>margins</code></h3>
 <div class="cell" data-collectcode="true">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>margins intervention, <span class="fu">at</span>(warmth = (1 2 3 4 5 6 7)) <span class="co">// predictive *margins*</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>* predicted <span class="kw">values</span> ACROSS <span class="kw">values</span> <span class="kw">of</span> `intervention`</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>* AT specific <span class="kw">values</span> <span class="kw">of</span> `warmth`</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>margins intervention, <span class="fu">at</span>(warmth = (1 2 3 4 5 6 7)) <span class="co">// predictive margins</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Predictive margins                                       Number of obs = 3,000
 
@@ -724,20 +727,26 @@ Note
 
 </section>
 
+
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">14 References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-Hemken2023" class="csl-entry" role="listitem">
 Hemken, Doug. 2023. <em>Statamarkdown: ’Stata’ Markdown</em>. <a href="https://CRAN.R-project.org/package=Statamarkdown">https://CRAN.R-project.org/package=Statamarkdown</a>.
 </div>
-</div></section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{grogan-kaylor2026,
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>While it is some ways sensible, the term <code>margins</code> has always seemed unintuitive to me, so I prefer to think of <code>margins</code> as a synonym for <em>predicted values</em>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{grogan-kaylor2026,
   author = {Grogan-Kaylor, Andy},
   title = {Visualizing {Multilevel} {Models}},
-  date = {2026-09-21},
+  date = {2026-10-06},
   url = {https://agrogan1.github.io/multilevel/visualizing-MLM/visualizing-MLM.html},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-grogan-kaylor2026" class="csl-entry quarto-appendix-citeas" role="listitem">
 Grogan-Kaylor, Andy. 2026. <span>“Visualizing Multilevel Models.”</span>
-September 21. <a href="https://agrogan1.github.io/multilevel/visualizing-MLM/visualizing-MLM.html">https://agrogan1.github.io/multilevel/visualizing-MLM/visualizing-MLM.html</a>.
+October 6. <a href="https://agrogan1.github.io/multilevel/visualizing-MLM/visualizing-MLM.html">https://agrogan1.github.io/multilevel/visualizing-MLM/visualizing-MLM.html</a>.
 </div></div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">

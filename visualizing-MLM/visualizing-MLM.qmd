@@ -280,7 +280,9 @@ graph export myspaghetti2.png, width(1500) replace
 	
 ## `margins` and `marginsplot`
 
-In contrast to `predict`, which generates a predicted value for *every observation in the data*, `margins` generates predicted values at *specific values of certain variables*. 
+In contrast to `predict`, which generates a predicted value for *every observation in the data*, `margins`[^unintuitive] generates predicted values at *specific values of certain variables*. 
+
+[^unintuitive]: While it is some ways sensible, the term `margins` has always seemed unintuitive to me, so I prefer to think of `margins` as a synonym for *predicted values*.
 
 ### Estimate The Model
 
@@ -294,7 +296,10 @@ mixed outcome warmth physical_punishment i.intervention || country: // estimate 
 
 ```{stata, collectcode = TRUE}
 
-margins intervention, at(warmth = (1 2 3 4 5 6 7)) // predictive *margins*
+* predicted values ACROSS values of `intervention`
+* AT specific values of `warmth`
+
+margins intervention, at(warmth = (1 2 3 4 5 6 7)) // predictive margins
 
 ```
 
