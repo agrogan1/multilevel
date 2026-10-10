@@ -81,7 +81,7 @@ ggsave("multilevel.png")
 ```
 
 
-$$y_{ij} = \beta_0 + \beta_1 x_{1i} + u_{0j} + u_{1j} x + e_{ij}$$
+$$y_{ij} = \beta_0 + \beta_1 x_{ij} + u_{0j} + u_{1j} x_{ij} + e_{ij}$$
 
 All multilevel models account for group structure, in estimating the association of $x$ and $y$, by including a random intercept ($u_0$), and possibly one or more random slope terms ($u_1, u_2, etc....$).
 
