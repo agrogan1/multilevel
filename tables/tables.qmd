@@ -12,6 +12,7 @@ format:
       light: sandstone
       dark: vapor
     css: styles.css
+    highlight-style: haddock
     mermaid: 
       theme: default
   typst: 
