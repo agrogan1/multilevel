@@ -2,15 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.9.30">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="A Student">
-<meta name="dcterms.date" content="2025-10-02">
+<meta name="dcterms.date" content="2026-10-14">
 
 <title>Cross Sectional Multilevel Model Paper Template</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -32,20 +35,20 @@ ul.task-list li input[type="checkbox"] {
 <script src="cross-sectional-multilevel_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="cross-sectional-multilevel_files/libs/quarto-html/anchor.min.js"></script>
 <link href="cross-sectional-multilevel_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="cross-sectional-multilevel_files/libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="cross-sectional-multilevel_files/libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="cross-sectional-multilevel_files/libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="cross-sectional-multilevel_files/libs/quarto-html/quarto-syntax-highlighting-b6a8276bf55561bdbc268162d41bd1f7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="cross-sectional-multilevel_files/libs/quarto-html/quarto-syntax-highlighting-dark-a8da12e74b29c2e7b17644f84b91567b.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="cross-sectional-multilevel_files/libs/quarto-html/quarto-syntax-highlighting-b6a8276bf55561bdbc268162d41bd1f7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="cross-sectional-multilevel_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="cross-sectional-multilevel_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="cross-sectional-multilevel_files/libs/bootstrap/bootstrap-4eeb5248cdde89baaa6ac4eccee2427e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="cross-sectional-multilevel_files/libs/bootstrap/bootstrap-dark-cdb661367bbe43659b48a824b1254678.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="cross-sectional-multilevel_files/libs/bootstrap/bootstrap-4eeb5248cdde89baaa6ac4eccee2427e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="cross-sectional-multilevel_files/libs/bootstrap/bootstrap-19216fa8bb71272e13fc45993650fab3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="cross-sectional-multilevel_files/libs/bootstrap/bootstrap-dark-8f45613185a327168712817d930c131f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="cross-sectional-multilevel_files/libs/bootstrap/bootstrap-19216fa8bb71272e13fc45993650fab3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="cross-sectional-multilevel_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="cross-sectional-multilevel_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="cross-sectional-multilevel_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -58,7 +61,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -261,7 +264,7 @@ window.Quarto = {
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">7</span> Conclusion</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">8</span> References</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="cross-sectional-multilevel.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="cross-sectional-multilevel.pdf"><i class="bi bi-file-pdf"></i>Typst</a></li></ul></div></nav>
 </div>
 <main class="content page-columns page-full" id="quarto-document-content">
 
@@ -285,7 +288,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 2, 2025</p>
+      <p class="date">October 14, 2026</p>
     </div>
   </div>
   
@@ -307,7 +310,7 @@ window.Quarto = {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Alternative title ideas
+<span class="screen-reader-only">Tip</span>Alternative title ideas
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -316,9 +319,24 @@ Alternative title ideas
 </div>
 </div>
 </div></div></section>
-<section id="introduction" class="level1" data-number="2">
+<section id="introduction" class="level1 page-columns page-full" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Introduction</h1>
-<p>Why is this an important problem? Are a large number of people affected by A? Are a large number of people affected by B? Are a large number of people affected by C? Are these effects particularly severe? Are populations affected by A, C or B particularly underserved? Is there evidence to suggest a relationship between these factors, or is this relationship under-examined?</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Double Spaced
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is expected to be a <em>double-spaced</em> paper.</p>
+</div>
+</div>
+</div></div><p>Why is this an important problem? Are a large number of people affected by A? Are a large number of people affected by B? Are a large number of people affected by C? Are these effects particularly severe? Are populations affected by A, C or B particularly underserved? Is there evidence to suggest a relationship between these factors, or is this relationship under-examined?</p>
 <p>What do we know about the nature of this question already?. Here, please review 3-5 articles that discuss the importance of one factor by itself, or some relationship of the factors.</p>
 <p>(Author, date) studied (sample) to examine (research question). (Author, date) found that ______________. (Author, date) also found that ______________. (Author, date) also found that ______________. However, one (strength/limitation) of the study was that __________________________. These authors suggested (policy, program, intervention, research strategy).</p>
 <p>(Author, date) studied (sample) to examine (research question). (Author, date) found that ______________. (Author, date) also found that ______________. (Author, date) also found that ______________. However, one (strength/limitation) of the study was that __________________________. These authors suggested (policy, program, intervention, research strategy).</p>
@@ -426,11 +444,11 @@ Tip
 </tr>
 <tr class="even">
 <td>y</td>
-<td>104.452 (14.772)</td>
+<td>104.790 (15.850)</td>
 </tr>
 <tr class="odd">
 <td>x</td>
-<td>99.223 (10.594)</td>
+<td>98.943 (11.043)</td>
 </tr>
 <tr class="even">
 <td>z</td>
@@ -438,11 +456,11 @@ Tip
 </tr>
 <tr class="odd">
 <td>0</td>
-<td>64 (64.0%)</td>
+<td>62 (62.0%)</td>
 </tr>
 <tr class="even">
 <td>1</td>
-<td>36 (36.0%)</td>
+<td>38 (38.0%)</td>
 </tr>
 </tbody>
 </table>
@@ -504,52 +522,52 @@ Tip
 <tbody>
 <tr class="odd">
 <td>x</td>
-<td>1.012</td>
+<td>1.138</td>
 <td>**</td>
 </tr>
 <tr class="even">
 <td></td>
-<td>(0.098)</td>
+<td>(0.085)</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td>z</td>
-<td>2.035</td>
+<td>0.641</td>
 <td></td>
 </tr>
 <tr class="even">
 <td></td>
-<td>(2.151)</td>
+<td>(1.998)</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td>_cons</td>
-<td>1.309</td>
+<td>-8.668</td>
 <td></td>
 </tr>
 <tr class="even">
 <td></td>
-<td>(10.587)</td>
+<td>(9.434)</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td>var(_cons)</td>
-<td>0.083</td>
+<td>10.256</td>
 <td></td>
 </tr>
 <tr class="even">
 <td></td>
-<td>(5.072)</td>
+<td>(8.515)</td>
 <td></td>
 </tr>
 <tr class="odd">
 <td>var(e)</td>
-<td>104.320</td>
+<td>84.199</td>
 <td></td>
 </tr>
 <tr class="even">
 <td></td>
-<td>(15.628)</td>
+<td>(12.562)</td>
 <td></td>
 </tr>
 <tr class="odd">
@@ -645,13 +663,14 @@ Tip
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

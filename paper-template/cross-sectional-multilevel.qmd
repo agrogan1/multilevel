@@ -11,7 +11,7 @@ format:
       light: yeti
       dark: vapor
     lightbox: true
-  pdf:
+  typst:
     toc: true
     number-sections: true
 editor: source
@@ -58,6 +58,14 @@ library(Statamarkdown) # use Stata!!!
 :::
 
 # Introduction
+
+::: column-margin
+::: {.callout-tip}
+## Double Spaced
+
+This is expected to be a *double-spaced* paper. 
+:::
+:::
 
 Why is this an important problem? Are a large number of people affected by A? Are a large number of people affected by B? Are a large number of people affected by C? Are these effects particularly severe? Are populations affected by A, C or B particularly underserved? Is there evidence to suggest a relationship between these factors, or is this relationship under-examined?
 
@@ -195,7 +203,7 @@ And the daring are welcome to try my ["Michigan" Stata graph scheme](https://agr
 :::
 
 ```{stata}
-#| output: false
+*| output: false
 
 use mydata.dta, clear
 
@@ -225,7 +233,7 @@ ggplot(data = mydata,
 ```
 
 ```{stata}
-#| output: false
+*| output: false
 
 use mydata.dta, clear
 
