@@ -62,7 +62,10 @@ use gutten.dta, clear
 
 `age_base` The tree age taken at ground level.
 
-> It might be best to use a centered age variable, centered at the grand mean of tree age: 
+::: {.callout-tip}
+## A Centered Age Variable
+
+It might be best to use a centered age variable, centered at the grand mean of tree age: 
 
 ```{stata, collectcode=TRUE}
 
@@ -71,6 +74,7 @@ egen ageMEAN = mean(age_base) // mean value
 generate ageCENTERED = age_base - ageMEAN // centered value
 
 ```
+:::
 
 `height` Tree height, m.
 
@@ -90,10 +94,15 @@ I clearly need to learn more about quantitative approaches to forestry, but I wo
 
 Use `spagplot` to examine these relationships. Remember that the `spagplot` syntax is `spagplot y x, id(id)`.  What is the most appropriate id variable here? 
 
-> `spagplot` can now be difficult to find, but for the time being, you can find it by typing `net from https://agrogan1.github.io/multilevel/spagplot` in Stata.
+::: {.callout-tip}
+## Installing `spagplot`
+
+`spagplot` can now be difficult to find, but for the time being, you can find it by typing `net from https://agrogan1.github.io/multilevel/spagplot` in Stata.
+:::
 
 ```{stata}
-#| output:false
+*| output: false
+*| message: false
 
 spagplot height ageCENTERED, id(tree_ID) 
 	
