@@ -11,7 +11,7 @@ format:
       dark: vapor
     css: styles.css
     lightbox: true
-  pdf:
+  typst:
     toc: false
     toc-depth: 3
     number-sections: true
