@@ -2,25 +2,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.9.30">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Andy Grogan-Kaylor">
-<meta name="dcterms.date" content="2026-10-21">
+<meta name="dcterms.date" content="2026-10-25">
 
 <title>Multilevel Models with the Von Guttenberg Tree Data</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
+code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: 1.5em;}
-div.column{flex: auto;}
-@media screen {
-div.columns{gap: min(4vw, 1.5em);}
-div.column{overflow-x: auto;}
-}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -73,20 +70,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="mlm-gutten_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="mlm-gutten_files/libs/quarto-html/anchor.min.js"></script>
 <link href="mlm-gutten_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="mlm-gutten_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="mlm-gutten_files/libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="mlm-gutten_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="mlm-gutten_files/libs/quarto-html/quarto-syntax-highlighting-b6a8276bf55561bdbc268162d41bd1f7.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="mlm-gutten_files/libs/quarto-html/quarto-syntax-highlighting-dark-a8da12e74b29c2e7b17644f84b91567b.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="mlm-gutten_files/libs/quarto-html/quarto-syntax-highlighting-b6a8276bf55561bdbc268162d41bd1f7.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="mlm-gutten_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="mlm-gutten_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="mlm-gutten_files/libs/bootstrap/bootstrap-15c2f44b6d80dffbe0b66defcb0ea985.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="mlm-gutten_files/libs/bootstrap/bootstrap-dark-163547498b76b465cb7657c1948ddc28.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="mlm-gutten_files/libs/bootstrap/bootstrap-15c2f44b6d80dffbe0b66defcb0ea985.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="mlm-gutten_files/libs/bootstrap/bootstrap-19216fa8bb71272e13fc45993650fab3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="mlm-gutten_files/libs/bootstrap/bootstrap-dark-8f45613185a327168712817d930c131f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="mlm-gutten_files/libs/bootstrap/bootstrap-19216fa8bb71272e13fc45993650fab3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="mlm-gutten_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="mlm-gutten_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="mlm-gutten_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -322,7 +319,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 21, 2026</p>
+      <p class="date">October 25, 2026</p>
     </div>
   </div>
   
@@ -347,6 +344,8 @@ window.Quarto = {
 <figcaption>The Lorax</figcaption>
 </figure>
 </div>
+<p>If you don’t know about the Lorax, you can learn more about the Lorax here:</p>
+<div class="quarto-video"><iframe data-external="1" src="https://www.youtube.com/embed/6moGLmmaQCc?si=tJrOcpgOt1VSWnW5" width="200" height="150" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 <section id="data-source" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Data Source 🌲</h1>
 <p>The data used in this example are derived from the R package <em>Functions and Datasets for “Forest Analytics with R”</em>.</p>

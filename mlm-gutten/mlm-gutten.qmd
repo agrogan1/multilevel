@@ -24,6 +24,10 @@ Figure Credit:  [https://ec.europa.eu/jrc/en/research-topic/forestry/qr-tree-pro
 
 ![The Lorax](lorax-small.png)
 
+If you don't know about the Lorax, you can learn more about the Lorax here: 
+
+{{< video https://youtu.be/6moGLmmaQCc?si=tJrOcpgOt1VSWnW5 width="200" height="150" >}}
+
 ```{r}
 #| output: false
 #| echo: false
