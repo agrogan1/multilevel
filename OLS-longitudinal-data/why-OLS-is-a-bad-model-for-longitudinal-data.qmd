@@ -25,7 +25,7 @@ format:
     slide-number: h/v
     chalkboard: true
     title-slide-attributes:
-      data-background-color: black
+      data-background-video: clock.mp4
 prefer-html: true    
 editor: source
 from: markdown+emoji
@@ -51,7 +51,7 @@ blockquote {
  
 ```
 
-::: {.content-visible when-format="html"}
+::: {.content-visible when-format="revealjs"}
 - Use the :arrow_left: :arrow_right: keys to move through the presentation.
 - Press *o* for *panel overview*.
 - Press **☰** for *menu*.
@@ -65,7 +65,7 @@ blockquote {
 
 # An Empirical Example {#sec-empirical-example}
 
-![Happiness as a Function of Time, Ice Cream and French Fries](Longitudinal3.png){#fig-equation}
+![Life Satisfaction as a Function of Time And Social Support](Longitudinal3-Fall2026.png){#fig-equation}
 
 # Introduction
 

@@ -1,16 +1,26 @@
 h1.title, p.subtitle {
-  font-size: 35px;
+  font-size: 36px;
   color: white;
   background-color: red;
+}
+
+.title {
+    font-size: 36px !important;
 }
 
 .quarto-title-author-name {
   font-size: 30px;
   color: white;
+  background-color: red;
 }
 
 p.author {
   color: white;
+}
+
+p.date { 
+  color: white !important;
+  background-color: red !important;
 }
 
 .reveal blockquote {
