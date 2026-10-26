@@ -115,7 +115,7 @@ Kruschke [-@Kruschke2014] points out that "No analysis is immune to false alarms
 
 # Multiple Comparisons
 
-As Kruschke [-@Kruschke2014] observes, multiple comparisons (especially when they are *post hoc*) are less of a concern for Bayesian analysis than they are for a frequentist analysis: 
+While there is substantial ongoing debate and conversation about this issue, Kruschke [-@Kruschke2014] suggests that multiple comparisons (especially when they are *post hoc*) are less of a concern for Bayesian analysis than they are for a frequentist analysis: 
 
 > "In a Bayesian analysis, however, there is just one posterior distribution over the parameters that describe the conditions. That posterior distribution is unaffected by the intentions of the experimenter, and the posterior distribution can be examined from multiple perspectives however is suggested by insight and curiosity."
 
