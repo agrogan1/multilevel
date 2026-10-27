@@ -55,10 +55,6 @@ blockquote {
 - Use the :arrow_left: :arrow_right: keys to move through the presentation.
 - Press *o* for *panel overview*.
 - Press **☰** for *menu*.
-
-Animated Clock
-{{< video clock.mp4 width="400" height="300" >}}
-
 :::
 
 # Some Beginning Ideas
