@@ -26,6 +26,8 @@ format:
     chalkboard: true
     title-slide-attributes:
       data-background-video: clock.mp4
+      data-background-video-loop: false
+      data-background-video-muted: true
 prefer-html: true    
 editor: source
 from: markdown+emoji
