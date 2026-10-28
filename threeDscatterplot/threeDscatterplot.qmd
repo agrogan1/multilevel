@@ -36,13 +36,12 @@ library(dplyr)
 ```{r}
 #| output: false
 
-simulated_multilevel_data <- 
-  read_dta("https://github.com/agrogan1/multilevel-thinking/raw/refs/heads/main/simulate-and-analyze-multilevel-data/simulated_multilevel_data.dta")
+simulated_multilevel_longitudinal_data <- read_dta("simulated_multilevel_longitudinal_data.dta")
 
-simulated_multilevel_data <- simulated_multilevel_data %>%
-  filter(country < 10)
+simulated_multilevel_longitudinal_data <- simulated_multilevel_longitudinal_data %>%
+  filter(id < 1.15)
   
-simulated_multilevel_data$country <- factor(simulated_multilevel_data$country)
+simulated_multilevel_longitudinal_data$id <- factor(simulated_multilevel_longitudinal_data$id)
 
 ```
 
@@ -53,18 +52,18 @@ simulated_multilevel_data$country <- factor(simulated_multilevel_data$country)
 
 clear3d()
 
-scatter3d(simulated_multilevel_data$outcome ~ 
-            simulated_multilevel_data$warmth +
-            simulated_multilevel_data$physical_punishment,
-          groups = simulated_multilevel_data$country,
+scatter3d(simulated_multilevel_longitudinal_data$outcome ~ 
+            simulated_multilevel_longitudinal_data$warmth +
+            simulated_multilevel_longitudinal_data$t,
+          groups = simulated_multilevel_longitudinal_data$id,
           surface.col = 1:30,
           surface = TRUE,
-          xlab="Parental Warmth",
-          zlab = "Physical Punishment",
+          xlab="x",
+          zlab = "t",
           ylab = "Outcome")
 
 text3d(x=0, y=1, z=0, 
-       "Three Dimensional Scatterplot / Spaghetti Plot",
+       "Three Dimensional Scatterplot & Spaghetti Plot",
        cex = 2.0)
 
 rglwidget()
