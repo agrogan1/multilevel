@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Andy Grogan-Kaylor">
-<meta name="dcterms.date" content="2026-10-28">
+<meta name="dcterms.date" content="2026-10-29">
 
 <title>Why OLS Is (Often) A Bad Model For Longitudinal Data</title>
 <style>
@@ -114,7 +114,7 @@ window.Quarto = {
   <li><a href="#data-in-long-format" id="toc-data-in-long-format" class="nav-link" data-scroll-target="#data-in-long-format"><span class="header-section-number">8.1</span> Data in Long Format</a></li>
   <li><a href="#equation" id="toc-equation" class="nav-link" data-scroll-target="#equation"><span class="header-section-number">8.2</span> Equation</a>
   <ul class="collapse">
-  <li><a href="#simple-mlm" id="toc-simple-mlm" class="nav-link" data-scroll-target="#simple-mlm"><span class="header-section-number">8.2.1</span> Simple MLM</a></li>
+  <li><a href="#simple-cross-sectional-mlm" id="toc-simple-cross-sectional-mlm" class="nav-link" data-scroll-target="#simple-cross-sectional-mlm"><span class="header-section-number">8.2.1</span> Simple Cross-Sectional MLM</a></li>
   <li><a href="#longitudinal-mlm" id="toc-longitudinal-mlm" class="nav-link" data-scroll-target="#longitudinal-mlm"><span class="header-section-number">8.2.2</span> Longitudinal MLM</a></li>
   </ul></li>
   </ul></li>
@@ -159,7 +159,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 28, 2026</p>
+      <p class="date">October 29, 2026</p>
     </div>
   </div>
   
@@ -469,8 +469,8 @@ Table&nbsp;2: Data in LONG format
 <section id="equation" class="level2" data-number="8.2">
 <h2 data-number="8.2" class="anchored" data-anchor-id="equation"><span class="header-section-number">8.2</span> Equation</h2>
 <p><em>So</em>…. we take our standard multilevel notation.</p>
-<section id="simple-mlm" class="level3" data-number="8.2.1">
-<h3 data-number="8.2.1" class="anchored" data-anchor-id="simple-mlm"><span class="header-section-number">8.2.1</span> Simple MLM</h3>
+<section id="simple-cross-sectional-mlm" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="simple-cross-sectional-mlm"><span class="header-section-number">8.2.1</span> Simple Cross-Sectional MLM</h3>
 <p><span id="eq-crosssectional-mlm"><span class="math display">\[y_{ij} = \beta_0 + \beta_1 x + u_{0j} + e_{ij} \tag{1}\]</span></span></p>
 <p>cross out <em>j</em> write in <em>t</em>.</p>
 </section>
@@ -490,6 +490,8 @@ Table&nbsp;2: Data in LONG format
 <p>Every row is a <em>person-observation</em> (person <em>i</em> observed at time <em>t</em>). Every person has <em>multiple rows</em>.</p>
 </div>
 </div>
+<p>With an independent variable <span class="math inline">\(x\)</span> added back in, this becomes:</p>
+<p><span id="eq-longitudinal-mlm-with-x"><span class="math display">\[y_{it} = \beta_0 + \beta_1 t + \beta_2 x + u_{0i} + e_{it} \tag{3}\]</span></span></p>
 </section>
 </section>
 </section>
@@ -511,8 +513,8 @@ Table&nbsp;2: Data in LONG format
 <section id="first" class="level2" data-number="9.1">
 <h2 data-number="9.1" class="anchored" data-anchor-id="first"><span class="header-section-number">9.1</span> First…</h2>
 <ol type="1">
-<li>Using the algebra in <a href="#eq-longitudinal-mlm" class="quarto-xref">Equation&nbsp;2</a>, these models can easily accommodate both time varying and time invariant coefficients <span class="citation" data-cites="Hox2010 Hox2018 Singer2003 Raudenbush2002 RabeHesketh2022">(<a href="#ref-Hox2010" role="doc-biblioref">Hox 2010</a>; <a href="#ref-Hox2018" role="doc-biblioref"><span class="nocase">Hox et al.</span> 2018</a>; <a href="#ref-Singer2003" role="doc-biblioref">Singer and Willett 2003</a>; <a href="#ref-Raudenbush2002" role="doc-biblioref">Raudenbush and Bryk 2002</a>; <a href="#ref-RabeHesketh2022" role="doc-biblioref">Rabe-Hesketh and Skrondal 2022</a>)</span>.</li>
-<li>No multicollinearity issue. By inspection of <a href="#eq-longitudinal-mlm" class="quarto-xref">Equation&nbsp;2</a>, we see that there is only a single <span class="math inline">\(\beta\)</span> coefficient for each variable, <span class="math inline">\(\therefore\)</span> no multicollinearity problem.</li>
+<li>Using the algebra in <a href="#eq-longitudinal-mlm-with-x" class="quarto-xref">Equation&nbsp;3</a>, these models can easily accommodate both time varying and time invariant coefficients <span class="citation" data-cites="Hox2010 Hox2018 Singer2003 Raudenbush2002 RabeHesketh2022">(<a href="#ref-Hox2010" role="doc-biblioref">Hox 2010</a>; <a href="#ref-Hox2018" role="doc-biblioref"><span class="nocase">Hox et al.</span> 2018</a>; <a href="#ref-Singer2003" role="doc-biblioref">Singer and Willett 2003</a>; <a href="#ref-Raudenbush2002" role="doc-biblioref">Raudenbush and Bryk 2002</a>; <a href="#ref-RabeHesketh2022" role="doc-biblioref">Rabe-Hesketh and Skrondal 2022</a>)</span>.</li>
+<li>No multicollinearity issue. By inspection of <a href="#eq-longitudinal-mlm-with-x" class="quarto-xref">Equation&nbsp;3</a>, we see that there is only a single <span class="math inline">\(\beta\)</span> coefficient for each variable, <span class="math inline">\(\therefore\)</span> no multicollinearity problem.</li>
 <li><em>Unbalanced data is less of a problem</em>, the data structure and estimation are robust to these possibilities <span class="citation" data-cites="Singer2003 Raudenbush2002">(<a href="#ref-Singer2003" role="doc-biblioref">Singer and Willett 2003</a>; <a href="#ref-Raudenbush2002" role="doc-biblioref">Raudenbush and Bryk 2002</a>)</span>.</li>
 <li><em>Missing data is less of a problem </em>(assuming <em>MCAR</em>). When a person observation is missing, that person simply has fewer rows of data <span class="citation" data-cites="Hox2010 Luke2004 Raudenbush2002 RabeHesketh2022">(<a href="#ref-Hox2010" role="doc-biblioref">Hox 2010</a>; <a href="#ref-Luke2004" role="doc-biblioref">Luke 2004</a>; <a href="#ref-Raudenbush2002" role="doc-biblioref">Raudenbush and Bryk 2002</a>; <a href="#ref-RabeHesketh2022" role="doc-biblioref">Rabe-Hesketh and Skrondal 2022</a>)</span>. But all rows of data are “matched” to the same person by <span class="math inline">\(i\)</span>.</li>
 </ol>
