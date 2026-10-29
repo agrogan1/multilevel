@@ -181,7 +181,7 @@ As a result, we are not really modeling $y_2$ and $y_1$.
 
 *So*.... we take our standard multilevel notation.
 
-### Simple MLM
+### Simple Cross-Sectional MLM
 
 $$y_{ij} = \beta_0 + \beta_1 x + u_{0j} + e_{ij}$$ {#eq-crosssectional-mlm}
 
@@ -197,6 +197,10 @@ $$y_{it} = \beta_0 + \beta_1 t + u_{0i} + e_{it}$$ {#eq-longitudinal-mlm}
 Every row is a *person-observation* (person *i* observed at time *t*). Every person has *multiple rows*.
 :::
 
+With an independent variable $x$ added back in, this becomes:
+
+$$y_{it} = \beta_0 + \beta_1 t + \beta_2 x + u_{0i} + e_{it}$$ {#eq-longitudinal-mlm-with-x}
+
 # This Has The Following Advantages
 
 ::: {.callout-tip}
@@ -207,8 +211,8 @@ The *key intuition* is that any statistical procedure--whether it is aware of th
 
 ## First...
 
-1. Using the algebra in @eq-longitudinal-mlm, these models can easily accommodate both time varying and time invariant coefficients [@Hox2010; @Hox2018; @Singer2003; @Raudenbush2002; @RabeHesketh2022].
-2. No multicollinearity issue. By inspection of @eq-longitudinal-mlm, we see that there is only a single $\beta$ coefficient for each variable, $\therefore$ no multicollinearity problem.
+1. Using the algebra in @eq-longitudinal-mlm-with-x, these models can easily accommodate both time varying and time invariant coefficients [@Hox2010; @Hox2018; @Singer2003; @Raudenbush2002; @RabeHesketh2022].
+2. No multicollinearity issue. By inspection of @eq-longitudinal-mlm-with-x, we see that there is only a single $\beta$ coefficient for each variable, $\therefore$ no multicollinearity problem.
 3. *Unbalanced data is less of a problem*, the data structure and estimation are robust to these possibilities [@Singer2003; @Raudenbush2002].
 4. *Missing data is less of a problem *(assuming *MCAR*). When a person observation is missing, that person simply has fewer rows of data [@Hox2010; @Luke2004; @Raudenbush2002; @RabeHesketh2022]. But all rows of data are "matched" to the same person by $i$.
 
