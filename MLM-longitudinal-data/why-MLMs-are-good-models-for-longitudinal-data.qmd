@@ -62,6 +62,8 @@ mydata$y[1] <- NA # wave missing
 
 mydata$y[11] <- NA # wave missing
 
+write.csv(mydata, file = "mydata.csv")
+
 ```
 
 ```{r}
