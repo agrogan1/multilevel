@@ -2,15 +2,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.9.30">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Andy Grogan-Kaylor">
-<meta name="dcterms.date" content="2026-02-13">
+<meta name="dcterms.date" content="2026-10-30">
 
 <title>Why Multilevel Models Are Good Models For Longitudinal Data</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -52,16 +55,16 @@ div.csl-indent {
 <script src="why-MLMs-are-good-models-for-longitudinal-data_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="why-MLMs-are-good-models-for-longitudinal-data_files/libs/quarto-html/anchor.min.js"></script>
 <link href="why-MLMs-are-good-models-for-longitudinal-data_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="why-MLMs-are-good-models-for-longitudinal-data_files/libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="why-MLMs-are-good-models-for-longitudinal-data_files/libs/quarto-html/quarto-syntax-highlighting-b6a8276bf55561bdbc268162d41bd1f7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="why-MLMs-are-good-models-for-longitudinal-data_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="why-MLMs-are-good-models-for-longitudinal-data_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="why-MLMs-are-good-models-for-longitudinal-data_files/libs/bootstrap/bootstrap-4eeb5248cdde89baaa6ac4eccee2427e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="why-MLMs-are-good-models-for-longitudinal-data_files/libs/bootstrap/bootstrap-19216fa8bb71272e13fc45993650fab3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="why-MLMs-are-good-models-for-longitudinal-data_files/libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="why-MLMs-are-good-models-for-longitudinal-data_files/libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="why-MLMs-are-good-models-for-longitudinal-data_files/libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -74,7 +77,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -132,7 +135,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 13, 2026</p>
+      <p class="date">October 30, 2026</p>
     </div>
   </div>
   
@@ -152,7 +155,7 @@ window.Quarto = {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Multilevel Models are Useful for Complicated Longitudinal Data and Research Designs
+<span class="screen-reader-only">Tip</span>Multilevel Models are Useful for Complicated Longitudinal Data and Research Designs
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -320,7 +323,7 @@ Table&nbsp;2: Data in LONG format
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Person-Observations
+<span class="screen-reader-only">Tip</span>Person-Observations
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -331,22 +334,48 @@ Person-Observations
 <section id="advantages-of-the-multilevel-model-for-longitudinal-data" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Advantages of the Multilevel Model for Longitudinal Data</h1>
 <ol type="1">
-<li>Using the algebra in <a href="#eq-longitudinal-mlm" class="quarto-xref">Equation&nbsp;1</a>, these models can easily accommodate both time varying and time invariant variables <span class="citation" data-cites="Hox2010 Hox2018 Singer2003 Raudenbush2002 RabeHesketh2022">(<a href="#ref-Hox2010" role="doc-biblioref">Hox, 2010</a>; <a href="#ref-Hox2018" role="doc-biblioref">Hox et al., 2018</a>; <a href="#ref-RabeHesketh2022" role="doc-biblioref">Rabe-Hesketh &amp; Skrondal, 2022</a>; <a href="#ref-Raudenbush2002" role="doc-biblioref">Raudenbush &amp; Bryk, 2002</a>; <a href="#ref-Singer2003" role="doc-biblioref">Singer &amp; Willett, 2003</a>)</span>.</li>
+<li>Using the algebra in <a href="#eq-longitudinal-mlm" class="quarto-xref">Equation&nbsp;1</a>, these models can easily accommodate both time varying and time invariant variables <span class="citation" data-cites="Hox2010 Hox2018 Singer2003 Raudenbush2002 RabeHesketh2022">(<a href="#ref-Hox2010" role="doc-biblioref">Hox, 2010</a>; <a href="#ref-Hox2018" role="doc-biblioref"><span class="nocase">Hox et al.</span>, 2018</a>; <a href="#ref-RabeHesketh2022" role="doc-biblioref">Rabe-Hesketh &amp; Skrondal, 2022</a>; <a href="#ref-Raudenbush2002" role="doc-biblioref">Raudenbush &amp; Bryk, 2002</a>; <a href="#ref-Singer2003" role="doc-biblioref">Singer &amp; Willett, 2003</a>)</span>.</li>
 <li>There is no multicollinearity issue with multiple <span class="math inline">\(\beta\)</span> coefficients for multiple waves of data. By inspection of <a href="#eq-longitudinal-mlm" class="quarto-xref">Equation&nbsp;1</a>, we see that there is only a single <span class="math inline">\(\beta\)</span> coefficient for each variable, <span class="math inline">\(\therefore\)</span> no multicollinearity problem.</li>
 <li><em>Unbalanced data is less of a problem</em>, the data structure and estimation are robust to these possibilities <span class="citation" data-cites="Raudenbush1995 Singer2003 Raudenbush2002">(<a href="#ref-Raudenbush1995" role="doc-biblioref">Raudenbush, 1995</a>; <a href="#ref-Raudenbush2002" role="doc-biblioref">Raudenbush &amp; Bryk, 2002</a>; <a href="#ref-Singer2003" role="doc-biblioref">Singer &amp; Willett, 2003</a>)</span>.</li>
 <li><em>Missing data is less of a problem </em>(assuming <em>MCAR</em>). When a person observation is missing, that person simply has fewer rows of data <span class="citation" data-cites="Raudenbush1995 Hox2010 Luke2004 Raudenbush2002 RabeHesketh2022">(<a href="#ref-Hox2010" role="doc-biblioref">Hox, 2010</a>; <a href="#ref-Luke2004" role="doc-biblioref">Luke, 2004</a>; <a href="#ref-RabeHesketh2022" role="doc-biblioref">Rabe-Hesketh &amp; Skrondal, 2022</a>; <a href="#ref-Raudenbush1995" role="doc-biblioref">Raudenbush, 1995</a>; <a href="#ref-Raudenbush2002" role="doc-biblioref">Raudenbush &amp; Bryk, 2002</a>)</span>. But all rows of data are “matched” to the same person by <span class="math inline">\(i\)</span>.</li>
 <li>We have an <em>explicit function of time</em> <span class="math inline">\(\beta_1 t\)</span>, and could treat time more flexibly, by creating a polynomial function of time e.g.&nbsp;by adding <span class="math inline">\(\beta_2 t^2\)</span>, etc. <span class="citation" data-cites="Raudenbush2002 Singer2003">(<a href="#ref-Raudenbush2002" role="doc-biblioref">Raudenbush &amp; Bryk, 2002</a>; <a href="#ref-Singer2003" role="doc-biblioref">Singer &amp; Willett, 2003</a>)</span>. (We could even substitute <span class="math inline">\(\beta \ln(t)\)</span>.)</li>
 <li>Again, by inspection of <a href="#eq-longitudinal-mlm" class="quarto-xref">Equation&nbsp;1</a>, we see that <em>multiple or many time-points are not a problem</em>. We would use the same algebra for 2 time points or for 10,000 time points. (Helpful when we start to think about intensive longitudinal data <em>e.g.</em> George Holden’s <em>recording study</em>).</li>
 <li>We are <em>measuring exactly the time at which events take place</em> for each individual <span class="citation" data-cites="Singer2003 Luke2004">(<a href="#ref-Luke2004" role="doc-biblioref">Luke, 2004</a>; <a href="#ref-Singer2003" role="doc-biblioref">Singer &amp; Willett, 2003</a>)</span>. Not simply saying <em>Wave 1</em>, <em>Wave 2</em>, <em>Wave 3</em>, etc…</li>
-<li>Unequally spaced time points are not a problem <span class="citation" data-cites="Raudenbush1995">(<a href="#ref-Raudenbush1995" role="doc-biblioref">Raudenbush, 1995</a>)</span>. Every individual could have a <em>completely different set of time points</em> and even a <em>completely different number of time points</em> <span class="citation" data-cites="Hox2010 Hox2018 Singer2003 Luke2004">(<a href="#ref-Hox2010" role="doc-biblioref">Hox, 2010</a>; <a href="#ref-Hox2018" role="doc-biblioref">Hox et al., 2018</a>; <a href="#ref-Luke2004" role="doc-biblioref">Luke, 2004</a>; <a href="#ref-Singer2003" role="doc-biblioref">Singer &amp; Willett, 2003</a>)</span>.</li>
+<li>Unequally spaced time points are not a problem <span class="citation" data-cites="Raudenbush1995">(<a href="#ref-Raudenbush1995" role="doc-biblioref">Raudenbush, 1995</a>)</span>. Every individual could have a <em>completely different set of time points</em> and even a <em>completely different number of time points</em> <span class="citation" data-cites="Hox2010 Hox2018 Singer2003 Luke2004">(<a href="#ref-Hox2010" role="doc-biblioref">Hox, 2010</a>; <a href="#ref-Hox2018" role="doc-biblioref"><span class="nocase">Hox et al.</span>, 2018</a>; <a href="#ref-Luke2004" role="doc-biblioref">Luke, 2004</a>; <a href="#ref-Singer2003" role="doc-biblioref">Singer &amp; Willett, 2003</a>)</span>.</li>
 </ol>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Key Idea
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Put more intuitively, (3) &amp; (4) mean that individuals can enter the study late, can leave the study early, or can miss assessment points in the middle of the study without major problems for estimation of the model. (8) means that individual can be assessed at very different times, or even different numbers of times without presenting major issues for estimation.</p>
+</div>
+</div>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Caution
+<span class="screen-reader-only">Caution</span>The Possibility of Selection Bias With Missing Data
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>We do need to think very carefully about <em>why</em> individuals are missing from the data. Are they missing effectively at random? Or are there structural reasons that individuals may not be part of certain study waves? Often the individuals who have experienced the most trauma, violence or discrimination, or who have the lowest incomes are the ones who are not able to participate in every survey wave. While multilevel models are robust to these situations, we need to think carefully about whether we need to account for this possible selection bias, perhaps by imputing missing data.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>What Is The Appropriate Metric For Time?
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -365,7 +394,7 @@ Caution
 Hox, J. (2010). <em>Multilevel analysis: Techniques and applications</em> (2nd ed.). Routledge.
 </div>
 <div id="ref-Hox2018" class="csl-entry" role="listitem">
-Hox, J., Moerbeek, M., &amp; van de Schoot, R. (2018). <em>Multilevel analysis: Techniques and applications</em> (Third edition.). Routledge, Taylor &amp; Francis Group,.
+<span class="nocase">Hox, J., Moerbeek, M., &amp; van de Schoot, R.</span> (2018). <em>Multilevel analysis: Techniques and applications</em> (Third edition.). Routledge, Taylor &amp; Francis Group,.
 </div>
 <div id="ref-Luke2004" class="csl-entry" role="listitem">
 Luke, D. (2004). <em>Multilevel modeling</em>. SAGE Publications, Inc. <a href="https://doi.org/10.4135/9781412985147">https://doi.org/10.4135/9781412985147</a>
@@ -391,13 +420,13 @@ Singer, J. D., &amp; Willett, J. B. (2003). <em>Applied longitudinal data analys
   author = {Grogan-Kaylor, Andy},
   title = {Why {Multilevel} {Models} {Are} {Good} {Models} {For}
     {Longitudinal} {Data}},
-  date = {2026-02-13},
+  date = {2026-10-30},
   url = {https://agrogan1.github.io/multilevel/MLM-longitudinal-data/why-MLMs-are-good-models-for-longitudinal-data.html},
   langid = {en}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-grogan-kaylor2026" class="csl-entry quarto-appendix-citeas" role="listitem">
-Grogan-Kaylor, A. (2026, February 13). <em>Why Multilevel Models Are
-Good Models For Longitudinal Data</em>. <a href="https://agrogan1.github.io/multilevel/MLM-longitudinal-data/why-MLMs-are-good-models-for-longitudinal-data.html">https://agrogan1.github.io/multilevel/MLM-longitudinal-data/why-MLMs-are-good-models-for-longitudinal-data.html</a>
+Grogan-Kaylor, A. (2026, October 30). <em>Why Multilevel Models Are Good
+Models For Longitudinal Data</em>. <a href="https://agrogan1.github.io/multilevel/MLM-longitudinal-data/why-MLMs-are-good-models-for-longitudinal-data.html">https://agrogan1.github.io/multilevel/MLM-longitudinal-data/why-MLMs-are-good-models-for-longitudinal-data.html</a>
 </div></div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -451,13 +480,14 @@ Good Models For Longitudinal Data</em>. <a href="https://agrogan1.github.io/mult
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

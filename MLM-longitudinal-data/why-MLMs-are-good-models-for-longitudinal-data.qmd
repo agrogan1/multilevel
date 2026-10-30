@@ -150,7 +150,22 @@ Every row is a *person-observation* (person *i* observed at time *t*). Every per
 7.  We are *measuring exactly the time at which events take place* for each individual [@Singer2003; @Luke2004]. Not simply saying *Wave 1*, *Wave 2*, *Wave 3*, etc...
 8.  Unequally spaced time points are not a problem [@Raudenbush1995]. Every individual could have a *completely different set of time points* and even a *completely different number of time points* [@Hox2010; @Hox2018; @Singer2003; @Luke2004]. 
 
+
+::: {.callout-tip}
+## Key Idea
+
+Put more intuitively, (3) & (4) mean that individuals can enter the study late, can leave the study early, or can miss assessment points in the middle of the study without major problems for estimation of the model. (8) means that individual can be assessed at very different times, or even different numbers of times without presenting major issues for estimation.
+:::
+
 ::: {.callout-caution}
+## The Possibility of Selection Bias With Missing Data
+
+We do need to think very carefully about *why* individuals are missing from the data. Are they missing effectively at random? Or are there structural reasons that individuals may not be part of certain study waves? Often the individuals who have experienced the most trauma, violence or discrimination, or who have the lowest incomes are the ones who are not able to participate in every survey wave. While multilevel models are robust to these situations, we need to think carefully about whether we need to account for this possible selection bias, perhaps by imputing missing data. 
+:::
+
+::: {.callout-caution}
+## What Is The Appropriate Metric For Time?
+
 We do need to think carefully about what is the appropriate variable for time. Is it the variable we used to reshape the data--often `wave`--or some other more appropriate metric, like `age` or `time in study` [@Singer2003]?
 :::
 
