@@ -58,7 +58,11 @@ y <- t + u0 + e
 
 mydata <- data.frame(id, t, y)
 
-mydata$y[1] <- NA # wave missing
+# we only see obs 1 at one time
+
+mydata$y[2] <- NA # wave missing
+
+mydata$y[3] <- NA # wave missing
 
 mydata$y[11] <- NA # wave missing
 
