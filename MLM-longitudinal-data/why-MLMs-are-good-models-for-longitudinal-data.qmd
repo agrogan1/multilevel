@@ -23,6 +23,8 @@ bibliography: MLM.bib
 csl: apa.csl
 citation:
   url: https://agrogan1.github.io/multilevel/MLM-longitudinal-data/why-MLMs-are-good-models-for-longitudinal-data.html
+filters:
+  - mobile-toc
 ---
 
 # Key Idea
